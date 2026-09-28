@@ -26,3 +26,10 @@
 objets) et la séquence du script 1 en cinq vignettes. Chaque pose est un
 `<g>` SVG autonome, prêt à extraire. Brief :
 `prompts/bibliotheque-personnages.md`.
+
+**Livrée le 2026-09-28**, page « Bibliothèque de personnages » du canevas.
+Coût : **117 k** pour 110 estimés (ratio 1,06). 25 `id` : dix poses, trois
+poses de Jean, sept objets, cinq vignettes. À valider par Jean : en
+vignette 5, le troisième personnage se tient derrière le tréteau (seul moyen
+d'avoir trois personnes penchées sans chevauchement en 2D) ; la poutre est
+posée sur la dalle.
