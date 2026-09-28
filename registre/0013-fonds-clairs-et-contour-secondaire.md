@@ -17,3 +17,7 @@ L'ambre ne porte jamais de texte.
 **Chantier** : une planche, huit fonds (trois références, cinq nouvelles
 teintes claires) et trois contours du secondaire (orange, encre, ardoise).
 Brief : `prompts/fonds-clairs.md`.
+
+**Livrée le 2026-09-28**, page « Terre et ciel : choisir le fond », à droite
+des copies faites par Jean. Coût : **85 k** pour 90 estimés. Lien des polices
+déplacé à la main dans `<helmet>` (le sous-agent l'avait mis dans `<head>`).
