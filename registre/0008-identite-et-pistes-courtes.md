@@ -29,3 +29,14 @@
 
 **Chantier** : trois pistes courtes, l'accueil seulement (premier écran et
 début des actes), sur le même canevas. Brief : `prompts/pistes.md`.
+
+**Livrées le 2026-09-28**, page « Pistes courtes (v2) » du canevas ; la v1
+passe sur la page « Directions écartées (v1) ». Coût des trois sous-agents :
+94 + 117 + 87 = **298 k** pour 150 estimés, **ratio 1,99, au seuil de 2**.
+Cause : la page « courte » a été traitée comme une page entière (illustration
+SVG détaillée, jusqu'à 2 400 px). Pour la suite, estimer une planche
+illustrée à ~100 k.
+
+Les trois pistes ont convergé sur la même typographie (Schibsted Grotesk,
+IBM Plex Mono) : la comparaison porte sur la composition et la métaphore,
+la police reste à choisir.
