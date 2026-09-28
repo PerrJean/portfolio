@@ -22,3 +22,10 @@ remplit à la clôture, retouches comprises.
 À faire valider par Jean : les noms des quatre sources sur le schéma de A
 (repris de UserVoice, absents du brief). A et C partagent Instrument Serif
 en titrage.
+
+## Retour de Jean (2026-09-28) : les trois écartées
+
+A trop éditorial, B trop froid, C trop junior. **Gardés** : le storytelling
+en deux actes, le sommaire I / II de A, la flèche entre les actes de C.
+**À reprendre** : la pertinence des indicateurs (le « −87 % » de file n'est
+pas le KPI clé d'UserVoice) et **plus de captures d'écran**. Suite en `0008`.
