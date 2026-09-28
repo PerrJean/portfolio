@@ -48,3 +48,16 @@ nommé sur la page projet (C1), et le taux reste relatif (C2).
 - **Vigilance C8** : les deux faits décrivent la qualité du contenu de
   l'employeur. Ils tiennent formulés sur l'écoute et la correction, sans
   nom sur les pages projet ; à Jean de juger s'il en parle à son manager.
+
+**UserVoice, précisé par Jean (2026-09-28).**
+
+- **« 1 retour sur 3 »** : sur le formulaire de retour présent sur toutes les
+  pages du site, un retour sur trois porte sur le contenu. **Fait clé retenu
+  pour la parcelle 01.**
+- **NPS** : environ **1 verbatim sur 5 (19 %)** de la sonde in-app cite au
+  moins un des trois thèmes de qualité du contenu (explications, qualité,
+  traductions), du 24/07 au 22/09/2026 ; la moitié sont des critiques ou des
+  demandes. Va dans la synthèse, en second.
+- **Ce qui ne sort pas** : les effectifs (nombre de verbatims classés, de
+  citants), la comparaison in-app / Hotjar (deux publics, pas une
+  évolution), toute somme des thèmes (un verbatim en cite plusieurs).
