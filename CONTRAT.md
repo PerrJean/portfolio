@@ -14,10 +14,10 @@ Plafond 100 lignes, tenu par le hook. Le pourquoi est dans `SPEC.md`.
 
 - **Un site statique bilingue**, FR par défaut, EN en miroir : chaque page FR
   a sa jumelle EN, et la bascule mène de l'une à l'autre.
-- **L'accueil** : accroche, acte I, acte II, « Ce que j'apporte », portes.
-- **Une page par projet** : synthèse recruteur, puis « pour aller plus loin »
-  replié.
-- **Les pages secondaires** : Méthode IA, Erreurs payées, À propos.
+- **L'accueil** : accroche, puis une parcelle par projet.
+- **Une page par projet** : synthèse recruteur, H2 libres, « pour aller plus
+  loin » replié, projet suivant.
+- **À propos**, seule page qui nomme l'employeur.
 
 ## Ce qui ne sort jamais
 

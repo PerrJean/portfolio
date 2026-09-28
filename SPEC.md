@@ -22,12 +22,15 @@ fichier porte le pourquoi. Ce qui entre et ce qui sort est dans `CONTRAT.md`.
   levier de satisfaction. Acte II, Audit contenu : agir dessus.
 - **Le constat se formule en levier**, jamais en défaut : on ne dénigre pas
   l'employeur.
-- **Accueil, dans l'ordre** : accroche, les deux actes, « Ce que j'apporte »
-  (3 cartes), puis des portes discrètes : Méthode IA, Erreurs payées, À
-  propos. Les éléments secondaires sont là pour montrer qu'ils existent.
-- **Pages projet en deux niveaux** : une synthèse recruteur (problème, ce que
-  j'ai fait, résultat, ce que ça dit de moi, 3 chiffres), puis un « pour
-  aller plus loin » replié. **Pas long et technique.**
+- **Trois pages pour commencer** : Accueil, Projets, À propos. Le reste
+  viendra plus tard (`registre/0016`).
+- **Accueil, dans l'ordre** : accroche, puis les parcelles des projets
+  (UserVoice et Audit contenu reliés, un projet sans rapport en parcelle
+  numérotée à part). « Ce que j'apporte » en temps 2.
+- **Pages projet** : une synthèse recruteur commune en haut (un seul fait
+  clé, trois lignes), puis des H2 libres selon le projet, puis « Pour aller
+  plus loin » replié, puis le toit posé et « Projet suivant ». **Pas long et
+  technique.**
 - **Ton** : je, sobre, vouvoiement implicite, pas de jargon.
 
 ## Confidentialité
