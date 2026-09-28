@@ -19,3 +19,6 @@ Thumbs.db
 
 # plantages de Git for Windows
 *.stackdump
+
+# brouillons du canevas Design (jetables, registre/0003)
+.canevas/
