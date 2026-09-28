@@ -26,3 +26,8 @@
 **Chantier** : une planche, la palette sur les trois fonds (accroche,
 boutons au repos et au survol, fragment de page projet, bonhommes). Brief :
 `prompts/palette-terre-ciel.md`.
+
+**Livrée le 2026-09-28**, page « Terre et ciel : choisir le fond ». Coût :
+**92 k** pour 90 estimés, deux changements de police en cours de route
+compris. À trancher : les lunettes du leader sont en orange (couleur
+d'action) ; en ambre, elles respecteraient la règle « une couleur, un sens ».
