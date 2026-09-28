@@ -21,3 +21,8 @@ Brief : `prompts/fonds-clairs.md`.
 **Livrée le 2026-09-28**, page « Terre et ciel : choisir le fond », à droite
 des copies faites par Jean. Coût : **85 k** pour 90 estimés. Lien des polices
 déplacé à la main dans `<helmet>` (le sous-agent l'avait mis dans `<head>`).
+
+**Décisions de Jean (2026-09-28)** : fond **ivoire chaud #FEFAF2** ; contour
+du secondaire **orange** ; au survol, un cadre **en surimpression** bien
+visible (lecture de Claude : un second cadre carré décalé, sans ombre floue ;
+à confirmer). Lunettes du leader : orange ou ambre, en attente.
