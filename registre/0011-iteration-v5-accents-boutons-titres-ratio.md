@@ -27,3 +27,8 @@
 **Chantier** : quatre planches (accents × fonds, boutons et règle du point,
 titres sur Atkinson, ratio du bâtiment et indicateur au téléphone). Brief :
 `prompts/iteration-v5.md`. Deux sous-agents.
+
+**Livrées le 2026-09-28**, page « Itération v5 » du canevas. Coût : 107 + 121
+= **228 k** pour 220 estimés (ratio 1,04). L'orange de lien #B9501A ne passe
+pas 4,5:1 sur crème et aube : #B54E19 passe sur les trois fonds. La brique
+#9E4128 est la plus confortable (5,7 à 6,3:1).
