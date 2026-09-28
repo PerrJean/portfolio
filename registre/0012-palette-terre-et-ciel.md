@@ -17,8 +17,10 @@
   (soleil, points), action en **orange** #B9501A (boutons, liens ;
   #B54E19 sur crème et aube pour tenir 4,5:1), information en **ardoise
   claire** #5E7488, encre **brun** #2A1F1A. Chaque couleur n'a qu'un sens.
-- **Police de titre** : Claude recommande **Archivo 800, largeur ~108**,
-  sur Atkinson Hyperlegible Next en texte. En attente de Jean.
+- **Police : Atkinson Hyperlegible Next seule**, pour les titres (800),
+  les chiffres (800), les libellés (700, capitales) et le texte (400).
+  Choix de Jean (2026-09-28). Archivo, recommandée par Claude, écartée :
+  trop large, elle fait affiche.
 - **Fond** : pas encore choisi entre blanc lumière, crème et aube.
 
 **Chantier** : une planche, la palette sur les trois fonds (accroche,
