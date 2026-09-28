@@ -25,5 +25,6 @@
 - **Retenus** : logo et favicon en paire de lunettes rondes orange ; page
   404 (« Cette page n'est pas encore bâtie. ») ; aperçu LinkedIn (équipe,
   bâtiment, soleil en coin, phrase signature).
-- **En attente** : la fin de page projet (le toit posé ensemble, puis
-  « projet suivant »).
+- **Fin de page projet** : Jean et l'équipe posent le toit **ensemble**,
+  puis un lien « Projet suivant ». Confirmé, comme les étages calés sur les
+  H2 (2026-09-28).
