@@ -15,3 +15,8 @@ complètes, sympas et simples à intégrer, avec leur complexité de code.
 
 Brief : `prompts/animations.md`. Trois sous-agents. M-2 et M-3 sont
 interactifs sur le canevas (curseur « Progression de lecture »).
+
+**Livrées le 2026-09-28**, page « Animations : trois esquisses » du canevas,
+les trois jouables (bouton Play). Coût : 78 + 79 + 104 = **261 k** pour 240
+estimés (ratio 1,09). M-3 ajoute une échelle pour que l'équipier monte, et
+un réglage d'aplat des étages (léger ou encre).
