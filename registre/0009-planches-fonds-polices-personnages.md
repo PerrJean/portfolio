@@ -20,3 +20,9 @@ chacun avec son « pourquoi » et son « pourquoi pas ». Brief :
 **En attente de Jean** : où vit le bâtiment. Proposition : l'accueil montre
 le terrain et les fondations (la méthode, commune à tous les projets), et
 chaque page projet construit son bâtiment au défilement.
+
+**Livrées le 2026-09-28** (page « Planches de fondation (v3) ») : polices
+80 k, fonds et bonhommes 100 k, planche des standards (ajoutée à la demande
+de Jean, « pourquoi pas de visuel ? ») 117 k. Total **297 k** pour 170 estimés
+(ratio 1,75 ; 1,17 sans la planche ajoutée). Fraunces, cliché IA, retirée à
+la main de la planche des standards.
