@@ -16,3 +16,8 @@ anti-« IA slop ».
 contrastes calculés, six polices de texte et trois accords de chiffres,
 trois scènes du leader). Brief : `prompts/iteration-v4.md`. Trois
 sous-agents.
+
+**Livrées le 2026-09-28**, page « Itération v4 » du canevas. Coût : 87 + 90 +
+100 = **277 k** pour 300 estimés (ratio 0,92). Les six oranges de lien
+passent 4,5:1 sans retouche ; les secondaires terre rosée, sable et ocre ne
+tiennent ni texte ni trait seuls.
