@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  titre: string;
+  description: string;
+}
+const { titre, description } = Astro.props;
+const nomSite = 'Jean Perrier';
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titre === nomSite ? titre : `${titre} · ${nomSite}`}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="conteneur site-header">
+      <a class="marque" href="/">{nomSite}</a>
+      <nav>
+        <a href="/">Projets</a>
+        <a href="/a-propos/">À propos</a>
+      </nav>
+    </header>
+
+    <main class="conteneur">
+      <slot />
+    </main>
+
+    <footer class="conteneur site-footer">
+      Les captures d'écran sont réalisées sur des données synthétiques. Aucune donnée réelle n'apparaît sur ce site.
+    </footer>
+  </body>
+</html>

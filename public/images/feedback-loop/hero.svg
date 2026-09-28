@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" font-family="Inter, system-ui, sans-serif">
+  <!-- Maquette de capture sur données FICTIVES. À remplacer par une vraie capture Playwright sur jeu synthétique. -->
+  <rect width="1600" height="1000" fill="#ffffff"/>
+
+  <!-- Barre de fenêtre -->
+  <rect width="1600" height="44" fill="#f4f3ef"/>
+  <circle cx="26" cy="22" r="6" fill="#dcd9d0"/>
+  <circle cx="48" cy="22" r="6" fill="#dcd9d0"/>
+  <circle cx="70" cy="22" r="6" fill="#dcd9d0"/>
+  <rect x="560" y="12" width="480" height="20" rx="4" fill="#e9e7e1"/>
+  <text x="800" y="27" text-anchor="middle" font-size="12" fill="#8a867c">localhost · feedback-loop · bilan</text>
+
+  <!-- Barre latérale -->
+  <rect x="0" y="44" width="220" height="956" fill="#faf9f6"/>
+  <line x1="220" y1="44" x2="220" y2="1000" stroke="#e2dfd6"/>
+  <text x="28" y="92" font-size="15" font-weight="600" fill="#1f1e1b">Feedback Loop</text>
+  <g font-size="14" fill="#57544d">
+    <text x="28" y="150">Validation</text>
+    <text x="28" y="190">Dashboard</text>
+    <rect x="12" y="212" width="196" height="34" rx="6" fill="#f6e7df"/>
+    <text x="28" y="235" fill="#b5471f" font-weight="600">Bilan hebdo</text>
+    <text x="28" y="285">Référentiel</text>
+    <text x="28" y="325">Épisodes</text>
+  </g>
+  <g font-size="12" fill="#8a867c">
+    <text x="28" y="930">Source à jour · il y a 2 h</text>
+    <text x="28" y="952">File de validation : 9</text>
+  </g>
+
+  <!-- Titre -->
+  <text x="270" y="100" font-size="26" font-weight="600" fill="#1f1e1b">Bilan hebdomadaire · semaine 35</text>
+  <text x="270" y="128" font-size="14" fill="#8a867c">Dernière semaine terminée · comparée aux 4 semaines précédentes · semaine complète</text>
+
+  <!-- Bloc 1 : dossiers chauds -->
+  <rect x="270" y="160" width="1280" height="330" rx="8" fill="#ffffff" stroke="#e2dfd6"/>
+  <text x="294" y="196" font-size="12" font-weight="600" fill="#8a867c" letter-spacing="1">1 · DOSSIERS CHAUDS</text>
+  <text x="294" y="222" font-size="16" fill="#1f1e1b">Les trois problèmes les plus fréquents, et où en est leur traitement</text>
+
+  <g font-size="12" fill="#8a867c" font-weight="600">
+    <text x="294" y="262">SIGNATURE</text>
+    <text x="720" y="262">CETTE SEM.</text>
+    <text x="840" y="262">PART</text>
+    <text x="940" y="262">TENDANCE</text>
+    <text x="1120" y="262">STATUT</text>
+    <text x="1320" y="262">LOCALISATION</text>
+  </g>
+  <line x1="294" y1="274" x2="1526" y2="274" stroke="#e2dfd6"/>
+
+  <g font-size="15" fill="#1f1e1b">
+    <text x="294" y="312">AUDIO-002 · Lecture audio saccadée</text>
+    <text x="720" y="312">41</text>
+    <text x="840" y="312">18 %</text>
+    <text x="294" y="372">NAV-004 · Retour arrière perd la progression</text>
+    <text x="720" y="372">27</text>
+    <text x="840" y="372">12 %</text>
+    <text x="294" y="432">UI-006 · Texte de lecture non défilable</text>
+    <text x="720" y="432">19</text>
+    <text x="840" y="432">8 %</text>
+  </g>
+  <!-- Tendances (sparklines) -->
+  <g fill="none" stroke="#8a867c" stroke-width="2">
+    <polyline points="940,318 960,314 980,316 1000,310 1020,306 1040,300"/>
+    <polyline points="940,372 960,376 980,374 1000,378 1020,376 1040,378"/>
+    <polyline points="940,446 960,444 980,430 1000,424 1020,428 1040,438" stroke="#b5471f"/>
+  </g>
+  <!-- Statuts -->
+  <g font-size="12" font-weight="600">
+    <rect x="1120" y="296" width="110" height="24" rx="12" fill="#e8f0e6"/><text x="1175" y="313" text-anchor="middle" fill="#2f6b3a">En correction</text>
+    <rect x="1120" y="356" width="88" height="24" rx="12" fill="#f1efe9"/><text x="1164" y="373" text-anchor="middle" fill="#57544d">Identifié</text>
+    <rect x="1120" y="416" width="140" height="24" rx="12" fill="#f6e7df"/><text x="1190" y="433" text-anchor="middle" fill="#b5471f">Jamais investigué</text>
+  </g>
+  <g font-size="13" fill="#57544d">
+    <text x="1320" y="312">mobile · 71 % (vs 22 % global)</text>
+    <text x="1320" y="372">aucune sur-représentation</text>
+    <text x="1320" y="432">compréhension écrite · 96 %</text>
+  </g>
+  <line x1="294" y1="336" x2="1526" y2="336" stroke="#f1efe9"/>
+  <line x1="294" y1="396" x2="1526" y2="396" stroke="#f1efe9"/>
+  <text x="294" y="470" font-size="12" fill="#8a867c">Hors scope exclu du classement · une localisation n'est retenue que si elle sur-représente et isole un sous-ensemble</text>
+
+  <!-- Bloc 2 : contrôle des correctifs -->
+  <rect x="270" y="516" width="625" height="240" rx="8" fill="#ffffff" stroke="#e2dfd6"/>
+  <text x="294" y="552" font-size="12" font-weight="600" fill="#8a867c" letter-spacing="1">2 · CONTRÔLE DES CORRECTIFS</text>
+  <g font-size="14" fill="#1f1e1b">
+    <text x="294" y="596">MISSING-002 · corrigé le 28/06</text>
+    <text x="294" y="646">NAV-003 · corrigé le 12/05</text>
+    <text x="294" y="696">AUDIO-001 · corrigé le 20/06</text>
+  </g>
+  <g font-size="13" font-weight="600">
+    <text x="700" y="596" fill="#2f6b3a">✓ silence depuis 9 sem.</text>
+    <text x="700" y="646" fill="#b5471f">⚠ réapparition · 3 pics</text>
+    <text x="700" y="696" fill="#2f6b3a">✓ silence depuis 10 sem.</text>
+  </g>
+  <line x1="294" y1="616" x2="871" y2="616" stroke="#f1efe9"/>
+  <line x1="294" y1="666" x2="871" y2="666" stroke="#f1efe9"/>
+
+  <!-- Bloc 3 : nouveaux sujets -->
+  <rect x="925" y="516" width="625" height="240" rx="8" fill="#ffffff" stroke="#e2dfd6"/>
+  <text x="949" y="552" font-size="12" font-weight="600" fill="#8a867c" letter-spacing="1">3 · NOUVEAUX SUJETS</text>
+  <text x="949" y="596" font-size="15" font-weight="600" fill="#1f1e1b">Une émergence détectée</text>
+  <text x="949" y="626" font-size="14" fill="#57544d">Sous-groupe lexical dans le fourre-tout : « minuteur », « bloqué », « écran noir »</text>
+  <text x="949" y="650" font-size="14" fill="#57544d">7 cas sur 5 jours · part ×2,4 · au-delà de 2σ de l'attendu</text>
+  <rect x="949" y="676" width="230" height="30" rx="6" fill="#f6e7df"/>
+  <text x="1064" y="696" text-anchor="middle" font-size="13" font-weight="600" fill="#b5471f">Proposer une signature</text>
+  <text x="949" y="738" font-size="12" fill="#8a867c">Verdict explicite : « aucune émergence » et « détection dégradée » sont deux messages différents.</text>
+
+  <!-- Bloc 4 : jamais investigué -->
+  <rect x="270" y="782" width="1280" height="170" rx="8" fill="#ffffff" stroke="#e2dfd6"/>
+  <text x="294" y="818" font-size="12" font-weight="600" fill="#8a867c" letter-spacing="1">4 · JAMAIS INVESTIGUÉ</text>
+  <text x="294" y="850" font-size="15" fill="#1f1e1b">Remonte régulièrement depuis plus de 8 semaines sans statut de traitement</text>
+  <g font-size="14" fill="#57544d">
+    <text x="294" y="892">CONT-003 · Corrigé attendu introuvable — 6 à 9 cas / sem.</text>
+    <text x="294" y="922">UI-006 · Texte de lecture non défilable — voir dossiers chauds</text>
+  </g>
+</svg>

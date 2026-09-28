@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" width="1200" height="260" font-family="Inter, system-ui, sans-serif" font-size="15">
+  <defs>
+    <marker id="fleche" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8a867c"/>
+    </marker>
+  </defs>
+
+  <!-- Boîtes -->
+  <g stroke="#e2dfd6" stroke-width="1.5" fill="#ffffff">
+    <rect x="20"  y="70" width="190" height="90" rx="8"/>
+    <rect x="265" y="70" width="190" height="90" rx="8"/>
+    <rect x="510" y="70" width="190" height="90" rx="8"/>
+    <rect x="755" y="70" width="190" height="90" rx="8" stroke="#b5471f" stroke-width="2" fill="#f6e7df"/>
+    <rect x="1000" y="70" width="180" height="90" rx="8"/>
+  </g>
+
+  <!-- Flèches -->
+  <g stroke="#8a867c" stroke-width="1.5" fill="none" marker-end="url(#fleche)">
+    <line x1="212" y1="115" x2="262" y2="115"/>
+    <line x1="457" y1="115" x2="507" y2="115"/>
+    <line x1="702" y1="115" x2="752" y2="115"/>
+    <line x1="947" y1="115" x2="997" y2="115"/>
+  </g>
+  <!-- Boucle de retour : validation → classification (few-shot) -->
+  <path d="M850 162 C850 215, 605 215, 605 162" stroke="#b5471f" stroke-width="1.5" fill="none" stroke-dasharray="4 4" marker-end="url(#fleche)"/>
+  <text x="727" y="235" text-anchor="middle" fill="#b5471f" font-size="13">chaque validation enrichit les exemples des passes suivantes</text>
+
+  <!-- Numéros -->
+  <g fill="#8a867c" font-size="12" font-weight="600">
+    <text x="32" y="60">01</text>
+    <text x="277" y="60">02</text>
+    <text x="522" y="60">03</text>
+    <text x="767" y="60">04</text>
+    <text x="1012" y="60">05</text>
+  </g>
+
+  <!-- Libellés -->
+  <g fill="#1f1e1b" font-weight="600" text-anchor="middle">
+    <text x="115" y="108">Sonde in-app</text>
+    <text x="360" y="108">Import incrémental</text>
+    <text x="605" y="108">Classification IA</text>
+    <text x="850" y="108" fill="#b5471f">Validation humaine</text>
+    <text x="1090" y="108">Bilan et épisodes</text>
+  </g>
+  <g fill="#57544d" font-size="13" text-anchor="middle">
+    <text x="115" y="132">retours datés, jamais modifiés</text>
+    <text x="360" y="132">par identifiant, fraîcheur vérifiée</text>
+    <text x="605" y="132">signature + score de confiance</text>
+    <text x="850" y="132" fill="#b5471f">seulement l'incertain</text>
+    <text x="1090" y="132">déduits, pas déclarés</text>
+  </g>
+</svg>

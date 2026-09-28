@@ -1,0 +1,21 @@
+# build
+dist/
+.astro/
+node_modules/
+
+# environnement
+.env
+.env.*
+
+# Jamais de données réelles dans ce dépôt
+data/
+*.csv
+*.xlsx
+*.xls
+
+# système
+.DS_Store
+Thumbs.db
+
+# plantages de Git for Windows
+*.stackdump

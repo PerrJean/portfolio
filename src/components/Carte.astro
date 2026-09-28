@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  projet: CollectionEntry<'projets'>;
+}
+const { projet } = Astro.props;
+const { titre, resume, annee, image, imageAlt } = projet.data;
+---
+<a class="carte" href={`/projets/${projet.id}/`}>
+  <div class="vignette">
+    <img src={image} alt={imageAlt} loading="lazy" />
+  </div>
+  <h3>{titre}</h3>
+  <p>{resume}</p>
+  <span class="annee">{annee}</span>
+</a>

@@ -1,0 +1,38 @@
+#!/bin/sh
+# Hook de pre-commit — Portfolio.
+# Source versionnee : ops/hooks/pre-commit. Installation : ops/hooks/install.sh
+set -e
+cd "$(git rev-parse --show-toplevel)"
+INDEX=$(git diff --cached --name-only --diff-filter=ACM)
+
+echo "-> scan de secrets"
+for f in $INDEX; do
+  [ -f "$f" ] || continue
+  if grep -lIE 'sk-ant-[A-Za-z0-9_-]{10,}|AIza[0-9A-Za-z_-]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----' "$f" >/dev/null 2>&1; then
+    echo "REFUS : secret detecte dans $f"; exit 1
+  fi
+done
+
+echo "-> aucun fichier de donnees"
+SUSPECTS=$(printf '%s\n' "$INDEX" | grep -iE '\.(csv|xlsx?|jsonl|db|sqlite)$' || true)
+if [ -n "$SUSPECTS" ]; then
+  echo "REFUS : fichier de donnees indexe :"; printf '        %s\n' $SUSPECTS; exit 1
+fi
+
+echo "-> termes interdits (CONTRAT, C1-C4)"
+# Listes hors du depot, dans ~/.portfolio. $INDEX non quote : un argument par fichier.
+python ops/hooks/verifier_confidentialite.py $INDEX || exit 1
+
+echo "-> identite du commit"
+# Le depot est public : l'adresse de l'auteur ne doit pas nommer l'employeur.
+git config user.email > .git/identite.tmp
+python ops/hooks/verifier_confidentialite.py .git/identite.tmp || { rm -f .git/identite.tmp; echo "        -> git config user.email <adresse perso ou noreply GitHub>"; exit 1; }
+rm -f .git/identite.tmp
+
+echo "-> CONTRAT.md sous son plafond"
+n=$(wc -l < CONTRAT.md)
+if [ "$n" -gt 100 ]; then
+  echo "REFUS : CONTRAT.md fait $n lignes, plafond 100."; exit 1
+fi
+
+echo "-> OK"

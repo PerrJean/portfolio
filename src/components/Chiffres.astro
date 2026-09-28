@@ -1,0 +1,16 @@
+---
+interface Props {
+  items: { valeur: string; legende: string }[];
+}
+const { items } = Astro.props;
+---
+{items.length > 0 && (
+  <div class="chiffres" aria-label="Chiffres clés">
+    {items.map((c) => (
+      <div>
+        <strong>{c.valeur}</strong>
+        <small>{c.legende}</small>
+      </div>
+    ))}
+  </div>
+)}

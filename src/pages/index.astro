@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Carte from '../components/Carte.astro';
+
+const projets = (await getCollection('projets', ({ data }) => !data.brouillon))
+  .sort((a, b) => a.data.ordre - b.data.ordre);
+---
+<Base
+  titre="Jean Perrier"
+  description="Études de cas : des outils internes construits avec l'IA, de l'irritant au résultat."
+>
+  <section class="accroche">
+    <h1>Des irritants du quotidien transformés en outils, avec l'IA comme équipier.</h1>
+    <p>
+      Chaque fiche raconte une démarche : le problème, ce que j'ai choisi de ne pas faire,
+      la construction, et ce que j'en retiens. Les données montrées sont synthétiques.
+    </p>
+  </section>
+
+  <section class="grille">
+    {projets.map((p) => <Carte projet={p} />)}
+  </section>
+</Base>
