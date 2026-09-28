@@ -29,3 +29,22 @@
 **Garde-fou** : un taux de questions bloquantes décrit un défaut du contenu
 de l'employeur. Il se formule sur la correction (C8), l'employeur n'est pas
 nommé sur la page projet (C1), et le taux reste relatif (C2).
+
+**Précisions de Jean (2026-09-28).**
+
+- **Audit contenu** : le fait porte sur le **premier parcours audité, le plus
+  ancien** (ce qui ne présume pas des suivants). Sur la capture du tableau
+  de bord : **5 % de questions bloquantes, 1 question sur 20**.
+  À confirmer : le total est-il bien tout le parcours (le
+  compteur OK affiche 0) ; les corrections sont-elles appliquées en
+  production. Le nom de l'examen reste hors du site (C1) : « le premier
+  parcours de certification audité ».
+- **UserVoice** : le fait devient la découverte, **1 retour sur 3 porte sur
+  le contenu**, et X % des thèmes cités dans le NPS touchent à sa qualité
+  (traduction, explications, qualité du contenu). Le tableau de bord
+  (visualisation et intelligence) passe dans « Ce que j'ai fait ». À
+  préciser : X, et le périmètre du « 1 sur 3 » (quelles sources, quelle
+  période).
+- **Vigilance C8** : les deux faits décrivent la qualité du contenu de
+  l'employeur. Ils tiennent formulés sur l'écoute et la correction, sans
+  nom sur les pages projet ; à Jean de juger s'il en parle à son manager.
