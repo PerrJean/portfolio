@@ -1,9 +1,10 @@
 ---
 // La scène d'une parcelle de l'accueil : ligne de sol, tréteau, dalle,
 // Jean et trois coéquipiers. Deux animations, en échanges de poses figées
-// et en déplacements sur la ligne de sol (registre/0022) :
-//  1. l'impatience (1,2 s), classe `joue`, au chargement et à chaque entrée
-//     à l'écran ;
+// et en déplacements sur la ligne de sol (registre/0022, 0023) :
+//  1. l'impatience (2 s, une chose à la fois : A saute deux fois, B fait
+//     tourner son marteau, le porteur lance sa poutre), classe `joue`, au
+//     chargement et à chaque entrée à l'écran ;
 //  2. « on regarde le plan » (2 s), au survol ou au focus de la `.parcelle`
 //     qui contient la scène, ou classe `regarde` sur écran tactile.
 // Géométrie reprise des vignettes de la bibliothèque
@@ -27,11 +28,13 @@ import { OBJETS } from './poses';
     <g class="poutre-vol" set:html={OBJETS.poutre} />
   </g>
 
-  <!-- Coéquipier A : sautille ; va derrière le tréteau (272 → 128). -->
-  <g transform="translate(272 0)">
+  <!-- Coéquipier A : saute deux fois ; va derrière le tréteau (235 → 128). -->
+  <g transform="translate(235 0)">
     <g class="a-pas">
       <Personnage pose="debout" miroir class="a-debout" />
-      <Personnage pose="sautillement" miroir class="a-saut" />
+      <g class="a-bond">
+        <Personnage pose="sautillement" miroir class="a-saut" />
+      </g>
       <Personnage pose="marche-1" miroir class="a-m1" />
       <Personnage pose="marche-2" miroir class="a-m2" />
       <Personnage pose="penche" class="a-penche" />
@@ -70,17 +73,29 @@ import { OBJETS } from './poses';
     </g>
   </g>
 
-  <!-- Coéquipier B : fait tourner son marteau ; vient en face (308 → 236). -->
-  <g transform="translate(308 0)">
+  <!-- Coéquipier B : tourné vers le porteur, fait tourner son marteau ;
+       se retourne et vient en face (285 → 236). L'arc suit la tête du
+       marteau autour du poignet (25, -75), départ à 25°, sens horaire. -->
+  <g transform="translate(285 0)">
+    <path
+      class="b-arc se"
+      d="M57.63,-59.79 A36,36 0 1 1 -7.63,-90.21 A36,36 0 1 1 57.63,-59.79"
+      pathLength="100"
+      fill="none"
+      stroke-width="1.5"
+      stroke-opacity="0.3"
+      stroke-linecap="round"
+    />
     <g class="b-pas">
-      <Personnage pose="marteau-2" miroir class="b-marteau" />
+      <Personnage pose="marteau-2" class="b-marteau" />
       <Personnage pose="marche-1" miroir class="b-m1" />
       <Personnage pose="marche-2" miroir class="b-m2" />
       <Personnage pose="penche" miroir class="b-penche" />
     </g>
   </g>
 
-  <!-- Le porteur : poutre sur l'épaule, qu'il pose sur la dalle (368 → 385). -->
+  <!-- Le porteur : poutre sur l'épaule (groupe .poutre-lance de la pose),
+       qu'il lance un peu, puis pose sur la dalle (368 → 385). -->
   <g transform="translate(368 0)">
     <g class="c-pas">
       <Personnage pose="poutre-epaule" miroir class="c-poutre" />
@@ -106,28 +121,39 @@ import { OBJETS } from './poses';
   .scene .fd { fill: var(--dalle, #D9D4CC); }
 
   /* Les groupes animés tournent ou glissent autour de leur origine locale
-     (le poignet pour le marteau, le bord gauche pour le plan). */
+     (le poignet pour le marteau, le centre pour la poutre lancée, le bord
+     gauche pour le plan). */
   .scene .a-pas, .scene .b-pas, .scene .c-pas, .scene .j-pas,
   .scene .plan, .scene .rouleau, .scene .poutre-vol, .scene .marteau-tour,
-  .scene .point {
+  .scene .point, .scene .a-bond, .scene .poutre-lance {
     transform-box: view-box;
     transform-origin: 0 0;
   }
 
   /* Repos : une pose visible par personnage. */
   .scene :is(.a-saut, .a-m1, .a-m2, .a-penche, .b-m1, .b-m2, .b-penche,
-    .j-tendus, .j-penche, .c-saut, .poutre, .rouleau, .point) {
+    .j-tendus, .j-penche, .c-saut, .poutre, .rouleau, .point, .b-arc) {
     opacity: 0;
   }
   .scene .plan { transform: scaleX(0); }
+  /* Le marteau de B, 1,4 fois plus grand, au repos comme en mouvement. */
+  .scene .b-marteau .marteau-tour { transform: scale(1.4); }
+  .scene .b-arc { stroke-dasharray: 30 110; stroke-dashoffset: 30; }
 
-  /* 1. L'impatience : A sautille deux fois, puis B fait un tour de marteau. */
+  /* 1. L'impatience, 2 s, une seule chose à la fois : A saute deux fois
+     (0-0,56 s), B fait un tour de marteau (0,6-1,3 s), le porteur lance
+     sa poutre et la rattrape (1,3-1,9 s). */
   @media (prefers-reduced-motion: no-preference) {
-    .scene.joue .a-debout { animation: sc-i-debout 1.2s step-end both; }
-    .scene.joue .a-saut { animation: sc-i-saut 1.2s step-end both; }
+    .scene.joue .a-debout { animation: sc-i-debout 2s step-end both; }
+    .scene.joue .a-saut { animation: sc-i-saut 2s step-end both; }
+    .scene.joue .a-bond { animation: sc-i-bond 2s both; }
     .scene.joue .b-marteau .marteau-tour {
-      animation: sc-i-tour 1.2s ease-in-out both;
+      animation: sc-i-tour 2s ease-in-out both;
     }
+    .scene.joue .b-arc {
+      animation: sc-i-arc 2s ease-in-out both, sc-i-arc-vu 2s linear both;
+    }
+    .scene.joue .c-poutre .poutre-lance { animation: sc-i-lance 2s both; }
   }
 
   /* 2. On regarde le plan. Plus spécifique que l'impatience : il l'emporte. */
@@ -149,7 +175,7 @@ import { OBJETS } from './poses';
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .rouleau {
     animation: sc-rouleau 2s ease-out both, sc-rouleau-vu 2s step-end both;
   }
-  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-saut {
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene :is(.a-saut, .a-bond, .marteau-tour, .b-arc, .poutre-lance) {
     animation: none;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-m1 {
@@ -197,16 +223,39 @@ import { OBJETS } from './poses';
     }
   }
 
-  /* Impatience, 1,2 s. */
+  /* Impatience, 2 s : 1 % = 20 ms. Deux sauts de 0,22 s (0-11 %, 17-28 %),
+     au sol entre les deux ; le tour de 0,6 à 1,3 s (30-65 %) ; la poutre de
+     1,3 à 1,9 s (65-95 %). */
   @keyframes sc-i-debout {
-    0% { opacity: 0; } 12.5% { opacity: 1; } 25% { opacity: 0; } 37.5%, 100% { opacity: 1; }
+    0% { opacity: 0; } 11% { opacity: 1; } 17% { opacity: 0; } 28%, 100% { opacity: 1; }
   }
   @keyframes sc-i-saut {
-    0% { opacity: 1; } 12.5% { opacity: 0; } 25% { opacity: 1; } 37.5%, 100% { opacity: 0; }
+    0% { opacity: 1; } 11% { opacity: 0; } 17% { opacity: 1; } 28%, 100% { opacity: 0; }
+  }
+  @keyframes sc-i-bond {
+    0% { transform: translateY(0); animation-timing-function: ease-out; }
+    5.5% { transform: translateY(-8px); animation-timing-function: ease-in; }
+    11%, 17% { transform: translateY(0); animation-timing-function: ease-out; }
+    22.5% { transform: translateY(-8px); animation-timing-function: ease-in; }
+    28%, 100% { transform: translateY(0); }
   }
   @keyframes sc-i-tour {
-    0%, 41.7% { transform: rotate(0deg); }
-    95%, 100% { transform: rotate(360deg); }
+    0%, 30% { transform: rotate(0deg) scale(1.4); }
+    65%, 100% { transform: rotate(360deg) scale(1.4); }
+  }
+  /* Le trait (30 % du cercle) finit toujours sur la tête du marteau :
+     mêmes étapes et même courbe que le tour. */
+  @keyframes sc-i-arc {
+    0%, 30% { stroke-dashoffset: 30; }
+    65%, 100% { stroke-dashoffset: -70; }
+  }
+  @keyframes sc-i-arc-vu {
+    0%, 30% { opacity: 0; } 36%, 60% { opacity: 1; } 72%, 100% { opacity: 0; }
+  }
+  @keyframes sc-i-lance {
+    0%, 65% { transform: translateY(0) rotate(0deg); animation-timing-function: ease-out; }
+    78% { transform: translateY(-12px) rotate(-4deg); animation-timing-function: ease-in; }
+    95%, 100% { transform: translateY(0) rotate(0deg); }
   }
 
   /* On regarde le plan, 2 s : 0,55 s = 27,5 % ; 1 s = 50 % ; 1,45 s = 72,5 %. */
@@ -247,11 +296,11 @@ import { OBJETS } from './poses';
   }
   @keyframes sc-a-pas {
     0%, 27.5% { transform: translateX(0); }
-    72.5%, 100% { transform: translateX(-144px); }
+    72.5%, 100% { transform: translateX(-107px); }
   }
   @keyframes sc-b-pas {
     0%, 27.5% { transform: translateX(0); }
-    50%, 100% { transform: translateX(-72px); }
+    50%, 100% { transform: translateX(-49px); }
   }
   @keyframes sc-c-pas {
     0%, 72.5% { transform: translateX(0); }
@@ -271,7 +320,7 @@ import { OBJETS } from './poses';
 <script>
   // Le strict nécessaire : rejouer l'impatience à chaque entrée à l'écran,
   // et, sur écran tactile, jouer une fois « on regarde le plan » après elle.
-  const DUREE = 1300;
+  const DUREE = 2100;
   const tactile = matchMedia('(hover: none)').matches;
 
   document.querySelectorAll<SVGSVGElement>('svg.scene').forEach((scene) => {
