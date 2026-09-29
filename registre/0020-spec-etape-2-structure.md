@@ -74,3 +74,16 @@ animée ne s'estime plus sous 100 k.
 briefs seront lisibles. Le vérificateur ne les exempte plus ; les effectifs
 internes ont été retirés du registre. Avant le premier envoi, l'historique
 local, qui les contient encore, sera réécrit (auteur et contenu).
+
+**Langue (2026-09-29)** : `/en/` gardé (pas de serveur sur GitHub Pages, un
+lien par langue, indexation des deux versions, aucun cookie). **Pas de
+bandeau « Read in English »**, aucune détection de la langue du navigateur.
+
+**Ajouts proposés à la spec, en attente de Jean** : téléphone (menu replié,
+bâtiment en indicateur de lecture, animations à l'entrée dans l'écran) ;
+accessibilité (focus visible, lien d'évitement, illustrations décoratives
+masquées, `lang` par page) ; référencement et partage (titre et description
+par page, `hreflang`, plan du site, favicon, aperçu LinkedIn) ; budget de
+poids ; cadres de capture réservés ; revue en contexte neuf et preuve à
+chaque chantier ; tests sur le lanceur de Node ; remplacement du brouillon
+du 7 septembre. Manque : l'adresse du profil LinkedIn.
