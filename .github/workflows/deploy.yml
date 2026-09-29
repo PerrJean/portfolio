@@ -1,0 +1,29 @@
+# Publication sur GitHub Pages (docs/GUIDE_MISE_EN_LIGNE.md, section 2).
+# Déclenchement manuel tant que le site n'est pas prêt (étape 4 : passer à
+# `push` sur `main`). Flux officiel d'Astro.
+name: Publier sur GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  construire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: withastro/action@v6
+
+  publier:
+    needs: construire
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.publication.outputs.page_url }}
+    steps:
+      - id: publication
+        uses: actions/deploy-pages@v5
