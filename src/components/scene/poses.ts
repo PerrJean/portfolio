@@ -1,31 +1,96 @@
-// Genere depuis .canevas/project/B1-personnages.dc.html : ne pas redessiner.
 // Poses de profil tournees vers la droite, pieds a l'origine 0,0.
 // {L} marque la place des lunettes de Jean.
-// Seule retouche : dans poutre-epaule, la poutre est isolee dans le groupe
-// .poutre-lance (origine au centre de la poutre), sans changer le dessin.
+// Dessin d'origine : .canevas/project/B1-personnages.dc.html. Retouches
+// (registre/0022 a 0024) :
+//  - poutre-epaule : la poutre est isolee dans le groupe .poutre-lance
+//    (origine au centre de la poutre), sans changer le dessin ;
+//  - toutes les poses : le buste finit a plat aux hanches (TORSE), les
+//    jambes partent separees des les hanches (axes a +-5,25, trait 7,5 :
+//    3 d'ecart en haut des cuisses, bords au ras du buste), les mains qui
+//    pendaient pres des hanches remontent, pour qu'aucun lisere ni aucun
+//    bras ne dessine un contour de jupe ;
+//  - lancer-poutre : nouvelle pose, les deux bras leves, mains ouvertes a
+//    plat (le dessus des paumes a y = -109,5).
+
+const LIGNE = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
+const trait = (c: string, points: string, largeur: number) =>
+  `<polyline class="${c}" points="${points}" ${LIGNE} stroke-width="${largeur}"/>`;
+
+/** Les deux jambes, jambe arriere d'abord. */
+const jambes = (arriere: string, avant: string) => trait('se', arriere, 7.5) + trait('se', avant, 7.5);
+/** Le bras arriere, sans lisere (derriere le buste). */
+const brasArriere = (points: string) => trait('se', points, 7);
+/** Le bras avant, avec son lisere ivoire. */
+const brasAvant = (points: string) => trait('si', points, 10) + trait('se', points, 7);
+
+/** Le buste : haut arrondi, bas a plat aux hanches (y = -52 + dy). */
+const torse = (dy = 0) => {
+  const y = (v: number) => v + dy;
+  return `<path class="fe" d="M-9,${y(-88)} A9,9 0 0 1 9,${y(-88)} L9,${y(-55)} Q9,${y(-52)} 6,${y(-52)} L-6,${y(-52)} Q-9,${y(-52)} -9,${y(-55)} Z"/>`;
+};
+const TETE = '<circle class="fe" cx="1" cy="-110" r="10"/>{L}';
+const DEBOUT = jambes('-5.25,-56 -4.5,-4 0.5,-4', '5.25,-56 4.5,-4 9.5,-4');
+const MARTEAU = (angle: number) =>
+  jambes('-5.25,-56 -8,-4 -3,-4', '5.25,-56 8,-4 13,-4') +
+  brasArriere('0,-89 -4,-58') +
+  torse() +
+  TETE +
+  `<g transform="translate(25 -75)"><g class="marteau-tour"><g transform="rotate(${angle})"><line class="se" x1="-3" y1="0" x2="26" y2="0" stroke-width="4" stroke-linecap="round"/><rect class="fe" x="22" y="-8" width="8" height="15" rx="1.5"/></g></g></g>` +
+  brasAvant('1,-89 9,-69 25,-75');
 
 export const POSES = {
-  'debout':
-    '<polyline class="se" points="-2,-56 -2,-4 3,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="2,-56 2,-4 7,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="0,-89 -2,-58" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect class="fe" x="-9" y="-97" width="18" height="45" rx="9"/><circle class="fe" cx="1" cy="-110" r="10"/>{L}<polyline class="si" points="1,-89 3,-58" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="1,-89 3,-58" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
+  'debout': DEBOUT + brasArriere('0,-89 -2,-58') + torse() + TETE + brasAvant('1,-89 3,-60'),
   'marche-1':
-    '<polyline class="se" points="-1,-56 -12,-9 -7,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="1,-56 13,-4 18,-8" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="0,-89 11,-62" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect class="fe" x="-9" y="-97" width="18" height="45" rx="9"/><circle class="fe" cx="1" cy="-110" r="10"/>{L}<polyline class="si" points="1,-89 -11,-61" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="1,-89 -11,-61" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
+    jambes('-5.25,-56 -12,-9 -7,-4', '5.25,-56 13,-4 18,-8') +
+    brasArriere('0,-89 14,-64') +
+    torse() +
+    TETE +
+    brasAvant('1,-89 -14,-64'),
   'marche-2':
-    '<polyline class="se" points="-1,-56 0,-4 5,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="1,-56 8,-32 3,-13 8,-12" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="0,-89 -3,-58" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect class="fe" x="-9" y="-97" width="18" height="45" rx="9"/><circle class="fe" cx="1" cy="-110" r="10"/>{L}<polyline class="si" points="1,-89 5,-58" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="1,-89 5,-58" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
+    jambes('-5.25,-56 -3,-4 2,-4', '5.25,-56 9,-32 3,-13 8,-12') +
+    brasArriere('0,-89 -3,-58') +
+    torse() +
+    TETE +
+    brasAvant('1,-89 4,-60'),
   'penche':
-    '<polyline class="se" points="-5,-56 -6,-4 -1,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="-1,-56 1,-4 6,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="14.4,-84.1 32,-60" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><g transform="translate(-3 0) rotate(30 0 -56)"><rect class="fe" x="-9" y="-97" width="18" height="45" rx="9"/><circle class="fe" cx="1" cy="-110" r="10"/>{L}</g><polyline class="si" points="14.4,-84.1 29,-59.5" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="14.4,-84.1 29,-59.5" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
-  'bras-tendus':
-    '<polyline class="se" points="-2,-56 -2,-4 3,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="2,-56 2,-4 7,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="0,-89 31,-76" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect class="fe" x="-9" y="-97" width="18" height="45" rx="9"/><circle class="fe" cx="1" cy="-110" r="10"/>{L}<polyline class="si" points="1,-89 29,-73" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="1,-89 29,-73" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
+    jambes('-7.75,-56 -7.5,-4 -2.5,-4', '2.25,-56 1.5,-4 6.5,-4') +
+    brasArriere('14.4,-84.1 32,-60') +
+    `<g transform="translate(-3 0) rotate(30 0 -56)">${torse()}${TETE}</g>` +
+    brasAvant('14.4,-84.1 29,-59.5'),
+  'bras-tendus': DEBOUT + brasArriere('0,-89 31,-76') + torse() + TETE + brasAvant('1,-89 29,-73'),
   'plan-sous-bras':
-    '<polyline class="se" points="-2,-56 -2,-4 3,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="2,-56 2,-4 7,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="0,-89 -3,-58" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect class="fe" x="-9" y="-97" width="18" height="45" rx="9"/><circle class="fe" cx="1" cy="-110" r="10"/>{L}<rect class="fi sa" x="-16" y="-80" width="44" height="9" rx="4.5" stroke-width="1.8"/><circle class="sa" cx="23.5" cy="-75.5" r="2.2" fill="none" stroke-width="1.2"/><polyline class="si" points="1,-89 0,-67 14,-68" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="1,-89 0,-67 14,-68" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
+    DEBOUT +
+    brasArriere('0,-89 -3,-58') +
+    torse() +
+    TETE +
+    '<rect class="fi sa" x="-16" y="-80" width="44" height="9" rx="4.5" stroke-width="1.8"/><circle class="sa" cx="23.5" cy="-75.5" r="2.2" fill="none" stroke-width="1.2"/>' +
+    brasAvant('1,-89 0,-67 14,-68'),
   'poutre-epaule':
-    '<polyline class="se" points="-2,-56 -2,-4 3,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="2,-56 2,-4 7,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="0,-89 -3,-58" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect class="fe" x="-9" y="-97" width="18" height="45" rx="9"/><g transform="translate(-4 -101)"><g class="poutre-lance"><g transform="translate(4 101)"><rect class="se fi" x="-54" y="-105" width="100" height="8" rx="1" stroke-width="2"/><line class="se" x1="-44" y1="-101" x2="6" y2="-101" stroke-width="1" stroke-opacity="0.4" stroke-linecap="round"/></g></g></g><circle class="fe" cx="1" cy="-110" r="10"/>{L}<polyline class="si" points="1,-89 15,-80 12,-99" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="1,-89 15,-80 12,-99" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
+    DEBOUT +
+    brasArriere('0,-89 -3,-58') +
+    torse() +
+    '<g transform="translate(-4 -101)"><g class="poutre-lance"><g transform="translate(4 101)"><rect class="se fi" x="-54" y="-105" width="100" height="8" rx="1" stroke-width="2"/><line class="se" x1="-44" y1="-101" x2="6" y2="-101" stroke-width="1" stroke-opacity="0.4" stroke-linecap="round"/></g></g></g>' +
+    TETE +
+    brasAvant('1,-89 15,-80 12,-99'),
+  'lancer-poutre':
+    DEBOUT +
+    brasArriere('0,-89 9,-95 12,-107') +
+    trait('se', '12,-107 18,-107.5', 4) +
+    torse() +
+    TETE +
+    trait('si', '1,-89 14,-92 20,-107', 10) +
+    trait('si', '20,-107 26,-107.5', 7) +
+    trait('se', '1,-89 14,-92 20,-107', 7) +
+    trait('se', '20,-107 26,-107.5', 4),
   'sautillement':
-    '<polyline class="se" points="-2,-62 -3,-12 3,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="2,-62 1,-12 7,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="0,-95 -10,-67" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect class="fe" x="-9" y="-103" width="18" height="45" rx="9"/><circle class="fe" cx="1" cy="-116" r="10"/><g transform="translate(0 -6)">{L}</g><polyline class="si" points="1,-95 12,-67" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="1,-95 12,-67" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
-  'marteau-1':
-    '<polyline class="se" points="-4,-56 -7,-4 -2,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="3,-56 6,-4 11,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="0,-89 -4,-58" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect class="fe" x="-9" y="-97" width="18" height="45" rx="9"/><circle class="fe" cx="1" cy="-110" r="10"/>{L}<g transform="translate(25 -75)"><g class="marteau-tour"><g transform="rotate(-100)"><line class="se" x1="-3" y1="0" x2="26" y2="0" stroke-width="4" stroke-linecap="round"/><rect class="fe" x="22" y="-8" width="8" height="15" rx="1.5"/></g></g></g><polyline class="si" points="1,-89 9,-69 25,-75" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="1,-89 9,-69 25,-75" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
-  'marteau-2':
-    '<polyline class="se" points="-4,-56 -7,-4 -2,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="3,-56 6,-4 11,-4" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="0,-89 -4,-58" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect class="fe" x="-9" y="-97" width="18" height="45" rx="9"/><circle class="fe" cx="1" cy="-110" r="10"/>{L}<g transform="translate(25 -75)"><g class="marteau-tour"><g transform="rotate(25)"><line class="se" x1="-3" y1="0" x2="26" y2="0" stroke-width="4" stroke-linecap="round"/><rect class="fe" x="22" y="-8" width="8" height="15" rx="1.5"/></g></g></g><polyline class="si" points="1,-89 9,-69 25,-75" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><polyline class="se" points="1,-89 9,-69 25,-75" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
-} as const;
+    jambes('-5.25,-62 -5,-12 0.5,-4', '5.25,-62 4,-12 9.5,-4') +
+    brasArriere('0,-95 -14,-70') +
+    torse(-6) +
+    '<circle class="fe" cx="1" cy="-116" r="10"/><g transform="translate(0 -6)">{L}</g>' +
+    brasAvant('1,-95 14,-70'),
+  'marteau-1': MARTEAU(-100),
+  'marteau-2': MARTEAU(25),
+};
 
 export type Pose = keyof typeof POSES;
 
