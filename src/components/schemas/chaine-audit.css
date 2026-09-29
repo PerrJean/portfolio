@@ -1,0 +1,207 @@
+/*
+ * Le schéma de la chaîne d'Audit contenu (chaine-audit.mjs, registre/0041).
+ * Au trait : cadres à angles droits à l'encre, liaisons en ardoise, fond
+ * ivoire ; l'étape humaine a sa fenêtre allumée (l'ambre, jamais de texte).
+ * Texte à 15 px au moins. Aucune animation.
+ *
+ * Au téléphone (moins de 720 px) : une colonne, flèches vers le bas, les
+ * deux contrôles côte à côte s'il y a la place. En grand écran : deux
+ * rangées de trois dans la colonne de texte, flèches vers la droite ; une
+ * liaison en Z mène du bilan à la relecture.
+ */
+.chaine {
+  --trait: 1.5px;
+  --piste: 2.25rem; /* la place d'une flèche entre deux cadres */
+  margin: 2rem 0 0;
+}
+
+.chaine svg {
+  display: block;
+  overflow: visible;
+}
+
+.chaine svg path {
+  stroke: var(--ardoise);
+}
+
+.chaine__dessin {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Un cadre : son titre, sa ligne. */
+.chaine__etape {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 0.875rem;
+  border: var(--trait) solid var(--encre);
+  background: var(--ivoire);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.chaine__titre {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.chaine__texte {
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+/* L'étape humaine : la fenêtre allumée, en haut à droite du cadre. */
+.chaine__etape--humaine .chaine__titre {
+  padding-right: 1.5rem;
+}
+
+.chaine__lumiere {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 0.875rem;
+  height: 1.125rem;
+  border: 1px solid var(--encre);
+  background: var(--ambre);
+}
+
+/* Les deux contrôles, en parallèle, dans un cadre fin en ardoise. */
+.chaine__groupe {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.625rem;
+  border: 1px solid var(--ardoise);
+}
+
+.chaine__parallele {
+  font-size: 0.9375rem;
+  line-height: 1.3;
+}
+
+.chaine__paire {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chaine__paire > .chaine__etape {
+  flex: 1 1 8.5rem;
+}
+
+/* Les flèches, vers le bas au téléphone. */
+.chaine__fleche,
+.chaine__retour {
+  display: flex;
+  justify-content: center;
+  padding-block: 0.25rem;
+}
+
+.chaine__trace {
+  display: none;
+}
+
+.chaine__legende {
+  margin-top: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+@media (min-width: 720px) {
+  .chaine__dessin {
+    grid-template-columns:
+      minmax(0, 1fr) var(--piste) minmax(0, 1fr) var(--piste) minmax(0, 1fr);
+  }
+
+  .chaine__fleche {
+    align-self: center;
+    padding: 0;
+  }
+
+  .chaine__fleche svg {
+    transform: rotate(-90deg);
+  }
+
+  .chaine__etape--centre {
+    align-self: center;
+  }
+
+  .chaine__paire {
+    flex: 1;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .chaine__paire > .chaine__etape {
+    flex: 1 1 auto;
+  }
+
+  /* Le bilan, centré dans sa rangée ; sous lui, le trait descend jusqu'à
+     la liaison en Z. */
+  .chaine__bilan {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chaine__bilan::before,
+  .chaine__bilan::after {
+    content: '';
+    flex: 1 0 0;
+  }
+
+  .chaine__bilan::after {
+    align-self: center;
+    border-left: var(--trait) solid var(--ardoise);
+  }
+
+  /* La liaison en Z, du milieu de la troisième colonne au milieu de la
+     première : les marges valent une demi-colonne. */
+  .chaine__retour {
+    grid-column: 1 / -1;
+    display: block;
+    height: 2.5rem;
+    padding: 0;
+  }
+
+  .chaine__retour > svg {
+    display: none;
+  }
+
+  .chaine__trace {
+    position: relative;
+    display: block;
+    height: 100%;
+    margin-inline: calc((100% - 2 * var(--piste)) / 6);
+  }
+
+  .chaine__trace::before,
+  .chaine__trace::after {
+    content: '';
+    position: absolute;
+    left: calc(var(--trait) / -2);
+  }
+
+  .chaine__trace::before {
+    top: 0;
+    right: calc(var(--trait) / -2);
+    height: 50%;
+    border-right: var(--trait) solid var(--ardoise);
+    border-bottom: var(--trait) solid var(--ardoise);
+  }
+
+  .chaine__trace::after {
+    top: calc(50% - var(--trait));
+    bottom: 1px;
+    border-left: var(--trait) solid var(--ardoise);
+  }
+
+  .chaine__trace .chaine__bout {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-50%);
+  }
+}

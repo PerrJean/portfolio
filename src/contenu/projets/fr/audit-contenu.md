@@ -50,6 +50,8 @@ Chaque question reçoit ensuite un verdict parmi quatre : bloquant, majeur, min
 
 Des agents IA appliquent la grille, question par question. Ce sont des sous-agents de Claude Code, sur abonnement, sans appel à une API payante. Le modèle ne juge pas seul. Des contrôles automatiques passent sur tout le corpus, avec des règles vérifiables qui ne dépendent d'aucun modèle. L'un d'eux vérifie par exemple que l'explication parle du même audio que la question. Un bilan donne enfin l'état de chaque question et ce qui lui est reproché.
 
+<div data-schema="chaine-audit"></div>
+
 ## Ce que nous avons trouvé
 
 Sur le premier parcours audité, 1 question sur 20 a reçu le verdict bloquant. L'apprenant y échouait sans que l'erreur soit la sienne. Chaque correction lui rend la possibilité de répondre juste.

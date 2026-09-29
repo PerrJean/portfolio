@@ -50,6 +50,8 @@ Each question then gets one of four verdicts: blocking, major, minor, or nothing
 
 AI agents apply the grid, question by question. They are Claude Code subagents, running on a subscription with no calls to a paid API. The model does not judge alone. Automated checks also run over the whole corpus, with verifiable rules that do not depend on any model. One of them, for example, checks that the explanation refers to the same audio as the question. A report then gives each question's status and the issues raised against it.
 
+<div data-schema="chaine-audit"></div>
+
 ## What we found
 
 In the first course audited, 1 question in 20 was rated blocking. Learners failed these questions through no fault of their own. Each fix gives them back the chance to answer correctly.

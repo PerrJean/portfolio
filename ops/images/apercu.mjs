@@ -1,6 +1,7 @@
 // Produit les images d'accueil du site dans public/ : le favicon (SVG, PNG
-// 32 px, apple-touch-icon 180 px) et l'aperçu Open Graph 1200 × 630.
-// Relançable à la main : node ops/images/apercu.mjs. Sans paquet ajouté :
+// 32 px, apple-touch-icon 180 px) et l'aperçu Open Graph 1200 × 630 ; et,
+// hors du site, dans ops/images/couverture/, la bannière LinkedIn 1584 × 396
+// (FR, EN, et leur version @2x). Relançable à la main : node ops/images/apercu.mjs. Sans paquet ajouté :
 // sharp, et la police @fontsource convertie de WOFF en TTF dans un dossier
 // temporaire, effacé à la fin (registre/0038).
 
@@ -133,10 +134,12 @@ const LUNETTES_BATIMENT = LUNETTES.replace('<g class="lunettes">', '<g transform
 const personnage = (pose, { jean = false, miroir = false } = {}) =>
   `<g${miroir ? ' transform="scale(-1 1)"' : ''}>${POSES[pose].replace('{L}', jean ? LUNETTES_BATIMENT : '')}</g>`;
 
-function batiment(nombre = 4) {
-  const h = B.hauteur / nombre;
-  const hautToit = -(B.fondations + B.hauteur) - B.toit;
-  const fleche = hautToit - B.sousFleche;
+// hauteur et sousFleche se règlent pour la bannière, plus basse ; par défaut,
+// les valeurs de B (l'aperçu).
+function batiment(nombre = 4, { hauteur = B.hauteur, sousFleche = B.sousFleche } = {}) {
+  const h = hauteur / nombre;
+  const hautToit = -(B.fondations + hauteur) - B.toit;
+  const fleche = hautToit - sousFleche;
   const sommet = fleche - 26;
   const zigzag = (n, point) => Array.from({ length: n + 1 }, (_, i) => point(i)).join(' ');
   const mat = zigzag(Math.floor(-fleche / 14), (i) => `${i % 2 ? 214 : 204},${arrondi(-i * 14)}`);
@@ -203,22 +206,32 @@ const ECHELLE_BATIMENT = 1;
 const X_BATIMENT = 690; // bord gauche du dessin (x = 0 du bâtiment)
 const SOL = 596; // y du sol dans l'image
 
-function fondOg() {
-  const k = SOLEIL / 200;
+// Le soleil de Soleil.astro, centré sur (cx, 0) : un disque ambre et trois
+// anneaux vers l'orange, en aplats, pour un carré de côté cote (viewBox 200).
+function soleil(cx, cote) {
+  const k = cote / 200;
   const anneau = (r, largeur, couleur) =>
-    `<circle cx="${OG.largeur}" cy="0" r="${arrondi(r * k)}" fill="none" stroke="${couleur}" stroke-width="${arrondi(largeur * k)}"/>`;
-  const { dessin } = batiment(4);
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${OG.largeur}" height="${OG.hauteur}" viewBox="0 0 ${OG.largeur} ${OG.hauteur}">
-  <style>
+    `<circle cx="${cx}" cy="0" r="${arrondi(r * k)}" fill="none" stroke="${couleur}" stroke-width="${arrondi(largeur * k)}"/>`;
+  return (
+    anneau(169, 8, C.orange) +
+    anneau(150, 11, C.anneau2) +
+    anneau(129, 14, C.anneau1) +
+    `<circle cx="${cx}" cy="0" r="${arrondi(110 * k)}" fill="${C.ambre}"/>`
+  );
+}
+
+const STYLE_TRAIT = `<style>
     .fe { fill: ${C.encre}; } .se { stroke: ${C.encre}; } .fi { fill: ${C.ivoire}; }
     .si { stroke: ${C.ivoire}; } .sa { stroke: ${C.ardoise}; } .so { stroke: ${C.orange}; }
     .fd { fill: ${C.dalle}; } .fa { fill: ${C.ambre}; }
-  </style>
+  </style>`;
+
+function fondOg() {
+  const { dessin } = batiment(4);
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${OG.largeur}" height="${OG.hauteur}" viewBox="0 0 ${OG.largeur} ${OG.hauteur}">
+  ${STYLE_TRAIT}
   <rect width="${OG.largeur}" height="${OG.hauteur}" fill="${C.ivoire}"/>
-  ${anneau(169, 8, C.orange)}
-  ${anneau(150, 11, C.anneau2)}
-  ${anneau(129, 14, C.anneau1)}
-  <circle cx="${OG.largeur}" cy="0" r="${arrondi(110 * k)}" fill="${C.ambre}"/>
+  ${soleil(OG.largeur, SOLEIL)}
   <g transform="translate(${X_BATIMENT} ${SOL}) scale(${ECHELLE_BATIMENT})">${dessin}</g>
 </svg>`;
 }
@@ -279,6 +292,65 @@ async function apercu(polices) {
 }
 
 // ---------------------------------------------------------------------------
+// La bannière de couverture LinkedIn, 1584 × 396, FR et EN, en simple et en
+// double résolution. Hors de public/ : le site ne la sert pas.
+// Deux contraintes de LinkedIn : la photo de profil couvre le coin bas
+// gauche (480 px de large, la moitié basse) ; au téléphone, environ 15 % de
+// chaque côté sont rognés. Le texte tient donc dans la bande centrale, à
+// droite de la photo ; le bâtiment, plus bas (quatre étages de 70 au lieu de
+// 95), et le soleil occupent la droite. Seule la ligne de sol, prolongée,
+// passe sous la photo.
+
+const COUV = {
+  largeur: 1584, hauteur: 396,
+  texte: 500, colonne: 710, taille: 38, // le texte : bord gauche, largeur, corps
+  soleil: 200,
+  batiment: { x: 1222, sol: 368, echelle: 0.75, hauteur: 280, sousFleche: 72 },
+};
+const COUVERTURE = join(RACINE, 'ops/images/couverture');
+const PHRASES = {
+  fr: "Je bâtis sur des hypothèses : j'écoute, je teste, puis je dose l'effort.",
+  en: 'I build on hypotheses: I listen, I test, then I size the effort.',
+};
+
+function fondCouverture(f) {
+  const { x, sol, echelle, hauteur, sousFleche } = COUV.batiment;
+  const { dessin } = batiment(4, { hauteur, sousFleche });
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${COUV.largeur * f}" height="${COUV.hauteur * f}" viewBox="0 0 ${COUV.largeur} ${COUV.hauteur}">
+  ${STYLE_TRAIT}
+  <rect width="${COUV.largeur}" height="${COUV.hauteur}" fill="${C.ivoire}"/>
+  ${soleil(COUV.largeur, COUV.soleil)}
+  <line class="se" x1="0" y1="${sol}" x2="${x}" y2="${sol}" stroke-width="${arrondi(1.5 * echelle)}"/>
+  <g transform="translate(${x} ${sol}) scale(${echelle})">${dessin}</g>
+</svg>`;
+}
+
+async function couverture(polices, langue, f) {
+  const phrase = await texte(PHRASES[langue], {
+    // La virgule finale nomme la famille du fichier 800 telle quelle : sans
+    // elle, Pango lit « ExtraBold » comme une graisse et, une fois le fichier
+    // 400 chargé, retombe sur lui.
+    fontfile: polices[800], famille: 'Atkinson Hyperlegible Next ExtraBold,', taille: COUV.taille * f, couleur: C.encre,
+    largeur: COUV.colonne * f, interligne: 4 * f,
+  });
+  const adresse = await texte('jeanperrier.pm', {
+    fontfile: polices[400], famille: 'Atkinson Hyperlegible Next', taille: 28 * f, couleur: C.ardoise, largeur: COUV.colonne * f,
+  });
+  // Le bloc est centré verticalement, calé à gauche sur sa première lettre.
+  const ecart = 22 * f;
+  const total = phrase.hauteur + ecart + adresse.hauteur;
+  const y = Math.round((COUV.hauteur * f - total) / 2);
+  const calques = [
+    { input: phrase.data, left: COUV.texte * f - phrase.approche, top: y },
+    { input: adresse.data, left: COUV.texte * f - adresse.approche, top: y + phrase.hauteur + ecart },
+  ];
+  mkdirSync(COUVERTURE, { recursive: true });
+  const sortie = join(COUVERTURE, `couverture-${langue}${f > 1 ? `@${f}x` : ''}.png`);
+  await sharp(Buffer.from(fondCouverture(f))).composite(calques).png({ compressionLevel: 9 }).toFile(sortie);
+  return { sortie, droite: COUV.texte + Math.max(phrase.largeur, adresse.largeur) / f, haut: y / f, bas: (y + total) / f };
+}
+
+// ---------------------------------------------------------------------------
 
 const decrire = async (f) => {
   const m = await sharp(f).metadata();
@@ -303,13 +375,22 @@ try {
   // prennent le SVG ou le PNG déclarés dans le <head>.
 
   const { sortie, blocs, total } = await apercu(polices);
+  const bannieres = [];
+  for (const langue of ['fr', 'en']) for (const f of [1, 2]) bannieres.push(await couverture(polices, langue, f));
 
   console.log('Images produites :');
-  for (const f of [join(PUBLIC, 'favicon.svg'), f32, apple, sortie]) console.log('  ' + (await decrire(f)));
+  for (const f of [join(PUBLIC, 'favicon.svg'), f32, apple, sortie, ...bannieres.map((b) => b.sortie)])
+    console.log('  ' + (await decrire(f)));
   console.log(
     `Texte de l'aperçu : nom ${blocs.nom.hauteur} px, phrase ${blocs.phrase.largeur} × ${blocs.phrase.hauteur} px, ` +
       `rôle ${blocs.role.largeur} × ${blocs.role.hauteur} px (bloc de ${total} px de haut).`,
   );
+  const rogne = COUV.largeur * 0.15;
+  for (const b of bannieres.filter((_, i) => i % 2 === 0))
+    console.log(
+      `Texte de ${b.sortie.slice(COUVERTURE.length + 1)} : x ${COUV.texte} à ${Math.round(b.droite)}, y ${Math.round(b.haut)} à ` +
+        `${Math.round(b.bas)} (bande sûre ${rogne} à ${COUV.largeur - rogne} ; photo : x < 480 et y > ${COUV.hauteur / 2}).`,
+    );
 } finally {
   rmSync(temporaire, { recursive: true, force: true });
 }
