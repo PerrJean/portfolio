@@ -72,3 +72,10 @@ qu'aucune question n'était sans reproche.
 **Qui a travaillé (2026-09-29, pour l'honnêteté des textes).** Audit
 contenu : Jean **avec une learning designer**. UserVoice : à préciser. Les
 textes ne disent « l'équipe » que là où il y en avait une.
+
+**À propos (2026-09-29).** Head of Product chez son employeur, nommé ici
+seulement ; pas d'affichage de recherche (3a) ; le personnage aux lunettes
+orange au lieu d'une photo (4b) ; LinkedIn seul (6a). Premier jet dans
+`redaction/a-propos.fr.md`, tiré du CV de Jean **sans ses coordonnées** ni
+les chiffres internes qu'il porte (C2, C3). Restent : autres langues, touche
+personnelle, CV téléchargeable (non par défaut).
