@@ -68,3 +68,7 @@ Les corrections passent en production **la semaine du 28/09/2026** :
 « Toutes ont été corrigées » est retenu, **à vérifier avant la mise en
 ligne** du site. Ne sort pas : la répartition majeur / mineur, ni le fait
 qu'aucune question n'était sans reproche.
+
+**Qui a travaillé (2026-09-29, pour l'honnêteté des textes).** Audit
+contenu : Jean **avec une learning designer**. UserVoice : à préciser. Les
+textes ne disent « l'équipe » que là où il y en avait une.
