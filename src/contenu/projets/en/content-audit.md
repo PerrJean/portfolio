@@ -66,6 +66,11 @@ The tool never writes directly to the database. It produces batches of fixes, an
 
 All the blocking questions in the first course have been fixed. The fixes went into production the week of September 28, 2026.
 
+<figure>
+  <a href="/captures/audit-contenu/carnet-relecture.png"><img src="/captures/audit-contenu/carnet-relecture.png" width="1360" height="1230" loading="lazy" decoding="async" alt="Review screen from an audit tool. A card marked BLOQUANT (blocking) shows a fill-in-the-blank English question, “She has been working in this department ___ 2019”, whose stored answer is A, “for”. The current explanation only asserts that A is correct. The check flags that the right answer is B. The proposed correction explains that “since” introduces a starting point. At the bottom, the decision line: approve, correct, reject."></a>
+  <figcaption>The review log: for each family of defects, the reviewer judges the least reliable case, and that decision covers the whole family. Synthetic data.</figcaption>
+</figure>
+
 ## What I took from it
 
 This project gave me 25 rules for running a project with AI. They are there to keep control over what an agent produces. I measured them on the project itself, in tokens used over four weeks and in decision points logged in a register.

@@ -67,6 +67,11 @@ L'outil n'écrit jamais directement en base. Il produit des lots de corrections,
 
 Toutes les questions bloquantes du premier parcours ont été corrigées. Les corrections sont passées en production la semaine du 28 septembre 2026.
 
+<figure>
+  <a href="/captures/audit-contenu/carnet-relecture.png"><img src="/captures/audit-contenu/carnet-relecture.png" width="1360" height="1230" loading="lazy" decoding="async" alt="Écran de relecture d’un outil d’audit. Une carte marquée BLOQUANT montre une question d’anglais à compléter, « She has been working in this department ___ 2019 », dont la réponse enregistrée est A, « for ». L’explication actuelle se contente d’affirmer que A est la bonne réponse. Le contrôle reproche que la bonne réponse est B. La correction proposée explique que « since » introduit un point de départ. En bas, la ligne de décision : à valider, à corriger, à rejeter."></a>
+  <figcaption>Le carnet de relecture : pour chaque famille de défauts, la personne qui relit juge le cas le moins fiable, et sa décision vaut pour toute la famille. Données synthétiques.</figcaption>
+</figure>
+
 ## Ce que j'en retiens
 
 Ce projet m'a laissé 25 règles pour garder la main sur ce qu'un agent produit. Je les ai mesurées en tokens sur quatre semaines et en points de décision tracés dans un registre.
