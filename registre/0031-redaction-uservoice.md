@@ -15,3 +15,9 @@ passe 2 joint, confidentialité vérifiée. « Écouter à l'échelle » devient
 « Écouter chaque lundi » (jargon banni). Trois `[À COMPLÉTER]` pour Jean :
 date de lancement, période du « 1 sur 3 », un effet concret du bilan du
 lundi. En attente de sa relecture.
+
+**Relecture de Jean (2026-09-29)** : lancé en septembre 2026 ; « 1 retour
+sur 3 » mesuré de mars à septembre 2026 ; supprimés : le paragraphe de
+l'alerte de fraîcheur, la phrase « L'hypothèse de départ parlait de
+bugs… », et le trou sur l'effet du bilan du lundi. Reste à trancher : la
+section « Ce que ça a changé », réduite à une phrase.

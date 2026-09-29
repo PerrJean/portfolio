@@ -8,7 +8,7 @@ synthese: "Une plateforme EdTech reçoit des milliers de retours d'apprenants pa
 
 Une plateforme EdTech reçoit des milliers de retours d'apprenants par an. Ils arrivent par quatre sources : l'enquête NPS, le test de niveau, la fin de parcours, et un formulaire de retour libre présent sur toutes les pages du site.
 
-Quand j'ai lancé UserVoice, en [À COMPLÉTER : mois et année], ces retours étaient qualifiés à la main dans un tableur, par lots, avec des semaines de décalage. Les mêmes sujets revenaient sans qu'on sache s'ils étaient déjà traités.
+Quand j'ai lancé UserVoice, en septembre 2026, ces retours étaient qualifiés à la main dans un tableur, par lots, avec des semaines de décalage. Les mêmes sujets revenaient sans qu'on sache s'ils étaient déjà traités.
 
 L'hypothèse implicite voulait que nos problèmes soient surtout des bugs.
 
@@ -22,7 +22,7 @@ Chaque retour est ensuite qualifié sur deux axes. S'il signale un bug, il reço
 
 ## Ce que la donnée a montré
 
-Un retour sur trois laissé dans le formulaire présent sur toutes les pages porte sur le contenu (période : [À COMPLÉTER]).
+Un retour sur trois laissé dans le formulaire présent sur toutes les pages porte sur le contenu (de mars à septembre 2026).
 
 L'enquête NPS pointe dans la même direction par un autre chemin. Sur deux mois de l'été 2026, près d'un commentaire sur cinq touche à la qualité du contenu (explications, qualité des exercices, traductions), et la moitié de ces commentaires sont des critiques ou des demandes.
 
@@ -36,15 +36,9 @@ L'IA classe chaque retour et y joint un score de confiance. Sous un seuil, ou qu
 
 Au-dessus de la table, le tableau de bord a deux couches : l'une montre ce qui bouge, l'autre avance une explication. Le bilan du lundi croise le volume de chaque sujet et son statut de traitement. C'est lui qui répond à la question de départ.
 
-J'ai ajouté une alerte de fraîcheur, parce que le tableau de bord s'était déjà figé en silence deux fois. Une baisse apparente des retours peut n'être qu'une panne de la source, et l'alerte le signale avant qu'on en tire une conclusion.
-
 Chaque décision est tracée dans un registre et le code est vérifié par des tests. On peut revenir sur un seuil en sachant pourquoi il a été fixé.
 
 ## Ce que ça a changé
-
-L'hypothèse de départ parlait de bugs. La donnée a désigné le contenu, et l'effort s'y est déplacé.
-
-[À COMPLÉTER : un effet observé du bilan du lundi, par exemple un sujet repéré tôt ou une décision prise à partir de lui.]
 
 Le second projet de ce portfolio, l'audit qualité du contenu, part de ce constat.
 
