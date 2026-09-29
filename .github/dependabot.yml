@@ -1,0 +1,14 @@
+# Mises à jour proposées chaque semaine (registre/0027 et 0029).
+# Chaque proposition arrive en pull request : les tests tournent avant tout
+# ajout, et rien n'est fusionné sans relecture.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

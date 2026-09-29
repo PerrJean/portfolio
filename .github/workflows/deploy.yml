@@ -1,6 +1,7 @@
 # Publication sur GitHub Pages (docs/GUIDE_MISE_EN_LIGNE.md, section 2).
+# Rien n'est publié si un test échoue : `tester` précède `construire`.
 # Déclenchement manuel tant que le site n'est pas prêt (étape 4 : passer à
-# `push` sur `main`). Flux officiel d'Astro.
+# `push` sur `main`).
 name: Publier sur GitHub Pages
 
 on:
@@ -12,7 +13,35 @@ permissions:
   id-token: write
 
 jobs:
+  tester:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Les listes de termes interdits vivent hors du dépôt (CONTRAT) : ici,
+      # dans deux secrets. Sans eux, le vérificateur refuse, et rien ne part.
+      - name: Listes de confidentialité
+        env:
+          INTERDITS: ${{ secrets.PORTFOLIO_INTERDITS }}
+          EMPLOYEUR: ${{ secrets.PORTFOLIO_EMPLOYEUR }}
+        run: |
+          mkdir -p ~/.portfolio
+          printf '%s\n' "$INTERDITS" > ~/.portfolio/interdits.txt
+          printf '%s\n' "$EMPLOYEUR" > ~/.portfolio/employeur.txt
+      - run: npm ci
+      - run: npx astro build --outDir .dist-ci
+      - run: npm test
+        env:
+          DIST: .dist-ci
+
   construire:
+    needs: tester
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5

@@ -1,0 +1,39 @@
+# Les tests du site sur GitHub : à chaque envoi sur `main` et sur chaque pull
+# request (dont celles de Dependabot). Les mêmes que le hook de pre-commit.
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tester:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Les listes vivent hors du dépôt (CONTRAT) : deux secrets, à déclarer
+      # aussi côté Dependabot pour ses pull requests.
+      - name: Listes de confidentialité
+        env:
+          INTERDITS: ${{ secrets.PORTFOLIO_INTERDITS }}
+          EMPLOYEUR: ${{ secrets.PORTFOLIO_EMPLOYEUR }}
+        run: |
+          mkdir -p ~/.portfolio
+          printf '%s\n' "$INTERDITS" > ~/.portfolio/interdits.txt
+          printf '%s\n' "$EMPLOYEUR" > ~/.portfolio/employeur.txt
+      - run: npm ci
+      - run: npx astro build --outDir .dist-ci
+      - run: npm test
+        env:
+          DIST: .dist-ci
