@@ -87,3 +87,25 @@ par page, `hreflang`, plan du site, favicon, aperçu LinkedIn) ; budget de
 poids ; cadres de capture réservés ; revue en contexte neuf et preuve à
 chaque chantier ; tests sur le lanceur de Node ; remplacement du brouillon
 du 7 septembre. Manque : l'adresse du profil LinkedIn.
+
+## Go de Jean (2026-09-29)
+
+**Go pour l'étape 2**, ajouts compris. LinkedIn :
+`https://www.linkedin.com/in/jean-perrier-b01b3281/`. Les animations de
+l'accueil avancent **en parallèle** des tests.
+
+**Jetons de couleur** (noms fixés pour tous les chantiers, dans
+`src/styles/jetons.css`) : `--ivoire` #FEFAF2, `--encre` #2A1F1A, `--ambre`
+#F2A33A, `--orange` #B54E19, `--ardoise` #5E7488, `--texte-sur-orange`
+#FFFCF8.
+
+**Adresses** : `/` ↔ `/en/` ; `/projets/uservoice/` ↔
+`/en/projects/uservoice/` ; `/projets/audit-contenu/` ↔
+`/en/projects/content-audit/` ; `/a-propos/` ↔ `/en/about/`. Une page de
+laboratoire `/labo/…` (non indexée, hors plan du site) sert aux essais ; les
+tests l'ignorent.
+
+**Qui écrit quoi** : `tests/` au chantier 2a ; `src/components/scene/` et
+`src/pages/labo/` au chantier des animations ; le reste de `src/` aux
+chantiers 2b, 2d, 2e. Les sous-agents ne commitent pas : la session relit,
+exige la preuve, puis commite.
