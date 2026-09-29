@@ -2,7 +2,8 @@
 // Le gabarit des pages projet (registre/0030), autour de Base :
 //  1. la synthèse recruteur : le <h1>, le fait clé en grand, trois phrases ;
 //  2. le corps : les H2 libres du Markdown et leurs paragraphes ;
-//  3. « Pour aller plus loin », replié dans un <details> ;
+//  3. « Pour aller plus loin », replié dans un <details> : des <h3> et leurs
+//     listes, jamais de H2 (le bâtiment compte les H2) ;
 //  4. la fin : le repère [data-fin] (le toit se pose), puis le lien vers
 //     l'autre projet de la paire.
 // Le contenu vient de src/contenu/projets/ (schéma : src/content.config.ts).
@@ -71,7 +72,18 @@ const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.sl
       <details class="plus-loin">
         <summary>{t.plusLoin}</summary>
         <div class="plus-loin__contenu">
-          {data.plusLoin.map((p) => <p>{p}</p>)}
+          {
+            data.plusLoin.map((section) => (
+              <section class="plus-loin__section">
+                <h3>{section.titre}</h3>
+                <ul>
+                  {section.points.map((point) => (
+                    <li>{point}</li>
+                  ))}
+                </ul>
+              </section>
+            ))
+          }
         </div>
       </details>
       <span class="projet__fin" data-fin></span>
@@ -102,10 +114,6 @@ const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.sl
     border-bottom: 1px solid var(--dalle);
   }
 
-  .synthese h1 {
-    max-width: 22ch;
-  }
-
   /* L'ardoise ne passe le contraste qu'en grand texte : 19 px en 700. */
   .synthese__date {
     margin-top: 0.5rem;
@@ -115,7 +123,7 @@ const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.sl
   }
 
   .synthese__fait {
-    max-width: 26ch;
+    max-width: 32ch;
     margin-top: 1.25rem;
     font-size: clamp(1.625rem, 1.2rem + 1.9vw, 2.5rem);
     font-weight: 700;
@@ -195,9 +203,47 @@ const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.sl
 
   .plus-loin__contenu {
     display: grid;
-    gap: 1rem;
+    gap: 1.75rem;
     padding-bottom: 1.5rem;
     line-height: 1.65;
+  }
+
+  .plus-loin__section h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .plus-loin__section ul {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0.625rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  /* Des puces discrètes : l'ardoise, en élément graphique (3 : 1 tenu). */
+  .plus-loin__section li::marker {
+    color: var(--ardoise);
+  }
+
+  /* La colonne pleine (registre/0048) : à partir de 1280 px, le texte prend
+     toute la largeur de la colonne, jusqu'au bâtiment ; le corps passe à
+     19 px et la synthèse à 20 px, pour rester autour de 80 signes par
+     ligne. En dessous, la mesure reste celle des jetons. */
+  @media (min-width: 1280px) {
+    .synthese__phrases,
+    .corps,
+    .plus-loin {
+      max-width: none;
+    }
+
+    .synthese__phrases {
+      font-size: 1.25rem;
+    }
+
+    .corps,
+    .plus-loin__contenu {
+      font-size: 1.1875rem;
+    }
   }
 
   /* 4. La fin : le repère du toit, puis le projet suivant. */

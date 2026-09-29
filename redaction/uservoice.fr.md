@@ -1,14 +1,14 @@
 ---
 titre: "UserVoice : écouter les apprenants chaque lundi"
 fait: "1 retour sur 3 concerne le contenu."
-synthese: "Une plateforme EdTech reçoit des milliers de retours d'apprenants par an, répartis entre quatre sources et qualifiés à la main avec des semaines de retard. Je les ai réunis dans une seule table. L'IA classe chaque retour avec un score de confiance et laisse les cas douteux à un humain. Le bilan se lit en cinq minutes, chaque lundi. On pensait surtout à des bugs. La donnée a désigné le contenu, et l'effort s'est déplacé vers sa qualité."
+synthese: "Une plateforme EdTech reçoit des milliers de retours d'apprenants par an, répartis entre quatre sources, et jamais lus ensemble. Je les ai réunis dans une seule table. L'IA classe chaque retour avec un score de confiance et laisse les cas douteux à un humain. Le bilan se lit en cinq minutes, chaque lundi. On pensait surtout à des bugs. La donnée a désigné le contenu, et l'effort s'est déplacé vers sa qualité."
 ---
 
 ## Le point de départ
 
 Les retours arrivent par quatre sources : l'enquête NPS, le test de niveau, la fin de parcours, et un formulaire de retour libre présent sur toutes les pages du site.
 
-Quand j'ai lancé UserVoice, en septembre 2026, ces retours étaient qualifiés à la main dans un tableur, par lots, avec des semaines de décalage. Les mêmes sujets revenaient sans qu'on sache s'ils étaient déjà traités.
+Quand j'ai lancé UserVoice, en septembre 2026, ces retours n'étaient pas qualifiés. Chacun restait dans sa source, et les mêmes sujets revenaient sans qu'on sache s'ils étaient déjà traités.
 
 L'hypothèse implicite voulait que nos problèmes soient surtout des bugs.
 
@@ -45,9 +45,8 @@ La donnée a désigné le contenu : le second projet de ce portfolio, l'audit qu
 ### Ce que j'ai écarté
 
 - Une double catégorisation humaine. Seule la signature se saisit ; le reste se déduit des données datées.
-- Une classification entièrement automatique. L'humain garde les cas douteux.
 - Toute écriture dans la source. On la lit, on ne la modifie jamais.
-- Un rapport organisé par variations statistiques. On n'y voyait pas si un sujet était traité, alors le bilan du lundi part du statut de traitement.
+- Un rapport organisé par variations statistiques. On n'y voyait pas si un sujet était traité.
 
 ### Les pièges payés
 

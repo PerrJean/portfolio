@@ -1,21 +1,22 @@
 ---
 titre: "UserVoice : écouter les apprenants chaque lundi"
 date: "2026-09"
-fait: "1 retour sur 3 concerne le contenu."
+fait: "1 retour sur 3 concerne le contenu."
 synthese:
-  probleme: "Une plateforme EdTech reçoit des milliers de retours d'apprenants par an, répartis entre quatre sources et qualifiés à la main avec des semaines de retard."
+  probleme: "Une plateforme EdTech reçoit des milliers de retours d'apprenants par an, répartis entre quatre sources, et jamais lus ensemble."
   action: "Je les ai réunis dans une seule table. L'IA classe chaque retour avec un score de confiance et laisse les cas douteux à un humain. Le bilan se lit en cinq minutes, chaque lundi."
   resultat: "On pensait surtout à des bugs. La donnée a désigné le contenu, et l'effort s'est déplacé vers sa qualité."
 plusLoin:
-  - "Ce que j'ai écarté"
-  - "Une double catégorisation humaine. Seule la signature se saisit ; le reste se déduit des données datées."
-  - "Une classification entièrement automatique. L'humain garde les cas douteux."
-  - "Toute écriture dans la source. On la lit, on ne la modifie jamais."
-  - "Un rapport organisé par variations statistiques. On n'y voyait pas si un sujet était traité, alors le bilan du lundi part du statut de traitement."
-  - "Les pièges payés"
-  - "Des identifiants très longs, que les tableurs corrompaient en les passant en notation scientifique."
-  - "Des virgules décimales dans l'une des sources."
-  - "Un tableau de bord figé sans que personne ne s'en aperçoive."
+  - titre: "Ce que j'ai écarté"
+    points:
+      - "Une double catégorisation humaine. Seule la signature se saisit ; le reste se déduit des données datées."
+      - "Toute écriture dans la source. On la lit, on ne la modifie jamais."
+      - "Un rapport organisé par variations statistiques. On n'y voyait pas si un sujet était traité."
+  - titre: "Les pièges payés"
+    points:
+      - "Des identifiants très longs, que les tableurs corrompaient en les passant en notation scientifique."
+      - "Des virgules décimales dans l'une des sources."
+      - "Un tableau de bord figé sans que personne ne s'en aperçoive."
 langue: fr
 cle: uservoice
 ---
@@ -24,7 +25,7 @@ cle: uservoice
 
 Les retours arrivent par quatre sources : l'enquête NPS, le test de niveau, la fin de parcours, et un formulaire de retour libre présent sur toutes les pages du site.
 
-Quand j'ai lancé UserVoice, en septembre 2026, ces retours étaient qualifiés à la main dans un tableur, par lots, avec des semaines de décalage. Les mêmes sujets revenaient sans qu'on sache s'ils étaient déjà traités.
+Quand j'ai lancé UserVoice, en septembre 2026, ces retours n'étaient pas qualifiés. Chacun restait dans sa source, et les mêmes sujets revenaient sans qu'on sache s'ils étaient déjà traités.
 
 L'hypothèse implicite voulait que nos problèmes soient surtout des bugs.
 

@@ -1,21 +1,22 @@
 ---
 titre: "UserVoice: listening to learners every Monday"
 date: "2026-09"
-fait: "1 in 3 pieces of feedback is about the content."
+fait: "1 in 3 pieces of feedback is about the content."
 synthese:
-  probleme: "An EdTech platform receives thousands of pieces of learner feedback a year, spread across four sources and tagged by hand weeks after the fact."
+  probleme: "An EdTech platform receives thousands of pieces of learner feedback a year, spread across four sources and never read together."
   action: "I brought them together in a single table. AI classifies each piece of feedback with a confidence score and leaves the doubtful cases to a person. The summary takes five minutes to read, every Monday."
   resultat: "We thought it was mostly bugs. The data pointed to the content, and the effort moved to its quality."
 plusLoin:
-  - "What I set aside"
-  - "Double human categorization. Only the signature is entered by hand; the rest is derived from the dated data."
-  - "Fully automatic classification. People keep the doubtful cases."
-  - "Any writing to the source. We read it and never change it."
-  - "A report organized around statistical variations. It did not show whether a topic was being handled, so the Monday summary starts from the handling status."
-  - "The pitfalls we paid for"
-  - "Very long identifiers, which spreadsheets corrupted by turning them into scientific notation."
-  - "Decimal commas in one of the sources."
-  - "A dashboard that stopped updating without anyone noticing."
+  - titre: "What I set aside"
+    points:
+      - "Double human categorization. Only the signature is entered by a person; the rest is derived from the dated data."
+      - "Any writing to the source. We read it and never change it."
+      - "A report organized around statistical variations. It did not show whether a topic was being handled."
+  - titre: "The pitfalls we paid for"
+    points:
+      - "Very long identifiers, which spreadsheets corrupted by turning them into scientific notation."
+      - "Decimal commas in one of the sources."
+      - "A dashboard that stopped updating without anyone noticing."
 langue: en
 cle: uservoice
 ---
@@ -24,7 +25,7 @@ cle: uservoice
 
 Feedback comes from four sources: the NPS survey, the placement test, the end of each course, and an open feedback form available on every page of the site.
 
-When I launched UserVoice in September 2026, this feedback was tagged by hand in a spreadsheet, in batches, weeks after it came in. The same topics kept coming back, and nobody knew whether they had already been handled.
+When I launched UserVoice in September 2026, this feedback was not tagged. Each piece stayed in its own source, and the same topics kept coming back without anyone knowing whether they had already been handled.
 
 The unspoken assumption was that our problems were mostly bugs.
 

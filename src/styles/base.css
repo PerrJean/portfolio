@@ -193,3 +193,15 @@ svg {
     padding-top: 0.5rem;
   }
 }
+
+/* La colonne pleine (registre/0048) : à partir de 1280 px, le texte prend
+   toute sa place dans la grille, à 19 px ; le portrait garde la sienne. */
+@media (min-width: 1280px) {
+  .fiche {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .fiche__texte {
+    max-width: none;
+  }
+}

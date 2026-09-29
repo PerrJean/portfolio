@@ -24,8 +24,11 @@ const projets = defineCollection({
       fait: phrase,
       /** La synthèse recruteur : trois phrases. */
       synthese: z.object({ probleme: phrase, action: phrase, resultat: phrase }).strict(),
-      /** « Pour aller plus loin », replié : un paragraphe par entrée. */
-      plusLoin: z.array(phrase).min(1),
+      /** « Pour aller plus loin », replié (registre/0048) : des sections, chacune
+       *  un sous-titre (<h3>) et ses points (<ul>). */
+      plusLoin: z
+        .array(z.object({ titre: phrase, points: z.array(phrase).min(1) }).strict())
+        .min(1),
       langue: z.enum(LANGUES),
       cle: z.enum(CLES),
     })

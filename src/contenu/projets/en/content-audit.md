@@ -1,32 +1,37 @@
 ---
 titre: "Content audit: checking every question before learners see it"
 date: "2026-09"
-fait: "In the first course audited, 1 question in 20 stopped learners from answering. All of them were fixed."
+fait: "In the first course audited, 1 question in 20 stopped learners from answering. All of them were fixed."
 synthese:
   probleme: "According to their feedback, the satisfaction of learners on an EdTech platform depends first on the quality of the content."
   action: "With a learning designer, we put every question in one course through a six-criterion grid. Supervised AI agents applied it, and automated checks completed it."
   resultat: "The fixes, reviewed before being applied, have been in production since the week of September 28, 2026."
 plusLoin:
-  - "The grid"
-  - "Each question is read against six criteria."
-  - "Faithfulness to the source. The question does not stray from its source."
-  - "Correct answer. The expected answer is the right one."
-  - "Quality of the explanation. The question includes one, and it does more than repeat the answer. It is scored from 0 to 3."
-  - "Language. The text is correct."
-  - "Internal consistency. The parts of the question do not contradict each other."
-  - "One defensible answer. No other answer can be defended as well as the correct one."
-  - "The verdict runs from blocking to nothing to fix, through major and minor. A question is blocking if its expected answer is wrong, or if another answer can be defended just as well. It is major if it strays from its source, or if its explanation does not help learners. It is minor for a language error, or for an explanation that is correct but could be better. A criterion counts as failed only if it was checked. What could not be measured does not count against the question."
-  - "The automated checks cover the whole corpus. They apply verifiable rules, with no model judgment. The explanation must refer to the same audio as the question. The content formatting must stay intact. The text must be in the right language."
-  - "What the feedback said"
-  - "Nearly one NPS comment in five concerns the quality of explanations, exercises or translations."
-  - "The rules, and what they cost"
-  - "The 25 rules are measured on this project: about 30 million tokens over four weeks, and 233 decision points logged in a register."
-  - "Start version control with the first file."
-  - "Cap module size. The three largest modules, between 5,400 and 7,600 lines, were also the most rewritten."
-  - "Read field names from the data instead of guessing them."
-  - "A rule that can be checked becomes a test."
-  - "The reviewer is not the author."
-  - "Every workstream is costed before it starts and after it ends."
+  - titre: "The grid"
+    points:
+      - "Faithfulness to the source. The question does not stray from its source."
+      - "Correct answer. The expected answer is the right one."
+      - "Quality of the explanation. The question includes one, and it does more than repeat the answer. It is scored from 0 to 3."
+      - "Language. The text is correct."
+      - "Internal consistency. The parts of the question do not contradict each other."
+      - "One defensible answer. No other answer can be defended as well as the correct one."
+  - titre: "The verdicts"
+    points:
+      - "A question is major if it strays from its source, or if its explanation does not help learners."
+      - "It is minor for a language error, or for an explanation that is correct but could be better."
+      - "A criterion counts as failed only if it was checked. What could not be measured does not count against the question."
+  - titre: "The automated checks"
+    points:
+      - "The content formatting must stay intact."
+      - "The text must be in the right language."
+  - titre: "What the feedback said"
+    points:
+      - "Nearly one NPS comment in five concerns the quality of explanations, exercises or translations."
+  - titre: "The rules, and what they cost"
+    points:
+      - "About 30 million tokens over four weeks, and 233 decision points logged in a register."
+      - "Cap module size. The three largest modules, between 5,400 and 7,600 lines, were also the most rewritten."
+      - "Read field names from the data instead of guessing them."
 langue: en
 cle: auditContenu
 ---

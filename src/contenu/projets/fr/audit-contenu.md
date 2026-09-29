@@ -1,32 +1,38 @@
 ---
 titre: "Audit contenu : vérifier chaque question avant l'apprenant"
 date: "2026-09"
-fait: "Sur le premier parcours audité, 1 question sur 20 empêchait l'apprenant de répondre. Toutes ont été corrigées."
+fait: "Sur le premier parcours audité, 1 question sur 20 empêchait l'apprenant de répondre. Toutes ont été corrigées."
 synthese:
   probleme: "D'après leurs retours, la satisfaction des apprenants d'une plateforme EdTech se joue d'abord sur la qualité du contenu."
   action: "Avec une learning designer, nous avons soumis chaque question d'un parcours à une grille de six critères. Des agents IA encadrés l'ont appliquée, et des contrôles automatiques l'ont complétée."
   resultat: "Les corrections, relues avant d'être appliquées, sont en production depuis la semaine du 28 septembre 2026."
 plusLoin:
-  - "La grille"
-  - "Chaque question est lue sur six critères."
-  - "Fidélité à la source. La question ne s'écarte pas de sa source."
-  - "Justesse de la réponse. La réponse attendue est bien la bonne."
-  - "Qualité de l'explication. La question en contient une, qui ne se contente pas de répéter la réponse. Elle est notée de 0 à 3."
-  - "Langue. Le texte est correct."
-  - "Cohérence interne. Les éléments de la question ne se contredisent pas."
-  - "Une seule réponse défendable. Aucune autre réponse ne se défend aussi bien que la bonne."
-  - "Le verdict va de bloquant à rien à corriger, en passant par majeur et mineur. Une question est bloquante si sa réponse attendue est fausse, ou si une autre réponse se défend aussi bien. Elle est majeure si elle s'écarte de sa source, ou si son explication n'aide pas l'apprenant. Elle est mineure pour une faute de langue, ou pour une explication juste mais perfectible. Un critère compte en défaut seulement s'il a été vérifié. Ce qu'on n'a pas pu mesurer ne devient pas un reproche."
-  - "Les contrôles automatiques portent sur tout le corpus. Ils appliquent des règles vérifiables, sans jugement de modèle. L'explication doit parler du même audio que la question. La mise en forme du contenu doit rester intacte. Le texte doit être dans la bonne langue."
-  - "Ce que disaient les retours"
-  - "Près d'un commentaire NPS sur cinq touche à la qualité des explications, des exercices ou des traductions."
-  - "Les règles, et ce qu'elles ont coûté"
-  - "Les 25 règles sont mesurées sur ce projet : environ 30 millions de tokens sur quatre semaines, et 233 points de décision tracés dans un registre."
-  - "Ouvrir le suivi de version dès le premier fichier."
-  - "Plafonner la taille des modules. Les trois plus gros, entre 5 400 et 7 600 lignes, étaient aussi les plus réécrits."
-  - "Lire le nom des champs dans la donnée au lieu de le supposer."
-  - "Une règle vérifiable devient un test."
-  - "Le relecteur n'est pas l'auteur."
-  - "Chaque chantier se chiffre avant et après."
+  - titre: "La grille"
+    points:
+      - "Fidélité à la source. La question ne s'écarte pas de sa source."
+      - "Justesse de la réponse. La réponse attendue est bien la bonne."
+      - "Qualité de l'explication. La question en contient une, qui ne se contente pas de répéter la réponse. Elle est notée de 0 à 3."
+      - "Langue. Le texte est correct."
+      - "Cohérence interne. Les éléments de la question ne se contredisent pas."
+      - "Une seule réponse défendable. Aucune autre réponse ne se défend aussi bien que la bonne."
+  - titre: "Les verdicts"
+    points:
+      - "Une question est majeure si elle s'écarte de sa source, ou si son explication n'aide pas l'apprenant."
+      - "Elle est mineure pour une faute de langue, ou pour une explication juste mais perfectible."
+      - "Un critère compte en défaut seulement s'il a été vérifié. Ce qu'on n'a pas pu mesurer ne devient pas un reproche."
+  - titre: "Les contrôles automatiques"
+    points:
+      - "L'explication doit parler du même audio que la question."
+      - "La mise en forme du contenu doit rester intacte."
+      - "Le texte doit être dans la bonne langue."
+  - titre: "Ce que disaient les retours"
+    points:
+      - "Près d'un commentaire NPS sur cinq touche à la qualité des explications, des exercices ou des traductions."
+  - titre: "Les règles, et ce qu'elles ont coûté"
+    points:
+      - "Environ 30 millions de tokens sur quatre semaines, et 233 points de décision tracés dans un registre."
+      - "Plafonner la taille des modules. Les trois plus gros, entre 5 400 et 7 600 lignes, étaient aussi les plus réécrits."
+      - "Lire le nom des champs dans la donnée au lieu de le supposer."
 langue: fr
 cle: auditContenu
 ---
