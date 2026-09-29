@@ -165,8 +165,14 @@ const suivant = paire[(paire.findIndex((p) => p.page === cle) + 1) % paire.lengt
     display: none;
   }
 
-  /* La colonne du bâtiment, 1 : 4, collée pendant la lecture. Sa hauteur
-     laisse le dessin entier à l'écran jusqu'au bas de la page. */
+  /* La colonne du bâtiment, 1 : 4 (registre/0033). La colonne de la grille
+     reste vide et garde sa largeur au texte ; le dessin y est fixé à
+     l'écran, calé sous l'en-tête (~5rem), du haut au bas de la page. À
+     gauche, il garde sa position statique (le bord de la colonne) ; sa
+     largeur est celle de la colonne (en fixe, 100 % est la largeur de la
+     fenêtre sans la barre de défilement). Sa hauteur laisse en bas la place
+     du pied de page (~6rem) ; s'il y entre quand même, le dessin s'efface
+     (script de Batiment.astro). */
   @media (min-width: 960px) {
     .projet {
       display: grid;
@@ -189,9 +195,11 @@ const suivant = paire[(paire.findIndex((p) => p.page === cle) + 1) % paire.lengt
     }
 
     .projet__dessin {
-      position: sticky;
-      top: 1.5rem;
-      height: clamp(22rem, calc(100vh - 10rem), 44rem);
+      position: fixed;
+      top: 6.5rem;
+      width: calc((min(100%, var(--largeur)) - 2 * var(--gouttiere) - 3rem) / 5);
+      height: clamp(16rem, calc(100vh - 13rem), 44rem);
+      pointer-events: none;
     }
   }
 </style>

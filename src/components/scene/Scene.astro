@@ -5,7 +5,7 @@
 //  1. l'impatience (2 s, une chose à la fois : A saute deux fois, B fait
 //     tourner son marteau, le porteur lance sa poutre et la rattrape),
 //     classe `joue`, au chargement et à chaque entrée à l'écran ;
-//  2. « on regarde le plan » (1,3 s, gestes simultanés), au survol ou
+//  2. « on regarde le plan » (0,9 s, gestes simultanés), au survol ou
 //     au focus de la `.parcelle` qui contient la scène, ou classe
 //     `regarde` sur écran tactile.
 // Géométrie reprise des vignettes de la bibliothèque
@@ -169,79 +169,79 @@ import { OBJETS } from './poses';
     .scene.joue .poutre-vol { animation: sc-i-vol 2s both; }
   }
 
-  /* 2. On regarde le plan, 1,3 s, les gestes en même temps. Plus
+  /* 2. On regarde le plan, 0,9 s, les gestes en même temps. Plus
      spécifique que l'impatience : il l'emporte. */
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene :is(.a-debout, .b-marteau, .c-poutre) {
-    animation: sc-avant-8 1.3s step-end both;
+    animation: sc-avant-8 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .j-sous {
     opacity: 0;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .j-tendus {
-    animation: sc-avant-31 1.3s step-end both;
+    animation: sc-avant-31 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .j-penche {
-    animation: sc-apres-31 1.3s step-end both;
+    animation: sc-apres-31 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .j-pas {
-    animation: sc-j-pas 1.3s ease-out both;
+    animation: sc-j-pas 0.9s ease-out both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .plan {
-    animation: sc-plan 1.3s ease-out both;
+    animation: sc-plan 0.9s ease-out both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .rouleau {
-    animation: sc-rouleau 1.3s ease-out both, sc-rouleau-vu 1.3s step-end both;
+    animation: sc-rouleau 0.9s ease-out both, sc-rouleau-vu 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene :is(.a-saut, .a-bond, .marteau-tour, .b-arc) {
     animation: none;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-m1 {
-    animation: sc-a-m1 1.3s step-end both;
+    animation: sc-a-m1 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-m2 {
-    animation: sc-a-m2 1.3s step-end both;
+    animation: sc-a-m2 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-penche {
-    animation: sc-apres-78 1.3s step-end both;
+    animation: sc-apres-78 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-pas {
-    animation: sc-a-pas 1.3s linear both;
+    animation: sc-a-pas 0.9s linear both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-m1 {
-    animation: sc-b-m1 1.3s step-end both;
+    animation: sc-b-m1 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-m2 {
-    animation: sc-b-m2 1.3s step-end both;
+    animation: sc-b-m2 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-penche {
-    animation: sc-apres-47 1.3s step-end both;
+    animation: sc-apres-47 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-pas {
-    animation: sc-b-pas 1.3s linear both;
+    animation: sc-b-pas 0.9s linear both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-lance {
-    animation: sc-c-lance 1.3s step-end both;
+    animation: sc-c-lance 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .poutre {
-    animation: sc-apres-8 1.3s step-end both;
+    animation: sc-apres-8 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .poutre-vol {
-    animation: sc-poutre 1.3s both;
+    animation: sc-poutre 0.9s both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-m1 {
-    animation: sc-c-m1 1.3s step-end both;
+    animation: sc-c-m1 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-m2 {
-    animation: sc-c-m2 1.3s step-end both;
+    animation: sc-c-m2 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-penche {
-    animation: sc-apres-87 1.3s step-end both;
+    animation: sc-apres-87 0.9s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-pas {
-    animation: sc-c-pas 1.3s linear both;
+    animation: sc-c-pas 0.9s linear both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .point {
-    animation: sc-point 1.3s ease-out both;
+    animation: sc-point 0.9s ease-out both;
   }
 
   /* Sans animation : rien ne bouge, le survol mène droit à l'image finale. */
@@ -297,7 +297,7 @@ import { OBJETS } from './poses';
     90%, 100% { transform: translate(60px, -109px) rotate(0deg); }
   }
 
-  /* On regarde le plan, 1,3 s : 1 % = 13 ms. Jean tend les bras et
+  /* On regarde le plan, 0,9 s : 1 % = 9 ms. Jean tend les bras et
      déroule le plan (0-31 %, 0,4 s), puis se penche. Dès 8 % (0,1 s), A
      marche (8-78 %, 5 pas de 0,18 s) et B marche (8-47 %, 3 pas de
      0,17 s), chacun se penche en arrivant ; le porteur lance sa poutre à

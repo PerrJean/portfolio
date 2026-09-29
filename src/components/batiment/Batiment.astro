@@ -2,13 +2,17 @@
 // Le bâtiment des pages projet (registre/0030), dans la colonne de droite à
 // partir de 960 px. Un étage par H2, quel que soit leur nombre : les étages
 // se partagent une hauteur fixe. Des fondations, les étages, un toit ; une
-// grue fixe à droite ; trois bonhommes au pied, dont Jean (lunettes).
+// grue fixe à droite ; deux bonhommes au pied, un de chaque côté, tournés
+// vers le bâtiment, dont Jean (lunettes).
 //
-// Quand un H2 entre à l'écran, son étage descend au bout du câble et se
-// pose (les étages d'en dessous d'abord, s'il en manque) ; les bonhommes
-// tapent du marteau pendant la pose, la fenêtre de l'étage posé s'allume
-// (l'ambre, la lumière). Au bas de l'article (repère [data-fin]), le toit
-// se pose et l'équipe se retrouve dessus. Un étage posé ne repart jamais.
+// Quand un H2 franchit la ligne de lecture (un tiers de l'écran en partant
+// du haut, registre/0033), son étage descend au bout du câble et se pose
+// (les étages d'en dessous d'abord, s'il en manque) ; les bonhommes tapent
+// du marteau pendant la pose, la fenêtre de l'étage posé s'allume (l'ambre,
+// la lumière). Quand la fin de l'article (repère [data-fin]) franchit la
+// même ligne, ou au bas de la page, le toit se pose et les deux bonhommes
+// se retrouvent dessus. Un étage posé ne repart jamais. Le dessin s'estompe
+// si le pied de page entre dans sa zone.
 //
 // Sans JavaScript : le bâtiment fini, l'équipe sur le toit. Sous
 // prefers-reduced-motion: reduce, les étages apparaissent en place et les
@@ -34,6 +38,11 @@ const FONDATIONS = 10;
 const HAUTEUR = 400; // les étages réunis, partagés entre les H2
 const TOIT = 8;
 const ECHELLE = 0.4; // des bonhommes, par rapport à la bibliothèque
+// Les deux bonhommes au pied, symétriques autour du câble : la tête du
+// marteau (≈ 21 px devant les pieds) touche le mur ; celui de droite tient
+// entre les fondations (186) et le mât (204).
+const GAUCHE = 60;
+const DROITE = 200;
 
 const r = (v: number) => Math.round(v * 100) / 100;
 const h = HAUTEUR / Math.max(etages.length, 1);
@@ -144,30 +153,26 @@ const crochet = (haut: number, x0: number, x1: number) =>
     </g>
   </g>
 
-  <!-- L'équipe au pied, tournée vers le bâtiment : deux marteaux en bas
-       (marteau-2), celui de Jean levé (marteau-1). Seul le marteau pivote,
-       au poignet (.marteau-tour, dans poses.ts). -->
+  <!-- L'équipe au pied, tournée vers le bâtiment : Jean à gauche, marteau
+       levé (marteau-1) ; l'autre à droite, entre le mur et le mât, en miroir,
+       marteau en bas (marteau-2). Seul le marteau pivote, au poignet
+       (.marteau-tour, dans poses.ts). -->
   <g class="equipe-sol">
-    <g transform={`translate(12 0) scale(${ECHELLE})`} class="ouvrier ouvrier--bas">
-      <Personnage pose="marteau-2" />
-    </g>
-    <g transform={`translate(34 0) scale(${ECHELLE})`} class="ouvrier ouvrier--haut">
+    <g transform={`translate(${GAUCHE} 0) scale(${ECHELLE})`} class="ouvrier ouvrier--haut">
       <Personnage pose="marteau-1" jean />
     </g>
-    <g transform={`translate(56 0) scale(${ECHELLE})`} class="ouvrier ouvrier--bas">
-      <Personnage pose="marteau-2" />
+    <g transform={`translate(${DROITE} 0) scale(${ECHELLE})`} class="ouvrier ouvrier--bas">
+      <Personnage pose="marteau-2" miroir />
     </g>
   </g>
 
-  <!-- L'équipe sur le toit, en fin d'article : Jean au milieu, bras tendus. -->
+  <!-- Les deux mêmes sur le toit, en fin d'article, face à face : Jean à
+       gauche, bras tendus. -->
   <g class="equipe-toit">
-    <g transform={`translate(100 ${hautToit}) scale(${ECHELLE})`}>
-      <g class="arrivee"><Personnage pose="debout" /></g>
-    </g>
-    <g transform={`translate(128 ${hautToit}) scale(${ECHELLE})`}>
+    <g transform={`translate(108 ${hautToit}) scale(${ECHELLE})`}>
       <g class="arrivee"><Personnage pose="bras-tendus" jean /></g>
     </g>
-    <g transform={`translate(162 ${hautToit}) scale(${ECHELLE})`}>
+    <g transform={`translate(152 ${hautToit}) scale(${ECHELLE})`}>
       <g class="arrivee"><Personnage pose="debout" miroir /></g>
     </g>
   </g>
@@ -211,6 +216,8 @@ const crochet = (haut: number, x0: number, x1: number) =>
   .batiment.vivant .equipe-toit { opacity: 0; }
   .batiment.vivant.fini .equipe-sol { opacity: 0; }
   .batiment.vivant.fini .equipe-toit { opacity: 1; }
+  /* Le pied de page entre dans la zone du dessin : il s'efface. */
+  .batiment.masque { opacity: 0; }
 
   /* Les mouvements. --vite (posé par le script) les accélère quand des
      étages attendent leur tour. */
@@ -233,7 +240,7 @@ const crochet = (haut: number, x0: number, x1: number) =>
     .batiment.vivant.fini .arrivee { animation: bt-arrivee 400ms ease-out both; }
     .batiment.vivant.fini .equipe-toit > g:nth-child(1) .arrivee { animation-delay: 300ms; }
     .batiment.vivant.fini .equipe-toit > g:nth-child(2) .arrivee { animation-delay: 450ms; }
-    .batiment.vivant.fini .equipe-toit > g:nth-child(3) .arrivee { animation-delay: 600ms; }
+    .batiment { transition: opacity 300ms ease-out; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -331,7 +338,10 @@ const crochet = (haut: number, x0: number, x1: number) =>
       suivante();
     };
 
-    // Un H2 compte dès qu'il est à l'écran, ou déjà passé au-dessus.
+    // La ligne de lecture : la zone observée est réduite au tiers haut de
+    // l'écran. Un H2 (ou la fin) compte quand son haut franchit la ligne :
+    // il est dans la zone, ou déjà passé au-dessus de l'écran. Au
+    // chargement, ceux qui sont encore sous la ligne ne comptent pas.
     const observateur = new IntersectionObserver(
       (entrees) => {
         for (const e of entrees) {
@@ -339,9 +349,30 @@ const crochet = (haut: number, x0: number, x1: number) =>
           demander(e.target === fin ? dernier : titres.indexOf(e.target as HTMLElement));
         }
       },
-      { rootMargin: '0px 0px -15% 0px' },
+      { rootMargin: '0px 0px -67% 0px' },
     );
     for (const t of titres) if (t) observateur.observe(t);
     if (fin) observateur.observe(fin);
+
+    // Au défilement : le bas de la page pose le toit (article trop court
+    // pour que la fin franchisse la ligne), et le dessin s'efface quand le
+    // pied de page entre dans sa zone.
+    const pied = document.querySelector('footer');
+    let prevu = false;
+    const verifier = () => {
+      prevu = false;
+      const racine = document.documentElement;
+      if (innerHeight + scrollY >= racine.scrollHeight - 2) demander(dernier);
+      const zone = svg.getBoundingClientRect();
+      svg.classList.toggle('masque', !!pied && zone.height > 0 && pied.getBoundingClientRect().top < zone.bottom);
+    };
+    const planifier = () => {
+      if (prevu) return;
+      prevu = true;
+      requestAnimationFrame(verifier);
+    };
+    addEventListener('scroll', planifier, { passive: true });
+    addEventListener('resize', planifier);
+    planifier();
   }
 </script>
