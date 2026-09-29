@@ -1,0 +1,59 @@
+---
+// La bascule FR | EN : deux liens. La langue courante porte aria-current,
+// l'autre porte hreflang et mène à la jumelle exacte (src/i18n/routes.ts).
+import { LANGUES, chemin, type Langue, type Page } from '../i18n/routes';
+import { UI } from '../i18n/textes';
+
+interface Props {
+  page: Page;
+  langue: Langue;
+}
+const { page, langue } = Astro.props;
+---
+
+<div class="bascule" role="group" aria-label={UI[langue].langue}>
+  {
+    LANGUES.map((l, i) => (
+      <>
+        {i > 0 && <span class="bascule__trait" aria-hidden="true">|</span>}
+        {l === langue ? (
+          <a href={chemin(page, l)} lang={l} aria-current="page">
+            {l.toUpperCase()}
+          </a>
+        ) : (
+          <a href={chemin(page, l)} lang={l} hreflang={l}>
+            {l.toUpperCase()}
+          </a>
+        )}
+      </>
+    ))
+  }
+</div>
+
+<style>
+  .bascule {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-weight: 700;
+  }
+
+  a {
+    padding: 0.25rem 0.125rem;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  a[aria-current] {
+    color: var(--encre);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .bascule__trait {
+    color: var(--encre);
+  }
+</style>

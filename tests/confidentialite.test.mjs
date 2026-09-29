@@ -30,7 +30,7 @@ function paquets(chemins, max = 7000) {
   return sortie;
 }
 
-test('confidentialité (C1–C4) : verifier_confidentialite.py accepte tout dist/ (hors labo/)', { todo: '2b' }, () => {
+test('confidentialité (C1–C4) : verifier_confidentialite.py accepte tout dist/ (hors labo/)', () => {
   exigerDist();
   // Chemins relatifs à la racine du dépôt, en « / » : le script reconnaît
   // les pages « à propos » à leur chemin (a-propos, about).

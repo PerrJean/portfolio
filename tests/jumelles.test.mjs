@@ -16,7 +16,7 @@ const chemin = (href) => {
 };
 
 for (const { chemin: page, lang, jumelle, langJumelle } of PAGES) {
-  test(`jumelles (C7) : ${page} existe, est en lang="${lang}" et bascule vers ${jumelle}`, { todo: '2b' }, () => {
+  test(`jumelles (C7) : ${page} existe, est en lang="${lang}" et bascule vers ${jumelle}`, () => {
     exigerDist();
     const fichier = fichierDePage(page);
     assert.ok(existsSync(fichier), `La page ${page} manque : ${fichier} n'existe pas.`);

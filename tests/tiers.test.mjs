@@ -24,7 +24,7 @@ function urlsCss(css) {
 /** Les URL d'un srcset : « a.png 1x, b.png 2x » → ['a.png', 'b.png']. */
 const urlsSrcset = (v) => v.split(',').map((p) => p.trim().split(/\s+/)[0]).filter(Boolean);
 
-test('tiers (C6) : aucune ressource chargée depuis un autre domaine, dans le HTML', { todo: '2b' }, () => {
+test('tiers (C6) : aucune ressource chargée depuis un autre domaine, dans le HTML', () => {
   exigerDist();
   const fautes = [];
   for (const f of pagesHtml()) {
@@ -48,7 +48,7 @@ test('tiers (C6) : aucune ressource chargée depuis un autre domaine, dans le HT
   assert.equal(fautes.length, 0, `Ressources tierces dans le HTML :\n${liste(fautes)}\n${RAPPEL}`);
 });
 
-test('tiers (C6) : aucun url(…) ni @import vers un autre domaine, dans le CSS', { todo: '2b' }, () => {
+test('tiers (C6) : aucun url(…) ni @import vers un autre domaine, dans le CSS', () => {
   exigerDist();
   const fautes = [];
   for (const f of feuillesCss())
@@ -56,7 +56,7 @@ test('tiers (C6) : aucun url(…) ni @import vers un autre domaine, dans le CSS'
   assert.equal(fautes.length, 0, `Ressources tierces dans le CSS :\n${liste(fautes)}\n${RAPPEL}`);
 });
 
-test('tiers (C6) : le seul lien sortant est LinkedIn', { todo: '2b' }, () => {
+test('tiers (C6) : le seul lien sortant est LinkedIn', () => {
   exigerDist();
   const fautes = [];
   for (const f of pagesHtml())
@@ -70,7 +70,7 @@ test('tiers (C6) : le seul lien sortant est LinkedIn', { todo: '2b' }, () => {
   );
 });
 
-test('tiers (C6) : aucun document.cookie ni Set-Cookie dans les scripts', { todo: '2b' }, () => {
+test('tiers (C6) : aucun document.cookie ni Set-Cookie dans les scripts', () => {
   exigerDist();
   const fautes = [];
   const verifier = (ou, code) => {

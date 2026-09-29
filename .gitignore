@@ -22,3 +22,6 @@ Thumbs.db
 
 # brouillons du canevas Design (jetables, registre/0003)
 .canevas/
+
+# builds jetables (hook, preuves de chantier)
+.dist-*/

@@ -1,0 +1,101 @@
+---
+// Le bouton, trois variantes, angles droits (registre/0026).
+// Le point ambre se place devant le libellé, dans un espace toujours
+// réservé : permanent sur le tertiaire, au survol et au focus sur les deux
+// autres. Avec href, c'est un lien ; sans, un <button>.
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'a'> &
+  HTMLAttributes<'button'> & {
+    variante?: 'principal' | 'secondaire' | 'tertiaire';
+    href?: string;
+  };
+
+const { variante = 'principal', href, class: classe, type, ...reste } = Astro.props;
+const Element = href ? 'a' : 'button';
+---
+
+<Element
+  class:list={['bouton', `bouton--${variante}`, classe]}
+  href={href}
+  type={href ? undefined : (type ?? 'button')}
+  {...reste}
+>
+  <span class="bouton__point" aria-hidden="true"></span>
+  <span class="bouton__libelle"><slot /></span>
+</Element>
+
+<style>
+  .bouton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    font: inherit;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .bouton__point {
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ambre);
+    transition: opacity 120ms ease-out;
+  }
+
+  /* Principal et secondaire : le point n'apparaît qu'au survol et au focus. */
+  .bouton--principal,
+  .bouton--secondaire {
+    padding: 0.75rem 1.25rem 0.75rem 1rem;
+  }
+
+  .bouton--principal .bouton__point,
+  .bouton--secondaire .bouton__point {
+    opacity: 0;
+  }
+
+  .bouton--principal:is(:hover, :focus-visible) .bouton__point,
+  .bouton--secondaire:is(:hover, :focus-visible) .bouton__point {
+    opacity: 1;
+  }
+
+  .bouton--principal {
+    background: var(--orange);
+    color: var(--texte-sur-orange);
+  }
+
+  /* Le contour est une ombre intérieure : il s'épaissit sans rien déplacer. */
+  .bouton--secondaire {
+    color: var(--orange);
+    box-shadow: inset 0 0 0 1.5px var(--orange);
+    transition:
+      box-shadow 120ms ease-out,
+      background-color 120ms ease-out;
+  }
+
+  .bouton--secondaire:hover {
+    box-shadow: inset 0 0 0 3px var(--orange);
+    background: color-mix(in srgb, var(--orange) 6%, transparent);
+  }
+
+  .bouton--tertiaire {
+    padding: 0.25rem 0;
+    color: var(--orange);
+  }
+
+  .bouton--tertiaire .bouton__libelle {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .bouton--tertiaire:hover .bouton__libelle {
+    text-decoration-thickness: 2px;
+  }
+</style>

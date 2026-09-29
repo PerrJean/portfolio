@@ -1,42 +1,54 @@
 ---
-import '../styles/global.css';
+// Le gabarit commun des huit pages : langue, titre, description, canonique,
+// hreflang, Open Graph, lien d'évitement, en-tête et pied de page.
+import '@fontsource/atkinson-hyperlegible-next/latin-400.css';
+import '@fontsource/atkinson-hyperlegible-next/latin-700.css';
+import '@fontsource/atkinson-hyperlegible-next/latin-800.css';
+import '../styles/jetons.css';
+import '../styles/base.css';
+import EnTete from '../components/EnTete.astro';
+import PiedDePage from '../components/PiedDePage.astro';
+import { LANGUES, LANGUE_PAR_DEFAUT, chemin, type Langue, type Page } from '../i18n/routes';
+import { NOM, UI } from '../i18n/textes';
 
 interface Props {
+  page: Page;
+  langue: Langue;
   titre: string;
   description: string;
 }
-const { titre, description } = Astro.props;
-const nomSite = 'Jean Perrier';
+const { page, langue, titre, description } = Astro.props;
+const absolu = (l: Langue) => new URL(chemin(page, l), Astro.site).href;
+const titreComplet = titre === NOM ? titre : `${titre} · ${NOM}`;
 ---
+
 <!doctype html>
-<html lang="fr">
+<html lang={langue}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{titre === nomSite ? titre : `${titre} · ${nomSite}`}</title>
+    <title>{titreComplet}</title>
     <meta name="description" content={description} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="canonical" href={absolu(langue)} />
+    {LANGUES.map((l) => <link rel="alternate" hreflang={l} href={absolu(l)} />)}
+    <link rel="alternate" hreflang="x-default" href={absolu(LANGUE_PAR_DEFAUT)} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={NOM} />
+    <meta property="og:title" content={titreComplet} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={UI[langue].locale} />
+    {LANGUES.filter((l) => l !== langue).map((l) => (
+      <meta property="og:locale:alternate" content={UI[l].locale} />
+    ))}
+    <meta property="og:url" content={absolu(langue)} />
   </head>
   <body>
-    <header class="conteneur site-header">
-      <a class="marque" href="/">{nomSite}</a>
-      <nav>
-        <a href="/">Projets</a>
-        <a href="/a-propos/">À propos</a>
-      </nav>
-    </header>
-
-    <main class="conteneur">
+    <a class="evitement" href="#contenu">{UI[langue].evitement}</a>
+    <EnTete page={page} langue={langue} />
+    <main id="contenu" tabindex="-1">
       <slot />
     </main>
-
-    <footer class="conteneur site-footer">
-      Les captures d'écran sont réalisées sur des données synthétiques. Aucune donnée réelle n'apparaît sur ce site.
-    </footer>
+    <PiedDePage page={page} langue={langue} />
   </body>
 </html>

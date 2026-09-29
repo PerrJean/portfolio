@@ -1,24 +1,35 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import Carte from '../components/Carte.astro';
-
-const projets = (await getCollection('projets', ({ data }) => !data.brouillon))
-  .sort((a, b) => a.data.ordre - b.data.ordre);
+import Bouton from '../components/Bouton.astro';
+import { chemin } from '../i18n/routes';
 ---
+
 <Base
+  page="accueil"
+  langue="fr"
   titre="Jean Perrier"
-  description="Études de cas : des outils internes construits avec l'IA, de l'irritant au résultat."
+  description="Portfolio de Jean Perrier, en deux projets produit : écouter les retours des utilisateurs, puis agir sur la qualité du contenu."
 >
-  <section class="accroche">
-    <h1>Des irritants du quotidien transformés en outils, avec l'IA comme équipier.</h1>
-    <p>
-      Chaque fiche raconte une démarche : le problème, ce que j'ai choisi de ne pas faire,
-      la construction, et ce que j'en retiens. Les données montrées sont synthétiques.
-    </p>
+  <section class="conteneur accroche">
+    <h1>Je bâtis sur des hypothèses : j'écoute, je teste, puis je dose l'effort.</h1>
   </section>
 
-  <section class="grille">
-    {projets.map((p) => <Carte projet={p} />)}
+  <section class="conteneur" id="projets" aria-labelledby="titre-projets">
+    <h2 id="titre-projets">Projets</h2>
+    <ol class="projets">
+      <li class="projet">
+        <span class="projet__numero" aria-hidden="true">01</span>
+        <h3><Bouton variante="tertiaire" href={chemin('uservoice', 'fr')}>UserVoice</Bouton></h3>
+        <p>1 retour sur 3 porte sur le contenu.</p>
+      </li>
+      <li class="projet">
+        <span class="projet__numero" aria-hidden="true">02</span>
+        <h3><Bouton variante="tertiaire" href={chemin('auditContenu', 'fr')}>Audit contenu</Bouton></h3>
+        <p>
+          Sur le premier parcours audité, 1 question sur 20 empêchait l'apprenant de répondre. Toutes ont été
+          corrigées.
+        </p>
+      </li>
+    </ol>
   </section>
 </Base>

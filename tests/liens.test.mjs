@@ -22,7 +22,7 @@ function existe(cheminSite) {
   return estFichier(disque) || estFichier(join(disque, 'index.html'));
 }
 
-test('liens internes : chaque <a href="/…"> mène à un fichier de dist/', { todo: '2b' }, () => {
+test('liens internes : chaque <a href="/…"> mène à un fichier de dist/', () => {
   exigerDist();
   const fautes = [];
   for (const f of pagesHtml())

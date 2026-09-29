@@ -1,0 +1,37 @@
+---
+import Bascule from './Bascule.astro';
+import type { Langue, Page } from '../i18n/routes';
+import { LINKEDIN, NOM } from '../i18n/textes';
+
+interface Props {
+  page: Page;
+  langue: Langue;
+}
+const { page, langue } = Astro.props;
+---
+
+<footer class="pied">
+  <div class="conteneur pied__ligne">
+    <span>© 2026 {NOM}</span>
+    <span aria-hidden="true">·</span>
+    <a href={LINKEDIN}>LinkedIn</a>
+    <span aria-hidden="true">·</span>
+    <Bascule page={page} langue={langue} />
+  </div>
+</footer>
+
+<style>
+  .pied {
+    margin-top: 4rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--dalle);
+  }
+
+  .pied__ligne {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    font-size: 0.9375rem;
+  }
+</style>

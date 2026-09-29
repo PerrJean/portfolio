@@ -8,7 +8,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { PAGES, exigerDist, fichierDePage, pagesHtml, lire, balises, liste } from './outils.mjs';
 
 for (const { chemin } of PAGES) {
-  test(`accessibilité : ${chemin} a un seul <h1>, un lien d'évitement et id="contenu"`, { todo: '2b' }, () => {
+  test(`accessibilité : ${chemin} a un seul <h1>, un lien d'évitement et id="contenu"`, () => {
     exigerDist();
     const fichier = fichierDePage(chemin);
     assert.ok(existsSync(fichier), `La page ${chemin} manque : ${fichier} n'existe pas.`);
@@ -28,7 +28,7 @@ for (const { chemin } of PAGES) {
   });
 }
 
-test('accessibilité : chaque <img> a un attribut alt', { todo: '2b' }, () => {
+test('accessibilité : chaque <img> a un attribut alt', () => {
   exigerDist();
   const fautes = [];
   for (const f of pagesHtml())

@@ -1,0 +1,166 @@
+---
+// L'en-tête : logo-lunettes et nom, Projets · À propos, FR | EN, LinkedIn.
+// Sous 720 px, la navigation se replie sous un <button> menu. Sans
+// JavaScript, elle reste dépliée.
+import Bascule from './Bascule.astro';
+import Bouton from './Bouton.astro';
+import Lunettes from './Lunettes.astro';
+import { chemin, type Langue, type Page } from '../i18n/routes';
+import { LINKEDIN, NOM, UI } from '../i18n/textes';
+
+interface Props {
+  page: Page;
+  langue: Langue;
+}
+const { page, langue } = Astro.props;
+const t = UI[langue];
+const accueil = chemin('accueil', langue);
+---
+
+<header class="en-tete">
+  <div class="conteneur en-tete__ligne">
+    <div class="en-tete__barre">
+      <a class="marque" href={accueil} aria-current={page === 'accueil' ? 'page' : undefined}>
+        <Lunettes />
+        <span>{NOM}</span>
+      </a>
+      <button class="menu" type="button" aria-expanded="false" aria-controls="navigation">
+        {t.menu}
+      </button>
+    </div>
+    <div class="navigation" id="navigation">
+      <nav aria-label={t.navigation}>
+        <ul>
+          <li><a href={`${accueil}#projets`}>{t.projets}</a></li>
+          <li>
+            <a href={chemin('aPropos', langue)} aria-current={page === 'aPropos' ? 'page' : undefined}>
+              {t.aPropos}
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <Bascule page={page} langue={langue} />
+      <Bouton variante="secondaire" href={LINKEDIN}>LinkedIn</Bouton>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Le menu replié : ouvert ou fermé par le bouton, fermé par Échap.
+  for (const entete of document.querySelectorAll<HTMLElement>('.en-tete')) {
+    const bouton = entete.querySelector<HTMLButtonElement>('.menu');
+    if (!bouton) continue;
+    const ouvrir = (ouvert: boolean) => {
+      bouton.setAttribute('aria-expanded', String(ouvert));
+      entete.dataset.ouvert = String(ouvert);
+    };
+    entete.dataset.replie = '';
+    ouvrir(false);
+    bouton.addEventListener('click', () => ouvrir(bouton.getAttribute('aria-expanded') !== 'true'));
+    entete.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && entete.dataset.ouvert === 'true') {
+        ouvrir(false);
+        bouton.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  .en-tete {
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--dalle);
+  }
+
+  .en-tete__ligne {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+  }
+
+  .en-tete__barre {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .marque {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding-block: 0.25rem;
+    color: var(--encre);
+    font-weight: 800;
+    font-size: 1.125rem;
+    text-decoration: none;
+  }
+
+  .navigation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.75rem;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    padding-block: 0.25rem;
+    color: var(--encre);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  nav a:hover,
+  nav a[aria-current] {
+    color: var(--orange);
+    text-decoration: underline;
+  }
+
+  .menu {
+    display: none;
+    padding: 0.5rem 0.875rem;
+    border: 0;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 1.5px var(--encre);
+    background: none;
+    color: var(--encre);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  @media (max-width: 719.98px) {
+    .en-tete__ligne {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .navigation {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav ul {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .en-tete[data-replie] .menu {
+      display: inline-block;
+    }
+
+    .en-tete[data-replie]:not([data-ouvert='true']) .navigation {
+      display: none;
+    }
+  }
+</style>

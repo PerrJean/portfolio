@@ -35,4 +35,19 @@ if [ "$n" -gt 100 ]; then
   echo "REFUS : CONTRAT.md fait $n lignes, plafond 100."; exit 1
 fi
 
+echo "-> build et tests"
+# Construit dans un dossier jetable, lance les tests dessus, refuse si echec.
+command -v node >/dev/null 2>&1 || export PATH="$APPDATA/fnm/node-versions/v24.20.0/installation:$PATH"
+rm -rf .dist-hook
+if ! npx astro build --outDir .dist-hook >.git/build-hook.log 2>&1; then
+  cat .git/build-hook.log; rm -rf .dist-hook .git/build-hook.log
+  echo "REFUS : le build echoue."; exit 1
+fi
+rm -f .git/build-hook.log
+if ! DIST=.dist-hook npm test; then
+  rm -rf .dist-hook
+  echo "REFUS : des tests echouent."; exit 1
+fi
+rm -rf .dist-hook
+
 echo "-> OK"

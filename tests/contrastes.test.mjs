@@ -61,7 +61,7 @@ test('contrastes : la formule WCAG donne les valeurs de référence', () => {
 });
 
 for (const [avant, arriere, seuil, usage] of PAIRES) {
-  test(`contrastes : ${avant} sur ${arriere} ≥ ${seuil}:1 (${usage})`, { todo: '2b' }, () => {
+  test(`contrastes : ${avant} sur ${arriere} ≥ ${seuil}:1 (${usage})`, () => {
     const jetons = lireJetons();
     const a = hexDe(jetons, avant);
     const b = hexDe(jetons, arriere);

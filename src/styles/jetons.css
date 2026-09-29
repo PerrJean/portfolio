@@ -1,0 +1,17 @@
+/*
+ * Les jetons du site. Couleurs en hexadécimal : tests/contrastes.test.mjs
+ * les lit ici. Chaque couleur n'a qu'un sens.
+ */
+:root {
+  --ivoire: #FEFAF2;            /* le fond de toutes les pages */
+  --encre: #2A1F1A;             /* le texte */
+  --ambre: #F2A33A;             /* la lumière, jamais de texte */
+  --orange: #B54E19;            /* l'action : boutons, liens, les lunettes */
+  --ardoise: #5E7488;           /* l'information, en grand texte seulement */
+  --texte-sur-orange: #FFFCF8;  /* le texte posé sur l'orange */
+  --dalle: #D9D4CC;             /* filets et séparations */
+
+  --police: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  --largeur: 72rem;
+  --gouttiere: 1.25rem;
+}
