@@ -5,7 +5,7 @@
 //  1. l'impatience (2 s, une chose à la fois : A saute deux fois, B fait
 //     tourner son marteau, le porteur lance sa poutre et la rattrape),
 //     classe `joue`, au chargement et à chaque entrée à l'écran ;
-//  2. « on regarde le plan » (0,9 s, gestes simultanés), au survol ou
+//  2. « on regarde le plan » (0,7 s, gestes simultanés), au survol ou
 //     au focus de la `.parcelle` qui contient la scène, ou classe
 //     `regarde` sur écran tactile.
 // Géométrie reprise des vignettes de la bibliothèque
@@ -27,13 +27,13 @@ import { OBJETS } from './poses';
   <!-- La poutre en vol, hors des mains du porteur : lancée puis rattrapée
        (impatience), lancée à terre sur la dalle (survol, centre en 354).
        Origine au milieu du bord bas ; (60, -97) est sa place sur l'épaule. -->
-  <g class="poutre" transform="translate(312 0)">
+  <g class="poutre" transform="translate(299 0)">
     <g class="poutre-vol" set:html={OBJETS.poutre} />
   </g>
 
   <!-- Coéquipier A : regarde à droite et saute deux fois ; se retourne en
-       se mettant en marche, va derrière le tréteau (235 → 128). -->
-  <g transform="translate(235 0)">
+       se mettant en marche, va derrière le tréteau (220 → 128). -->
+  <g transform="translate(220 0)">
     <g class="a-pas">
       <Personnage pose="debout" class="a-debout" />
       <g class="a-bond">
@@ -78,10 +78,10 @@ import { OBJETS } from './poses';
   </g>
 
   <!-- Coéquipier B : tourné vers le porteur, fait tourner son marteau, tenu
-       tête en haut ; se retourne et vient en face (285 → 236). L'arc suit
+       tête en haut ; se retourne et vient en face (250 → 236). L'arc suit
        la tête du marteau (à 31 du poignet (25, -75)), départ en haut, sens
        horaire. -->
-  <g transform="translate(285 0)">
+  <g transform="translate(250 0)">
     <path
       class="b-arc se"
       d="M25,-106 A31,31 0 1 1 25,-44 A31,31 0 1 1 25,-106"
@@ -101,8 +101,8 @@ import { OBJETS } from './poses';
 
   <!-- Le porteur : poutre sur l'épaule ; la lance (pose « lancer ») et la
        rattrape ; au survol, la lance à terre puis marche derrière B,
-       penché vers le plan (368 → 288). -->
-  <g transform="translate(368 0)">
+       penché vers le plan (355 → 288). -->
+  <g transform="translate(355 0)">
     <g class="c-pas">
       <Personnage pose="poutre-epaule" miroir class="c-poutre" />
       <Personnage pose="lancer-poutre" miroir class="c-lance" />
@@ -169,79 +169,79 @@ import { OBJETS } from './poses';
     .scene.joue .poutre-vol { animation: sc-i-vol 2s both; }
   }
 
-  /* 2. On regarde le plan, 0,9 s, les gestes en même temps. Plus
+  /* 2. On regarde le plan, 0,7 s, les gestes en même temps. Plus
      spécifique que l'impatience : il l'emporte. */
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene :is(.a-debout, .b-marteau, .c-poutre) {
-    animation: sc-avant-8 0.9s step-end both;
+    animation: sc-avant-7 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .j-sous {
     opacity: 0;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .j-tendus {
-    animation: sc-avant-31 0.9s step-end both;
+    animation: sc-avant-40 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .j-penche {
-    animation: sc-apres-31 0.9s step-end both;
+    animation: sc-apres-40 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .j-pas {
-    animation: sc-j-pas 0.9s ease-out both;
+    animation: sc-j-pas 0.7s ease-out both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .plan {
-    animation: sc-plan 0.9s ease-out both;
+    animation: sc-plan 0.7s ease-out both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .rouleau {
-    animation: sc-rouleau 0.9s ease-out both, sc-rouleau-vu 0.9s step-end both;
+    animation: sc-rouleau 0.7s ease-out both, sc-rouleau-vu 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene :is(.a-saut, .a-bond, .marteau-tour, .b-arc) {
     animation: none;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-m1 {
-    animation: sc-a-m1 0.9s step-end both;
+    animation: sc-a-m1 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-m2 {
-    animation: sc-a-m2 0.9s step-end both;
+    animation: sc-a-m2 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-penche {
-    animation: sc-apres-78 0.9s step-end both;
+    animation: sc-apres-85 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-pas {
-    animation: sc-a-pas 0.9s linear both;
+    animation: sc-a-pas 0.7s linear both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-m1 {
-    animation: sc-b-m1 0.9s step-end both;
+    animation: sc-b-m1 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-m2 {
-    animation: sc-b-m2 0.9s step-end both;
+    animation: sc-b-m2 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-penche {
-    animation: sc-apres-47 0.9s step-end both;
+    animation: sc-apres-39 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-pas {
-    animation: sc-b-pas 0.9s linear both;
+    animation: sc-b-pas 0.7s linear both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-lance {
-    animation: sc-c-lance 0.9s step-end both;
+    animation: sc-c-lance 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .poutre {
-    animation: sc-apres-8 0.9s step-end both;
+    animation: sc-apres-7 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .poutre-vol {
-    animation: sc-poutre 0.9s both;
+    animation: sc-poutre 0.7s both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-m1 {
-    animation: sc-c-m1 0.9s step-end both;
+    animation: sc-c-m1 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-m2 {
-    animation: sc-c-m2 0.9s step-end both;
+    animation: sc-c-m2 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-penche {
-    animation: sc-apres-87 0.9s step-end both;
+    animation: sc-apres-85 0.7s step-end both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-pas {
-    animation: sc-c-pas 0.9s linear both;
+    animation: sc-c-pas 0.7s linear both;
   }
   :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .point {
-    animation: sc-point 0.9s ease-out both;
+    animation: sc-point 0.7s ease-out both;
   }
 
   /* Sans animation : rien ne bouge, le survol mène droit à l'image finale. */
@@ -297,82 +297,80 @@ import { OBJETS } from './poses';
     90%, 100% { transform: translate(60px, -109px) rotate(0deg); }
   }
 
-  /* On regarde le plan, 0,9 s : 1 % = 9 ms. Jean tend les bras et
-     déroule le plan (0-31 %, 0,4 s), puis se penche. Dès 8 % (0,1 s), A
-     marche (8-78 %, 5 pas de 0,18 s) et B marche (8-47 %, 3 pas de
-     0,17 s), chacun se penche en arrivant ; le porteur lance sa poutre à
-     terre (8-31 %) puis marche (31-87 %, 4 pas de 0,18 s) et se penche à
-     1,13 s ; le point se pose en dernier (90-100 %). A part plus vite que
-     B ne le suit : l'écart entre eux ne descend jamais sous 50. */
-  @keyframes sc-avant-8 { 0% { opacity: 1; } 8%, 100% { opacity: 0; } }
-  @keyframes sc-apres-8 { 0% { opacity: 0; } 8%, 100% { opacity: 1; } }
-  @keyframes sc-avant-31 { 0% { opacity: 1; } 31%, 100% { opacity: 0; } }
-  @keyframes sc-apres-31 { 0% { opacity: 0; } 31%, 100% { opacity: 1; } }
-  @keyframes sc-apres-47 { 0% { opacity: 0; } 47%, 100% { opacity: 1; } }
-  @keyframes sc-apres-78 { 0% { opacity: 0; } 78%, 100% { opacity: 1; } }
-  @keyframes sc-apres-87 { 0% { opacity: 0; } 87%, 100% { opacity: 1; } }
-  @keyframes sc-c-lance { 0% { opacity: 0; } 8% { opacity: 1; } 31%, 100% { opacity: 0; } }
+  /* On regarde le plan, 0,7 s : 1 % = 7 ms. Jean tend les bras et
+     déroule le plan (0-40 %, 0,28 s), puis se penche. Dès 7 % (0,05 s),
+     tous se retournent en même temps : A marche (7-85 %, 4 pas de
+     0,14 s), B fait deux petits pas (7-39 %) et se penche à 0,27 s, le
+     porteur lance sa poutre à terre (7-26,5 %) puis marche (26,5-85 %,
+     3 pas de 0,14 s) ; A et le porteur se penchent à 0,6 s, le point se
+     pose en dernier (87-100 %). B commence par le pas étroit (marche-2)
+     et avance moins vite que A : au plus près, au premier pas, 2 d'écart. */
+  @keyframes sc-avant-7 { 0% { opacity: 1; } 7%, 100% { opacity: 0; } }
+  @keyframes sc-apres-7 { 0% { opacity: 0; } 7%, 100% { opacity: 1; } }
+  @keyframes sc-avant-40 { 0% { opacity: 1; } 40%, 100% { opacity: 0; } }
+  @keyframes sc-apres-40 { 0% { opacity: 0; } 40%, 100% { opacity: 1; } }
+  @keyframes sc-apres-39 { 0% { opacity: 0; } 39%, 100% { opacity: 1; } }
+  @keyframes sc-apres-85 { 0% { opacity: 0; } 85%, 100% { opacity: 1; } }
+  @keyframes sc-c-lance { 0% { opacity: 0; } 7% { opacity: 1; } 26.5%, 100% { opacity: 0; } }
   @keyframes sc-j-pas {
     0% { transform: translateX(0); }
-    12%, 30.9% { transform: translateX(13px); }
-    31%, 100% { transform: translateX(11px); }
+    15%, 39.9% { transform: translateX(13px); }
+    40%, 100% { transform: translateX(11px); }
   }
   @keyframes sc-plan {
-    0%, 4% { transform: scaleX(0); }
-    31%, 100% { transform: scaleX(1); }
+    0%, 5% { transform: scaleX(0); }
+    40%, 100% { transform: scaleX(1); }
   }
   @keyframes sc-rouleau {
-    0%, 4% { transform: translateX(0); }
-    31%, 100% { transform: translateX(100px); }
+    0%, 5% { transform: translateX(0); }
+    40%, 100% { transform: translateX(100px); }
   }
-  @keyframes sc-rouleau-vu { 0% { opacity: 0; } 4% { opacity: 1; } 31%, 100% { opacity: 0; } }
-  /* Marche : les deux temps alternent, 14 % (0,18 s) pour A et le porteur,
-     13 % (0,17 s) pour B. */
+  @keyframes sc-rouleau-vu { 0% { opacity: 0; } 5% { opacity: 1; } 40%, 100% { opacity: 0; } }
+  /* Marche : les deux temps alternent tous les 19,5 % (0,14 s) pour A et
+     le porteur ; B, marche-2 puis marche-1 (19,5 % puis 12,5 %). */
   @keyframes sc-a-m1 {
-    0% { opacity: 0; } 8% { opacity: 1; } 22% { opacity: 0; } 36% { opacity: 1; }
-    50% { opacity: 0; } 64% { opacity: 1; } 78%, 100% { opacity: 0; }
+    0% { opacity: 0; } 7% { opacity: 1; } 26.5% { opacity: 0; } 46% { opacity: 1; }
+    65.5%, 100% { opacity: 0; }
   }
   @keyframes sc-a-m2 {
-    0% { opacity: 0; } 22% { opacity: 1; } 36% { opacity: 0; } 50% { opacity: 1; }
-    64%, 100% { opacity: 0; }
+    0% { opacity: 0; } 26.5% { opacity: 1; } 46% { opacity: 0; } 65.5% { opacity: 1; }
+    85%, 100% { opacity: 0; }
   }
   @keyframes sc-b-m1 {
-    0% { opacity: 0; } 8% { opacity: 1; } 21% { opacity: 0; } 34% { opacity: 1; }
-    47%, 100% { opacity: 0; }
+    0% { opacity: 0; } 26.5% { opacity: 1; } 39%, 100% { opacity: 0; }
   }
   @keyframes sc-b-m2 {
-    0% { opacity: 0; } 21% { opacity: 1; } 34%, 100% { opacity: 0; }
+    0% { opacity: 0; } 7% { opacity: 1; } 26.5%, 100% { opacity: 0; }
   }
   @keyframes sc-c-m1 {
-    0% { opacity: 0; } 31% { opacity: 1; } 45% { opacity: 0; } 59% { opacity: 1; }
-    73%, 100% { opacity: 0; }
+    0% { opacity: 0; } 26.5% { opacity: 1; } 46% { opacity: 0; } 65.5% { opacity: 1; }
+    85%, 100% { opacity: 0; }
   }
   @keyframes sc-c-m2 {
-    0% { opacity: 0; } 45% { opacity: 1; } 59% { opacity: 0; } 73% { opacity: 1; }
-    87%, 100% { opacity: 0; }
+    0% { opacity: 0; } 46% { opacity: 1; } 65.5%, 100% { opacity: 0; }
   }
   @keyframes sc-a-pas {
-    0%, 8% { transform: translateX(0); }
-    78%, 100% { transform: translateX(-107px); }
+    0%, 7% { transform: translateX(0); }
+    85%, 100% { transform: translateX(-92px); }
   }
   @keyframes sc-b-pas {
-    0%, 8% { transform: translateX(0); }
-    47%, 100% { transform: translateX(-49px); }
+    0%, 7% { transform: translateX(0); }
+    39%, 100% { transform: translateX(-14px); }
   }
   /* Le porteur s'arrête en 288, derrière B, sans le toucher. */
   @keyframes sc-c-pas {
-    0%, 31% { transform: translateX(0); }
-    87%, 100% { transform: translateX(-80px); }
+    0%, 26.5% { transform: translateX(0); }
+    85%, 100% { transform: translateX(-67px); }
   }
-  /* La poutre part des paumes, monte un peu (0,1 s), retombe à plat sur la
-     dalle, près du porteur (de 304 à 404). */
+  /* La poutre part des paumes, monte un peu (0,05 s), retombe à plat sur
+     la dalle, près du porteur (de 304 à 404). */
   @keyframes sc-poutre {
-    0%, 8% { transform: translate(60px, -109px) rotate(0deg); animation-timing-function: ease-out; }
-    16% { transform: translate(56px, -118px) rotate(-5deg); animation-timing-function: ease-in; }
-    31%, 100% { transform: translate(42px, 0) rotate(0deg); }
+    0%, 7% { transform: translate(60px, -109px) rotate(0deg); animation-timing-function: ease-out; }
+    14% { transform: translate(56px, -118px) rotate(-5deg); animation-timing-function: ease-in; }
+    26.5%, 100% { transform: translate(55px, 0) rotate(0deg); }
   }
   @keyframes sc-point {
-    0%, 90% { opacity: 0; transform: translateY(-10px); }
+    0%, 87% { opacity: 0; transform: translateY(-10px); }
     100% { opacity: 1; transform: translateY(0); }
   }
 </style>

@@ -10,7 +10,9 @@
 //    pendaient pres des hanches remontent, pour qu'aucun lisere ni aucun
 //    bras ne dessine un contour de jupe ;
 //  - lancer-poutre : nouvelle pose, les deux bras leves, mains ouvertes a
-//    plat (le dessus des paumes a y = -109,5).
+//    plat (le dessus des paumes a y = -109,5) ;
+//  - frappe-1 et frappe-2 : nouvelles poses du batiment, le bras avant et
+//    le marteau pivotent ensemble a l'epaule (groupe .bras-tour).
 
 const LIGNE = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
 const trait = (c: string, points: string, largeur: number) =>
@@ -37,6 +39,20 @@ const MARTEAU = (angle: number) =>
   TETE +
   `<g transform="translate(25 -75)"><g class="marteau-tour"><g transform="rotate(${angle})"><line class="se" x1="-3" y1="0" x2="26" y2="0" stroke-width="4" stroke-linecap="round"/><rect class="fe" x="22" y="-8" width="8" height="15" rx="1.5"/></g></g></g>` +
   brasAvant('1,-89 9,-69 25,-75');
+/** Frappe (le batiment des pages projet) : le bras avant et le marteau
+ *  forment le groupe .bras-tour, pivot a l'epaule (1,-89). A 0 degre, le
+ *  coup porte : la tete du marteau devant l'epaule, a sa hauteur (le point
+ *  le plus avance de l'arc, a moins d'une unite pres). A -70, le bras est
+ *  leve, le marteau droit au-dessus de la main, sans toucher le visage. */
+const FRAPPE = (angle: number) =>
+  jambes('-5.25,-56 -8,-4 -3,-4', '5.25,-56 8,-4 13,-4') +
+  brasArriere('0,-89 -4,-58') +
+  torse() +
+  TETE +
+  `<g transform="translate(1 -89)"><g class="bras-tour"><g transform="rotate(${angle}) translate(-1 89)">` +
+  '<g transform="translate(22 -78) rotate(-25)"><line class="se" x1="-3" y1="0" x2="22" y2="0" stroke-width="4" stroke-linecap="round"/><rect class="fe" x="17" y="-7" width="7" height="13" rx="1.5"/></g>' +
+  brasAvant('1,-89 10,-75 22,-78') +
+  '</g></g></g>';
 
 export const POSES = {
   'debout': DEBOUT + brasArriere('0,-89 -2,-58') + torse() + TETE + brasAvant('1,-89 3,-60'),
@@ -90,6 +106,8 @@ export const POSES = {
     brasAvant('1,-95 14,-70'),
   'marteau-1': MARTEAU(-100),
   'marteau-2': MARTEAU(25),
+  'frappe-1': FRAPPE(-70),
+  'frappe-2': FRAPPE(0),
 };
 
 export type Pose = keyof typeof POSES;

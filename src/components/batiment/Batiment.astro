@@ -31,24 +31,29 @@ const { etages } = Astro.props;
 
 // Coordonnées : sol en y = 0, vers le haut en négatif (comme les poses).
 const LARGEUR = 240;
-const X0 = 80; // murs des étages
-const X1 = 180;
+// Le bâtiment est centré entre le bord gauche et le mât (204), pour laisser
+// à droite la place d'un bonhomme à l'échelle 0,72.
+const X0 = 50; // murs des étages
+const X1 = 150;
 const CX = (X0 + X1) / 2; // le câble
 const FONDATIONS = 10;
-const HAUTEUR = 400; // les étages réunis, partagés entre les H2
+const HAUTEUR = 380; // les étages réunis, partagés entre les H2
 const TOIT = 8;
-const ECHELLE = 0.4; // des bonhommes, par rapport à la bibliothèque
-// Les deux bonhommes au pied, symétriques autour du câble : la tête du
-// marteau (≈ 21 px devant les pieds) touche le mur ; celui de droite tient
-// entre les fondations (186) et le mât (204).
-const GAUCHE = 60;
-const DROITE = 200;
+const SOUS_FLECHE = 92; // du toit à la flèche : l'équipe y tient debout
+const ECHELLE = 0.72; // des bonhommes, par rapport à la bibliothèque
+// Les deux bonhommes au pied, symétriques autour du câble : au coup, la tête
+// du marteau (≈ 33 px devant les pieds, 34 au plus avancé de l'arc) touche
+// le mur ; le talon arrière (≈ 8,5 px derrière) laisse 7 px au bord gauche,
+// et, à droite, 5 px avant le socle de la grue (198).
+const GAUCHE = CX - 84;
+const DROITE = CX + 84;
+const POINTE = 66; // le bout de la flèche, 27 px avant le chariot
 
 const r = (v: number) => Math.round(v * 100) / 100;
 const h = HAUTEUR / Math.max(etages.length, 1);
 const basToit = -(FONDATIONS + HAUTEUR);
 const hautToit = basToit - TOIT;
-const fleche = hautToit - 72; // le bas de la flèche de la grue
+const fleche = hautToit - SOUS_FLECHE; // le bas de la flèche de la grue
 const sommet = fleche - 26;
 const ciel = fleche + 5; // sous le chariot : le câble n'existe qu'en dessous
 const depart = ciel + 21; // le haut d'une charge qui vient d'être accrochée
@@ -71,7 +76,7 @@ const niveaux = etages.map((e, k) => {
 const zigzag = (n: number, point: (i: number) => string) =>
   Array.from({ length: n + 1 }, (_, i) => point(i)).join(' ');
 const mat = zigzag(Math.floor(-fleche / 14), (i) => `${i % 2 ? 214 : 204},${r(-i * 14)}`);
-const treillis = zigzag(14, (i) => `${96 + i * 10},${i % 2 ? fleche - 7 : fleche}`);
+const treillis = zigzag((236 - POINTE) / 10, (i) => `${POINTE + i * 10},${i % 2 ? fleche - 7 : fleche}`);
 
 const crochet = (haut: number, x0: number, x1: number) =>
   `<line class="se" x1="${CX}" y1="${r(haut - 1000)}" x2="${CX}" y2="${r(haut - 14.5)}" stroke-width="1.2"/>` +
@@ -100,8 +105,8 @@ const crochet = (haut: number, x0: number, x1: number) =>
     <line class="se" x1="204" y1="0" x2="204" y2={fleche} stroke-width="1.5" />
     <line class="se" x1="214" y1="0" x2="214" y2={fleche} stroke-width="1.5" />
     <polyline class="se" points={mat} fill="none" stroke-width="0.8" stroke-linejoin="round" />
-    <line class="se" x1="96" y1={fleche} x2="236" y2={fleche} stroke-width="1.5" />
-    <line class="se" x1="96" y1={fleche - 7} x2="236" y2={fleche - 7} stroke-width="1.2" />
+    <line class="se" x1={POINTE} y1={fleche} x2="236" y2={fleche} stroke-width="1.5" />
+    <line class="se" x1={POINTE} y1={fleche - 7} x2="236" y2={fleche - 7} stroke-width="1.2" />
     <polyline class="se" points={treillis} fill="none" stroke-width="0.8" stroke-linejoin="round" />
     <polyline
       class="se"
@@ -112,7 +117,7 @@ const crochet = (haut: number, x0: number, x1: number) =>
     />
     <polyline
       class="se"
-      points={`100,${fleche - 7} 209,${sommet} 234,${fleche - 7}`}
+      points={`${POINTE + 4},${fleche - 7} 209,${sommet} 234,${fleche - 7}`}
       fill="none"
       stroke-width="0.8"
       stroke-linejoin="round"
@@ -153,26 +158,26 @@ const crochet = (haut: number, x0: number, x1: number) =>
     </g>
   </g>
 
-  <!-- L'équipe au pied, tournée vers le bâtiment : Jean à gauche, marteau
-       levé (marteau-1) ; l'autre à droite, entre le mur et le mât, en miroir,
-       marteau en bas (marteau-2). Seul le marteau pivote, au poignet
-       (.marteau-tour, dans poses.ts). -->
+  <!-- L'équipe au pied, tournée vers le bâtiment : Jean à gauche, bras levé
+       (frappe-1) ; l'autre à droite, entre le mur et le mât, en miroir, au
+       coup (frappe-2). Le bras et le marteau pivotent ensemble, à l'épaule
+       (.bras-tour, dans poses.ts) ; le reste du corps ne bouge pas. -->
   <g class="equipe-sol">
     <g transform={`translate(${GAUCHE} 0) scale(${ECHELLE})`} class="ouvrier ouvrier--haut">
-      <Personnage pose="marteau-1" jean />
+      <Personnage pose="frappe-1" jean />
     </g>
     <g transform={`translate(${DROITE} 0) scale(${ECHELLE})`} class="ouvrier ouvrier--bas">
-      <Personnage pose="marteau-2" miroir />
+      <Personnage pose="frappe-2" miroir />
     </g>
   </g>
 
   <!-- Les deux mêmes sur le toit, en fin d'article, face à face : Jean à
        gauche, bras tendus. -->
   <g class="equipe-toit">
-    <g transform={`translate(108 ${hautToit}) scale(${ECHELLE})`}>
+    <g transform={`translate(${CX - 22} ${hautToit}) scale(${ECHELLE})`}>
       <g class="arrivee"><Personnage pose="bras-tendus" jean /></g>
     </g>
-    <g transform={`translate(152 ${hautToit}) scale(${ECHELLE})`}>
+    <g transform={`translate(${CX + 22} ${hautToit}) scale(${ECHELLE})`}>
       <g class="arrivee"><Personnage pose="debout" miroir /></g>
     </g>
   </g>
@@ -198,10 +203,20 @@ const crochet = (haut: number, x0: number, x1: number) =>
   .batiment .etage,
   .batiment .crochet,
   .batiment .arrivee,
-  .batiment .marteau-tour {
+  .batiment .bras-tour {
     transform-box: view-box;
     transform-origin: 0 0;
   }
+
+  /* Les lunettes de Jean, lisibles à cette taille : un quart plus grandes
+     autour du centre du verre (9, -111), le trait plus épais. */
+  .batiment .lunettes {
+    transform-box: view-box;
+    transform-origin: 9px -111px;
+    transform: scale(1.25);
+  }
+  .batiment .lunettes circle { stroke-width: 2.4px; }
+  .batiment .lunettes line { stroke-width: 2px; }
 
   /* Sans JavaScript, le bâtiment fini : l'équipe est sur le toit. */
   .batiment .crochet,
@@ -230,10 +245,10 @@ const crochet = (haut: number, x0: number, x1: number) =>
       animation: bt-remonte calc(0.7s * var(--vite, 1)) ease-in both;
     }
     .batiment.vivant .fenetre--lumiere { transition: fill 300ms ease-out; }
-    .batiment.vivant.tape .ouvrier--bas .marteau-tour {
+    .batiment.vivant.tape .ouvrier--bas .bras-tour {
       animation: bt-frappe-bas calc(0.5s * var(--vite, 1)) ease-in-out 3;
     }
-    .batiment.vivant.tape .ouvrier--haut .marteau-tour {
+    .batiment.vivant.tape .ouvrier--haut .bras-tour {
       animation: bt-frappe-haut calc(0.5s * var(--vite, 1)) ease-in-out 3;
     }
     .batiment.vivant.fini .equipe-sol { animation: bt-part 300ms ease-in both; }
@@ -262,15 +277,17 @@ const crochet = (haut: number, x0: number, x1: number) =>
     95% { opacity: 1; }
     100% { transform: translateY(var(--remonte)); opacity: 0; }
   }
-  /* Un coup par demi-période : marteau-2 se lève (de 25° à -100°) puis
-     frappe ; marteau-1, levé, frappe puis se relève. */
+  /* Un coup par période, le bras et le marteau d'un bloc, autour de
+     l'épaule : frappe-2, au coup, lève le bras de 70° puis l'abat en
+     accélérant ; frappe-1, levé, l'abat d'abord, puis le relève. Les deux
+     coups tombent en alternance. */
   @keyframes bt-frappe-bas {
-    0%, 100% { transform: rotate(0deg); animation-timing-function: ease-out; }
-    60% { transform: rotate(-125deg); animation-timing-function: ease-in; }
+    0%, 100% { transform: rotate(0deg); animation-timing-function: ease-in-out; }
+    60% { transform: rotate(-70deg); animation-timing-function: ease-in; }
   }
   @keyframes bt-frappe-haut {
     0%, 100% { transform: rotate(0deg); animation-timing-function: ease-in; }
-    40% { transform: rotate(125deg); animation-timing-function: ease-out; }
+    40% { transform: rotate(70deg); animation-timing-function: ease-in-out; }
   }
   @keyframes bt-part {
     from { opacity: 1; }
