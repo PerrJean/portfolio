@@ -35,8 +35,8 @@ jobs:
       # dans deux secrets. Sans eux, le vérificateur refuse, et rien ne part.
       - name: Listes de confidentialité
         env:
-          INTERDITS: ${{ secrets.PORTFOLIO_INTERDITS }}
-          EMPLOYEUR: ${{ secrets.PORTFOLIO_EMPLOYEUR }}
+          INTERDITS: ${{ secrets.INTERDITS }}
+          EMPLOYEUR: ${{ secrets.EMPLOYEUR }}
         run: |
           mkdir -p ~/.portfolio
           printf '%s\n' "$INTERDITS" > ~/.portfolio/interdits.txt

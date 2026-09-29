@@ -8,7 +8,7 @@
 `main` et sur chaque pull request. `deploy.yml` : un job `tester` précède la
 construction, rien n'est publié si un test échoue. `dependabot.yml` : npm et
 actions, chaque semaine, en pull request. Les listes de termes interdits
-passent par deux secrets (`PORTFOLIO_INTERDITS`, `PORTFOLIO_EMPLOYEUR`), à
+passent par deux secrets (`INTERDITS`, `EMPLOYEUR`, noms choisis par Jean), à
 créer par Jean côté **Actions** et côté **Dependabot** (les pull requests de
 Dependabot ne voient pas les secrets Actions). Sans eux, les tests
 échouent : c'est voulu.
