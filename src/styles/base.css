@@ -148,18 +148,48 @@ svg {
   line-height: 1.5;
 }
 
-/* Les squelettes des pages « À propos » (chantier 2b), en attendant le
-   contenu. Les pages projet ont leur gabarit : src/layouts/Projet.astro. */
+/* Les pages « À propos » (registre/0037) : le texte, et le personnage de
+   Jean à la place d'une photo (Portrait.astro), au-dessus du titre sur
+   mobile, à droite du texte à partir de 760 px. Les pages projet ont leur
+   gabarit : src/layouts/Projet.astro. */
 .fiche {
   padding-block: clamp(3rem, 8vw, 6rem) 2rem;
+}
+
+.fiche__portrait {
+  margin-bottom: 1.5rem;
 }
 
 .fiche h1 {
   max-width: 22ch;
 }
 
-.fiche__fait {
+.fiche__texte {
   max-width: 40rem;
+  font-size: 1.1875rem;
+}
+
+.fiche__texte p {
+  margin-top: 1rem;
+  line-height: 1.65;
+}
+
+.fiche__texte p:first-child {
   margin-top: 1.5rem;
-  font-size: 1.25rem;
+}
+
+@media (min-width: 760px) {
+  .fiche {
+    display: grid;
+    grid-template-columns: minmax(0, 40rem) auto;
+    column-gap: clamp(3rem, 8vw, 7rem);
+    align-items: start;
+  }
+
+  .fiche__portrait {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin: 0;
+    padding-top: 0.5rem;
+  }
 }

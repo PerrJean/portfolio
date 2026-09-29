@@ -38,8 +38,14 @@ const { page, langue } = Astro.props;
     font-weight: 700;
   }
 
+  /* Cible d'au moins 24 × 24 px (WCAG 2.2, critère 2.5.8). */
   a {
-    padding: 0.25rem 0.125rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    padding: 0.25rem 0.25rem;
     text-decoration: none;
   }
 

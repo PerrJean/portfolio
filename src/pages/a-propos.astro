@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import Portrait from '../components/Portrait.astro';
+import { LINKEDIN } from '../i18n/textes';
 ---
 
 <Base
@@ -9,7 +11,28 @@ import Base from '../layouts/Base.astro';
   description="Le parcours de Jean Perrier et sa manière de travailler."
 >
   <article class="conteneur fiche">
+    <div class="fiche__portrait"><Portrait /></div>
     <h1>À propos</h1>
-    <p class="fiche__fait">[À COMPLÉTER]</p>
+    <div class="fiche__texte">
+      <p>
+        Je suis Head of Product chez GlobalExam, une scale-up SaaS B2B d'apprentissage des langues en ligne, depuis
+        2024. J'y étais auparavant Product Manager et Product Owner Data, de 2022 à 2024.
+      </p>
+      <p>
+        J'y mène une équipe de Product Managers et de Product Designers, de la discovery à la mise en production, et je
+        pilote l'équipe qui transforme les retours des utilisateurs en corrections priorisées.
+      </p>
+      <p>
+        Avant, j'ai construit des services publics numériques&nbsp;: à la DINUM, l'Observatoire de la qualité des
+        démarches en ligne et «&nbsp;Je donne mon avis&nbsp;», puis à la DITP, Services publics +.
+      </p>
+      <p>
+        Je bâtis sur des hypothèses&nbsp;: j'écoute, je teste, puis je dose l'effort. L'IA fait partie de mes outils
+        quand elle apporte quelque chose de concret&nbsp;: classer des retours, auditer un contenu, prototyper une
+        fonctionnalité.
+      </p>
+      <p>Formé à Sciences Po Paris (master Affaires publiques). Anglais courant.</p>
+      <p>Pour échanger&nbsp;: <a href={LINKEDIN}>LinkedIn</a>.</p>
+    </div>
   </article>
 </Base>

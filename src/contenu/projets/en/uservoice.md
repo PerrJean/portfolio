@@ -1,48 +1,56 @@
 ---
-titre: UserVoice
-fait: 1 in 3 pieces of feedback is about the content.
+titre: "UserVoice: listening to learners every Monday"
+fait: "1 in 3 pieces of feedback is about the content."
 synthese:
-  probleme: "[TO BE COMPLETED] The problem, in one sentence: what we did not know about user feedback."
-  action: "[TO BE COMPLETED] What I did, in one sentence: listening to feedback at scale, alone, end to end."
-  resultat: "[TO BE COMPLETED] The result, in one sentence: what the platform now knows, and what it did with it."
+  probleme: "An EdTech platform receives thousands of pieces of learner feedback a year, spread across four sources and tagged by hand weeks after the fact."
+  action: "I brought them together in a single table, where AI classifies each piece of feedback with a confidence score and leaves the doubtful cases to human review, for a summary that takes five minutes to read every Monday."
+  resultat: "We thought it was mostly bugs; the data showed that one in three pieces of feedback is about the content, and the effort moved to its quality."
 plusLoin:
-  - "[TO BE COMPLETED] The method in detail: the sources, the sorting, what was automated."
-  - "[TO BE COMPLETED] The limits of the work, and what I would do differently."
+  - "What I set aside"
+  - "Double human categorization. Only the signature is entered by hand; the rest is derived from the dated data."
+  - "Fully automatic classification. People keep the doubtful cases."
+  - "Any writing to the source. We read it and never change it."
+  - "A report organized around statistical variations. It did not show whether a topic was being handled, so the Monday summary starts from the handling status."
+  - "The pitfalls we paid for"
+  - "Very long identifiers, which spreadsheets corrupted by turning them into scientific notation."
+  - "Decimal commas in one of the sources."
+  - "A dashboard that stopped updating without anyone noticing."
 langue: en
 cle: uservoice
 ---
 
 ## The starting point
 
-[TO BE COMPLETED] Where things stood: what we heard from users, through which
-channels, and what was missing to turn it into decisions.
+An EdTech platform receives thousands of pieces of learner feedback a year. They come from four sources: the NPS survey, the placement test, the end of each course, and an open feedback form available on every page of the site.
 
-[TO BE COMPLETED] The question the project had to settle, in one sentence.
+When I launched UserVoice in September 2026, this feedback was tagged by hand in a spreadsheet, in batches, weeks after it came in. The same topics kept coming back, and nobody knew whether they had already been handled.
 
-## Listening at scale
+The unspoken assumption was that our problems were mostly bugs.
 
-[TO BE COMPLETED] How the feedback was gathered and read: the sources, the
-sorting, what was left to the machine and what stayed human.
+## Listening every Monday
 
-[TO BE COMPLETED] The choices that mattered, and the ones we set aside.
+I started from a question I wanted to be able to answer every Monday, in five minutes. Which topics come up most? Are they being handled? Has a new topic appeared without anyone noticing?
+
+Answering it meant reading the four sources together. I brought them into a single table, where each piece of feedback keeps its dimensions frozen as they were when it was submitted. Months later, it is read with the context of the day it was written.
+
+Each piece of feedback is then tagged along two axes. If it reports a bug, it gets one of 35 signatures. If not, it gets one or more of 29 satisfaction themes, since a single comment can mention several.
 
 ## What the data showed
 
-[TO BE COMPLETED] The main finding: 1 in 3 pieces of feedback is about the
-content. What that figure means, and what it does not say.
+One in three pieces of feedback left in the form available on every page is about the content (March to September 2026).
 
-[TO BE COMPLETED] The other lessons, as orders of magnitude.
+The NPS survey points the same way from another direction. Over two months in summer 2026, nearly one comment in five concerns content quality (explanations, exercise quality, translations), and half of those comments are criticisms or requests.
+
+Bugs are still tracked, signature by signature. But satisfaction depends first on the quality of the content and its explanations, so that is where there is the most to gain.
 
 ## What I built
 
-[TO BE COMPLETED] The dashboard: the visualisation layer, the intelligence
-layer, and who each one was designed for.
+I ran UserVoice on my own, using Claude Code to write the code.
 
-[TO BE COMPLETED] A screenshot, on synthetic data.
+AI classifies each piece of feedback and attaches a confidence score. Below a threshold, or when two answers are too close, the feedback goes to a human review queue. Each review adds to the examples given to the AI for the next runs, and mechanical rules take over on cases that have become obvious, such as empty answers or duplicates. The human review queue shrank by 87% in three days.
 
-## What it changed
+On top of the table, the dashboard has two layers: one shows what is changing, the other offers an explanation. The Monday summary sets the volume of each topic against its handling status. That is what answers the opening question.
 
-[TO BE COMPLETED] The decisions this work made possible, including the next
-one: acting on content quality.
+Every decision is logged in a register, and the code is checked by tests. Anyone who revisits a threshold can see why it was set.
 
-[TO BE COMPLETED] What is still running today.
+The data pointed to the content, and the second project in this portfolio, the content audit, starts from that finding.

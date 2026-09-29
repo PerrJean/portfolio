@@ -21,6 +21,12 @@ const { page, langue } = Astro.props;
 </footer>
 
 <style>
+  /* Cible d'au moins 24 px de haut (WCAG 2.2, critère 2.5.8). */
+  .pied a {
+    display: inline-block;
+    padding-block: 0.25rem;
+  }
+
   .pied {
     margin-top: 4rem;
     padding-block: 1.5rem;

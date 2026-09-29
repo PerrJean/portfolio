@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Portrait from '../../components/Portrait.astro';
+import { LINKEDIN } from '../../i18n/textes';
 ---
 
 <Base
@@ -9,7 +11,28 @@ import Base from '../../layouts/Base.astro';
   description="Jean Perrier's background and way of working."
 >
   <article class="conteneur fiche">
+    <div class="fiche__portrait"><Portrait /></div>
     <h1>About</h1>
-    <p class="fiche__fait">[TO BE COMPLETED]</p>
+    <div class="fiche__texte">
+      <p>
+        I have been Head of Product at GlobalExam, a B2B SaaS scale-up in online language learning, since 2024. I was
+        previously a Product Manager and Data Product Owner there, from 2022 to 2024.
+      </p>
+      <p>
+        I lead a team of Product Managers and Product Designers, from discovery to release, and I run the team
+        that turns user feedback into prioritized fixes.
+      </p>
+      <p>
+        Before that, I built digital public services for the French government: at DINUM, the Observatoire de la
+        qualité des démarches en ligne, which tracks the quality of online public services, and “Je donne mon avis”;
+        then at DITP, Services publics +.
+      </p>
+      <p>
+        I build on hypotheses: I listen, I test, then I size the effort. AI is one of my tools when it brings something
+        concrete: sorting feedback, auditing content, prototyping a feature.
+      </p>
+      <p>Educated at Sciences Po Paris (Master's in Public Affairs). Fluent in English.</p>
+      <p>Get in touch on <a href={LINKEDIN}>LinkedIn</a>.</p>
+    </div>
   </article>
 </Base>

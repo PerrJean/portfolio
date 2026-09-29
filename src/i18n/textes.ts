@@ -36,7 +36,7 @@ export const UI: Record<
     projets: 'Projects',
     aPropos: 'About',
     langue: 'Language',
-    locale: 'en_GB',
+    locale: 'en_US',
     plusLoin: 'Going further',
     projetSuivant: 'Next project:',
   },
