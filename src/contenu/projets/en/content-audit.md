@@ -1,5 +1,6 @@
 ---
 titre: "Content audit: checking every question before learners see it"
+date: "2026-09"
 fait: "In the first course audited, 1 question in 20 stopped learners from answering. All of them were fixed."
 synthese:
   probleme: "According to their feedback, the satisfaction of learners on an EdTech platform depends first on the quality of the content."

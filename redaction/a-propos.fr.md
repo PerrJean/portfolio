@@ -14,7 +14,7 @@ Avant, j'ai construit des services publics numériques : à la DINUM,
 l'Observatoire de la qualité des démarches en ligne et « Je donne mon
 avis », puis à la DITP, Services publics +.
 
-Je bâtis sur des hypothèses : j'écoute, je teste, puis je dose l'effort.
+Je bâtis sur des hypothèses : j'écoute, je teste, puis j'investis là où ça compte.
 L'IA fait partie de mes outils quand elle apporte quelque chose de concret :
 classer des retours, auditer un contenu, prototyper une fonctionnalité.
 

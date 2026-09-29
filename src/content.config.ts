@@ -18,6 +18,8 @@ const projets = defineCollection({
   schema: z
     .object({
       titre: phrase,
+      /** Le mois du projet, AAAA-MM, affiché sous le titre (registre/0045). */
+      date: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, 'date attendue au format AAAA-MM'),
       /** Le fait clé, affiché en grand sous le titre. */
       fait: phrase,
       /** La synthèse recruteur : trois phrases. */

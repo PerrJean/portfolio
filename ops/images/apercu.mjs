@@ -269,7 +269,7 @@ async function apercu(polices) {
   const nom = await texte('Jean Perrier', {
     fontfile: polices[800], famille: 'Atkinson Hyperlegible Next ExtraBold', taille: 44, couleur: C.encre, largeur: colonne,
   });
-  const phrase = await texte("Je bâtis sur des hypothèses\u00a0: j'écoute, je teste, puis je dose l'effort.", {
+  const phrase = await texte("Je bâtis sur des hypothèses\u00a0: j'écoute, je teste, puis j'investis là où ça compte.", {
     fontfile: polices[800], famille: 'Atkinson Hyperlegible Next ExtraBold', taille: 60, couleur: C.encre, largeur: colonne, interligne: 6,
   });
   const role = await texte('Head of Product · IA appliquée · Data', {
@@ -309,8 +309,10 @@ const COUV = {
 };
 const COUVERTURE = join(RACINE, 'ops/images/couverture');
 const PHRASES = {
-  fr: "Je bâtis sur des hypothèses : j'écoute, je teste, puis je dose l'effort.",
-  en: 'I build on hypotheses: I listen, I test, then I size the effort.',
+  // Trop longue pour deux lignes à 38 px : trois lignes, coupées à la main
+  // pour ne pas laisser « compte. » seul sur la dernière.
+  fr: "Je bâtis sur des hypothèses :\nj'écoute, je teste, puis\nj'investis là où ça compte.",
+  en: 'I build on hypotheses: I listen, I test, then I invest where it counts.',
 };
 
 function fondCouverture(f) {

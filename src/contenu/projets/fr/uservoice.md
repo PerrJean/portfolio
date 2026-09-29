@@ -1,5 +1,6 @@
 ---
 titre: "UserVoice : écouter les apprenants chaque lundi"
+date: "2026-09"
 fait: "1 retour sur 3 porte sur le contenu."
 synthese:
   probleme: "Une plateforme EdTech reçoit des milliers de retours d'apprenants par an, répartis entre quatre sources et qualifiés à la main avec des semaines de retard."

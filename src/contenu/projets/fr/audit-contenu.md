@@ -1,5 +1,6 @@
 ---
 titre: "Audit contenu : vérifier chaque question avant l'apprenant"
+date: "2026-09"
 fait: "Sur le premier parcours audité, 1 question sur 20 empêchait l'apprenant de répondre. Toutes ont été corrigées."
 synthese:
   probleme: "D'après leurs retours, la satisfaction des apprenants d'une plateforme EdTech se joue d'abord sur la qualité du contenu."

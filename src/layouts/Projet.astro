@@ -39,6 +39,14 @@ if (etages.length === 0)
 // Le projet suivant : l'autre projet de la paire (le suivant, en boucle).
 const paire = PROJETS.filter((p) => p.groupe === 'paire');
 const suivant = paire[(paire.findIndex((p) => p.page === cle) + 1) % paire.length];
+
+// La date sous le titre (registre/0045) : le mois en toutes lettres, dans la
+// langue de la page, première lettre en capitale (« Septembre 2026 »).
+const [annee, mois] = data.date.split('-').map(Number);
+const moisAnnee = new Intl.DateTimeFormat(langue, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
+  new Date(Date.UTC(annee, mois - 1, 1)),
+);
+const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.slice(1);
 ---
 
 <Base page={cle} langue={langue} titre={data.titre} description={description}>
@@ -47,6 +55,7 @@ const suivant = paire[(paire.findIndex((p) => p.page === cle) + 1) % paire.lengt
     <article class="projet__article">
       <header class="synthese">
         <h1>{data.titre}</h1>
+        <p class="synthese__date"><time datetime={data.date}>{dateLisible}</time></p>
         <p class="synthese__fait">{data.fait}</p>
         <div class="synthese__phrases">
           <p>{data.synthese.probleme}</p>
@@ -95,6 +104,14 @@ const suivant = paire[(paire.findIndex((p) => p.page === cle) + 1) % paire.lengt
 
   .synthese h1 {
     max-width: 22ch;
+  }
+
+  /* L'ardoise ne passe le contraste qu'en grand texte : 19 px en 700. */
+  .synthese__date {
+    margin-top: 0.5rem;
+    color: var(--ardoise);
+    font-size: 1.1875rem;
+    font-weight: 700;
   }
 
   .synthese__fait {

@@ -1,5 +1,6 @@
 ---
 titre: "UserVoice: listening to learners every Monday"
+date: "2026-09"
 fait: "1 in 3 pieces of feedback is about the content."
 synthese:
   probleme: "An EdTech platform receives thousands of pieces of learner feedback a year, spread across four sources and tagged by hand weeks after the fact."
