@@ -1,0 +1,317 @@
+---
+// La scène d'une parcelle de l'accueil : ligne de sol, tréteau, dalle,
+// Jean et trois coéquipiers. Deux animations, en échanges de poses figées
+// et en déplacements sur la ligne de sol (registre/0022) :
+//  1. l'impatience (1,2 s), classe `joue`, au chargement et à chaque entrée
+//     à l'écran ;
+//  2. « on regarde le plan » (2 s), au survol ou au focus de la `.parcelle`
+//     qui contient la scène, ou classe `regarde` sur écran tactile.
+// Géométrie reprise des vignettes de la bibliothèque
+// (.canevas/project/B1-personnages.dc.html, script 1).
+import Personnage from './Personnage.astro';
+import { OBJETS } from './poses';
+---
+
+<svg
+  class="scene joue"
+  viewBox="0 -140 426.667 160"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+>
+  <rect class="fd" x="245" y="0" width="175" height="12" />
+  <line class="se" x1="0" y1="0" x2="426.667" y2="0" stroke-width="1.5" />
+
+  <!-- La poutre posée sur la dalle (séquence 2, image finale). -->
+  <g class="poutre" transform="translate(312 0)">
+    <g class="poutre-vol" set:html={OBJETS.poutre} />
+  </g>
+
+  <!-- Coéquipier A : sautille ; va derrière le tréteau (272 → 128). -->
+  <g transform="translate(272 0)">
+    <g class="a-pas">
+      <Personnage pose="debout" miroir class="a-debout" />
+      <Personnage pose="sautillement" miroir class="a-saut" />
+      <Personnage pose="marche-1" miroir class="a-m1" />
+      <Personnage pose="marche-2" miroir class="a-m2" />
+      <Personnage pose="penche" class="a-penche" />
+    </g>
+  </g>
+
+  <g transform="translate(150 0)" set:html={OBJETS.treteau} />
+
+  <!-- Le plan déroulé sur le tréteau, depuis la gauche (x = 100). -->
+  <g transform="translate(100 0)">
+    <g class="plan">
+      <polygon
+        class="fi sa"
+        points="0,-58 100,-58 106,-66 6,-66"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+      <line class="sa" x1="5.5" y1="-60" x2="83.7" y2="-60" stroke-width="1" stroke-linecap="round" />
+      <line class="sa" x1="7" y1="-62" x2="66.8" y2="-62" stroke-width="1" stroke-linecap="round" />
+      <line class="sa" x1="8.5" y1="-64" x2="49.9" y2="-64" stroke-width="1" stroke-linecap="round" />
+    </g>
+    <g class="rouleau">
+      <circle class="fi sa" cx="3" cy="-63" r="5" stroke-width="1.8" />
+      <circle class="sa" cx="3" cy="-63" r="2" fill="none" stroke-width="1" />
+    </g>
+  </g>
+
+  <circle class="point fa" cx="188" cy="-62" r="5" />
+
+  <!-- Jean : plan sous le bras, puis bras tendus, puis penché (55 → 66). -->
+  <g transform="translate(55 0)">
+    <g class="j-pas">
+      <Personnage pose="plan-sous-bras" jean class="j-sous" />
+      <Personnage pose="bras-tendus" jean class="j-tendus" />
+      <Personnage pose="penche" jean class="j-penche" />
+    </g>
+  </g>
+
+  <!-- Coéquipier B : fait tourner son marteau ; vient en face (308 → 236). -->
+  <g transform="translate(308 0)">
+    <g class="b-pas">
+      <Personnage pose="marteau-2" miroir class="b-marteau" />
+      <Personnage pose="marche-1" miroir class="b-m1" />
+      <Personnage pose="marche-2" miroir class="b-m2" />
+      <Personnage pose="penche" miroir class="b-penche" />
+    </g>
+  </g>
+
+  <!-- Le porteur : poutre sur l'épaule, qu'il pose sur la dalle (368 → 385). -->
+  <g transform="translate(368 0)">
+    <g class="c-pas">
+      <Personnage pose="poutre-epaule" miroir class="c-poutre" />
+      <Personnage pose="sautillement" miroir class="c-saut" />
+    </g>
+  </g>
+</svg>
+
+<style is:global>
+  .scene {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .scene .fe { fill: var(--encre, #2A1F1A); }
+  .scene .se { stroke: var(--encre, #2A1F1A); }
+  .scene .fi { fill: var(--ivoire, #FEFAF2); }
+  .scene .si { stroke: var(--ivoire, #FEFAF2); }
+  .scene .sa { stroke: var(--ardoise, #5E7488); }
+  .scene .so { stroke: var(--orange, #B54E19); }
+  .scene .fa { fill: var(--ambre, #F2A33A); }
+  .scene .fd { fill: var(--dalle, #D9D4CC); }
+
+  /* Les groupes animés tournent ou glissent autour de leur origine locale
+     (le poignet pour le marteau, le bord gauche pour le plan). */
+  .scene .a-pas, .scene .b-pas, .scene .c-pas, .scene .j-pas,
+  .scene .plan, .scene .rouleau, .scene .poutre-vol, .scene .marteau-tour,
+  .scene .point {
+    transform-box: view-box;
+    transform-origin: 0 0;
+  }
+
+  /* Repos : une pose visible par personnage. */
+  .scene :is(.a-saut, .a-m1, .a-m2, .a-penche, .b-m1, .b-m2, .b-penche,
+    .j-tendus, .j-penche, .c-saut, .poutre, .rouleau, .point) {
+    opacity: 0;
+  }
+  .scene .plan { transform: scaleX(0); }
+
+  /* 1. L'impatience : A sautille deux fois, puis B fait un tour de marteau. */
+  @media (prefers-reduced-motion: no-preference) {
+    .scene.joue .a-debout { animation: sc-i-debout 1.2s step-end both; }
+    .scene.joue .a-saut { animation: sc-i-saut 1.2s step-end both; }
+    .scene.joue .b-marteau .marteau-tour {
+      animation: sc-i-tour 1.2s ease-in-out both;
+    }
+  }
+
+  /* 2. On regarde le plan. Plus spécifique que l'impatience : il l'emporte. */
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene :is(.a-debout, .b-marteau, .j-tendus) {
+    animation: sc-avant-27 2s step-end both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .j-sous {
+    opacity: 0;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .j-penche {
+    animation: sc-apres-27 2s step-end both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .j-pas {
+    animation: sc-j-pas 2s ease-out both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .plan {
+    animation: sc-plan 2s ease-out both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .rouleau {
+    animation: sc-rouleau 2s ease-out both, sc-rouleau-vu 2s step-end both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-saut {
+    animation: none;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-m1 {
+    animation: sc-a-m1 2s step-end both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-m2 {
+    animation: sc-a-m2 2s step-end both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .a-pas {
+    animation: sc-a-pas 2s linear both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-m1 {
+    animation: sc-b-m1 2s step-end both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-m2 {
+    animation: sc-b-m2 2s step-end both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-penche {
+    animation: sc-apres-50 2s step-end both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .b-pas {
+    animation: sc-b-pas 2s linear both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-poutre {
+    animation: sc-avant-72 2s step-end both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene :is(.c-saut, .a-penche, .poutre) {
+    animation: sc-apres-72 2s step-end both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .c-pas {
+    animation: sc-c-pas 2s ease-in-out both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .poutre-vol {
+    animation: sc-poutre 2s ease-in-out both;
+  }
+  :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene .point {
+    animation: sc-point 2s ease-out both;
+  }
+
+  /* Sans animation : rien ne bouge, le survol mène droit à l'image finale. */
+  @media (prefers-reduced-motion: reduce) {
+    .scene, .scene * {
+      animation-duration: 0s !important;
+      animation-delay: 0s !important;
+    }
+  }
+
+  /* Impatience, 1,2 s. */
+  @keyframes sc-i-debout {
+    0% { opacity: 0; } 12.5% { opacity: 1; } 25% { opacity: 0; } 37.5%, 100% { opacity: 1; }
+  }
+  @keyframes sc-i-saut {
+    0% { opacity: 1; } 12.5% { opacity: 0; } 25% { opacity: 1; } 37.5%, 100% { opacity: 0; }
+  }
+  @keyframes sc-i-tour {
+    0%, 41.7% { transform: rotate(0deg); }
+    95%, 100% { transform: rotate(360deg); }
+  }
+
+  /* On regarde le plan, 2 s : 0,55 s = 27,5 % ; 1 s = 50 % ; 1,45 s = 72,5 %. */
+  @keyframes sc-avant-27 { 0% { opacity: 1; } 27.5%, 100% { opacity: 0; } }
+  @keyframes sc-apres-27 { 0% { opacity: 0; } 27.5%, 100% { opacity: 1; } }
+  @keyframes sc-apres-50 { 0% { opacity: 0; } 50%, 100% { opacity: 1; } }
+  @keyframes sc-avant-72 { 0% { opacity: 1; } 72.5%, 100% { opacity: 0; } }
+  @keyframes sc-apres-72 { 0% { opacity: 0; } 72.5%, 100% { opacity: 1; } }
+  @keyframes sc-j-pas {
+    0% { transform: translateX(0); }
+    7.5%, 27.4% { transform: translateX(13px); }
+    27.5%, 100% { transform: translateX(11px); }
+  }
+  @keyframes sc-plan {
+    0%, 2.5% { transform: scaleX(0); }
+    27.5%, 100% { transform: scaleX(1); }
+  }
+  @keyframes sc-rouleau {
+    0%, 2.5% { transform: translateX(0); }
+    27.5%, 100% { transform: translateX(100px); }
+  }
+  @keyframes sc-rouleau-vu { 0% { opacity: 0; } 2.5% { opacity: 1; } 27.5%, 100% { opacity: 0; } }
+  /* Marche : les deux temps alternent toutes les 0,15 s (7,5 %). */
+  @keyframes sc-a-m1 {
+    0% { opacity: 0; } 27.5% { opacity: 1; } 35% { opacity: 0; } 42.5% { opacity: 1; }
+    50% { opacity: 0; } 57.5% { opacity: 1; } 65%, 100% { opacity: 0; }
+  }
+  @keyframes sc-a-m2 {
+    0% { opacity: 0; } 35% { opacity: 1; } 42.5% { opacity: 0; } 50% { opacity: 1; }
+    57.5% { opacity: 0; } 65% { opacity: 1; } 72.5%, 100% { opacity: 0; }
+  }
+  @keyframes sc-b-m1 {
+    0% { opacity: 0; } 27.5% { opacity: 1; } 35% { opacity: 0; } 42.5% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+  @keyframes sc-b-m2 {
+    0% { opacity: 0; } 35% { opacity: 1; } 42.5%, 100% { opacity: 0; }
+  }
+  @keyframes sc-a-pas {
+    0%, 27.5% { transform: translateX(0); }
+    72.5%, 100% { transform: translateX(-144px); }
+  }
+  @keyframes sc-b-pas {
+    0%, 27.5% { transform: translateX(0); }
+    50%, 100% { transform: translateX(-72px); }
+  }
+  @keyframes sc-c-pas {
+    0%, 72.5% { transform: translateX(0); }
+    80%, 100% { transform: translateX(17px); }
+  }
+  /* La poutre part de l'épaule du porteur et descend sur la dalle. */
+  @keyframes sc-poutre {
+    0%, 72.5% { transform: translate(60px, -97px); }
+    87.5%, 100% { transform: translate(0, 0); }
+  }
+  @keyframes sc-point {
+    0%, 87.5% { opacity: 0; transform: translateY(-10px); }
+    97.5%, 100% { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  // Le strict nécessaire : rejouer l'impatience à chaque entrée à l'écran,
+  // et, sur écran tactile, jouer une fois « on regarde le plan » après elle.
+  const DUREE = 1300;
+  const tactile = matchMedia('(hover: none)').matches;
+
+  document.querySelectorAll<SVGSVGElement>('svg.scene').forEach((scene) => {
+    const parcelle = scene.closest('.parcelle');
+    let fin = performance.now() + DUREE;
+    let minuteur = setTimeout(() => scene.classList.remove('joue'), DUREE);
+    let dedans = true;
+    let vu = false;
+
+    const jouer = () => {
+      scene.classList.remove('joue');
+      void scene.getBoundingClientRect();
+      scene.classList.add('joue');
+      clearTimeout(minuteur);
+      minuteur = setTimeout(() => scene.classList.remove('joue'), DUREE);
+      fin = performance.now() + DUREE;
+    };
+
+    new IntersectionObserver(
+      (entrees) => {
+        for (const e of entrees) {
+          if (!e.isIntersecting) {
+            dedans = false;
+            continue;
+          }
+          if (!dedans) {
+            dedans = true;
+            if (!parcelle?.classList.contains('regarde')) jouer();
+          }
+          const entiere =
+            e.intersectionRatio >= 0.99 ||
+            e.intersectionRect.height >= (e.rootBounds?.height ?? Infinity) - 1;
+          if (tactile && parcelle && !vu && entiere) {
+            vu = true;
+            const attente = Math.max(0, fin - performance.now());
+            setTimeout(() => parcelle.classList.add('regarde'), attente);
+          }
+        }
+      },
+      { threshold: [0, 1] }
+    ).observe(parcelle ?? scene);
+  });
+</script>

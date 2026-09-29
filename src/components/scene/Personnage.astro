@@ -1,0 +1,20 @@
+---
+// Un personnage dans une pose figée de la bibliothèque (poses.ts).
+// Profil tourné vers la droite, pieds à l'origine ; `miroir` le tourne
+// vers la gauche, `jean` ajoute les lunettes orange.
+// Les couleurs passent par les classes fe, se, fi, si, sa, so, définies
+// dans Scene.astro.
+import { POSES, LUNETTES, type Pose } from './poses';
+
+interface Props {
+  pose: Pose;
+  jean?: boolean;
+  miroir?: boolean;
+  class?: string;
+}
+
+const { pose, jean = false, miroir = false, class: classe } = Astro.props;
+const dessin = POSES[pose].replace('{L}', jean ? LUNETTES : '');
+---
+
+<g class={classe} transform={miroir ? 'scale(-1 1)' : undefined} set:html={dessin} />
