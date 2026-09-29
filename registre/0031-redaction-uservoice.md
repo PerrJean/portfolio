@@ -21,3 +21,7 @@ sur 3 » mesuré de mars à septembre 2026 ; supprimés : le paragraphe de
 l'alerte de fraîcheur, la phrase « L'hypothèse de départ parlait de
 bugs… », et le trou sur l'effet du bilan du lundi. Reste à trancher : la
 section « Ce que ça a changé », réduite à une phrase.
+
+**Tranché par Jean (« ton choix », 2026-09-29)** : « Ce que ça a changé »
+fusionne dans la fin de « Ce que j'ai construit » par une phrase de passage
+vers l'audit ; quatre H2. « D'où l'alerte de fraîcheur » retiré des pièges.

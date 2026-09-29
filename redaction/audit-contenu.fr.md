@@ -8,13 +8,13 @@ synthese: "Les retours des apprenants d'une plateforme EdTech montraient que leu
 
 Le premier projet de ce portfolio, UserVoice, a rassemblé ce que les apprenants d'une plateforme EdTech disent d'elle. Dans le formulaire du site, 1 retour sur 3 porte sur le contenu. La satisfaction se joue donc d'abord là.
 
-Nous avons porté l'effort sur le contenu lui-même, question par question. J'ai mené ce chantier avec une learning designer ([À COMPLÉTER : son rôle]).
+Nous avons porté l'effort sur le contenu lui-même, question par question. J'ai mené ce chantier avec une learning designer. Elle a validé la grille d'audit, défini les règles d'écriture des contenus (sauts de ligne, règles éditoriales) et fait la recette des échantillons.
 
 Le périmètre couvre six parcours de préparation à des certifications de langue. Nous avons commencé par le plus ancien.
 
 ## La méthode
 
-Chaque question passe une grille de six critères. Deux portent sur la réponse attendue, la clé : est-elle juste, est-elle la seule défendable ? Les quatre autres vérifient la fidélité à la source, la qualité de l'explication, la langue et la cohérence interne de la question.
+Chaque question passe une grille de six critères, que j'ai conçue et que la learning designer a validée. Deux portent sur la réponse attendue, la clé : est-elle juste, est-elle la seule défendable ? Les quatre autres vérifient la fidélité à la source, la qualité de l'explication, la langue et la cohérence interne de la question.
 
 La grille aboutit à un verdict, parmi quatre : bloquant, majeur, mineur, ou rien à corriger. Une question est bloquante quand l'apprenant ne peut pas y répondre, par exemple parce que la clé est fausse ou que deux réponses se défendent autant l'une que l'autre.
 
@@ -57,9 +57,9 @@ Chaque question est lue sur six critères.
 - **Cohérence interne.** Les éléments de la question ne se contredisent pas.
 - **Unicité de la réponse.** La clé est la seule réponse défendable.
 
-Le verdict va de bloquant à rien à corriger, en passant par majeur et mineur. [À COMPLÉTER : ce qui sépare un défaut majeur d'un défaut mineur.]
+Le verdict va de bloquant à rien à corriger, en passant par majeur et mineur. Une question est bloquante si sa clé est fausse, ou si une autre réponse se défend aussi bien. Elle est majeure si elle s'écarte de sa source, ou si son explication n'aide pas l'apprenant. Elle est mineure pour une faute de langue, ou une explication juste mais perfectible. Un critère compte en défaut seulement s'il a été vérifié : ce qu'on n'a pas pu mesurer ne devient pas un reproche.
 
-Les contrôles automatiques portent sur tout le corpus. Ils appliquent des règles vérifiables, sans jugement de modèle. [À COMPLÉTER : un ou deux exemples de règles contrôlées.]
+Les contrôles automatiques portent sur tout le corpus. Ils appliquent des règles vérifiables, sans jugement de modèle. Par exemple : l'explication parle-t-elle du même audio que la question, la mise en forme du contenu est-elle intacte, le texte est-il dans la bonne langue ?
 
 ### Ce que disaient les retours
 

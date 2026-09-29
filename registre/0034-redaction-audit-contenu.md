@@ -19,3 +19,11 @@ joint, confidentialité vérifiée. Deux trous remplis par la session depuis
 exemples de contrôles). Restent pour Jean : le rôle de la learning designer,
 qui a conçu la grille, qui relit les lots. Survol à 0,9 s vérifié dans le
 navigateur (durée des animations : 900 ms).
+
+**Complété le 2026-09-29.** Rôle de la learning designer (Jean) : elle a
+validé la grille d'audit, défini les règles d'écriture des contenus (sauts de
+ligne, règles éditoriales) et fait la recette des échantillons ; la grille a
+été conçue par Jean. Les sévérités et les exemples de contrôles, annoncés
+comme remplis plus tôt, **ne l'étaient pas** (espace insécable dans le
+motif de remplacement, erreur de la session) : faits cette fois, vérifiés
+(plus aucun `[À COMPLÉTER]` dans le corps).

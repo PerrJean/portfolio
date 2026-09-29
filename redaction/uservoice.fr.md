@@ -38,9 +38,7 @@ Au-dessus de la table, le tableau de bord a deux couches : l'une montre ce qui 
 
 Chaque décision est tracée dans un registre et le code est vérifié par des tests. On peut revenir sur un seuil en sachant pourquoi il a été fixé.
 
-## Ce que ça a changé
-
-Le second projet de ce portfolio, l'audit qualité du contenu, part de ce constat.
+La donnée a désigné le contenu : le second projet de ce portfolio, l'audit qualité du contenu, part de ce constat.
 
 ## Pour aller plus loin
 
@@ -55,7 +53,7 @@ Le second projet de ce portfolio, l'audit qualité du contenu, part de ce consta
 
 - Des identifiants très longs, que les tableurs corrompaient en les passant en notation scientifique.
 - Des virgules décimales dans l'une des sources.
-- Un tableau de bord figé sans que personne ne s'en aperçoive. D'où l'alerte de fraîcheur.
+- Un tableau de bord figé sans que personne ne s'en aperçoive.
 
 ---
 
