@@ -2,23 +2,23 @@
 titre: "Content audit: checking every question before learners see it"
 fait: "In the first course audited, 1 question in 20 stopped learners from answering. All of them were fixed."
 synthese:
-  probleme: "Feedback from learners on an EdTech platform showed that their satisfaction depends first on the quality of the content."
-  action: "With a learning designer, we ran every question in one course through a six-criterion grid, applied by supervised AI agents and backed up by automated checks."
-  resultat: "In that first course, 1 question in 20 stopped learners from answering, and all of them were fixed after human review."
+  probleme: "According to their feedback, the satisfaction of learners on an EdTech platform depends first on the quality of the content."
+  action: "With a learning designer, we put every question in one course through a six-criterion grid. Supervised AI agents applied it, and automated checks completed it."
+  resultat: "In that first course, 1 question in 20 stopped learners from answering, and all of them were fixed after review."
 plusLoin:
   - "The grid"
   - "Each question is read against six criteria."
-  - "Faithfulness to the source. The question stays true to its source."
-  - "Correct key. The expected answer is the right one."
-  - "Quality of the explanation. It is scored from 0 to 3."
-  - "Language."
+  - "Faithfulness to the source. The question does not stray from its source."
+  - "Correct answer. The expected answer is the right one."
+  - "Quality of the explanation. The question includes one, and it does more than repeat the answer. It is scored from 0 to 3."
+  - "Language. The text is correct."
   - "Internal consistency. The parts of the question do not contradict each other."
-  - "Single answer. The key is the only defensible answer."
-  - "The verdict runs from blocking to nothing to fix, through major and minor. A question is blocking if its key is wrong, or if another answer can be defended just as well. It is major if it strays from its source, or if its explanation does not help learners. It is minor for a language error, or for an explanation that is correct but could be better. A criterion counts as failed only if it was checked: what could not be measured does not count against the question."
-  - "The automated checks cover the whole corpus. They apply verifiable rules, with no model judgment. For example, does the explanation refer to the same audio as the question, is the content formatting intact, is the text in the right language?"
+  - "One defensible answer. No other answer can be defended as well as the correct one."
+  - "The verdict runs from blocking to nothing to fix, through major and minor. A question is blocking if its expected answer is wrong, or if another answer can be defended just as well. It is major if it strays from its source, or if its explanation does not help learners. It is minor for a language error, or for an explanation that is correct but could be better. A criterion counts as failed only if it was checked. What could not be measured does not count against the question."
+  - "The automated checks cover the whole corpus. They apply verifiable rules, with no model judgment. The explanation must refer to the same audio as the question. The content formatting must stay intact. The text must be in the right language."
   - "What the feedback said"
   - "Nearly one NPS comment in five concerns the quality of explanations, exercises or translations."
-  - "The doctrine, and what it cost"
+  - "The rules, and what they cost"
   - "The 25 rules are measured on this project: about 30 million tokens over four weeks, and 233 decision points logged in a register."
   - "Start version control with the first file. Two weeks of work had gone untracked."
   - "Cap module size. The three largest modules, between 5,400 and 7,600 lines, were also the most rewritten."
@@ -32,40 +32,44 @@ cle: auditContenu
 
 ## Why audit
 
-The first project in this portfolio, UserVoice, gathered what learners on an EdTech platform say about it. In the site's feedback form, 1 in 3 pieces of feedback is about the content. That is where satisfaction is decided first.
+The first project in this portfolio, UserVoice, gathered what learners on an EdTech platform say about it. In the site's feedback form, 1 in 3 pieces of feedback is about the content. So that is where their satisfaction is decided first.
 
-We put the effort into the content itself, question by question. I led this work with a learning designer. She validated the audit grid, set the writing rules for the content (line breaks, editorial rules) and ran acceptance testing on the samples.
+We put the effort into the content itself, question by question. I led this work with a learning designer. I designed the audit grid and the tooling that applies it. The learning designer validated the grid. She also set the writing rules for the content (line breaks, editorial rules) and ran acceptance testing on the samples.
 
 The scope covers six courses that prepare learners for language certifications. We started with the oldest one.
 
-## The method
+## What the grid checks
 
-Each question goes through a six-criterion grid, which I designed and the learning designer validated. Two criteria concern the expected answer, the key: is it correct, and is it the only defensible one? The other four check faithfulness to the source, the quality of the explanation, the language, and the internal consistency of the question.
+The grid has six criteria. Two concern the answer. The expected answer must be the correct one, and no other answer should be as defensible.
 
-The grid ends in one of four verdicts: blocking, major, minor, or nothing to fix. A question is blocking when learners cannot answer it, for example because the key is wrong or because two answers can be defended equally well.
+A third concerns the explanation. Every question must include one. That explanation must not be circular: it has to do more than repeat the answer.
 
-I built the tooling that applies the grid. AI agents, in this case Claude Code subagents, work through it question by question, on a subscription and without calls to a paid API. The model does not judge alone. Automated checks also sweep the whole corpus, with verifiable rules that do not depend on any model. A report then gives each question's status and the issues raised against it.
+The other three check that the question stays faithful to its source and that its language is correct. They also check that its parts do not contradict each other.
+
+Each question then gets one of four verdicts: blocking, major, minor, or nothing to fix. A question is blocking when learners cannot answer it. That happens when the expected answer is wrong, or when two answers can be defended equally well.
+
+AI agents apply the grid, question by question. They are Claude Code subagents, running on a subscription with no calls to a paid API. The model does not judge alone. Automated checks also run over the whole corpus, with verifiable rules that do not depend on any model. One of them, for example, checks that the explanation refers to the same audio as the question. A report then gives each question's status and the issues raised against it.
 
 ## What we found
 
-In the first course audited, 1 question in 20 was rated blocking. Each of them made learners fail through no fault of their own.
+In the first course audited, 1 question in 20 was rated blocking. Learners failed these questions through no fault of their own. Each fix gives them back the chance to answer correctly.
 
-Fixing them therefore has a direct effect for learners. Each blocking question we rework makes a correct answer possible again.
-
-This course is the oldest of the six. Its result does not predict the quality of the other five.
+This course is the oldest one. Its result does not predict the quality of the rest of the content on the site.
 
 ## Fixing without breaking
 
-The fixes we keep come out in batches ready for review, headed for the staging environment. The tool never writes directly to the database: it only produces the batches. A person reviews each batch before anything is applied.
+The fixes we keep come out in batches, ready for review, headed for the staging environment. The tool never writes directly to the database. It produces the batches, and a person reviews each one before it is applied.
 
-That choice leaves the decision with a person. An agent that gets a key wrong produces, at worst, a batch that is rejected at review. Nothing it proposes goes live unread.
+So the decision stays with a person. If an agent gets an answer wrong, the worst case is a batch rejected at review. No fix goes live without being read.
 
 All the blocking questions in the first course have been fixed. The fixes went into production the week of September 28, 2026.
 
 ## What I took from it
 
-This project gave me a doctrine of 25 rules for running a project with AI. I measured it on the project itself, in tokens used over four weeks and in decision points logged in a register.
+This project gave me 25 rules for running a project with AI. They are there to keep control over what an agent produces. I measured them on the project itself, in tokens used over four weeks and in decision points logged in a register.
 
-Some rules fit in one line and were expensive to learn before they were written down. Starting version control with the very first file is one of them, learned after two weeks of work went untracked.
+They change how the work gets done. Every workstream is costed before it starts, then again once it ends. The gap shows where the estimate was wrong. A rule that can be checked becomes a test. From then on it is enforced automatically, without relying on anyone's memory.
 
-The rule “the reviewer is not the author” sums up the audit. It applies to the fixes an agent proposes as much as to the code I write with it.
+The rule “the reviewer is not the author” sums up the audit. What one agent produces, another agent reviews, and a person decides. This rule applies to content fixes as much as to the code I write with AI.
+
+Some rules fit in one line and were expensive to learn before they were written down. Starting version control with the very first file is one of them. Two weeks of work had gone untracked.
