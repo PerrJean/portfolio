@@ -19,3 +19,8 @@ recopier les poses attribut par attribut coûte presque autant que les
 dessiner. Le gain de la bibliothèque viendra dans Astro, où une pose devient
 un composant lu une fois. **Signal d'arrêt** pour les esquisses animées sur
 canevas : passer à l'étape 2 (structure Astro) pour la suite.
+
+**Retouche de Jean (2026-09-29)** : l'impatience d'abord (0 à 0,4 s), puis
+Jean ouvre le plan (0,4 à 1,0 s) ; le point ambre se pose **sur le plan**.
+Faite à la main dans l'esquisse (minutages et position du point), sans
+sous-agent : coût négligeable.
