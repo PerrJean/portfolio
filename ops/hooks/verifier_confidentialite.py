@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 LISTES = Path.home() / ".portfolio"
-EXEMPTES = ("COMMANDEMENTS.md", "registre/", "ops/hooks/")
+EXEMPTES = ("COMMANDEMENTS.md", "ops/hooks/")
 PAGES_A_PROPOS = ("a-propos", "about")
 
 

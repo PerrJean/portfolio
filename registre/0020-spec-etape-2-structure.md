@@ -61,12 +61,16 @@ Les tests tournent dans le hook de pre-commit.
 Estimations recalées sur les dépassements de `0017` et `0019` : une scène
 animée ne s'estime plus sous 100 k.
 
-## Questions ouvertes pour le go
+## Réponses de Jean (2026-09-29)
 
-1. Le second geste d'impatience.
-2. Les adresses : `/projets/uservoice/` et `/en/projects/uservoice/` ?
-3. L'hébergement cible (GitHub Pages avec domaine perso, ou Netlify) : il
-   fixe la base des URL.
-4. La police : l'installer par le paquet npm (`@fontsource`) ou déposer les
-   fichiers `.woff2` dans le dépôt ; les deux demandent un téléchargement,
-   soumis à l'accord de Jean.
+1. Second geste d'impatience : **il fait tourner son marteau** (pivot déjà
+   dans la bibliothèque, aucune pose nouvelle).
+2. Adresses : **`/projets/<slug>/` en FR, `/en/projects/<slug>/` en EN**.
+3. Hébergement : **GitHub Pages**, domaine personnel à choisir.
+4. Police : **paquet npm** `@fontsource/atkinson-hyperlegible-next`
+   (existence vérifiée sur le registre npm).
+
+**Dépôt public** (GitHub Pages gratuit l'exige) : le registre, la spec et les
+briefs seront lisibles. Le vérificateur ne les exempte plus ; les effectifs
+internes ont été retirés du registre. Avant le premier envoi, l'historique
+local, qui les contient encore, sera réécrit (auteur et contenu).
