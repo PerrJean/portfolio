@@ -1,11 +1,18 @@
 # Publication sur GitHub Pages (docs/GUIDE_MISE_EN_LIGNE.md, section 2).
 # Rien n'est publié si un test échoue : `tester` précède `construire`.
-# Déclenchement manuel tant que le site n'est pas prêt (étape 4 : passer à
-# `push` sur `main`).
+# À chaque envoi sur `main`, et à la main depuis l'onglet Actions. Tant que
+# `src/i18n/publication.ts` dit `INDEXE = false`, le site est en ligne mais
+# caché des moteurs (registre/0035).
 name: Publier sur GitHub Pages
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 permissions:
   contents: read

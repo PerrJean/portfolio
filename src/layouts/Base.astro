@@ -10,6 +10,7 @@ import EnTete from '../components/EnTete.astro';
 import PiedDePage from '../components/PiedDePage.astro';
 import { LANGUES, LANGUE_PAR_DEFAUT, chemin, type Langue, type Page } from '../i18n/routes';
 import { NOM, UI } from '../i18n/textes';
+import { INDEXE } from '../i18n/publication';
 
 interface Props {
   page: Page;
@@ -27,6 +28,7 @@ const titreComplet = titre === NOM ? titre : `${titre} · ${NOM}`;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {!INDEXE && <meta name="robots" content="noindex, nofollow" />}
     <title>{titreComplet}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={absolu(langue)} />
