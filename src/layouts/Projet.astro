@@ -126,7 +126,7 @@ const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.sl
   .synthese__phrases {
     display: grid;
     gap: 0.5rem;
-    max-width: 40rem;
+    max-width: var(--mesure);
     margin-top: 1.5rem;
     font-size: 1.1875rem;
     line-height: 1.5;
@@ -134,7 +134,7 @@ const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.sl
 
   /* 2. Le corps : une ligne de lecture confortable, Atkinson 400. */
   .corps {
-    max-width: 40rem;
+    max-width: var(--mesure);
     font-weight: 400;
   }
 
@@ -148,9 +148,40 @@ const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.sl
     line-height: 1.65;
   }
 
+  /* Les captures (registre/0047) : l'image dans un cadre, son fond blanc
+     cassé tel quel ; le lien ouvre le PNG pour zoomer. La légende en encre :
+     l'ardoise ne passe le contraste qu'en grand texte. */
+  /* Le navigateur donne 40 px de marge latérale aux <figure> : à zéro. */
+  .corps :global(figure) {
+    margin: 1.5rem 0 0;
+  }
+
+  .corps :global(figure a) {
+    display: block;
+  }
+
+  .corps :global(figure a:focus-visible) {
+    outline: 3px solid var(--encre);
+    outline-offset: 3px;
+  }
+
+  .corps :global(figure img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--dalle);
+  }
+
+  .corps :global(figcaption) {
+    margin-top: 0.5rem;
+    color: var(--encre);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
   /* 3. Pour aller plus loin, replié. */
   .plus-loin {
-    max-width: 40rem;
+    max-width: var(--mesure);
     margin-top: clamp(3rem, 6vw, 4.5rem);
     border-block: 1px solid var(--dalle);
   }

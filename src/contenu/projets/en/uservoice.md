@@ -36,6 +36,11 @@ Answering it meant reading the four sources together. I brought them into a sing
 
 Each piece of feedback is then tagged along two axes. If it reports a bug, it gets one of 35 signatures. If not, it gets one or more of 29 satisfaction themes, since a single comment can mention several.
 
+<figure>
+  <a href="/captures/uservoice/analyse.png"><img src="/captures/uservoice/analyse.png" width="1360" height="1406" loading="lazy" decoding="async" alt="Screenshot of the UserVoice Analysis page: four category cards (explanations, ergonomics, exercises, progression), each showing the share of comments that mention it and its curve over four quarters against the year before. Explanations come first, with 22 NPS points to gain."></a>
+  <figcaption>The Analysis page tracks, quarter by quarter, the share of comments that mention each category against the year before, and ranks categories by the NPS points to gain. Synthetic data.</figcaption>
+</figure>
+
 ## What the data showed
 
 From March to September 2026, one in three pieces of feedback left in the site's form is about the content.
@@ -51,6 +56,11 @@ I ran UserVoice on my own, using Claude Code to write the code.
 AI classifies each piece of feedback and attaches a confidence score. Below a threshold, or when two answers are too close, the feedback goes to a human review queue. Each review adds to the examples given to the AI for the next runs, and mechanical rules take over on cases that have become obvious, such as empty answers or duplicates. The human review queue shrank by 87% in three days.
 
 On top of the table, the dashboard has two layers: one shows what is changing, the other offers an explanation. The Monday summary sets the volume of each topic against its handling status. That is what answers the opening question.
+
+<figure>
+  <a href="/captures/uservoice/tableau-nps.png"><img src="/captures/uservoice/tableau-nps.png" width="1360" height="1327" loading="lazy" decoding="async" alt="Screenshot of the UserVoice NPS barometer: the overall NPS for the period, the split of scores into detractors, passives and promoters, the response rate, then one NPS bar per product and per market."></a>
+  <figcaption>The NPS barometer: the period's score, the spread of ratings, and each segment with its confidence interval and reliability level. Synthetic data.</figcaption>
+</figure>
 
 Every decision is logged in a register, and the code is checked by tests. Anyone who revisits a threshold can see why it was set.
 

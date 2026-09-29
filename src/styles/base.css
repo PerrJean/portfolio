@@ -165,7 +165,7 @@ svg {
 }
 
 .fiche__texte {
-  max-width: 40rem;
+  max-width: var(--mesure);
   font-size: 1.1875rem;
 }
 
@@ -181,7 +181,7 @@ svg {
 @media (min-width: 760px) {
   .fiche {
     display: grid;
-    grid-template-columns: minmax(0, 40rem) auto;
+    grid-template-columns: minmax(0, var(--mesure)) auto;
     column-gap: clamp(3rem, 8vw, 7rem);
     align-items: start;
   }

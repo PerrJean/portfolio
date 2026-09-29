@@ -13,5 +13,6 @@
 
   --police: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
   --largeur: 72rem;
+  --mesure: 46rem;              /* la colonne de texte, ~80 signes (registre/0047) */
   --gouttiere: 1.25rem;
 }
