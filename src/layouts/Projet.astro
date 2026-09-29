@@ -1,0 +1,197 @@
+---
+// Le gabarit des pages projet (registre/0030), autour de Base :
+//  1. la synthèse recruteur : le <h1>, le fait clé en grand, trois phrases ;
+//  2. le corps : les H2 libres du Markdown et leurs paragraphes ;
+//  3. « Pour aller plus loin », replié dans un <details> ;
+//  4. la fin : le repère [data-fin] (le toit se pose), puis le lien vers
+//     l'autre projet de la paire.
+// Le contenu vient de src/contenu/projets/ (schéma : src/content.config.ts).
+// À partir de 960 px, le bâtiment occupe la colonne de droite (1 : 4) ; en
+// dessous, l'indicateur de lecture le remplace, collé sous l'en-tête.
+import { getCollection, render } from 'astro:content';
+import Base from './Base.astro';
+import Batiment from '../components/batiment/Batiment.astro';
+import Lecture from '../components/batiment/Lecture.astro';
+import Bouton from '../components/Bouton.astro';
+import { PROJETS } from '../contenu/projets';
+import { chemin, type Langue, type Page } from '../i18n/routes';
+import { UI } from '../i18n/textes';
+
+interface Props {
+  cle: Page;
+  langue: Langue;
+  description: string;
+}
+const { cle, langue, description } = Astro.props;
+const t = UI[langue];
+
+const entrees = await getCollection('projets', (e) => e.data.cle === cle && e.data.langue === langue);
+if (entrees.length !== 1)
+  throw new Error(`Page projet ${cle} (${langue}) : ${entrees.length} fichier(s) dans src/contenu/projets/, attendu un.`);
+const { data } = entrees[0];
+const { Content, headings } = await render(entrees[0]);
+const etages = headings.filter((h) => h.depth === 2);
+if (etages.length === 0)
+  throw new Error(`Page projet ${cle} (${langue}) : aucun H2, le bâtiment n'aurait pas d'étage.`);
+
+// Le projet suivant : l'autre projet de la paire (le suivant, en boucle).
+const paire = PROJETS.filter((p) => p.groupe === 'paire');
+const suivant = paire[(paire.findIndex((p) => p.page === cle) + 1) % paire.length];
+---
+
+<Base page={cle} langue={langue} titre={data.titre} description={description}>
+  <Lecture etages={etages} />
+  <div class="conteneur projet">
+    <article class="projet__article">
+      <header class="synthese">
+        <h1>{data.titre}</h1>
+        <p class="synthese__fait">{data.fait}</p>
+        <div class="synthese__phrases">
+          <p>{data.synthese.probleme}</p>
+          <p>{data.synthese.action}</p>
+          <p>{data.synthese.resultat}</p>
+        </div>
+      </header>
+
+      <div class="corps">
+        <Content />
+      </div>
+
+      <details class="plus-loin">
+        <summary>{t.plusLoin}</summary>
+        <div class="plus-loin__contenu">
+          {data.plusLoin.map((p) => <p>{p}</p>)}
+        </div>
+      </details>
+      <span class="projet__fin" data-fin></span>
+    </article>
+
+    <div class="projet__chantier" aria-hidden="true">
+      <div class="projet__dessin">
+        <Batiment etages={etages} />
+      </div>
+    </div>
+
+    <p class="projet__suivant">
+      <Bouton variante="tertiaire" href={chemin(suivant.page, langue)}>
+        {`${t.projetSuivant} ${suivant.nom[langue]}`}
+      </Bouton>
+    </p>
+  </div>
+</Base>
+
+<style>
+  .projet {
+    padding-top: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  /* 1. La synthèse recruteur. */
+  .synthese {
+    padding-bottom: clamp(2rem, 4vw, 2.75rem);
+    border-bottom: 1px solid var(--dalle);
+  }
+
+  .synthese h1 {
+    max-width: 22ch;
+  }
+
+  .synthese__fait {
+    max-width: 26ch;
+    margin-top: 1.25rem;
+    font-size: clamp(1.625rem, 1.2rem + 1.9vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  .synthese__phrases {
+    display: grid;
+    gap: 0.5rem;
+    max-width: 40rem;
+    margin-top: 1.5rem;
+    font-size: 1.1875rem;
+    line-height: 1.5;
+  }
+
+  /* 2. Le corps : une ligne de lecture confortable, Atkinson 400. */
+  .corps {
+    max-width: 40rem;
+    font-weight: 400;
+  }
+
+  .corps :global(h2) {
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    scroll-margin-top: 3rem;
+  }
+
+  .corps :global(p) {
+    margin-top: 1rem;
+    line-height: 1.65;
+  }
+
+  /* 3. Pour aller plus loin, replié. */
+  .plus-loin {
+    max-width: 40rem;
+    margin-top: clamp(3rem, 6vw, 4.5rem);
+    border-block: 1px solid var(--dalle);
+  }
+
+  .plus-loin summary {
+    padding-block: 1rem;
+    font-size: 1.1875rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .plus-loin__contenu {
+    display: grid;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    line-height: 1.65;
+  }
+
+  /* 4. La fin : le repère du toit, puis le projet suivant. */
+  .projet__fin {
+    display: block;
+    height: 1px;
+  }
+
+  .projet__suivant {
+    margin-top: 2.5rem;
+    font-size: 1.1875rem;
+  }
+
+  .projet__chantier {
+    display: none;
+  }
+
+  /* La colonne du bâtiment, 1 : 4, collée pendant la lecture. Sa hauteur
+     laisse le dessin entier à l'écran jusqu'au bas de la page. */
+  @media (min-width: 960px) {
+    .projet {
+      display: grid;
+      grid-template-columns: minmax(0, 4fr) minmax(0, 1fr);
+      column-gap: 3rem;
+    }
+
+    .projet__article {
+      grid-area: 1 / 1;
+    }
+
+    .projet__suivant {
+      grid-area: 2 / 1;
+    }
+
+    .projet__chantier {
+      display: block;
+      grid-column: 2;
+      grid-row: 1 / span 2;
+    }
+
+    .projet__dessin {
+      position: sticky;
+      top: 1.5rem;
+      height: clamp(22rem, calc(100vh - 10rem), 44rem);
+    }
+  }
+</style>

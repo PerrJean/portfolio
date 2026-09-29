@@ -1,4 +1,4 @@
-/** Les libellés communs (gabarit, en-tête, pied de page), par langue. */
+/** Les libellés communs (gabarit, en-tête, pied de page, pages projet), par langue. */
 import type { Langue } from './routes';
 
 export const NOM = 'Jean Perrier';
@@ -14,6 +14,8 @@ export const UI: Record<
     aPropos: string;
     langue: string;
     locale: string;
+    plusLoin: string;
+    projetSuivant: string;
   }
 > = {
   fr: {
@@ -24,6 +26,8 @@ export const UI: Record<
     aPropos: 'À propos',
     langue: 'Langue',
     locale: 'fr_FR',
+    plusLoin: 'Pour aller plus loin',
+    projetSuivant: 'Projet suivant :',
   },
   en: {
     evitement: 'Skip to content',
@@ -33,5 +37,7 @@ export const UI: Record<
     aPropos: 'About',
     langue: 'Language',
     locale: 'en_GB',
+    plusLoin: 'Going further',
+    projetSuivant: 'Next project:',
   },
 };

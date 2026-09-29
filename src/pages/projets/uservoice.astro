@@ -1,15 +1,10 @@
 ---
-import Base from '../../layouts/Base.astro';
+// Le contenu : src/contenu/projets/fr/ ; le gabarit : src/layouts/Projet.astro.
+import Projet from '../../layouts/Projet.astro';
 ---
 
-<Base
-  page="uservoice"
+<Projet
+  cle="uservoice"
   langue="fr"
-  titre="UserVoice"
-  description="UserVoice, le premier projet : écouter les retours des utilisateurs d'une plateforme EdTech. 1 retour sur 3 porte sur le contenu."
->
-  <article class="conteneur fiche">
-    <h1>UserVoice</h1>
-    <p class="fiche__fait">1 retour sur 3 porte sur le contenu.</p>
-  </article>
-</Base>
+  description="UserVoice, le premier projet : écouter les retours des utilisateurs d'une plateforme EdTech. 1 retour sur 3 porte sur le contenu."
+/>

@@ -1,0 +1,123 @@
+---
+// L'indicateur de lecture des pages projet, sous 960 px (registre/0030) :
+// le bâtiment couché, collé sous l'en-tête. À gauche les fondations, puis un
+// étage par H2, puis le toit. Chaque étage se remplit pendant qu'on lit sa
+// section (du H2 qui l'ouvre au suivant, le dernier jusqu'au bas de
+// l'article, repère [data-fin]) ; le toit, quand ce bas est atteint.
+// Sans personnages. Décoratif : aria-hidden. Le remplissage suit le
+// défilement, sans transition : rien ne bouge de lui-même.
+import type { Etage } from './Batiment.astro';
+
+interface Props {
+  etages: Etage[];
+}
+const { etages } = Astro.props;
+---
+
+<div class="lecture" aria-hidden="true">
+  <div class="conteneur lecture__ligne">
+    <span class="lecture__fondations"></span>
+    {
+      etages.map((e) => (
+        <span class="lecture__etage" data-cible={e.slug}>
+          <span class="lecture__plein" />
+        </span>
+      ))
+    }
+    <span class="lecture__toit"></span>
+  </div>
+</div>
+
+<style>
+  .lecture {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--ivoire);
+    border-bottom: 1px solid var(--dalle);
+  }
+
+  .lecture__ligne {
+    display: flex;
+    align-items: center;
+    height: 1.75rem;
+  }
+
+  .lecture__fondations,
+  .lecture__toit {
+    flex: none;
+    width: 6px;
+    height: 18px;
+    background: var(--dalle);
+    box-shadow: inset 0 0 0 1.5px var(--encre);
+  }
+
+  .lecture__etage {
+    position: relative;
+    flex: 1;
+    height: 14px;
+    margin-left: -1.5px;
+    box-shadow: inset 0 0 0 1.5px var(--encre);
+  }
+
+  .lecture__fondations + .lecture__etage {
+    margin-left: 0;
+  }
+
+  .lecture__toit {
+    margin-left: -1.5px;
+  }
+
+  .lecture__plein {
+    position: absolute;
+    inset: 3px;
+    background: var(--ardoise);
+    transform: scaleX(var(--plein, 0));
+    transform-origin: left center;
+  }
+
+  .lecture.lecture--fini .lecture__toit {
+    background: var(--ardoise);
+  }
+
+  @media (min-width: 960px) {
+    .lecture {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // La progression : le remplissage de chaque étage, recalculé au défilement.
+  for (const barre of document.querySelectorAll<HTMLElement>('.lecture')) {
+    const etages = [...barre.querySelectorAll<HTMLElement>('[data-cible]')];
+    const titres = etages.map((e) => document.getElementById(e.dataset.cible ?? ''));
+    const fin = document.querySelector('[data-fin]');
+    let prevu = false;
+
+    const mesurer = () => {
+      prevu = false;
+      if (!barre.getClientRects().length) return; // masqué au-delà de 960 px
+      const vue = innerHeight;
+      const bas = fin?.getBoundingClientRect().top ?? Infinity;
+      const hauts = titres.map((t) => t?.getBoundingClientRect().top ?? Infinity);
+      etages.forEach((e, k) => {
+        const debut = hauts[k];
+        const bout = hauts[k + 1] ?? bas;
+        // 0 quand le H2 arrive en bas de l'écran, 1 quand la fin de sa section y arrive.
+        const p = bout > debut ? (vue - debut) / (bout - debut) : Number(vue >= debut);
+        e.style.setProperty('--plein', String(Math.min(1, Math.max(0, p))));
+      });
+      barre.classList.toggle('lecture--fini', bas <= vue);
+    };
+
+    const demander = () => {
+      if (prevu) return;
+      prevu = true;
+      requestAnimationFrame(mesurer);
+    };
+    addEventListener('scroll', demander, { passive: true });
+    addEventListener('resize', demander);
+    mesurer();
+  }
+</script>

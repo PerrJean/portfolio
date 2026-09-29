@@ -1,0 +1,347 @@
+---
+// Le bâtiment des pages projet (registre/0030), dans la colonne de droite à
+// partir de 960 px. Un étage par H2, quel que soit leur nombre : les étages
+// se partagent une hauteur fixe. Des fondations, les étages, un toit ; une
+// grue fixe à droite ; trois bonhommes au pied, dont Jean (lunettes).
+//
+// Quand un H2 entre à l'écran, son étage descend au bout du câble et se
+// pose (les étages d'en dessous d'abord, s'il en manque) ; les bonhommes
+// tapent du marteau pendant la pose, la fenêtre de l'étage posé s'allume
+// (l'ambre, la lumière). Au bas de l'article (repère [data-fin]), le toit
+// se pose et l'équipe se retrouve dessus. Un étage posé ne repart jamais.
+//
+// Sans JavaScript : le bâtiment fini, l'équipe sur le toit. Sous
+// prefers-reduced-motion: reduce, les étages apparaissent en place et les
+// marteaux restent immobiles. Décoratif : aria-hidden sur tout le dessin.
+import Personnage from '../scene/Personnage.astro';
+
+export interface Etage {
+  /** L'id du H2 (Astro le donne au rendu du Markdown). */
+  slug: string;
+}
+
+interface Props {
+  etages: Etage[];
+}
+const { etages } = Astro.props;
+
+// Coordonnées : sol en y = 0, vers le haut en négatif (comme les poses).
+const LARGEUR = 240;
+const X0 = 80; // murs des étages
+const X1 = 180;
+const CX = (X0 + X1) / 2; // le câble
+const FONDATIONS = 10;
+const HAUTEUR = 400; // les étages réunis, partagés entre les H2
+const TOIT = 8;
+const ECHELLE = 0.4; // des bonhommes, par rapport à la bibliothèque
+
+const r = (v: number) => Math.round(v * 100) / 100;
+const h = HAUTEUR / Math.max(etages.length, 1);
+const basToit = -(FONDATIONS + HAUTEUR);
+const hautToit = basToit - TOIT;
+const fleche = hautToit - 72; // le bas de la flèche de la grue
+const sommet = fleche - 26;
+const ciel = fleche + 5; // sous le chariot : le câble n'existe qu'en dessous
+const depart = ciel + 21; // le haut d'une charge qui vient d'être accrochée
+const vue = `0 ${sommet - 4} ${LARGEUR} ${-(sommet - 4) + 6}`;
+
+// Une charge (étage ou toit) : son haut posé, sa chute depuis le départ,
+// et la remontée du crochet, jusqu'au-dessus du chariot, une fois posée.
+const charge = (haut: number) =>
+  `--chute:${r(depart - haut)}px;--remonte:${r(fleche - 8 - (haut - 14))}px`;
+
+const niveaux = etages.map((e, k) => {
+  const bas = -(FONDATIONS + k * h);
+  const haut = bas - h;
+  const hf = Math.min(h * 0.42, 30);
+  const yf = r(haut + (h - hf) / 2);
+  return { ...e, k, haut: r(haut), bas: r(bas), hf: r(hf), yf, porte: r(Math.min(h * 0.62, 44)) };
+});
+
+/** Treillis en zigzag entre deux lignes, verticales (mât) ou horizontales (flèche). */
+const zigzag = (n: number, point: (i: number) => string) =>
+  Array.from({ length: n + 1 }, (_, i) => point(i)).join(' ');
+const mat = zigzag(Math.floor(-fleche / 14), (i) => `${i % 2 ? 214 : 204},${r(-i * 14)}`);
+const treillis = zigzag(14, (i) => `${96 + i * 10},${i % 2 ? fleche - 7 : fleche}`);
+
+const crochet = (haut: number, x0: number, x1: number) =>
+  `<line class="se" x1="${CX}" y1="${r(haut - 1000)}" x2="${CX}" y2="${r(haut - 14.5)}" stroke-width="1.2"/>` +
+  `<circle class="se" cx="${CX}" cy="${r(haut - 12)}" r="2.5" fill="none" stroke-width="1.2"/>` +
+  `<polyline class="se" points="${x0 + 8},${haut} ${CX},${r(haut - 9.5)} ${x1 - 8},${haut}" fill="none" stroke-width="1" stroke-linejoin="round"/>`;
+---
+
+<svg
+  class="batiment"
+  viewBox={vue}
+  preserveAspectRatio="xMidYMax meet"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <clipPath id="batiment-ciel">
+      <rect x="0" y={ciel} width={LARGEUR} height={-ciel + 2} />
+    </clipPath>
+  </defs>
+
+  <!-- La grue : mât en treillis, flèche, haubans, contrepoids, cabine,
+       chariot au-dessus du milieu du bâtiment. Elle ne bouge jamais. -->
+  <g class="grue">
+    <rect class="fd se" x="198" y="-4" width="22" height="4" stroke-width="1.2" />
+    <line class="se" x1="204" y1="0" x2="204" y2={fleche} stroke-width="1.5" />
+    <line class="se" x1="214" y1="0" x2="214" y2={fleche} stroke-width="1.5" />
+    <polyline class="se" points={mat} fill="none" stroke-width="0.8" stroke-linejoin="round" />
+    <line class="se" x1="96" y1={fleche} x2="236" y2={fleche} stroke-width="1.5" />
+    <line class="se" x1="96" y1={fleche - 7} x2="236" y2={fleche - 7} stroke-width="1.2" />
+    <polyline class="se" points={treillis} fill="none" stroke-width="0.8" stroke-linejoin="round" />
+    <polyline
+      class="se"
+      points={`204,${fleche - 7} 209,${sommet} 214,${fleche - 7}`}
+      fill="none"
+      stroke-width="1.2"
+      stroke-linejoin="round"
+    />
+    <polyline
+      class="se"
+      points={`100,${fleche - 7} 209,${sommet} 234,${fleche - 7}`}
+      fill="none"
+      stroke-width="0.8"
+      stroke-linejoin="round"
+    />
+    <rect class="fe" x="222" y={fleche} width="14" height="12" />
+    <rect class="fi se" x="191" y={fleche + 2} width="12" height="11" stroke-width="1.2" />
+    <rect class="fi se" x={CX - 7} y={fleche} width="14" height="5" stroke-width="1.2" />
+  </g>
+
+  <line class="se" x1="0" y1="0" x2={LARGEUR} y2="0" stroke-width="1.5" />
+  <rect class="fd se" x={X0 - 6} y={-FONDATIONS} width={X1 - X0 + 12} height={FONDATIONS} stroke-width="1.5" />
+
+  <!-- Les charges, du bas vers le haut, le toit en dernier. Chacune est
+       dessinée à sa place ; sa descente part du chariot (variable chute). -->
+  <g clip-path="url(#batiment-ciel)">
+    {
+      niveaux.map((n) => (
+        <g
+          class:list={['etage', { dernier: n.k === niveaux.length - 1 }]}
+          data-cible={n.slug}
+          style={charge(n.haut)}
+        >
+          <g class="crochet" set:html={crochet(n.haut, X0, X1)} />
+          <rect class="fi se" x={X0} y={n.haut} width={X1 - X0} height={h} stroke-width="1.5" />
+          <rect class="fi se" x={CX - 37} y={n.yf} width="14" height={n.hf} stroke-width="1" />
+          {n.k === 0 ? (
+            <rect class="fi se" x={CX - 8} y={r(n.bas - n.porte)} width="16" height={n.porte} stroke-width="1" />
+          ) : (
+            <rect class="fi se" x={CX - 7} y={n.yf} width="14" height={n.hf} stroke-width="1" />
+          )}
+          <rect class="fi se fenetre--lumiere" x={CX + 23} y={n.yf} width="14" height={n.hf} stroke-width="1" />
+        </g>
+      ))
+    }
+    <g class="etage toit" style={charge(hautToit)}>
+      <g class="crochet" set:html={crochet(hautToit, X0 - 6, X1 + 6)} />
+      <rect class="fd se" x={X0 - 6} y={hautToit} width={X1 - X0 + 12} height={TOIT} stroke-width="1.5" />
+    </g>
+  </g>
+
+  <!-- L'équipe au pied, tournée vers le bâtiment : deux marteaux en bas
+       (marteau-2), celui de Jean levé (marteau-1). Seul le marteau pivote,
+       au poignet (.marteau-tour, dans poses.ts). -->
+  <g class="equipe-sol">
+    <g transform={`translate(12 0) scale(${ECHELLE})`} class="ouvrier ouvrier--bas">
+      <Personnage pose="marteau-2" />
+    </g>
+    <g transform={`translate(34 0) scale(${ECHELLE})`} class="ouvrier ouvrier--haut">
+      <Personnage pose="marteau-1" jean />
+    </g>
+    <g transform={`translate(56 0) scale(${ECHELLE})`} class="ouvrier ouvrier--bas">
+      <Personnage pose="marteau-2" />
+    </g>
+  </g>
+
+  <!-- L'équipe sur le toit, en fin d'article : Jean au milieu, bras tendus. -->
+  <g class="equipe-toit">
+    <g transform={`translate(100 ${hautToit}) scale(${ECHELLE})`}>
+      <g class="arrivee"><Personnage pose="debout" /></g>
+    </g>
+    <g transform={`translate(128 ${hautToit}) scale(${ECHELLE})`}>
+      <g class="arrivee"><Personnage pose="bras-tendus" jean /></g>
+    </g>
+    <g transform={`translate(162 ${hautToit}) scale(${ECHELLE})`}>
+      <g class="arrivee"><Personnage pose="debout" miroir /></g>
+    </g>
+  </g>
+</svg>
+
+<style is:global>
+  .batiment {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .batiment .fe { fill: var(--encre); }
+  .batiment .se { stroke: var(--encre); }
+  .batiment .fi { fill: var(--ivoire); }
+  .batiment .si { stroke: var(--ivoire); }
+  .batiment .sa { stroke: var(--ardoise); }
+  .batiment .so { stroke: var(--orange); }
+  .batiment .fd { fill: var(--dalle); }
+  /* La lumière : la fenêtre de l'étage qui vient d'être posé. */
+  .batiment .dernier .fenetre--lumiere { fill: var(--ambre); }
+
+  .batiment .etage,
+  .batiment .crochet,
+  .batiment .arrivee,
+  .batiment .marteau-tour {
+    transform-box: view-box;
+    transform-origin: 0 0;
+  }
+
+  /* Sans JavaScript, le bâtiment fini : l'équipe est sur le toit. */
+  .batiment .crochet,
+  .batiment .equipe-sol {
+    opacity: 0;
+  }
+
+  /* Avec JavaScript (.vivant) : rien n'est posé, l'équipe est au pied. */
+  .batiment.vivant .etage:not(.pose, .descend) { visibility: hidden; }
+  .batiment.vivant .descend .crochet { opacity: 1; }
+  .batiment.vivant .equipe-sol { opacity: 1; }
+  .batiment.vivant .equipe-toit { opacity: 0; }
+  .batiment.vivant.fini .equipe-sol { opacity: 0; }
+  .batiment.vivant.fini .equipe-toit { opacity: 1; }
+
+  /* Les mouvements. --vite (posé par le script) les accélère quand des
+     étages attendent leur tour. */
+  @media (prefers-reduced-motion: no-preference) {
+    .batiment.vivant .descend {
+      animation: bt-descente calc(1.1s * var(--vite, 1)) cubic-bezier(0.45, 0, 0.3, 1) both;
+    }
+    .batiment.vivant .pose .crochet {
+      opacity: 1;
+      animation: bt-remonte calc(0.7s * var(--vite, 1)) ease-in both;
+    }
+    .batiment.vivant .fenetre--lumiere { transition: fill 300ms ease-out; }
+    .batiment.vivant.tape .ouvrier--bas .marteau-tour {
+      animation: bt-frappe-bas calc(0.5s * var(--vite, 1)) ease-in-out 3;
+    }
+    .batiment.vivant.tape .ouvrier--haut .marteau-tour {
+      animation: bt-frappe-haut calc(0.5s * var(--vite, 1)) ease-in-out 3;
+    }
+    .batiment.vivant.fini .equipe-sol { animation: bt-part 300ms ease-in both; }
+    .batiment.vivant.fini .arrivee { animation: bt-arrivee 400ms ease-out both; }
+    .batiment.vivant.fini .equipe-toit > g:nth-child(1) .arrivee { animation-delay: 300ms; }
+    .batiment.vivant.fini .equipe-toit > g:nth-child(2) .arrivee { animation-delay: 450ms; }
+    .batiment.vivant.fini .equipe-toit > g:nth-child(3) .arrivee { animation-delay: 600ms; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .batiment,
+    .batiment * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* La charge part du chariot et se pose à sa place. */
+  @keyframes bt-descente {
+    from { transform: translateY(var(--chute)); }
+    to { transform: translateY(0); }
+  }
+  /* Posée, elle se décroche : le crochet remonte et passe sous le chariot. */
+  @keyframes bt-remonte {
+    0% { transform: translateY(0); opacity: 1; }
+    95% { opacity: 1; }
+    100% { transform: translateY(var(--remonte)); opacity: 0; }
+  }
+  /* Un coup par demi-période : marteau-2 se lève (de 25° à -100°) puis
+     frappe ; marteau-1, levé, frappe puis se relève. */
+  @keyframes bt-frappe-bas {
+    0%, 100% { transform: rotate(0deg); animation-timing-function: ease-out; }
+    60% { transform: rotate(-125deg); animation-timing-function: ease-in; }
+  }
+  @keyframes bt-frappe-haut {
+    0%, 100% { transform: rotate(0deg); animation-timing-function: ease-in; }
+    40% { transform: rotate(125deg); animation-timing-function: ease-out; }
+  }
+  @keyframes bt-part {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  /* Arrivée sur le toit : un petit saut, sans articulation. */
+  @keyframes bt-arrivee {
+    from { opacity: 0; transform: translateY(-14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  // Le strict nécessaire : l'observateur des H2 et du bas de l'article, et
+  // la file des poses (une charge à la fois, du bas vers le haut).
+  const DESCENTE = 1100; // ms, comme bt-descente
+  const TAPE = 1500; // ms, trois coups de bt-frappe
+  const PRESSE = 0.4; // quand d'autres charges attendent
+  const reduit = matchMedia('(prefers-reduced-motion: reduce)');
+
+  for (const svg of document.querySelectorAll<SVGSVGElement>('svg.batiment')) {
+    const charges = [...svg.querySelectorAll<SVGGElement>('.etage')];
+    const dernier = charges.length - 1; // le toit
+    const titres = charges.slice(0, dernier).map((c) => document.getElementById(c.dataset.cible ?? ''));
+    const fin = document.querySelector('[data-fin]');
+    let voulu = -1;
+    let fait = -1;
+    let occupe = false;
+
+    svg.querySelector('.dernier')?.classList.remove('dernier');
+    svg.classList.add('vivant');
+
+    const suivante = (): void => {
+      if (occupe || fait >= voulu) return;
+      fait += 1;
+      const c = charges[fait];
+      const vite = voulu > fait ? PRESSE : 1;
+      const poser = () => {
+        c.classList.remove('descend');
+        c.classList.add('pose');
+        if (fait === dernier) {
+          svg.classList.add('fini');
+          return;
+        }
+        svg.querySelector('.dernier')?.classList.remove('dernier');
+        c.classList.add('dernier');
+        if (reduit.matches) return suivante();
+        svg.classList.add('tape');
+        setTimeout(() => {
+          svg.classList.remove('tape');
+          occupe = false;
+          suivante();
+        }, TAPE * vite);
+      };
+      if (reduit.matches) return poser();
+      occupe = true;
+      svg.style.setProperty('--vite', String(vite));
+      c.classList.add('descend');
+      setTimeout(poser, DESCENTE * vite);
+    };
+
+    const demander = (i: number) => {
+      if (i <= voulu) return;
+      voulu = i;
+      suivante();
+    };
+
+    // Un H2 compte dès qu'il est à l'écran, ou déjà passé au-dessus.
+    const observateur = new IntersectionObserver(
+      (entrees) => {
+        for (const e of entrees) {
+          if (!e.isIntersecting && e.boundingClientRect.top > 0) continue;
+          demander(e.target === fin ? dernier : titres.indexOf(e.target as HTMLElement));
+        }
+      },
+      { rootMargin: '0px 0px -15% 0px' },
+    );
+    for (const t of titres) if (t) observateur.observe(t);
+    if (fin) observateur.observe(fin);
+  }
+</script>
