@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Bouton from '../../components/Bouton.astro';
-import { chemin } from '../../i18n/routes';
+import Parcelles from '../../components/Parcelles.astro';
+import Soleil from '../../components/Soleil.astro';
+import { UI } from '../../i18n/textes';
 ---
 
 <Base
@@ -10,23 +11,19 @@ import { chemin } from '../../i18n/routes';
   titre="Jean Perrier"
   description="Jean Perrier's portfolio, in two product projects: listening to user feedback, then acting on content quality."
 >
-  <section class="conteneur accroche">
-    <h1>I build on hypotheses: I listen, I test, then I size the effort.</h1>
+  <section class="accroche">
+    <div class="conteneur accroche__ligne">
+      <Soleil />
+      <h1>I build on hypotheses: I listen, I test, then I size the effort.</h1>
+      <p class="accroche__sous-titre">
+        Two projects on an EdTech platform: listening to thousands of learners, then fixing what really gets in their
+        way.
+      </p>
+    </div>
   </section>
 
   <section class="conteneur" id="projets" aria-labelledby="titre-projets">
-    <h2 id="titre-projets">Projects</h2>
-    <ol class="projets">
-      <li class="projet">
-        <span class="projet__numero" aria-hidden="true">01</span>
-        <h3><Bouton variante="tertiaire" href={chemin('uservoice', 'en')}>UserVoice</Bouton></h3>
-        <p>1 in 3 pieces of feedback concerns the content.</p>
-      </li>
-      <li class="projet">
-        <span class="projet__numero" aria-hidden="true">02</span>
-        <h3><Bouton variante="tertiaire" href={chemin('auditContenu', 'en')}>Content audit</Bouton></h3>
-        <p>On the first audited path, 1 question in 20 kept learners from answering. All of them were fixed.</p>
-      </li>
-    </ol>
+    <h2 id="titre-projets">{UI.en.projets}</h2>
+    <Parcelles langue="en" />
   </section>
 </Base>

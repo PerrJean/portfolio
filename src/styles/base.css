@@ -119,38 +119,36 @@ svg {
   }
 }
 
-/* Les squelettes de page (chantier 2b), en attendant le contenu. */
+/* L'accroche de l'accueil (chantier 2c). La section occupe toute la
+   largeur : le soleil (Soleil.astro) se cale dans son coin haut droit, et
+   le texte contourne sa réserve. */
 .accroche {
-  padding-block: clamp(3rem, 8vw, 6rem) clamp(2rem, 5vw, 4rem);
+  --accroche-haut: clamp(3rem, 8vw, 6rem);
+  --soleil: clamp(6.5rem, 4rem + 10vw, 12rem);
+  position: relative;
+  isolation: isolate;
+  padding-block: var(--accroche-haut) clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.accroche__ligne {
+  display: flow-root;
 }
 
 .accroche h1 {
-  max-width: 22ch;
+  max-width: 20ch;
+  font-size: clamp(2.125rem, 1.5rem + 3.6vw, 4.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
 }
 
-.projets {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-  gap: 2rem;
-  margin: 1.5rem 0 0;
-  padding: 0;
-  list-style: none;
+.accroche__sous-titre {
+  max-width: 38rem;
+  margin-top: clamp(1rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.3125rem);
+  line-height: 1.5;
 }
 
-.projet {
-  display: grid;
-  align-content: start;
-  gap: 0.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--dalle);
-}
-
-.projet__numero {
-  color: var(--ardoise);
-  font-size: 1.5rem;
-  font-weight: 800;
-}
-
+/* Les squelettes des pages projet (chantier 2b), en attendant le contenu. */
 .fiche {
   padding-block: clamp(3rem, 8vw, 6rem) 2rem;
 }

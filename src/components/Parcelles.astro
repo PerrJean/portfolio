@@ -1,0 +1,132 @@
+---
+// Les parcelles de l'accueil, depuis src/contenu/projets.ts : la paire (01 et
+// 02, reliés par la flèche « Alors j'ai agi dessus. »), puis les projets
+// à part, s'il y en a, sans flèche.
+// À partir de 960 px, la paire tient sur une ligne et la flèche est
+// horizontale ; en dessous, les parcelles s'empilent et la flèche descend.
+import Parcelle from './Parcelle.astro';
+import { LIEN_DE_LA_PAIRE, PROJETS, type Projet } from '../contenu/projets';
+import { chemin, type Langue } from '../i18n/routes';
+
+interface Props {
+  langue: Langue;
+}
+const { langue } = Astro.props;
+const paire = PROJETS.filter((p) => p.groupe === 'paire');
+const aPart = PROJETS.filter((p) => p.groupe === 'a-part');
+const proprietes = (p: Projet) => ({
+  numero: p.numero,
+  nom: p.nom[langue],
+  fait: p.fait[langue],
+  href: chemin(p.page, langue),
+  groupe: p.groupe,
+});
+---
+
+<div class="parcelles parcelles--paire">
+  {
+    paire.map((projet, i) => (
+      <>
+        {i > 0 && (
+          <p class="fleche">
+            <span class="fleche__texte">{LIEN_DE_LA_PAIRE[langue]}</span>
+            <svg class="fleche__trait fleche__trait--h" viewBox="0 0 120 40" aria-hidden="true" focusable="false">
+              <path d="M8 28 C36 6 78 6 111 25" />
+              <path d="M105 14 L111 25 L99 25" />
+            </svg>
+            <svg class="fleche__trait fleche__trait--v" viewBox="0 0 40 120" aria-hidden="true" focusable="false">
+              <path d="M12 8 C34 36 34 78 15 111" />
+              <path d="M26 105 L15 111 L15 99" />
+            </svg>
+          </p>
+        )}
+        <Parcelle {...proprietes(projet)} />
+      </>
+    ))
+  }
+</div>
+
+{
+  aPart.length > 0 && (
+    <div class="parcelles parcelles--a-part">
+      {aPart.map((projet) => (
+        <Parcelle {...proprietes(projet)} />
+      ))}
+    </div>
+  )
+}
+
+<style>
+  .parcelles {
+    --numero: clamp(4.5rem, 2.5rem + 7vw, 8rem);
+    display: grid;
+    margin-top: 2rem;
+  }
+
+  .parcelles--paire {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .parcelles--a-part {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+    gap: 3rem 2rem;
+    margin-top: 4rem;
+  }
+
+  .fleche {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-left: 1.5rem;
+    font-size: 1.0625rem;
+    line-height: 1.35;
+  }
+
+  .fleche__trait {
+    display: block;
+    flex: none;
+    fill: none;
+    stroke: var(--encre);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .fleche__trait--h {
+    display: none;
+    width: 7.5rem;
+    height: 2.5rem;
+  }
+
+  .fleche__trait--v {
+    order: -1;
+    width: 1.75rem;
+    height: 5.25rem;
+  }
+
+  @media (min-width: 960px) {
+    .parcelles--paire {
+      grid-template-columns: minmax(0, 1fr) 7.5rem minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    /* La flèche se place à hauteur du nom, sous le grand numéro. */
+    .fleche {
+      flex-direction: column;
+      align-self: start;
+      gap: 0.625rem;
+      padding-left: 0;
+      padding-top: calc(var(--numero) * 0.85 + 0.75rem);
+      text-align: center;
+    }
+
+    .fleche__trait--h {
+      display: block;
+    }
+
+    .fleche__trait--v {
+      display: none;
+    }
+  }
+</style>

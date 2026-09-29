@@ -1,0 +1,70 @@
+---
+// Le soleil de l'accueil : un quart de disque ambre coupé par le coin haut
+// droit, trois anneaux en aplats de l'ambre vers l'orange, paliers nets,
+// aucun dégradé, aucune animation. Décoratif.
+//
+// À poser en premier enfant du conteneur de l'accroche, dans une section
+// positionnée qui occupe toute la largeur (voir .accroche, base.css) :
+//  - le dessin se place en absolu dans le coin de cette section, donc de la
+//    page, sous l'en-tête ;
+//  - la réserve, flottante et invisible, reprend le même quart de cercle
+//    (shape-outside) : le texte de l'accroche le contourne au lieu de passer
+//    dessous.
+// Taille : --soleil, définie sur .accroche.
+---
+
+<svg class="soleil" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+  <circle class="soleil__anneau soleil__anneau--3" cx="200" cy="0" r="169" stroke-width="8" />
+  <circle class="soleil__anneau soleil__anneau--2" cx="200" cy="0" r="150" stroke-width="11" />
+  <circle class="soleil__anneau soleil__anneau--1" cx="200" cy="0" r="129" stroke-width="14" />
+  <circle class="soleil__coeur" cx="200" cy="0" r="110" />
+</svg>
+<span class="soleil__reserve" aria-hidden="true"></span>
+
+<style>
+  .soleil {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    display: block;
+    width: var(--soleil);
+    height: var(--soleil);
+    pointer-events: none;
+  }
+
+  .soleil__coeur {
+    fill: var(--ambre);
+  }
+
+  .soleil__anneau {
+    fill: none;
+  }
+
+  .soleil__anneau--1 {
+    stroke: color-mix(in srgb, var(--ambre) 67%, var(--orange));
+  }
+
+  .soleil__anneau--2 {
+    stroke: color-mix(in srgb, var(--ambre) 33%, var(--orange));
+  }
+
+  .soleil__anneau--3 {
+    stroke: var(--orange);
+  }
+
+  /* Le bord extérieur du dernier anneau est à 173 sur 200 : 86,5 %. La
+     réserve remonte dans la marge haute de l'accroche et déborde dans la
+     gouttière, pour coïncider avec le dessin quand le conteneur touche le
+     bord de l'écran ; plus large, le conteneur est centré et le texte reste
+     loin du soleil. */
+  .soleil__reserve {
+    float: right;
+    width: var(--soleil);
+    height: var(--soleil);
+    margin-top: calc(-1 * var(--accroche-haut));
+    margin-right: calc(-1 * var(--gouttiere));
+    shape-outside: circle(86.5% at 100% 0) border-box;
+    shape-margin: 0.75rem;
+  }
+</style>

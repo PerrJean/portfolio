@@ -12,7 +12,7 @@ const KEYFRAMES = /@(?:-webkit-|-moz-)?keyframes\b/i;
 const REDUIT = /@media[^{]*prefers-reduced-motion\s*:\s*reduce/i;
 const sansCommentaires = (css) => css.replace(/\/\*[\s\S]*?\*\//g, '');
 
-test('animations : tout @keyframes s\'accompagne de @media (prefers-reduced-motion: reduce)', { todo: '2c' }, () => {
+test('animations : tout @keyframes s\'accompagne de @media (prefers-reduced-motion: reduce)', () => {
   exigerDist();
   const unites = [
     ...feuillesCss().map((f) => [f, lire(f)]),

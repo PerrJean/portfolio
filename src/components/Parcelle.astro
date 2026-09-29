@@ -1,0 +1,88 @@
+---
+// Une parcelle de l'accueil : un seul grand lien vers la page du projet,
+// avec le numéro en très grand, le nom, le fait clé et la scène.
+// Le nom accessible du lien est son texte : « 01 UserVoice » (le titre),
+// puis le fait clé. La scène reste décorative (aria-hidden, dans Scene).
+// Le survol et le focus du lien jouent « on regarde le plan » (Scene.astro,
+// :hover et :focus-within sur .parcelle).
+// groupe : « paire » (01 et 02, reliés par la flèche, voir Parcelles.astro)
+// ou « a-part » (un projet sans rapport, sans flèche).
+import Scene from './scene/Scene.astro';
+import type { Groupe } from '../contenu/projets';
+
+interface Props {
+  numero: string;
+  nom: string;
+  fait: string;
+  href: string;
+  groupe: Groupe;
+}
+const { numero, nom, fait, href, groupe } = Astro.props;
+---
+
+<a class:list={['parcelle', `parcelle--${groupe}`]} href={href}>
+  <h3 class="parcelle__titre">
+    <span class="parcelle__numero">{numero}</span>{' '}
+    <span class="parcelle__nom">{nom}</span>
+  </h3>
+  <p class="parcelle__fait">{fait}</p>
+  <div class="parcelle__scene">
+    <Scene />
+  </div>
+</a>
+
+<style>
+  .parcelle {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 0.75rem;
+    color: var(--encre);
+    text-decoration: none;
+  }
+
+  .parcelle:focus-visible {
+    outline: 3px solid var(--encre);
+    outline-offset: 0.625rem;
+  }
+
+  .parcelle__titre {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .parcelle__numero {
+    font-size: var(--numero, 6rem);
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+  }
+
+  .parcelle__nom {
+    font-size: clamp(1.5rem, 1.25rem + 0.8vw, 1.875rem);
+    line-height: 1.15;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .parcelle:is(:hover, :focus-visible) .parcelle__nom {
+    color: var(--orange);
+    text-decoration-line: underline;
+  }
+
+  .parcelle__fait {
+    max-width: 34rem;
+    font-size: 1.0625rem;
+    line-height: 1.45;
+  }
+
+  /* La scène occupe toute la largeur de la parcelle, posée en bas : les
+     scènes de deux parcelles voisines restent sur la même ligne de sol. */
+  .parcelle__scene {
+    margin-top: 1rem;
+  }
+
+  /* Un projet à part : même parcelle, séparée de la paire par un filet. */
+  .parcelle--a-part {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--dalle);
+  }
+</style>
