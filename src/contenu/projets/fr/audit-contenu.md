@@ -5,7 +5,7 @@ fait: "Sur le premier parcours audité, 1 question sur 20 empêchait l'apprenant
 synthese:
   probleme: "D'après leurs retours, la satisfaction des apprenants d'une plateforme EdTech se joue d'abord sur la qualité du contenu."
   action: "Avec une learning designer, nous avons soumis chaque question d'un parcours à une grille de six critères. Des agents IA encadrés l'ont appliquée, et des contrôles automatiques l'ont complétée."
-  resultat: "Sur ce premier parcours, 1 question sur 20 empêchait l'apprenant de répondre, et toutes ont été corrigées après relecture."
+  resultat: "Les corrections, relues avant d'être appliquées, sont en production depuis la semaine du 28 septembre 2026."
 plusLoin:
   - "La grille"
   - "Chaque question est lue sur six critères."
@@ -21,7 +21,7 @@ plusLoin:
   - "Près d'un commentaire NPS sur cinq touche à la qualité des explications, des exercices ou des traductions."
   - "Les règles, et ce qu'elles ont coûté"
   - "Les 25 règles sont mesurées sur ce projet : environ 30 millions de tokens sur quatre semaines, et 233 points de décision tracés dans un registre."
-  - "Ouvrir le suivi de version dès le premier fichier. Deux semaines de travail étaient restées hors historique."
+  - "Ouvrir le suivi de version dès le premier fichier."
   - "Plafonner la taille des modules. Les trois plus gros, entre 5 400 et 7 600 lignes, étaient aussi les plus réécrits."
   - "Lire le nom des champs dans la donnée au lieu de le supposer."
   - "Une règle vérifiable devient un test."
@@ -33,23 +33,19 @@ cle: auditContenu
 
 ## Pourquoi auditer
 
-Le premier projet de ce portfolio, UserVoice, a rassemblé ce que les apprenants d'une plateforme EdTech disent d'elle. Dans le formulaire du site, 1 retour sur 3 porte sur le contenu. C'est donc là que leur satisfaction se joue d'abord.
+Dans le formulaire du site, 1 retour sur 3 concerne le contenu : c'est le constat du premier projet, UserVoice.
 
-Nous avons porté l'effort sur le contenu lui-même, question par question. J'ai mené ce chantier avec une learning designer. J'ai conçu la grille d'audit et l'outillage qui l'applique. La learning designer a validé la grille. Elle a aussi défini les règles d'écriture des contenus (sauts de ligne, règles éditoriales) et fait la recette des échantillons.
+J'ai mené ce chantier avec une learning designer. J'ai conçu la grille d'audit et l'outillage qui l'applique ; elle a validé la grille, défini les règles d'écriture des contenus et fait la recette des échantillons.
 
 Le périmètre couvre six parcours de préparation à des certifications de langue. Nous avons commencé par le plus ancien.
 
 ## Ce que la grille vérifie
 
-La grille compte six critères. Deux portent sur la réponse. La réponse attendue doit être la bonne, et aucune autre ne doit se défendre aussi bien.
-
-Un troisième porte sur l'explication. Chaque question doit en contenir une. Cette explication ne doit pas être circulaire : elle ne se contente pas de répéter la réponse.
-
-Les trois autres vérifient que la question reste fidèle à sa source et que sa langue est correcte. Ils vérifient aussi que ses éléments ne se contredisent pas.
+La grille compte six critères. Deux portent sur la réponse : la réponse attendue est la bonne, et aucune autre ne se défend aussi bien. Un troisième vérifie que la question contient une explication, et qu'elle n'est pas circulaire. Les trois derniers portent sur la fidélité à la source, la langue et la cohérence.
 
 Chaque question reçoit ensuite un verdict parmi quatre : bloquant, majeur, mineur ou rien à corriger. Elle est bloquante quand l'apprenant ne peut pas y répondre. C'est le cas si la réponse attendue est fausse, ou si deux réponses se défendent autant.
 
-Des agents IA appliquent la grille, question par question. Ce sont des sous-agents de Claude Code, sur abonnement, sans appel à une API payante. Le modèle ne juge pas seul. Des contrôles automatiques passent sur tout le corpus, avec des règles vérifiables qui ne dépendent d'aucun modèle. L'un d'eux vérifie par exemple que l'explication parle du même audio que la question. Un bilan donne enfin l'état de chaque question et ce qui lui est reproché.
+Des agents IA appliquent la grille, question par question : des sous-agents de Claude Code, sur abonnement, sans API payante. Le modèle ne juge pas seul. Des contrôles automatiques, qui ne dépendent d'aucun modèle, passent sur tout le corpus. Un bilan donne l'état de chaque question et ce qui lui est reproché.
 
 <div data-schema="chaine-audit"></div>
 
@@ -61,18 +57,16 @@ Ce parcours est le plus ancien. Son résultat ne présume pas de la qualité du 
 
 ## Corriger sans casser
 
-Les corrections retenues sortent en lots, prêts à relire, pour la préproduction. L'outil n'écrit jamais directement en base. Il produit les lots, et une personne relit chacun avant qu'il soit appliqué.
-
-La décision reste donc humaine. Si un agent se trompe de réponse, le pire est un lot rejeté à la relecture. Aucune correction ne part en ligne sans avoir été lue.
+L'outil n'écrit jamais directement en base. Il produit des lots de corrections, et une personne relit chacun avant la préproduction. Si un agent se trompe de réponse, le pire est un lot rejeté à la relecture.
 
 Toutes les questions bloquantes du premier parcours ont été corrigées. Les corrections sont passées en production la semaine du 28 septembre 2026.
 
 ## Ce que j'en retiens
 
-De ce projet, j'ai tiré 25 règles pour mener un projet avec l'IA. Elles servent à garder la main sur ce qu'un agent produit. Je les ai mesurées sur le projet lui-même, en tokens consommés pendant quatre semaines et en points de décision tracés dans un registre.
+Ce projet m'a laissé 25 règles pour garder la main sur ce qu'un agent produit. Je les ai mesurées en tokens sur quatre semaines et en points de décision tracés dans un registre.
 
-Elles changent la façon de travailler. Chaque chantier est chiffré avant de commencer, puis une fois fini. L'écart montre où l'estimation s'est trompée. Une règle qu'on peut vérifier devient un test. Elle se contrôle alors toute seule, sans dépendre de la mémoire de quiconque.
+Chaque chantier est chiffré avant de commencer, puis une fois fini. L'écart montre où l'estimation s'est trompée. Une règle qu'on peut vérifier devient un test. Elle se contrôle alors toute seule, sans dépendre de la mémoire de quiconque.
 
 La règle « le relecteur n'est pas l'auteur » résume l'audit. Ce qu'un agent produit, un autre agent le relit, et une personne tranche. Cette règle vaut pour les corrections du contenu comme pour le code que j'écris avec l'IA.
 
-Certaines règles tiennent en une ligne et ont coûté cher avant d'être écrites. Ouvrir le suivi de version dès le premier fichier en fait partie. Deux semaines de travail étaient restées hors historique.
+Certaines règles ont coûté cher avant d'être écrites. Sans suivi de version dès le premier fichier, deux semaines de travail sont restées hors historique.

@@ -28,7 +28,7 @@ export const PROJETS: readonly Projet[] = [
     groupe: 'paire',
     nom: { fr: 'UserVoice', en: 'UserVoice' },
     fait: {
-      fr: '1 retour sur 3 porte sur le contenu.',
+      fr: '1 retour sur 3 concerne le contenu.',
       en: '1 in 3 pieces of feedback is about the content.',
     },
   },

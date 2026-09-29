@@ -5,7 +5,7 @@ fait: "In the first course audited, 1 question in 20 stopped learners from answe
 synthese:
   probleme: "According to their feedback, the satisfaction of learners on an EdTech platform depends first on the quality of the content."
   action: "With a learning designer, we put every question in one course through a six-criterion grid. Supervised AI agents applied it, and automated checks completed it."
-  resultat: "In that first course, 1 question in 20 stopped learners from answering, and all of them were fixed after review."
+  resultat: "The fixes, reviewed before being applied, have been in production since the week of September 28, 2026."
 plusLoin:
   - "The grid"
   - "Each question is read against six criteria."
@@ -21,7 +21,7 @@ plusLoin:
   - "Nearly one NPS comment in five concerns the quality of explanations, exercises or translations."
   - "The rules, and what they cost"
   - "The 25 rules are measured on this project: about 30 million tokens over four weeks, and 233 decision points logged in a register."
-  - "Start version control with the first file. Two weeks of work had gone untracked."
+  - "Start version control with the first file."
   - "Cap module size. The three largest modules, between 5,400 and 7,600 lines, were also the most rewritten."
   - "Read field names from the data instead of guessing them."
   - "A rule that can be checked becomes a test."
@@ -33,7 +33,7 @@ cle: auditContenu
 
 ## Why audit
 
-The first project in this portfolio, UserVoice, gathered what learners on an EdTech platform say about it. In the site's feedback form, 1 in 3 pieces of feedback is about the content. So that is where their satisfaction is decided first.
+In the site's feedback form, 1 in 3 pieces of feedback is about the content: that is what the first project, UserVoice, found.
 
 We put the effort into the content itself, question by question. I led this work with a learning designer. I designed the audit grid and the tooling that applies it. The learning designer validated the grid. She also set the writing rules for the content (line breaks, editorial rules) and ran acceptance testing on the samples.
 
@@ -41,11 +41,7 @@ The scope covers six courses that prepare learners for language certifications. 
 
 ## What the grid checks
 
-The grid has six criteria. Two concern the answer. The expected answer must be the correct one, and no other answer should be as defensible.
-
-A third concerns the explanation. Every question must include one. That explanation must not be circular: it has to do more than repeat the answer.
-
-The other three check that the question stays faithful to its source and that its language is correct. They also check that its parts do not contradict each other.
+The grid has six criteria. Two concern the answer: the expected answer is the right one, and no other answer is as defensible. A third checks that the question includes an explanation, and that it is not circular. The last three cover faithfulness to the source, language and internal consistency.
 
 Each question then gets one of four verdicts: blocking, major, minor, or nothing to fix. A question is blocking when learners cannot answer it. That happens when the expected answer is wrong, or when two answers can be defended equally well.
 
@@ -61,9 +57,7 @@ This course is the oldest one. Its result does not predict the quality of the re
 
 ## Fixing without breaking
 
-The fixes we keep come out in batches, ready for review, headed for the staging environment. The tool never writes directly to the database. It produces the batches, and a person reviews each one before it is applied.
-
-So the decision stays with a person. If an agent gets an answer wrong, the worst case is a batch rejected at review. No fix goes live without being read.
+The tool never writes directly to the database. It produces batches of fixes, and a person reviews each one before staging. If an agent gets an answer wrong, the worst case is a batch rejected at review.
 
 All the blocking questions in the first course have been fixed. The fixes went into production the week of September 28, 2026.
 
@@ -75,4 +69,4 @@ They change how the work gets done. Every workstream is costed before it starts,
 
 The rule “the reviewer is not the author” sums up the audit. What one agent produces, another agent reviews, and a person decides. This rule applies to content fixes as much as to the code I write with AI.
 
-Some rules fit in one line and were expensive to learn before they were written down. Starting version control with the very first file is one of them. Two weeks of work had gone untracked.
+Some rules were expensive before they were written down. Without version control from the first file, two weeks of work went untracked.

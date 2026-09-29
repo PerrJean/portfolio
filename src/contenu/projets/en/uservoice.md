@@ -4,8 +4,8 @@ date: "2026-09"
 fait: "1 in 3 pieces of feedback is about the content."
 synthese:
   probleme: "An EdTech platform receives thousands of pieces of learner feedback a year, spread across four sources and tagged by hand weeks after the fact."
-  action: "I brought them together in a single table, where AI classifies each piece of feedback with a confidence score and leaves the doubtful cases to human review, for a summary that takes five minutes to read every Monday."
-  resultat: "We thought it was mostly bugs; the data showed that one in three pieces of feedback is about the content, and the effort moved to its quality."
+  action: "I brought them together in a single table. AI classifies each piece of feedback with a confidence score and leaves the doubtful cases to a person. The summary takes five minutes to read, every Monday."
+  resultat: "We thought it was mostly bugs. The data pointed to the content, and the effort moved to its quality."
 plusLoin:
   - "What I set aside"
   - "Double human categorization. Only the signature is entered by hand; the rest is derived from the dated data."
@@ -22,7 +22,7 @@ cle: uservoice
 
 ## The starting point
 
-An EdTech platform receives thousands of pieces of learner feedback a year. They come from four sources: the NPS survey, the placement test, the end of each course, and an open feedback form available on every page of the site.
+Feedback comes from four sources: the NPS survey, the placement test, the end of each course, and an open feedback form available on every page of the site.
 
 When I launched UserVoice in September 2026, this feedback was tagged by hand in a spreadsheet, in batches, weeks after it came in. The same topics kept coming back, and nobody knew whether they had already been handled.
 
@@ -32,13 +32,13 @@ The unspoken assumption was that our problems were mostly bugs.
 
 I started from a question I wanted to be able to answer every Monday, in five minutes. Which topics come up most? Are they being handled? Has a new topic appeared without anyone noticing?
 
-Answering it meant reading the four sources together. I brought them into a single table, where each piece of feedback keeps its dimensions frozen as they were when it was submitted. Months later, it is read with the context of the day it was written.
+Answering it meant reading the four sources together. I brought them into a single table. Each piece of feedback keeps the context of the day it was submitted, so it still reads that way months later.
 
 Each piece of feedback is then tagged along two axes. If it reports a bug, it gets one of 35 signatures. If not, it gets one or more of 29 satisfaction themes, since a single comment can mention several.
 
 ## What the data showed
 
-One in three pieces of feedback left in the form available on every page is about the content (March to September 2026).
+From March to September 2026, one in three pieces of feedback left in the site's form is about the content.
 
 The NPS survey points the same way from another direction. Over two months in summer 2026, nearly one comment in five concerns content quality (explanations, exercise quality, translations), and half of those comments are criticisms or requests.
 
