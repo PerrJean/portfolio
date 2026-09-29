@@ -20,3 +20,7 @@ Preuve rejouée : build réussi, `npm test` → `pass 1 | fail 0 | todo 28`.
 lancée bras levés ; au survol, le porteur lance sa poutre sur la dalle et
 rejoint la table ; quatre personnes autour du plan, point ambre dessus.
 Ratio 1,26.
+
+**Retouche de Jean (2026-09-29)** : dans le saut, le bras arrière partait à
+gauche ; il part désormais à droite, avec l'autre (`sautillement`, une
+ligne de `poses.ts`). Faite à la main, vue dans le navigateur.

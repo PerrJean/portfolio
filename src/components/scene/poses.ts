@@ -84,7 +84,7 @@ export const POSES = {
     trait('se', '20,-107 26,-107.5', 4),
   'sautillement':
     jambes('-5.25,-62 -5,-12 0.5,-4', '5.25,-62 4,-12 9.5,-4') +
-    brasArriere('0,-95 -14,-70') +
+    brasArriere('0,-95 9,-71') +
     torse(-6) +
     '<circle class="fe" cx="1" cy="-116" r="10"/><g transform="translate(0 -6)">{L}</g>' +
     brasAvant('1,-95 14,-70'),
