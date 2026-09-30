@@ -10,9 +10,28 @@ import { glob } from 'astro/loaders';
 import { LANGUES, type Page } from './i18n/routes';
 
 /** Les clés de page (src/i18n/routes.ts) qui ont une page projet. */
-const CLES = ['uservoice', 'auditContenu'] as const satisfies readonly Page[];
+const CLES = ['uservoice', 'auditContenu', 'matrice'] as const satisfies readonly Page[];
 
 const phrase = z.string().trim().min(1);
+
+/** Une adresse du site, servie depuis public/ (« /captures/… »). */
+const adresse = z.string().regex(/^\/[^/]/, 'adresse attendue, relative à la racine du site (« /… »)');
+const pixels = z.number().int().positive();
+
+/** Une section de « Pour aller plus loin » : ses points, une image (rendue
+ *  comme les figures du corps, ouverte par la visionneuse), un fichier à
+ *  télécharger (registre/0061). Au moins l'un des trois. */
+const section = z
+  .object({
+    titre: phrase,
+    points: z.array(phrase).min(1).optional(),
+    image: z.object({ src: adresse, width: pixels, height: pixels, alt: phrase, legende: phrase }).strict().optional(),
+    /** Le lien porte l'attribut download ; le libellé affiché est
+     *  « libelle (format, poids) », le poids vérifié au build (Projet.astro). */
+    fichier: z.object({ href: adresse, libelle: phrase, format: phrase, poids: phrase }).strict().optional(),
+  })
+  .strict()
+  .refine((s) => s.points || s.image || s.fichier, 'une section porte des points, une image ou un fichier');
 
 const projets = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/contenu/projets' }),
@@ -26,10 +45,8 @@ const projets = defineCollection({
       /** La synthèse recruteur : trois phrases. */
       synthese: z.object({ probleme: phrase, action: phrase, resultat: phrase }).strict(),
       /** « Pour aller plus loin », replié (registre/0048) : des sections, chacune
-       *  un sous-titre (<h3>) et ses points (<ul>). */
-      plusLoin: z
-        .array(z.object({ titre: phrase, points: z.array(phrase).min(1) }).strict())
-        .min(1),
+       *  un sous-titre (<h3>), ses points (<ul>), son image, son fichier. */
+      plusLoin: z.array(section).min(1),
       langue: z.enum(LANGUES),
       cle: z.enum(CLES),
     })

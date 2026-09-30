@@ -12,6 +12,7 @@ export const ROUTES = {
   accueil: { fr: '/', en: '/en/' },
   uservoice: { fr: '/projets/uservoice/', en: '/en/projects/uservoice/' },
   auditContenu: { fr: '/projets/audit-contenu/', en: '/en/projects/content-audit/' },
+  matrice: { fr: '/projets/matrice-competences/', en: '/en/projects/skills-matrix/' },
   aPropos: { fr: '/a-propos/', en: '/en/about/' },
 } as const satisfies Record<string, Record<Langue, string>>;
 

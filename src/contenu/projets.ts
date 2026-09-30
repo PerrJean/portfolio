@@ -7,16 +7,18 @@
  *  - « paire » : les deux actes du récit (01 écouter, 02 agir), reliés par
  *    la flèche « Alors j'ai agi dessus. » ;
  *  - « a-part » : un projet sans rapport avec la paire, numéroté à la suite,
- *    sans flèche. Aucun pour l'instant.
+ *    sans flèche : la matrice de compétences (registre/0061).
  *
  * scene : la scène de la carte, par clé de page (Scene.astro, registre/0058) :
  *  - « uservoice » : Jean seul déroule le plan ;
- *  - « audit » : l'équipe rejoint Jean, qui a le plan ouvert.
+ *  - « audit » : l'équipe rejoint Jean, qui a le plan ouvert ;
+ *  - « aucune » : pas de dessin, la carte s'arrête au fait clé (Parcelle.astro).
+ *    La matrice l'attend : sa scène, l'échelle, est dessinée à part (0062).
  */
 import type { Langue, Page } from '../i18n/routes';
 
 export type Groupe = 'paire' | 'a-part';
-export type SceneDeCarte = 'uservoice' | 'audit';
+export type SceneDeCarte = 'uservoice' | 'audit' | 'aucune';
 
 export interface Projet {
   numero: string;
@@ -48,6 +50,17 @@ export const PROJETS: readonly Projet[] = [
     fait: {
       fr: 'Sur le premier parcours audité, 1 question sur 20 empêchait l’apprenant de répondre. Toutes ont été corrigées.',
       en: 'In the first course audited, 1 question in 20 stopped learners from answering. All of them were fixed.',
+    },
+  },
+  {
+    numero: '03',
+    page: 'matrice',
+    groupe: 'a-part',
+    scene: 'aucune',
+    nom: { fr: 'Matrice de compétences', en: 'Skills matrix' },
+    fait: {
+      fr: 'Sur une matrice de compétences relue ensemble, un Product Owner de mon équipe et moi sommes passés de deux idées de « devenir senior » à une vision partagée.',
+      en: 'Working from a skills matrix we reviewed together, a Product Owner on my team and I went from two ideas of “becoming senior” to a shared view.',
     },
   },
 ];

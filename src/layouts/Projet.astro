@@ -3,12 +3,16 @@
 //  1. la synthèse recruteur : le <h1>, le fait clé en grand, trois phrases ;
 //  2. le corps : les H2 libres du Markdown et leurs paragraphes ;
 //  3. « Pour aller plus loin », replié dans un <details> : des <h3> et leurs
-//     listes, jamais de H2 (le bâtiment compte les H2) ;
+//     listes, jamais de H2 (le bâtiment compte les H2) ; une section peut
+//     porter une image (même balisage que les figures du corps, la
+//     visionneuse la prend) et un fichier à télécharger (registre/0061) ;
 //  4. la fin : le repère [data-fin] (le toit se pose), puis le lien vers
-//     l'autre projet de la paire.
+//     l'autre projet de la paire (un projet à part renvoie au premier).
 // Le contenu vient de src/contenu/projets/ (schéma : src/content.config.ts).
 // À partir de 960 px, le bâtiment occupe la colonne de droite (1 : 4) ; en
 // dessous, l'indicateur de lecture le remplace, collé sous l'en-tête.
+import { statSync } from 'node:fs';
+import { join } from 'node:path';
 import { getCollection, render } from 'astro:content';
 import Base from './Base.astro';
 import Batiment from '../components/batiment/Batiment.astro';
@@ -38,9 +42,22 @@ const etages = headings.filter((h) => h.depth === 2);
 if (etages.length === 0)
   throw new Error(`Page projet ${cle} (${langue}) : aucun H2, le bâtiment n'aurait pas d'étage.`);
 
-// Le projet suivant : l'autre projet de la paire (le suivant, en boucle).
+// Le projet suivant : l'autre projet de la paire (le suivant, en boucle) ;
+// d'un projet à part, le premier de la paire (UserVoice).
 const paire = PROJETS.filter((p) => p.groupe === 'paire');
-const suivant = paire[(paire.findIndex((p) => p.page === cle) + 1) % paire.length];
+const rang = paire.findIndex((p) => p.page === cle);
+const suivant = rang === -1 ? paire[0] : paire[(rang + 1) % paire.length];
+
+// Le poids affiché d'un fichier à télécharger est celui du fichier servi
+// (public/) : arrondi au kilo-octet (1024), « 169 Ko » / « 169 KB ».
+const unite = langue === 'fr' ? 'Ko' : 'KB';
+for (const { fichier } of data.plusLoin) {
+  if (!fichier) continue;
+  const octets = statSync(join(process.cwd(), 'public', fichier.href)).size;
+  const attendu = `${Math.round(octets / 1024)} ${unite}`;
+  if (fichier.poids !== attendu)
+    throw new Error(`Page projet ${cle} (${langue}) : ${fichier.href} pèse ${attendu}, l'en-tête affiche « ${fichier.poids} ».`);
+}
 
 // La date sous le titre (registre/0045) : le mois en toutes lettres, dans la
 // langue de la page, première lettre en capitale (« Septembre 2026 »).
@@ -77,11 +94,35 @@ const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.sl
             data.plusLoin.map((section) => (
               <section class="plus-loin__section">
                 <h3>{section.titre}</h3>
-                <ul>
-                  {section.points.map((point) => (
-                    <li>{point}</li>
-                  ))}
-                </ul>
+                {section.points && (
+                  <ul>
+                    {section.points.map((point) => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
+                )}
+                {section.image && (
+                  <figure>
+                    <a href={section.image.src}>
+                      <img
+                        src={section.image.src}
+                        width={section.image.width}
+                        height={section.image.height}
+                        loading="lazy"
+                        decoding="async"
+                        alt={section.image.alt}
+                      />
+                    </a>
+                    <figcaption>{section.image.legende}</figcaption>
+                  </figure>
+                )}
+                {section.fichier && (
+                  <p class="plus-loin__fichier">
+                    <a href={section.fichier.href} download>
+                      {`${section.fichier.libelle} (${section.fichier.format}, ${section.fichier.poids})`}
+                    </a>
+                  </p>
+                )}
               </section>
             ))
           }
@@ -162,28 +203,34 @@ const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.sl
      cassé tel quel ; le lien ouvre la visionneuse (Visionneuse.astro, registre/0054),
      le PNG sans JavaScript. La légende en encre :
      l'ardoise ne passe le contraste qu'en grand texte. */
-  /* Le navigateur donne 40 px de marge latérale aux <figure> : à zéro. */
-  .corps :global(figure) {
+  /* Le navigateur donne 40 px de marge latérale aux <figure> : à zéro.
+     Les figures de « Pour aller plus loin » suivent les mêmes règles. */
+  .corps :global(figure),
+  .plus-loin figure {
     margin: 1.5rem 0 0;
   }
 
-  .corps :global(figure a) {
+  .corps :global(figure a),
+  .plus-loin figure a {
     display: block;
   }
 
-  .corps :global(figure a:focus-visible) {
+  .corps :global(figure a:focus-visible),
+  .plus-loin figure a:focus-visible {
     outline: 3px solid var(--encre);
     outline-offset: 3px;
   }
 
-  .corps :global(figure img) {
+  .corps :global(figure img),
+  .plus-loin figure img {
     display: block;
     width: 100%;
     height: auto;
     border: 1px solid var(--dalle);
   }
 
-  .corps :global(figcaption) {
+  .corps :global(figcaption),
+  .plus-loin figcaption {
     margin-top: 0.5rem;
     color: var(--encre);
     font-size: 0.9375rem;
@@ -221,6 +268,15 @@ const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.sl
     gap: 0.5rem;
     margin: 0.625rem 0 0;
     padding-left: 1.25rem;
+  }
+
+  .plus-loin__section figure {
+    margin-top: 0.75rem;
+  }
+
+  .plus-loin__fichier {
+    margin-top: 0.75rem;
+    font-weight: 700;
   }
 
   /* Des puces discrètes : l'ardoise, en élément graphique (3 : 1 tenu). */

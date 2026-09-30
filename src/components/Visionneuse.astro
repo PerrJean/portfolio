@@ -1,6 +1,6 @@
 ---
-// La visionneuse des captures (registre/0054). Les captures du corps sont des
-// <figure> dont l'image est dans un lien vers le PNG : sans JavaScript, le
+// La visionneuse des captures (registre/0054). Les captures du corps (et de
+// « Pour aller plus loin », registre/0061) sont des <figure> dont l'image est dans un lien vers le PNG : sans JavaScript, le
 // lien ouvre le PNG. Le script intercepte le clic et ouvre l'image entière
 // dans un <dialog> modal, sur un voile d'encre, sa légende dessous.
 //  - Grand écran : l'image tient dans la fenêtre ; un clic sur l'image la
@@ -112,7 +112,7 @@ const t = UI[Astro.props.langue];
       refermer();
     });
 
-    for (const figure of document.querySelectorAll<HTMLElement>('.corps figure')) {
+    for (const figure of document.querySelectorAll<HTMLElement>('.corps figure, .plus-loin figure')) {
       const lien = figure.querySelector<HTMLAnchorElement>(':scope > a[href]');
       const image = lien?.querySelector<HTMLImageElement>(':scope > img');
       if (!lien || !image) continue;
