@@ -27,3 +27,4 @@ UserVoice, une carte de la capture UserVoice peu lisible. Ratio 1,1.
 **Vocabulaire (Jean, 2026-09-30)** : on ne parle plus d'« échange » mais de « conversation (IA) » pour une conversation avec l'IA, et de « mises en situation IA » pour le format en ligne (FR) ; EN « conversation », « AI conversation ». Page, carte de l'accueil, schéma, brouillons.
 **Correction (Jean)** : seul le pluriel « échanges » gênait ; le singulier « échange » revient (fait clé, qualité de l'échange, retour de fin d'échange, schéma), les pluriels restent remplacés. Volet « Pour aller plus loin » : la section « La prononciation, trois options » supprimée, FR et EN.
 Phrase « Les situations professionnelles passent en premier dans le catalogue, comme elles l'ont demandé. » supprimée (Jean), FR et EN.
+Enseignement « Faire classer les attentes » supprimé (Jean) : la section « Ce que j'en retiens » ne garde que « Cadrer la démarche, laisser l'équipe trouver. », FR et EN.

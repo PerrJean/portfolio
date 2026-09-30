@@ -72,8 +72,6 @@ At the end of September 2026, the role-plays are live in four learning paths, in
 
 **Frame the approach, let the team find the answers.** My work covered the method and the Design Sprint, not the answers. The Product Manager and the product designer ran the interviews and the surveys, and their conclusions reordered the roadmap.
 
-**Have expectations ranked.** Asking clients what they want gets you a list where everything matters. Asking them to rank forces a choice: learning feedback moved ahead of badges and progress tracking, and work situations ahead of everyday life.
-
 ---
 
 <!-- Hors du texte : notes de rédaction pour Jean -->
