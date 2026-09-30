@@ -17,3 +17,10 @@ Brief : `prompts/5-echelle-images-cles.md`.
 nouvelles à reporter dans `poses.ts` (`sur-echelle`, `montre`), mêmes
 segments ; mur et échelle en objets de planche. Lisible à 335 px. En attente
 du go de Jean.
+**Reprise (Jean, 2026-10-01)** : plus de tréteau ni de plan ; bras de Jean
+vers le deuxième barreau (16° sous l'horizontale : le barreau est plus bas
+que l'épaule, un bras montant ne le viserait plus) ; mur à trois rangs ;
+**le marteau transmis** en quatre temps (Jean tient, tend, l'ouvrier prend
+et pose le pied, il monte, Jean vise). Durée proposée 800 ms (repli 600).
+Poses à reporter : `montre(cible)`, `pied-barreau`, `sur-echelle`. Coût de la
+reprise compris : 172 au total.
