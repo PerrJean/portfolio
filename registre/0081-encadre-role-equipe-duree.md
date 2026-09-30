@@ -14,3 +14,4 @@ septembre 2026, en cours ; Fusion février 2023 → août 2024. La synthèse de
 la Fusion ne redit plus le rôle ni la taille de l'équipe. Vérifié à 1280 et
 500 px, FR et EN.
 Fusion, Équipe : « Une dizaine de personnes : développeurs, product designer et learning designers » (Jean).
+Vocabulaire harmonisé sur « learning designers » (Jean) : « l'équipe pédagogique » et « ingénieurs pédagogiques » remplacés, Fusion et Mises en situation, FR et EN (« learning design team » → « learning designers »).

@@ -3,12 +3,12 @@ titre: "Mises en situation orales par IA : parier sur une conversation encadrée
 date: "2026-02"
 cadre:
   role: "Head of Product : cadrage de la méthode et du Design Sprint"
-  equipe: "Un Product Manager, une Product Designer, l’équipe pédagogique"
+  equipe: "Un Product Manager, une Product Designer, les learning designers"
   duree: "Mai 2025 → septembre 2026, en cours"
 fait: "L’e-learning permet enfin de travailler l’expression orale : une IA joue l’interlocuteur, et chaque échange se termine par un retour pédagogique utile."
 synthese:
   probleme: "Sur une plateforme EdTech d’apprentissage des langues, l’apprenant avait peu d’occasions de s’entraîner à parler en situation, face à un recruteur ou à un client. Les conversations avec une IA qu’on trouvait ailleurs restaient souvent hors du parcours d’apprentissage, avec des scores sans explication."
-  action: "Nous avons parié sur une conversation encadrée : un échange court, sur des questions préparées par l’équipe pédagogique. J’ai cadré la méthode et le Design Sprint avec la product designer et le Product Manager de mon équipe, qui ont ensuite mené entretiens et enquêtes auprès des clients."
+  action: "Nous avons parié sur une conversation encadrée : un échange court, sur des questions préparées par les learning designers. J’ai cadré la méthode et le Design Sprint avec la product designer et le Product Manager de mon équipe, qui ont ensuite mené entretiens et enquêtes auprès des clients."
   resultat: "Les enquêtes ont validé le format et réordonné la suite : le retour pédagogique d’abord, un catalogue construit sur les thèmes jugés indispensables. Les mises en situation IA sont en ligne dans quatre parcours, et le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau, auprès de nouveaux clients."
 plusLoin:
   - titre: "Le calendrier"
@@ -50,7 +50,7 @@ Sur une plateforme EdTech d’apprentissage des langues, l’apprenant s’entra
 
 Des applications grand public proposaient déjà de converser avec une IA. L’étude que nous en avons faite en mai 2025 en montrait les limites. Les conversations restaient souvent hors du parcours d’apprentissage et les scores n’étaient pas expliqués. Quant à la conversation libre, elle s’éloigne vite de l’objectif pédagogique.
 
-Nous avons fait le pari inverse, celui d’une conversation encadrée. L’IA incarne un interlocuteur et mène un échange de deux minutes environ, sur des questions préparées par l’équipe pédagogique. L’apprenant répond à l’oral, dans un fil de messages, sans visio ni pression du temps réel.
+Nous avons fait le pari inverse, celui d’une conversation encadrée. L’IA incarne un interlocuteur et mène un échange de deux minutes environ, sur des questions préparées par les learning designers. L’apprenant répond à l’oral, dans un fil de messages, sans visio ni pression du temps réel.
 
 ## Ce que la découverte a changé
 

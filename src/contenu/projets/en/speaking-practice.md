@@ -3,12 +3,12 @@ titre: "AI speaking role-plays: betting on a guided conversation"
 date: "2026-02"
 cadre:
   role: "Head of Product: framing the method and the Design Sprint"
-  equipe: "One Product Manager, one Product Designer, the learning design team"
+  equipe: "One Product Manager, one Product Designer, the learning designers"
   duree: "May 2025 → September 2026, ongoing"
 fait: "E-learning can finally help learners practice speaking: an AI plays the other person, and every exchange ends with useful learning feedback."
 synthese:
   probleme: "On an EdTech language-learning platform, learners had few chances to practice speaking in real situations, facing a recruiter or a client. The AI conversations available elsewhere often sat outside the learning path, with scores nobody explained."
-  action: "We bet on a guided conversation: a short exchange, built on questions prepared by the learning design team. I framed the method and the Design Sprint with the product designer and the Product Manager on my team, who then ran interviews and surveys with clients."
+  action: "We bet on a guided conversation: a short exchange, built on questions prepared by the learning designers. I framed the method and the Design Sprint with the product designer and the Product Manager on my team, who then ran interviews and surveys with clients."
   resultat: "The surveys validated the format and reordered what came next: learning feedback first, and a catalog built on the topics rated must-have. The role-plays are live in four learning paths, and the project brought in several tens of thousands of euros in new revenue, from new clients."
 plusLoin:
   - titre: "The timeline"
@@ -50,7 +50,7 @@ On an EdTech language-learning platform, learners practiced understanding and wr
 
 Consumer apps already offered conversations with an AI. The study we ran in May 2025 showed their limits. Conversations often sat outside the learning path, and scores went unexplained. As for open conversation, it quickly drifts away from the learning goal.
 
-We made the opposite bet, a guided conversation. The AI plays the other person and leads an exchange of about two minutes, built on questions prepared by the learning design team. Learners answer out loud, in a message thread, with no video call and no real-time pressure.
+We made the opposite bet, a guided conversation. The AI plays the other person and leads an exchange of about two minutes, built on questions prepared by the learning designers. Learners answer out loud, in a message thread, with no video call and no real-time pressure.
 
 ## What discovery changed
 

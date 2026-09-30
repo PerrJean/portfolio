@@ -80,7 +80,7 @@ The heaviest batch covered the activity templates. User interviews and comments 
   <figcaption>Some thirty activity templates, brought down to four shared templates, each made of a media block and a question.</figcaption>
 </figure>
 
-We were a team of about ten people, mostly developers, with a designer, a junior Product Manager, and the learning design team alongside us. As Product Manager, then project lead, I owned the schedule and the split into batches, defined the target data model with the developers and the learning designers, wrote the specifications and ran acceptance testing. The lead developer owned the technical architecture, and the designer the components, the mockups and the user interviews.
+We were a team of about ten people, mostly developers, with a designer, a junior Product Manager, and the learning designers alongside us. As Product Manager, then project lead, I owned the schedule and the split into batches, defined the target data model with the developers and the learning designers, wrote the specifications and ran acceptance testing. The lead developer owned the technical architecture, and the designer the components, the mockups and the user interviews.
 
 ## Benefits and business impact
 
@@ -88,7 +88,7 @@ The platform for businesses has been gone since August 2024, and with it one cod
 
 For learners, the share of feedback about usability went from 8% between January and August 2024 to 6% between September and December, a quarter less. Activities were designed to the accessibility standard, something public-sector education clients expect.
 
-For the learning design team, a new exercise no longer requires development: they pair any material with any type of question.
+For learning designers, a new exercise no longer requires development: they pair any material with any type of question.
 
 ## What I took from it
 

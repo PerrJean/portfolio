@@ -58,7 +58,7 @@ Le lot le plus lourd portait sur les gabarits d’activité. Les entretiens util
 
 <!-- Figure : gabarits (ops/images/fusion/gabarits.fr.svg, étroit : gabarits.etroit.fr.svg) -->
 
-Nous étions une dizaine de personnes, surtout des développeurs, avec une designer et un Product Manager junior, et l’équipe pédagogique à nos côtés. Product Manager puis chef de projet, je tenais le rétroplanning et le découpage en lots, je définissais le modèle de données cible avec les développeurs et les ingénieurs pédagogiques, j’écrivais les spécifications et je menais la recette. Le lead développeur portait l’architecture technique, la designer les composants, les maquettes et les entretiens utilisateurs.
+Nous étions une dizaine de personnes, surtout des développeurs, avec une designer et un Product Manager junior, et les learning designers à nos côtés. Product Manager puis chef de projet, je tenais le rétroplanning et le découpage en lots, je définissais le modèle de données cible avec les développeurs et les learning designers, j’écrivais les spécifications et je menais la recette. Le lead développeur portait l’architecture technique, la designer les composants, les maquettes et les entretiens utilisateurs.
 
 ## Bénéfices et impact business
 
@@ -66,7 +66,7 @@ La plateforme dédiée aux entreprises n’existe plus depuis août 2024, et ave
 
 Pour l’apprenant, la part des retours consacrés à l’ergonomie est passée de 8 % entre janvier et août 2024 à 6 % entre septembre et décembre, soit un quart de moins. Les activités ont été conçues selon le référentiel d’accessibilité, un attendu des clients du secteur public éducatif.
 
-Pour l’équipe pédagogique, un nouvel exercice ne demande plus de développement : elle associe n’importe quel support à n’importe quel type de question.
+Pour les learning designers, un nouvel exercice ne demande plus de développement : elle associe n’importe quel support à n’importe quel type de question.
 
 ## Ce que j’en retiens
 
