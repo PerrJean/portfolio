@@ -16,6 +16,7 @@ from pathlib import Path
 LISTES = Path.home() / ".portfolio"
 EXEMPTES = ("COMMANDEMENTS.md", "ops/hooks/")
 PAGES_A_PROPOS = ("a-propos", "about")
+TEXTES = (".md", ".mjs", ".js", ".ts", ".astro", ".css", ".json", ".html", ".svg", ".txt", ".py", ".yml", ".sh")
 
 
 def charger(nom):
@@ -46,7 +47,12 @@ def fautes(chemins, interdits, employeur):
         if not Path(chemin).is_file():
             sortie.append((chemin, "fichier introuvable, rien n'a ete verifie"))
             continue
-        texte = Path(chemin).read_bytes().decode("utf-8", errors="ignore")
+        brut = Path(chemin).read_bytes()
+        # Un texte ne porte pas de caractère de contrôle (registre/0068) : un
+        # « \1 » de script devenu \x01 avait remplacé des « : » sans bruit.
+        if norme.endswith(TEXTES) and re.search(rb"[\x00-\x08\x0b\x0c\x0e-\x1f]", brut):
+            sortie.append((chemin, "caractere de controle dans un fichier texte"))
+        texte = brut.decode("utf-8", errors="ignore")
         if m_interdits and m_interdits.search(texte):
             sortie.append((chemin, "terme interdit"))
         a_propos = any(p in norme for p in PAGES_A_PROPOS)

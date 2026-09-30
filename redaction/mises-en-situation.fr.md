@@ -4,17 +4,18 @@ date: "2026-02"
 fait: "Invités à classer ce qui comptait le plus, les clients ont mis en tête la qualité de l’échange avec l’IA et celle du retour après l’échange. Le retour pédagogique est passé en tête de la feuille de route, avant l’engagement."
 synthese:
   probleme: "Sur une plateforme EdTech d’apprentissage des langues, l’apprenant avait peu d’occasions de s’entraîner à parler en situation, face à un recruteur ou à un client. Les conversations avec une IA qu’on trouvait ailleurs restaient souvent hors du parcours, avec des scores sans explication."
-  action: "Nous avons parié sur une conversation encadrée : une IA incarne l’interlocuteur et mène un échange court, sur des questions préparées par l’équipe pédagogique. J’ai accompagné le PM et la product designer de mon équipe sur la méthode et la mise en place d’un Design Sprint ; l’équipe a ensuite mené entretiens et enquêtes auprès des clients."
-  resultat: "Les enquêtes ont validé le format et réordonné la suite : le retour pédagogique d’abord, un catalogue construit sur les thèmes jugés indispensables. Les échanges sont en ligne dans plusieurs parcours. [À COMPLÉTER : date de mise en ligne, premiers résultats d’usage en relatif.]"
+  action: "Nous avons parié sur une conversation encadrée : une IA incarne l’interlocuteur et mène un échange court, sur des questions préparées par l’équipe pédagogique. J’ai accompagné le Product Manager (PM) et la product designer de mon équipe sur la méthode et la mise en place d’un Design Sprint ; l’équipe a ensuite mené entretiens et enquêtes auprès des clients."
+  resultat: "Les enquêtes ont validé le format et réordonné la suite : le retour pédagogique d’abord, un catalogue construit sur les thèmes jugés indispensables. Les échanges sont en ligne dans quatre parcours, et le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau, auprès de nouveaux clients."
 plusLoin:
   - titre: "Le calendrier"
     points:
       - "Mai 2025 : étude de six applications de conversation avec une IA, pour situer notre proposition."
-      - "Début 2026 : Design Sprint, prototype, puis backlog priorisé et périmètre de la première version. [À COMPLÉTER : date exacte du Design Sprint.]"
+      - "Début 2026 : Design Sprint, prototype, puis backlog priorisé et périmètre de la première version."
       - "Février 2026 : entretiens avec des clients qui avaient testé la première version ; recherche documentaire sur l’apprentissage de la prononciation."
       - "Mars et avril 2026 : enquête auprès des clients pour classer les thèmes des échanges ; atelier de co-construction ; bilan de la recherche utilisateur et ordre des chantiers de découverte."
       - "Mai à juillet 2026 : cadrage, développement et recette du retour pédagogique en trois temps."
       - "Été 2026 : la prononciation rejoint le retour pédagogique ; les échanges entrent dans les parcours."
+      - "Septembre 2026 : échanges en ligne dans quatre parcours, dont le parcours général de niveau A2 et les parcours business."
       - "Automne 2026, prévu : statistiques des conversations, deux parcours de plus, interfaces en anglais puis dans d’autres langues, analyse de l’usage et de la satisfaction."
   - titre: "Ce que les enquêtes ont classé"
     points:
@@ -55,9 +56,9 @@ Nous avons fait le pari inverse, celui d’une conversation encadrée. L’IA in
 
 ## Ce que la découverte a changé
 
-J’ai accompagné le PM et la product designer de mon équipe sur la méthode, puis dans la mise en place d’un Design Sprint. L’équipe en a tiré un prototype, et une première version a été testée par des clients : responsables pédagogiques et enseignants, de l’enseignement supérieur à la formation professionnelle. Entretiens, enquêtes et atelier de co-construction ont suivi, de février à avril 2026.
+J’ai accompagné le Product Manager (PM) et la product designer de mon équipe sur la méthode, puis dans la mise en place d’un Design Sprint. L’équipe en a tiré un prototype, et une première version a été testée par des clients : responsables pédagogiques et enseignants, de l’enseignement supérieur à la formation professionnelle. Entretiens, enquêtes et atelier de co-construction ont suivi, de février à avril 2026.
 
-Le socle a été validé par tous, de la conversation encadrée au fil de messages sans visio. Les attentes, elles, étaient nettes. Tous voulaient un retour utile à la progression et un échange fiable. Invités à classer nos prochains chantiers, ils ont mis la qualité de l’échange avec l’IA en tête, la qualité du retour juste après, et les animations d’engagement en dernier. Sans retour en fin d’échange, les testeurs ne voyaient pas ce qu’ils avaient tiré de l’exercice.
+Le socle a été validé par tous, de la conversation encadrée au fil de messages sans visio. Tous voulaient aussi un retour utile à la progression, et un échange fiable. Invités à classer nos prochains chantiers, ils ont mis la qualité de l’échange avec l’IA en tête, la qualité du retour juste après, et les animations d’engagement en dernier.
 
 Nous avons donc réordonné la suite. Le retour pédagogique est passé en tête, plus tôt que prévu, validé avec la direction. La gamification et la progression ont été mises en attente : sans retour utile, elles n’auraient récompensé que l’effort. Une enquête sur les thèmes a ensuite orienté le catalogue. Les situations professionnelles arrivaient en haut du classement, la vie quotidienne en bas, et les premiers échanges ont été écrits en partant du haut.
 
@@ -67,13 +68,13 @@ Le retour de fin d’échange s’appuie sur la recherche en acquisition des lan
 
 La prononciation a demandé l’arbitrage le plus net. Une minorité de clients la réclamait, et une note de prononciation calculée par IA se vend bien. L’analyse de l’équipe a montré qu’une telle note compare l’apprenant à un seul accent de référence et évalue mal le rythme de la phrase. Un retour faux ancre l’erreur au lieu de la corriger. L’équipe a recommandé de mesurer d’abord si l’apprenant est compris, sans jamais juger son accent.
 
-D’autres choix tiennent aux limites de l’IA elle-même. Les apprenants cherchent les failles d’une conversation, alors elle reste fermée sur son scénario. Une IA n’invente pas non plus ce qui manque à ses données. Pour la vidéo de conseil envisagée avant l’échange, la proposition est que l’équipe pédagogique écrive elle-même le piège typique de chaque situation, plutôt que de laisser le modèle le deviner.
+L’IA a aussi ses propres limites. Les apprenants cherchent les failles d’une conversation, alors elle reste fermée sur son scénario.
 
 ## Bénéfices et impact business
 
-Un responsable de formation achète une preuve de progression. Un retour qui montre ce qui a marché et ce qu’il faut retravailler répond à la première attente de tous les clients interrogés. Un catalogue qui part des situations professionnelles répond à ce qu’ils ont jugé indispensable. C’est aussi ce qui distingue une conversation intégrée au parcours d’un entraînement à côté.
+Un responsable de formation achète une preuve de progression. Un retour qui montre ce qui a marché et ce qu’il faut retravailler répond à la première attente de tous les clients interrogés. Un catalogue qui part des situations professionnelles répond à ce qu’ils ont jugé indispensable.
 
-À la fin de septembre 2026, les échanges sont en ligne dans le parcours général de niveau A2 et dans les parcours business, et quatre parcours en comptent [À CONFIRMER : date de mise en ligne]. Le retour pédagogique est en place, et la prononciation l’a rejoint pendant l’été [À CONFIRMER : le retour dans sa version en trois temps, la prononciation sous quelle forme]. Deux parcours de plus, les statistiques des conversations et les interfaces en d’autres langues sont prévus. L’analyse de l’usage et de la satisfaction aussi : aucun résultat n’est encore mesuré [À COMPLÉTER : résultats en relatif, s’il y en a].
+Le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau, auprès de nouveaux clients. À la fin de septembre 2026, les échanges sont en ligne dans quatre parcours, dont le parcours général de niveau A2 et les parcours business. Le retour pédagogique est en place, et la prononciation l’a rejoint pendant l’été. Deux parcours de plus, les statistiques des conversations et l’analyse de l’usage sont les prochaines étapes.
 
 ## Ce que j’en retiens
 
@@ -89,29 +90,30 @@ Ce projet m’apprend à tenir le rôle de Head of Product sur une découverte q
 
 <!-- Hors du texte : notes de rédaction pour Jean -->
 
-### Audit des tics (passe 2 vers passe 3)
+### Audit des tics (passe 3 vers passe 4)
 
-| Extrait (passe 2) | Tic | Réécriture |
+| Extrait (passe 3) | Tic ou consigne | Réécriture |
 |---|---|---|
-| « Nous avons fait tester la première version à des clients » (sans le rôle de Jean) | Rôle flou (consigne de Jean) | « J’ai accompagné le PM et la product designer de mon équipe sur la méthode, puis dans la mise en place d’un Design Sprint. » Les analyses sont attribuées à « l’équipe ». |
-| « Notre analyse de trois options a montré… Nous avons recommandé… » | S’attribuer le travail de l’équipe | « L’analyse de l’équipe a montré… L’équipe a recommandé… ». |
-| « nous avons proposé que l’équipe pédagogique écrive… » | Même attribution ; répétition « l’équipe… l’équipe » | « la proposition est que l’équipe pédagogique écrive elle-même… ». |
-| « Des clients la réclamaient » (prononciation) | Généralité sans fait | « Une minorité de clients la réclamait » (donnée des entretiens). |
-| « Le point de friction était ailleurs. » | Chute courte en milieu de paragraphe, sans fait | Remplacé par « Les attentes, elles, étaient nettes. », suivi des attentes chiffrées en proportion. |
-| « La gamification vient après le retour, car sans lui… » | Inexact (mise en attente dans le suivi de découverte) | « La gamification et la progression ont été mises en attente : … ». |
-| « D’autres pistes restent des propositions, dont la mesure de la compréhension et la vidéo de conseil. » | Inexact (la prononciation a rejoint le retour pendant l’été) | État mis à jour : ce qui est en ligne, ce qui est prévu, ce qui n’est pas mesuré. |
-| « The heater isn’t working since this morning » | Faute d’anglais reprise du document source | « The heater hasn’t been working since this morning ». |
-| « Donner à l’IA ce qu’elle ne peut pas deviner » (troisième enseignement) | Doublon avec le corps (limites de l’IA) | Remplacé par « Faire classer, pas seulement écouter », tiré des enquêtes. |
-| « Mon travail a porté sur la méthode et le Design Sprint, pas sur les réponses. » | Opposition fabriquée ? | Gardé : c’est le fait que Jean veut montrer, et la phrase suivante dit qui a trouvé les réponses. |
+| « aucun résultat n’est encore mesuré [À COMPLÉTER…] » | Consigne de Jean (résultat), C2 | « Le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau, auprès de nouveaux clients. » Ordre de grandeur seulement, dans la synthèse et dans « Bénéfices et impact business ». |
+| « …et quatre parcours en comptent [À CONFIRMER…] » | Consigne de Jean (source la plus récente) | « les échanges sont en ligne dans quatre parcours, dont le parcours général de niveau A2 et les parcours business ». |
+| « la prononciation l’a rejoint pendant l’été [À CONFIRMER : sous quelle forme] » | Fait non confirmé | Gardé sans préciser la forme : le brouillon ne dit pas « mesure de la compréhension ». |
+| « Les attentes, elles, étaient nettes. Tous voulaient… » | Chute courte, redite | « Tous voulaient aussi un retour utile à la progression, et un échange fiable. » |
+| « Sans retour en fin d’échange, les testeurs ne voyaient pas ce qu’ils avaient tiré de l’exercice. » | Redite (déjà dit par le classement) | Supprimé (longueur). |
+| « Une IA n’invente pas non plus… vidéo de conseil… le piège typique… » | Proposition en attente, pas un fait livré | Supprimé (longueur) ; il reste une limite de l’IA, les failles, et la conversation fermée. |
+| « C’est aussi ce qui distingue une conversation intégrée au parcours d’un entraînement à côté. » | Généralité sans fait | Supprimé (longueur). |
+| « le PM » (première occurrence, synthèse) | Sigle non développé | « le Product Manager (PM) », puis « le PM ». |
 | Trois enseignements en gras | Triplet | Gardé, voulu, sur le modèle d’« Audit contenu ». |
 
-### Ce que Jean doit trancher ou confirmer
+### Longueur
 
-1. **Le PM ou le Product Owner.** Le brouillon écrit « le PM », comme tu l’as dit. La page « Matrice » parle d’un « Product Owner de mon équipe ». S’il s’agit de la même personne, harmoniser les deux pages.
-2. **Ce que les documents t’attribuent.** Le suivi de découverte te crédite du backlog priorisé et du périmètre de la première version, et d’un travail sur les critères qui favorisent l’engagement. Faut-il l’écrire, ou s’en tenir à la méthode et au Design Sprint ?
-3. **La date.** `2026-02` reste une hypothèse. Aucun document lu ne date le Design Sprint ni la mise en ligne de la première version ; les entretiens de février 2026 portent déjà sur une version testée par des clients.
-4. **La mise en ligne et le public.** Le suivi du 16 septembre 2026 dit : en ligne dans le parcours général A2 et les parcours business, quatre parcours dotés. Le comité produit du 2 septembre dit : intégration en cours dans trois parcours (général B1 et B2, business A2). Quel périmètre publier, et depuis quand ?
-5. **La prononciation dans le retour.** Livrée pendant l’été 2026 selon les deux documents, sans dire sous quelle forme. Est-ce la mesure de la compréhension recommandée ? Le brouillon ne le dit pas tant que ce n’est pas confirmé.
-6. **Un résultat.** Aucun indicateur d’usage n’est mesuré : l’indicateur de suivi prévu n’a pas encore de dispositif, et l’analyse de l’usage est à ta feuille de route. Garder le `[À COMPLÉTER]`, ou assumer une page sans résultat chiffré ?
-7. **Le niveau affiché.** Trois clients sur quatre voulaient une estimation fiable de leur niveau ; les consignes du retour la gardent interne à l’IA. Arbitrage à raconter, ou à taire ?
-8. **La clé de page.** `misesEnSituation` est proposée ; elle n’existe encore ni dans `src/content.config.ts` ni dans `src/i18n/routes.ts`.
+Le corps passe d’environ 890 à 780 mots. Trois passages sortent : la phrase sur ce que les testeurs n’avaient pas tiré de l’exercice (le classement le dit déjà), le paragraphe sur la vidéo de conseil et le savoir que l’IA ne devine pas (une proposition en attente, pas un fait), et la phrase générale sur la conversation intégrée au parcours.
+
+### L’illustration
+
+Le schéma de l’échange (l’entrée, la conversation, le retour en trois temps sur l’exemple fictif de l’hôtel) se place sous « Ce que l’IA fait, et ce qu’on ne lui demande pas », juste après le premier paragraphe, celui qui décrit le retour en trois temps. Le lecteur y voit sur un cas ce que le paragraphe vient de dire, avant l’arbitrage sur la prononciation.
+
+### Ce qui reste pour Jean
+
+1. **La page « Matrice »** parle encore d’un « Product Owner de mon équipe ». Puisque c’est la même personne, `redaction/matrice.fr.md` est à harmoniser en « PM » (hors de ce chantier, non modifié ici).
+2. **La clé de page** `misesEnSituation` reste à créer dans `src/content.config.ts` et `src/i18n/routes.ts` à l’intégration.
+3. **La page EN**, jumelle de celle-ci (C7), reste à écrire.
