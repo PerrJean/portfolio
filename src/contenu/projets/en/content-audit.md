@@ -1,7 +1,7 @@
 ---
 titre: "Content audit: checking every question before learners see it"
 date: "2026-09"
-fait: "In the first course audited, 1 question in 20 stopped learners from getting it right. All of them are fixed and live."
+fait: "In the first course audited, 1 question in 20 made learners fail through no fault of their own. All of them are fixed."
 synthese:
   probleme: "According to their feedback, the satisfaction of learners on an EdTech platform depends first on the quality of the content."
   action: "With a learning designer, we put every question in one course through a six-criterion grid. Supervised AI agents applied it, and automated checks completed it."

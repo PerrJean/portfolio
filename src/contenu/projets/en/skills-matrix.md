@@ -69,8 +69,6 @@ The framework reaches beyond this one conversation. The same levels and the same
 
 ## What I took from it
 
-I now use this matrix to help the team grow.
-
 **Describe each level by what you can see someone do.** A sentence like “breaks work down into epics and runs grooming” can be checked. It made me pin down my own expectations before applying them to someone else.
 
 **Review the framework with the person before using it.** Because the Product Manager and I reviewed the matrix before the one-on-one, we had the same criteria in front of us when it came time to place each skill.

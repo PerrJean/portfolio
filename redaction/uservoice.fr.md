@@ -1,6 +1,6 @@
 ---
 titre: "UserVoice : écouter les apprenants chaque lundi"
-fait: "1 retour négatif sur 3 laissé sur le site concerne le contenu : l’équipe y a déplacé son effort."
+fait: "1 retour négatif sur 3 laissé sur le site concerne le contenu : sa qualité est passée en tête des priorités."
 synthese: "Une plateforme EdTech reçoit des milliers de retours d’apprenants par an, répartis entre quatre sources, et jamais lus ensemble. Je les ai réunis dans une seule table. L’IA classe chaque retour avec un score de confiance et laisse les cas douteux à un humain. Le bilan se lit en cinq minutes, chaque lundi. On pensait surtout à des bugs. La donnée a désigné le contenu, et l’effort s’est déplacé vers sa qualité."
 ---
 

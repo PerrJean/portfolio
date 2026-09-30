@@ -68,8 +68,8 @@ export const PROJETS: readonly Projet[] = [
     scene: 'uservoice',
     nom: { fr: 'UserVoice', en: 'UserVoice' },
     fait: {
-      fr: '1 retour négatif sur 3 laissé sur le site concerne le contenu : l’équipe y a déplacé son effort.',
-      en: '1 in 3 pieces of negative feedback left on the site is about the content: the team shifted its effort there.',
+      fr: '1 retour négatif sur 3 laissé sur le site concerne le contenu : sa qualité est passée en tête des priorités.',
+      en: '1 in 3 pieces of negative feedback left on the site is about the content, which became the top priority.',
     },
   },
   {
@@ -79,8 +79,8 @@ export const PROJETS: readonly Projet[] = [
     scene: 'audit',
     nom: { fr: 'Audit contenu', en: 'Content audit' },
     fait: {
-      fr: 'Sur le premier parcours audité, 1 question sur 20 empêchait l’apprenant d’avoir juste. Toutes sont corrigées et en production.',
-      en: 'In the first course audited, 1 question in 20 stopped learners from getting it right. All of them are fixed and live.',
+      fr: 'Sur le premier parcours audité, 1 question sur 20 faisait échouer l’apprenant sans que l’erreur soit la sienne. Toutes sont corrigées.',
+      en: 'In the first course audited, 1 question in 20 made learners fail through no fault of their own. All of them are fixed.',
     },
   },
   {
