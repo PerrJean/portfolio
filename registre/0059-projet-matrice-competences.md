@@ -27,3 +27,10 @@ utilisateurs, et à sa maîtrise du métier) ; seuls ces deux points de
 l'échange sont publiés, jamais l'évaluation ; **la grille est montrée en
 capture, sans les résultats du collaborateur** ; enseignements confirmés.
 Brief de la capture : `prompts/5-capture-matrice.md`.
+
+**Passage en PM (Jean, 2026-10-01)** : la personne accompagnée est le PM de
+l'équipe ; tout passe en « Product Manager » : pages FR et EN, titre, fait
+clé, grille (générateur hors dépôt), PDF renommé `grille-competences-pm.pdf`.
+Deux retouches au-delà du sigle, à valider : « le PM senior ou le Head of
+Product » (rangée Structuration, junior), et « Product Manager / Head of
+Product » laissé tel quel (rangée Roadmap, junior).

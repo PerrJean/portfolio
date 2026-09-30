@@ -60,8 +60,8 @@ export const PROJETS: readonly Projet[] = [
     scene: 'matrice',
     nom: { fr: 'Matrice de compétences', en: 'Skills matrix' },
     fait: {
-      fr: 'Sur une matrice de compétences relue ensemble, un Product Owner de mon équipe et moi sommes passés de deux idées de « devenir senior » à une vision partagée.',
-      en: 'Working from a skills matrix we reviewed together, a Product Owner on my team and I went from two ideas of “becoming senior” to a shared view.',
+      fr: 'Sur une matrice de compétences relue ensemble, un Product Manager de mon équipe et moi sommes passés de deux idées de « devenir senior » à une vision partagée.',
+      en: 'Working from a skills matrix we reviewed together, a Product Manager on my team and I went from two ideas of “becoming senior” to a shared view.',
     },
   },
 ];
