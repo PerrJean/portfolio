@@ -6,9 +6,10 @@ Depuis 2024, je suis Head of Product chez GlobalExam, une scale-up SaaS B2B
 d’apprentissage des langues en ligne. J’y ai été Product Manager et Product
 Owner Data de 2022 à 2024.
 
-J’y mène une équipe de Product Managers et de Product Designers, de la
-discovery à la mise en production. Je pilote aussi l’équipe qui transforme les
-retours des utilisateurs en corrections priorisées.
+J’y manage une équipe de Product Managers et de Product Designers, que
+j’accompagne au quotidien, de la discovery à la mise en production. Je porte
+aussi des sujets en direct, et je pilote l’équipe qui transforme les retours
+des utilisateurs en corrections priorisées.
 
 Avant, j’ai construit des services publics numériques : à la DINUM,
 l’Observatoire de la qualité des démarches en ligne et « Je donne mon
