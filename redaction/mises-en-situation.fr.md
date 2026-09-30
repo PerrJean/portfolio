@@ -114,6 +114,6 @@ Le schéma de l’échange (l’entrée, la conversation, le retour en trois tem
 
 ### Ce qui reste pour Jean
 
-1. **La page « Matrice »** parle encore d’un « Product Owner de mon équipe ». Puisque c’est la même personne, `redaction/matrice.fr.md` est à harmoniser en « PM » (hors de ce chantier, non modifié ici).
+1. **La page « Matrice »** désigne la même personne : son harmonisation en « PM » relève de son propre chantier (`prompts/6-matrice-pm.md`), non modifié ici. À vérifier à l’intégration.
 2. **La clé de page** `misesEnSituation` reste à créer dans `src/content.config.ts` et `src/i18n/routes.ts` à l’intégration.
 3. **La page EN**, jumelle de celle-ci (C7), reste à écrire.

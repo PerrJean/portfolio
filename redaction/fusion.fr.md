@@ -4,8 +4,8 @@ date: "2024-08"
 fait: "En août 2024, avant la rentrée, la plateforme dédiée aux entreprises a rejoint la plateforme généraliste. Une plateforme sur trois a été supprimée."
 synthese:
   probleme: "Une plateforme EdTech proposait trois plateformes d’apprentissage des langues, nées l’une après l’autre. Chacune avait son interface, ses gabarits d’activité et son modèle de données, si bien que chaque évolution se développait trois fois."
-  action: "Product Owner, puis chef de projet, j’ai cadré une cible, une seule plateforme, et je l’ai présentée au comité de direction. Avec une équipe d’une dizaine de personnes, nous avons d’abord posé un design system commun, puis fondu la plateforme dédiée aux entreprises dans la plateforme généraliste, en sept lots."
-  resultat: "La fusion est en production depuis août 2024. Les activités tiennent sur quatre gabarits au lieu d’une trentaine, et la part des retours sur l’ergonomie a baissé d’un quart. Mener ce projet m’a donné la légitimité de devenir Head of Product."
+  action: "Product Manager (PM), puis chef de projet, j’ai cadré une cible, une seule plateforme, et je l’ai présentée au comité de direction. Avec une équipe d’une dizaine de personnes, nous avons d’abord posé un design system commun, puis fondu la plateforme dédiée aux entreprises dans la plateforme généraliste, en sept lots."
+  resultat: "La fusion est en production depuis août 2024. Les activités tiennent sur quatre gabarits au lieu d’une trentaine, et la part des retours sur l’ergonomie a baissé d’un quart. Ce projet a ouvert la voie au poste de Head of Product."
 plusLoin:
   - titre: "Le calendrier"
     points:
@@ -58,11 +58,11 @@ Le lot le plus lourd portait sur les gabarits d’activité. Les entretiens util
 
 <!-- Figure : gabarits (ops/images/fusion/gabarits.fr.svg, étroit : gabarits.etroit.fr.svg) -->
 
-Nous étions une dizaine de personnes, surtout des développeurs, avec une designer et un PO junior, et l’équipe pédagogique à nos côtés. Chef de projet et Product Owner, je tenais le rétroplanning et le découpage en lots, je définissais le modèle de données cible, j’écrivais les spécifications et je menais la recette. Le lead développeur portait l’architecture technique, la designer les composants, les maquettes et les entretiens utilisateurs.
+Nous étions une dizaine de personnes, surtout des développeurs, avec une designer et un PM junior, et l’équipe pédagogique à nos côtés. Chef de projet et PM, je tenais le rétroplanning et le découpage en lots, je définissais le modèle de données cible, j’écrivais les spécifications et je menais la recette. Le lead développeur portait l’architecture technique, la designer les composants, les maquettes et les entretiens utilisateurs.
 
 ## Bénéfices et impact business
 
-La plateforme dédiée aux entreprises n’existe plus depuis août 2024 : c’est une base de code de moins à faire évoluer et à maintenir.
+La plateforme dédiée aux entreprises n’existe plus depuis août 2024. Tout développement à venir se fait désormais deux fois, et non plus trois, sur une base de code de moins à maintenir.
 
 Pour l’apprenant, la part des retours consacrés à l’ergonomie est passée de 8 % entre janvier et août 2024 à 6 % entre septembre et décembre, soit un quart de moins. Les activités ont été conçues selon le référentiel d’accessibilité, un attendu des clients du secteur public éducatif.
 
@@ -70,7 +70,7 @@ Pour l’équipe pédagogique, un nouvel exercice ne demande plus de développem
 
 ## Ce que j’en retiens
 
-J’ai mené ce projet comme Product Owner, puis comme chef de projet. C’est lui qui m’a donné la légitimité de devenir Head of Product, parce qu’il m’a appris à mener un projet complexe avec une grande équipe. J’en tire trois enseignements.
+Ce projet, mené comme PM puis comme chef de projet, a ouvert la voie au poste de Head of Product : il demandait de conduire un projet complexe avec une grande équipe. J’en tire trois enseignements.
 
 **Donner la cible, puis un premier pas qui vaut pour lui-même.** La plateforme unique restait l’horizon. Le premier temps devait valoir seul, avec une plateforme de moins à maintenir, même si le second tardait.
 
@@ -101,7 +101,9 @@ J’ai mené ce projet comme Product Owner, puis comme chef de projet. C’est l
 
 | Extrait | Tic | Réécriture |
 |---|---|---|
-| « le projet qui a fait de moi un Head of Product » | Titre prêté, emphase | « C’est lui qui m’a donné la légitimité de devenir Head of Product ». |
+| « le projet qui a fait de moi un Head of Product » ; puis « C’est lui qui m’a donné la légitimité de devenir Head of Product » | Titre prêté, emphase ; puis trop de « je » (Jean) | « Ce projet a ouvert la voie au poste de Head of Product », le projet en sujet. |
+| « Product Owner », « PO junior » | Consigne de Jean | « Product Manager (PM) » à la première occurrence (synthèse), puis « PM ». |
+| « c’est une base de code de moins à faire évoluer et à maintenir » | Bénéfice incomplet (Jean) | « Tout développement à venir se fait désormais deux fois, et non plus trois ». |
 | « pour deux raisons : elles étaient plus proches… ; elles servent toutes deux… » | Ponctuation en série | « pour deux raisons. » puis une phrase par raison. |
 | « respectent désormais les règles d’accessibilité » | Affirmation non prouvée | « ont été conçues selon le référentiel d’accessibilité ». |
 | « n’a pas eu lieu, et c’est un arbitrage » | Rôle prêté (Jean ne l’a pas porté) | « n’a pas eu lieu : l’occasion ne s’est pas présentée », puis ses quatre raisons, en contexte. |
