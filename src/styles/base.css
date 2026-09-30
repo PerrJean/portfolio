@@ -202,13 +202,25 @@ svg {
    Jean à la place d'une photo (Portrait.astro), au-dessus du titre sur
    mobile, à droite du texte à partir de 760 px. Les pages projet ont leur
    gabarit : src/layouts/Projet.astro. */
-/* Le soleil de la page « À propos » (registre/0076) : le même quart de
-   disque que l'accueil, plus petit, dans le coin haut droit de la page,
-   au-dessus du personnage. */
-.fiche-cadre {
+/* Le soleil des autres pages (registre/0076, 0077) : le même quart de
+   disque que l'accueil, plus petit, dans le coin haut droit de la page.
+   Sur les pages projet et la 404, il n'apparaît qu'à partir de 960 px :
+   en dessous, le titre et le dessin occupent toute la largeur. Deux
+   classes : le style du composant (.soleil, scopé) ne l'emporte pas. */
+.cadre-soleil {
   --soleil: clamp(5rem, 3rem + 8vw, 9rem);
   position: relative;
   isolation: isolate;
+}
+
+.cadre-soleil.cadre-soleil--large > .soleil {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .cadre-soleil.cadre-soleil--large > .soleil {
+    display: block;
+  }
 }
 
 .fiche {
