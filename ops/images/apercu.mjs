@@ -270,13 +270,13 @@ async function texte(contenu, { fontfile, famille, taille, couleur, largeur, int
 const APERCU = {
   fr: {
     fichier: 'apercu.png',
-    phrase: "J'écoute, je pose des hypothèses, je teste, puis je construis là où ça compte.",
+    phrase: "J'écoute, je pose des hypothèses, je teste et je construis là où ça compte.",
     role: 'Head of Product · IA appliquée · Data',
   },
   en: {
     fichier: 'apercu-en.png',
     // Insécables après « I » : pas de « I » seul en fin de ligne.
-    phrase: 'I listen, I form hypotheses, I test, then I build where it counts.',
+    phrase: 'I listen, I form hypotheses, I test and I build where it counts.',
     role: 'Head of Product · Applied AI · Data',
   },
 };
@@ -333,8 +333,8 @@ const COUVERTURE = join(RACINE, 'ops/images/couverture');
 const PHRASES = {
   // Trop longue pour deux lignes à 38 px : trois lignes, coupées à la main
   // pour ne pas laisser « compte. » seul sur la dernière.
-  fr: "J'écoute, je pose des hypothèses,\nje teste, puis je construis\nlà où ça compte.",
-  en: 'I listen, I form hypotheses, I test, then I build where it counts.',
+  fr: "J'écoute, je pose des hypothèses,\nje teste et je construis\nlà où ça compte.",
+  en: 'I listen, I form hypotheses, I test and I build where it counts.',
 };
 
 function fondCouverture(f) {

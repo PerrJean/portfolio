@@ -1,7 +1,7 @@
 ---
 titre: "AI speaking role-plays: betting on a guided conversation"
 date: "2026-02"
-fait: "E-learning can finally help learners practice speaking: an AI plays the other person, and every exchange ends with feedback."
+fait: "E-learning can finally help learners practice speaking: an AI plays the other person, and every exchange ends with useful learning feedback."
 synthese:
   probleme: "On an EdTech language-learning platform, learners had few chances to practice speaking in real situations, facing a recruiter or a client. The AI conversations available elsewhere often sat outside the learning path, with scores nobody explained."
   action: "We bet on a guided conversation: a short exchange, built on questions prepared by the learning design team. I framed the method and the Design Sprint with the product designer and the Product Manager on my team, who then ran interviews and surveys with clients."

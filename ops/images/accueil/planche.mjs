@@ -116,7 +116,7 @@ for (const [nom, corps] of Object.entries(CARTES)) writeFileSync(join(ICI, `${no
 // largeur d'écran `vw`, en px CSS ; y = 0 en haut de la section .accroche.
 
 const P8 = police(800), P4 = police(400);
-const H1 = 'J’écoute, je pose des hypothèses, je teste, puis je construis là où ça compte.';
+const H1 = 'J’écoute, je pose des hypothèses, je teste et je construis là où ça compte.';
 const SOUS = 'Deux projets sur une plateforme EdTech : écouter des milliers d’apprenants, puis corriger ce qui les gêne.';
 const REM = 16;
 const clamp = (a, v, b) => Math.min(Math.max(a, v), b);

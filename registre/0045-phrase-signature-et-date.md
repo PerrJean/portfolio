@@ -23,3 +23,5 @@ seul), EN sur deux ; aperçu en cinq lignes, serré mais lisible. Champ `date`
 Ratio 2,0 : la longueur de la nouvelle phrase a coûté une passe d'images.
 
 **Révision (Jean, 2026-09-30)** : « J'écoute, je pose des hypothèses, je teste, puis je construis là où ça compte. » (EN « I listen, I form hypotheses, I test, then I build where it counts. »), écouter d'abord. Accueil, À propos, texte alternatif de l'aperçu, aperçus Open Graph et bannières LinkedIn régénérés.
+
+**Retouche (Jean, 2026-09-30)** : « …je teste et je construis là où ça compte. » (EN « …I test and I build where it counts. »), « et » au lieu de « puis » ; aperçus et bannières régénérés. Au passage : Mises en situation « chaque échange se termine par un retour pédagogique utile » (EN « useful learning feedback »), « hors du parcours d'apprentissage ».

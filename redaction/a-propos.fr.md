@@ -14,7 +14,7 @@ Avant, j’ai construit des services publics numériques : à la direction inter
 l’Observatoire de la qualité des démarches en ligne et « Je donne mon
 avis », puis à la direction interministérielle de la transformation publique (DITP), Services publics +.
 
-J’écoute, je pose des hypothèses, je teste, puis je construis là où ça compte.
+J’écoute, je pose des hypothèses, je teste et je construis là où ça compte.
 J’utilise l’IA quand elle sert un besoin précis : classer des retours,
 auditer un contenu, prototyper une fonctionnalité.
 
