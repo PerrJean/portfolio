@@ -22,7 +22,7 @@ cle: uservoice
 
 ## The starting point
 
-Feedback comes from four sources: the NPS survey, the placement test, the end of each course, and an open feedback form available on every page of the site.
+Feedback comes from four sources: the NPS (Net Promoter Score) survey, the placement test, the end of each course, and an open feedback form available on every page of the site.
 
 In September 2026, I launched UserVoice on the feedback gathered since March. Until then, it had not been tagged. Each piece stayed in its own source, and the same topics kept coming back without anyone knowing whether they had already been handled.
 

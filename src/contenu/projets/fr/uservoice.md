@@ -22,7 +22,7 @@ cle: uservoice
 
 ## Le point de départ
 
-Les retours arrivent par quatre sources : l’enquête NPS, le test de niveau, la fin de parcours, et un formulaire de retour libre présent sur toutes les pages du site.
+Les retours arrivent par quatre sources : l’enquête NPS (Net Promoter Score, la note de recommandation), le test de niveau, la fin de parcours, et un formulaire de retour libre présent sur toutes les pages du site.
 
 En septembre 2026, j’ai lancé UserVoice sur les retours accumulés depuis mars. Jusque-là, ils n’étaient pas qualifiés. Chacun restait dans sa source, et les mêmes sujets revenaient sans qu’on sache s’ils étaient déjà traités.
 

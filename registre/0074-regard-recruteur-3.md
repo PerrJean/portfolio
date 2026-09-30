@@ -29,3 +29,4 @@ UserVoice, une carte de la capture UserVoice peu lisible. Ratio 1,1.
 Phrase « Les situations professionnelles passent en premier dans le catalogue, comme elles l'ont demandé. » supprimée (Jean), FR et EN.
 Enseignement « Faire classer les attentes » supprimé (Jean) : la section « Ce que j'en retiens » ne garde que « Cadrer la démarche, laisser l'équipe trouver. », FR et EN.
 Fusion : le modèle de données cible défini « avec les développeurs et les ingénieurs pédagogiques » (EN « with the developers and the learning designers ») (Jean).
+NPS explicité à sa première mention sur UserVoice et Fusion : « NPS (Net Promoter Score, la note de recommandation) », EN « NPS (Net Promoter Score) » (Jean).

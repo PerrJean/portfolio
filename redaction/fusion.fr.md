@@ -54,7 +54,7 @@ Ce premier temps a demandé trois arbitrages.
 
 La fusion reposait sur un design system lancé en 2023, une bibliothèque de composants partagée par le design et le développement. Les apprenants en ont vu les premiers effets avant la fusion : une navigation commune aux trois plateformes en mars 2024, puis une page des parcours commune en avril.
 
-Le lot le plus lourd portait sur les gabarits d’activité. Les entretiens utilisateurs et les commentaires des enquêtes NPS montraient une charge mentale due à l’interface elle-même. Chaque plateforme avait ses gabarits, une trentaine à elles deux. Nous les avons ramenés à quatre, communs aux deux. Tout le contenu existant devait y entrer, ce qui obligeait à harmoniser d’abord les deux modèles de données.
+Le lot le plus lourd portait sur les gabarits d’activité. Les entretiens utilisateurs et les commentaires des enquêtes NPS (Net Promoter Score, la note de recommandation) montraient une charge mentale due à l’interface elle-même. Chaque plateforme avait ses gabarits, une trentaine à elles deux. Nous les avons ramenés à quatre, communs aux deux. Tout le contenu existant devait y entrer, ce qui obligeait à harmoniser d’abord les deux modèles de données.
 
 <!-- Figure : gabarits (ops/images/fusion/gabarits.fr.svg, étroit : gabarits.etroit.fr.svg) -->
 

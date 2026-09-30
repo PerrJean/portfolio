@@ -66,7 +66,7 @@ This first step called for three trade-offs.
 
 The merger rested on a design system launched in 2023, a component library shared by design and development. Before the merger, it already served learners with shared navigation across the three platforms, then a shared learning paths page.
 
-The heaviest batch covered the activity templates. User interviews and comments from NPS surveys showed a mental load caused by the interface itself. Each platform had its own templates, about thirty between the two. We brought them down to four, shared by both. All existing content had to fit into them, which meant first aligning the two data models.
+The heaviest batch covered the activity templates. User interviews and comments from NPS (Net Promoter Score) surveys showed a mental load caused by the interface itself. Each platform had its own templates, about thirty between the two. We brought them down to four, shared by both. All existing content had to fit into them, which meant first aligning the two data models.
 
 <figure class="schema-dessine">
   <picture>
