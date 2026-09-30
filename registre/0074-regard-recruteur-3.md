@@ -28,3 +28,4 @@ UserVoice, une carte de la capture UserVoice peu lisible. Ratio 1,1.
 **Correction (Jean)** : seul le pluriel « échanges » gênait ; le singulier « échange » revient (fait clé, qualité de l'échange, retour de fin d'échange, schéma), les pluriels restent remplacés. Volet « Pour aller plus loin » : la section « La prononciation, trois options » supprimée, FR et EN.
 Phrase « Les situations professionnelles passent en premier dans le catalogue, comme elles l'ont demandé. » supprimée (Jean), FR et EN.
 Enseignement « Faire classer les attentes » supprimé (Jean) : la section « Ce que j'en retiens » ne garde que « Cadrer la démarche, laisser l'équipe trouver. », FR et EN.
+Fusion : le modèle de données cible défini « avec les développeurs et les ingénieurs pédagogiques » (EN « with the developers and the learning designers ») (Jean).

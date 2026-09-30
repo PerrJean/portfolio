@@ -76,7 +76,7 @@ Le lot le plus lourd portait sur les gabarits d’activité. Les entretiens util
   <figcaption>Une trentaine de gabarits d’activité, ramenés à quatre gabarits communs, chacun fait d’un support et d’une question.</figcaption>
 </figure>
 
-Nous étions une dizaine de personnes, surtout des développeurs, avec une designer et un Product Manager junior, et l’équipe pédagogique à nos côtés. Product Manager puis chef de projet, je tenais le rétroplanning et le découpage en lots, je définissais le modèle de données cible, j’écrivais les spécifications et je menais la recette. Le lead développeur portait l’architecture technique, la designer les composants, les maquettes et les entretiens utilisateurs.
+Nous étions une dizaine de personnes, surtout des développeurs, avec une designer et un Product Manager junior, et l’équipe pédagogique à nos côtés. Product Manager puis chef de projet, je tenais le rétroplanning et le découpage en lots, je définissais le modèle de données cible avec les développeurs et les ingénieurs pédagogiques, j’écrivais les spécifications et je menais la recette. Le lead développeur portait l’architecture technique, la designer les composants, les maquettes et les entretiens utilisateurs.
 
 ## Bénéfices et impact business
 

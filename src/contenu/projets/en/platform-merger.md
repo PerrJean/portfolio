@@ -76,7 +76,7 @@ The heaviest batch covered the activity templates. User interviews and comments 
   <figcaption>Some thirty activity templates, brought down to four shared templates, each made of a media block and a question.</figcaption>
 </figure>
 
-We were a team of about ten people, mostly developers, with a designer, a junior Product Manager, and the learning design team alongside us. As Product Manager, then project lead, I owned the schedule and the split into batches, defined the target data model, wrote the specifications and ran acceptance testing. The lead developer owned the technical architecture, and the designer the components, the mockups and the user interviews.
+We were a team of about ten people, mostly developers, with a designer, a junior Product Manager, and the learning design team alongside us. As Product Manager, then project lead, I owned the schedule and the split into batches, defined the target data model with the developers and the learning designers, wrote the specifications and ran acceptance testing. The lead developer owned the technical architecture, and the designer the components, the mockups and the user interviews.
 
 ## Benefits and business impact
 
