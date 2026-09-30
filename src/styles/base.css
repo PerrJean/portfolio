@@ -181,6 +181,16 @@ svg {
   }
 }
 
+/* Le rôle, au-dessus de la phrase (registre/0064). L'ardoise ne passe le
+   contraste qu'en grand texte : 19 px au moins, en 700. */
+.accroche__role {
+  margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+  color: var(--ardoise);
+  font-size: clamp(1.1875rem, 1.05rem + 0.4vw, 1.375rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
 .accroche__sous-titre {
   max-width: 38rem;
   margin-top: clamp(1rem, 2.5vw, 1.5rem);

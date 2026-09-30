@@ -7,7 +7,7 @@
 //     porter une image (même balisage que les figures du corps, la
 //     visionneuse la prend) et un fichier à télécharger (registre/0061) ;
 //  4. la fin : le repère [data-fin] (le toit se pose), puis le lien vers
-//     l'autre projet de la paire (un projet à part renvoie au premier).
+//     le projet suivant dans l'ordre de l'accueil, en boucle.
 // Le contenu vient de src/contenu/projets/ (schéma : src/content.config.ts).
 // À partir de 960 px, le bâtiment occupe la colonne de droite (1 : 4) ; en
 // dessous, l'indicateur de lecture le remplace, collé sous l'en-tête.
@@ -42,11 +42,10 @@ const etages = headings.filter((h) => h.depth === 2);
 if (etages.length === 0)
   throw new Error(`Page projet ${cle} (${langue}) : aucun H2, le bâtiment n'aurait pas d'étage.`);
 
-// Le projet suivant : l'autre projet de la paire (le suivant, en boucle) ;
-// d'un projet à part, le premier de la paire (UserVoice).
-const paire = PROJETS.filter((p) => p.groupe === 'paire');
-const rang = paire.findIndex((p) => p.page === cle);
-const suivant = rang === -1 ? paire[0] : paire[(rang + 1) % paire.length];
+// Le projet suivant : dans l'ordre de l'accueil, en boucle (UserVoice, Audit
+// contenu, puis le projet à part, puis retour à UserVoice) : aucun n'est sauté.
+const rang = PROJETS.findIndex((p) => p.page === cle);
+const suivant = PROJETS[(rang + 1) % PROJETS.length];
 
 // Le poids affiché d'un fichier à télécharger est celui du fichier servi
 // (public/) : arrondi au kilo-octet (1024), « 169 Ko » / « 169 KB ».
