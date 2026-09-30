@@ -25,7 +25,7 @@ plusLoin:
   - titre: "Comment une conversation est construite"
     points:
       - "Un contexte (vie professionnelle, vie quotidienne, études) regroupe des scénarios. Un scénario donne le rôle de l’apprenant, son objectif et le cadre du récit."
-      - "Chaque mise en situation se découpe en conversations courtes, de 1 min 30 à 2 min 30, chacun avec un objectif précis à atteindre à l’oral."
+      - "Chaque mise en situation se découpe en conversations courtes, de 1 min 30 à 2 min 30, chacune avec un objectif précis à atteindre à l’oral."
       - "L’IA joue un rôle défini (recruteur, client, membre de jury, ami) et pose quelques questions, chacune avec ses attendus."
       - "Les attendus ne s’affichent pas pendant l’échange. L’apprenant cocherait des cases au lieu de parler, et une question peut être validée avant tous ses attendus."
       - "Un personnage se définit par peu de traits (ton, émotion, origine) : chaque consigne ajoutée à l’IA affaiblit les autres."

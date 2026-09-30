@@ -51,7 +51,7 @@ In September 2023, I framed the target and presented it to the executive committ
     <source media="(min-width: 48.5rem)" srcset="/illustrations/fusion/trajectoires.en.svg" width="736" height="336">
     <img src="/illustrations/fusion/trajectoires.etroit.en.svg" width="350" height="316" loading="lazy" decoding="async" alt="Three paths of value delivered over time. The chosen path climbs step by step, every step pays off. Shipping fast climbs quickly, then flattens under debt. Building it clean stays flat for a long time.">
   </picture>
-  <figcaption>Three paths of value delivered over time: the chosen path climbs step by step.</figcaption>
+  <figcaption>Three paths over time: shipping fast climbs fast, then flattens under debt; building cleanly stays flat for a long time; the chosen path climbs step by step.</figcaption>
 </figure>
 
 The first step brought together the platform for businesses and the general platform, for two reasons. These two were the closest, in design as well as in data structure. And both are for learning a language, while the exam platform is for preparing a language exam, a different lens.
