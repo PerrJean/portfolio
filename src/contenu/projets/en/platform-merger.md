@@ -1,7 +1,7 @@
 ---
 titre: "Platform merger: from three to two, aiming for one"
 date: "2024-08"
-fait: "In August 2024, before the new school year, the platform for businesses joined the general platform. One platform out of three was retired."
+fait: "In 2024, I led the merger of two of our three platforms: every change is now built twice, not three times."
 synthese:
   probleme: "An EdTech company offered three language-learning platforms, built one after another. Each had its own interface, activity templates and data model, so every change had to be built three times."
   action: "As Product Manager (PM), then project lead, I framed a target, a single platform, and presented it to the executive committee. With a team of about ten people, we first laid down a shared design system, then merged the platform for businesses into the general platform, in seven batches."
@@ -76,7 +76,7 @@ The heaviest batch covered the activity templates. User interviews and comments 
   <figcaption>Some thirty activity templates, brought down to four shared templates, each made of a media block and a question.</figcaption>
 </figure>
 
-We were a team of about ten people, mostly developers, with a designer, a junior PM, and the learning design team alongside us. As project lead and PM, I owned the schedule and the split into batches, defined the target data model, wrote the specifications and ran acceptance testing. The lead developer owned the technical architecture, and the designer the components, the mockups and the user interviews.
+We were a team of about ten people, mostly developers, with a designer, a junior PM, and the learning design team alongside us. As PM, then project lead, I owned the schedule and the split into batches, defined the target data model, wrote the specifications and ran acceptance testing. The lead developer owned the technical architecture, and the designer the components, the mockups and the user interviews.
 
 ## Benefits and business impact
 

@@ -46,8 +46,8 @@ export const PROJETS: readonly Projet[] = [
     scene: 'fusion',
     nom: { fr: 'Fusion des plateformes', en: 'Platform merger' },
     fait: {
-      fr: 'En août 2024, avant la rentrée, la plateforme dédiée aux entreprises a rejoint la plateforme généraliste. Une plateforme sur trois a été supprimée.',
-      en: 'In August 2024, before the new school year, the platform for businesses joined the general platform. One platform out of three was retired.',
+      fr: 'En 2024, j’ai piloté la fusion de deux de nos trois plateformes : chaque évolution se développe désormais deux fois, et non plus trois.',
+      en: 'In 2024, I led the merger of two of our three platforms: every change is now built twice, not three times.',
     },
   },
   {
@@ -57,8 +57,8 @@ export const PROJETS: readonly Projet[] = [
     scene: 'misesEnSituation',
     nom: { fr: 'Mises en situation orales', en: 'Speaking role-plays' },
     fait: {
-      fr: 'Invités à classer ce qui comptait le plus, les clients ont placé la qualité de l’échange avec l’IA et la qualité du retour avant les badges et la progression. De ce fait, la qualité du retour pédagogique est passée en tête de la feuille de route.',
-      en: 'Asked to rank what mattered most, clients put the quality of the exchange with the AI and the quality of the feedback ahead of badges and progress tracking. As a result, the quality of learning feedback moved to the top of the roadmap.',
+      fr: 'L’e-learning permet enfin de travailler l’expression orale : une IA joue l’interlocuteur, et chaque échange se termine par un retour.',
+      en: 'E-learning can finally train speaking: an AI plays the other person, and every exchange ends with feedback.',
     },
   },
   {

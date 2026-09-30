@@ -36,7 +36,7 @@ Chaque retour est ensuite classé, selon qu’il signale un bug ou qu’il porte
 
 <figure>
   <a href="/captures/uservoice/analyse.png"><img src="/captures/uservoice/analyse.png" width="1360" height="1406" loading="lazy" decoding="async" alt="Capture de la page Analyse de UserVoice : quatre cartes de catégories (explications, ergonomie, exercices, progression), chacune avec la part des commentaires qui la citent et sa courbe sur quatre trimestres face à l’année précédente. Les explications arrivent en tête, avec 22 points de NPS à gagner."></a>
-  <figcaption>La page Analyse suit, trimestre par trimestre, la part des commentaires qui citent chaque catégorie face à l’année précédente, et range les catégories selon les points de NPS à gagner. Données synthétiques.</figcaption>
+  <figcaption>La page Analyse : pour chaque catégorie, la part des commentaires qui la citent, trimestre par trimestre, face à l’année précédente. Les catégories sont rangées par points de NPS à gagner. Données synthétiques.</figcaption>
 </figure>
 
 ## Ce que la donnée a montré
@@ -57,7 +57,7 @@ J’ai construit UserVoice moi-même, avec Claude Code, pour prouver la valeur a
 
 Pour chaque retour, l’IA propose un classement et un score de confiance. Sous un seuil, ou quand deux catégories arrivent trop près l’une de l’autre, le retour part dans une file de validation humaine. Chaque validation enrichit les exemples donnés à l’IA. Des règles mécaniques prennent le relais sur les cas évidents, comme les réponses vides ou les doublons. La file de validation humaine a fondu de 87 % en trois jours.
 
-Au-dessus de la table, le tableau de bord a deux couches : l’une montre ce qui bouge, l’autre avance une explication. Le bilan du lundi croise le volume de chaque sujet et son statut de traitement. C’est lui qui répond à la question de départ.
+Au-dessus de la table, le tableau de bord a deux couches : l’une montre ce qui bouge, l’autre avance une explication. Le bilan du lundi croise le volume de chaque sujet et son statut de traitement. C’est lui qui dit, chaque lundi, quels sujets reviennent et s’ils sont traités.
 
 <figure>
   <a href="/captures/uservoice/tableau-nps.png"><img src="/captures/uservoice/tableau-nps.png" width="1360" height="1327" loading="lazy" decoding="async" alt="Capture du baromètre NPS de UserVoice (données synthétiques) : le NPS global de la période, la répartition des notes entre détracteurs, passifs et promoteurs, le taux de réponse, puis une barre de NPS par produit et par marché."></a>

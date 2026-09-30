@@ -1,10 +1,10 @@
 ---
 titre: "AI speaking role-plays: betting on a guided conversation"
 date: "2026-02"
-fait: "Asked to rank what mattered most, clients put the quality of the exchange with the AI and the quality of the feedback ahead of badges and progress tracking. As a result, the quality of learning feedback moved to the top of the roadmap."
+fait: "E-learning can finally train speaking: an AI plays the other person, and every exchange ends with feedback."
 synthese:
   probleme: "On an EdTech language-learning platform, learners had few chances to practice speaking in real situations, facing a recruiter or a client. The AI conversations available elsewhere often sat outside the learning path, with scores nobody explained."
-  action: "We bet on a guided conversation: an AI plays the other person and leads a short exchange, built on questions prepared by the learning team. I framed the method and the Design Sprint with the product designer and the Product Manager (PM) on my team, who then ran interviews and surveys with clients."
+  action: "We bet on a guided conversation: an AI plays the other person and leads a short exchange, built on questions prepared by the learning design team. I framed the method and the Design Sprint with the product designer and the Product Manager (PM) on my team, who then ran interviews and surveys with clients."
   resultat: "The surveys validated the format and reordered what came next: learning feedback first, and a catalog built on the topics rated must-have. The role-plays are live in four learning paths, and the project brought in several tens of thousands of euros in new revenue, from new clients."
 plusLoin:
   - titre: "The timeline"
@@ -26,7 +26,7 @@ plusLoin:
     points:
       - "A context (work, everyday life, studies) groups scenarios. A scenario sets the learner’s role, goal and storyline."
       - "Each scenario breaks down into short exchanges of 1.5 to 2.5 minutes, each with a specific speaking goal."
-      - "The AI plays a defined role (recruiter, client, jury member, friend) and asks a few questions, each with its expected points."
+      - "The AI plays a defined role (recruiter, client, panel member, friend) and asks a few questions, each with its expected points."
       - "The expected points stay hidden during the exchange. Learners would tick boxes instead of talking, and a question can be passed before all its expected points are met."
       - "A character has few traits (tone, emotion, origin): every instruction added to the AI weakens the others."
   - titre: "The three-step feedback"
@@ -48,17 +48,17 @@ cle: misesEnSituation
 
 ## Speaking, with no one to talk to
 
-On an EdTech language-learning platform, learners practiced understanding and writing a lot, and speaking in real situations much less, facing a recruiter or a jury.
+On an EdTech language-learning platform, learners practiced understanding and writing a lot, and speaking in real situations much less, in front of a recruiter or an exam panel.
 
 Consumer apps already offered conversations with an AI. The study we ran in May 2025 showed their limits. Conversations often sat outside the learning path, and scores went unexplained. As for open conversation, it quickly drifts away from the learning goal.
 
-We made the opposite bet, a guided conversation. The AI plays the other person and leads an exchange of about two minutes, built on questions prepared by the learning team. Learners answer out loud, in a message thread, with no video call and no real-time pressure.
+We made the opposite bet, a guided conversation. The AI plays the other person and leads an exchange of about two minutes, built on questions prepared by the learning design team. Learners answer out loud, in a message thread, with no video call and no real-time pressure.
 
 ## What discovery changed
 
 From the Design Sprint, the team built a prototype, and clients tested a first version: heads of teaching and teachers, from higher education to vocational training. Interviews, surveys and a co-design workshop followed, from February to April 2026.
 
-Everyone validated the foundation, from the guided conversation to the message thread with no video. Everyone also wanted feedback that helps them progress, and a reliable exchange. Asked to rank our next priorities, they put the quality of the exchange with the AI first, the quality of the feedback right after, and badges and progress tracking last.
+Everyone validated the foundation, from the guided conversation to the message thread with no video. Everyone also wanted feedback that helps learners progress, and a reliable exchange. Asked to rank our next priorities, they put the quality of the exchange with the AI first, the quality of the feedback right after, and badges and progress tracking last.
 
 So we reordered what came next. Learning feedback moved to the top, earlier than planned, with management’s approval. Badges and progress tracking were put on hold: without useful feedback, they would only have rewarded effort. A survey on topics then shaped the catalog. Work situations came out on top and everyday life at the bottom, and the first role-plays were written from the top of the list down.
 

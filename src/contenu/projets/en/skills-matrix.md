@@ -57,7 +57,7 @@ I wrote a first version, then a structured one.
 
 ## One conversation to see where we stood
 
-In a one-on-one, the PM and I placed each skill on the matrix. That is when our different perceptions of what “becoming senior” means came to light. We came out of it with a shared view of the PM’s skills, the starting point for the PM’s growth.
+In a one-on-one, the PM and I placed each skill on the matrix. That is when our different perceptions of what “becoming senior” means came to light. We came out of it with a shared view of their skills, the starting point for their growth.
 
 A PM’s credibility rests on understanding how people use the product and who they are, and on mastery of the job. We agreed to strengthen that second point, and to go further into AI applied to product management: these are the two focus areas of the growth plan.
 

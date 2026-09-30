@@ -42,3 +42,11 @@ sans relatives ; la flèche de l'accueil devient « Alors j'ai cherché une
 solution. » (EN « So I looked for a solution. ») ; bénéfices de l'Audit
 allégés, « churn » gardé ; les petites retouches (n°7, 9, 11, 19, 20, 24, 25,
 32, 36 à 40) acceptées en bloc, appliquées par un agent.
+**Petites retouches (agent)** : les treize appliquées, n°37 et n°40 adaptées
+(« learning design team » déjà en place sur Fusion ; « their » seulement là où
+l'antécédent est clair). Build et 48 tests au vert.
+**Faits clés plus accrocheurs (Jean)** : Fusion « En 2024, j'ai piloté la
+fusion de deux de nos trois plateformes : chaque évolution se développe
+désormais deux fois, et non plus trois. » ; Mises en situation « L'e-learning
+permet enfin de travailler l'expression orale : une IA joue l'interlocuteur,
+et chaque échange se termine par un retour. » FR, EN, `redaction/`.

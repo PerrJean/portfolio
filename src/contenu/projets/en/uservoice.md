@@ -57,7 +57,7 @@ I built UserVoice myself, with Claude Code, to prove its value before bringing t
 
 For each piece of feedback, AI proposes a category and a confidence score. Below a threshold, or when two categories come out too close to each other, the feedback goes to a human review queue. Each review adds to the examples given to the AI. Mechanical rules take over on obvious cases, such as empty answers or duplicates. The human review queue shrank by 87% in three days.
 
-On top of the table, the dashboard has two layers: one shows what is changing, the other offers an explanation. The Monday summary sets the volume of each topic against its handling status. That is what answers the opening question.
+On top of the table, the dashboard has two layers: one shows what is changing, the other offers an explanation. The Monday summary sets the volume of each topic against its handling status. It tells, every Monday, which topics come back and whether they are handled.
 
 <figure>
   <a href="/captures/uservoice/tableau-nps.png"><img src="/captures/uservoice/tableau-nps.png" width="1360" height="1327" loading="lazy" decoding="async" alt="Screenshot of the UserVoice NPS barometer (synthetic data): the overall NPS for the period, the split of scores into detractors, passives and promoters, the response rate, then one NPS bar per product and per market."></a>

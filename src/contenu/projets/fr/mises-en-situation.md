@@ -1,7 +1,7 @@
 ---
 titre: "Mises en situation orales par IA : parier sur une conversation encadrée"
 date: "2026-02"
-fait: "Invités à classer ce qui comptait le plus, les clients ont placé la qualité de l’échange avec l’IA et la qualité du retour avant les badges et la progression. De ce fait, la qualité du retour pédagogique est passée en tête de la feuille de route."
+fait: "L’e-learning permet enfin de travailler l’expression orale : une IA joue l’interlocuteur, et chaque échange se termine par un retour."
 synthese:
   probleme: "Sur une plateforme EdTech d’apprentissage des langues, l’apprenant avait peu d’occasions de s’entraîner à parler en situation, face à un recruteur ou à un client. Les conversations avec une IA qu’on trouvait ailleurs restaient souvent hors du parcours, avec des scores sans explication."
   action: "Nous avons parié sur une conversation encadrée : une IA incarne l’interlocuteur et mène un échange court, sur des questions préparées par l’équipe pédagogique. J’ai cadré la méthode et le Design Sprint avec la product designer et le Product Manager (PM) de mon équipe, qui ont ensuite mené entretiens et enquêtes auprès des clients."
@@ -33,7 +33,7 @@ plusLoin:
     points:
       - "Le signal dit si la tâche est accomplie, sans corriger."
       - "L’indice attire l’attention sur un passage, sans donner la solution, pour que l’apprenant trouve lui-même."
-      - "Le modèle montre la formulation attendue, à la portée du niveau de l’apprenant et non celle d’un locuteur natif."
+      - "Le modèle montre une formulation à la portée de l’apprenant, pas celle d’un locuteur natif."
       - "Un seul critère est travaillé à chaque fois (grammaire, cohérence ou vocabulaire), celui qui gêne le plus la compréhension."
       - "Exemple fictif. « The thing that is supposed to make the room warm is not doing what it should do » devient « The heater hasn’t been working since this morning » : on nomme l’objet et le problème."
   - titre: "La prononciation, trois options"

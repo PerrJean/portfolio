@@ -59,7 +59,7 @@ J’en ai écrit une première version, puis une version structurée.
 
 En entretien, le PM et moi avons situé chaque compétence sur la matrice. C’est là qu’est apparue notre différence de perception sur ce que veut dire « devenir senior ». Nous en sommes sortis avec une vision partagée de ses compétences, point de départ de sa progression.
 
-La légitimité d’un PM repose sur sa compréhension des usages et des utilisateurs, et sur sa maîtrise du métier. Nous nous sommes accordés pour renforcer ce second point, et pour aller plus loin dans l’IA appliquée à ce métier : ce sont les deux axes de son plan de progression.
+La légitimité d’un PM repose sur sa compréhension des usages et des utilisateurs, et sur sa maîtrise du métier de PM. Nous nous sommes accordés pour renforcer ce second point, et pour aller plus loin dans l’IA appliquée au product management : ce sont les deux axes de son plan de progression.
 
 ## Ce que ça change pour l’équipe
 

@@ -38,7 +38,7 @@ const TEXTES = {
     },
     conversation: {
       titre: 'La conversation',
-      cache: 'Les attendus de chaque question restent cachés',
+      cache: 'Ce que chaque question attend de l’apprenant reste caché',
     },
     retour: {
       titre: 'Le retour en trois temps',
@@ -71,7 +71,7 @@ const TEXTES = {
     },
     conversation: {
       titre: 'The conversation',
-      cache: 'Each question’s expected points stay hidden',
+      cache: 'What each question expects stays hidden',
     },
     retour: {
       titre: 'Three-step feedback',

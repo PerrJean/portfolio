@@ -1,7 +1,7 @@
 ---
 titre: "Fusion des plateformes : de trois à deux, en visant une seule"
 date: "2024-08"
-fait: "En août 2024, avant la rentrée, la plateforme dédiée aux entreprises a rejoint la plateforme généraliste. Une plateforme sur trois a été supprimée."
+fait: "En 2024, j’ai piloté la fusion de deux de nos trois plateformes : chaque évolution se développe désormais deux fois, et non plus trois."
 synthese:
   probleme: "Une entreprise EdTech proposait trois plateformes d’apprentissage des langues, nées l’une après l’autre. Chacune avait son interface, ses gabarits d’activité et son modèle de données, si bien que chaque évolution se développait trois fois."
   action: "Product Manager (PM), puis chef de projet, j’ai cadré une cible, une seule plateforme, et je l’ai présentée au comité de direction. Avec une équipe d’une dizaine de personnes, nous avons d’abord posé un design system commun, puis fondu la plateforme dédiée aux entreprises dans la plateforme généraliste, en sept lots."
@@ -51,7 +51,7 @@ En septembre 2023, j’ai cadré la cible et je l’ai présentée au comité de
     <source media="(min-width: 48.5rem)" srcset="/illustrations/fusion/trajectoires.fr.svg" width="736" height="336">
     <img src="/illustrations/fusion/trajectoires.etroit.fr.svg" width="350" height="316" loading="lazy" decoding="async" alt="Trois trajectoires de valeur apportée dans le temps. La trajectoire retenue monte par paliers, chaque étape rapporte. Livrer vite monte vite puis s’aplatit sous la dette. Construire proprement reste à plat longtemps.">
   </picture>
-  <figcaption>Trois trajectoires de valeur apportée dans le temps : la trajectoire retenue monte par paliers.</figcaption>
+  <figcaption>Trois trajectoires dans le temps : livrer vite monte vite puis s’aplatit sous la dette, construire proprement reste longtemps à plat, la voie retenue monte par paliers.</figcaption>
 </figure>
 
 Le premier temps réunissait la plateforme dédiée aux entreprises et la plateforme généraliste, pour deux raisons. Ces deux plateformes étaient les plus proches, par le design comme par la structure des données. Et toutes deux servent à apprendre une langue, quand la plateforme examens sert à préparer un examen de langue, avec un autre prisme.
@@ -64,7 +64,7 @@ Ce premier temps a demandé trois arbitrages.
 
 ## Le commun d’abord, puis sept lots
 
-La fusion reposait sur un design system lancé en 2023, une bibliothèque de composants partagée par le design et le développement. Avant la fusion, il a déjà servi aux apprenants avec une navigation commune aux trois plateformes, puis une page des parcours commune.
+La fusion reposait sur un design system lancé en 2023, une bibliothèque de composants partagée par le design et le développement. Les apprenants en ont vu les premiers effets avant la fusion : une navigation commune aux trois plateformes en mars 2024, puis une page des parcours commune en avril.
 
 Le lot le plus lourd portait sur les gabarits d’activité. Les entretiens utilisateurs et les commentaires des enquêtes NPS montraient une charge mentale due à l’interface elle-même. Chaque plateforme avait ses gabarits, une trentaine à elles deux. Nous les avons ramenés à quatre, communs aux deux. Tout le contenu existant devait y entrer, ce qui obligeait à harmoniser d’abord les deux modèles de données.
 
@@ -76,7 +76,7 @@ Le lot le plus lourd portait sur les gabarits d’activité. Les entretiens util
   <figcaption>Une trentaine de gabarits d’activité, ramenés à quatre gabarits communs, chacun fait d’un support et d’une question.</figcaption>
 </figure>
 
-Nous étions une dizaine de personnes, surtout des développeurs, avec une designer et un PM junior, et l’équipe pédagogique à nos côtés. Chef de projet et PM, je tenais le rétroplanning et le découpage en lots, je définissais le modèle de données cible, j’écrivais les spécifications et je menais la recette. Le lead développeur portait l’architecture technique, la designer les composants, les maquettes et les entretiens utilisateurs.
+Nous étions une dizaine de personnes, surtout des développeurs, avec une designer et un PM junior, et l’équipe pédagogique à nos côtés. PM puis chef de projet, je tenais le rétroplanning et le découpage en lots, je définissais le modèle de données cible, j’écrivais les spécifications et je menais la recette. Le lead développeur portait l’architecture technique, la designer les composants, les maquettes et les entretiens utilisateurs.
 
 ## Bénéfices et impact business
 

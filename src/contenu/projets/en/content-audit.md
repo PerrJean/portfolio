@@ -77,7 +77,7 @@ Each fix gives learners back the chance to answer correctly. At the annual revie
 
 ## What I took from it
 
-This project is teaching me to build with AI, and I am still on the way. Here is what I now apply to every project:
+This project is teaching me to build with AI, and I am still learning. Here is what I now apply to every project:
 
 **Give the AI the right context, not all the context.** The AI rereads its instructions for every task: the longer they are, the slower, costlier and less precise it gets. I learned to keep a short core, and to store the rest separately, so it is loaded only when the task needs it.
 
