@@ -26,15 +26,17 @@ const TEXTES = {
     },
     agents: {
       titre: 'Agents IA encadrés',
-      texte: 'Ils appliquent la grille des six critères, question par question.',
+      texte: `La grille des six critères. La réponse attendue est-elle la bonne${NBSP}? L’explication existe-t-elle${NBSP}? Est-elle circulaire${NBSP}?`,
     },
     controles: {
       titre: 'Contrôles automatiques',
-      texte: `La réponse attendue est-elle la bonne${NBSP}? L’explication existe-t-elle${NBSP}? Est-elle circulaire${NBSP}?`,
+      texte: `Un contrôle déterministe, puis un contrôle par IA${NBSP}: l’audio, les supports, la question, les réponses et l’explication concordent-ils${NBSP}?`,
     },
     deuxControles:
-      'Deux contrôles en parallèle. Les agents IA encadrés appliquent la grille des six critères, question par question. ' +
-      "Les contrôles automatiques vérifient que la réponse attendue est la bonne, que l’explication existe et qu’elle n’est pas circulaire.",
+      `Deux contrôles en parallèle. Les agents IA encadrés appliquent la grille des six critères, question par question${NBSP}: ` +
+      'ils vérifient que la réponse attendue est la bonne, que l’explication existe et qu’elle n’est pas circulaire. ' +
+      'Les contrôles automatiques, un contrôle déterministe puis un contrôle par IA, vérifient que l’audio, par son transcript, ' +
+      'les supports texte et image, la question, les réponses et l’explication concordent.',
     bilan: {
       titre: 'Bilan',
       texte: `Un verdict par question${NBSP}: bloquant, majeur, mineur ou rien à corriger.`,
@@ -42,20 +44,20 @@ const TEXTES = {
     },
     relecture: {
       titre: 'Relecture humaine',
-      texte: 'Jean et la learning designer font la recette des échantillons.',
-      lu: `La relecture humaine${NBSP}: Jean et la learning designer font la recette des échantillons.`,
+      texte: 'La learning designer relit un échantillon par famille de défauts.',
+      lu: `La relecture humaine${NBSP}: la learning designer relit un échantillon par famille de défauts.`,
     },
     lots: {
       titre: 'Lots de corrections',
-      texte: 'Relus, jamais écrits directement en base.',
-      lu: 'Les lots de corrections, relus, jamais écrits directement en base.',
+      texte: 'Rangés par famille de défauts, jamais écrits directement en base.',
+      lu: 'Les lots de corrections, rangés par famille de défauts, jamais écrits directement en base.',
     },
     ligne: {
       titre: 'Mise en ligne',
       texte: 'En préproduction, puis en production.',
       lu: `La mise en ligne${NBSP}: en préproduction, puis en production.`,
     },
-    legende: `Sur le premier parcours audité${NBSP}: 1 question sur 20 bloquante, toutes corrigées.`,
+    legende: `Du parcours à la mise en ligne${NBSP}: deux contrôles en parallèle, puis une relecture humaine par échantillon.`,
   },
   en: {
     intro: 'The audit chain, step by step:',
@@ -67,15 +69,17 @@ const TEXTES = {
     },
     agents: {
       titre: 'Supervised AI agents',
-      texte: 'They apply the six-criterion grid, question by question.',
+      texte: 'The six-criterion grid. Is the expected answer the right one? Is there an explanation? Is it circular?',
     },
     controles: {
       titre: 'Automated checks',
-      texte: 'Is the expected answer the right one? Is there an explanation? Is it circular?',
+      texte: 'A deterministic check, then an AI check: are the audio, the materials, the question, the answers and the explanation consistent?',
     },
     deuxControles:
-      'Two checks in parallel. Supervised AI agents apply the six-criterion grid, question by question. ' +
-      'Automated checks verify that the expected answer is the right one, that there is an explanation, and that it is not circular.',
+      'Two checks in parallel. Supervised AI agents apply the six-criterion grid, question by question: ' +
+      'they verify that the expected answer is the right one, that there is an explanation, and that it is not circular. ' +
+      'The automated checks, a deterministic check then an AI check, verify that the audio, through its transcript, ' +
+      'the text and image materials, the question, the answers and the explanation are consistent.',
     bilan: {
       titre: 'Report',
       texte: 'One verdict per question: blocking, major, minor or nothing to fix.',
@@ -83,20 +87,20 @@ const TEXTES = {
     },
     relecture: {
       titre: 'Human review',
-      texte: 'Jean and the learning designer run acceptance testing on samples.',
-      lu: 'Human review: Jean and the learning designer run acceptance testing on samples.',
+      texte: 'The learning designer reviews a sample from each family of defects.',
+      lu: 'Human review: the learning designer reviews a sample from each family of defects.',
     },
     lots: {
       titre: 'Fix batches',
-      texte: 'Reviewed, never written straight to the database.',
-      lu: 'Fix batches, reviewed, never written straight to the database.',
+      texte: 'Grouped by family of defects, never written straight to the database.',
+      lu: 'Fix batches, grouped by family of defects, never written straight to the database.',
     },
     ligne: {
       titre: 'Going live',
       texte: 'To staging, then to production.',
       lu: 'Going live: to staging, then to production.',
     },
-    legende: 'In the first course audited: 1 question in 20 blocking, all of them fixed.',
+    legende: 'From course to going live: two checks in parallel, then a human review by sample.',
   },
 };
 

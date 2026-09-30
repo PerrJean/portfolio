@@ -28,8 +28,8 @@ export const PROJETS: readonly Projet[] = [
     groupe: 'paire',
     nom: { fr: 'UserVoice', en: 'UserVoice' },
     fait: {
-      fr: '1 retour sur 3 concerne le contenu.',
-      en: '1 in 3 pieces of feedback is about the content.',
+      fr: '1 retour sur 3 laissé sur le site concerne le contenu.',
+      en: '1 in 3 pieces of feedback left on the site is about the content.',
     },
   },
   {
@@ -38,7 +38,7 @@ export const PROJETS: readonly Projet[] = [
     groupe: 'paire',
     nom: { fr: 'Audit contenu', en: 'Content audit' },
     fait: {
-      fr: "Sur le premier parcours audité, 1 question sur 20 empêchait l'apprenant de répondre. Toutes ont été corrigées.",
+      fr: 'Sur le premier parcours audité, 1 question sur 20 empêchait l’apprenant de répondre. Toutes ont été corrigées.',
       en: 'In the first course audited, 1 question in 20 stopped learners from answering. All of them were fixed.',
     },
   },
@@ -46,6 +46,6 @@ export const PROJETS: readonly Projet[] = [
 
 /** Le lien entre les deux projets de la paire, porté par la flèche. */
 export const LIEN_DE_LA_PAIRE: Record<Langue, string> = {
-  fr: "Alors j'ai agi dessus.",
+  fr: 'Alors j’ai agi dessus.',
   en: 'So I acted on it.',
 };

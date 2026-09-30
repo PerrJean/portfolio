@@ -1,11 +1,11 @@
 ---
 titre: "Content audit: checking every question before learners see it"
 date: "2026-09"
-fait: "In the first course audited, 1 question in 20 stopped learners from answering. All of them were fixed."
+fait: "In the first course audited, 1 question in 20 stopped learners from answering. All of them were fixed."
 synthese:
   probleme: "According to their feedback, the satisfaction of learners on an EdTech platform depends first on the quality of the content."
   action: "With a learning designer, we put every question in one course through a six-criterion grid. Supervised AI agents applied it, and automated checks completed it."
-  resultat: "The fixes, reviewed before being applied, have been in production since the week of September 28, 2026."
+  resultat: "The fixes, reviewed by sample before being applied, have been in production since the week of September 28, 2026."
 plusLoin:
   - titre: "The grid"
     points:
@@ -22,15 +22,15 @@ plusLoin:
       - "A criterion counts as failed only if it was checked. What could not be measured does not count against the question."
   - titre: "The automated checks"
     points:
-      - "The content formatting must stay intact."
-      - "The text must be in the right language."
-  - titre: "What the feedback said"
-    points:
-      - "Nearly one NPS comment in five concerns the quality of explanations, exercises or translations."
+      - "The audio, read through its transcript, says what the question claims it says."
+      - "The text and image materials contradict neither the question nor the audio."
+      - "The question is about what the audio and the materials say."
+      - "The answer options match the question asked."
+      - "The explanation refers to the same audio, the same materials and the same answers as the question."
   - titre: "The rules, and what they cost"
     points:
-      - "About 30 million tokens over four weeks, and 233 decision points logged in a register."
-      - "Cap module size. The three largest modules, between 5,400 and 7,600 lines, were also the most rewritten."
+      - "Four weeks of work, and 233 decision points logged in a register."
+      - "Cap module size. The largest modules were also the most rewritten."
       - "Read field names from the data instead of guessing them."
 langue: en
 cle: auditContenu
@@ -38,44 +38,48 @@ cle: auditContenu
 
 ## Why audit
 
-In the site's feedback form, 1 in 3 pieces of feedback is about the content: that is what the first project, UserVoice, found.
+In the site’s feedback form, 1 in 3 pieces of feedback is about the content: that is what the first project, UserVoice, found.
 
-We put the effort into the content itself, question by question. I led this work with a learning designer. I designed the audit grid and the tooling that applies it. The learning designer validated the grid. She also set the writing rules for the content (line breaks, editorial rules) and ran acceptance testing on the samples.
+I led this work with a learning designer. I designed the audit grid and the tooling that applies it; she validated the grid and set the writing rules for the content.
 
-The scope covers six courses that prepare learners for language certifications. We started with the oldest one.
+The scope covers several courses that prepare learners for language certifications. We started with the oldest one.
 
 ## What the grid checks
 
-The grid has six criteria. Two concern the answer: the expected answer is the right one, and no other answer is as defensible. A third checks that the question includes an explanation, and that it is not circular. The last three cover faithfulness to the source, language and internal consistency.
+The grid has six criteria, detailed under “Going further”: faithfulness to the source, correct answer, quality of the explanation, language, internal consistency, and one defensible answer.
 
 Each question then gets one of four verdicts: blocking, major, minor, or nothing to fix. A question is blocking when learners cannot answer it. That happens when the expected answer is wrong, or when two answers can be defended equally well.
 
-AI agents apply the grid, question by question. They are Claude Code subagents, running on a subscription with no calls to a paid API. The model does not judge alone. Automated checks also run over the whole corpus, with verifiable rules that do not depend on any model. One of them, for example, checks that the explanation refers to the same audio as the question. A report then gives each question's status and the issues raised against it.
+Supervised AI agents apply the grid, question by question. The model does not judge alone. In parallel, automated checks run over the whole corpus: a deterministic check, then an AI check. They verify that the audio, through its transcript, the text and image materials, the question, the answers and the explanation are consistent. A report then gives each question’s status and the issues raised against it.
 
 <div data-schema="chaine-audit"></div>
 
 ## What we found
 
-In the first course audited, 1 question in 20 was rated blocking. Learners failed these questions through no fault of their own. Each fix gives them back the chance to answer correctly.
+In the first course audited, 1 question in 20 was rated blocking. Learners failed these questions through no fault of their own.
 
-This course is the oldest one. Its result does not predict the quality of the rest of the content on the site.
+This result does not predict the quality of the rest of the content on the site.
 
 ## Fixing without breaking
 
-The tool never writes directly to the database. It produces batches of fixes, and a person reviews each one before staging. If an agent gets an answer wrong, the worst case is a batch rejected at review.
+The tool never writes directly to the database. It produces batches of fixes, grouped by family of defects. The learning designer reviews, family by family, the least reliable cases, and her decision covers the whole family. When an agent gets one of these cases wrong, no fix in that family goes through as it is.
 
-All the blocking questions in the first course have been fixed. The fixes went into production the week of September 28, 2026.
+On the first course, she also checked the fixes in staging. All the blocking questions were fixed, then put into production.
 
 <figure>
   <a href="/captures/audit-contenu/carnet-relecture.png"><img src="/captures/audit-contenu/carnet-relecture.png" width="1360" height="1230" loading="lazy" decoding="async" alt="Review screen from an audit tool. A card marked BLOQUANT (blocking) shows a fill-in-the-blank English question, “She has been working in this department ___ 2019”, whose stored answer is A, “for”. The current explanation only asserts that A is correct. The check flags that the right answer is B. The proposed correction explains that “since” introduces a starting point. At the bottom, the decision line: approve, correct, reject."></a>
-  <figcaption>The review log: for each family of defects, the reviewer judges the least reliable case, and that decision covers the whole family. Synthetic data.</figcaption>
+  <figcaption>The review log: for each case reviewed, the issue raised, the proposed correction and the decision. Synthetic data.</figcaption>
 </figure>
+
+## Benefits and business impact
+
+Each fix gives learners back the chance to answer correctly. At the annual review, a B2B client, a school, asked for three things: a full analysis of its content, a formal process for fixing errors, and an end to multiple-choice questions where more than one answer can be defended. Cross-checked with feedback from B2B2C learners, its reports pointed to the same pain point. The audit answers each request in turn: the grid for the full analysis, the reviewed batches for the process, the “one defensible answer” criterion for the disputed questions. It is a direct way to reduce the risk of churn for this client, and the same method applies to the next courses.
 
 ## What I took from it
 
-This project gave me 25 rules for running a project with AI. They are there to keep control over what an agent produces. I measured them on the project itself, in tokens used over four weeks and in decision points logged in a register.
+This project is teaching me to vibe code efficiently, and I am still on the way. A few practices already hold.
 
-They change how the work gets done. Every workstream is costed before it starts, then again once it ends. The gap shows where the estimate was wrong. A rule that can be checked becomes a test. From then on it is enforced automatically, without relying on anyone's memory.
+Every workstream is costed before it starts, then again once it ends. The gap shows where the estimate was wrong. A rule that can be checked becomes a test. From then on it is enforced automatically, without relying on anyone’s memory.
 
 The rule “the reviewer is not the author” sums up the audit. What one agent produces, another agent reviews, and a person decides. This rule applies to content fixes as much as to the code I write with AI.
 
