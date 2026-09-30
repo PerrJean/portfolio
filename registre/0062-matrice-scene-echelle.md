@@ -24,3 +24,9 @@ que l'épaule, un bras montant ne le viserait plus) ; mur à trois rangs ;
 et pose le pied, il monte, Jean vise). Durée proposée 800 ms (repli 600).
 Poses à reporter : `montre(cible)`, `pied-barreau`, `sur-echelle`. Coût de la
 reprise compris : 172 au total.
+**Arbitrages de Jean (2026-10-01)** : le marteau est retiré, pour faire plus
+simple ; 600 ms, comme les cartes 01 et 02. On anime (brief
+`prompts/5-echelle-animation.md`). L'accroche de l'accueil passe à
+« Trois projets sur une plateforme EdTech : écouter des milliers
+d'apprenants, corriger ce qui les gêne, et faire grandir l'équipe qui s'en
+charge. » (EN en miroir). Mise en ligne du projet 03 avec sa scène animée.
