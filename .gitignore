@@ -25,3 +25,6 @@ Thumbs.db
 
 # builds jetables (hook, preuves de chantier)
 .dist-*/
+
+# copies de travail des sous-agents (worktrees)
+.claude/worktrees/

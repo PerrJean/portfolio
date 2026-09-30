@@ -3,12 +3,13 @@
 // avec le numéro en très grand, le nom, le fait clé et la scène.
 // Le nom accessible du lien est son texte : « 01 UserVoice » (le titre),
 // puis le fait clé. La scène reste décorative (aria-hidden, dans Scene).
-// Le survol et le focus du lien jouent « on regarde le plan » (Scene.astro,
-// :hover et :focus-within sur .parcelle).
+// La scène vient de src/contenu/projets.ts (scene, par clé de page). Le
+// survol et le focus du lien la jouent (Scene.astro, :hover et
+// :focus-within sur .parcelle).
 // groupe : « paire » (01 et 02, reliés par la flèche, voir Parcelles.astro)
 // ou « a-part » (un projet sans rapport, sans flèche).
 import Scene from './scene/Scene.astro';
-import type { Groupe } from '../contenu/projets';
+import type { Groupe, SceneDeCarte } from '../contenu/projets';
 
 interface Props {
   numero: string;
@@ -16,8 +17,9 @@ interface Props {
   fait: string;
   href: string;
   groupe: Groupe;
+  scene: SceneDeCarte;
 }
-const { numero, nom, fait, href, groupe } = Astro.props;
+const { numero, nom, fait, href, groupe, scene } = Astro.props;
 ---
 
 <a class:list={['parcelle', `parcelle--${groupe}`]} href={href}>
@@ -27,7 +29,7 @@ const { numero, nom, fait, href, groupe } = Astro.props;
   </h3>
   <p class="parcelle__fait">{fait}</p>
   <div class="parcelle__scene">
-    <Scene />
+    <Scene variante={scene} />
   </div>
 </a>
 

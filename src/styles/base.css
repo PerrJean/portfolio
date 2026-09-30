@@ -125,6 +125,7 @@ svg {
 .accroche {
   --accroche-haut: clamp(3rem, 8vw, 6rem);
   --soleil: clamp(6.5rem, 4rem + 10vw, 12rem);
+  --titre: clamp(2.125rem, 1.5rem + 3.6vw, 4.25rem);
   position: relative;
   isolation: isolate;
   padding-block: var(--accroche-haut) clamp(2.5rem, 6vw, 4.5rem);
@@ -136,9 +137,44 @@ svg {
 
 .accroche h1 {
   max-width: 20ch;
-  font-size: clamp(2.125rem, 1.5rem + 3.6vw, 4.25rem);
+  font-size: var(--titre);
   line-height: 1.08;
   letter-spacing: -0.01em;
+}
+
+/* L'équipe sous le soleil (Scene.astro, variante « entete », registre/0058),
+   à partir de 960 px : hors du flux, elle ne change pas la hauteur de
+   l'accroche. Largeur : 221,667 px (échelle 1) à 960 px, 277,08 px (1,25) à
+   1280 px, linéaire entre les deux. À droite, le bord du conteneur jusqu'à
+   1280 px, puis 5,25 rem du bord de l'écran : elle suit le soleil, pas la
+   phrase. En hauteur, sa place statique (sous le titre), remontée pour
+   poser le sol (140 unités sous le haut de la boîte, sur 160) sur la ligne
+   de base de la dernière ligne du titre, à 0,206 em du bas de sa boîte
+   (interligne 1,08, Atkinson Hyperlegible Next : ascendante 0,984 em,
+   boîte de contenu 1,3 em). */
+.accroche .accroche__equipe {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  /* Le titre en contexte de formatage propre : Chrome n'équilibre pas
+     (text-wrap: balance) des lignes voisines d'un flottant, ici la réserve
+     du soleil, et la coupe gloutonne poussait la troisième ligne sur
+     l'équipe. À partir de 960 px, le soleil n'atteint jamais le titre : le
+     titre garde sa largeur, ses lignes s'équilibrent (planche de 0057). */
+  .accroche h1 {
+    display: flow-root;
+  }
+
+  .accroche .accroche__equipe {
+    --equipe: clamp(221.667px, calc(221.667px + (100vw - 960px) * 0.173177), 277.084px);
+    display: block;
+    position: absolute;
+    right: clamp(var(--gouttiere), calc((100% - var(--largeur)) / 2 + var(--gouttiere)), 5.25rem);
+    width: var(--equipe);
+    transform: translateY(calc(-0.206 * var(--titre) - 0.631579 * var(--equipe)));
+    pointer-events: none;
+  }
 }
 
 .accroche__sous-titre {

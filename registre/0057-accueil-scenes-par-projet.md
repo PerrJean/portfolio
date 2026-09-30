@@ -21,3 +21,12 @@ illustration, « ça fait gabarit ». **Choix de Jean (2026-09-30)** :
 Par étapes, un go de Jean à chacune : images clés (ce chantier), puis
 animation (entrée suivante).
 Brief : `prompts/4-accueil-images-cles.md`.
+
+**Étape 2 faite (coût 160, ratio 2,3)** : `ops/images/accueil/planche.png`,
+cinq SVG dans le repère de `Scene.astro`, `planche.mjs` et `police.mjs`
+(mesure de la phrase en 800, que sharp ne rendait pas). Retours de Jean : en
+en-tête, l'équipe reste anonyme (trois ouvriers, sans lunettes) et suit le
+soleil au-delà de 1280 px ; dans la carte 02, **ce sont les trois ouvriers de
+l'en-tête qui rejoignent Jean** au plan (une reprise des images 4 et 5).
+Lisible à 480, 384 et 335 px de carte. Ratio élevé : la mesure de la phrase
+et la reprise de la carte 02.

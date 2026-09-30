@@ -1,0 +1,122 @@
+---
+// L'en-tête de l'accueil (registre/0058) : A, B et le porteur, anonymes, à
+// leur place de l'ancienne scène des cartes, avec leur bout de sol et la
+// dalle (ops/images/accueil/entete.svg). L'impatience, 2 s, une chose à la
+// fois, jouée une fois au chargement : A saute deux fois, B fait tourner son
+// marteau, le porteur lance sa poutre et la rattrape. Le repos est la fin.
+// À rendre dans Scene.astro (variante « entete »), qui porte les couleurs.
+import Personnage from './Personnage.astro';
+import { OBJETS } from './poses';
+---
+
+<rect class="fd" x="245" y="0" width="175" height="12" />
+<line class="se" x1="205" y1="0" x2="426.667" y2="0" stroke-width="1.5" />
+
+<!-- La poutre en vol, hors des mains du porteur : lancée puis rattrapée.
+     Origine au milieu du bord bas ; (60, -109) est sa place dans les paumes. -->
+<g class="poutre" transform="translate(299 0)">
+  <g class="poutre-vol" set:html={OBJETS.poutre} />
+</g>
+
+<!-- A : regarde à droite et saute deux fois. -->
+<g transform="translate(220 0)">
+  <Personnage pose="debout" class="a-debout" />
+  <g class="a-bond">
+    <Personnage pose="sautillement" class="a-saut" />
+  </g>
+</g>
+
+<!-- B : tourné vers le porteur, fait tourner son marteau, tenu tête en
+     haut. L'arc suit la tête du marteau (à 31 du poignet (25, -75)), départ
+     en haut, sens horaire. -->
+<g transform="translate(250 0)">
+  <path
+    class="b-arc se"
+    d="M25,-106 A31,31 0 1 1 25,-44 A31,31 0 1 1 25,-106"
+    pathLength="100"
+    fill="none"
+    stroke-width="1.5"
+    stroke-opacity="0.3"
+    stroke-linecap="round"
+  />
+  <Personnage pose="marteau-2" class="b-marteau" />
+</g>
+
+<!-- Le porteur : poutre sur l'épaule ; la lance (pose « lancer ») et la
+     rattrape. -->
+<g transform="translate(355 0)">
+  <Personnage pose="poutre-epaule" miroir class="c-poutre" />
+  <Personnage pose="lancer-poutre" miroir class="c-lance" />
+</g>
+
+<style is:global>
+  .scene--entete :is(.a-saut, .c-lance, .poutre, .b-arc) { opacity: 0; }
+  .scene--entete .b-arc { stroke-dasharray: 30 110; stroke-dashoffset: 30; }
+
+  /* 2 s, une seule chose à la fois : A saute deux fois (0-0,56 s), B fait
+     un tour de marteau (0,6-1,3 s), le porteur lance sa poutre et la
+     rattrape (1,3-1,8 s). Une fois : la fin des animations est le repos. */
+  @media (prefers-reduced-motion: no-preference) {
+    .scene--entete .a-debout { animation: sc-i-debout 2s step-end both; }
+    .scene--entete .a-saut { animation: sc-i-saut 2s step-end both; }
+    .scene--entete .a-bond { animation: sc-i-bond 2s both; }
+    .scene--entete .b-marteau .marteau-tour {
+      animation: sc-i-tour 2s ease-in-out both;
+    }
+    .scene--entete .b-arc {
+      animation: sc-i-arc 2s ease-in-out both, sc-i-arc-vu 2s linear both;
+    }
+    .scene--entete .c-poutre { animation: sc-i-porte 2s step-end both; }
+    .scene--entete :is(.c-lance, .poutre) { animation: sc-i-envol 2s step-end both; }
+    .scene--entete .poutre-vol { animation: sc-i-vol 2s both; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene--entete * { animation: none !important; }
+  }
+
+  /* 1 % = 20 ms. Deux sauts de 0,22 s (0-11 %, 17-28 %), au sol entre les
+     deux ; le tour de 0,6 à 1,3 s (30-65 %) ; la poutre de 1,3 à 1,8 s
+     (65-90 %). */
+  @keyframes sc-i-debout {
+    0% { opacity: 0; } 11% { opacity: 1; } 17% { opacity: 0; } 28%, 100% { opacity: 1; }
+  }
+  @keyframes sc-i-saut {
+    0% { opacity: 1; } 11% { opacity: 0; } 17% { opacity: 1; } 28%, 100% { opacity: 0; }
+  }
+  @keyframes sc-i-bond {
+    0% { transform: translateY(0); animation-timing-function: ease-out; }
+    5.5% { transform: translateY(-8px); animation-timing-function: ease-in; }
+    11%, 17% { transform: translateY(0); animation-timing-function: ease-out; }
+    22.5% { transform: translateY(-8px); animation-timing-function: ease-in; }
+    28%, 100% { transform: translateY(0); }
+  }
+  /* Un tour complet, de tête en haut à tête en haut. */
+  @keyframes sc-i-tour {
+    0%, 30% { transform: rotate(-115deg) scale(1.2); }
+    65%, 100% { transform: rotate(245deg) scale(1.2); }
+  }
+  /* Le trait (30 % du cercle) finit toujours sur la tête du marteau :
+     mêmes étapes et même courbe que le tour. */
+  @keyframes sc-i-arc {
+    0%, 30% { stroke-dashoffset: 30; }
+    65%, 100% { stroke-dashoffset: -70; }
+  }
+  @keyframes sc-i-arc-vu {
+    0%, 30% { opacity: 0; } 36%, 60% { opacity: 1; } 72%, 100% { opacity: 0; }
+  }
+  /* La poutre quitte l'épaule pour les paumes (pose « lancer », 12 plus
+     haut), monte à 24 au-dessus de l'épaule, redescend dans les paumes :
+     rattrapée, elle revient sur l'épaule (pose « poutre sur l'épaule »). */
+  @keyframes sc-i-porte {
+    0% { opacity: 1; } 65% { opacity: 0; } 90%, 100% { opacity: 1; }
+  }
+  @keyframes sc-i-envol {
+    0% { opacity: 0; } 65% { opacity: 1; } 90%, 100% { opacity: 0; }
+  }
+  @keyframes sc-i-vol {
+    0%, 65% { transform: translate(60px, -109px) rotate(0deg); animation-timing-function: ease-out; }
+    77.5% { transform: translate(60px, -121px) rotate(4deg); animation-timing-function: ease-in; }
+    90%, 100% { transform: translate(60px, -109px) rotate(0deg); }
+  }
+</style>

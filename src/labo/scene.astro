@@ -1,6 +1,8 @@
 ---
-// Page d'essai des animations de l'accueil (registre/0022). Hors navigation,
-// hors du site construit : le serveur de dev seul la sert, à /labo/scene/
+// Page d'essai des animations de l'accueil (registre/0022, 0058) : les trois
+// variantes de Scene. L'en-tête joue au chargement (bouton « Rejouer ») ;
+// les cartes au survol et au focus. Hors navigation, hors du site
+// construit : le serveur de dev seul la sert, à /labo/scene/
 // (astro.config.mjs, registre/0053).
 import Scene from '../components/scene/Scene.astro';
 ---
@@ -15,15 +17,29 @@ import Scene from '../components/scene/Scene.astro';
   </head>
   <body>
     <main class="labo">
+      <div class="entete">
+        <span class="titre">En-tête · l'impatience</span>
+        <button type="button" class="rejouer">Rejouer</button>
+        <Scene variante="entete" />
+      </div>
       <a class="parcelle" href="#">
         <span class="titre">01 · UserVoice</span>
-        <Scene />
+        <Scene variante="uservoice" />
       </a>
       <a class="parcelle" href="#">
         <span class="titre">02 · Audit contenu</span>
-        <Scene />
+        <Scene variante="audit" />
       </a>
     </main>
+    <script>
+      // Rejoue l'impatience de l'en-tête : ses animations repartent de zéro.
+      document.querySelector('.rejouer')?.addEventListener('click', () => {
+        document.querySelector('.scene--entete')?.getAnimations({ subtree: true }).forEach((a) => {
+          a.currentTime = 0;
+          a.play();
+        });
+      });
+    </script>
   </body>
 </html>
 
@@ -44,6 +60,18 @@ import Scene from '../components/scene/Scene.astro';
     max-width: 64rem;
     margin: 0 auto;
     padding: 3rem 1rem;
+  }
+  .entete {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    justify-self: end;
+    width: min(100%, 22rem);
+  }
+  .entete :global(.scene) {
+    grid-column: 1 / -1;
   }
   .parcelle {
     display: flex;
