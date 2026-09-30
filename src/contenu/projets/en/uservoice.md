@@ -41,7 +41,7 @@ Each piece of feedback is then classified, depending on whether it reports a bug
 
 ## What the data showed
 
-From March to September 2026, one in three pieces of feedback left in the site’s form is about the content.
+From March to September 2026, one in three pieces of negative feedback left in the site’s form is about the content.
 
 The NPS survey confirms it. Over two months in summer 2026, nearly one comment in five concerns explanations, exercises or translations. Half of them are criticisms or requests.
 

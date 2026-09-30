@@ -20,3 +20,4 @@ négatif sur 3 » ; Audit « empêchait l'apprenant d'avoir juste » (il pouvait
 répondre) ; sous l'accroche de l'accueil, « Cinq projets menés dans
 l'EdTech, en équipe et avec l'IA. » (EN « Five EdTech projects, led with my
 team and with AI. »). Ratio 1,4.
+**Suite (Jean)** : « un retour négatif sur trois » aussi dans le corps de UserVoice, FR et EN ; Matrice « sa maîtrise du métier » sans répéter « Product Manager » ; la description de l'accueil reste telle quelle.

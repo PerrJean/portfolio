@@ -59,7 +59,7 @@ J’en ai écrit une première version, puis une version structurée.
 
 En entretien, le Product Manager et moi avons situé chaque compétence sur la matrice. C’est là qu’est apparue notre différence de perception sur ce que veut dire « devenir senior ». Nous en sommes sortis avec une vision partagée de ses compétences, point de départ de sa progression.
 
-La légitimité d’un Product Manager repose sur sa compréhension des usages et des utilisateurs, et sur sa maîtrise du métier de Product Manager. Nous nous sommes accordés pour renforcer ce second point, et pour aller plus loin dans l’IA appliquée au product management : ce sont les deux axes de son plan de progression.
+La légitimité d’un Product Manager repose sur sa compréhension des usages et des utilisateurs, et sur sa maîtrise du métier. Nous nous sommes accordés pour renforcer ce second point, et pour aller plus loin dans l’IA appliquée au product management : ce sont les deux axes de son plan de progression.
 
 ## Ce que ça change pour l’équipe
 

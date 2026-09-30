@@ -20,7 +20,7 @@ Chaque retour est ensuite classé, selon qu’il signale un bug ou qu’il porte
 
 ## Ce que la donnée a montré
 
-De mars à septembre 2026, un retour sur trois laissé dans le formulaire du site concerne le contenu.
+De mars à septembre 2026, un retour négatif sur trois laissé dans le formulaire du site concerne le contenu.
 
 L’enquête NPS le confirme. Sur deux mois de l’été 2026, près d’un commentaire sur cinq touche aux explications, aux exercices ou aux traductions. La moitié sont des critiques ou des demandes.
 
