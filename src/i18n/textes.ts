@@ -16,6 +16,9 @@ export const UI: Record<
     locale: string;
     plusLoin: string;
     projetSuivant: string;
+    fermer: string;
+    agrandir: string;
+    toucherPourAgrandir: string;
   }
 > = {
   fr: {
@@ -27,6 +30,9 @@ export const UI: Record<
     langue: 'Langue',
     locale: 'fr_FR',
     plusLoin: 'Pour aller plus loin',
+    fermer: 'Fermer',
+    agrandir: 'Agrandir',
+    toucherPourAgrandir: 'Toucher pour agrandir',
     projetSuivant: 'Projet suivant :',
   },
   en: {
@@ -39,5 +45,8 @@ export const UI: Record<
     locale: 'en_US',
     plusLoin: 'Going further',
     projetSuivant: 'Next project:',
+    fermer: 'Close',
+    agrandir: 'Enlarge',
+    toucherPourAgrandir: 'Tap to enlarge',
   },
 };

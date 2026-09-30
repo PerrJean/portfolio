@@ -1,0 +1,293 @@
+---
+// La visionneuse des captures (registre/0054). Les captures du corps sont des
+// <figure> dont l'image est dans un lien vers le PNG : sans JavaScript, le
+// lien ouvre le PNG. Le script intercepte le clic et ouvre l'image entière
+// dans un <dialog> modal, sur un voile d'encre, sa légende dessous.
+//  - Grand écran : l'image tient dans la fenêtre ; un clic sur l'image la
+//    montre à sa taille réelle (et la remet à la fenêtre).
+//  - Téléphone (moins de 760 px) : l'image à sa taille réelle, dans une zone
+//    qui défile dans les deux sens ; le pincement reste permis.
+//  - Fermeture : le bouton, Échap, un clic hors de l'image. Le focus va au
+//    bouton, puis revient au lien d'origine ; la page ne défile pas dessous.
+// Pas de suivante / précédente, pas de bibliothèque, rien vers un tiers.
+import Bouton from './Bouton.astro';
+import type { Langue } from '../i18n/routes';
+import { UI } from '../i18n/textes';
+
+interface Props {
+  langue: Langue;
+}
+const t = UI[Astro.props.langue];
+---
+
+<dialog class="visionneuse">
+  <div class="visionneuse__barre">
+    <Bouton variante="principal" class="visionneuse__fermer">{t.fermer}</Bouton>
+  </div>
+  <figure class="visionneuse__figure">
+    <div class="visionneuse__zone"></div>
+    <figcaption class="visionneuse__legende"></figcaption>
+  </figure>
+</dialog>
+
+<template id="visionneuse-indice">
+  <span class="capture__indice" aria-hidden="true">
+    <span class="capture__indice-souris">{t.agrandir}</span>
+    <span class="capture__indice-doigt">{t.toucherPourAgrandir}</span>
+  </span>
+</template>
+
+<script>
+  const dialogue = document.querySelector<HTMLDialogElement>('dialog.visionneuse');
+  const modele = document.querySelector<HTMLTemplateElement>('#visionneuse-indice');
+  const fermer = dialogue?.querySelector<HTMLButtonElement>('.visionneuse__fermer');
+  const zone = dialogue?.querySelector<HTMLElement>('.visionneuse__zone');
+  const legende = dialogue?.querySelector<HTMLElement>('.visionneuse__legende');
+
+  if (dialogue && modele && fermer && zone && legende && typeof dialogue.showModal === 'function') {
+    const vue = document.createElement('img');
+    vue.className = 'visionneuse__image';
+    vue.alt = ''; // le dialogue porte le texte alternatif (aria-label)
+    vue.decoding = 'async';
+    zone.append(vue);
+    let origine: HTMLAnchorElement | null = null;
+
+    // Grand écran : l'image est-elle réduite pour tenir dans la fenêtre ?
+    const marquer = () => {
+      const reduite = dialogue.dataset.taille !== 'reelle' && vue.naturalWidth > vue.clientWidth + 1;
+      dialogue.toggleAttribute('data-agrandissable', reduite);
+    };
+    vue.addEventListener('load', marquer);
+
+    const ouvrir = (lien: HTMLAnchorElement, image: HTMLImageElement, texte: string) => {
+      origine = lien;
+      delete dialogue.dataset.taille;
+      vue.width = image.width;
+      vue.height = image.height;
+      vue.src = lien.href;
+      dialogue.setAttribute('aria-label', image.alt);
+      legende.textContent = texte;
+      legende.hidden = texte === '';
+      document.documentElement.classList.add('visionneuse-ouverte');
+      dialogue.showModal();
+      zone.scrollTo(0, 0);
+      fermer.focus();
+      marquer();
+    };
+
+    // Le rangement se fait tout de suite après close() : l'événement « close »
+    // est asynchrone (Chromium l'attend parfois jusqu'au prochain rendu). Il
+    // reste en filet, pour les autres fermetures (le retour d'Android).
+    const ranger = () => {
+      if (!origine) return;
+      const lien = origine;
+      origine = null;
+      document.documentElement.classList.remove('visionneuse-ouverte');
+      lien.focus();
+    };
+    const refermer = () => {
+      dialogue.close();
+      ranger();
+    };
+    dialogue.addEventListener('close', ranger);
+    dialogue.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      e.preventDefault(); // la fermeture native ne rangerait qu'au rendu suivant
+      refermer();
+    });
+
+    fermer.addEventListener('click', refermer);
+
+    // Un clic sur l'image bascule taille réelle / fenêtre (grand écran) ; un
+    // clic ailleurs ferme, sauf s'il termine une sélection de texte.
+    dialogue.addEventListener('click', (e) => {
+      if (e.target === vue) {
+        if (dialogue.dataset.taille === 'reelle') delete dialogue.dataset.taille;
+        else if (dialogue.hasAttribute('data-agrandissable')) dialogue.dataset.taille = 'reelle';
+        marquer();
+        return;
+      }
+      if (fermer.contains(e.target as Node)) return;
+      if (String(window.getSelection() ?? '') !== '') return;
+      refermer();
+    });
+
+    for (const figure of document.querySelectorAll<HTMLElement>('.corps figure')) {
+      const lien = figure.querySelector<HTMLAnchorElement>(':scope > a[href]');
+      const image = lien?.querySelector<HTMLImageElement>(':scope > img');
+      if (!lien || !image) continue;
+      const texte = figure.querySelector('figcaption')?.textContent?.trim() ?? '';
+      lien.classList.add('capture__lien');
+      lien.append(modele.content.cloneNode(true));
+      lien.addEventListener('click', (e) => {
+        // Ctrl, Cmd, Maj, clic du milieu : le navigateur ouvre le PNG, comme avant.
+        if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        ouvrir(lien, image, texte);
+      });
+    }
+
+    window.addEventListener('resize', () => {
+      if (dialogue.open) marquer();
+    });
+  }
+</script>
+
+<style is:global>
+  /* Dans la page : la mention discrète sous l'image, en encre (l'ardoise ne
+     passe qu'en grand texte). La souris lit « Agrandir », le doigt
+     « Toucher pour agrandir ». */
+  .capture__lien {
+    cursor: zoom-in;
+    text-decoration: none;
+  }
+
+  .capture__indice {
+    display: block;
+    margin-top: 0.375rem;
+    color: var(--encre);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .capture__indice-doigt {
+    display: none;
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .capture__indice-souris {
+      display: none;
+    }
+
+    .capture__indice-doigt {
+      display: inline;
+    }
+  }
+
+  /* La page ne défile pas sous la visionneuse ; la gouttière de la barre de
+     défilement reste, pour que rien ne bouge derrière le voile. */
+  html.visionneuse-ouverte {
+    overflow: hidden;
+    scrollbar-gutter: stable;
+  }
+
+  /* Le dialogue couvre la fenêtre : le voile, d'encre à 85 %, est son fond.
+     L'image garde son propre fond clair. */
+  .visionneuse {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--encre) 85%, transparent);
+    color: var(--ivoire);
+  }
+
+  .visionneuse[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .visionneuse::backdrop {
+    background: transparent;
+  }
+
+  /* Le focus, en ivoire sur le voile. */
+  .visionneuse :focus-visible {
+    outline-color: var(--ivoire);
+  }
+
+  .visionneuse__barre {
+    display: flex;
+    flex: none;
+    justify-content: flex-end;
+    padding: 0.75rem var(--gouttiere);
+  }
+
+  .visionneuse__figure {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    margin: 0;
+  }
+
+  /* La zone défile dans les deux sens ; margin: auto centre l'image sans
+     rendre inaccessible ce qui déborde. */
+  .visionneuse__zone {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding-inline: var(--gouttiere);
+  }
+
+  .visionneuse__image {
+    display: block;
+    flex: none;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    margin: auto;
+    border: 1px solid var(--dalle);
+  }
+
+  .visionneuse[data-agrandissable] .visionneuse__image {
+    cursor: zoom-in;
+  }
+
+  .visionneuse[data-taille='reelle'] .visionneuse__image {
+    max-width: none;
+    max-height: none;
+    cursor: zoom-out;
+  }
+
+  .visionneuse__legende {
+    flex: none;
+    width: 100%;
+    max-width: var(--mesure);
+    max-height: 30vh;
+    margin-inline: auto;
+    padding: 0.75rem var(--gouttiere) 1rem;
+    overflow: auto;
+    color: var(--ivoire);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  /* Téléphone : l'image à sa taille réelle, la zone défile. */
+  @media (max-width: 759.98px) {
+    .visionneuse__zone {
+      padding-inline: 0;
+    }
+
+    .visionneuse__image {
+      max-width: none;
+      max-height: none;
+    }
+  }
+
+  /* Un fondu d'ouverture de 120 ms, coupé si le mouvement est réduit. */
+  @keyframes visionneuse-fondu {
+    from {
+      opacity: 0;
+    }
+  }
+
+  .visionneuse[open] {
+    animation: visionneuse-fondu 120ms ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .visionneuse[open] {
+      animation: none;
+    }
+  }
+</style>
