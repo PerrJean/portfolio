@@ -50,7 +50,7 @@ The grid has six criteria, detailed under “Going further”: faithfulness to t
 
 Each question then gets one of four verdicts: blocking, major, minor, or nothing to fix. A question is blocking when learners cannot answer it. That happens when the expected answer is wrong, or when two answers can be defended equally well.
 
-Supervised AI agents apply the grid, question by question. The model does not judge alone. In parallel, automated checks run over the whole corpus: a deterministic check, then an AI check. They verify that the audio, through its transcript, the text and image materials, the question, the answers and the explanation are consistent. A report then gives each question’s status and the issues raised against it.
+AI agents apply the grid, question by question, and their verdicts are cross-checked. In parallel, automated checks run over the whole corpus, first with fixed rules, then with an AI. They verify that the audio, read through its transcription, the texts and images, the question, the answers and the explanation all say the same thing. A report then gives each question’s status and the issues raised against it.
 
 <div data-schema="chaine-audit"></div>
 

@@ -1,7 +1,7 @@
 ---
 titre: "Mises en situation orales par IA : parier sur une conversation encadrée"
 date: "2026-02"
-fait: "Invités à classer ce qui comptait le plus, les clients ont mis en tête la qualité de l’échange avec l’IA et celle du retour après l’échange. Le retour pédagogique est passé en tête de la feuille de route, avant l’engagement."
+fait: "Invités à classer ce qui comptait le plus, les clients ont placé la qualité de l’échange avec l’IA et la qualité du retour avant les badges et la progression. De ce fait, la qualité du retour pédagogique est passée en tête de la feuille de route."
 synthese:
   probleme: "Sur une plateforme EdTech d’apprentissage des langues, l’apprenant avait peu d’occasions de s’entraîner à parler en situation, face à un recruteur ou à un client. Les conversations avec une IA qu’on trouvait ailleurs restaient souvent hors du parcours, avec des scores sans explication."
   action: "Nous avons parié sur une conversation encadrée : une IA incarne l’interlocuteur et mène un échange court, sur des questions préparées par l’équipe pédagogique. J’ai accompagné le Product Manager (PM) et la product designer de mon équipe sur la méthode et la mise en place d’un Design Sprint ; l’équipe a ensuite mené entretiens et enquêtes auprès des clients."
@@ -20,7 +20,7 @@ plusLoin:
   - titre: "Ce que les enquêtes ont classé"
     points:
       - "Les attentes. Un retour utile à la progression et un échange fiable avec l’IA : tous les clients interrogés. Une estimation fiable du niveau et un catalogue plus riche : trois sur quatre. Un travail de la prononciation : une minorité."
-      - "Les prochains chantiers, classés par les clients. En tête, la qualité de l’échange avec l’IA, puis la qualité du retour. Ensuite, la diversité des situations et la simplicité de l’expérience. En dernier, les animations d’engagement."
+      - "Les prochains chantiers, classés par les clients. En tête, la qualité de l’échange avec l’IA, puis la qualité du retour. Ensuite, la diversité des situations et la simplicité de l’expérience. En dernier, les badges et la progression."
       - "Les thèmes. Les situations professionnelles occupent le haut du classement (collaborer sur un projet, échanger avec un client, faire un point avec son manager, réussir un entretien d’embauche). La vie quotidienne arrive en bas (courses, sorties, hébergement). Les suggestions libres ajoutent le téléphone et la santé."
   - titre: "Comment une conversation est construite"
     points:
@@ -58,9 +58,9 @@ Nous avons fait le pari inverse, celui d’une conversation encadrée. L’IA in
 
 J’ai accompagné le Product Manager (PM) et la product designer de mon équipe sur la méthode, puis dans la mise en place d’un Design Sprint. L’équipe en a tiré un prototype, et une première version a été testée par des clients : responsables pédagogiques et enseignants, de l’enseignement supérieur à la formation professionnelle. Entretiens, enquêtes et atelier de co-construction ont suivi, de février à avril 2026.
 
-Le socle a été validé par tous, de la conversation encadrée au fil de messages sans visio. Tous voulaient aussi un retour utile à la progression, et un échange fiable. Invités à classer nos prochains chantiers, ils ont mis la qualité de l’échange avec l’IA en tête, la qualité du retour juste après, et les animations d’engagement en dernier.
+Le socle a été validé par tous, de la conversation encadrée au fil de messages sans visio. Tous voulaient aussi un retour utile à la progression, et un échange fiable. Invités à classer nos prochains chantiers, ils ont mis la qualité de l’échange avec l’IA en tête, la qualité du retour juste après, et les badges et la progression en dernier.
 
-Nous avons donc réordonné la suite. Le retour pédagogique est passé en tête, plus tôt que prévu, validé avec la direction. La gamification et la progression ont été mises en attente : sans retour utile, elles n’auraient récompensé que l’effort. Une enquête sur les thèmes a ensuite orienté le catalogue. Les situations professionnelles arrivaient en haut du classement, la vie quotidienne en bas, et les premiers échanges ont été écrits en partant du haut.
+Nous avons donc réordonné la suite. Le retour pédagogique est passé en tête, plus tôt que prévu, validé avec la direction. Les badges et la progression ont été mis en attente : sans retour utile, elles n’auraient récompensé que l’effort. Une enquête sur les thèmes a ensuite orienté le catalogue. Les situations professionnelles arrivaient en haut du classement, la vie quotidienne en bas, et les premiers échanges ont été écrits en partant du haut.
 
 ## Ce que l’IA fait, et ce qu’on ne lui demande pas
 
@@ -82,7 +82,7 @@ Ce projet m’apprend à tenir le rôle de Head of Product sur une découverte q
 
 **Cadrer la démarche, laisser l’équipe trouver.** Mon travail a porté sur la méthode et le Design Sprint, pas sur les réponses. Le PM et la product designer ont mené les entretiens et les enquêtes, et ce sont leurs conclusions qui ont réordonné la feuille de route.
 
-**Faire classer, pas seulement écouter.** Demander aux clients ce qu’ils veulent donne une liste où tout compte. Leur demander de classer oblige à choisir : le retour pédagogique est passé devant les animations d’engagement (badges, progression), et les situations professionnelles devant la vie quotidienne.
+**Faire classer, pas seulement écouter.** Demander aux clients ce qu’ils veulent donne une liste où tout compte. Leur demander de classer oblige à choisir : le retour pédagogique est passé devant les badges et la progression, et les situations professionnelles devant la vie quotidienne.
 
 ---
 

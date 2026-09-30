@@ -57,8 +57,8 @@ export const PROJETS: readonly Projet[] = [
     scene: 'misesEnSituation',
     nom: { fr: 'Mises en situation orales', en: 'Speaking role-plays' },
     fait: {
-      fr: 'Invités à classer ce qui comptait le plus, les clients ont mis en tête la qualité de l’échange avec l’IA et celle du retour après l’échange. Le retour pédagogique est passé en tête de la feuille de route, avant l’engagement.',
-      en: 'Asked to rank what mattered most, clients put the quality of the exchange with the AI first and the quality of the feedback after it second. Learning feedback moved to the top of the roadmap, ahead of engagement.',
+      fr: 'Invités à classer ce qui comptait le plus, les clients ont placé la qualité de l’échange avec l’IA et la qualité du retour avant les badges et la progression. De ce fait, la qualité du retour pédagogique est passée en tête de la feuille de route.',
+      en: 'Asked to rank what mattered most, clients put the quality of the exchange with the AI and the quality of the feedback ahead of badges and progress tracking. As a result, the quality of learning feedback moved to the top of the roadmap.',
     },
   },
   {

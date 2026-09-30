@@ -33,7 +33,8 @@ miroir.
 ## Les règles non négociables
 
 - **C1** L'employeur n'est nommé **que dans « À propos »**. Ailleurs : « une
-  plateforme EdTech ».
+  plateforme EdTech », ou « une entreprise EdTech » quand « plateforme »
+  prêterait à confusion (page Fusion).
 - **C2** Chiffres **relatifs ou ordres de grandeur**. Jamais un chiffre
   interne en absolu.
 - **C3** **Aucune donnée de personne** : ni verbatim, ni nom, ni e-mail.

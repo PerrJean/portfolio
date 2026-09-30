@@ -1,7 +1,7 @@
 ---
 titre: "AI speaking role-plays: betting on a guided conversation"
 date: "2026-02"
-fait: "Asked to rank what mattered most, clients put the quality of the exchange with the AI first and the quality of the feedback after it second. Learning feedback moved to the top of the roadmap, ahead of engagement."
+fait: "Asked to rank what mattered most, clients put the quality of the exchange with the AI and the quality of the feedback ahead of badges and progress tracking. As a result, the quality of learning feedback moved to the top of the roadmap."
 synthese:
   probleme: "On an EdTech language-learning platform, learners had few chances to practice speaking in real situations, facing a recruiter or a client. The AI conversations available elsewhere often sat outside the learning path, with scores nobody explained."
   action: "We bet on a guided conversation: an AI plays the other person and leads a short exchange, built on questions prepared by the learning team. I supported the Product Manager (PM) and the product designer on my team with the method and with setting up a Design Sprint; the team then ran interviews and surveys with clients."
@@ -20,7 +20,7 @@ plusLoin:
   - titre: "What the surveys ranked"
     points:
       - "Expectations. Feedback that helps learners progress and a reliable exchange with the AI: every client interviewed. A reliable estimate of their level and a richer catalog: three in four. Pronunciation work: a minority."
-      - "Next priorities, as ranked by clients. First, the quality of the exchange with the AI, then the quality of the feedback. Next, the variety of situations and the simplicity of the experience. Last, engagement animations."
+      - "Next priorities, as ranked by clients. First, the quality of the exchange with the AI, then the quality of the feedback. Next, the variety of situations and the simplicity of the experience. Last, badges and progress tracking."
       - "Topics. Work situations top the ranking (collaborating on a project, talking with a client, a check-in with your manager, a job interview). Everyday life comes last (shopping, outings, accommodation). Open suggestions add phone calls and health."
   - titre: "How a conversation is built"
     points:
@@ -58,9 +58,9 @@ We made the opposite bet, a guided conversation. The AI plays the other person a
 
 I supported the Product Manager (PM) and the product designer on my team with the method, then with setting up a Design Sprint. The team turned it into a prototype, and clients tested a first version: heads of teaching and teachers, from higher education to vocational training. Interviews, surveys and a co-design workshop followed, from February to April 2026.
 
-Everyone validated the foundation, from the guided conversation to the message thread with no video. Everyone also wanted feedback that helps them progress, and a reliable exchange. Asked to rank our next priorities, they put the quality of the exchange with the AI first, the quality of the feedback right after, and engagement animations last.
+Everyone validated the foundation, from the guided conversation to the message thread with no video. Everyone also wanted feedback that helps them progress, and a reliable exchange. Asked to rank our next priorities, they put the quality of the exchange with the AI first, the quality of the feedback right after, and badges and progress tracking last.
 
-So we reordered what came next. Learning feedback moved to the top, earlier than planned, with management’s approval. Gamification and progress tracking were put on hold: without useful feedback, they would only have rewarded effort. A survey on topics then shaped the catalog. Work situations came out on top and everyday life at the bottom, and the first role-plays were written from the top of the list down.
+So we reordered what came next. Learning feedback moved to the top, earlier than planned, with management’s approval. Badges and progress tracking were put on hold: without useful feedback, they would only have rewarded effort. A survey on topics then shaped the catalog. Work situations came out on top and everyday life at the bottom, and the first role-plays were written from the top of the list down.
 
 ## What the AI does, and what we don’t ask of it
 
@@ -84,4 +84,4 @@ This project is teaching me to hold the Head of Product role in a discovery I do
 
 **Frame the approach, let the team find the answers.** My work covered the method and the Design Sprint, not the answers. The PM and the product designer ran the interviews and the surveys, and their conclusions reordered the roadmap.
 
-**Ask for a ranking, not just for input.** Asking clients what they want gets you a list where everything matters. Asking them to rank forces a choice: learning feedback moved ahead of engagement features (badges, progress tracking), and work situations ahead of everyday life.
+**Ask for a ranking, not just for input.** Asking clients what they want gets you a list where everything matters. Asking them to rank forces a choice: learning feedback moved ahead of badges and progress tracking, and work situations ahead of everyday life.

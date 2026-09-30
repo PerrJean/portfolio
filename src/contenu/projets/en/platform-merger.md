@@ -3,7 +3,7 @@ titre: "Platform merger: from three to two, aiming for one"
 date: "2024-08"
 fait: "In August 2024, before the new school year, the platform for businesses joined the general platform. One platform out of three was retired."
 synthese:
-  probleme: "An EdTech platform offered three language-learning platforms, built one after another. Each had its own interface, activity templates and data model, so every change had to be built three times."
+  probleme: "An EdTech company offered three language-learning platforms, built one after another. Each had its own interface, activity templates and data model, so every change had to be built three times."
   action: "As Product Manager (PM), then project lead, I framed a target, a single platform, and presented it to the executive committee. With a team of about ten people, we first laid down a shared design system, then merged the platform for businesses into the general platform, in seven batches."
   resultat: "The merger has been in production since August 2024. Activities now run on four templates instead of about thirty, and the share of feedback about usability dropped by a quarter. This project opened the way to the Head of Product role."
 plusLoin:

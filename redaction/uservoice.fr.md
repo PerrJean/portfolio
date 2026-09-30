@@ -16,7 +16,7 @@ Je suis parti des questions auxquelles je voulais pouvoir répondre chaque semai
 
 Pour y répondre, il fallait lire les quatre sources ensemble. Dans la table commune, chaque retour garde le contexte du jour où il a été donné, et se relit ainsi des mois plus tard.
 
-Chaque retour est ensuite qualifié sur deux axes. S’il signale un bug, il reçoit une signature, parmi une trentaine. Sinon, il reçoit un ou plusieurs thèmes de satisfaction, parmi une trentaine aussi, puisqu’un même commentaire peut en citer plusieurs.
+Chaque retour est ensuite classé, selon qu’il signale un bug ou qu’il porte sur la satisfaction.
 
 ## Ce que la donnée a montré
 

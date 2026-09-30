@@ -32,7 +32,7 @@ I started from the questions I wanted to be able to answer every week. Which top
 
 Answering them meant reading the four sources together. In the shared table, each piece of feedback keeps the context of the day it was submitted, so it still reads that way months later.
 
-Each piece of feedback is then tagged along two axes. If it reports a bug, it gets a signature, out of about thirty. If not, it gets one or more satisfaction themes, also out of about thirty, since a single comment can mention several.
+Each piece of feedback is then classified, depending on whether it reports a bug or is about satisfaction.
 
 <figure>
   <a href="/captures/uservoice/analyse.png"><img src="/captures/uservoice/analyse.png" width="1360" height="1406" loading="lazy" decoding="async" alt="Screenshot of the UserVoice Analysis page: four category cards (explanations, ergonomics, exercises, progression), each showing the share of comments that mention it and its curve over four quarters against the year before. Explanations come first, with 22 NPS points to gain."></a>

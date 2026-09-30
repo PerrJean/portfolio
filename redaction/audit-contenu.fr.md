@@ -18,7 +18,7 @@ La grille compte six critères, détaillés dans « Pour aller plus loin » : la
 
 Chaque question reçoit ensuite un verdict parmi quatre : bloquant, majeur, mineur ou rien à corriger. Elle est bloquante quand l’apprenant ne peut pas y répondre. C’est le cas si la réponse attendue est fausse, ou si deux réponses se défendent autant.
 
-Des agents IA encadrés appliquent la grille, question par question. Le modèle ne juge pas seul. En parallèle, des contrôles automatiques passent sur tout le corpus : un contrôle déterministe, puis un contrôle par IA. Ils vérifient que l’audio, par son transcript, les supports texte et image, la question, les réponses et l’explication concordent. Un bilan donne l’état de chaque question et ce qui lui est reproché.
+Des agents IA appliquent la grille, question par question, et leur verdict est recoupé. En parallèle, des contrôles automatiques passent sur tout le corpus, d’abord par des règles fixes, puis par une IA. Ils vérifient que l’audio, lu par sa transcription, les textes et images, la question, les réponses et l’explication disent la même chose. Un bilan donne l’état de chaque question et ce qui lui est reproché.
 
 ## Ce que nous avons trouvé
 
