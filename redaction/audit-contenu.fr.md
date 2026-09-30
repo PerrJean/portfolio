@@ -38,13 +38,13 @@ Chaque correction rend à l’apprenant la possibilité de répondre juste. Au b
 
 ## Ce que j’en retiens
 
-Ce projet m’apprend à vibe coder efficacement, et j’en suis encore en chemin. Quelques pratiques tiennent déjà.
+Ce projet m’apprend à construire avec l’IA, et j’en suis encore en chemin. J’en tire trois enseignements, que j’applique désormais à chaque projet.
 
-Chaque chantier est chiffré avant de commencer, puis une fois fini. L’écart montre où l’estimation s’est trompée. Une règle qu’on peut vérifier devient un test. Elle se contrôle alors toute seule, sans dépendre de la mémoire de quiconque.
+**Donner à l’IA le bon contexte, pas tout le contexte.** L’IA relit ses consignes à chaque tâche : plus elles sont longues, plus elle devient lente, coûteuse et approximative. J’ai appris à garder un socle court, et à ranger le reste à part, pour qu’il ne soit chargé que quand la tâche en a besoin.
 
-La règle « le relecteur n’est pas l’auteur » résume l’audit. Ce qu’un agent produit, un autre agent le relit, et une personne tranche. Cette règle vaut pour les corrections du contenu comme pour le code que j’écris avec l’IA.
+**Écrire chaque décision.** Une décision prise au fil d’une conversation est oubliée à la suivante. Chacune tient désormais dans une fiche courte et datée, avec son coût estimé puis réel. L’IA la relit avant d’agir, et l’écart entre l’estimé et le réel m’apprend à mieux estimer.
 
-Certaines règles ont coûté cher avant d’être écrites. Sans suivi de version dès le premier fichier, deux semaines de travail sont restées hors historique.
+**Faire vérifier, pas seulement faire.** Une consigne écrite finit par être oubliée, et « c’est fait » ne prouve rien. Ce qui peut se vérifier devient un contrôle automatique, et ce qu’un agent produit, un autre le relit. C’est la règle de l’audit lui-même : le relecteur n’est pas l’auteur.
 
 ## Pour aller plus loin
 
@@ -71,11 +71,11 @@ Certaines règles ont coûté cher avant d’être écrites. Sans suivi de versi
 - Les réponses proposées correspondent à la question posée.
 - L’explication parle du même audio, des mêmes supports et des mêmes réponses que la question.
 
-### Les règles, et ce qu’elles ont coûté
+### Les enseignements, côté technique
 
-- Quatre semaines de travail, et 233 points de décision tracés dans un registre.
-- **Plafonner la taille des modules.** Les plus gros étaient aussi les plus réécrits.
-- **Lire le nom des champs dans la donnée au lieu de le supposer.**
+- Le bon contexte : un fichier de consignes court, sous 300 lignes ; des consignes propres à chaque dossier, chargées selon le fichier modifié (règles par glob) ; des savoir-faire chargés à la demande (skills) ; des modules de 500 lignes au plus.
+- Les décisions écrites : une fiche par décision (ADR), plus de deux cents tracées en quatre semaines, chacune avec son coût estimé et réel, recalibré régulièrement.
+- La vérification : les règles vérifiables deviennent des tests, les règles de méthode des contrôles avant chaque enregistrement (hook de pre-commit) ; la relecture est confiée à un agent qui repart de zéro (contexte neuf) ; le nom des champs se lit dans la donnée, plutôt que d’être supposé.
 
 ---
 

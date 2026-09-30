@@ -27,11 +27,11 @@ plusLoin:
       - "The question is about what the audio and the materials say."
       - "The answer options match the question asked."
       - "The explanation refers to the same audio, the same materials and the same answers as the question."
-  - titre: "The rules, and what they cost"
+  - titre: "The lessons, on the technical side"
     points:
-      - "Four weeks of work, and 233 decision points logged in a register."
-      - "Cap module size. The largest modules were also the most rewritten."
-      - "Read field names from the data instead of guessing them."
+      - "The right context: a short instruction file, under 300 lines; instructions specific to each folder, loaded according to the file being edited (glob-based rules); know-how loaded on demand (skills); modules of 500 lines at most."
+      - "Decisions written down: one record per decision (ADR), more than two hundred logged in four weeks, each with its estimated and actual cost, recalibrated regularly."
+      - "Verification: checkable rules become tests, and process rules become checks before every commit (pre-commit hook); review is handed to an agent that starts from scratch (fresh context); field names are read from the data rather than assumed."
 langue: en
 cle: auditContenu
 ---
@@ -77,10 +77,10 @@ Each fix gives learners back the chance to answer correctly. At the annual revie
 
 ## What I took from it
 
-This project is teaching me to vibe code efficiently, and I am still on the way. A few practices already hold.
+This project is teaching me to build with AI, and I am still on the way. I take three lessons from it, which I now apply to every project.
 
-Every workstream is costed before it starts, then again once it ends. The gap shows where the estimate was wrong. A rule that can be checked becomes a test. From then on it is enforced automatically, without relying on anyone’s memory.
+**Give the AI the right context, not all the context.** The AI rereads its instructions for every task: the longer they are, the slower, costlier and less precise it gets. I learned to keep a short core, and to store the rest separately, so it is loaded only when the task needs it.
 
-The rule “the reviewer is not the author” sums up the audit. What one agent produces, another agent reviews, and a person decides. This rule applies to content fixes as much as to the code I write with AI.
+**Write every decision down.** A decision made in the course of a conversation is forgotten by the next one. Each one now fits in a short, dated record, with its estimated and then actual cost. The AI rereads it before acting, and the gap between estimate and actual teaches me to estimate better.
 
-Some rules were expensive before they were written down. Without version control from the first file, two weeks of work went untracked.
+**Have the work checked, not just done.** A written instruction ends up forgotten, and “it’s done” proves nothing. Whatever can be checked becomes an automated check, and what one agent produces, another reviews. It is the rule of the audit itself: the reviewer is not the author.
