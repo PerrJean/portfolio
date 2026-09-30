@@ -29,3 +29,7 @@ l'écran (sinon la carte 02 ne jouait pas sur 390 × 844). Mesures faites en
 figeant `getAnimations()`. Écart : en anglais, la poutre lancée entre de ~5 px
 dans l'anneau du soleil à 960-1120 px. Ratio 2,0 : le panneau intégré masqué
 a obligé à refaire les captures dans un Chrome sans interface.
+**Retouche (Jean, 2026-10-01)** : quatre lignes réservées au titre à partir
+de 960 px, quelle que soit la langue (`min-height: calc(4 * 1.08em)`) :
+l'équipe a la même place en FR et en EN (mesurée à 980, 1040, 1120, 1280 et
+1600 px), la poutre ne touche plus le soleil.

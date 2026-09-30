@@ -162,8 +162,12 @@ svg {
      du soleil, et la coupe gloutonne poussait la troisième ligne sur
      l'équipe. À partir de 960 px, le soleil n'atteint jamais le titre : le
      titre garde sa largeur, ses lignes s'équilibrent (planche de 0057). */
+  /* Quatre lignes réservées quelle que soit la langue : la phrase anglaise
+     tient en trois, et l'équipe, posée sur la dernière ligne, montait
+     jusqu'au soleil. Elle a ainsi la même place en français et en anglais. */
   .accroche h1 {
     display: flow-root;
+    min-height: calc(4 * 1.08em);
   }
 
   .accroche .accroche__equipe {
