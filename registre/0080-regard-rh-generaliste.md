@@ -19,3 +19,5 @@ mots non compris (Design Sprint, discovery / delivery, gabarits, recette,
 table, churn, grooming…). Cinq changements : les chiffres du CV sur le site,
 un encadré rôle / équipe / durée / résultat par projet, le management
 visible, le jargon expliqué, un fil d'accueil lisible. Ratio 1,3.
+
+**Tri (Jean)** : jargon gardé ; équipe précisée, « un Product Manager et deux Product Designers » (accueil et À propos, FR et EN) ; la mention de la prononciation « rejointe pendant l'été » retirée (état des lieux et calendrier) ; encadré rôle / équipe / durée / résultat retenu, sans redite avec la synthèse, contenu à proposer.

@@ -14,7 +14,7 @@ plusLoin:
       - "February 2026: interviews with clients who had tested the first version; desk research on how pronunciation is learned."
       - "March and April 2026: a client survey to rank the topics of the role-plays; a co-design workshop; a user research review and the order of the discovery tracks."
       - "May to July 2026: scoping, development and acceptance testing of the three-step feedback."
-      - "Summer 2026: pronunciation joins the learning feedback; the role-plays enter the learning paths."
+      - "Summer 2026: the role-plays enter the learning paths."
       - "September 2026: role-plays live in four learning paths, including the A2 general path and the business paths."
       - "Fall 2026, planned: conversation statistics, two more learning paths, interfaces in English and then in other languages, analysis of usage and satisfaction."
   - titre: "What the surveys ranked"
@@ -66,7 +66,7 @@ Pronunciation called for the clearest trade-off. A minority of clients asked for
 
 The project brought in several tens of thousands of euros in new revenue. Client companies want to see their employees progress in speaking. The end-of-exchange feedback shows that progress.
 
-At the end of September 2026, the role-plays are live in four learning paths, including the A2 general path and the business paths. Learning feedback is in place, and pronunciation joined it over the summer. Two more learning paths, conversation statistics and usage analysis are the next steps.
+At the end of September 2026, the role-plays are live in four learning paths, including the A2 general path and the business paths. Learning feedback is in place. Two more learning paths, conversation statistics and usage analysis are the next steps.
 
 ## What I took from it
 

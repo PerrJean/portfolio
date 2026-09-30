@@ -14,7 +14,7 @@ plusLoin:
       - "Février 2026 : entretiens avec des clients qui avaient testé la première version ; recherche documentaire sur l’apprentissage de la prononciation."
       - "Mars et avril 2026 : enquête auprès des clients pour classer les thèmes des mises en situation ; atelier de co-construction ; bilan de la recherche utilisateur et ordre des chantiers de découverte."
       - "Mai à juillet 2026 : cadrage, développement et recette du retour pédagogique en trois temps."
-      - "Été 2026 : la prononciation rejoint le retour pédagogique ; les mises en situation IA entrent dans les parcours."
+      - "Été 2026 : les mises en situation IA entrent dans les parcours."
       - "Septembre 2026 : mises en situation IA en ligne dans quatre parcours, dont le parcours général de niveau A2 et les parcours business."
       - "Automne 2026, prévu : statistiques des conversations, deux parcours de plus, interfaces en anglais puis dans d’autres langues, analyse de l’usage et de la satisfaction."
   - titre: "Ce que les enquêtes ont classé"
@@ -68,7 +68,7 @@ La prononciation a demandé l’arbitrage le plus net. Une minorité de clients 
 
 Le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau. Les entreprises clientes veulent voir leurs salariés progresser à l’oral. Le retour de fin d’échange leur montre ce progrès.
 
-À la fin de septembre 2026, les mises en situation IA sont en ligne dans quatre parcours, dont le parcours général de niveau A2 et les parcours business. Le retour pédagogique est en place, et la prononciation l’a rejoint pendant l’été. Deux parcours de plus, les statistiques des conversations et l’analyse de l’usage sont les prochaines étapes.
+À la fin de septembre 2026, les mises en situation IA sont en ligne dans quatre parcours, dont le parcours général de niveau A2 et les parcours business. Le retour pédagogique est en place. Deux parcours de plus, les statistiques des conversations et l’analyse de l’usage sont les prochaines étapes.
 
 ## Ce que j’en retiens
 
