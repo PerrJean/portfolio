@@ -24,6 +24,7 @@ import { chemin, type Langue, type Page } from '../i18n/routes';
 import { UI } from '../i18n/textes';
 // Les schémas insérés dans le corps (src/components/schemas/rehype-schemas.mjs).
 import '../components/schemas/chaine-audit.css';
+import '../components/schemas/echange-oral.css';
 
 interface Props {
   cle: Page;
@@ -42,8 +43,9 @@ const etages = headings.filter((h) => h.depth === 2);
 if (etages.length === 0)
   throw new Error(`Page projet ${cle} (${langue}) : aucun H2, le bâtiment n'aurait pas d'étage.`);
 
-// Le projet suivant : dans l'ordre de l'accueil, en boucle (UserVoice, Audit
-// contenu, puis le projet à part, puis retour à UserVoice) : aucun n'est sauté.
+// Le projet suivant : dans l'ordre de l'accueil, en boucle (la fusion, les
+// mises en situation, UserVoice, Audit contenu, puis le projet à part, puis
+// retour à la fusion) : aucun n'est sauté (src/contenu/projets.ts).
 const rang = PROJETS.findIndex((p) => p.page === cle);
 const suivant = PROJETS[(rang + 1) % PROJETS.length];
 
@@ -226,6 +228,26 @@ const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.sl
     width: 100%;
     height: auto;
     border: 1px solid var(--dalle);
+  }
+
+  /* Les schémas dessinés (registre/0070) : un <picture>, sans lien (la
+     visionneuse ne prend que les images dans un lien) ni cadre, le fond
+     ivoire du SVG sur l'ivoire de la page. Par défaut, la version étroite,
+     dessinée pour 350 px, plafonnée à ~26rem ; à partir de 48,5rem, la
+     version grand écran, dessinée pour la colonne (736 px). */
+  .corps :global(figure picture) {
+    display: block;
+  }
+
+  .corps :global(figure picture img) {
+    max-width: 26rem;
+    border: 0;
+  }
+
+  @media (min-width: 48.5rem) {
+    .corps :global(figure picture img) {
+      max-width: none;
+    }
   }
 
   .corps :global(figcaption),

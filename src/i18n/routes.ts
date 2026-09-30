@@ -10,6 +10,8 @@ export const LANGUE_PAR_DEFAUT: Langue = 'fr';
 
 export const ROUTES = {
   accueil: { fr: '/', en: '/en/' },
+  fusion: { fr: '/projets/fusion-plateformes/', en: '/en/projects/platform-merger/' },
+  misesEnSituation: { fr: '/projets/mises-en-situation/', en: '/en/projects/speaking-practice/' },
   uservoice: { fr: '/projets/uservoice/', en: '/en/projects/uservoice/' },
   auditContenu: { fr: '/projets/audit-contenu/', en: '/en/projects/content-audit/' },
   matrice: { fr: '/projets/matrice-competences/', en: '/en/projects/skills-matrix/' },

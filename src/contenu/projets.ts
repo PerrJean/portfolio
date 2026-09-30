@@ -1,13 +1,17 @@
 /**
  * Les projets de l'accueil, dans les deux langues : la seule source des
  * parcelles. L'adresse de chaque projet vient de la table des routes
- * (src/i18n/routes.ts), par sa clé de page.
+ * (src/i18n/routes.ts), par sa clé de page. L'ordre du tableau est celui de
+ * l'accueil, « la hauteur d'abord » (registre/0069, 0070), et celui du lien
+ * « Projet suivant », en boucle (Projet.astro).
  *
  * groupe :
- *  - « paire » : les deux actes du récit (01 écouter, 02 agir), reliés par
+ *  - « hauteur » : la première paire, sans flèche : 01 la fusion des
+ *    plateformes, 02 les mises en situation orales (registre/0070) ;
+ *  - « paire » : les deux actes du récit (03 écouter, 04 agir), reliés par
  *    la flèche « Alors j'ai agi dessus. » ;
- *  - « a-part » : un projet sans rapport avec la paire, numéroté à la suite,
- *    sans flèche : la matrice de compétences (registre/0061).
+ *  - « a-part » : un projet sans rapport avec les paires, numéroté à la
+ *    suite, sans flèche : la matrice de compétences (registre/0061).
  *
  * scene : la scène de la carte, par clé de page (Scene.astro, registre/0058) :
  *  - « uservoice » : Jean seul déroule le plan ;
@@ -15,10 +19,11 @@
  *  - « matrice » : Jean montre le barreau suivant, l'ouvrier monte à
  *    l'échelle (registre/0062) ;
  *  - « aucune » : pas de dessin, la carte s'arrête au fait clé (Parcelle.astro).
+ *    Les cartes 01 et 02, en attendant leurs scènes (registre/0069).
  */
 import type { Langue, Page } from '../i18n/routes';
 
-export type Groupe = 'paire' | 'a-part';
+export type Groupe = 'hauteur' | 'paire' | 'a-part';
 export type SceneDeCarte = 'uservoice' | 'audit' | 'matrice' | 'aucune';
 
 export interface Projet {
@@ -33,6 +38,28 @@ export interface Projet {
 export const PROJETS: readonly Projet[] = [
   {
     numero: '01',
+    page: 'fusion',
+    groupe: 'hauteur',
+    scene: 'aucune',
+    nom: { fr: 'Fusion des plateformes', en: 'Platform merger' },
+    fait: {
+      fr: 'En août 2024, avant la rentrée, la plateforme dédiée aux entreprises a rejoint la plateforme généraliste. Une plateforme sur trois a été supprimée.',
+      en: 'In August 2024, before the new school year, the platform for businesses joined the general platform. One platform out of three was retired.',
+    },
+  },
+  {
+    numero: '02',
+    page: 'misesEnSituation',
+    groupe: 'hauteur',
+    scene: 'aucune',
+    nom: { fr: 'Mises en situation orales', en: 'Speaking role-plays' },
+    fait: {
+      fr: 'Invités à classer ce qui comptait le plus, les clients ont mis en tête la qualité de l’échange avec l’IA et celle du retour après l’échange. Le retour pédagogique est passé en tête de la feuille de route, avant l’engagement.',
+      en: 'Asked to rank what mattered most, clients put the quality of the exchange with the AI first and the quality of the feedback after it second. Learning feedback moved to the top of the roadmap, ahead of engagement.',
+    },
+  },
+  {
+    numero: '03',
     page: 'uservoice',
     groupe: 'paire',
     scene: 'uservoice',
@@ -43,7 +70,7 @@ export const PROJETS: readonly Projet[] = [
     },
   },
   {
-    numero: '02',
+    numero: '04',
     page: 'auditContenu',
     groupe: 'paire',
     scene: 'audit',
@@ -54,7 +81,7 @@ export const PROJETS: readonly Projet[] = [
     },
   },
   {
-    numero: '03',
+    numero: '05',
     page: 'matrice',
     groupe: 'a-part',
     scene: 'matrice',

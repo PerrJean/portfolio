@@ -1,9 +1,14 @@
 ---
-// Les parcelles de l'accueil, depuis src/contenu/projets.ts : la paire (01 et
-// 02, reliés par la flèche « Alors j'ai agi dessus. »), puis les projets
-// à part, s'il y en a, sans flèche.
-// À partir de 960 px, la paire tient sur une ligne et la flèche est
-// horizontale ; en dessous, les parcelles s'empilent et la flèche descend.
+// Les parcelles de l'accueil, depuis src/contenu/projets.ts, « la hauteur
+// d'abord » (registre/0070) : la première paire, sans flèche (01 et 02) ;
+// puis la paire du récit (03 et 04, reliés par la flèche « Alors j'ai agi
+// dessus. ») ; puis les projets à part, s'il y en a, sans flèche.
+// À partir de 960 px, chaque paire tient sur une ligne, sur la même grille
+// (la colonne du milieu porte la flèche, ou reste vide) ; la flèche est
+// horizontale. En dessous, les parcelles s'empilent et la flèche descend.
+// Dans la première paire, les cartes partagent les lignes de la grille
+// (subgrid) : le fait clé part à la même hauteur, même si un nom passe sur
+// deux lignes et l'autre non, avec ou sans scène.
 import Parcelle from './Parcelle.astro';
 import { LIEN_DE_LA_PAIRE, PROJETS, type Projet } from '../contenu/projets';
 import { chemin, type Langue } from '../i18n/routes';
@@ -12,6 +17,7 @@ interface Props {
   langue: Langue;
 }
 const { langue } = Astro.props;
+const hauteur = PROJETS.filter((p) => p.groupe === 'hauteur');
 const paire = PROJETS.filter((p) => p.groupe === 'paire');
 const aPart = PROJETS.filter((p) => p.groupe === 'a-part');
 const proprietes = (p: Projet) => ({
@@ -23,6 +29,16 @@ const proprietes = (p: Projet) => ({
   scene: p.scene,
 });
 ---
+
+{
+  hauteur.length > 0 && (
+    <div class="parcelles parcelles--hauteur">
+      {hauteur.map((projet) => (
+        <Parcelle {...proprietes(projet)} />
+      ))}
+    </div>
+  )
+}
 
 <div class="parcelles parcelles--paire">
   {
@@ -69,6 +85,17 @@ const proprietes = (p: Projet) => ({
     gap: 1.5rem;
   }
 
+  /* La première paire, sans flèche : empilée, un écart de projet à projet ;
+     la paire du récit vient ensuite, à la même distance que le projet à part. */
+  .parcelles--hauteur {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+  }
+
+  .parcelles--hauteur + .parcelles--paire {
+    margin-top: 4rem;
+  }
+
   .parcelles--a-part {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
     gap: 3rem 2rem;
@@ -110,6 +137,28 @@ const proprietes = (p: Projet) => ({
     .parcelles--paire {
       grid-template-columns: minmax(0, 1fr) 7.5rem minmax(0, 1fr);
       gap: 1rem;
+    }
+
+    /* La grille de la paire du récit, la colonne du milieu vide : 01 au-dessus
+       de 03, 02 au-dessus de 04. Chaque carte prend les trois lignes (titre,
+       fait, scène) de la grille commune. */
+    .parcelles--hauteur {
+      grid-template-columns: minmax(0, 1fr) 7.5rem minmax(0, 1fr);
+      grid-template-rows: auto auto auto;
+      gap: 0 1rem;
+    }
+
+    .parcelles--hauteur > :global(.parcelle) {
+      grid-row: 1 / span 3;
+      grid-template-rows: subgrid;
+    }
+
+    .parcelles--hauteur > :global(.parcelle:nth-child(1)) {
+      grid-column: 1;
+    }
+
+    .parcelles--hauteur > :global(.parcelle:nth-child(2)) {
+      grid-column: 3;
     }
 
     /* La flèche se place à hauteur du nom, sous le grand numéro. */
