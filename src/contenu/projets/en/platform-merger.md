@@ -1,10 +1,14 @@
 ---
 titre: "Platform merger: from three to two, aiming for one"
 date: "2024-08"
+cadre:
+  role: "Product Manager, then project lead"
+  equipe: "About ten people, mostly developers"
+  duree: "February 2023 → August 2024"
 fait: "In 2024, I led the merger of two of our three platforms: every change is now built twice, not three times."
 synthese:
   probleme: "An EdTech company offered three language-learning platforms, built one after another. Each had its own interface, activity templates and data model, all developed and maintained separately."
-  action: "As Product Manager, then project lead, I framed a target, a single platform, and presented it to the executive committee. With a team of about ten people, we first laid down a shared design system, then merged the platform for businesses into the general platform, in seven batches."
+  action: "I framed a target, a single platform, and presented it to the executive committee. We first laid down a shared design system, then merged the platform for businesses into the general platform, in seven batches."
   resultat: "The merger has been in production since August 2024. Activities now run on four templates instead of about thirty, and the share of feedback about usability dropped by a quarter. This project opened the way to the Head of Product role."
 plusLoin:
   - titre: "Timeline"

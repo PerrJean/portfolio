@@ -1,6 +1,10 @@
 ---
 titre: "Matrice de compétences : faire grandir un Product Manager"
 date: "2026-01"
+cadre:
+  role: "Manager du Product Manager"
+  equipe: "Le Product Manager et moi"
+  duree: "Décembre 2025 → janvier 2026"
 fait: "Sur une matrice de compétences relue ensemble, un Product Manager de mon équipe et moi sommes passés de deux idées de « devenir senior » à une vision partagée."
 synthese:
   probleme: "Dans l’équipe produit d’une plateforme EdTech, « devenir senior » restait à définir. Sans critères communs, la progression d’un Product Manager reposait sur l’impression de chacun."

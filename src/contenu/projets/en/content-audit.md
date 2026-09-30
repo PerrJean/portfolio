@@ -1,6 +1,10 @@
 ---
 titre: "Content audit: checking every question before learners see it"
 date: "2026-09"
+cadre:
+  role: "Designed and built the tool, with AI"
+  equipe: "With a learning designer"
+  duree: "September 2026, ongoing"
 fait: "In the first course audited, 1 question in 20 made learners fail through no fault of their own. All of them are fixed."
 synthese:
   probleme: "According to their feedback, the satisfaction of learners on an EdTech platform depends first on the quality of the content."

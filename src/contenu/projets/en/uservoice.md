@@ -1,6 +1,10 @@
 ---
 titre: "UserVoice: listening to learners every Monday"
 date: "2026-09"
+cadre:
+  role: "Designed and built the tool, with AI"
+  equipe: "On my own, with AI"
+  duree: "September 2026"
 fait: "1 in 3 pieces of negative feedback left on the site is about the content, which became the top priority."
 synthese:
   probleme: "An EdTech platform receives thousands of pieces of learner feedback a year, spread across four sources and never read together."

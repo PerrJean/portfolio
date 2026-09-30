@@ -42,6 +42,8 @@ const projets = defineCollection({
       date: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, 'date attendue au format AAAA-MM'),
       /** Le fait clé, affiché en grand sous le titre. */
       fait: phrase,
+      /** L'encadré sous la date (registre/0081) : mon rôle, l'équipe, la durée. */
+      cadre: z.object({ role: phrase, equipe: phrase, duree: phrase }).strict(),
       /** La synthèse recruteur : trois phrases. */
       synthese: z.object({ probleme: phrase, action: phrase, resultat: phrase }).strict(),
       /** « Pour aller plus loin », replié (registre/0048) : des sections, chacune

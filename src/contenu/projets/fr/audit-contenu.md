@@ -1,6 +1,10 @@
 ---
 titre: "Audit contenu : vérifier chaque question avant l’apprenant"
 date: "2026-09"
+cadre:
+  role: "Conception et développement de l’outil, avec l’IA"
+  equipe: "Avec une learning designer"
+  duree: "Septembre 2026, en cours"
 fait: "Sur le premier parcours audité, 1 question sur 20 faisait échouer l’apprenant sans que l’erreur soit la sienne. Toutes sont corrigées."
 synthese:
   probleme: "D’après leurs retours, la satisfaction des apprenants d’une plateforme EdTech se joue d’abord sur la qualité du contenu."

@@ -75,6 +75,11 @@ const dateLisible = moisEnLettres(data.date, langue);
       <header class="synthese">
         <h1>{data.titre}</h1>
         <p class="synthese__date"><time datetime={data.date}>{dateLisible}</time></p>
+        <dl class="synthese__cadre">
+          <div><dt>{t.cadre.role}</dt><dd>{data.cadre.role}</dd></div>
+          <div><dt>{t.cadre.equipe}</dt><dd>{data.cadre.equipe}</dd></div>
+          <div><dt>{t.cadre.duree}</dt><dd>{data.cadre.duree}</dd></div>
+        </dl>
         <p class="synthese__fait">{data.fait}</p>
         <div class="synthese__phrases">
           <p>{data.synthese.probleme}</p>
@@ -166,6 +171,33 @@ const dateLisible = moisEnLettres(data.date, langue);
     color: var(--ardoise);
     font-size: 1.1875rem;
     font-weight: 700;
+  }
+
+  /* L'encadré (registre/0081) : trois lignes courtes, le libellé en gras,
+     un filet à gauche ; en encre, l'ardoise ne passe qu'en grand texte. */
+  .synthese__cadre {
+    display: grid;
+    gap: 0.25rem;
+    margin-top: 1rem;
+    padding-left: 0.875rem;
+    border-left: 3px solid var(--dalle);
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .synthese__cadre div {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.5rem;
+  }
+
+  .synthese__cadre dt {
+    min-width: 5.5rem;
+    font-weight: 700;
+  }
+
+  .synthese__cadre dd {
+    margin: 0;
   }
 
   .synthese__fait {

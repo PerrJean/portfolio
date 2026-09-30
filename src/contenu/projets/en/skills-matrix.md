@@ -1,6 +1,10 @@
 ---
 titre: "Skills matrix: helping a Product Manager grow"
 date: "2026-01"
+cadre:
+  role: "Manager of the Product Manager"
+  equipe: "The Product Manager and me"
+  duree: "December 2025 → January 2026"
 fait: "Working from a skills matrix we reviewed together, a Product Manager on my team and I went from two ideas of “becoming senior” to a shared view."
 synthese:
   probleme: "On the product team of an EdTech platform, “becoming senior” had yet to be defined. With no shared criteria, a Product Manager’s growth rested on each person’s impression."

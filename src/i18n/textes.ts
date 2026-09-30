@@ -17,6 +17,7 @@ export const UI: Record<
     plusLoin: string;
     projetSuivant: string;
     lireProjet: string;
+    cadre: { role: string; equipe: string; duree: string };
     fermer: string;
     agrandir: string;
     toucherPourAgrandir: string;
@@ -32,6 +33,7 @@ export const UI: Record<
     locale: 'fr_FR',
     plusLoin: 'Pour aller plus loin',
     lireProjet: 'Lire le projet',
+    cadre: { role: 'Rôle', equipe: 'Équipe', duree: 'Durée' },
     fermer: 'Fermer',
     agrandir: 'Agrandir',
     toucherPourAgrandir: 'Toucher pour agrandir',
@@ -48,6 +50,7 @@ export const UI: Record<
     plusLoin: 'Going further',
     projetSuivant: 'Next project:',
     lireProjet: 'Read the project',
+    cadre: { role: 'Role', equipe: 'Team', duree: 'Duration' },
     fermer: 'Close',
     agrandir: 'Enlarge',
     toucherPourAgrandir: 'Tap to enlarge',

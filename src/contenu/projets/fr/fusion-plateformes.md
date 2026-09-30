@@ -1,10 +1,14 @@
 ---
 titre: "Fusion des plateformes : de trois à deux, en visant une seule"
 date: "2024-08"
+cadre:
+  role: "Product Manager, puis chef de projet"
+  equipe: "Une dizaine de personnes, surtout des développeurs"
+  duree: "Février 2023 → août 2024"
 fait: "En 2024, j’ai piloté la fusion de deux de nos trois plateformes : chaque évolution se développe désormais deux fois, et non plus trois."
 synthese:
   probleme: "Une entreprise EdTech proposait trois plateformes d’apprentissage des langues, nées l’une après l’autre. Chacune avait son interface, ses gabarits d’activité et son modèle de données, tous développés et maintenus à part."
-  action: "Product Manager, puis chef de projet, j’ai cadré une cible, une seule plateforme, et je l’ai présentée au comité de direction. Avec une équipe d’une dizaine de personnes, nous avons d’abord posé un design system commun, puis fondu la plateforme dédiée aux entreprises dans la plateforme généraliste, en sept lots."
+  action: "J’ai cadré une cible, une seule plateforme, et je l’ai présentée au comité de direction. Nous avons d’abord posé un design system commun, puis fondu la plateforme dédiée aux entreprises dans la plateforme généraliste, en sept lots."
   resultat: "La fusion est en production depuis août 2024. Les activités tiennent sur quatre gabarits au lieu d’une trentaine, et la part des retours sur l’ergonomie a baissé d’un quart. Ce projet a ouvert la voie au poste de Head of Product."
 plusLoin:
   - titre: "Le calendrier"

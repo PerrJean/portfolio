@@ -1,6 +1,10 @@
 ---
 titre: "UserVoice : écouter les apprenants chaque lundi"
 date: "2026-09"
+cadre:
+  role: "Conception et développement de l’outil, avec l’IA"
+  equipe: "Seul, avec l’IA"
+  duree: "Septembre 2026"
 fait: "1 retour négatif sur 3 laissé sur le site concerne le contenu : sa qualité est passée en tête des priorités."
 synthese:
   probleme: "Une plateforme EdTech reçoit des milliers de retours d’apprenants par an, répartis entre quatre sources, et jamais lus ensemble."
