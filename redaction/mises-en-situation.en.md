@@ -64,7 +64,7 @@ Pronunciation called for the clearest trade-off. A minority of clients asked for
 
 ## Benefits and business impact
 
-The project brought in several tens of thousands of euros in new revenue. Client companies want to see their employees progress in speaking. The end-of-exchange feedback shows that progress. Work situations come first in the catalog, as clients asked.
+The project brought in several tens of thousands of euros in new revenue. Client companies want to see their employees progress in speaking. The end-of-exchange feedback shows that progress.
 
 At the end of September 2026, the role-plays are live in four learning paths, including the A2 general path and the business paths. Learning feedback is in place, and pronunciation joined it over the summer. Two more learning paths, conversation statistics and usage analysis are the next steps.
 
