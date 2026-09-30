@@ -6,16 +6,6 @@ synthese:
   probleme: "An EdTech platform receives thousands of pieces of learner feedback a year, spread across four sources and never read together."
   action: "I brought them together in a single table. AI classifies each piece of feedback with a confidence score and leaves the doubtful cases to a person. The summary takes five minutes to read, every Monday."
   resultat: "We thought it was mostly bugs. The data pointed to the content, and the effort moved to its quality."
-plusLoin:
-  - titre: "What I set aside"
-    points:
-      - "Double human categorization. Only the signature is entered by a person; the rest is derived from the dated data."
-      - "Any writing to the source. We read it and never change it."
-      - "A report organized around statistical variations. It did not show whether a topic was being handled."
-  - titre: "Pitfalls paid for"
-    points:
-      - "Formats that spreadsheets distorted, such as very long identifiers."
-      - "A dashboard that stopped updating without anyone noticing."
 langue: en
 cle: uservoice
 ---

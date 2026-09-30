@@ -6,16 +6,6 @@ synthese:
   probleme: "Une plateforme EdTech reçoit des milliers de retours d’apprenants par an, répartis entre quatre sources, et jamais lus ensemble."
   action: "Je les ai réunis dans une seule table. L’IA classe chaque retour avec un score de confiance et laisse les cas douteux à un humain. Le bilan se lit en cinq minutes, chaque lundi."
   resultat: "On pensait surtout à des bugs. La donnée a désigné le contenu, et l’effort s’est déplacé vers sa qualité."
-plusLoin:
-  - titre: "Ce que j’ai écarté"
-    points:
-      - "Une double catégorisation humaine. Seule la signature se saisit ; le reste se déduit des données datées."
-      - "Toute écriture dans la source. On la lit, on ne la modifie jamais."
-      - "Un rapport organisé par variations statistiques. On n’y voyait pas si un sujet était traité."
-  - titre: "Les pièges payés"
-    points:
-      - "Des formats que les tableurs déformaient, comme les identifiants très longs."
-      - "Un tableau de bord figé sans que personne ne s’en aperçoive."
 langue: fr
 cle: uservoice
 ---

@@ -46,7 +46,8 @@ const projets = defineCollection({
       synthese: z.object({ probleme: phrase, action: phrase, resultat: phrase }).strict(),
       /** « Pour aller plus loin », replié (registre/0048) : des sections, chacune
        *  un sous-titre (<h3>), ses points (<ul>), son image, son fichier. */
-      plusLoin: z.array(section).min(1),
+      // Facultatif : UserVoice n'en a plus (registre/0079).
+      plusLoin: z.array(section).default([]),
       langue: z.enum(LANGUES),
       cle: z.enum(CLES),
     })

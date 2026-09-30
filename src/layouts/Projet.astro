@@ -87,6 +87,7 @@ const dateLisible = moisEnLettres(data.date, langue);
         <Content />
       </div>
 
+      {data.plusLoin.length > 0 && (
       <details class="plus-loin">
         <summary>{t.plusLoin}</summary>
         <div class="plus-loin__contenu">
@@ -128,6 +129,7 @@ const dateLisible = moisEnLettres(data.date, langue);
           }
         </div>
       </details>
+      )}
       <span class="projet__fin" data-fin></span>
     </article>
 
