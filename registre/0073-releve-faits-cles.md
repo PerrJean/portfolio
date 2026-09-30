@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `chantier` | `contenu` | 10 | 14 | `claude-opus-5-5` |
+| `chantier` | `contenu` | 10 | 84 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-09-30)** : appliquer la règle 0072 aux deux faits
 clés réécrits (Fusion, Mises en situation), FR et EN, et à leur voisinage :
@@ -19,5 +19,5 @@ partout en toutes lettres (« Product Manager ») ; UserVoice « 1 retour
 négatif sur 3 » ; Audit « empêchait l'apprenant d'avoir juste » (il pouvait
 répondre) ; sous l'accroche de l'accueil, « Cinq projets menés dans
 l'EdTech, en équipe et avec l'IA. » (EN « Five EdTech projects, led with my
-team and with AI. »). Ratio 1,4.
+team and with AI. »). Ratio 8,4 : un relevé de deux phrases coûte le prix d'une lecture complète des deux pages (84 k jetons) ; l'estimation de 10 ne comptait que les phrases.
 **Suite (Jean)** : « un retour négatif sur trois » aussi dans le corps de UserVoice, FR et EN ; Matrice « sa maîtrise du métier » sans répéter « Product Manager » ; la description de l'accueil reste telle quelle.
