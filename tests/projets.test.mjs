@@ -12,8 +12,8 @@ import { DIST, exigerDist, fichierDePage, sansCode, attributs, liste } from './o
 
 /** L'ordre de l'accueil, qui fait foi : page et nom de chaque projet, par langue. */
 const ORDRE = [
-  { fr: ['/projets/fusion-plateformes/', 'Fusion des plateformes'], en: ['/en/projects/platform-merger/', 'Platform merger'] },
   { fr: ['/projets/mises-en-situation/', 'Mises en situation orales'], en: ['/en/projects/speaking-practice/', 'Speaking role-plays'] },
+  { fr: ['/projets/fusion-plateformes/', 'Fusion des plateformes'], en: ['/en/projects/platform-merger/', 'Platform merger'] },
   { fr: ['/projets/uservoice/', 'UserVoice'], en: ['/en/projects/uservoice/', 'UserVoice'] },
   { fr: ['/projets/audit-contenu/', 'Audit contenu'], en: ['/en/projects/content-audit/', 'Content audit'] },
   { fr: ['/projets/matrice-competences/', 'Matrice de compétences'], en: ['/en/projects/skills-matrix/', 'Skills matrix'] },

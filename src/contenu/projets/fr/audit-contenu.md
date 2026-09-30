@@ -1,7 +1,7 @@
 ---
 titre: "Audit contenu : vérifier chaque question avant l’apprenant"
 date: "2026-09"
-fait: "Sur le premier parcours audité, 1 question sur 20 empêchait l’apprenant d’avoir juste. Toutes ont été corrigées."
+fait: "Sur le premier parcours audité, 1 question sur 20 empêchait l’apprenant d’avoir juste. Toutes sont corrigées et en production."
 synthese:
   probleme: "D’après leurs retours, la satisfaction des apprenants d’une plateforme EdTech se joue d’abord sur la qualité du contenu."
   action: "Avec une learning designer, nous avons soumis chaque question d’un parcours à une grille de six critères. Des agents IA encadrés l’ont appliquée, et des contrôles automatiques l’ont complétée."
@@ -38,7 +38,7 @@ cle: auditContenu
 
 ## Pourquoi auditer
 
-Dans le formulaire du site, 1 retour sur 3 concerne le contenu : c’est le constat du projet UserVoice.
+Dans le formulaire du site, 1 retour négatif sur 3 concerne le contenu : c’est le constat du projet UserVoice.
 
 J’ai mené ce chantier avec une learning designer. J’ai conçu la grille d’audit et l’outillage qui l’applique ; elle a validé la grille et défini les règles d’écriture des contenus.
 

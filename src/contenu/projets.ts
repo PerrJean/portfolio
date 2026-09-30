@@ -6,8 +6,8 @@
  * « Projet suivant », en boucle (Projet.astro).
  *
  * groupe :
- *  - « hauteur » : la première paire, sans flèche : 01 la fusion des
- *    plateformes, 02 les mises en situation orales (registre/0070) ;
+ *  - « hauteur » : la première paire, sans flèche : 01 les mises en
+ *    situation orales, 02 la fusion des plateformes (registre/0070, 0074) ;
  *  - « paire » : les deux actes du récit (03 écouter, 04 agir), reliés par
  *    la flèche « Alors j'ai cherché une solution. » ;
  *  - « a-part » : un projet sans rapport avec les paires, numéroté à la
@@ -41,17 +41,6 @@ export interface Projet {
 export const PROJETS: readonly Projet[] = [
   {
     numero: '01',
-    page: 'fusion',
-    groupe: 'hauteur',
-    scene: 'fusion',
-    nom: { fr: 'Fusion des plateformes', en: 'Platform merger' },
-    fait: {
-      fr: 'En 2024, j’ai piloté la fusion de deux de nos trois plateformes : chaque évolution se développe désormais deux fois, et non plus trois.',
-      en: 'In 2024, I led the merger of two of our three platforms: every change is now built twice, not three times.',
-    },
-  },
-  {
-    numero: '02',
     page: 'misesEnSituation',
     groupe: 'hauteur',
     scene: 'misesEnSituation',
@@ -62,14 +51,25 @@ export const PROJETS: readonly Projet[] = [
     },
   },
   {
+    numero: '02',
+    page: 'fusion',
+    groupe: 'hauteur',
+    scene: 'fusion',
+    nom: { fr: 'Fusion des plateformes', en: 'Platform merger' },
+    fait: {
+      fr: 'En 2024, j’ai piloté la fusion de deux de nos trois plateformes : chaque évolution se développe désormais deux fois, et non plus trois.',
+      en: 'In 2024, I led the merger of two of our three platforms: every change is now built twice, not three times.',
+    },
+  },
+  {
     numero: '03',
     page: 'uservoice',
     groupe: 'paire',
     scene: 'uservoice',
     nom: { fr: 'UserVoice', en: 'UserVoice' },
     fait: {
-      fr: '1 retour négatif sur 3 laissé sur le site concerne le contenu.',
-      en: '1 in 3 pieces of negative feedback left on the site is about the content.',
+      fr: '1 retour négatif sur 3 laissé sur le site concerne le contenu : l’équipe y a déplacé son effort.',
+      en: '1 in 3 pieces of negative feedback left on the site is about the content: the team shifted its effort there.',
     },
   },
   {
@@ -79,8 +79,8 @@ export const PROJETS: readonly Projet[] = [
     scene: 'audit',
     nom: { fr: 'Audit contenu', en: 'Content audit' },
     fait: {
-      fr: 'Sur le premier parcours audité, 1 question sur 20 empêchait l’apprenant d’avoir juste. Toutes ont été corrigées.',
-      en: 'In the first course audited, 1 question in 20 stopped learners from getting it right. All of them were fixed.',
+      fr: 'Sur le premier parcours audité, 1 question sur 20 empêchait l’apprenant d’avoir juste. Toutes sont corrigées et en production.',
+      en: 'In the first course audited, 1 question in 20 stopped learners from getting it right. All of them are fixed and live.',
     },
   },
   {

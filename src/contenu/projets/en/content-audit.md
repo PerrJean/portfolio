@@ -1,7 +1,7 @@
 ---
 titre: "Content audit: checking every question before learners see it"
 date: "2026-09"
-fait: "In the first course audited, 1 question in 20 stopped learners from getting it right. All of them were fixed."
+fait: "In the first course audited, 1 question in 20 stopped learners from getting it right. All of them are fixed and live."
 synthese:
   probleme: "According to their feedback, the satisfaction of learners on an EdTech platform depends first on the quality of the content."
   action: "With a learning designer, we put every question in one course through a six-criterion grid. Supervised AI agents applied it, and automated checks completed it."
@@ -38,7 +38,7 @@ cle: auditContenu
 
 ## Why audit
 
-In the site’s feedback form, 1 in 3 pieces of feedback is about the content: that is what the UserVoice project found.
+In the site’s feedback form, 1 in 3 pieces of negative feedback is about the content: that is what the UserVoice project found.
 
 I led this work with a learning designer. I designed the audit grid and the tooling that applies it; she validated the grid and set the writing rules for the content.
 

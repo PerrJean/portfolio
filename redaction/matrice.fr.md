@@ -50,7 +50,7 @@ Le cadre dépasse ce seul entretien. Les mêmes niveaux et les mêmes prérequis
 
 ## Ce que j’en retiens
 
-Faire grandir quelqu’un de mon équipe s’apprend aussi, et cette matrice a été pour moi un premier outil.
+Cette matrice me sert désormais pour faire grandir l’équipe.
 
 **Décrire chaque niveau par ce qu’on voit faire.** Une phrase comme « décompose en epics et anime le grooming » se vérifie. Elle m’a obligé à préciser mes propres attentes avant de les appliquer à quelqu’un.
 
@@ -72,7 +72,7 @@ Faire grandir quelqu’un de mon équipe s’apprend aussi, et cette matrice a �
 | « une vision partagée des compétences du PO, point de départ de sa montée en compétence » | Répétition (compétences / compétence) | « point de départ de sa progression ». |
 | « Une qualité comme "autonome" se discute sans fin ; un comportement se constate. » | Parallélisme en opposition, exemple inventé, guillemets droits | « Une phrase comme « décompose en epics et anime le grooming » se vérifie. » L’exemple vient de la matrice. |
 | « on compare ce que chacun a vu, pas deux impressions » | Opposition fabriquée | « L’entretien part de comportements que chacun a pu observer ». |
-| « Faire grandir quelqu’un m’apprend autant qu’à lui » | Généralité sans fait, formule | « Faire grandir quelqu’un de mon équipe s’apprend aussi, et cette matrice a été pour moi un premier outil. » (voir point 5 à trancher) |
+| « Faire grandir quelqu’un m’apprend autant qu’à lui » | Généralité sans fait, formule | « Cette matrice me sert désormais pour faire grandir l’équipe. » (voir point 5 à trancher) |
 | « Le cadre était ainsi commun avant que la discussion porte sur lui. » | Pronom ambigu (lui : le cadre ou le PO ?) | « nous avions les mêmes critères sous les yeux au moment de nous situer. » |
 | « En gestion du backlog, le PO passe de… » | Ambiguïté C3 : se lit comme le parcours du PO réel | « la ligne passe de… ». |
 | Listes des macro-compétences et du cadre EdTech dans le corps | Rafale nominale, triplets | Renvoyées dans « Pour aller plus loin », où ce sont les mots de la donnée. Un seul exemple métier reste dans le corps. |

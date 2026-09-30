@@ -78,7 +78,7 @@ Le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’aff
 
 ## Ce que j’en retiens
 
-Ce projet m’apprend à tenir le rôle de Head of Product sur une découverte que je ne mène pas moi-même.
+Sur ce projet, j’ai tenu le rôle de Head of Product en laissant la découverte à l’équipe.
 
 **Cadrer la démarche, laisser l’équipe trouver.** Mon travail a porté sur la méthode et le Design Sprint, pas sur les réponses. Le Product Manager et la product designer ont mené les entretiens et les enquêtes, et ce sont leurs conclusions qui ont réordonné la feuille de route.
 

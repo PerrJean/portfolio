@@ -19,3 +19,5 @@ l'accueil (rôle, périmètre, résultats), les résultats business du CV sur le
 site, le leadership à l'échelle de l'équipe, le ton et l'ordre, un contact
 direct. Écarts relevés : « négatif » absent de l'Audit et des descriptions
 UserVoice, une carte de la capture UserVoice peu lisible. Ratio 1,1.
+
+**Tri (Jean)** : ligne de périmètre sous le titre (« Head of Product depuis 2024, j'encadre une équipe de trois Product Managers et Product Designers, dans une EdTech d'une quarantaine de personnes. ») ; trois résultats en relatif dans « À propos », sans le NPS ; UserVoice et Audit, faits clés avec leur côté positif ; « négatif » aligné ; seule l'humilité de l'Audit reste (Mises en situation, Matrice réécrites) ; 01 Mises en situation, 02 Fusion (test de l'ordre mis à jour). Capture UserVoice et jargon de l'Audit : non retenus. Relevé des lourdeurs avant publication (0072).
