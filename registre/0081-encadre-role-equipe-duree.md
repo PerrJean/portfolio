@@ -13,3 +13,4 @@ cours ; Matrice décembre 2025 → janvier 2026 ; Mises en situation mai 2025 �
 septembre 2026, en cours ; Fusion février 2023 → août 2024. La synthèse de
 la Fusion ne redit plus le rôle ni la taille de l'équipe. Vérifié à 1280 et
 500 px, FR et EN.
+Fusion, Équipe : « Une dizaine de personnes : développeurs, product designer et learning designers » (Jean).

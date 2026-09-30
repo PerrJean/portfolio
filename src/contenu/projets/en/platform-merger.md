@@ -3,7 +3,7 @@ titre: "Platform merger: from three to two, aiming for one"
 date: "2024-08"
 cadre:
   role: "Product Manager, then project lead"
-  equipe: "About ten people, mostly developers"
+  equipe: "About ten people: developers, a product designer and learning designers"
   duree: "February 2023 → August 2024"
 fait: "In 2024, I led the merger of two of our three platforms: every change is now built twice, not three times."
 synthese:

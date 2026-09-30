@@ -3,7 +3,7 @@ titre: "Fusion des plateformes : de trois à deux, en visant une seule"
 date: "2024-08"
 cadre:
   role: "Product Manager, puis chef de projet"
-  equipe: "Une dizaine de personnes, surtout des développeurs"
+  equipe: "Une dizaine de personnes : développeurs, product designer et learning designers"
   duree: "Février 2023 → août 2024"
 fait: "En 2024, j’ai piloté la fusion de deux de nos trois plateformes : chaque évolution se développe désormais deux fois, et non plus trois."
 synthese:
