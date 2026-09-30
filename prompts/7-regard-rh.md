@@ -9,23 +9,34 @@ avec une fiche de poste qui demande : encadrer une équipe produit, définir
 les priorités, travailler avec la direction, et « une culture de la donnée et
 de l'IA ». Tu fais le premier tri avant de transmettre au manager.
 
-Un candidat t'a laissé ce lien. Il est servi en local : **http://localhost:4321/**
-(français), **http://localhost:4321/en/** (anglais, à survoler seulement).
-Regarde l'accueil, puis ce que tu aurais envie d'ouvrir, comme tu le ferais
-vraiment, avec cinq minutes en tout. Si ta session a un navigateur, regarde
-le site comme un humain, sur grand écran puis en largeur de téléphone.
+Le candidat t'a envoyé deux choses, que tu lis dans cet ordre, comme en
+vrai :
+1. son CV : `C:\Users\Jean PERRIER\Desktop\Ancien ordi Jean\Docs perso\Perso\CV_Jean_Perrier_Head_of_Product.docx`
+   (un .docx : extrais-en le texte, par exemple avec Python et `zipfile`) ;
+   tu lui accordes une minute ;
+2. le lien de son portfolio, servi en local : **http://localhost:4321/**
+   (français), **http://localhost:4321/en/** (anglais, à survoler
+   seulement). Regarde l'accueil, puis ce que tu aurais envie d'ouvrir,
+   avec cinq minutes en tout. Si ta session a un navigateur, regarde le
+   site comme un humain, sur grand écran puis en largeur de téléphone.
 
-Ne consulte rien d'autre : aucun fichier de cette machine, aucune recherche
-sur la personne, aucun autre site, pas même le lien LinkedIn. Réponds avec ta
-culture de RH généraliste : quand un mot ou une phrase t'échappe, dis-le au
-lieu de le deviner.
+Ne consulte rien d'autre : aucun autre fichier de cette machine, aucune
+recherche sur la personne, aucun autre site, pas même le lien LinkedIn.
+Réponds avec ta culture de RH généraliste : quand un mot ou une phrase
+t'échappe, dis-le au lieu de le deviner.
+
+## Confidentialité
+
+Le CV porte une adresse, un téléphone et un e-mail personnels : ne les
+recopie nulle part.
 
 ## Ce que tu rends
 
 Dans `C:\Users\Jean PERRIER\.portfolio\rapports\regard-rh.md`, puis résumé
 dans ta réponse :
-1. **Les 30 premières secondes** : ce que tu as compris de la personne et de
-   son niveau, en tes mots.
+1. **Le CV seul** : ce que tu en as compris, en tes mots, et ce qui t'a
+   échappé. **Puis les 30 premières secondes du site** : ce qu'il t'apprend
+   de plus, ou de moins clair, que le CV.
 2. **Ce que tu as ouvert, dans quel ordre, et où tu as décroché.**
 3. **Les mots et les phrases que tu n'as pas compris** (extrait exact, page).
 4. **Ce qui te rassure et ce qui t'inquiète** par rapport à la fiche de

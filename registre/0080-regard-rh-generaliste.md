@@ -6,6 +6,6 @@
 
 **Demande de Jean (2026-09-30)** : les regards 0051, 0063 et 0074 étaient
 ceux de recruteurs spécialisés en profils produit. Que dirait un recruteur
-RH qui connaît peu le métier ? Agent neuf, site seul (premier tri), sur le
+RH qui connaît peu le métier ? Agent neuf ; la RH lit le CV avant (Jean) : le CV d'abord, puis le site (premier tri), sur le
 serveur de développement (retouches du jour). Rapport hors du dépôt
 (`~/.portfolio/rapports/regard-rh.md`). Brief : `prompts/7-regard-rh.md`.
