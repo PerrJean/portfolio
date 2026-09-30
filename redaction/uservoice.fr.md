@@ -28,7 +28,7 @@ Les bugs restent suivis, signature par signature. Mais la satisfaction se joue d
 
 ## Bénéfices et impact business
 
-Chaque lundi, le bilan se lit en cinq minutes, les quatre sources réunies. Surtout, l’écoute des apprenants a objectivé un point de douleur, la qualité du contenu, qui est passée en tête des priorités. Au bilan annuel, un client B2B, une école, désignait le même point dans ses remontées. Le second projet de ce portfolio, l’audit du contenu, part de ce constat et répond à sa demande.
+Chaque lundi, le bilan se lit en cinq minutes, les quatre sources réunies. Il fait apparaître des signaux faibles qu’on ne voyait pas avant, quand un sujet encore rare commence à monter. Surtout, l’écoute des apprenants a objectivé un point de douleur, la qualité du contenu, qui est passée en tête des priorités. Au bilan annuel, un client B2B, une école, désignait le même point dans ses remontées. Le second projet de ce portfolio, l’audit du contenu, part de ce constat et répond à sa demande.
 
 ## Ce que j’ai construit
 
