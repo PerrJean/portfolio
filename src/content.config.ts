@@ -4,7 +4,8 @@
  * L'en-tête est validé ici : un champ manquant ou mal écrit casse le build.
  * Le corps porte les H2 libres du projet ; le bâtiment en fait ses étages.
  */
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 import { LANGUES, type Page } from './i18n/routes';
 
