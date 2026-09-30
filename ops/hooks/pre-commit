@@ -3,6 +3,9 @@
 # Source versionnee : ops/hooks/pre-commit. Installation : ops/hooks/install.sh
 set -e
 cd "$(git rev-parse --show-toplevel)"
+# Le dossier git : .git dans le depot, .git/worktrees/<nom> dans un worktree
+# (ou .git est un fichier).
+GITDIR=$(git rev-parse --absolute-git-dir)
 INDEX=$(git diff --cached --name-only --diff-filter=ACM)
 
 echo "-> scan de secrets"
@@ -25,9 +28,9 @@ python ops/hooks/verifier_confidentialite.py $INDEX || exit 1
 
 echo "-> identite du commit"
 # Le depot est public : l'adresse de l'auteur ne doit pas nommer l'employeur.
-git config user.email > .git/identite.tmp
-python ops/hooks/verifier_confidentialite.py .git/identite.tmp || { rm -f .git/identite.tmp; echo "        -> git config user.email <adresse perso ou noreply GitHub>"; exit 1; }
-rm -f .git/identite.tmp
+git config user.email > "$GITDIR/identite.tmp"
+python ops/hooks/verifier_confidentialite.py "$GITDIR/identite.tmp" || { rm -f "$GITDIR/identite.tmp"; echo "        -> git config user.email <adresse perso ou noreply GitHub>"; exit 1; }
+rm -f "$GITDIR/identite.tmp"
 
 echo "-> CONTRAT.md sous son plafond"
 n=$(wc -l < CONTRAT.md)
@@ -39,11 +42,11 @@ echo "-> build et tests"
 # Construit dans un dossier jetable, lance les tests dessus, refuse si echec.
 command -v node >/dev/null 2>&1 || export PATH="$APPDATA/fnm/node-versions/v24.20.0/installation:$PATH"
 rm -rf .dist-hook
-if ! npx astro build --outDir .dist-hook >.git/build-hook.log 2>&1; then
-  cat .git/build-hook.log; rm -rf .dist-hook .git/build-hook.log
+if ! npx astro build --outDir .dist-hook >"$GITDIR/build-hook.log" 2>&1; then
+  cat "$GITDIR/build-hook.log"; rm -rf .dist-hook "$GITDIR/build-hook.log"
   echo "REFUS : le build echoue."; exit 1
 fi
-rm -f .git/build-hook.log
+rm -f "$GITDIR/build-hook.log"
 if ! DIST=.dist-hook npm test; then
   rm -rf .dist-hook
   echo "REFUS : des tests echouent."; exit 1
