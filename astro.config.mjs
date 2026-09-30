@@ -34,4 +34,7 @@ export default defineConfig({
   // est le processeur Markdown d'Astro 7 (registre/0027).
   markdown: { processor: satteri({ hastPlugins: [rehypeSchemas] }) },
   integrations: [sitemap(), labo()],
+  // Vite 8 écrit les media queries en plages (« width>=760px »), que Safari
+  // ne lit qu'à partir de 16.4 : on vise Safari 14 pour garder min-width.
+  vite: { build: { cssTarget: ['safari14', 'chrome90', 'firefox90'] } },
 });
