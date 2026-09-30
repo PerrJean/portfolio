@@ -46,8 +46,8 @@ export const PROJETS: readonly Projet[] = [
     scene: 'misesEnSituation',
     nom: { fr: 'Mises en situation orales', en: 'Speaking role-plays' },
     fait: {
-      fr: 'L’e-learning permet enfin de travailler l’expression orale : une IA joue l’interlocuteur, et chaque échange se termine par un retour pédagogique utile.',
-      en: 'E-learning can finally help learners practice speaking: an AI plays the other person, and every exchange ends with useful learning feedback.',
+      fr: 'L’e-learning permet enfin de travailler l’expression orale : une IA joue l’interlocuteur, et chaque conversation se termine par un retour pédagogique utile.',
+      en: 'E-learning can finally help learners practice speaking: an AI plays the other person, and every conversation ends with useful learning feedback.',
     },
   },
   {
