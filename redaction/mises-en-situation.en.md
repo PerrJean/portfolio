@@ -82,7 +82,7 @@ This project is teaching me to hold the Head of Product role in a discovery I do
 
 **Frame the approach, let the team find the answers.** My work covered the method and the Design Sprint, not the answers. The PM and the product designer ran the interviews and the surveys, and their conclusions reordered the roadmap.
 
-**Ask for a ranking, not just for input.** Asking clients what they want gets you a list where everything matters. Asking them to rank forces a choice: learning feedback moved ahead of badges and progress tracking, and work situations ahead of everyday life.
+**Have expectations ranked.** Asking clients what they want gets you a list where everything matters. Asking them to rank forces a choice: learning feedback moved ahead of badges and progress tracking, and work situations ahead of everyday life.
 
 ---
 

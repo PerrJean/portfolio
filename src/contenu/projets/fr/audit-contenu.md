@@ -77,10 +77,10 @@ Chaque correction rend à l’apprenant la possibilité de répondre juste. Au b
 
 ## Ce que j’en retiens
 
-Ce projet m’apprend à construire avec l’IA, et j’en suis encore en chemin. J’en tire trois enseignements, que j’applique désormais à chaque projet.
+Ce projet m’apprend à construire avec l’IA, et j’en suis encore en chemin. Voici ce que j’applique désormais à chaque projet :
 
 **Donner à l’IA le bon contexte, pas tout le contexte.** L’IA relit ses consignes à chaque tâche : plus elles sont longues, plus elle devient lente, coûteuse et approximative. J’ai appris à garder un socle court, et à ranger le reste à part, pour qu’il ne soit chargé que quand la tâche en a besoin.
 
 **Écrire chaque décision.** Une décision prise au fil d’une conversation est oubliée à la suivante. Chacune tient désormais dans une fiche courte et datée, avec son coût estimé puis réel. L’IA la relit avant d’agir, et l’écart entre l’estimé et le réel m’apprend à mieux estimer.
 
-**Faire vérifier, pas seulement faire.** Une consigne écrite finit par être oubliée, et « c’est fait » ne prouve rien. Ce qui peut se vérifier devient un contrôle automatique, et ce qu’un agent produit, un autre le relit. C’est la règle de l’audit lui-même : le relecteur n’est pas l’auteur.
+**Faire vérifier ce qui est fait.** Une consigne écrite finit par être oubliée, et « c’est fait » ne prouve rien. Ce qui peut se vérifier devient un contrôle automatique, et ce qu’un agent produit, un autre le relit. C’est la règle de l’audit lui-même : le relecteur n’est pas l’auteur.

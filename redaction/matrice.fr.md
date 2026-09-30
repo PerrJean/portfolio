@@ -50,7 +50,7 @@ Le cadre dépasse ce seul entretien. Les mêmes niveaux et les mêmes prérequis
 
 ## Ce que j’en retiens
 
-Faire grandir quelqu’un de mon équipe s’apprend aussi, et cette matrice a été pour moi un premier outil. J’en tire trois enseignements.
+Faire grandir quelqu’un de mon équipe s’apprend aussi, et cette matrice a été pour moi un premier outil.
 
 **Décrire chaque niveau par ce qu’on voit faire.** Une phrase comme « décompose en epics et anime le grooming » se vérifie. Elle m’a obligé à préciser mes propres attentes avant de les appliquer à quelqu’un.
 

@@ -70,13 +70,13 @@ For the learning design team, a new exercise no longer requires development: the
 
 ## What I took from it
 
-This project, led as PM and then as project lead, opened the way to the Head of Product role: it called for running a complex project with a large team. I draw three lessons from it.
+This project, led as PM and then as project lead, opened the way to the Head of Product role: it called for running a complex project with a large team.
 
 **Set the target, then a first step that stands on its own.** The single platform remained the horizon. The first step had to be worth it by itself, with one fewer platform to maintain, even if the second was slow to come.
 
 **Build shared foundations before merging.** The design system and the aligned data model came first. Prepared this way, the switch could happen over the summer.
 
-**Revisit the target as the context changes.** The second step, with the exam platform, has not happened: the opportunity has not come up. The two platforms are growing closer with each new project, but keep distinct goals, learning a language and preparing for an exam, with specific features that need to remain. The cost/opportunity analysis has not yet come out in favor. And AI opens up new learning experiences, which push toward thinking fresh rather than building on what already exists.
+**Revisit the target as the context changes.** The second step, with the exam platform, has not happened: the opportunity has not come up. The two platforms grow closer with each project, but keep distinct goals: learning a language, preparing for an exam. The gain does not yet justify the cost. And AI opens up new ways of learning, which push toward starting from scratch rather than reusing what exists.
 
 ---
 

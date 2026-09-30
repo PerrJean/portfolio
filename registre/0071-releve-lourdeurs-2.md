@@ -26,3 +26,9 @@ Matrice devient « Ce que ça change pour l'équipe » (l'impact business n'a pa
 de sens ici) ; n°33 À propos : « J'y dirige une équipe… que j'accompagne au
 quotidien sur leurs projets, de la discovery à la delivery. Je mène aussi
 certains projets moi-même. » (la phrase sur les corrections priorisées sort).
+**Tri, série 3 (Jean)** : n°23 UserVoice sans « objectivé un point de
+douleur » ; n°5 gardé tel quel ; n°10 le second temps allégé ; n°35 plus
+d'annonce « J'en tire trois enseignements », un seul titre en « X, pas Y »
+sur le site (« le bon contexte, pas tout le contexte »), les autres
+deviennent « Faire vérifier ce qui est fait » et « Faire classer les
+attentes ».

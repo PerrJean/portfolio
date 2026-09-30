@@ -88,10 +88,10 @@ Pour l’équipe pédagogique, un nouvel exercice ne demande plus de développem
 
 ## Ce que j’en retiens
 
-Ce projet, mené comme PM puis comme chef de projet, a ouvert la voie au poste de Head of Product : il demandait de conduire un projet complexe avec une grande équipe. J’en tire trois enseignements.
+Ce projet, mené comme PM puis comme chef de projet, a ouvert la voie au poste de Head of Product : il demandait de conduire un projet complexe avec une grande équipe.
 
 **Donner la cible, puis un premier pas qui vaut pour lui-même.** La plateforme unique restait l’horizon. Le premier temps devait valoir seul, avec une plateforme de moins à maintenir, même si le second tardait.
 
 **Construire le commun avant de fusionner.** Le design system et le modèle de données harmonisé sont venus d’abord. Préparée ainsi, la bascule a pu se faire pendant l’été.
 
-**Relire la cible avec le contexte.** Le second temps, avec la plateforme examens, n’a pas eu lieu : l’occasion ne s’est pas présentée. Les deux plateformes se rapprochent au gré des nouveaux projets, mais gardent des objectifs distincts, apprendre une langue et préparer un examen, avec des particularités qui doivent demeurer. L’analyse coût / opportunité ne s’est pas encore montrée favorable. Et l’IA ouvre des expériences d’apprentissage nouvelles, qui poussent à penser neuf plutôt qu’à capitaliser sur l’existant.
+**Relire la cible avec le contexte.** Le second temps, avec la plateforme examens, n’a pas eu lieu : l’occasion ne s’est pas présentée. Les deux plateformes se rapprochent à chaque projet, mais gardent des objectifs distincts : apprendre une langue, préparer un examen. Le gain ne justifie pas encore le coût. Et l’IA ouvre de nouvelles façons d’apprendre, qui poussent à repartir de zéro plutôt qu’à réutiliser l’existant.

@@ -69,7 +69,7 @@ The framework reaches beyond this one conversation. The same levels and the same
 
 ## What I took from it
 
-Helping someone on my team grow is also something you learn, and this matrix was a first tool for me. I take three lessons from it.
+Helping someone on my team grow is also something you learn, and this matrix was a first tool for me.
 
 **Describe each level by what you can see someone do.** A sentence like “breaks work down into epics and runs grooming” can be checked. It made me pin down my own expectations before applying them to someone else.
 

@@ -28,7 +28,7 @@ Les bugs restent suivis, signature par signature. Mais la satisfaction se joue d
 
 ## Bénéfices et impact business
 
-Chaque lundi, le bilan se lit en cinq minutes, les quatre sources réunies. Il fait apparaître des signaux faibles qu’on ne voyait pas avant, quand un sujet encore rare commence à monter. Surtout, l’écoute des apprenants a objectivé un point de douleur, la qualité du contenu, qui est passée en tête des priorités. Au bilan annuel, un client B2B, une école, désignait le même point dans ses remontées. Le projet Audit contenu part de ce constat et répond à sa demande.
+Chaque lundi, le bilan se lit en cinq minutes, les quatre sources réunies. Il fait apparaître des signaux faibles qu’on ne voyait pas avant, quand un sujet encore rare commence à monter. Surtout, l’écoute des apprenants a montré, chiffres à l’appui, que la qualité du contenu pesait le plus ; elle est passée en tête des priorités. Au bilan annuel, une école cliente pointait le même sujet. Le projet Audit contenu part de ce constat.
 
 ## Ce que j’ai construit
 

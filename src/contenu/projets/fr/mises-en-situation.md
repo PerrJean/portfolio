@@ -84,4 +84,4 @@ Ce projet m’apprend à tenir le rôle de Head of Product sur une découverte q
 
 **Cadrer la démarche, laisser l’équipe trouver.** Mon travail a porté sur la méthode et le Design Sprint, pas sur les réponses. Le PM et la product designer ont mené les entretiens et les enquêtes, et ce sont leurs conclusions qui ont réordonné la feuille de route.
 
-**Faire classer, pas seulement écouter.** Demander aux clients ce qu’ils veulent donne une liste où tout compte. Leur demander de classer oblige à choisir : le retour pédagogique est passé devant les badges et la progression, et les situations professionnelles devant la vie quotidienne.
+**Faire classer les attentes.** Demander aux clients ce qu’ils veulent donne une liste où tout compte. Leur demander de classer oblige à choisir : le retour pédagogique est passé devant les badges et la progression, et les situations professionnelles devant la vie quotidienne.
