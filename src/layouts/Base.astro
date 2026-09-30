@@ -29,8 +29,8 @@ const titreComplet = titre === NOM ? titre : `${titre} · ${NOM}`;
 const APERCU: Record<Langue, string> = { fr: '/og/apercu.png', en: '/og/apercu-en.png' };
 const apercu = new URL(APERCU[langue], Astro.site).href;
 const APERCU_ALT: Record<Langue, string> = {
-  fr: "Jean Perrier, Head of Product · IA appliquée · Data : « Je bâtis sur des hypothèses : j’écoute, je teste, puis j’investis là où ça compte. » Un bâtiment terminé, deux personnages sur le toit, sous un soleil.",
-  en: 'Jean Perrier, Head of Product · Applied AI · Data: “I build on hypotheses: I listen, I test, then I invest where it counts.” A finished building, two people on its roof, under a sun.',
+  fr: "Jean Perrier, Head of Product · IA appliquée · Data : « J’écoute, je pose des hypothèses, je teste, puis je construis là où ça compte. » Un bâtiment terminé, deux personnages sur le toit, sous un soleil.",
+  en: 'Jean Perrier, Head of Product · Applied AI · Data: “I listen, I form hypotheses, I test, then I build where it counts.” A finished building, two people on its roof, under a sun.',
 };
 ---
 

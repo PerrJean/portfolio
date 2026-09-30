@@ -21,3 +21,5 @@ images ; bannière FR sur trois lignes coupées à la main (« compte. » restai
 seul), EN sur deux ; aperçu en cinq lignes, serré mais lisible. Champ `date`
 (`AAAA-MM`) obligatoire, affiché en ardoise 19 px gras sous le `<h1>`.
 Ratio 2,0 : la longueur de la nouvelle phrase a coûté une passe d'images.
+
+**Révision (Jean, 2026-09-30)** : « J'écoute, je pose des hypothèses, je teste, puis je construis là où ça compte. » (EN « I listen, I form hypotheses, I test, then I build where it counts. »), écouter d'abord. Accueil, À propos, texte alternatif de l'aperçu, aperçus Open Graph et bannières LinkedIn régénérés.
