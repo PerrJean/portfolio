@@ -1,0 +1,104 @@
+---
+// La carte 03 Matrice de compétences (registre/0062) : l'échelle à trois
+// barreaux (les trois niveaux de la grille) contre un pan de mur ; au repos,
+// Jean debout, les mains vides, et l'ouvrier au pied de l'échelle, tourné
+// vers lui (ops/images/matrice/planche.png, sans le marteau). Au survol ou
+// au focus de la carte, en 0,6 s, Jean lève le bras vers le deuxième
+// barreau ; l'ouvrier se tourne vers l'échelle, pose le pied sur le premier
+// barreau, puis y monte ; le point ambre s'allume sur le premier barreau.
+// À rendre dans Scene.astro (variante « matrice »), qui porte les couleurs
+// et le déclenchement sans survol.
+import Personnage from './Personnage.astro';
+import { OBJETS, LUNETTES, montre } from './poses';
+
+// Jean à mi-geste : le bras à 50° sous l'horizontale (image 3 de la planche).
+const LEVE = [1 + Math.cos((50 * Math.PI) / 180), -89 + Math.sin((50 * Math.PI) / 180)] as const;
+const JEAN_LEVE = montre(LEVE).replace('{L}', LUNETTES);
+---
+
+<line class="se" x1="0" y1="0" x2="426.667" y2="0" stroke-width="1.5" />
+<g transform="translate(318 0)" set:html={OBJETS.mur} />
+<g transform="translate(246.5 0)" set:html={OBJETS.echelle} />
+
+<circle class="point fa" cx="277.2" cy="-19" r="5" />
+
+<!-- Jean, à sa place (158,5), du début à la fin : il lève le bras. -->
+<g transform="translate(158.5 0)">
+  <Personnage pose="debout" jean class="j-debout" />
+  <g class="j-leve" set:html={JEAN_LEVE} />
+  <Personnage pose="montre" jean class="j-montre" />
+</g>
+
+<!-- L'ouvrier : tourné vers Jean (220,5), se tourne et pose le pied sur le
+     premier barreau (240,5), puis monte (255,5 ; -20,25). -->
+<g transform="translate(220.5 0)">
+  <g class="o-pas">
+    <Personnage pose="debout" miroir class="o-debout" />
+    <Personnage pose="marche-2" class="o-marche" />
+    <Personnage pose="pied-barreau" class="o-pied" />
+    <Personnage pose="sur-echelle" class="o-echelle" />
+  </g>
+</g>
+
+<style is:global>
+  /* Repos : Jean debout, l'ouvrier tourné vers lui, le point éteint. */
+  .scene--matrice :is(.j-leve, .j-montre, .o-marche, .o-pied, .o-echelle, .point) {
+    opacity: 0;
+  }
+
+  /* 0,6 s, 1 % = 6 ms. Jean lève le bras (0-25 %, 0,15 s) ; l'ouvrier se
+     tourne, fait un pas et pose le pied sur le premier barreau (25-58,3 %,
+     0,2 s), puis monte (58,3-83,3 %, 0,15 s) ; le point ambre s'allume en
+     dernier (83,3-100 %). Hors survol, retour au repos. */
+  @media (prefers-reduced-motion: no-preference) {
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--matrice .j-debout {
+      animation: sc-avant-7 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--matrice .j-leve {
+      animation: sc-ma-leve 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--matrice .j-montre {
+      animation: sc-ma-apres-25 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--matrice .o-debout {
+      animation: sc-ma-avant-25 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--matrice .o-marche {
+      animation: sc-ma-marche 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--matrice .o-pied {
+      animation: sc-ma-pied 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--matrice .o-echelle {
+      animation: sc-ma-echelle 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--matrice .o-pas {
+      animation: sc-ma-pas 0.6s ease-out both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--matrice .point {
+      animation: sc-ma-point 0.6s ease-out both;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene--matrice * { animation: none !important; }
+  }
+
+  @keyframes sc-ma-leve { 0% { opacity: 0; } 7% { opacity: 1; } 25%, 100% { opacity: 0; } }
+  @keyframes sc-ma-apres-25 { 0% { opacity: 0; } 25%, 100% { opacity: 1; } }
+  @keyframes sc-ma-avant-25 { 0% { opacity: 1; } 25%, 100% { opacity: 0; } }
+  @keyframes sc-ma-marche { 0% { opacity: 0; } 25% { opacity: 1; } 35%, 100% { opacity: 0; } }
+  @keyframes sc-ma-pied { 0% { opacity: 0; } 35% { opacity: 1; } 66%, 100% { opacity: 0; } }
+  @keyframes sc-ma-echelle { 0% { opacity: 0; } 66%, 100% { opacity: 1; } }
+  /* Le pas vers l'échelle (+20), puis la montée d'un barreau (+15, -20,25) ;
+     ease-out sur chaque intervalle. */
+  @keyframes sc-ma-pas {
+    0%, 25% { transform: translate(0, 0); }
+    45%, 58.3% { transform: translate(20px, 0); }
+    83.3%, 100% { transform: translate(35px, -20.25px); }
+  }
+  @keyframes sc-ma-point {
+    0%, 83.3% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+</style>

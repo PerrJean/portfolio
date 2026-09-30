@@ -4,7 +4,9 @@
 //  - entete : l'équipe (trois ouvriers anonymes) sous le soleil,
 //    l'impatience jouée une fois au chargement (SceneEntete.astro) ;
 //  - uservoice : Jean seul déroule le plan sur le tréteau (SceneUservoice) ;
-//  - audit : Jean sur le plan, l'équipe le rejoint (SceneAudit).
+//  - audit : Jean sur le plan, l'équipe le rejoint (SceneAudit) ;
+//  - matrice : Jean montre le barreau suivant, l'ouvrier monte à l'échelle
+//    (SceneMatrice, registre/0062).
 // Les cartes jouent au survol ou au focus de la `.parcelle` qui contient la
 // scène, et reviennent au repos quand ils cessent ; sans survol (écran
 // tactile), une fois quand la scène arrive au milieu de l'écran (classe
@@ -14,9 +16,10 @@
 import SceneEntete from './SceneEntete.astro';
 import SceneUservoice from './SceneUservoice.astro';
 import SceneAudit from './SceneAudit.astro';
+import SceneMatrice from './SceneMatrice.astro';
 
 interface Props {
-  variante: 'entete' | 'uservoice' | 'audit';
+  variante: 'entete' | 'uservoice' | 'audit' | 'matrice';
   class?: string;
 }
 const { variante, class: classe } = Astro.props;
@@ -35,6 +38,7 @@ const VUE = variante === 'entete' ? '205 -140 221.667 160' : '0 -140 426.667 160
   {variante === 'entete' && <SceneEntete />}
   {variante === 'uservoice' && <SceneUservoice />}
   {variante === 'audit' && <SceneAudit />}
+  {variante === 'matrice' && <SceneMatrice />}
 </svg>
 
 <style is:global>
@@ -57,7 +61,7 @@ const VUE = variante === 'entete' ? '205 -140 221.667 160' : '0 -140 426.667 160
      (le poignet pour le marteau en main, le milieu du bord bas pour la
      poutre en vol, le bord gauche pour le plan, l'origine du repère pour le
      marteau lâché). */
-  .scene :is(.a-pas, .b-pas, .c-pas, .j-pas, .plan, .rouleau, .poutre-vol,
+  .scene :is(.a-pas, .b-pas, .c-pas, .j-pas, .o-pas, .plan, .rouleau, .poutre-vol,
     .marteau-tour, .marteau-vol, .point, .a-bond) {
     transform-box: view-box;
     transform-origin: 0 0;

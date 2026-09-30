@@ -12,13 +12,14 @@
  * scene : la scène de la carte, par clé de page (Scene.astro, registre/0058) :
  *  - « uservoice » : Jean seul déroule le plan ;
  *  - « audit » : l'équipe rejoint Jean, qui a le plan ouvert ;
+ *  - « matrice » : Jean montre le barreau suivant, l'ouvrier monte à
+ *    l'échelle (registre/0062) ;
  *  - « aucune » : pas de dessin, la carte s'arrête au fait clé (Parcelle.astro).
- *    La matrice l'attend : sa scène, l'échelle, est dessinée à part (0062).
  */
 import type { Langue, Page } from '../i18n/routes';
 
 export type Groupe = 'paire' | 'a-part';
-export type SceneDeCarte = 'uservoice' | 'audit' | 'aucune';
+export type SceneDeCarte = 'uservoice' | 'audit' | 'matrice' | 'aucune';
 
 export interface Projet {
   numero: string;
@@ -56,7 +57,7 @@ export const PROJETS: readonly Projet[] = [
     numero: '03',
     page: 'matrice',
     groupe: 'a-part',
-    scene: 'aucune',
+    scene: 'matrice',
     nom: { fr: 'Matrice de compétences', en: 'Skills matrix' },
     fait: {
       fr: 'Sur une matrice de compétences relue ensemble, un Product Owner de mon équipe et moi sommes passés de deux idées de « devenir senior » à une vision partagée.',

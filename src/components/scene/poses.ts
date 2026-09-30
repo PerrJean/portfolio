@@ -12,7 +12,9 @@
 //  - lancer-poutre : nouvelle pose, les deux bras leves, mains ouvertes a
 //    plat (le dessus des paumes a y = -109,5) ;
 //  - frappe-1 et frappe-2 : nouvelles poses du batiment, le bras avant et
-//    le marteau pivotent ensemble a l'epaule (groupe .bras-tour).
+//    le marteau pivotent ensemble a l'epaule (groupe .bras-tour) ;
+//  - montre, pied-barreau, sur-echelle (registre/0062) : l'echelle de la
+//    carte 03, sur les segments existants, sans articulation nouvelle.
 
 const LIGNE = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
 const trait = (c: string, points: string, largeur: number) =>
@@ -53,6 +55,19 @@ const FRAPPE = (angle: number) =>
   '<g transform="translate(22 -78) rotate(-25)"><line class="se" x1="-3" y1="0" x2="22" y2="0" stroke-width="4" stroke-linecap="round"/><rect class="fe" x="17" y="-7" width="7" height="13" rx="1.5"/></g>' +
   brasAvant('1,-89 10,-75 22,-78') +
   '</g></g></g>';
+
+/** Montre (la carte 03, registre/0062) : debout, le bras avant droit, long
+ *  de 32,2 (celui de bras-tendus), tendu de l'epaule (1,-89) vers la cible,
+ *  en coordonnees de la pose. Dessin d'origine : ops/images/matrice/planche.mjs. */
+export const montre = (cible: readonly [number, number]) => {
+  const dx = cible[0] - 1, dy = cible[1] + 89, k = Math.hypot(28, 16) / Math.hypot(dx, dy);
+  const r = (v: number) => Math.round(v * 10) / 10;
+  return DEBOUT + brasArriere('0,-89 -2,-58') + torse() + TETE + brasAvant(`1,-89 ${r(1 + dx * k)},${r(-89 + dy * k)}`);
+};
+/** La cible de Jean sur la carte 03, vue de sa place (x = 158,5) : le milieu
+ *  de la part visible du deuxieme barreau, devant les tibias de l'ouvrier
+ *  monte (16 degres sous l'horizontale). */
+export const CIBLE_DEUXIEME_BARREAU = [121.1, -55] as const;
 
 export const POSES = {
   'debout': DEBOUT + brasArriere('0,-89 -2,-58') + torse() + TETE + brasAvant('1,-89 3,-60'),
@@ -108,6 +123,26 @@ export const POSES = {
   'marteau-2': MARTEAU(25),
   'frappe-1': FRAPPE(-70),
   'frappe-2': FRAPPE(0),
+  'montre': montre(CIBLE_DEUXIEME_BARREAU),
+  /** Pied-barreau : la jambe arriere de marche-2 ; l'avant repliee plus haut
+   *  (cuisse 24,3 et tibia 19,9, ceux de marche-2, genou recalcule), le pied
+   *  a plat sur le premier barreau ; le bras avant de bras-tendus, sur le
+   *  montant ; le bras arriere libre, celui de debout, le long du corps. */
+  'pied-barreau':
+    jambes('-5.25,-56 -3,-4 2,-4', '5.25,-56 25.3,-42.3 16,-24.8 21,-23.8') +
+    brasArriere('0,-89 -2,-58') +
+    torse() +
+    TETE +
+    brasAvant('1,-89 29,-73'),
+  /** Sur-echelle : les jambes de debout ; buste et tete basculent de 8 degres
+   *  aux hanches (la bascule de penche) ; les bras repartent des epaules
+   *  basculees : l'avant, celui de bras-tendus, sur le troisieme barreau ;
+   *  l'arriere, celui de debout bascule avec le buste, le long du corps. */
+  'sur-echelle':
+    DEBOUT +
+    brasArriere('4.6,-88.7 -1.7,-58.3') +
+    `<g transform="rotate(8 0 -56)">${torse()}${TETE}</g>` +
+    brasAvant('5.6,-88.5 33.6,-72.5'),
 };
 
 export type Pose = keyof typeof POSES;
@@ -122,4 +157,13 @@ export const OBJETS = {
     '<rect class="se fi" x="-50" y="-8" width="100" height="8" rx="1" stroke-width="2"/><line class="se" x1="-40" y1="-4" x2="10" y2="-4" stroke-width="1" stroke-opacity="0.4" stroke-linecap="round"/>',
   marteau:
     '<g transform="translate(0 0) rotate(0)"><line class="se" x1="-3" y1="0" x2="26" y2="0" stroke-width="4" stroke-linecap="round"/><rect class="fe" x="22" y="-8" width="8" height="15" rx="1.5"/></g>',
+  /** Le pan de mur de la carte 03, origine au coin bas gauche : 102 de large,
+   *  134 de haut, trois rangs de pierres au grain de la poutre. */
+  mur:
+    '<rect class="fi se" x="0" y="-134" width="102" height="134" stroke-width="2"/><g stroke-width="1" stroke-opacity="0.4"><line class="se" x1="0" y1="-44.7" x2="102" y2="-44.7"/><line class="se" x1="0" y1="-89.3" x2="102" y2="-89.3"/><line class="se" x1="51" y1="0" x2="51" y2="-44.7"/><line class="se" x1="25.5" y1="-44.7" x2="25.5" y2="-89.3"/><line class="se" x1="76.5" y1="-44.7" x2="76.5" y2="-89.3"/><line class="se" x1="51" y1="-89.3" x2="51" y2="-134"/></g>',
+  /** L'echelle de la carte 03, origine au pied du montant gauche : deux
+   *  montants inclines (0,3 de pied pour 1 de haut), 32 d'ecart, trois
+   *  barreaux (les trois niveaux de la grille) a -19, -55 et -91. */
+  echelle:
+    '<g stroke-linecap="round"><line class="se" x1="5.7" y1="-19" x2="37.7" y2="-19" stroke-width="3"/><line class="se" x1="16.5" y1="-55" x2="48.5" y2="-55" stroke-width="3"/><line class="se" x1="27.3" y1="-91" x2="59.3" y2="-91" stroke-width="3"/><line class="se" x1="0" y1="-1" x2="37.5" y2="-125" stroke-width="4"/><line class="se" x1="32" y1="-1" x2="69.5" y2="-125" stroke-width="4"/></g>',
 } as const;

@@ -30,3 +30,8 @@ simple ; 600 ms, comme les cartes 01 et 02. On anime (brief
 « Trois projets sur une plateforme EdTech : écouter des milliers
 d'apprenants, corriger ce qui les gêne, et faire grandir l'équipe qui s'en
 charge. » (EN en miroir). Mise en ligne du projet 03 avec sa scène animée.
+**Animation faite (coût 135)** : `SceneMatrice.astro`, poses `montre(cible)`,
+`pied-barreau`, `sur-echelle` et objets mur / échelle dans `poses.ts` ;
+600 ms ; figée à 0, 300 et 600 ms à 1280 et 390 px. Écart : la carte 03 est
+seule dans sa grille, sa scène fait ~1100 px de large à 1280 px, deux fois
+les cartes 01 et 02.
