@@ -1,27 +1,29 @@
 // Les images clés de la scène « Fusion » (registre/0069), carte du projet
-// « fusion des plateformes » : images fixes, aucune animation. Deuxième
-// version, sur les retours de Jean : tout le monde pousse, dès le repos ; la
-// forme des deux toits ne change pas, le mur de séparation est plus épais ;
-// les personnages restent dans la cabane ; à la fin, les deux mains levées.
-//  1. repos : deux cabanes, l'une au trait simple, l'autre au trait double
-//     (deux façons de construire), séparées par un mur épais ; dans la
-//     cabane de gauche, Jean et les trois ouvriers de l'en-tête poussent le
-//     mur en chaîne (Jean au mur, chacun les mains dans le dos de celui qui
-//     le précède) ; le mur tient ;
-//  2. intermédiaire : le mur penche ;
-//  3. fin : le mur est tombé ; il ne reste qu'une cabane, sur toute la
-//     largeur, d'un seul style (le trait simple), sur une dalle commune ;
-//     point ambre sur la dalle, là où était le mur ; les quatre lèvent les
-//     deux mains.
+// « fusion des plateformes » : images fixes (l'animation est dans
+// src/components/scene/SceneFusion.astro). Quatrième version, sur les
+// retours de Jean : les deux bâtiments ont le même contour, un seul trait
+// plein ; il n'y a pas de mur à part entre les deux, mais un écart, du vide ;
+// ce sont les deux parois qui se font face qui tombent.
+//  1. repos : deux cabanes au même trait, séparées par un écart visible, au
+//     sol comme en haut ; dans la cabane de gauche, Jean et les trois
+//     ouvriers de l'en-tête poussent sa paroi droite en chaîne (Jean à la
+//     paroi, chacun les mains dans le dos de celui qui le précède) ;
+//  2. la paroi poussée bascule vers la droite jusqu'à toucher la paroi gauche
+//     de l'autre cabane (11,35°), la chaîne la suit ;
+//  3. les deux parois tombent ensemble vers la droite, comme des dominos, la
+//     chaîne trébuche en avant ;
+//  4. fin : l'écart a disparu ; il ne reste qu'une cabane, sur toute la
+//     largeur, sur une dalle commune ; point ambre sur la dalle, là où
+//     étaient les parois ; les quatre lèvent les deux mains.
 // Règle (Jean) : aucun personnage avec un seul bras levé au-dessus de
 // l'épaule ; pour célébrer, les deux mains levées.
-// Produit repos.svg, intermediaire.svg, fin.svg, dans le repère de
+// Produit repos.svg, penche.svg, chute.svg, fin.svg, dans le repère de
 // Scene.astro (0 -140 426.667 160), mêmes classes, et planche.png.
 // Relançable : node ops/images/fusion-scene/planche.mjs.
 // Sans paquet ajouté : sharp ; le texte en chemins (../accueil/police.mjs).
 //
-// Les poses nouvelles, dessinées ici seulement (à reporter dans poses.ts),
-// sur les segments existants, sans articulation nouvelle :
+// Les poses, dessinées ici et reportées telles quelles dans poses.ts (pousse,
+// hourra), sur les segments existants, sans articulation nouvelle :
 //  - pousse : buste et tête basculés de 25° aux hanches (la bascule de
 //    penche, 30°, un peu moins) ; la jambe arrière tendue loin derrière, le
 //    pied à plat ; la jambe avant fléchie, genou devant (comme marche-2) ;
@@ -31,16 +33,15 @@
 //    la longueur de ceux de bras-tendus, levés en V à 45° : l'avant vers
 //    l'avant, l'arrière vers l'arrière (à 45°, ils passent à côté de la
 //    tête sans la toucher ; plus haut, ils la mordent).
-// Les objets nouveaux (objets de planche) : la cabane (murs et toit à deux
-// pans, au trait simple ou double, une fenêtre carrée, une porte), le mur de
-// séparation (un pan de 24, au grain du mur de la carte 03), la dalle
-// (celle de l'en-tête, 12 de haut sous le sol).
+// Les objets : la cabane (murs et toit à deux pans, un trait plein, une
+// fenêtre carrée, une porte, la paroi qui tombe : CABANE dans poses.ts), la
+// dalle (celle de l'en-tête, 12 de haut sous le sol).
 
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { POSES, LUNETTES } from '../../../src/components/scene/poses.ts';
+import { POSES, LUNETTES, CABANE } from '../../../src/components/scene/poses.ts';
 import { police } from '../accueil/police.mjs';
 
 const ICI = fileURLToPath(new URL('./', import.meta.url));
@@ -99,56 +100,31 @@ const jeu = (a, b) => {
   const [dx, dy] = [b[0] - a[0], b[1] - a[1]], l = Math.hypot(dx, dy);
   return Math.abs(dx * (-110 - a[1]) - dy * (1 - a[0])) / l - MAIN_BORD;
 };
+// Les poses du site doivent rester celles-ci.
+if (POSES.pousse !== POUSSE || POSES.hourra !== HOURRA) throw new Error('pousse ou hourra : poses.ts ne suit plus la planche');
 
 // ---------------------------------------------------------------------------
 // Le décor.
 
-const E = 122, R = 140; // égout et faîtage des cabanes
-const MUR_L = 24; // épaisseur du mur de séparation
-// La chaîne : Jean au mur, puis trois ouvriers ; chacun a les mains au dos
-// de celui qui le précède, à la hauteur des mains.
-const PAS_CHAINE = MAIN_AV[0] + MAIN_BORD - (dos(MAIN_AV[1]) - MAIN_BORD);
-const LARGE_G = 3 * PAS_CHAINE + MAIN_AV[0] + MAIN_BORD + 16 + 3.75 + 4; // le dernier : jambe arrière à -16
-const LARGE_D = 100;
-const TOTAL = LARGE_G + MUR_L + LARGE_D;
-const X0 = (L - TOTAL) / 2, XM = X0 + LARGE_G, X1 = XM + MUR_L + LARGE_D;
-
-// La cabane : murs et toit à deux pans, d'un seul trait ; « double » la
-// dessine en trait double (encre 6, âme ivoire 2,4).
-const contour = (xa, xb) => `M${r2(xa)},0 L${r2(xa)},${-E} L${r2((xa + xb) / 2)},${-R} L${r2(xb)},${-E} L${r2(xb)},0`;
-const chemin = (d, double) =>
-  double
-    ? `<path class="se" d="${d}" fill="none" stroke-width="6" stroke-linejoin="round"/><path class="si" d="${d}" fill="none" stroke-width="2.4" stroke-linejoin="round"/>`
-    : `<path class="se" d="${d}" fill="none" stroke-width="2.5" stroke-linejoin="round"/>`;
-const fenetre = (x, y, c, double) => chemin(`M${r2(x)},${r2(y)} h${c} v${c} h${-c} Z M${r2(x + c / 2)},${r2(y)} v${c}`, double);
-const porte = (x, l, h, double) => chemin(`M${r2(x)},0 L${r2(x)},${-h} L${r2(x + l)},${-h} L${r2(x + l)},0`, double);
+// La cabane de la fin, celle de la deuxième version : de X0 à X1. Au repos,
+// la cabane de gauche va de X0 à XG, l'écart de XG à XD (24), la cabane de
+// droite de XD à X1 ; le point ambre au milieu de l'écart (S).
+const X0 = 35.8, XG = 266.9, ECART = 24, XD = XG + ECART, X1 = 390.9, S = XG + ECART / 2;
+const MUR_T = 1.25; // demi-trait des murs
 const PORTE_X = X1 - 34;
+// L'angle où la paroi poussée touche l'autre : son haut (122) atteint XD.
+const CONTACT = (Math.asin(ECART / 122) * 180) / Math.PI;
 // La fenêtre, petite et haute dans le coin : le dernier pousseur passe dessous.
-const FENETRE = fenetre(X0 + 8, -116, 16, false);
-const CABANE_G = `<g class="cabane-g">${chemin(contour(X0, XM), false)}${FENETRE}</g>`;
-const CABANE_D = `<g class="cabane-d">${chemin(contour(XM + MUR_L, X1), true)}${porte(PORTE_X, 26, 62, true)}</g>`;
-
-// Le mur de séparation : un pan de 24, trois rangs de pierres au grain du mur
-// de la carte 03 (joints fins, opacité 0,4, décalés d'un rang à l'autre) ;
-// pivot au pied, côté droit.
-const joint = (x1, y1, x2, y2) => `<line class="se" x1="${r2(x1)}" y1="${r2(y1)}" x2="${r2(x2)}" y2="${r2(y2)}" stroke-width="1" stroke-opacity="0.4"/>`;
-const PAN = (() => {
-  const h = E / 3, ys = [0, -h, -2 * h, -E];
-  let d = `<rect class="fi se" x="${-MUR_L}" y="${-E}" width="${MUR_L}" height="${E}" stroke-width="2"/>`;
-  d += joint(-MUR_L, ys[1], 0, ys[1]) + joint(-MUR_L, ys[2], 0, ys[2]);
-  [[MUR_L / 2], [MUR_L / 4, (3 * MUR_L) / 4], [MUR_L / 2]].forEach((xs, i) => xs.forEach((x) => (d += joint(-x, ys[i], -x, ys[i + 1]))));
-  return d;
-})();
-const mur = (angle) => `<g class="mur" transform="translate(${r2(XM + MUR_L)} 0) rotate(${angle})">${PAN}</g>`;
-const PENCHE = 11;
-// La face gauche du mur, penché de `angle`, à la hauteur y.
-const faceMur = (y, angle) => XM + MUR_L - MUR_L * Math.cos(rad(angle)) - y * Math.sin(rad(angle));
-
-// La cabane de la fin : une seule, sur toute la largeur, au trait simple.
-const CABANE_FIN = `<g class="cabane-fin">${chemin(contour(X0, X1), false)}${FENETRE}${porte(PORTE_X, 26, 62, false)}</g>`;
+const FENETRE = CABANE.fenetre(X0 + 8, -116, 16);
+const PORTE = CABANE.porte(PORTE_X, 26, 62);
+const paroi = (x, angle, classe) => `<g class="${classe}" transform="translate(${r2(x)} 0) rotate(${r2(angle)})">${CABANE.paroi}</g>`;
+const CABANES = (ag, ad) =>
+  `<g class="cabane-g">${CABANE.murs(X0, XG, 'droite')}${FENETRE}</g>` +
+  `<g class="cabane-d">${CABANE.murs(XD, X1, 'gauche')}${PORTE}</g>` +
+  paroi(XD, ad, 'paroi-d') + paroi(XG, ag, 'paroi-g');
+const CABANE_FIN = `<g class="cabane-fin">${CABANE.murs(X0, X1)}${FENETRE}${PORTE}</g>`;
 const DALLE = `<rect class="dalle fd" x="${r2(X0 - 12)}" y="0" width="${r2(X1 - X0 + 24)}" height="12"/>`;
-const PX = XM + MUR_L / 2;
-const POINT = `<circle class="point fa" cx="${r2(PX)}" cy="6" r="5"/>`;
+const POINT = `<circle class="point fa" cx="${r2(S)}" cy="6" r="5"/>`;
 const SOL = `<line class="se" x1="0" y1="0" x2="${L}" y2="0" stroke-width="1.5"/>`;
 
 // ---------------------------------------------------------------------------
@@ -158,24 +134,36 @@ const perso = (dessin, x, { jean = false, miroir = false, classe = '' } = {}) =>
   const d = dessin.replace('{L}', jean ? LUNETTES : '');
   return `<g transform="translate(${r2(x)} 0)"><g class="${classe}"${miroir ? ' transform="scale(-1 1)"' : ''}>${d}</g></g>`;
 };
-// La chaîne contre le mur, penché de `angle` : Jean au mur, puis A, B, C.
+// La chaîne contre la paroi droite de la cabane de gauche, penchée de
+// `angle` : Jean à la paroi (sa main au ras du trait, à l'intérieur), puis A,
+// B, C, chacun les mains au dos de celui qui le précède.
+const PAS_CHAINE = MAIN_AV[0] + MAIN_BORD - (dos(MAIN_AV[1]) - MAIN_BORD);
+const faceParoi = (y, angle) => XG - y * Math.tan(rad(angle)) - MUR_T / Math.cos(rad(angle));
 const chaine = (angle) => {
-  const j = faceMur(MAIN_AV[1], angle) - MAIN_AV[0] - MAIN_BORD;
+  const j = faceParoi(MAIN_AV[1], angle) - MAIN_AV[0] - MAIN_BORD;
   return [0, 1, 2, 3].map((i) => j - i * PAS_CHAINE);
 };
-const REPOS_X = chaine(0), INTER_X = chaine(PENCHE);
 const pousseurs = (xs, suffixe) =>
   perso(POUSSE, xs[3], { classe: `c-${suffixe}` }) + perso(POUSSE, xs[2], { classe: `b-${suffixe}` }) +
   perso(POUSSE, xs[1], { classe: `a-${suffixe}` }) + perso(POUSSE, xs[0], { jean: true, classe: `j-${suffixe}` });
 // La fin : Jean, A et C à gauche du point, B à droite, face à eux, les deux
 // mains levées ; 58 d'écart, pour que les mains de deux voisins ne se
 // croisent pas (2 × 23,8 de bras, plus le trait) ; la porte reste libre.
-const ECART = 58;
-const FIN_X = [PX - 28, PX - 28 - ECART, PX + 28, PX - 28 - 2 * ECART];
+const PAS_FIN = 58;
+const FIN_X = [S - 28, S - 28 - PAS_FIN, S + 28, S - 28 - 2 * PAS_FIN];
+// La chaîne : au repos, puis contre la paroi qui touche l'autre (+PENCHE),
+// puis, quand les parois tombent, elle trébuche jusqu'à ce que Jean soit à
+// sa place de la fin (+TOTAL).
+const REPOS_X = chaine(0), PENCHE_X = chaine(CONTACT);
+const PENCHE = PENCHE_X[0] - REPOS_X[0], TOTAL = FIN_X[0] - r2(REPOS_X[0]);
+// La chute, à mi-course : la paroi poussée de CONTACT à 90°, l'autre de 0 à
+// 90°, au même rythme (la première reste posée sur la seconde).
+const MI = 0.5, CHUTE_X = REPOS_X.map((x) => x + PENCHE + MI * (TOTAL - PENCHE));
 
 const CARTES = {
-  repos: SOL + CABANE_G + CABANE_D + mur(0) + pousseurs(REPOS_X, 'pousse'),
-  intermediaire: SOL + CABANE_G + CABANE_D + mur(PENCHE) + pousseurs(INTER_X, 'pousse'),
+  repos: SOL + CABANES(0, 0) + pousseurs(REPOS_X, 'pousse'),
+  penche: SOL + CABANES(CONTACT, 0) + pousseurs(PENCHE_X, 'pousse'),
+  chute: SOL + CABANES(CONTACT + MI * (90 - CONTACT), MI * 90) + pousseurs(CHUTE_X, 'pousse'),
   fin:
     DALLE + SOL + CABANE_FIN + POINT +
     perso(HOURRA, FIN_X[1], { classe: 'a-hourra' }) +
@@ -183,13 +171,19 @@ const CARTES = {
     perso(HOURRA, FIN_X[3], { classe: 'c-hourra' }) +
     perso(HOURRA, FIN_X[2], { miroir: true, classe: 'b-hourra' }),
 };
+// La paroi poussée ne traverse jamais l'autre : distance signée de son haut à
+// la paroi de droite (<= 0 : derrière ou posée dessus), pendant la chute.
+const traverse = Math.max(...Array.from({ length: 101 }, (_, i) => {
+  const p = i / 100, ag = rad(CONTACT + p * (90 - CONTACT)), ad = rad(p * 90);
+  return -ECART * Math.cos(ad) + 122 * Math.sin(ag - ad);
+}));
 const fichier = (corps) =>
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -140 ${L} 160" width="${L}" height="160">${STYLE}${corps}</svg>\n`;
 for (const [nom, corps] of Object.entries(CARTES)) writeFileSync(join(ICI, `${nom}.svg`), fichier(corps));
 
 // ---------------------------------------------------------------------------
-// La planche : les trois images, les poses ; le découpage proposé ; puis la
-// fin et le repos aux largeurs de carte (480, 384, 335 px), taille réelle.
+// La planche : les trois images, les poses ; le découpage ; puis la fin et le
+// repos aux largeurs de carte (480, 384, 335 px), taille réelle.
 
 const P8 = police(800), P4 = police(400);
 const M = 20, LARG = 2 * M + 1280, LEG = 34;
@@ -204,56 +198,50 @@ const POSES_CASE =
   `<line class="se" x1="6" y1="0" x2="${L - 6}" y2="0" stroke-width="1.5"/>` +
   perso(POSES.penche, 45) + perso(POUSSE, 125, { jean: true }) +
   perso(POSES.debout, 250) + perso(HOURRA, 340, { jean: true });
-const NOMS = [['penche', 28], ['pousse (nouvelle)', 100], ['debout', 232], ['hourra (nouvelle)', 312]];
+const NOMS = [['penche', 28], ['pousse', 112], ['debout', 232], ['hourra', 322]];
 
-// Case 5 : le découpage, la version longue et la courte.
-const LONGUE = [
-  ['1 à 2', 'le mur penche sous la poussée', 200, 'ease-in-out'],
-  ['2 à 3', 'le mur tombe ; une seule cabane, la dalle', 200, 'ease-in'],
-  ['fin', 'les deux mains levées, le point ambre', 200, 'step-end'],
+// Case 5 : le découpage.
+const TEMPS = [
+  ['0 à 200', 'la paroi poussée bascule jusqu’à l’autre, la chaîne la suit', 200, 'ease-in-out'],
+  ['200 à 400', 'les deux parois tombent vers la droite, la chaîne trébuche', 200, 'ease-in'],
+  ['400', 'une seule cabane, la dalle ; les deux bras tendus', 100, 'step-end'],
+  ['500', 'les deux mains levées ; le point ambre se pose dès 400', 100, 'step-end'],
 ];
-const COURTE = [['chute', 'le mur tombe (de 0 à la fin)', 250], ['point', 'bascule des poses, le point', 100]];
 function decoupage(x, y) {
-  let d = petit('Découpage proposé : 600 ms ; version courte : 350 ms, le mur qui tombe seul', x + 16, y + 30, 14, P8);
+  let d = petit('Découpage : 600 ms ; aucun bras levé seul', x + 16, y + 30, 14, P8);
   const x0 = x + 16, lp = CASE - 32 - 64;
-  const barre = (temps, yb) => {
-    let t = 0, s = '';
-    temps.forEach(([, , ms], i) => {
-      const xa = x0 + (t / 600) * lp, l = (ms / 600) * lp;
-      s += `<rect x="${r2(xa)}" y="${yb}" width="${r2(l - 3)}" height="16" rx="2" fill="${i === temps.length - 1 ? C.ambre : i % 2 ? C.dalle : '#ECE7DE'}" stroke="${C.ardoise}" stroke-width="1"/>`;
-      s += petit(`${ms}`, xa + 4, yb + 12, 11);
-      t += ms;
-    });
-    return s + petit(`${t} ms`, x0 + (t / 600) * lp + 6, yb + 12, 11);
-  };
-  d += barre(LONGUE, y + 48) + barre(COURTE, y + 74);
-  let yl = y + 114;
-  for (const [n, txt, ms, c] of LONGUE) { d += petit(n, x0, yl, 13, P8) + petit(`${txt} : ${ms} ms (${c})`, x0 + 58, yl, 13); yl += 19; }
-  for (const [n, txt, ms] of COURTE) { d += petit(n, x0, yl, 13, P8) + petit(`court : ${txt}, ${ms} ms`, x0 + 58, yl, 13); yl += 19; }
+  let t = 0;
+  TEMPS.forEach(([, , ms], i) => {
+    const xa = x0 + (t / 600) * lp, l = (ms / 600) * lp;
+    d += `<rect x="${r2(xa)}" y="${y + 48}" width="${r2(l - 3)}" height="16" rx="2" fill="${i === TEMPS.length - 1 ? C.ambre : i % 2 ? C.dalle : '#ECE7DE'}" stroke="${C.ardoise}" stroke-width="1"/>`;
+    d += petit(`${ms}`, xa + 4, y + 60, 11);
+    t += ms;
+  });
+  d += petit(`${t} ms`, x0 + lp + 6, y + 60, 11);
+  let yl = y + 96;
+  for (const [n, txt, ms, c] of TEMPS) { d += petit(n, x0, yl, 13, P8) + petit(`${txt} : ${ms} ms (${c})`, x0 + 84, yl, 13); yl += 20; }
   return d;
 }
 
 let y = M, corps = '';
 const LEGENDES = [
-  ['repos', 'Repos : deux cabanes, un mur épais ; les quatre poussent en chaîne.'],
-  ['intermediaire', 'Le mur penche.'],
+  ['repos', 'Repos : deux cabanes, un écart ; les quatre poussent la paroi droite.'],
+  ['penche', 'La paroi poussée bascule et touche l’autre.'],
+  ['chute', 'Les deux parois tombent vers la droite ; la chaîne trébuche.'],
   ['fin', 'Fin : une seule cabane sur la dalle, point ambre ; les deux mains levées.'],
 ];
 LEGENDES.forEach(([nom, t], i) => {
   const x = M + (i % 2) * (CASE + M), yc = y + Math.floor(i / 2) * (H_CASE + LEG + 12);
   corps += cadre(x, yc, CASE, H_CASE) + scene(CARTES[nom], x, yc, K) + legende(i + 1, t, x, yc + H_CASE + 22);
 });
-{
-  const x = M + CASE + M, yc = y + H_CASE + LEG + 12;
-  corps += cadre(x, yc, CASE, H_CASE) + scene(POSES_CASE, x, yc, K);
-  for (const [nm, xn] of NOMS) corps += petit(nm, x + xn * K, yc + H_CASE - 10);
-  corps += legende(4, 'Les poses : deux nouvelles, à côté de celles dont elles partent.', x, yc + H_CASE + 22);
-}
 y += 2 * (H_CASE + LEG + 12);
-corps += cadre(M, y, CASE, H_CASE) + decoupage(M, y);
-corps += legende(5, 'La durée : trois temps, ou la chute seule.', M, y + H_CASE + 22);
+corps += cadre(M, y, CASE, H_CASE) + scene(POSES_CASE, M, y, K);
+for (const [nm, xn] of NOMS) corps += petit(nm, M + xn * K, y + H_CASE - 10);
+corps += legende(5, 'Les poses : pousse et hourra, à côté de celles dont elles partent.', M, y + H_CASE + 22);
+corps += cadre(M + CASE + M, y, CASE, H_CASE) + decoupage(M + CASE + M, y);
+corps += legende(6, 'La durée : la bascule, la chute, puis la fusion.', M + CASE + M, y + H_CASE + 22);
 y += H_CASE + LEG + 12;
-let n = 6;
+let n = 7;
 for (const nom of ['fin', 'repos']) {
   let x = M;
   const hMax = (160 / L) * 480;
@@ -274,9 +262,9 @@ await sharp(Buffer.from(planche)).png({ compressionLevel: 9 }).toFile(join(ICI, 
 // ---------------------------------------------------------------------------
 // Les contrôles, pour le rapport.
 const teteHaut = tourne([1, -120], BASCULE)[1];
-console.log(`cabanes : gauche ${r2(X0)} à ${r2(XM)}, mur ${r2(XM)} à ${r2(XM + MUR_L)}, droite à ${r2(X1)} ; égout ${-E}, faîtage ${-R}.`);
+console.log(`repos : cabane gauche ${r2(X0)} à ${r2(XG)}, écart ${r2(XG)} à ${r2(XD)} (${ECART}), droite ${r2(XD)} à ${r2(X1)} ; point ${r2(S)} ; contact à ${r2(CONTACT * 100) / 100}°.`);
 console.log(`pousse : mains ${pt(MAIN_AV)} et ${pt(MAIN_AR)} ; haut de tête ${r2(teteHaut)} ; pas de chaîne ${r2(PAS_CHAINE)}.`);
-console.log(`chaîne au repos : ${REPOS_X.map(r2).join(', ')} ; penchée : ${INTER_X.map(r2).join(', ')} ; jambe arrière du dernier à ${r2(REPOS_X[3] - 16 - 3.75)} (cabane dès ${r2(X0)}).`);
+console.log(`chaîne au repos : ${REPOS_X.map(r2).join(', ')} ; main de Jean jusqu'à ${r2(REPOS_X[0] + MAIN_AV[0] + MAIN_BORD)} (paroi à ${r2(XG - MUR_T)}) ; jambe arrière du dernier à ${r2(REPOS_X[3] - 16 - 3.75)} (cabane dès ${r2(X0 + MUR_T)}) ; glissement ${r2(PENCHE)} puis ${r2(TOTAL)} en tout ; traversée max ${r2(traverse)} (≤ 0).`);
 console.log(`hourra : mains ${pt(H_AV)} et ${pt(H_AR)} ; jeu bras-tête ${r2(jeu(EP_AV, H_AV))} et ${r2(jeu(EP_AR, H_AR))} (rayon 10).`);
-console.log(`fin : ${FIN_X.map(r2).join(', ')} ; mains levées au-dessus du point : ${r2(FIN_X[0] + H_AV[0])} et ${r2(FIN_X[2] - H_AV[0])} ; porte dès ${r2(PORTE_X)}.`);
+console.log(`fin : ${FIN_X.map(r2).join(', ')} ; porte dès ${r2(PORTE_X)}.`);
 console.log(`planche.png ${LARG} × ${H}.`);

@@ -18,13 +18,16 @@
  *  - « audit » : l'équipe rejoint Jean, qui a le plan ouvert ;
  *  - « matrice » : Jean montre le barreau suivant, l'ouvrier monte à
  *    l'échelle (registre/0062) ;
+ *  - « fusion » : Jean et l'équipe poussent, les parois de deux cabanes
+ *    tombent, il n'en reste qu'une (registre/0069) ;
+ *  - « misesEnSituation » : le board se remplit en entonnoir, un seul
+ *    post-it ambre ; Jean regarde (registre/0069) ;
  *  - « aucune » : pas de dessin, la carte s'arrête au fait clé (Parcelle.astro).
- *    Les cartes 01 et 02, en attendant leurs scènes (registre/0069).
  */
 import type { Langue, Page } from '../i18n/routes';
 
 export type Groupe = 'hauteur' | 'paire' | 'a-part';
-export type SceneDeCarte = 'uservoice' | 'audit' | 'matrice' | 'aucune';
+export type SceneDeCarte = 'uservoice' | 'audit' | 'matrice' | 'fusion' | 'misesEnSituation' | 'aucune';
 
 export interface Projet {
   numero: string;
@@ -40,7 +43,7 @@ export const PROJETS: readonly Projet[] = [
     numero: '01',
     page: 'fusion',
     groupe: 'hauteur',
-    scene: 'aucune',
+    scene: 'fusion',
     nom: { fr: 'Fusion des plateformes', en: 'Platform merger' },
     fait: {
       fr: 'En août 2024, avant la rentrée, la plateforme dédiée aux entreprises a rejoint la plateforme généraliste. Une plateforme sur trois a été supprimée.',
@@ -51,7 +54,7 @@ export const PROJETS: readonly Projet[] = [
     numero: '02',
     page: 'misesEnSituation',
     groupe: 'hauteur',
-    scene: 'aucune',
+    scene: 'misesEnSituation',
     nom: { fr: 'Mises en situation orales', en: 'Speaking role-plays' },
     fait: {
       fr: 'Invités à classer ce qui comptait le plus, les clients ont mis en tête la qualité de l’échange avec l’IA et celle du retour après l’échange. Le retour pédagogique est passé en tête de la feuille de route, avant l’engagement.',

@@ -49,7 +49,7 @@ Bugs are still tracked, signature by signature. But satisfaction depends first o
 
 ## Benefits and business impact
 
-Every Monday, the summary takes five minutes to read, with the four sources brought together. It brings out weak signals we could not see before, when a topic that is still rare starts to rise. Above all, listening to learners gave hard evidence of a pain point, the quality of the content, which moved to the top of the priorities. At the annual review, a B2B client, a school, pointed to the same issue in its reports. The second project in this portfolio, the content audit, starts from that finding and answers its request.
+Every Monday, the summary takes five minutes to read, with the four sources brought together. It brings out weak signals we could not see before, when a topic that is still rare starts to rise. Above all, listening to learners gave hard evidence of a pain point, the quality of the content, which moved to the top of the priorities. At the annual review, a B2B client, a school, pointed to the same issue in its reports. The content audit project starts from that finding and answers its request.
 
 ## What I built
 

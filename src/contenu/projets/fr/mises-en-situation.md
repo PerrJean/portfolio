@@ -74,9 +74,9 @@ L’IA a aussi ses propres limites. Les apprenants cherchent les failles d’une
 
 ## Bénéfices et impact business
 
-Un responsable de formation achète une preuve de progression. Un retour qui montre ce qui a marché et ce qu’il faut retravailler répond à la première attente de tous les clients interrogés. Un catalogue qui part des situations professionnelles répond à ce qu’ils ont jugé indispensable.
+Le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau, auprès de nouveaux clients. Ces clients, des entreprises, achètent la preuve que leurs salariés progressent à l’oral. Tous ceux que l’équipe a interrogés voulaient d’abord un retour qui dise ce qui a marché et ce qu’il faut retravailler : c’est ce que donne la fin de chaque échange. Le catalogue, lui, part des situations professionnelles qu’ils ont classées en tête.
 
-Le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau, auprès de nouveaux clients. À la fin de septembre 2026, les échanges sont en ligne dans quatre parcours, dont le parcours général de niveau A2 et les parcours business. Le retour pédagogique est en place, et la prononciation l’a rejoint pendant l’été. Deux parcours de plus, les statistiques des conversations et l’analyse de l’usage sont les prochaines étapes.
+À la fin de septembre 2026, les échanges sont en ligne dans quatre parcours, dont le parcours général de niveau A2 et les parcours business. Le retour pédagogique est en place, et la prononciation l’a rejoint pendant l’été. Deux parcours de plus, les statistiques des conversations et l’analyse de l’usage sont les prochaines étapes.
 
 ## Ce que j’en retiens
 
@@ -84,6 +84,4 @@ Ce projet m’apprend à tenir le rôle de Head of Product sur une découverte q
 
 **Cadrer la démarche, laisser l’équipe trouver.** Mon travail a porté sur la méthode et le Design Sprint, pas sur les réponses. Le PM et la product designer ont mené les entretiens et les enquêtes, et ce sont leurs conclusions qui ont réordonné la feuille de route.
 
-**Faire classer, pas seulement écouter.** Demander aux clients ce qu’ils veulent donne une liste. Leur demander de classer donne un ordre, et c’est l’ordre qui a fait passer le retour avant l’engagement, et les situations professionnelles avant la vie quotidienne.
-
-**Préférer l’option juste à l’option visible.** La note de prononciation par IA était la plus facile à présenter à un décideur. La recherche disait qu’un retour faux fait plus de mal que pas de retour. J’apprends à défendre l’option moins spectaculaire quand c’est elle qui fait progresser.
+**Faire classer, pas seulement écouter.** Demander aux clients ce qu’ils veulent donne une liste où tout compte. Leur demander de classer oblige à choisir : le retour pédagogique est passé devant les animations d’engagement (badges, progression), et les situations professionnelles devant la vie quotidienne.

@@ -14,7 +14,7 @@ plusLoin:
       - "September 2023: target framed and presented to the executive committee."
       - "March 2024: shared navigation across the three platforms. April 2024: a shared learning paths page."
       - "January to August 2024: user research, specifications, mockups, development and acceptance testing of the new templates."
-      - "August 2024: the merger goes live. November 2024: a sign-up flow shared by the three platforms."
+      - "August 2024: the merger goes live."
   - titre: "The seven batches"
     points:
       - "Before go-live: the shared navigation bar, the activity templates, the business sign-up flow on the general platform, updates to its pages (home, learning paths, statistics, certification), then technical changes (single sign-on, infrastructure, white label) and editorial ones."

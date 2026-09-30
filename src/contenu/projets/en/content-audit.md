@@ -38,7 +38,7 @@ cle: auditContenu
 
 ## Why audit
 
-In the site’s feedback form, 1 in 3 pieces of feedback is about the content: that is what the first project, UserVoice, found.
+In the site’s feedback form, 1 in 3 pieces of feedback is about the content: that is what the UserVoice project found.
 
 I led this work with a learning designer. I designed the audit grid and the tooling that applies it; she validated the grid and set the writing rules for the content.
 

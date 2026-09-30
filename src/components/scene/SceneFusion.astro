@@ -1,0 +1,155 @@
+---
+// La carte 01 Fusion des plateformes (registre/0069) : deux cabanes au même
+// trait, séparées par un écart, du vide ; au repos, dans celle de gauche,
+// Jean et les trois ouvriers de l'en-tête poussent sa paroi droite en chaîne
+// (ops/images/fusion-scene/repos.svg). Au survol ou au focus de la carte, en
+// 0,6 s : la paroi poussée bascule jusqu'à toucher la paroi gauche de
+// l'autre cabane, la chaîne la suit (0,2 s, ease-in-out) ; les deux parois
+// tombent ensemble vers la droite, la chaîne trébuche en avant (0,2 s,
+// ease-in) ; l'écart a disparu : une seule cabane sur une dalle commune ; les
+// quatre tendent les deux bras puis lèvent les deux mains, le point ambre se
+// pose là où étaient les parois (fin.svg).
+// Jamais un bras levé seul : pousse et bras-tendus restent sous l'épaule,
+// hourra lève les deux.
+// À rendre dans Scene.astro (variante « fusion »), qui porte les couleurs et
+// le déclenchement sans survol. Mesures : ops/images/fusion-scene/planche.mjs.
+import Personnage from './Personnage.astro';
+import { CABANE } from './poses';
+
+// Au repos : la cabane de gauche de 35,8 à 266,9, l'écart jusqu'à 290,9, la
+// cabane de droite jusqu'à 390,9 ; à la fin, une cabane de 35,8 à 390,9, le
+// point au milieu de l'écart (278,9).
+const X0 = 35.8, XG = 266.9, XD = 290.9, X1 = 390.9, PORTE = 356.9;
+const FENETRE = CABANE.fenetre(X0 + 8, -116, 16);
+const PORTE_D = CABANE.porte(PORTE, 26, 62);
+const CABANES = CABANE.murs(X0, XG, 'droite') + FENETRE + CABANE.murs(XD, X1, 'gauche') + PORTE_D;
+const CABANE_FIN = CABANE.murs(X0, X1) + FENETRE + PORTE_D;
+
+// La chaîne au repos (Jean à la paroi, puis A, B, C), à 52,4 l'un de l'autre.
+const CHAINE = [
+  { qui: 'c', x: 58.3 },
+  { qui: 'b', x: 110.7 },
+  { qui: 'a', x: 163.1 },
+  { qui: 'j', x: 215.5 },
+];
+// La fin : Jean, A et C à gauche du point, B à droite, face à eux.
+const FIN = [
+  { qui: 'a', x: 192.9 },
+  { qui: 'j', x: 250.9 },
+  { qui: 'c', x: 134.9 },
+  { qui: 'b', x: 306.9, miroir: true },
+];
+---
+
+<rect class="fd fu-apres" x="23.8" y="0" width="379.1" height="12" />
+<line class="se" x1="0" y1="0" x2="426.667" y2="0" stroke-width="1.5" />
+
+<g class="fu-avant" set:html={CABANES} />
+<g class="fu-apres" set:html={CABANE_FIN} />
+
+<!-- Les deux parois qui se font face, pivot au pied : celle de droite,
+     puis celle que la chaîne pousse, qui tombe sur elle. -->
+<g class="fu-avant">
+  <g transform={`translate(${XD} 0)`}>
+    <g class="fu-paroi-d" set:html={CABANE.paroi} />
+  </g>
+  <g transform={`translate(${XG} 0)`}>
+    <g class="fu-paroi-g" set:html={CABANE.paroi} />
+  </g>
+</g>
+
+<circle class="point fa" cx="278.9" cy="6" r="5" />
+
+<!-- La chaîne des pousseurs, qui avance d'un bloc. -->
+<g class="fu-avant">
+  <g class="fu-chaine">
+    {CHAINE.map(({ qui, x }) => (
+      <g transform={`translate(${x} 0)`}>
+        <Personnage pose="pousse" jean={qui === 'j'} class={`${qui}-pousse`} />
+      </g>
+    ))}
+  </g>
+</g>
+
+<!-- La fin : les deux bras tendus, puis les deux mains levées. -->
+{FIN.map(({ qui, x, miroir }) => (
+  <g transform={`translate(${x} 0)`}>
+    <Personnage pose="bras-tendus" jean={qui === 'j'} miroir={miroir} class={`${qui}-tendus fu-tendus`} />
+    <Personnage pose="hourra" jean={qui === 'j'} miroir={miroir} class={`${qui}-hourra fu-hourra`} />
+  </g>
+))}
+
+<style is:global>
+  .scene--fusion :is(.fu-paroi-g, .fu-paroi-d, .fu-chaine) {
+    transform-box: view-box;
+    transform-origin: 0 0;
+  }
+
+  /* Repos : deux cabanes, l'écart, la chaîne qui pousse. */
+  .scene--fusion :is(.fu-apres, .fu-tendus, .fu-hourra, .point) {
+    opacity: 0;
+  }
+
+  /* 0,6 s, 1 % = 6 ms. La paroi poussée bascule de 11,35° et touche l'autre
+     (0-33,3 %, ease-in-out), la chaîne la suit (+16) ; les deux parois
+     tombent jusqu'au sol (33,3-66,7 %, ease-in), la chaîne trébuche (+35,4
+     en tout : Jean arrive à sa place de la fin) ; à 66,7 %, une seule
+     cabane sur la dalle, les deux bras tendus ; à 83,3 %, les deux mains
+     levées ; le point ambre se pose (66,7-100 %). Hors survol, retour au
+     repos. */
+  @media (prefers-reduced-motion: no-preference) {
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--fusion .fu-avant {
+      animation: sc-fu-avant 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--fusion .fu-apres {
+      animation: sc-fu-apres 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--fusion .fu-tendus {
+      animation: sc-fu-tendus 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--fusion .fu-hourra {
+      animation: sc-fu-hourra 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--fusion .fu-paroi-g {
+      animation: sc-fu-paroi-g 0.6s both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--fusion .fu-paroi-d {
+      animation: sc-fu-paroi-d 0.6s both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--fusion .fu-chaine {
+      animation: sc-fu-chaine 0.6s both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--fusion .point {
+      animation: sc-fu-point 0.6s ease-out both;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene--fusion * { animation: none !important; }
+  }
+
+  @keyframes sc-fu-avant { 0% { opacity: 1; } 66.67%, 100% { opacity: 0; } }
+  @keyframes sc-fu-apres { 0% { opacity: 0; } 66.67%, 100% { opacity: 1; } }
+  @keyframes sc-fu-tendus { 0% { opacity: 0; } 66.67% { opacity: 1; } 83.33%, 100% { opacity: 0; } }
+  @keyframes sc-fu-hourra { 0% { opacity: 0; } 83.33%, 100% { opacity: 1; } }
+  /* Les deux parois tombent au même rythme : la poussée reste posée sur
+     l'autre, sans la traverser (planche.mjs, « traversée »). */
+  @keyframes sc-fu-paroi-g {
+    0% { transform: rotate(0deg); animation-timing-function: ease-in-out; }
+    33.33% { transform: rotate(11.35deg); animation-timing-function: ease-in; }
+    66.67%, 100% { transform: rotate(90deg); }
+  }
+  @keyframes sc-fu-paroi-d {
+    0%, 33.33% { transform: rotate(0deg); animation-timing-function: ease-in; }
+    66.67%, 100% { transform: rotate(90deg); }
+  }
+  @keyframes sc-fu-chaine {
+    0% { transform: translate(0, 0); animation-timing-function: ease-in-out; }
+    33.33% { transform: translate(16px, 0); animation-timing-function: ease-in; }
+    66.67%, 100% { transform: translate(35.4px, 0); }
+  }
+  @keyframes sc-fu-point {
+    0%, 66.67% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+</style>

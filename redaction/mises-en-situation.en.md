@@ -72,9 +72,9 @@ The AI also has limits of its own. Learners look for the cracks in a conversatio
 
 ## Benefits and business impact
 
-A training manager buys proof of progress. Feedback that shows what worked and what to work on meets the first expectation of every client interviewed. A catalog that starts from work situations matches what they rated must-have.
+The project brought in several tens of thousands of euros in new revenue, from new clients. These clients, companies, buy proof that their employees are making progress in speaking. Every client the team interviewed wanted, first of all, feedback that says what worked and what to work on: that is what the end of each role-play gives. The catalog, for its part, starts from the work situations they ranked highest.
 
-The project brought in several tens of thousands of euros in new revenue, from new clients. At the end of September 2026, the role-plays are live in four learning paths, including the A2 general path and the business paths. Learning feedback is in place, and pronunciation joined it over the summer. Two more learning paths, conversation statistics and usage analysis are the next steps.
+At the end of September 2026, the role-plays are live in four learning paths, including the A2 general path and the business paths. Learning feedback is in place, and pronunciation joined it over the summer. Two more learning paths, conversation statistics and usage analysis are the next steps.
 
 ## What I took from it
 
@@ -82,9 +82,7 @@ This project is teaching me to hold the Head of Product role in a discovery I do
 
 **Frame the approach, let the team find the answers.** My work covered the method and the Design Sprint, not the answers. The PM and the product designer ran the interviews and the surveys, and their conclusions reordered the roadmap.
 
-**Ask for a ranking, not just for input.** Asking clients what they want gets you a list. Asking them to rank gets you an order, and the order is what put feedback ahead of engagement, and work situations ahead of everyday life.
-
-**Choose the right option over the visible one.** An AI pronunciation score was the easiest option to pitch to a decision-maker. Research said that wrong feedback does more harm than no feedback. I am learning to defend the less spectacular option when it is the one that helps learners progress.
+**Ask for a ranking, not just for input.** Asking clients what they want gets you a list where everything matters. Asking them to rank forces a choice: learning feedback moved ahead of engagement features (badges, progress tracking), and work situations ahead of everyday life.
 
 ---
 

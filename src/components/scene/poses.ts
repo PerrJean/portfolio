@@ -14,7 +14,9 @@
 //  - frappe-1 et frappe-2 : nouvelles poses du batiment, le bras avant et
 //    le marteau pivotent ensemble a l'epaule (groupe .bras-tour) ;
 //  - montre, pied-barreau, sur-echelle (registre/0062) : l'echelle de la
-//    carte 03, sur les segments existants, sans articulation nouvelle.
+//    carte 03, sur les segments existants, sans articulation nouvelle ;
+//  - pousse, hourra (registre/0069) : la carte fusion, sur les segments
+//    existants ; hourra leve toujours les deux bras, jamais un seul.
 
 const LIGNE = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
 const trait = (c: string, points: string, largeur: number) =>
@@ -143,6 +145,22 @@ export const POSES = {
     brasArriere('4.6,-88.7 -1.7,-58.3') +
     `<g transform="rotate(8 0 -56)">${torse()}${TETE}</g>` +
     brasAvant('5.6,-88.5 33.6,-72.5'),
+  /** Pousse (la carte fusion, registre/0069) : buste et tete basculent de
+   *  25 degres aux hanches ; la jambe arriere tendue loin derriere, le pied
+   *  a plat ; l'avant flechie, genou devant (celle de marche-2) ; les deux
+   *  bras droits, longs de ceux de bras-tendus (32,2 et 33,6), repartent des
+   *  epaules basculees, 10 et 6 degres sous l'horizontale.
+   *  Dessin d'origine : ops/images/fusion-scene/planche.mjs. */
+  'pousse':
+    jambes('-5.25,-56 -16,-4 -11,-4', '5.25,-56 13,-31 9,-4 14,-4') +
+    brasArriere('13.9,-85.9 47.4,-82.4') +
+    `<g transform="rotate(25 0 -56)">${torse()}${TETE}</g>` +
+    brasAvant('14.9,-85.5 46.6,-79.9'),
+  /** Hourra : debout, les deux bras droits (ceux de bras-tendus) leves en V
+   *  a 45 degres, l'avant vers l'avant, l'arriere vers l'arriere ; ils
+   *  passent a cote de la tete sans la toucher. Toujours les deux mains :
+   *  jamais un bras leve seul (registre/0069). */
+  'hourra': DEBOUT + brasArriere('0,-89 -23.8,-112.8') + torse() + TETE + brasAvant('1,-89 23.8,-111.8'),
 };
 
 export type Pose = keyof typeof POSES;
@@ -166,4 +184,38 @@ export const OBJETS = {
    *  barreaux (les trois niveaux de la grille) a -19, -55 et -91. */
   echelle:
     '<g stroke-linecap="round"><line class="se" x1="5.7" y1="-19" x2="37.7" y2="-19" stroke-width="3"/><line class="se" x1="16.5" y1="-55" x2="48.5" y2="-55" stroke-width="3"/><line class="se" x1="27.3" y1="-91" x2="59.3" y2="-91" stroke-width="3"/><line class="se" x1="0" y1="-1" x2="37.5" y2="-125" stroke-width="4"/><line class="se" x1="32" y1="-1" x2="69.5" y2="-125" stroke-width="4"/></g>',
+  /** Le board de la carte mises en situation (registre/0069), origine au
+   *  bord gauche du cadre, au sol : 156 de large, de -130 a -46, trois
+   *  separations ardoise (quatre colonnes de 39), deux pieds ecartes. */
+  board:
+    '<line class="se" x1="20" y1="-46" x2="11" y2="-1" stroke-width="4" stroke-linecap="round"/><line class="se" x1="136" y1="-46" x2="145" y2="-1" stroke-width="4" stroke-linecap="round"/><rect class="fi se" x="0" y="-130" width="156" height="84" rx="1.5" stroke-width="2.5"/><line class="sa" x1="39" y1="-125" x2="39" y2="-51" stroke-width="1.2"/><line class="sa" x1="78" y1="-125" x2="78" y2="-51" stroke-width="1.2"/><line class="sa" x1="117" y1="-125" x2="117" y2="-51" stroke-width="1.2"/>',
+  /** Le post-it, origine au coin haut gauche : un carre au trait de 13. */
+  postit: '<rect class="fi se" x="0" y="0" width="13" height="13" rx="1" stroke-width="1.5"/>',
+  /** Le post-it retenu : aplat ambre, une petite bulle au trait (l'oral). */
+  'postit-retenu':
+    '<rect class="fa se" x="0" y="0" width="13" height="13" rx="1" stroke-width="1.5"/><path class="se" d="M1.9,5.5 a3.6,2.6 0 1 1 2.2,2.4 l-2.4,1.8 l0.6,-2.6 Z" fill="none" stroke-width="1.1" stroke-linejoin="round"/>',
 } as const;
+
+/** Les cabanes de la carte fusion (registre/0069) : murs et toit a deux pans
+ *  d'un seul chemin, du pied gauche (xa) au pied droit (xb), egout a -122,
+ *  faitage a -140, un trait d'encre plein de 2,5 ; « ouvert » retire la paroi
+ *  de ce cote (elle est dessinee a part, PAROI, pour tomber). La fenetre
+ *  (carre de cote c, un meneau) et la porte (largeur l, hauteur h) au meme
+ *  trait. */
+const r1 = (v: number) => Math.round(v * 10) / 10;
+const cheminCabane = (d: string, rond = false) =>
+  `<path class="se" d="${d}" fill="none" stroke-width="2.5" stroke-linejoin="round"${rond ? ' stroke-linecap="round"' : ''}/>`;
+export const CABANE = {
+  murs: (xa: number, xb: number, ouvert?: 'gauche' | 'droite') => {
+    const g = ouvert === 'gauche' ? `M${r1(xa)},-122` : `M${r1(xa)},0 L${r1(xa)},-122`;
+    const d = ouvert === 'droite' ? '' : ` L${r1(xb)},0`;
+    return cheminCabane(`${g} L${r1((xa + xb) / 2)},-140 L${r1(xb)},-122${d}`, ouvert !== undefined);
+  },
+  fenetre: (x: number, y: number, c: number) =>
+    cheminCabane(`M${r1(x)},${r1(y)} h${c} v${c} h${-c} Z M${r1(x + c / 2)},${r1(y)} v${c}`),
+  porte: (x: number, l: number, h: number) =>
+    cheminCabane(`M${r1(x)},0 L${r1(x)},${-h} L${r1(x + l)},${-h} L${r1(x + l)},0`),
+  /** Une paroi seule, origine a son pied (le pivot de sa chute), du sol a
+   *  l'egout, au trait de la cabane, bouts ronds (le coin arrondi du toit). */
+  paroi: '<path class="se" d="M0,0 L0,-122" fill="none" stroke-width="2.5" stroke-linecap="round"/>',
+};

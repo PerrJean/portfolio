@@ -19,3 +19,9 @@ trois schémas de la fusion en `<picture>` (bascule à 48,5rem), schéma de
 l'échange ; groupe `hauteur` (01, 02, sans flèche, en grille partagée avec la
 paire) ; « projet suivant » en boucle sur les cinq. Accroche gardée à
 « Trois projets » en attendant Jean. Ratio 1,2.
+**Accroche (Jean, 2026-10-01)** : « J'ai réuni deux plateformes en une, lancé
+des mises en situation orales avec l'IA, codé moi-même avec l'IA deux outils
+partis de zéro, l'un qui écoute des milliers d'apprenants, l'autre qui
+corrige chaque question, et fait grandir un PM de mon équipe. » (EN en
+miroir) ; descriptions des accueils passées à cinq projets ; « premier /
+second projet » retirés des pages UserVoice et Audit contenu.

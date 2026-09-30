@@ -22,3 +22,9 @@ Brief : `prompts/6-scenes-4-5-images-cles.md`.
 `ops/images/mises-en-situation-scene/` (board qui se remplit, post-it ambre).
 Pose nouvelle à reporter : `pousse`. Réserve : la chaîne de quatre pousseurs
 prend la largeur, les cabanes remplissent la carte. En attente du go de Jean.
+**Animation faite (coût 223)** : `SceneFusion.astro` (les deux parois qui se
+font face tombent comme des dominos, l'écart disparaît, une cabane sur la
+dalle, deux mains levées) et `SceneMisesEnSituation.astro` (Jean à gauche,
+immobile ; le PM colle deux fois, la designer colle l'ambre à deux mains ;
+trois temps de 200 ms). Poses `pousse` et `hourra`, objets board et post-it
+dans `poses.ts`. Relevé des bras toutes les 1 ms : aucun bras levé seul.

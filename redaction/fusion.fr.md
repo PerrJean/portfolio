@@ -14,7 +14,7 @@ plusLoin:
       - "Septembre 2023 : cadrage de la cible, présenté au comité de direction."
       - "Mars 2024 : une navigation commune aux trois plateformes. Avril 2024 : une page des parcours commune."
       - "Janvier à août 2024 : recherche utilisateurs, spécifications, maquettes, développement et recette des nouveaux gabarits."
-      - "Août 2024 : mise en production de la fusion. Novembre 2024 : un parcours d’inscription commun aux trois plateformes."
+      - "Août 2024 : mise en production de la fusion."
   - titre: "Les sept lots"
     points:
       - "Avant la mise en production : la barre de navigation commune, les gabarits d’activité, le parcours d’inscription des entreprises sur la plateforme généraliste, l’adaptation de ses pages (accueil, parcours, statistiques, certification), puis les évolutions techniques (authentification unique, infrastructure, marque blanche) et éditoriales."

@@ -6,7 +6,7 @@ synthese: "D’après leurs retours, la satisfaction des apprenants d’une plat
 
 ## Pourquoi auditer
 
-Dans le formulaire du site, 1 retour sur 3 concerne le contenu : c’est le constat du premier projet, UserVoice.
+Dans le formulaire du site, 1 retour sur 3 concerne le contenu : c’est le constat du projet UserVoice.
 
 J’ai mené ce chantier avec une learning designer. J’ai conçu la grille d’audit et l’outillage qui l’applique ; elle a validé la grille et défini les règles d’écriture des contenus.
 

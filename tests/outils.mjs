@@ -13,16 +13,21 @@ export const RACINE = fileURLToPath(new URL('..', import.meta.url));
 /** Le site construit : variable DIST, relative à la racine du dépôt (défaut : dist). */
 export const DIST = resolve(RACINE, process.env.DIST || 'dist');
 
-/** Les dix pages et leurs jumelles, qui font foi (brief 2a, matrice : registre/0061). */
+/**
+ * Les quatorze pages et leurs jumelles, qui font foi (brief 2a, matrice :
+ * registre/0061, projets 4 et 5 : registre/0070).
+ */
 export const JUMELLES = [
   { fr: '/', en: '/en/' },
   { fr: '/projets/uservoice/', en: '/en/projects/uservoice/' },
   { fr: '/projets/audit-contenu/', en: '/en/projects/content-audit/' },
   { fr: '/projets/matrice-competences/', en: '/en/projects/skills-matrix/' },
+  { fr: '/projets/fusion-plateformes/', en: '/en/projects/platform-merger/' },
+  { fr: '/projets/mises-en-situation/', en: '/en/projects/speaking-practice/' },
   { fr: '/a-propos/', en: '/en/about/' },
 ];
 
-/** Les dix pages à plat : { chemin, lang, jumelle, langJumelle }. */
+/** Les quatorze pages à plat : { chemin, lang, jumelle, langJumelle }. */
 export const PAGES = JUMELLES.flatMap(({ fr, en }) => [
   { chemin: fr, lang: 'fr', jumelle: en, langJumelle: 'en' },
   { chemin: en, lang: 'en', jumelle: fr, langJumelle: 'fr' },

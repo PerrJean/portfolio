@@ -6,7 +6,11 @@
 //  - uservoice : Jean seul déroule le plan sur le tréteau (SceneUservoice) ;
 //  - audit : Jean sur le plan, l'équipe le rejoint (SceneAudit) ;
 //  - matrice : Jean montre le barreau suivant, l'ouvrier monte à l'échelle
-//    (SceneMatrice, registre/0062).
+//    (SceneMatrice, registre/0062) ;
+//  - fusion : la chaîne des quatre pousse une paroi, les deux parois qui
+//    se font face tombent, une seule cabane (SceneFusion, registre/0069) ;
+//  - misesEnSituation : le PM et la designer remplissent le board, Jean
+//    regarde (SceneMisesEnSituation, registre/0069).
 // Les cartes jouent au survol ou au focus de la `.parcelle` qui contient la
 // scène, et reviennent au repos quand ils cessent ; sans survol (écran
 // tactile), une fois quand la scène arrive au milieu de l'écran (classe
@@ -17,9 +21,11 @@ import SceneEntete from './SceneEntete.astro';
 import SceneUservoice from './SceneUservoice.astro';
 import SceneAudit from './SceneAudit.astro';
 import SceneMatrice from './SceneMatrice.astro';
+import SceneFusion from './SceneFusion.astro';
+import SceneMisesEnSituation from './SceneMisesEnSituation.astro';
 
 interface Props {
-  variante: 'entete' | 'uservoice' | 'audit' | 'matrice';
+  variante: 'entete' | 'uservoice' | 'audit' | 'matrice' | 'fusion' | 'misesEnSituation';
   class?: string;
 }
 const { variante, class: classe } = Astro.props;
@@ -39,6 +45,8 @@ const VUE = variante === 'entete' ? '205 -140 221.667 160' : '0 -140 426.667 160
   {variante === 'uservoice' && <SceneUservoice />}
   {variante === 'audit' && <SceneAudit />}
   {variante === 'matrice' && <SceneMatrice />}
+  {variante === 'fusion' && <SceneFusion />}
+  {variante === 'misesEnSituation' && <SceneMisesEnSituation />}
 </svg>
 
 <style is:global>
