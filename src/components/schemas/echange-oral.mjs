@@ -50,14 +50,14 @@ const TEXTES = {
       critere: `Critère travaillé${NBSP}: vocabulaire`,
     },
     lu: {
-      intro: `Une conversation IA, étape par étape${NBSP}:`,
+      intro: `Un échange, étape par étape${NBSP}:`,
       entree: `L’entrée${NBSP}: l’IA joue la réceptionniste de l’hôtel${NBSP}; votre rôle, un client de l’hôtel${NBSP}; votre mission, signaler un problème dans votre chambre. Durée${NBSP}: environ 2${NBSP}min.`,
       conversation: `La conversation. L’IA${NBSP}:`,
       reponse: `Votre réponse, à l’oral, transcrite${NBSP}:`,
       retour: `Le retour en trois temps, sur un seul critère, le vocabulaire.`,
       temps: (titre) => `${titre}${NBSP}:`,
     },
-    legende: `Une conversation IA, sur un exemple fictif${NBSP}: l’IA joue la réceptionniste, et le retour ne travaille qu’un critère, celui qui gêne le plus la compréhension.`,
+    legende: `Un échange, sur un exemple fictif${NBSP}: l’IA joue la réceptionniste, et le retour ne travaille qu’un critère, celui qui gêne le plus la compréhension.`,
   },
   en: {
     entree: {
@@ -83,7 +83,7 @@ const TEXTES = {
       critere: 'Focus: vocabulary',
     },
     lu: {
-      intro: 'One AI conversation, step by step:',
+      intro: 'One exchange, step by step:',
       entree: `Getting started: the AI plays the hotel receptionist; your role, a hotel guest; your mission, report a problem in your room. About 2${NBSP}min.`,
       conversation: 'The conversation. The AI:',
       reponse: 'Your answer, spoken, then transcribed:',
@@ -91,7 +91,7 @@ const TEXTES = {
       temps: (titre) => `${titre}:`,
     },
     legende:
-      'One AI conversation, on a fictional example: the AI plays the receptionist, and the feedback works on a single criterion, the one that most hinders understanding.',
+      'One exchange, on a fictional example: the AI plays the receptionist, and the feedback works on a single criterion, the one that most hinders understanding.',
   },
 };
 

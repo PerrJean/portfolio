@@ -1,10 +1,10 @@
 ---
 titre: "AI speaking role-plays: betting on a guided conversation"
 date: "2026-02"
-fait: "E-learning can finally help learners practice speaking: an AI plays the other person, and every conversation ends with useful learning feedback."
+fait: "E-learning can finally help learners practice speaking: an AI plays the other person, and every exchange ends with useful learning feedback."
 synthese:
   probleme: "On an EdTech language-learning platform, learners had few chances to practice speaking in real situations, facing a recruiter or a client. The AI conversations available elsewhere often sat outside the learning path, with scores nobody explained."
-  action: "We bet on a short, guided AI conversation, built on questions prepared by the learning design team. I framed the method and the Design Sprint with the product designer and the Product Manager on my team, who then ran interviews and surveys with clients."
+  action: "We bet on a guided conversation: a short exchange, built on questions prepared by the learning design team. I framed the method and the Design Sprint with the product designer and the Product Manager on my team, who then ran interviews and surveys with clients."
   resultat: "The surveys validated the format and reordered what came next: learning feedback first, and a catalog built on the topics rated must-have. The role-plays are live in four learning paths, and the project brought in several tens of thousands of euros in new revenue, from new clients."
 plusLoin:
   - titre: "The timeline"
@@ -19,15 +19,15 @@ plusLoin:
       - "Fall 2026, planned: conversation statistics, two more learning paths, interfaces in English and then in other languages, analysis of usage and satisfaction."
   - titre: "What the surveys ranked"
     points:
-      - "Expectations. Feedback that helps learners progress and a reliable conversation with the AI: every client interviewed. A reliable estimate of their level and a richer catalog: three in four. Pronunciation work: a minority."
-      - "Next priorities, as ranked by clients. First, the quality of the conversation with the AI, then the quality of the feedback. Next, the variety of situations and the simplicity of the experience. Last, badges and progress tracking."
+      - "Expectations. Feedback that helps learners progress and a reliable exchange with the AI: every client interviewed. A reliable estimate of their level and a richer catalog: three in four. Pronunciation work: a minority."
+      - "Next priorities, as ranked by clients. First, the quality of the exchange with the AI, then the quality of the feedback. Next, the variety of situations and the simplicity of the experience. Last, badges and progress tracking."
       - "Topics. Work situations top the ranking (collaborating on a project, talking with a client, a check-in with your manager, a job interview). Everyday life comes last (shopping, outings, accommodation). Open suggestions add phone calls and health."
   - titre: "How a conversation is built"
     points:
       - "A context (work, everyday life, studies) groups scenarios. A scenario sets the learner’s role, goal and storyline."
       - "Each scenario breaks down into short conversations of 1.5 to 2.5 minutes, each with a specific speaking goal."
       - "The AI plays a defined role (recruiter, client, panel member, friend) and asks a few questions, each with its expected points."
-      - "The expected points stay hidden during the conversation. Learners would tick boxes instead of talking, and a question can be passed before all its expected points are met."
+      - "The expected points stay hidden during the exchange. Learners would tick boxes instead of talking, and a question can be passed before all its expected points are met."
       - "A character has few traits (tone, emotion, origin): every instruction added to the AI weakens the others."
   - titre: "The three-step feedback"
     points:
@@ -36,12 +36,6 @@ plusLoin:
       - "The model shows the expected wording, within reach of the learner’s level rather than a native speaker’s."
       - "Only one criterion is worked on each time (grammar, coherence or vocabulary), the one that most hinders understanding."
       - "A fictional example. “The thing that is supposed to make the room warm is not doing what it should do” becomes “The heater hasn’t been working since this morning”: name the object and the problem."
-  - titre: "Pronunciation, three options"
-    points:
-      - "Score pronunciation with AI. The market expects it, but the score compares learners with a single reference accent, handles rhythm poorly and depends on the microphone. Estimated at three to six months."
-      - "Train the ear, then record yourself and compare with the model. In line with research, with no score. One to two months."
-      - "Measure, during the conversation, whether learners are understood and speak with ease, using the speech recognition already in place. One to two months, calibration included."
-      - "Recommendation: the third first, the second in parallel, the first later if the technology matures. Never a judgment on accent, never a ranking of learners."
 langue: en
 cle: misesEnSituation
 ---
@@ -52,19 +46,19 @@ On an EdTech language-learning platform, learners practiced understanding and wr
 
 Consumer apps already offered conversations with an AI. The study we ran in May 2025 showed their limits. Conversations often sat outside the learning path, and scores went unexplained. As for open conversation, it quickly drifts away from the learning goal.
 
-We made the opposite bet, a guided conversation. The AI plays the other person and leads a conversation of about two minutes, built on questions prepared by the learning design team. Learners answer out loud, in a message thread, with no video call and no real-time pressure.
+We made the opposite bet, a guided conversation. The AI plays the other person and leads an exchange of about two minutes, built on questions prepared by the learning design team. Learners answer out loud, in a message thread, with no video call and no real-time pressure.
 
 ## What discovery changed
 
 From the Design Sprint, the team built a prototype, and clients tested a first version: heads of teaching and teachers, from higher education to vocational training. Interviews, surveys and a co-design workshop followed, from February to April 2026.
 
-Everyone validated the foundation, from the guided conversation to the message thread with no video. Everyone also wanted feedback that helps learners progress, and a reliable conversation. Asked to rank our next priorities, they put the quality of the conversation with the AI first, the quality of the feedback right after, and badges and progress tracking last.
+Everyone validated the foundation, from the guided conversation to the message thread with no video. Everyone also wanted feedback that helps learners progress, and a reliable exchange. Asked to rank our next priorities, they put the quality of the exchange with the AI first, the quality of the feedback right after, and badges and progress tracking last.
 
 So we reordered what came next. Learning feedback moved to the top, earlier than planned, with management’s approval. Badges and progress tracking were put on hold: without useful feedback, they would only have rewarded effort. A survey on topics then shaped the catalog. Work situations came out on top and everyday life at the bottom, and the first role-plays were written from the top of the list down.
 
 ## What the AI does, and what we don’t ask of it
 
-The end-of-conversation feedback draws on second language acquisition research. It comes in three steps: a signal on the task, a hint that lets learners find the answer themselves, then a model phrasing. It works on one criterion only, the one that most hinders understanding. A grammar mistake that bothers no one is not flagged.
+The end-of-exchange feedback draws on second language acquisition research. It comes in three steps: a signal on the task, a hint that lets learners find the answer themselves, then a model phrasing. It works on one criterion only, the one that most hinders understanding. A grammar mistake that bothers no one is not flagged.
 
 <div data-schema="echange-oral"></div>
 
@@ -72,7 +66,7 @@ Pronunciation called for the clearest trade-off. A minority of clients asked for
 
 ## Benefits and business impact
 
-The project brought in several tens of thousands of euros in new revenue. Client companies want to see their employees progress in speaking. The end-of-conversation feedback shows that progress. Work situations come first in the catalog, as clients asked.
+The project brought in several tens of thousands of euros in new revenue. Client companies want to see their employees progress in speaking. The end-of-exchange feedback shows that progress. Work situations come first in the catalog, as clients asked.
 
 At the end of September 2026, the role-plays are live in four learning paths, including the A2 general path and the business paths. Learning feedback is in place, and pronunciation joined it over the summer. Two more learning paths, conversation statistics and usage analysis are the next steps.
 
