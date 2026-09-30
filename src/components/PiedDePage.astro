@@ -4,7 +4,7 @@ import type { Langue, Page } from '../i18n/routes';
 import { LINKEDIN, NOM } from '../i18n/textes';
 
 interface Props {
-  page: Page;
+  page?: Page;
   langue: Langue;
 }
 const { page, langue } = Astro.props;

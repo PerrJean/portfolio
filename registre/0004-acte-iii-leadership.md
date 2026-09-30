@@ -5,3 +5,8 @@
 | `arbitrage` | `contenu` | — | — | — |
 
 Ouvert, reporté (2026-09-28). Pour le niveau CPO : acculturation des équipes à l'IA (doctrine partagée, accompagnement individuel, veille commune, bonnes pratiques) et générateur / matrice de compétences PM. Place à décider selon la matière que Jean fournira (Drive, Slack, JSON n8n). Pour la matrice, on montre le cadre, jamais une évaluation de personne.
+
+**Mise à jour (2026-09-30)** : après le regard recruteur (0051), Jean retient
+comme prochain projet la **matrice de compétences PM**, pour porter le
+leadership. Le portfolio sert d'abord le côté « hands on » ; le CV porte le
+reste.

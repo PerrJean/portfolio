@@ -1,11 +1,12 @@
 ---
 // La bascule FR | EN : deux liens. La langue courante porte aria-current,
 // l'autre porte hreflang et mène à la jumelle exacte (src/i18n/routes.ts).
+// Sans `page` (la 404) : les deux accueils, aucun n'étant la page courante.
 import { LANGUES, chemin, type Langue, type Page } from '../i18n/routes';
 import { UI } from '../i18n/textes';
 
 interface Props {
-  page: Page;
+  page?: Page;
   langue: Langue;
 }
 const { page, langue } = Astro.props;
@@ -16,12 +17,12 @@ const { page, langue } = Astro.props;
     LANGUES.map((l, i) => (
       <>
         {i > 0 && <span class="bascule__trait" aria-hidden="true">|</span>}
-        {l === langue ? (
+        {page && l === langue ? (
           <a href={chemin(page, l)} lang={l} aria-current="page">
             {l.toUpperCase()}
           </a>
         ) : (
-          <a href={chemin(page, l)} lang={l} hreflang={l}>
+          <a href={chemin(page ?? 'accueil', l)} lang={l} hreflang={l}>
             {l.toUpperCase()}
           </a>
         )}

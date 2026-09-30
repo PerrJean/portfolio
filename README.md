@@ -16,6 +16,9 @@ npm run dev
 
 Puis ouvrir http://localhost:4321. Sous Windows, `dev.cmd` ajoute Node au PATH.
 
+Le labo des animations (`src/labo/scene.astro`) n'est servi qu'en dev, à
+http://localhost:4321/labo/scene/ : il n'entre ni dans `dist/` ni en ligne.
+
 ## Avant le premier commit sur un poste
 
 ```bash

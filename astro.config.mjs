@@ -3,6 +3,17 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { rehypeSchemas } from './src/components/schemas/rehype-schemas.mjs';
 
+// Le labo (src/labo/, pages d'essai des animations) : servi par le serveur
+// de dev à /labo/scene/, jamais construit ni publié (registre/0053).
+const labo = () => ({
+  name: 'labo',
+  hooks: {
+    'astro:config:setup': ({ command, injectRoute }) => {
+      if (command === 'dev') injectRoute({ pattern: '/labo/scene', entrypoint: './src/labo/scene.astro' });
+    },
+  },
+});
+
 export default defineConfig({
   site: 'https://jeanperrier.pm',
   trailingSlash: 'always',
@@ -16,6 +27,5 @@ export default defineConfig({
   // Les schémas des pages projet : un marqueur <div data-schema="…"></div>
   // dans le Markdown, remplacé au build (src/components/schemas/).
   markdown: { rehypePlugins: [rehypeSchemas] },
-  // Le labo (pages d'essai, noindex) reste hors du plan du site.
-  integrations: [sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/labo/') })],
+  integrations: [sitemap(), labo()],
 });

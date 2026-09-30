@@ -89,7 +89,8 @@ chaque commit, donc avant chaque publication.
 - Une adresse canonique par page (`<link rel="canonical">`), toujours avec
   la barre oblique finale.
 - Un plan du site (`sitemap-index.xml`, extension `@astrojs/sitemap`) et un
-  `robots.txt` qui le signale ; `/labo/` exclu et marqué `noindex`.
+  `robots.txt` qui le signale. Le labo (`src/labo/`) n'est servi qu'en dev :
+  il n'est pas construit.
 - Les balises Open Graph (`og:title`, `og:description`, `og:image` en
   1200 × 630, `og:locale`) : l'aperçu LinkedIn, validé en `0015`.
 - Des données structurées `schema.org/Person` (nom, métier, lien LinkedIn

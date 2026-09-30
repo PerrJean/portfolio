@@ -1,5 +1,6 @@
 // Produit les images d'accueil du site dans public/ : le favicon (SVG, PNG
-// 32 px, apple-touch-icon 180 px) et l'aperçu Open Graph 1200 × 630 ; et,
+// 32 px, apple-touch-icon 180 px) et l'aperçu Open Graph 1200 × 630, en FR
+// (apercu.png) et en EN (apercu-en.png, registre/0053) ; et,
 // hors du site, dans ops/images/couverture/, la bannière LinkedIn 1584 × 396
 // (FR, EN, et leur version @2x). Relançable à la main : node ops/images/apercu.mjs. Sans paquet ajouté :
 // sharp, et la police @fontsource convertie de WOFF en TTF dans un dossier
@@ -264,15 +265,36 @@ async function texte(contenu, { fontfile, famille, taille, couleur, largeur, int
   return { data, largeur: info.width, hauteur: info.height, approche };
 }
 
-async function apercu(polices) {
+// Les textes de l'aperçu, par langue. Le fichier : apercu.png en FR (le nom
+// d'origine, que Base.astro sert par défaut), apercu-en.png en EN.
+const APERCU = {
+  fr: {
+    fichier: 'apercu.png',
+    phrase: "Je bâtis sur des hypothèses : j'écoute, je teste, puis j'investis là où ça compte.",
+    role: 'Head of Product · IA appliquée · Data',
+  },
+  en: {
+    fichier: 'apercu-en.png',
+    // Insécables après « I » : pas de « I » seul en fin de ligne.
+    phrase: 'I build on hypotheses: I listen, I test, then I invest where it counts.',
+    role: 'Head of Product · Applied AI · Data',
+  },
+};
+
+async function apercu(polices, langue) {
+  const { fichier, phrase: textePhrase, role: texteRole } = APERCU[langue];
   const colonne = X_BATIMENT - OG.marge - 24;
+  // Le piège de graisse (voir couverture()) : sans la virgule finale, Pango
+  // retombe sur le fichier 400 dès qu'il l'a chargé. L'aperçu FR, produit
+  // le premier, passait avant ; la virgule vaut pour les deux langues.
+  const extraBold = 'Atkinson Hyperlegible Next ExtraBold,';
   const nom = await texte('Jean Perrier', {
-    fontfile: polices[800], famille: 'Atkinson Hyperlegible Next ExtraBold', taille: 44, couleur: C.encre, largeur: colonne,
+    fontfile: polices[800], famille: extraBold, taille: 44, couleur: C.encre, largeur: colonne,
   });
-  const phrase = await texte("Je bâtis sur des hypothèses\u00a0: j'écoute, je teste, puis j'investis là où ça compte.", {
-    fontfile: polices[800], famille: 'Atkinson Hyperlegible Next ExtraBold', taille: 60, couleur: C.encre, largeur: colonne, interligne: 6,
+  const phrase = await texte(textePhrase, {
+    fontfile: polices[800], famille: extraBold, taille: 60, couleur: C.encre, largeur: colonne, interligne: 6,
   });
-  const role = await texte('Head of Product · IA appliquée · Data', {
+  const role = await texte(texteRole, {
     fontfile: polices[400], famille: 'Atkinson Hyperlegible Next', taille: 34, couleur: C.ardoise, largeur: colonne,
   });
 
@@ -285,10 +307,10 @@ async function apercu(polices) {
     calques.push({ input: bloc.data, left: OG.marge - bloc.approche, top: y });
     y += bloc.hauteur + apres;
   }
-  const sortie = join(PUBLIC, 'og', 'apercu.png');
+  const sortie = join(PUBLIC, 'og', fichier);
   mkdirSync(join(PUBLIC, 'og'), { recursive: true });
   await sharp(Buffer.from(fondOg())).composite(calques).png({ compressionLevel: 9 }).toFile(sortie);
-  return { sortie, blocs: { nom, phrase, role }, total };
+  return { langue, sortie, blocs: { nom, phrase, role }, total };
 }
 
 // ---------------------------------------------------------------------------
@@ -376,17 +398,19 @@ try {
   // favicon.ico : sharp ne sait pas écrire ce format ; les navigateurs
   // prennent le SVG ou le PNG déclarés dans le <head>.
 
-  const { sortie, blocs, total } = await apercu(polices);
+  const apercus = [];
+  for (const langue of ['fr', 'en']) apercus.push(await apercu(polices, langue));
   const bannieres = [];
   for (const langue of ['fr', 'en']) for (const f of [1, 2]) bannieres.push(await couverture(polices, langue, f));
 
   console.log('Images produites :');
-  for (const f of [join(PUBLIC, 'favicon.svg'), f32, apple, sortie, ...bannieres.map((b) => b.sortie)])
+  for (const f of [join(PUBLIC, 'favicon.svg'), f32, apple, ...apercus.map((a) => a.sortie), ...bannieres.map((b) => b.sortie)])
     console.log('  ' + (await decrire(f)));
-  console.log(
-    `Texte de l'aperçu : nom ${blocs.nom.hauteur} px, phrase ${blocs.phrase.largeur} × ${blocs.phrase.hauteur} px, ` +
-      `rôle ${blocs.role.largeur} × ${blocs.role.hauteur} px (bloc de ${total} px de haut).`,
-  );
+  for (const { langue, blocs, total } of apercus)
+    console.log(
+      `Texte de l'aperçu ${langue} : nom ${blocs.nom.hauteur} px, phrase ${blocs.phrase.largeur} × ${blocs.phrase.hauteur} px, ` +
+        `rôle ${blocs.role.largeur} × ${blocs.role.hauteur} px (bloc de ${total} px de haut).`,
+    );
   const rogne = COUV.largeur * 0.15;
   for (const b of bannieres.filter((_, i) => i % 2 === 0))
     console.log(

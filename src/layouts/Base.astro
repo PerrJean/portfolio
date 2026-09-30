@@ -2,6 +2,9 @@
 // Le gabarit commun des huit pages : langue, titre, description, canonique,
 // hreflang, favicon, Open Graph, lien d'évitement, en-tête et pied de page.
 // Les images (favicon, aperçu) : ops/images/apercu.mjs, registre/0038.
+// Sans `page` (la 404, registre/0053) : ni canonique, ni hreflang, ni og:url,
+// car la page n'a pas d'adresse à elle ; l'en-tête et le pied mènent aux
+// accueils.
 import '@fontsource/atkinson-hyperlegible-next/latin-400.css';
 import '@fontsource/atkinson-hyperlegible-next/latin-700.css';
 import '@fontsource/atkinson-hyperlegible-next/latin-800.css';
@@ -14,18 +17,19 @@ import { NOM, UI } from '../i18n/textes';
 import { INDEXE } from '../i18n/publication';
 
 interface Props {
-  page: Page;
+  page?: Page;
   langue: Langue;
   titre: string;
   description: string;
 }
 const { page, langue, titre, description } = Astro.props;
-const absolu = (l: Langue) => new URL(chemin(page, l), Astro.site).href;
+const absolu = (p: Page, l: Langue) => new URL(chemin(p, l), Astro.site).href;
 const titreComplet = titre === NOM ? titre : `${titre} · ${NOM}`;
-// L'aperçu LinkedIn, le même pour toutes les pages.
-const apercu = new URL('/og/apercu.png', Astro.site).href;
+// L'aperçu LinkedIn, dans la langue de la page (registre/0053).
+const APERCU: Record<Langue, string> = { fr: '/og/apercu.png', en: '/og/apercu-en.png' };
+const apercu = new URL(APERCU[langue], Astro.site).href;
 const APERCU_ALT: Record<Langue, string> = {
-  fr: "Jean Perrier, Head of Product · IA appliquée · Data : « Je bâtis sur des hypothèses : j'écoute, je teste, puis j'investis là où ça compte. » Un bâtiment terminé, deux personnages sur le toit, sous un soleil.",
+  fr: "Jean Perrier, Head of Product · IA appliquée · Data : « Je bâtis sur des hypothèses : j’écoute, je teste, puis j’investis là où ça compte. » Un bâtiment terminé, deux personnages sur le toit, sous un soleil.",
   en: 'Jean Perrier, Head of Product · Applied AI · Data: “I build on hypotheses: I listen, I test, then I invest where it counts.” A finished building, two people on its roof, under a sun.',
 };
 ---
@@ -38,9 +42,9 @@ const APERCU_ALT: Record<Langue, string> = {
     {!INDEXE && <meta name="robots" content="noindex, nofollow" />}
     <title>{titreComplet}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={absolu(langue)} />
-    {LANGUES.map((l) => <link rel="alternate" hreflang={l} href={absolu(l)} />)}
-    <link rel="alternate" hreflang="x-default" href={absolu(LANGUE_PAR_DEFAUT)} />
+    {page && <link rel="canonical" href={absolu(page, langue)} />}
+    {page && LANGUES.map((l) => <link rel="alternate" hreflang={l} href={absolu(page, l)} />)}
+    {page && <link rel="alternate" hreflang="x-default" href={absolu(page, LANGUE_PAR_DEFAUT)} />}
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -53,7 +57,7 @@ const APERCU_ALT: Record<Langue, string> = {
     {LANGUES.filter((l) => l !== langue).map((l) => (
       <meta property="og:locale:alternate" content={UI[l].locale} />
     ))}
-    <meta property="og:url" content={absolu(langue)} />
+    {page && <meta property="og:url" content={absolu(page, langue)} />}
     <meta property="og:image" content={apercu} />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />

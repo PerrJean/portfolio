@@ -1,0 +1,55 @@
+---
+// La page 404 (GitHub Pages sert 404.html pour toute adresse inconnue,
+// registre/0053). Bilingue sur la même page : FR puis EN, chaque bloc avec
+// son lang. Sans `page` : Base ne lui donne ni canonique ni hreflang.
+// Hors des jumelles (C7) : une seule page pour les deux langues.
+import Base from '../layouts/Base.astro';
+import Portrait from '../components/Portrait.astro';
+import { chemin } from '../i18n/routes';
+---
+
+<Base
+  langue="fr"
+  titre="Page introuvable · Page not found"
+  description="Cette adresse ne mène à aucune page du portfolio. This address leads to no page of the portfolio."
+>
+  <div class="conteneur introuvable">
+    <div class="introuvable__portrait"><Portrait /></div>
+    <section lang="fr" aria-labelledby="titre-fr">
+      <h1 id="titre-fr">Page introuvable</h1>
+      <p>Cette adresse ne mène à aucune page du portfolio.</p>
+      <p><a href={chemin('accueil', 'fr')}>Retour à l’accueil</a></p>
+    </section>
+    <section lang="en" aria-labelledby="titre-en">
+      <h2 id="titre-en">Page not found</h2>
+      <p>This address leads to no page of the portfolio.</p>
+      <p><a href={chemin('accueil', 'en')}>Back to the home page</a></p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .introuvable {
+    display: grid;
+    gap: 2.5rem;
+    padding-block: 4rem 2rem;
+  }
+
+  .introuvable section {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .introuvable p {
+    margin: 0;
+  }
+
+  /* Les deux titres au même corps : l'anglais n'est pas un sous-titre. */
+  .introuvable h2 {
+    font-size: clamp(2rem, 1.4rem + 3vw, 3.5rem);
+  }
+
+  .introuvable a {
+    font-weight: 700;
+  }
+</style>
