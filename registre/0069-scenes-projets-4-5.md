@@ -16,3 +16,9 @@
   avec son équipe) devant **un board et des post-it** (le Design Sprint).
 Par étapes : images clés (ce chantier), puis animation.
 Brief : `prompts/6-scenes-4-5-images-cles.md`.
+
+**Images clés faites (coût 155, ratio 1,7)** : `ops/images/fusion-scene/`
+(repos, poussée en chaîne, une seule cabane sur la dalle) et
+`ops/images/mises-en-situation-scene/` (board qui se remplit, post-it ambre).
+Pose nouvelle à reporter : `pousse`. Réserve : la chaîne de quatre pousseurs
+prend la largeur, les cabanes remplissent la carte. En attente du go de Jean.
