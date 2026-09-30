@@ -16,6 +16,7 @@ export const UI: Record<
     locale: string;
     plusLoin: string;
     projetSuivant: string;
+    lireProjet: string;
     fermer: string;
     agrandir: string;
     toucherPourAgrandir: string;
@@ -30,6 +31,7 @@ export const UI: Record<
     langue: 'Langue',
     locale: 'fr_FR',
     plusLoin: 'Pour aller plus loin',
+    lireProjet: 'Lire le projet',
     fermer: 'Fermer',
     agrandir: 'Agrandir',
     toucherPourAgrandir: 'Toucher pour agrandir',
@@ -45,6 +47,7 @@ export const UI: Record<
     locale: 'en_US',
     plusLoin: 'Going further',
     projetSuivant: 'Next project:',
+    lireProjet: 'Read the project',
     fermer: 'Close',
     agrandir: 'Enlarge',
     toucherPourAgrandir: 'Tap to enlarge',

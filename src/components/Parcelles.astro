@@ -9,6 +9,7 @@
 // Dans la première paire, les cartes partagent les lignes de la grille
 // (subgrid) : le fait clé part à la même hauteur, même si un nom passe sur
 // deux lignes et l'autre non, avec ou sans scène.
+import { getCollection } from 'astro:content';
 import Parcelle from './Parcelle.astro';
 import { LIEN_DE_LA_PAIRE, PROJETS, type Projet } from '../contenu/projets';
 import { chemin, type Langue } from '../i18n/routes';
@@ -17,6 +18,13 @@ interface Props {
   langue: Langue;
 }
 const { langue } = Astro.props;
+// La date de chaque carte, celle de la page projet (registre/0075).
+const pages = await getCollection('projets', (e) => e.data.langue === langue);
+const dateDe = (p: Projet) => {
+  const entree = pages.find((e) => e.data.cle === p.page);
+  if (!entree) throw new Error(`Accueil (${langue}) : pas de page projet pour ${p.page}.`);
+  return entree.data.date;
+};
 const hauteur = PROJETS.filter((p) => p.groupe === 'hauteur');
 const paire = PROJETS.filter((p) => p.groupe === 'paire');
 const aPart = PROJETS.filter((p) => p.groupe === 'a-part');
@@ -24,6 +32,8 @@ const proprietes = (p: Projet) => ({
   numero: p.numero,
   nom: p.nom[langue],
   fait: p.fait[langue],
+  date: dateDe(p),
+  langue,
   href: chemin(p.page, langue),
   groupe: p.groupe,
   scene: p.scene,
@@ -75,7 +85,8 @@ const proprietes = (p: Projet) => ({
 
 <style>
   .parcelles {
-    --numero: clamp(4.5rem, 2.5rem + 7vw, 8rem);
+    /* Le numéro, repère graphique sans écraser le nom (registre/0075). */
+    --numero: clamp(3rem, 2rem + 2.5vw, 4rem);
     display: grid;
     margin-top: 2rem;
   }

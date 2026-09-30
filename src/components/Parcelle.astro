@@ -10,26 +10,41 @@
 // groupe : « hauteur » (01 et 02, la première paire, sans flèche), « paire »
 // (03 et 04, reliés par la flèche, voir Parcelles.astro) ou « a-part » (un
 // projet sans rapport, sans flèche).
+// La date, sous le nom, est celle de la page projet, en toutes lettres
+// (registre/0075). Hors du titre : le nom accessible reste « 01 UserVoice ».
+// « Lire le projet → », sous le fait clé, dit au repos et au téléphone que
+// la carte est un lien ; le survol le souligne, avec le nom (registre/0075).
 import Scene from './scene/Scene.astro';
 import type { Groupe, SceneDeCarte } from '../contenu/projets';
+import { moisEnLettres } from '../i18n/date';
+import { UI } from '../i18n/textes';
+import type { Langue } from '../i18n/routes';
 
 interface Props {
   numero: string;
   nom: string;
   fait: string;
+  date: string;
+  langue: Langue;
   href: string;
   groupe: Groupe;
   scene: SceneDeCarte;
 }
-const { numero, nom, fait, href, groupe, scene } = Astro.props;
+const { numero, nom, fait, date, langue, href, groupe, scene } = Astro.props;
 ---
 
 <a class:list={['parcelle', `parcelle--${groupe}`]} href={href}>
-  <h3 class="parcelle__titre">
-    <span class="parcelle__numero">{numero}</span>{' '}
-    <span class="parcelle__nom">{nom}</span>
-  </h3>
-  <p class="parcelle__fait">{fait}</p>
+  <div class="parcelle__tete">
+    <h3 class="parcelle__titre">
+      <span class="parcelle__numero">{numero}</span>{' '}
+      <span class="parcelle__nom">{nom}</span>
+    </h3>
+    <p class="parcelle__date"><time datetime={date}>{moisEnLettres(date, langue)}</time></p>
+  </div>
+  <div class="parcelle__corps">
+    <p class="parcelle__fait">{fait}</p>
+    <p class="parcelle__lire">{UI[langue].lireProjet}<span aria-hidden="true">&nbsp;→</span></p>
+  </div>
   {
     scene !== 'aucune' && (
       <div class="parcelle__scene">
@@ -58,8 +73,17 @@ const { numero, nom, fait, href, groupe, scene } = Astro.props;
     gap: 0.75rem;
   }
 
+  /* L'ardoise ne passe le contraste qu'en grand texte : 19 px en 700,
+     comme la date des pages projet. */
+  .parcelle__date {
+    margin-top: 0.375rem;
+    color: var(--ardoise);
+    font-size: 1.1875rem;
+    font-weight: 700;
+  }
+
   .parcelle__numero {
-    font-size: var(--numero, 6rem);
+    font-size: var(--numero, 3rem);
     line-height: 0.85;
     letter-spacing: -0.03em;
   }
@@ -73,6 +97,18 @@ const { numero, nom, fait, href, groupe, scene } = Astro.props;
 
   .parcelle:is(:hover, :focus-visible) .parcelle__nom {
     color: var(--orange);
+    text-decoration-line: underline;
+  }
+
+  .parcelle__lire {
+    margin-top: 0.75rem;
+    color: var(--orange);
+    font-weight: 700;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .parcelle:is(:hover, :focus-visible) .parcelle__lire {
     text-decoration-line: underline;
   }
 
@@ -104,12 +140,12 @@ const { numero, nom, fait, href, groupe, scene } = Astro.props;
       column-gap: 1rem;
     }
 
-    .parcelle--a-part .parcelle__titre {
+    .parcelle--a-part .parcelle__tete {
       grid-column: 1;
       grid-row: 1;
     }
 
-    .parcelle--a-part .parcelle__fait {
+    .parcelle--a-part .parcelle__corps {
       grid-column: 1;
       grid-row: 2;
       align-self: start;

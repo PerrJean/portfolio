@@ -20,6 +20,7 @@ import Lecture from '../components/batiment/Lecture.astro';
 import Bouton from '../components/Bouton.astro';
 import Visionneuse from '../components/Visionneuse.astro';
 import { PROJETS } from '../contenu/projets';
+import { moisEnLettres } from '../i18n/date';
 import { chemin, type Langue, type Page } from '../i18n/routes';
 import { UI } from '../i18n/textes';
 // Les schémas insérés dans le corps (src/components/schemas/rehype-schemas.mjs).
@@ -60,13 +61,8 @@ for (const { fichier } of data.plusLoin) {
     throw new Error(`Page projet ${cle} (${langue}) : ${fichier.href} pèse ${attendu}, l'en-tête affiche « ${fichier.poids} ».`);
 }
 
-// La date sous le titre (registre/0045) : le mois en toutes lettres, dans la
-// langue de la page, première lettre en capitale (« Septembre 2026 »).
-const [annee, mois] = data.date.split('-').map(Number);
-const moisAnnee = new Intl.DateTimeFormat(langue, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
-  new Date(Date.UTC(annee, mois - 1, 1)),
-);
-const dateLisible = moisAnnee.charAt(0).toLocaleUpperCase(langue) + moisAnnee.slice(1);
+// La date sous le titre (registre/0045), en toutes lettres (src/i18n/date.ts).
+const dateLisible = moisEnLettres(data.date, langue);
 ---
 
 <Base page={cle} langue={langue} titre={data.titre} description={description}>
