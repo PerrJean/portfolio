@@ -3,9 +3,41 @@
 // registre/0053). Bilingue sur la même page : FR puis EN, chaque bloc avec
 // son lang. Sans `page` : Base ne lui donne ni canonique ni hreflang.
 // Hors des jumelles (C7) : une seule page pour les deux langues.
+//
+// « Le chantier a déménagé » (registre/0055, 0056) : les quatre images clés
+// d'ops/images/404/ (planche.mjs), animées une fois au chargement, 2,8 s.
+// Jean entre par la gauche, marche jusqu'au panneau, frappe, le panneau
+// pivote, Jean recule d'un pas, bras tendus. Poses échangées et
+// translations, comme l'accueil (Scene.astro) ; le bras et le marteau
+// pivotent à l'épaule, comme le bâtiment. Sans animation (ou en mouvement
+// réduit) : l'image finale, 4.svg, d'emblée.
 import Base from '../layouts/Base.astro';
-import Portrait from '../components/Portrait.astro';
 import { chemin } from '../i18n/routes';
+import { POSES, LUNETTES, type Pose } from '../components/scene/poses';
+
+// Jean dans une pose, lunettes comprises.
+const pose = (nom: Pose) => POSES[nom].replace('{L}', LUNETTES);
+
+// Le marteau des poses marteau, glissé sous le bras avant (avant son
+// dernier liseré), la poignée dans la main (x, y), tourné de `angle` ;
+// même méthode que planche.mjs.
+const enMain = (dessin: string, x: number, y: number, angle: number) => {
+  const i = dessin.lastIndexOf('<polyline class="si"');
+  const marteau =
+    `<g transform="translate(${x} ${y}) rotate(${angle})">` +
+    '<line class="se" x1="-3" y1="0" x2="26" y2="0" stroke-width="4" stroke-linecap="round"/>' +
+    '<rect class="fe" x="22" y="-8" width="8" height="15" rx="1.5"/></g>';
+  return dessin.slice(0, i) + marteau + dessin.slice(i);
+};
+
+// Marche : main avant en arrière du pas (marche-1, image 2) ou devant
+// (marche-2), le marteau tête en haut sans toucher le buste.
+const JEAN = {
+  m1: enMain(pose('marche-1'), -14, -64, -115),
+  m2: enMain(pose('marche-2'), 4, -60, -50),
+  frappe: pose('frappe-2'),
+  tendus: enMain(pose('bras-tendus'), 29, -73, -90),
+};
 ---
 
 <Base
@@ -14,14 +46,67 @@ import { chemin } from '../i18n/routes';
   description="Cette adresse ne mène à aucune page du portfolio. This address leads to no page of the portfolio."
 >
   <div class="conteneur introuvable">
-    <div class="introuvable__portrait"><Portrait /></div>
+    <!-- Repère des images clés : sol à y = 0, panneau en 250, Jean au coup
+         en 170,2, à la fin en 150,2 (un pas en arrière). -->
+    <svg
+      class="chantier"
+      viewBox="0 -140 400 160"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <line class="se" x1="0" y1="0" x2="400" y2="0" stroke-width="1.5" />
+
+      <!-- Le panneau : les pieds restent, le cadre et la flèche pivotent sur
+           leur axe. -->
+      <g transform="translate(250 0)">
+        <line class="se" x1="-20" y1="-66" x2="-20" y2="0" stroke-width="4" stroke-linecap="butt" />
+        <line class="se" x1="-27" y1="-1.5" x2="-13" y2="-1.5" stroke-width="3" stroke-linecap="butt" />
+        <line class="se" x1="20" y1="-66" x2="20" y2="0" stroke-width="4" stroke-linecap="butt" />
+        <line class="se" x1="13" y1="-1.5" x2="27" y2="-1.5" stroke-width="3" stroke-linecap="butt" />
+        <g class="p-tourne">
+          <rect class="fi se" x="-32" y="-104" width="64" height="38" stroke-width="3" stroke-linejoin="miter" />
+          <rect class="se" x="-27" y="-99" width="54" height="28" fill="none" stroke-width="1.2" stroke-linejoin="miter" />
+          <line class="se" x1="-15" y1="-85" x2="13" y2="-85" stroke-width="5" stroke-linecap="square" />
+          <polyline class="se" points="4,-94 14,-85 4,-76" fill="none" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" />
+        </g>
+      </g>
+
+      <!-- Le demi-tour, en ardoise, au-dessus du cadre. -->
+      <g class="pivot">
+        <path class="sa" d="M228,-113 A22,5 0 0 0 272,-113 L272,-116" fill="none" stroke-width="1.5" stroke-linecap="round" />
+        <polyline class="sa" points="268.5,-113 272,-117 275.5,-113" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+
+      <!-- L'arc du coup (image 3), le temps de la frappe. -->
+      <path
+        class="arc se"
+        d="M178.8,-132.3 A44,44 0 0 1 210.0,-109.7"
+        fill="none"
+        stroke-width="1.5"
+        stroke-opacity="0.3"
+        stroke-linecap="round"
+      />
+
+      <g transform="translate(150.2 0)">
+        <g class="j-pas">
+          <g class="j-m1" set:html={JEAN.m1} />
+          <g class="j-m2" set:html={JEAN.m2} />
+          <g class="j-frappe" set:html={JEAN.frappe} />
+          <g class="j-tendus" set:html={JEAN.tendus} />
+        </g>
+      </g>
+
+      <circle class="impact fa" cx="217.5" cy="-84" r="3.5" />
+    </svg>
+
     <section lang="fr" aria-labelledby="titre-fr">
-      <h1 id="titre-fr">Page introuvable</h1>
+      <h1 id="titre-fr">Le chantier a déménagé.</h1>
       <p>Cette adresse ne mène à aucune page du portfolio.</p>
       <p><a href={chemin('accueil', 'fr')}>Retour à l’accueil</a></p>
     </section>
     <section lang="en" aria-labelledby="titre-en">
-      <h2 id="titre-en">Page not found</h2>
+      <h2 id="titre-en">The worksite has moved.</h2>
       <p>This address leads to no page of the portfolio.</p>
       <p><a href={chemin('accueil', 'en')}>Back to the home page</a></p>
     </section>
@@ -32,7 +117,7 @@ import { chemin } from '../i18n/routes';
   .introuvable {
     display: grid;
     gap: 2.5rem;
-    padding-block: 4rem 2rem;
+    padding-block: 3rem 2rem;
   }
 
   .introuvable section {
@@ -51,5 +136,102 @@ import { chemin } from '../i18n/routes';
 
   .introuvable a {
     font-weight: 700;
+  }
+
+  /* Le dessin : toute la colonne au téléphone, 36rem au plus. Jean entre
+     par le bord gauche : ce qui dépasse du cadre est coupé. */
+  .chantier {
+    display: block;
+    width: 100%;
+    max-width: 36rem;
+    height: auto;
+    overflow: hidden;
+  }
+  .chantier :global(.fe) { fill: var(--encre); }
+  .chantier :global(.se) { stroke: var(--encre); }
+  .chantier :global(.fi) { fill: var(--ivoire); }
+  .chantier :global(.si) { stroke: var(--ivoire); }
+  .chantier :global(.sa) { stroke: var(--ardoise); }
+  .chantier :global(.so) { stroke: var(--orange); }
+  .chantier :global(.fa) { fill: var(--ambre); }
+
+  /* Jean glisse, le cadre pivote, le bras tourne à l'épaule : autour de
+     leur origine locale. */
+  .chantier :global(:is(.j-pas, .p-tourne, .bras-tour)) {
+    transform-box: view-box;
+    transform-origin: 0 0;
+  }
+
+  /* Au repos, l'image finale (4.svg) : bras tendus, flèche à droite,
+     demi-tour visible, ni arc ni point. */
+  .chantier :is(.j-m1, .j-m2, .j-frappe, .arc, .impact) {
+    opacity: 0;
+  }
+
+  /* 2,8 s, une seule fois : 1 % = 28 ms. Jean attend hors champ (0-9 %),
+     marche huit pas de 0,14 s de -30 à 170,2 (9-49 %), lève le bras
+     (frappe-1, 49-58 %), l'abat (58-63 %) : le point s'allume au coup. Le
+     cadre pivote (66-80 %), Jean recule d'un pas (68-75 %) et tend les
+     bras ; le demi-tour apparaît (74-84 %). */
+  @media (prefers-reduced-motion: no-preference) {
+    .chantier .j-pas { animation: dm-pas 2.8s both; }
+    .chantier .j-m1 { animation: dm-m1 2.8s step-end both; }
+    .chantier .j-m2 { animation: dm-m2 2.8s step-end both; }
+    .chantier .j-frappe { animation: dm-frappe 2.8s step-end both; }
+    .chantier .j-tendus { animation: dm-tendus 2.8s step-end both; }
+    .chantier :global(.bras-tour) { animation: dm-bras 2.8s both; }
+    .chantier .arc { animation: dm-arc 2.8s linear both; }
+    .chantier .impact { animation: dm-impact 2.8s both; }
+    .chantier .p-tourne { animation: dm-tourne 2.8s both; }
+    .chantier .pivot { animation: dm-pivot 2.8s linear both; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chantier,
+    .chantier :global(*) {
+      animation: none !important;
+    }
+  }
+
+  @keyframes dm-pas {
+    0%, 9% { transform: translateX(-180.2px); animation-timing-function: linear; }
+    49%, 68% { transform: translateX(20px); animation-timing-function: ease-out; }
+    75%, 100% { transform: translateX(0); }
+  }
+  @keyframes dm-m1 {
+    0% { opacity: 1; } 14% { opacity: 0; } 19% { opacity: 1; } 24% { opacity: 0; }
+    29% { opacity: 1; } 34% { opacity: 0; } 39% { opacity: 1; } 44%, 100% { opacity: 0; }
+  }
+  /* marche-2 sert aussi au pas en arrière (68-75 %). */
+  @keyframes dm-m2 {
+    0% { opacity: 0; } 14% { opacity: 1; } 19% { opacity: 0; } 24% { opacity: 1; }
+    29% { opacity: 0; } 34% { opacity: 1; } 39% { opacity: 0; } 44% { opacity: 1; }
+    49% { opacity: 0; } 68% { opacity: 1; } 75%, 100% { opacity: 0; }
+  }
+  @keyframes dm-frappe {
+    0% { opacity: 0; } 49% { opacity: 1; } 68%, 100% { opacity: 0; }
+  }
+  @keyframes dm-tendus {
+    0% { opacity: 0; } 75%, 100% { opacity: 1; }
+  }
+  /* frappe-2 levé de 70° (frappe-1), puis abattu en accélérant. */
+  @keyframes dm-bras {
+    0%, 58% { transform: rotate(-70deg); animation-timing-function: ease-in; }
+    63%, 100% { transform: rotate(0deg); }
+  }
+  @keyframes dm-arc {
+    0%, 59% { opacity: 0; } 61%, 64% { opacity: 1; } 70%, 100% { opacity: 0; }
+  }
+  @keyframes dm-impact {
+    0%, 62.9% { opacity: 0; } 63%, 68% { opacity: 1; } 74%, 100% { opacity: 0; }
+  }
+  /* Le cadre se referme sur son axe et se rouvre : la flèche passe de la
+     gauche à la droite. */
+  @keyframes dm-tourne {
+    0%, 66% { transform: scaleX(-1); animation-timing-function: ease-in-out; }
+    80%, 100% { transform: scaleX(1); }
+  }
+  @keyframes dm-pivot {
+    0%, 74% { opacity: 0; } 84%, 100% { opacity: 1; }
   }
 </style>
