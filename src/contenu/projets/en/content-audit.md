@@ -62,7 +62,7 @@ This result does not predict the quality of the rest of the content on the site.
 
 ## Fixing without breaking
 
-The tool never writes directly to the database. It produces batches of fixes, grouped by family of defects. The learning designer reviews, family by family, the least reliable cases, and her decision covers the whole family. When an agent gets one of these cases wrong, no fix in that family goes through as it is.
+The tool never writes directly to the database. It produces batches of fixes, grouped by family of defects. The learning designer reviews, family by family, the least reliable cases, and her decision covers the whole family. A batch goes into production as soon as the whole is better than what was there, even if a few defects remain. If a badly fixed question turns up later, we rework the check or the writing rule that produced it.
 
 On the first course, she also checked the fixes in staging. All the blocking questions were fixed, then put into production.
 
