@@ -18,3 +18,4 @@ leadership peu prouvé, pas de vision d'entreprise, deux projets en solo.
 Deux coquilles corrigées au passage : « conversations courtes, chacune »
 (accord cassé par le remplacement des pluriels) et la légende EN du schéma
 des trajectoires, restée sur l'ancienne version. Ratio 1,4.
+Audit contenu : la fin de phrase « le nom des champs se lit dans la donnée, plutôt que d'être supposé » supprimée, jugée incompréhensible (Jean), FR et EN.

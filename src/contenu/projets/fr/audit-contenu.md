@@ -31,7 +31,7 @@ plusLoin:
     points:
       - "Le bon contexte : un fichier de consignes court, sous 300 lignes ; des consignes propres à chaque dossier, chargées selon le fichier modifié (règles par glob) ; des savoir-faire chargés à la demande (skills) ; des modules de 500 lignes au plus."
       - "Les décisions écrites : une fiche par décision (ADR), plus de deux cents tracées en quatre semaines, chacune avec son coût estimé et réel, recalibré régulièrement."
-      - "La vérification : les règles vérifiables deviennent des tests, les règles de méthode des contrôles avant chaque enregistrement (hook de pre-commit) ; la relecture est confiée à un agent qui repart de zéro (contexte neuf) ; le nom des champs se lit dans la donnée, plutôt que d’être supposé."
+      - "La vérification : les règles vérifiables deviennent des tests, les règles de méthode des contrôles avant chaque enregistrement (hook de pre-commit) ; la relecture est confiée à un agent qui repart de zéro (contexte neuf)."
 langue: fr
 cle: auditContenu
 ---

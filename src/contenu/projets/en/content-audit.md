@@ -31,7 +31,7 @@ plusLoin:
     points:
       - "The right context: a short instruction file, under 300 lines; instructions specific to each folder, loaded according to the file being edited (glob-based rules); know-how loaded on demand (skills); modules of 500 lines at most."
       - "Decisions written down: one record per decision (ADR), more than two hundred logged in four weeks, each with its estimated and actual cost, recalibrated regularly."
-      - "Verification: checkable rules become tests, and process rules become checks before every commit (pre-commit hook); review is handed to an agent that starts from scratch (fresh context); field names are read from the data rather than assumed."
+      - "Verification: checkable rules become tests, and process rules become checks before every commit (pre-commit hook); review is handed to an agent that starts from scratch (fresh context)."
 langue: en
 cle: auditContenu
 ---
