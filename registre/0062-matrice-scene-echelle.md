@@ -35,3 +35,7 @@ charge. » (EN en miroir). Mise en ligne du projet 03 avec sa scène animée.
 600 ms ; figée à 0, 300 et 600 ms à 1280 et 390 px. Écart : la carte 03 est
 seule dans sa grille, sa scène fait ~1100 px de large à 1280 px, deux fois
 les cartes 01 et 02.
+**Mise en page (Jean, 2026-10-01)** : à partir de 960 px, la carte 03 reprend
+la grille de la paire, texte à gauche et scène à droite, à la taille des
+scènes 01 et 02 (480 px à 1280), alignée sous Audit contenu. Vérifié à 960,
+1280, 1600 et 390 px, FR et EN, sans débordement.

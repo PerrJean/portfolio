@@ -92,4 +92,33 @@ const { numero, nom, fait, href, groupe, scene } = Astro.props;
     padding-top: 1.5rem;
     border-top: 1px solid var(--dalle);
   }
+
+  /* Seul sur sa ligne, le projet à part reprend la grille de la paire
+     (Parcelles.astro) : le texte dans la colonne de gauche, la scène dans
+     celle de droite, à la taille des scènes de la paire (registre/0062). */
+  @media (min-width: 960px) {
+    .parcelle--a-part {
+      grid-template-columns: minmax(0, 1fr) 7.5rem minmax(0, 1fr);
+      grid-template-rows: auto 1fr;
+      column-gap: 1rem;
+    }
+
+    .parcelle--a-part .parcelle__titre {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .parcelle--a-part .parcelle__fait {
+      grid-column: 1;
+      grid-row: 2;
+      align-self: start;
+    }
+
+    .parcelle--a-part .parcelle__scene {
+      grid-column: 3;
+      grid-row: 1 / span 2;
+      align-self: end;
+      margin-top: 0;
+    }
+  }
 </style>
