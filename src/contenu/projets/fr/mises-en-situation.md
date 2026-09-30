@@ -2,7 +2,7 @@
 titre: "Mises en situation orales par IA : parier sur une conversation encadrée"
 date: "2026-02"
 cadre:
-  role: "Head of Product : cadrage de la méthode et du Design Sprint"
+  role: "Head of Product : cadrage de la méthode, la découverte confiée à l’équipe"
   equipe: "Un Product Manager, une Product Designer, les learning designers"
   duree: "Mai 2025 → septembre 2026, en cours"
 fait: "L’e-learning permet enfin de travailler l’expression orale : une IA joue l’interlocuteur, et chaque échange se termine par un retour pédagogique utile."

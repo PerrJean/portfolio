@@ -2,7 +2,7 @@
 titre: "AI speaking role-plays: betting on a guided conversation"
 date: "2026-02"
 cadre:
-  role: "Head of Product: framing the method and the Design Sprint"
+  role: "Head of Product: framing the method, discovery handed to the team"
   equipe: "One Product Manager, one Product Designer, the learning designers"
   duree: "May 2025 → September 2026, ongoing"
 fait: "E-learning can finally help learners practice speaking: an AI plays the other person, and every exchange ends with useful learning feedback."
