@@ -1,5 +1,5 @@
 // Test 7 — Accessibilité de base : un seul <h1>, un lien d'évitement vers
-// #contenu et sa cible id="contenu" sur chacune des huit pages ; un attribut
+// #contenu et sa cible id="contenu" sur chacune des dix pages ; un attribut
 // alt sur chaque <img> de tout le site.
 
 import { test } from 'node:test';

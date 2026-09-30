@@ -13,15 +13,16 @@ export const RACINE = fileURLToPath(new URL('..', import.meta.url));
 /** Le site construit : variable DIST, relative à la racine du dépôt (défaut : dist). */
 export const DIST = resolve(RACINE, process.env.DIST || 'dist');
 
-/** Les huit pages et leurs jumelles, qui font foi (brief 2a). */
+/** Les dix pages et leurs jumelles, qui font foi (brief 2a, matrice : registre/0061). */
 export const JUMELLES = [
   { fr: '/', en: '/en/' },
   { fr: '/projets/uservoice/', en: '/en/projects/uservoice/' },
   { fr: '/projets/audit-contenu/', en: '/en/projects/content-audit/' },
+  { fr: '/projets/matrice-competences/', en: '/en/projects/skills-matrix/' },
   { fr: '/a-propos/', en: '/en/about/' },
 ];
 
-/** Les huit pages à plat : { chemin, lang, jumelle, langJumelle }. */
+/** Les dix pages à plat : { chemin, lang, jumelle, langJumelle }. */
 export const PAGES = JUMELLES.flatMap(({ fr, en }) => [
   { chemin: fr, lang: 'fr', jumelle: en, langJumelle: 'en' },
   { chemin: en, lang: 'en', jumelle: fr, langJumelle: 'fr' },
