@@ -39,7 +39,12 @@ def fautes(chemins, interdits, employeur):
     sortie = []
     for chemin in chemins:
         norme = chemin.replace("\\", "/")
-        if norme.startswith(EXEMPTES) or not Path(chemin).is_file():
+        if norme.startswith(EXEMPTES):
+            continue
+        # Un chemin illisible est un refus, jamais un silence (registre/0060) :
+        # un chemin Git Bash (/c/...) passé à Python sous Windows, par exemple.
+        if not Path(chemin).is_file():
+            sortie.append((chemin, "fichier introuvable, rien n'a ete verifie"))
             continue
         texte = Path(chemin).read_bytes().decode("utf-8", errors="ignore")
         if m_interdits and m_interdits.search(texte):
