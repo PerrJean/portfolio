@@ -37,3 +37,8 @@ n°17 « J'ai cadré la méthode et le Design Sprint avec la product designer
 et le Product Manager (PM) de mon équipe… » (la designer menait), la redite
 du corps retirée ; n°34 DINUM et DITP en toutes lettres. n°16 (« Ces
 clients, des entreprises ») : proposition jugée trop lourde, à reprendre.
+**Tri, série 5 (Jean)** : bénéfices des mises en situation en phrases simples,
+sans relatives ; la flèche de l'accueil devient « Alors j'ai cherché une
+solution. » (EN « So I looked for a solution. ») ; bénéfices de l'Audit
+allégés, « churn » gardé ; les petites retouches (n°7, 9, 11, 19, 20, 24, 25,
+32, 36 à 40) acceptées en bloc, appliquées par un agent.

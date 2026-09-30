@@ -9,7 +9,7 @@
  *  - « hauteur » : la première paire, sans flèche : 01 la fusion des
  *    plateformes, 02 les mises en situation orales (registre/0070) ;
  *  - « paire » : les deux actes du récit (03 écouter, 04 agir), reliés par
- *    la flèche « Alors j'ai agi dessus. » ;
+ *    la flèche « Alors j'ai cherché une solution. » ;
  *  - « a-part » : un projet sans rapport avec les paires, numéroté à la
  *    suite, sans flèche : la matrice de compétences (registre/0061).
  *
@@ -98,6 +98,6 @@ export const PROJETS: readonly Projet[] = [
 
 /** Le lien entre les deux projets de la paire, porté par la flèche. */
 export const LIEN_DE_LA_PAIRE: Record<Langue, string> = {
-  fr: 'Alors j’ai agi dessus.',
-  en: 'So I acted on it.',
+  fr: 'Alors j’ai cherché une solution.',
+  en: 'So I looked for a solution.',
 };

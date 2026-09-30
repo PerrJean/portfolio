@@ -70,7 +70,7 @@ La prononciation a demandé l’arbitrage le plus net. Une minorité de clients 
 
 ## Bénéfices et impact business
 
-Le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau, auprès de nouveaux clients. Ces clients, des entreprises, achètent la preuve que leurs salariés progressent à l’oral. Tous ceux que l’équipe a interrogés voulaient d’abord un retour qui dise ce qui a marché et ce qu’il faut retravailler : c’est ce que donne la fin de chaque échange. Le catalogue, lui, part des situations professionnelles qu’ils ont classées en tête.
+Le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau. Les entreprises clientes veulent voir leurs salariés progresser à l’oral. Le retour de fin d’échange leur montre ce progrès. Les situations professionnelles passent en premier dans le catalogue, comme elles l’ont demandé.
 
 À la fin de septembre 2026, les échanges sont en ligne dans quatre parcours, dont le parcours général de niveau A2 et les parcours business. Le retour pédagogique est en place, et la prononciation l’a rejoint pendant l’été. Deux parcours de plus, les statistiques des conversations et l’analyse de l’usage sont les prochaines étapes.
 

@@ -73,7 +73,7 @@ On the first course, she also checked the fixes in staging. All the blocking que
 
 ## Benefits and business impact
 
-Each fix gives learners back the chance to answer correctly. At the annual review, a B2B client, a school, asked for three things: a full analysis of its content, a formal process for fixing errors, and an end to multiple-choice questions where more than one answer can be defended. Cross-checked with feedback from B2B2C learners, its reports pointed to the same pain point. The audit answers each request in turn: the grid for the full analysis, the reviewed batches for the process, the “one defensible answer” criterion for the disputed questions. It is a direct way to reduce the risk of churn for this client, and the same method applies to the next courses.
+Each fix gives learners back the chance to answer correctly. At the annual review, a school client asked for three things: a full analysis of its content, a formal process for fixing errors, and an end to multiple-choice questions where more than one answer can be defended. Feedback from its students pointed to the same problem. The audit answers each request: the grid, the reviewed batches, the “one defensible answer” criterion. It reduces the risk of churn for this client, and the method applies to the next courses.
 
 ## What I took from it
 

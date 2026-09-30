@@ -73,7 +73,7 @@ Sur le premier parcours, elle a aussi vérifié les corrections en préproductio
 
 ## Bénéfices et impact business
 
-Chaque correction rend à l’apprenant la possibilité de répondre juste. Au bilan annuel, un client B2B, une école, demandait trois choses : une analyse exhaustive de ses contenus, un processus formalisé pour corriger les erreurs, et la fin des QCM où plusieurs réponses se défendent. Recoupées avec les retours des apprenants B2B2C, ses remontées désignaient le même point de douleur. L’audit y répond point par point : la grille pour l’analyse exhaustive, les lots relus pour le processus, le critère « une seule réponse défendable » pour les QCM contestés. C’est un moyen direct de réduire le risque de churn de ce client, et la même méthode s’applique aux parcours suivants.
+Chaque correction rend à l’apprenant la possibilité de répondre juste. Au bilan annuel, une école cliente demandait trois choses : une analyse exhaustive de ses contenus, un processus formalisé pour corriger les erreurs, et la fin des QCM où plusieurs réponses se défendent. Les retours de ses étudiants pointaient le même problème. L’audit répond à chaque demande : la grille, les lots relus, le critère « une seule réponse défendable ». Il réduit le risque de churn de ce client, et la méthode s’applique aux parcours suivants.
 
 ## Ce que j’en retiens
 
