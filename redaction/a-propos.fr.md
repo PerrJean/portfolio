@@ -10,9 +10,9 @@ J’y dirige une équipe de Product Managers et de Product Designers, que
 j’accompagne au quotidien sur leurs projets, de la discovery à la delivery. Je
 mène aussi certains projets moi-même.
 
-Avant, j’ai construit des services publics numériques : à la DINUM,
+Avant, j’ai construit des services publics numériques : à la direction interministérielle du numérique (DINUM),
 l’Observatoire de la qualité des démarches en ligne et « Je donne mon
-avis », puis à la DITP, Services publics +.
+avis », puis à la direction interministérielle de la transformation publique (DITP), Services publics +.
 
 Je bâtis sur des hypothèses : j’écoute, je teste, puis j’investis là où ça compte.
 J’utilise l’IA quand elle sert un besoin précis : classer des retours,

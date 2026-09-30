@@ -32,3 +32,8 @@ d'annonce « J'en tire trois enseignements », un seul titre en « X, pas Y »
 sur le site (« le bon contexte, pas tout le contexte »), les autres
 deviennent « Faire vérifier ce qui est fait » et « Faire classer les
 attentes ».
+**Tri, série 4 (Jean)** : n°13 la phrase sur les limites de l'IA supprimée ;
+n°17 « J'ai cadré la méthode et le Design Sprint avec la product designer
+et le Product Manager (PM) de mon équipe… » (la designer menait), la redite
+du corps retirée ; n°34 DINUM et DITP en toutes lettres. n°16 (« Ces
+clients, des entreprises ») : proposition jugée trop lourde, à reprendre.

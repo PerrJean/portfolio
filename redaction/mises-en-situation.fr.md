@@ -4,7 +4,7 @@ date: "2026-02"
 fait: "Invités à classer ce qui comptait le plus, les clients ont placé la qualité de l’échange avec l’IA et la qualité du retour avant les badges et la progression. De ce fait, la qualité du retour pédagogique est passée en tête de la feuille de route."
 synthese:
   probleme: "Sur une plateforme EdTech d’apprentissage des langues, l’apprenant avait peu d’occasions de s’entraîner à parler en situation, face à un recruteur ou à un client. Les conversations avec une IA qu’on trouvait ailleurs restaient souvent hors du parcours, avec des scores sans explication."
-  action: "Nous avons parié sur une conversation encadrée : une IA incarne l’interlocuteur et mène un échange court, sur des questions préparées par l’équipe pédagogique. J’ai accompagné le Product Manager (PM) et la product designer de mon équipe sur la méthode et la mise en place d’un Design Sprint ; l’équipe a ensuite mené entretiens et enquêtes auprès des clients."
+  action: "Nous avons parié sur une conversation encadrée : une IA incarne l’interlocuteur et mène un échange court, sur des questions préparées par l’équipe pédagogique. J’ai cadré la méthode et le Design Sprint avec la product designer et le Product Manager (PM) de mon équipe, qui ont ensuite mené entretiens et enquêtes auprès des clients."
   resultat: "Les enquêtes ont validé le format et réordonné la suite : le retour pédagogique d’abord, un catalogue construit sur les thèmes jugés indispensables. Les échanges sont en ligne dans quatre parcours, et le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau, auprès de nouveaux clients."
 plusLoin:
   - titre: "Le calendrier"
@@ -56,7 +56,7 @@ Nous avons fait le pari inverse, celui d’une conversation encadrée. L’IA in
 
 ## Ce que la découverte a changé
 
-J’ai accompagné le Product Manager (PM) et la product designer de mon équipe sur la méthode, puis dans la mise en place d’un Design Sprint. L’équipe en a tiré un prototype, et une première version a été testée par des clients : responsables pédagogiques et enseignants, de l’enseignement supérieur à la formation professionnelle. Entretiens, enquêtes et atelier de co-construction ont suivi, de février à avril 2026.
+Du Design Sprint, l’équipe a tiré un prototype, et une première version a été testée par des clients : responsables pédagogiques et enseignants, de l’enseignement supérieur à la formation professionnelle. Entretiens, enquêtes et atelier de co-construction ont suivi, de février à avril 2026.
 
 Le socle a été validé par tous, de la conversation encadrée au fil de messages sans visio. Tous voulaient aussi un retour utile à la progression, et un échange fiable. Invités à classer nos prochains chantiers, ils ont mis la qualité de l’échange avec l’IA en tête, la qualité du retour juste après, et les badges et la progression en dernier.
 
@@ -67,8 +67,6 @@ Nous avons donc réordonné la suite. Le retour pédagogique est passé en tête
 Le retour de fin d’échange s’appuie sur la recherche en acquisition des langues. Il tient en trois temps : un signal sur la tâche, un indice qui laisse l’apprenant trouver seul, puis un modèle de formulation. Il ne travaille qu’un critère, celui qui gêne le plus la compréhension. Une faute de grammaire qui ne gêne personne n’est pas relevée.
 
 La prononciation a demandé l’arbitrage le plus net. Une minorité de clients la réclamait, et une note de prononciation calculée par IA se vend bien. L’analyse de l’équipe a montré qu’une telle note compare l’apprenant à un seul accent de référence et évalue mal le rythme de la phrase. Un retour faux ancre l’erreur au lieu de la corriger. L’équipe a recommandé de mesurer d’abord si l’apprenant est compris, sans jamais juger son accent.
-
-L’IA a aussi ses propres limites. Les apprenants cherchent les failles d’une conversation, alors elle reste fermée sur son scénario.
 
 ## Bénéfices et impact business
 

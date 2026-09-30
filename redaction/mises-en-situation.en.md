@@ -4,7 +4,7 @@ date: "2026-02"
 fait: "Asked to rank what mattered most, clients put the quality of the exchange with the AI and the quality of the feedback ahead of badges and progress tracking. As a result, the quality of learning feedback moved to the top of the roadmap."
 synthese:
   probleme: "On an EdTech language-learning platform, learners had few chances to practice speaking in real situations, facing a recruiter or a client. The AI conversations available elsewhere often sat outside the learning path, with scores nobody explained."
-  action: "We bet on a guided conversation: an AI plays the other person and leads a short exchange, built on questions prepared by the learning team. I supported the Product Manager (PM) and the product designer on my team with the method and with setting up a Design Sprint; the team then ran interviews and surveys with clients."
+  action: "We bet on a guided conversation: an AI plays the other person and leads a short exchange, built on questions prepared by the learning team. I framed the method and the Design Sprint with the product designer and the Product Manager (PM) on my team, who then ran interviews and surveys with clients."
   resultat: "The surveys validated the format and reordered what came next: learning feedback first, and a catalog built on the topics rated must-have. The role-plays are live in four learning paths, and the project brought in several tens of thousands of euros in new revenue, from new clients."
 plusLoin:
   - titre: "The timeline"
@@ -56,7 +56,7 @@ We made the opposite bet, a guided conversation. The AI plays the other person a
 
 ## What discovery changed
 
-I supported the Product Manager (PM) and the product designer on my team with the method, then with setting up a Design Sprint. The team turned it into a prototype, and clients tested a first version: heads of teaching and teachers, from higher education to vocational training. Interviews, surveys and a co-design workshop followed, from February to April 2026.
+From the Design Sprint, the team built a prototype, and clients tested a first version: heads of teaching and teachers, from higher education to vocational training. Interviews, surveys and a co-design workshop followed, from February to April 2026.
 
 Everyone validated the foundation, from the guided conversation to the message thread with no video. Everyone also wanted feedback that helps them progress, and a reliable exchange. Asked to rank our next priorities, they put the quality of the exchange with the AI first, the quality of the feedback right after, and badges and progress tracking last.
 
@@ -67,8 +67,6 @@ So we reordered what came next. Learning feedback moved to the top, earlier than
 The end-of-exchange feedback draws on second language acquisition research. It comes in three steps: a signal on the task, a hint that lets learners find the answer themselves, then a model phrasing. It works on one criterion only, the one that most hinders understanding. A grammar mistake that bothers no one is not flagged.
 
 Pronunciation called for the clearest trade-off. A minority of clients asked for it, and an AI pronunciation score sells well. The team’s analysis showed that such a score compares learners with a single reference accent and handles sentence rhythm poorly. Wrong feedback locks the mistake in instead of fixing it. The team recommended measuring first whether learners are understood, without ever judging their accent.
-
-The AI also has limits of its own. Learners look for the cracks in a conversation, so it stays closed around its scenario.
 
 ## Benefits and business impact
 
