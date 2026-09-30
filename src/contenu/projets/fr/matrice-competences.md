@@ -38,7 +38,7 @@ cle: matrice
 
 ## Pourquoi une matrice
 
-Dans l’équipe, « devenir senior » n’avait pas de définition partagée. Sans critères communs, la progression d’un PM reposait sur l’impression de chacun, et le PM et moi, son manager, n’en avions pas la même perception.
+Dans l’équipe, rien ne disait ce que « devenir senior » voulait dire. La progression d’un PM reposait donc sur l’impression de chacun, la sienne comme celle de son manager.
 
 Écrire cette définition donnait à sa progression une base que nous pourrions lire tous les deux.
 
@@ -48,7 +48,7 @@ La matrice compte trois niveaux, de junior à senior. Pour chaque compétence et
 
 Les compétences se regroupent par familles, côté métier et côté savoir-être, détaillées dans « Pour aller plus loin ». Chacune a sa pondération, et chaque niveau a des prérequis à valider avant d’y accéder. Le cadre reste proche du métier d’une plateforme EdTech : il couvre par exemple l’arbitrage entre ROI business et valeur pédagogique.
 
-J’en ai écrit une première version, puis une version structurée. Avant de m’en servir, je l’ai relue avec le PM.
+J’en ai écrit une première version, puis une version structurée.
 
 <figure>
   <a href="/captures/matrice/grille-extrait.png"><img src="/captures/matrice/grille-extrait.png" width="1360" height="1400" loading="lazy" decoding="async" alt="Extrait de la grille de compétences : le bloc delivery et exécution produit, en six lignes (gestion de projets complexes, gestion du backlog, outils et méthodologie agile, animation d’équipe et leadership, priorisation et arbitrage opérationnel, gestion de risque). Chaque ligne porte sa pondération et trois colonnes, junior, intermédiaire et senior. En gestion du backlog, la colonne junior commence par « Rédige des user stories simples à partir de besoins exprimés clairement »."></a>
@@ -61,9 +61,9 @@ En entretien, le PM et moi avons situé chaque compétence sur la matrice. C’e
 
 La légitimité d’un PM repose sur sa compréhension des usages et des utilisateurs, et sur sa maîtrise du métier. Nous nous sommes accordés pour renforcer ce second point, et pour aller plus loin dans l’IA appliquée à ce métier : ce sont les deux axes de son plan de progression.
 
-## Bénéfices et impact business
+## Ce que ça change pour l’équipe
 
-La progression du PM se discute sur des critères écrits, qu’il a relus avant qu’on s’en serve. L’entretien part de comportements que chacun a pu observer, ce qui le rend plus juste pour lui comme pour moi.
+La progression du PM se discute sur des critères écrits. L’entretien part de comportements que chacun a pu observer, ce qui le rend plus juste pour lui comme pour moi.
 
 Le cadre dépasse ce seul entretien. Les mêmes niveaux et les mêmes prérequis peuvent servir de base pour recruter un PM, ou pour faire grandir d’autres profils de l’équipe sur des critères que chacun peut lire.
 

@@ -38,7 +38,7 @@ cle: matrice
 
 ## Why a matrix
 
-On the team, “becoming senior” had no shared definition. With no common criteria, a PM’s growth rested on each person’s impression, and the PM and I, as the PM’s manager, did not see it the same way.
+On the team, nothing said what “becoming senior” meant. A PM’s growth therefore rested on each person’s impression, theirs as well as their manager’s.
 
 Writing that definition down gave the PM’s growth a basis we could both read.
 
@@ -48,7 +48,7 @@ The matrix has three levels, from junior to senior. For each skill and each leve
 
 The skills fall into families, on the job side and on the soft-skills side, detailed under “Going further”. Each skill has its weighting, and each level has prerequisites to meet before moving up to it. The framework stays close to the work of an EdTech platform: for example, it covers the trade-off between business ROI and educational value.
 
-I wrote a first version, then a structured one. Before using it, I reviewed it with the PM.
+I wrote a first version, then a structured one.
 
 <figure>
   <a href="/captures/matrice/grille-extrait.png"><img src="/captures/matrice/grille-extrait.png" width="1360" height="1400" loading="lazy" decoding="async" alt="Excerpt from the skills grid, in French: the product delivery and execution block, in six rows (managing complex projects, backlog management, agile tools and methods, team facilitation and leadership, prioritization and operational trade-offs, risk management). Each row shows its weighting and three columns: junior, intermediate and senior. In backlog management, the junior column starts with “Rédige des user stories simples à partir de besoins exprimés clairement” (writes simple user stories from clearly stated needs)."></a>
@@ -61,9 +61,9 @@ In a one-on-one, the PM and I placed each skill on the matrix. That is when our 
 
 A PM’s credibility rests on understanding how people use the product and who they are, and on mastery of the job. We agreed to strengthen that second point, and to go further into AI applied to product management: these are the two focus areas of the growth plan.
 
-## Benefits and business impact
+## What it changes for the team
 
-The PM’s growth is now discussed against written criteria, which the PM reviewed before we used them. The one-on-one starts from behaviors each of us could observe, which makes it fairer for the PM and for me.
+The PM’s growth is now discussed against written criteria. The one-on-one starts from behaviors each of us could observe, which makes it fairer for the PM and for me.
 
 The framework reaches beyond this one conversation. The same levels and the same prerequisites can serve as a basis for hiring a PM, or for helping other people on the team grow, against criteria anyone can read.
 

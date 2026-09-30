@@ -19,3 +19,10 @@ pédagogique est passée en tête de la feuille de route. »), « engagement » 
 entreprise EdTech proposait trois plateformes » (C1 précisée dans
 `CLAUDE.md`) ; n°21 la classification seule, sans détail signature / thème ;
 n°26 appliqué tel que proposé. FR, EN et `redaction/`.
+**Tri, série 2 (Jean)** : n°27 relecture par famille de défauts définie ;
+n°30 l'écart de perception n'est plus « connu avant » ; n°31 deux redites
+« relue avec le PM » retirées, et le H2 « Bénéfices et impact business » de la
+Matrice devient « Ce que ça change pour l'équipe » (l'impact business n'a pas
+de sens ici) ; n°33 À propos : « J'y dirige une équipe… que j'accompagne au
+quotidien sur leurs projets, de la discovery à la delivery. Je mène aussi
+certains projets moi-même. » (la phrase sur les corrections priorisées sort).

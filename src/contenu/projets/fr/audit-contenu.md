@@ -62,7 +62,7 @@ Ce résultat ne présume pas de la qualité du reste du contenu du site.
 
 ## Corriger sans casser
 
-L’outil n’écrit jamais directement en base. Il produit des lots de corrections, rangés par famille de défauts. La learning designer relit, famille par famille, les cas les moins fiables, et sa décision vaut pour toute la famille. Le lot part en production dès que l’ensemble est meilleur que l’existant, même s’il garde quelques défauts. Si une question mal corrigée est repérée ensuite, on reprend le contrôle ou la règle d’écriture qui l’a produite.
+L’outil n’écrit jamais directement en base. Il produit des lots de corrections, un par famille de défauts, c’est-à-dire un même défaut répété sur plusieurs questions. Dans chaque famille, la learning designer relit un échantillon, pris parmi les cas les moins sûrs, et sa décision vaut pour toute la famille. Le lot part en production dès que l’ensemble est meilleur que l’existant, même s’il garde quelques défauts. Si une question mal corrigée est repérée ensuite, on reprend le contrôle ou la règle d’écriture à l’origine de l’erreur.
 
 Sur le premier parcours, elle a aussi vérifié les corrections en préproduction. Toutes les questions bloquantes ont été corrigées, puis mises en production.
 
