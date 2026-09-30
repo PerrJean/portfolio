@@ -15,3 +15,8 @@
 
 Mené en session principale (petites retouches, coût non mesurable).
 Vérifié : liens « projet suivant » des quatre pages ; accueil à 1280 px.
+4. **UserVoice** (Jean, 2026-10-01) : « En septembre 2026, j'ai lancé UserVoice
+   sur les retours accumulés depuis mars » (l'écart lancement / données
+   disparaît) ; « J'ai construit UserVoice moi-même, avec Claude Code, pour
+   prouver la valeur avant d'y engager l'équipe » (au lieu de « seul »). FR,
+   EN, `redaction/`.

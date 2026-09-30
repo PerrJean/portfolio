@@ -24,7 +24,7 @@ cle: uservoice
 
 Feedback comes from four sources: the NPS survey, the placement test, the end of each course, and an open feedback form available on every page of the site.
 
-When I launched UserVoice in September 2026, this feedback was not tagged. Each piece stayed in its own source, and the same topics kept coming back without anyone knowing whether they had already been handled.
+In September 2026, I launched UserVoice on the feedback gathered since March. Until then, it had not been tagged. Each piece stayed in its own source, and the same topics kept coming back without anyone knowing whether they had already been handled.
 
 ## Listening every Monday
 
@@ -53,7 +53,7 @@ Every Monday, the summary takes five minutes to read, with the four sources brou
 
 ## What I built
 
-I ran UserVoice on my own, using Claude Code to write the code.
+I built UserVoice myself, with Claude Code, to prove its value before bringing the team in.
 
 For each piece of feedback, AI proposes a category and a confidence score. Below a threshold, or when two categories come out too close to each other, the feedback goes to a human review queue. Each review adds to the examples given to the AI. Mechanical rules take over on obvious cases, such as empty answers or duplicates. The human review queue shrank by 87% in three days.
 

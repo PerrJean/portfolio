@@ -24,7 +24,7 @@ cle: uservoice
 
 Les retours arrivent par quatre sources : l’enquête NPS, le test de niveau, la fin de parcours, et un formulaire de retour libre présent sur toutes les pages du site.
 
-Quand j’ai lancé UserVoice, en septembre 2026, ces retours n’étaient pas qualifiés. Chacun restait dans sa source, et les mêmes sujets revenaient sans qu’on sache s’ils étaient déjà traités.
+En septembre 2026, j’ai lancé UserVoice sur les retours accumulés depuis mars. Jusque-là, ils n’étaient pas qualifiés. Chacun restait dans sa source, et les mêmes sujets revenaient sans qu’on sache s’ils étaient déjà traités.
 
 ## Écouter chaque lundi
 
@@ -53,7 +53,7 @@ Chaque lundi, le bilan se lit en cinq minutes, les quatre sources réunies. Il f
 
 ## Ce que j’ai construit
 
-J’ai mené UserVoice seul, avec Claude Code pour écrire le code.
+J’ai construit UserVoice moi-même, avec Claude Code, pour prouver la valeur avant d’y engager l’équipe.
 
 Pour chaque retour, l’IA propose un classement et un score de confiance. Sous un seuil, ou quand deux catégories arrivent trop près l’une de l’autre, le retour part dans une file de validation humaine. Chaque validation enrichit les exemples donnés à l’IA. Des règles mécaniques prennent le relais sur les cas évidents, comme les réponses vides ou les doublons. La file de validation humaine a fondu de 87 % en trois jours.
 
