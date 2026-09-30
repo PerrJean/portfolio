@@ -3,8 +3,8 @@ titre: "Matrice de compétences : faire grandir un Product Manager"
 date: "2026-01"
 fait: "Sur une matrice de compétences relue ensemble, un Product Manager de mon équipe et moi sommes passés de deux idées de « devenir senior » à une vision partagée."
 synthese:
-  probleme: "Dans l’équipe produit d’une plateforme EdTech, « devenir senior » restait à définir. Sans critères communs, la progression d’un Product Manager (PM) reposait sur l’impression de chacun."
-  action: "J’ai construit une matrice de compétences, décrite en comportements observables sur trois niveaux, et je l’ai relue avec le PM avant de m’en servir. Nous l’avons ensuite parcourue ensemble en entretien, compétence par compétence."
+  probleme: "Dans l’équipe produit d’une plateforme EdTech, « devenir senior » restait à définir. Sans critères communs, la progression d’un Product Manager reposait sur l’impression de chacun."
+  action: "J’ai construit une matrice de compétences, décrite en comportements observables sur trois niveaux, et je l’ai relue avec le Product Manager avant de m’en servir. Nous l’avons ensuite parcourue ensemble en entretien, compétence par compétence."
   resultat: "L’entretien a fait apparaître notre différence de perception, puis abouti à une vision partagée de ses compétences et à un plan de progression sur deux axes."
 plusLoin:
   - titre: "La structure de la matrice"
@@ -24,7 +24,7 @@ plusLoin:
 
 ## Pourquoi une matrice
 
-Dans l’équipe, rien ne disait ce que « devenir senior » voulait dire. La progression d’un PM reposait donc sur l’impression de chacun, la sienne comme celle de son manager.
+Dans l’équipe, rien ne disait ce que « devenir senior » voulait dire. La progression d’un Product Manager reposait donc sur l’impression de chacun, la sienne comme celle de son manager.
 
 Écrire cette définition donnait à sa progression une base que nous pourrions lire tous les deux.
 
@@ -38,15 +38,15 @@ J’en ai écrit une première version, puis une version structurée.
 
 ## Un entretien pour se situer ensemble
 
-En entretien, le PM et moi avons situé chaque compétence sur la matrice. C’est là qu’est apparue notre différence de perception sur ce que veut dire « devenir senior ». Nous en sommes sortis avec une vision partagée de ses compétences, point de départ de sa progression.
+En entretien, le Product Manager et moi avons situé chaque compétence sur la matrice. C’est là qu’est apparue notre différence de perception sur ce que veut dire « devenir senior ». Nous en sommes sortis avec une vision partagée de ses compétences, point de départ de sa progression.
 
-La légitimité d’un PM repose sur sa compréhension des usages et des utilisateurs, et sur sa maîtrise du métier de PM. Nous nous sommes accordés pour renforcer ce second point, et pour aller plus loin dans l’IA appliquée au product management : ce sont les deux axes de son plan de progression.
+La légitimité d’un Product Manager repose sur sa compréhension des usages et des utilisateurs, et sur sa maîtrise du métier de Product Manager. Nous nous sommes accordés pour renforcer ce second point, et pour aller plus loin dans l’IA appliquée au product management : ce sont les deux axes de son plan de progression.
 
 ## Ce que ça change pour l’équipe
 
-La progression du PM se discute sur des critères écrits. L’entretien part de comportements que chacun a pu observer, ce qui le rend plus juste pour lui comme pour moi.
+La progression du Product Manager se discute sur des critères écrits. L’entretien part de comportements que chacun a pu observer, ce qui le rend plus juste pour lui comme pour moi.
 
-Le cadre dépasse ce seul entretien. Les mêmes niveaux et les mêmes prérequis peuvent servir de base pour recruter un PM, ou pour faire grandir d’autres profils de l’équipe sur des critères que chacun peut lire.
+Le cadre dépasse ce seul entretien. Les mêmes niveaux et les mêmes prérequis peuvent servir de base pour recruter un Product Manager, ou pour faire grandir d’autres profils de l’équipe sur des critères que chacun peut lire.
 
 ## Ce que j’en retiens
 
@@ -54,7 +54,7 @@ Faire grandir quelqu’un de mon équipe s’apprend aussi, et cette matrice a �
 
 **Décrire chaque niveau par ce qu’on voit faire.** Une phrase comme « décompose en epics et anime le grooming » se vérifie. Elle m’a obligé à préciser mes propres attentes avant de les appliquer à quelqu’un.
 
-**Relire le cadre avec la personne avant de s’en servir.** En relisant la matrice avec le PM avant l’entretien, nous avions les mêmes critères sous les yeux au moment de nous situer.
+**Relire le cadre avec la personne avant de s’en servir.** En relisant la matrice avec le Product Manager avant l’entretien, nous avions les mêmes critères sous les yeux au moment de nous situer.
 
 **Chercher l’écart avant le niveau.** Le premier apport de l’entretien a été de voir que nous ne mettions pas la même chose derrière « devenir senior ». C’est cet écart, une fois nommé, qui a rendu possible un plan de progression partagé.
 

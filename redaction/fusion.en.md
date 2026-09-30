@@ -3,8 +3,8 @@ titre: "Platform merger: from three to two, aiming for one"
 date: "2024-08"
 fait: "In 2024, I led the merger of two of our three platforms: every change is now built twice, not three times."
 synthese:
-  probleme: "An EdTech company offered three language-learning platforms, built one after another. Each had its own interface, activity templates and data model, so every change had to be built three times."
-  action: "As Product Manager (PM), then project lead, I framed a target, a single platform, and presented it to the executive committee. With a team of about ten people, we first laid down a shared design system, then merged the platform for businesses into the general platform, in seven batches."
+  probleme: "An EdTech company offered three language-learning platforms, built one after another. Each had its own interface, activity templates and data model, all developed and maintained separately."
+  action: "As Product Manager, then project lead, I framed a target, a single platform, and presented it to the executive committee. With a team of about ten people, we first laid down a shared design system, then merged the platform for businesses into the general platform, in seven batches."
   resultat: "The merger has been in production since August 2024. Activities now run on four templates instead of about thirty, and the share of feedback about usability dropped by a quarter. This project opened the way to the Head of Product role."
 plusLoin:
   - titre: "Timeline"
@@ -58,11 +58,11 @@ The heaviest batch covered the activity templates. User interviews and comments 
 
 <!-- Figure : gabarits (ops/images/fusion/gabarits.en.svg, étroit : gabarits.etroit.en.svg) -->
 
-We were a team of about ten people, mostly developers, with a designer, a junior PM, and the learning design team alongside us. As PM, then project lead, I owned the schedule and the split into batches, defined the target data model, wrote the specifications and ran acceptance testing. The lead developer owned the technical architecture, and the designer the components, the mockups and the user interviews.
+We were a team of about ten people, mostly developers, with a designer, a junior Product Manager, and the learning design team alongside us. As Product Manager, then project lead, I owned the schedule and the split into batches, defined the target data model, wrote the specifications and ran acceptance testing. The lead developer owned the technical architecture, and the designer the components, the mockups and the user interviews.
 
 ## Benefits and business impact
 
-The platform for businesses has been gone since August 2024. Any future development is now done twice instead of three times, with one fewer codebase to maintain.
+The platform for businesses has been gone since August 2024, and with it one codebase to maintain.
 
 For learners, the share of feedback about usability went from 8% between January and August 2024 to 6% between September and December, a quarter less. Activities were designed to the accessibility standard, something public-sector education clients expect.
 
@@ -70,7 +70,7 @@ For the learning design team, a new exercise no longer requires development: the
 
 ## What I took from it
 
-This project, led as PM and then as project lead, opened the way to the Head of Product role: it called for running a complex project with a large team.
+This project, led as Product Manager and then as project lead, opened the way to the Head of Product role: it called for running a complex project with a large team.
 
 **Set the target, then a first step that stands on its own.** The single platform remained the horizon. The first step had to be worth it by itself, with one fewer platform to maintain, even if the second was slow to come.
 

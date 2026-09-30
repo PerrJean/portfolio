@@ -4,7 +4,7 @@ date: "2026-02"
 fait: "L’e-learning permet enfin de travailler l’expression orale : une IA joue l’interlocuteur, et chaque échange se termine par un retour."
 synthese:
   probleme: "Sur une plateforme EdTech d’apprentissage des langues, l’apprenant avait peu d’occasions de s’entraîner à parler en situation, face à un recruteur ou à un client. Les conversations avec une IA qu’on trouvait ailleurs restaient souvent hors du parcours, avec des scores sans explication."
-  action: "Nous avons parié sur une conversation encadrée : une IA incarne l’interlocuteur et mène un échange court, sur des questions préparées par l’équipe pédagogique. J’ai cadré la méthode et le Design Sprint avec la product designer et le Product Manager (PM) de mon équipe, qui ont ensuite mené entretiens et enquêtes auprès des clients."
+  action: "Nous avons parié sur une conversation encadrée : un échange court, sur des questions préparées par l’équipe pédagogique. J’ai cadré la méthode et le Design Sprint avec la product designer et le Product Manager de mon équipe, qui ont ensuite mené entretiens et enquêtes auprès des clients."
   resultat: "Les enquêtes ont validé le format et réordonné la suite : le retour pédagogique d’abord, un catalogue construit sur les thèmes jugés indispensables. Les échanges sont en ligne dans quatre parcours, et le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau, auprès de nouveaux clients."
 plusLoin:
   - titre: "Le calendrier"
@@ -78,7 +78,7 @@ Le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’aff
 
 Ce projet m’apprend à tenir le rôle de Head of Product sur une découverte que je ne mène pas moi-même.
 
-**Cadrer la démarche, laisser l’équipe trouver.** Mon travail a porté sur la méthode et le Design Sprint, pas sur les réponses. Le PM et la product designer ont mené les entretiens et les enquêtes, et ce sont leurs conclusions qui ont réordonné la feuille de route.
+**Cadrer la démarche, laisser l’équipe trouver.** Mon travail a porté sur la méthode et le Design Sprint, pas sur les réponses. Le Product Manager et la product designer ont mené les entretiens et les enquêtes, et ce sont leurs conclusions qui ont réordonné la feuille de route.
 
 **Faire classer les attentes.** Demander aux clients ce qu’ils veulent donne une liste où tout compte. Leur demander de classer oblige à choisir : le retour pédagogique est passé devant les badges et la progression, et les situations professionnelles devant la vie quotidienne.
 

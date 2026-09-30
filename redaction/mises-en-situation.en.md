@@ -1,10 +1,10 @@
 ---
 titre: "AI speaking role-plays: betting on a guided conversation"
 date: "2026-02"
-fait: "E-learning can finally train speaking: an AI plays the other person, and every exchange ends with feedback."
+fait: "E-learning can finally help learners practice speaking: an AI plays the other person, and every exchange ends with feedback."
 synthese:
   probleme: "On an EdTech language-learning platform, learners had few chances to practice speaking in real situations, facing a recruiter or a client. The AI conversations available elsewhere often sat outside the learning path, with scores nobody explained."
-  action: "We bet on a guided conversation: an AI plays the other person and leads a short exchange, built on questions prepared by the learning design team. I framed the method and the Design Sprint with the product designer and the Product Manager (PM) on my team, who then ran interviews and surveys with clients."
+  action: "We bet on a guided conversation: a short exchange, built on questions prepared by the learning design team. I framed the method and the Design Sprint with the product designer and the Product Manager on my team, who then ran interviews and surveys with clients."
   resultat: "The surveys validated the format and reordered what came next: learning feedback first, and a catalog built on the topics rated must-have. The role-plays are live in four learning paths, and the project brought in several tens of thousands of euros in new revenue, from new clients."
 plusLoin:
   - titre: "The timeline"
@@ -70,7 +70,7 @@ Pronunciation called for the clearest trade-off. A minority of clients asked for
 
 ## Benefits and business impact
 
-The project brought in several tens of thousands of euros in new revenue. Client companies want to see their employees progress in speaking. The feedback at the end of each role-play shows that progress. Work situations come first in the catalog, as clients asked.
+The project brought in several tens of thousands of euros in new revenue. Client companies want to see their employees progress in speaking. The end-of-exchange feedback shows that progress. Work situations come first in the catalog, as clients asked.
 
 At the end of September 2026, the role-plays are live in four learning paths, including the A2 general path and the business paths. Learning feedback is in place, and pronunciation joined it over the summer. Two more learning paths, conversation statistics and usage analysis are the next steps.
 
@@ -78,7 +78,7 @@ At the end of September 2026, the role-plays are live in four learning paths, in
 
 This project is teaching me to hold the Head of Product role in a discovery I don’t run myself.
 
-**Frame the approach, let the team find the answers.** My work covered the method and the Design Sprint, not the answers. The PM and the product designer ran the interviews and the surveys, and their conclusions reordered the roadmap.
+**Frame the approach, let the team find the answers.** My work covered the method and the Design Sprint, not the answers. The Product Manager and the product designer ran the interviews and the surveys, and their conclusions reordered the roadmap.
 
 **Have expectations ranked.** Asking clients what they want gets you a list where everything matters. Asking them to rank forces a choice: learning feedback moved ahead of badges and progress tracking, and work situations ahead of everyday life.
 

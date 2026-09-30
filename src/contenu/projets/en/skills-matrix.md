@@ -3,9 +3,9 @@ titre: "Skills matrix: helping a Product Manager grow"
 date: "2026-01"
 fait: "Working from a skills matrix we reviewed together, a Product Manager on my team and I went from two ideas of “becoming senior” to a shared view."
 synthese:
-  probleme: "On the product team of an EdTech platform, “becoming senior” had yet to be defined. With no shared criteria, a Product Manager’s (PM) growth rested on each person’s impression."
-  action: "I built a skills matrix, written as observable behaviors across three levels, and reviewed it with the PM before using it. We then went through it together in a one-on-one, skill by skill."
-  resultat: "The one-on-one brought our different perceptions to the surface, then led to a shared view of the PM’s skills and a growth plan with two focus areas."
+  probleme: "On the product team of an EdTech platform, “becoming senior” had yet to be defined. With no shared criteria, a Product Manager’s growth rested on each person’s impression."
+  action: "I built a skills matrix, written as observable behaviors across three levels, and reviewed it with the Product Manager before using it. We then went through it together in a one-on-one, skill by skill."
+  resultat: "The one-on-one brought our different perceptions to the surface, then led to a shared view of the Product Manager’s skills and a growth plan with two focus areas."
 plusLoin:
   - titre: "How the matrix is structured"
     points:
@@ -38,9 +38,9 @@ cle: matrice
 
 ## Why a matrix
 
-On the team, nothing said what “becoming senior” meant. A PM’s growth therefore rested on each person’s impression, theirs as well as their manager’s.
+On the team, nothing said what “becoming senior” meant. A Product Manager’s growth therefore rested on each person’s impression, theirs as well as their manager’s.
 
-Writing that definition down gave the PM’s growth a basis we could both read.
+Writing that definition down gave the Product Manager’s growth a basis we could both read.
 
 ## What the matrix describes
 
@@ -57,15 +57,15 @@ I wrote a first version, then a structured one.
 
 ## One conversation to see where we stood
 
-In a one-on-one, the PM and I placed each skill on the matrix. That is when our different perceptions of what “becoming senior” means came to light. We came out of it with a shared view of their skills, the starting point for their growth.
+In a one-on-one, the Product Manager and I placed each skill on the matrix. That is when our different perceptions of what “becoming senior” means came to light. We came out of it with a shared view of their skills, the starting point for their growth.
 
-A PM’s credibility rests on understanding how people use the product and who they are, and on mastery of the job. We agreed to strengthen that second point, and to go further into AI applied to product management: these are the two focus areas of the growth plan.
+A Product Manager’s credibility rests on understanding how people use the product and who they are, and on mastery of the job. We agreed to strengthen that second point, and to go further into AI applied to product management: these are the two focus areas of the growth plan.
 
 ## What it changes for the team
 
-The PM’s growth is now discussed against written criteria. The one-on-one starts from behaviors each of us could observe, which makes it fairer for the PM and for me.
+The Product Manager’s growth is now discussed against written criteria. The one-on-one starts from behaviors each of us could observe, which makes it fairer for the Product Manager and for me.
 
-The framework reaches beyond this one conversation. The same levels and the same prerequisites can serve as a basis for hiring a PM, or for helping other people on the team grow, against criteria anyone can read.
+The framework reaches beyond this one conversation. The same levels and the same prerequisites can serve as a basis for hiring a Product Manager, or for helping other people on the team grow, against criteria anyone can read.
 
 ## What I took from it
 
@@ -73,6 +73,6 @@ Helping someone on my team grow is also something you learn, and this matrix was
 
 **Describe each level by what you can see someone do.** A sentence like “breaks work down into epics and runs grooming” can be checked. It made me pin down my own expectations before applying them to someone else.
 
-**Review the framework with the person before using it.** Because the PM and I reviewed the matrix before the one-on-one, we had the same criteria in front of us when it came time to place each skill.
+**Review the framework with the person before using it.** Because the Product Manager and I reviewed the matrix before the one-on-one, we had the same criteria in front of us when it came time to place each skill.
 
 **Look for the gap before the level.** The first thing the one-on-one brought was seeing that we did not mean the same thing by “becoming senior”. Once that gap had a name, a shared growth plan became possible.

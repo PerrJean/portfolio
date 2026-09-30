@@ -58,7 +58,7 @@ export const PROJETS: readonly Projet[] = [
     nom: { fr: 'Mises en situation orales', en: 'Speaking role-plays' },
     fait: {
       fr: 'L’e-learning permet enfin de travailler l’expression orale : une IA joue l’interlocuteur, et chaque échange se termine par un retour.',
-      en: 'E-learning can finally train speaking: an AI plays the other person, and every exchange ends with feedback.',
+      en: 'E-learning can finally help learners practice speaking: an AI plays the other person, and every exchange ends with feedback.',
     },
   },
   {
@@ -68,8 +68,8 @@ export const PROJETS: readonly Projet[] = [
     scene: 'uservoice',
     nom: { fr: 'UserVoice', en: 'UserVoice' },
     fait: {
-      fr: '1 retour sur 3 laissé sur le site concerne le contenu.',
-      en: '1 in 3 pieces of feedback left on the site is about the content.',
+      fr: '1 retour négatif sur 3 laissé sur le site concerne le contenu.',
+      en: '1 in 3 pieces of negative feedback left on the site is about the content.',
     },
   },
   {
@@ -79,8 +79,8 @@ export const PROJETS: readonly Projet[] = [
     scene: 'audit',
     nom: { fr: 'Audit contenu', en: 'Content audit' },
     fait: {
-      fr: 'Sur le premier parcours audité, 1 question sur 20 empêchait l’apprenant de répondre. Toutes ont été corrigées.',
-      en: 'In the first course audited, 1 question in 20 stopped learners from answering. All of them were fixed.',
+      fr: 'Sur le premier parcours audité, 1 question sur 20 empêchait l’apprenant d’avoir juste. Toutes ont été corrigées.',
+      en: 'In the first course audited, 1 question in 20 stopped learners from getting it right. All of them were fixed.',
     },
   },
   {

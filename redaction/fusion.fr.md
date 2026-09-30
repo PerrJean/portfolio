@@ -3,8 +3,8 @@ titre: "Fusion des plateformes : de trois à deux, en visant une seule"
 date: "2024-08"
 fait: "En 2024, j’ai piloté la fusion de deux de nos trois plateformes : chaque évolution se développe désormais deux fois, et non plus trois."
 synthese:
-  probleme: "Une entreprise EdTech proposait trois plateformes d’apprentissage des langues, nées l’une après l’autre. Chacune avait son interface, ses gabarits d’activité et son modèle de données, si bien que chaque évolution se développait trois fois."
-  action: "Product Manager (PM), puis chef de projet, j’ai cadré une cible, une seule plateforme, et je l’ai présentée au comité de direction. Avec une équipe d’une dizaine de personnes, nous avons d’abord posé un design system commun, puis fondu la plateforme dédiée aux entreprises dans la plateforme généraliste, en sept lots."
+  probleme: "Une entreprise EdTech proposait trois plateformes d’apprentissage des langues, nées l’une après l’autre. Chacune avait son interface, ses gabarits d’activité et son modèle de données, tous développés et maintenus à part."
+  action: "Product Manager, puis chef de projet, j’ai cadré une cible, une seule plateforme, et je l’ai présentée au comité de direction. Avec une équipe d’une dizaine de personnes, nous avons d’abord posé un design system commun, puis fondu la plateforme dédiée aux entreprises dans la plateforme généraliste, en sept lots."
   resultat: "La fusion est en production depuis août 2024. Les activités tiennent sur quatre gabarits au lieu d’une trentaine, et la part des retours sur l’ergonomie a baissé d’un quart. Ce projet a ouvert la voie au poste de Head of Product."
 plusLoin:
   - titre: "Le calendrier"
@@ -58,11 +58,11 @@ Le lot le plus lourd portait sur les gabarits d’activité. Les entretiens util
 
 <!-- Figure : gabarits (ops/images/fusion/gabarits.fr.svg, étroit : gabarits.etroit.fr.svg) -->
 
-Nous étions une dizaine de personnes, surtout des développeurs, avec une designer et un PM junior, et l’équipe pédagogique à nos côtés. PM puis chef de projet, je tenais le rétroplanning et le découpage en lots, je définissais le modèle de données cible, j’écrivais les spécifications et je menais la recette. Le lead développeur portait l’architecture technique, la designer les composants, les maquettes et les entretiens utilisateurs.
+Nous étions une dizaine de personnes, surtout des développeurs, avec une designer et un Product Manager junior, et l’équipe pédagogique à nos côtés. Product Manager puis chef de projet, je tenais le rétroplanning et le découpage en lots, je définissais le modèle de données cible, j’écrivais les spécifications et je menais la recette. Le lead développeur portait l’architecture technique, la designer les composants, les maquettes et les entretiens utilisateurs.
 
 ## Bénéfices et impact business
 
-La plateforme dédiée aux entreprises n’existe plus depuis août 2024. Tout développement à venir se fait désormais deux fois, et non plus trois, sur une base de code de moins à maintenir.
+La plateforme dédiée aux entreprises n’existe plus depuis août 2024, et avec elle une base de code à maintenir.
 
 Pour l’apprenant, la part des retours consacrés à l’ergonomie est passée de 8 % entre janvier et août 2024 à 6 % entre septembre et décembre, soit un quart de moins. Les activités ont été conçues selon le référentiel d’accessibilité, un attendu des clients du secteur public éducatif.
 
@@ -70,7 +70,7 @@ Pour l’équipe pédagogique, un nouvel exercice ne demande plus de développem
 
 ## Ce que j’en retiens
 
-Ce projet, mené comme PM puis comme chef de projet, a ouvert la voie au poste de Head of Product : il demandait de conduire un projet complexe avec une grande équipe.
+Ce projet, mené comme Product Manager puis comme chef de projet, a ouvert la voie au poste de Head of Product : il demandait de conduire un projet complexe avec une grande équipe.
 
 **Donner la cible, puis un premier pas qui vaut pour lui-même.** La plateforme unique restait l’horizon. Le premier temps devait valoir seul, avec une plateforme de moins à maintenir, même si le second tardait.
 

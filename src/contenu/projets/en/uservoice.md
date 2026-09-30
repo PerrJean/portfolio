@@ -1,7 +1,7 @@
 ---
 titre: "UserVoice: listening to learners every Monday"
 date: "2026-09"
-fait: "1 in 3 pieces of feedback left on the site is about the content."
+fait: "1 in 3 pieces of negative feedback left on the site is about the content."
 synthese:
   probleme: "An EdTech platform receives thousands of pieces of learner feedback a year, spread across four sources and never read together."
   action: "I brought them together in a single table. AI classifies each piece of feedback with a confidence score and leaves the doubtful cases to a person. The summary takes five minutes to read, every Monday."
