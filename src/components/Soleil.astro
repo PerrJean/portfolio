@@ -11,6 +11,12 @@
 //    (shape-outside) : le texte de l'accroche le contourne au lieu de passer
 //    dessous.
 // Taille : --soleil, définie sur .accroche.
+// Sans réserve (reserve={false}, page « À propos », registre/0076) : le
+// dessin seul, dans le coin de .fiche-cadre ; aucun texte ne passe dessous.
+interface Props {
+  reserve?: boolean;
+}
+const { reserve = true } = Astro.props;
 ---
 
 <svg class="soleil" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
@@ -19,7 +25,7 @@
   <circle class="soleil__anneau soleil__anneau--1" cx="200" cy="0" r="129" stroke-width="14" />
   <circle class="soleil__coeur" cx="200" cy="0" r="110" />
 </svg>
-<span class="soleil__reserve" aria-hidden="true"></span>
+{reserve && <span class="soleil__reserve" aria-hidden="true"></span>}
 
 <style>
   .soleil {

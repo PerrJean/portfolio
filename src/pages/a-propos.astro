@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Portrait from '../components/Portrait.astro';
+import Soleil from '../components/Soleil.astro';
 import { LINKEDIN } from '../i18n/textes';
 ---
 
@@ -10,6 +11,8 @@ import { LINKEDIN } from '../i18n/textes';
   titre="À propos"
   description="Le parcours de Jean Perrier et sa manière de travailler."
 >
+  <div class="fiche-cadre">
+  <Soleil reserve={false} />
   <article class="conteneur fiche">
     <div class="fiche__portrait"><Portrait /></div>
     <h1>À propos</h1>
@@ -34,4 +37,5 @@ import { LINKEDIN } from '../i18n/textes';
       <p>Pour échanger&nbsp;: <a href={LINKEDIN}>LinkedIn</a>.</p>
     </div>
   </article>
+  </div>
 </Base>

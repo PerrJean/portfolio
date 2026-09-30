@@ -202,6 +202,15 @@ svg {
    Jean à la place d'une photo (Portrait.astro), au-dessus du titre sur
    mobile, à droite du texte à partir de 760 px. Les pages projet ont leur
    gabarit : src/layouts/Projet.astro. */
+/* Le soleil de la page « À propos » (registre/0076) : le même quart de
+   disque que l'accueil, plus petit, dans le coin haut droit de la page,
+   au-dessus du personnage. */
+.fiche-cadre {
+  --soleil: clamp(5rem, 3rem + 8vw, 9rem);
+  position: relative;
+  isolation: isolate;
+}
+
 .fiche {
   padding-block: clamp(3rem, 8vw, 6rem) 2rem;
 }
@@ -236,11 +245,13 @@ svg {
     align-items: start;
   }
 
+  /* Le personnage passe sous le soleil (registre/0076) : sa tête commence
+     sous le bord du dernier anneau, quelle que soit la largeur. */
   .fiche__portrait {
     grid-column: 2;
     grid-row: 1 / span 2;
     margin: 0;
-    padding-top: 0.5rem;
+    padding-top: max(0.5rem, calc(var(--soleil) * 0.9 - clamp(3rem, 8vw, 6rem)));
   }
 }
 
