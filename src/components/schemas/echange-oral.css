@@ -1,0 +1,219 @@
+/*
+ * Le schéma d'un échange, mises en situation orales (echange-oral.mjs,
+ * registre/0066). Dans le style de la chaîne d'Audit contenu : cadres à
+ * angles droits à l'encre, flèches en ardoise, fond ivoire ; bulles au
+ * trait, carrées ; le « Modèle » a sa fenêtre allumée (l'ambre, jamais de
+ * texte). Texte à 15 px au moins. Aucune animation.
+ *
+ * Au téléphone (moins de 720 px) : une colonne, flèches vers le bas. En
+ * grand écran : trois cadres de gauche à droite, flèches vers la droite ;
+ * l'entrée, plus courte, prend moins de largeur.
+ */
+.echange {
+  --trait: 1.5px;
+  --piste: 2.25rem; /* la place d'une flèche entre deux cadres */
+  margin: 2rem 0 0;
+}
+
+.echange svg {
+  display: block;
+  overflow: visible;
+}
+
+.echange__dessin {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Un cadre : son titre, son contenu. */
+.echange__cadre {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 0.75rem 0.875rem 0.875rem;
+  border: var(--trait) solid var(--encre);
+  background: var(--ivoire);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.echange__titre {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.echange__lignes,
+.echange__temps,
+.echange__dialogue {
+  display: flex;
+  flex-direction: column;
+}
+
+.echange__lignes {
+  gap: 0.5rem;
+}
+
+.echange__ligne,
+.echange__replique,
+.echange__cache,
+.echange__texte,
+.echange__critere {
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.echange__etiquette {
+  font-weight: 700;
+}
+
+/* Les bulles : au trait, carrées ; la queue en bas, côté de celui qui parle. */
+.echange__dialogue {
+  gap: 1.125rem;
+  padding-bottom: 0.625rem;
+}
+
+.echange__bulle {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  max-width: 90%;
+  padding: 0.5rem 0.625rem;
+  border: var(--trait) solid var(--encre);
+  background: var(--ivoire);
+  hyphens: manual;
+}
+
+.echange__bulle--apprenant {
+  align-self: flex-end;
+}
+
+.echange__queue {
+  position: absolute;
+  top: 100%;
+  left: 0.75rem;
+}
+
+.echange__queue path {
+  fill: var(--ivoire);
+  stroke: var(--encre);
+}
+
+.echange__bulle--apprenant .echange__queue {
+  right: 0.75rem;
+  left: auto;
+  transform: scaleX(-1);
+}
+
+.echange__micro {
+  flex: none;
+  margin-top: 0.0625rem;
+}
+
+.echange__micro rect,
+.echange__micro path {
+  stroke: var(--encre);
+}
+
+/* La mention discrète, sous un filet. */
+.echange__cache {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--dalle);
+}
+
+/* Les trois temps du retour, dans des cadres fins en ardoise. */
+.echange__temps {
+  gap: 0.5rem;
+}
+
+.echange__vignette {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem 0.625rem 0.625rem;
+  border: 1px solid var(--ardoise);
+}
+
+.echange__entete {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.echange__numero {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid var(--encre);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.echange__nom {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Le Modèle, la réponse qui aide : la fenêtre allumée, en haut à droite. */
+.echange__vignette--modele .echange__entete {
+  padding-right: 1.5rem;
+}
+
+.echange__lumiere {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.625rem;
+  width: 0.875rem;
+  height: 1.125rem;
+  border: 1px solid var(--encre);
+  background: var(--ambre);
+}
+
+/* Le critère travaillé : une étiquette au trait. */
+.echange__critere {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--encre);
+  font-weight: 700;
+}
+
+/* Les flèches, vers le bas au téléphone. */
+.echange__fleche {
+  display: flex;
+  justify-content: center;
+  padding-block: 0.25rem;
+}
+
+.echange__fleche path {
+  stroke: var(--ardoise);
+}
+
+.echange__legende {
+  margin-top: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+@media (min-width: 720px) {
+  .echange__dessin {
+    grid-template-columns:
+      minmax(0, 0.8fr) var(--piste) minmax(0, 1.1fr) var(--piste) minmax(0, 1.1fr);
+  }
+
+  .echange__fleche {
+    align-self: center;
+    padding: 0;
+  }
+
+  .echange__fleche svg {
+    transform: rotate(-90deg);
+  }
+}

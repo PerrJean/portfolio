@@ -10,8 +10,9 @@
 // build plutôt que de laisser un marqueur vide.
 import { fileURLToPath } from 'node:url';
 import { schemaChaineAudit } from './chaine-audit.mjs';
+import { schemaEchangeOral } from './echange-oral.mjs';
 
-const SCHEMAS = { 'chaine-audit': schemaChaineAudit };
+const SCHEMAS = { 'chaine-audit': schemaChaineAudit, 'echange-oral': schemaEchangeOral };
 
 const MARQUEUR = /^\s*<div\s+data-schema="([\w-]+)"\s*>\s*<\/div>\s*$/;
 
