@@ -12,3 +12,4 @@ vérifiée en TXT dans la zone DNS OVH (aucune balise ni script tiers sur le
 site, C6). Reste après le lancement : soumettre le sitemap, demander
 l'indexation de l'accueil, vérifier l'aperçu LinkedIn (Post Inspector),
 la bannière, et le contact (0005).
+Titre de l'accueil (onglet, Google, aperçu LinkedIn) : « Jean Perrier · Head of Product », FR et EN (Jean), 30 signes, sous les limites de LinkedIn (~70) et de Google (~60).

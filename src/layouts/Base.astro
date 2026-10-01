@@ -24,7 +24,9 @@ interface Props {
 }
 const { page, langue, titre, description } = Astro.props;
 const absolu = (p: Page, l: Langue) => new URL(chemin(p, l), Astro.site).href;
-const titreComplet = titre === NOM ? titre : `${titre} · ${NOM}`;
+// L'accueil (titre = NOM) dit aussi le rôle : c'est le titre qu'affichent
+// l'onglet, Google et l'aperçu LinkedIn (registre/0082).
+const titreComplet = titre === NOM ? `${NOM} · Head of Product` : `${titre} · ${NOM}`;
 // L'aperçu LinkedIn, dans la langue de la page (registre/0053).
 const APERCU: Record<Langue, string> = { fr: '/og/apercu.png', en: '/og/apercu-en.png' };
 const apercu = new URL(APERCU[langue], Astro.site).href;
