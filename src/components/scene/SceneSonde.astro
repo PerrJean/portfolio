@@ -1,0 +1,90 @@
+---
+// La carte UserVoice, « sonder le terrain » (registre/0085) : Jean a
+// construit la sonde qui réunit et classe les retours des apprenants. Au
+// repos, il tient la tige à deux mains, la pointe sur le sol ; sous le sol,
+// en coupe, trois couches (ops/images/uservoice-sonde/repos.svg). Au survol
+// ou au focus de la carte, en 0,6 s, quatre temps de 0,15 s : il enfonce la
+// tige, elle traverse les trois couches, il la remonte avec la carotte (le
+// trou reste dans le sol), puis il recule d'un pas, la tige plantée, et tient
+// la carotte à l'horizontale ; le point ambre se pose sur la bande du milieu
+// (fin.svg). Aucune main ni aucun coude au-dessus des épaules, à aucun instant.
+// À rendre dans Scene.astro (variante « sonde »), qui porte les couleurs et
+// le déclenchement sans survol.
+import Personnage from './Personnage.astro';
+import { OBJETS } from './poses';
+---
+
+<rect class="fd" x="245" y="0" width="175" height="12" />
+<g set:html={OBJETS.couches} />
+<g class="s-trou" transform="translate(166 0)" set:html={OBJETS.trou} />
+<line class="se" x1="0" y1="0" x2="426.667" y2="0" stroke-width="1.5" />
+
+<!-- La tige plantée dans le trou, à la fin (la pointe au fond, 18 sous le sol). -->
+<g class="s-tige" transform="translate(166 18)" set:html={OBJETS.tige} />
+
+<!-- Jean au point de sondage (140 ; la tige à 166) : il enfonce, traverse,
+     remonte. -->
+<g transform="translate(140 0)">
+  <Personnage pose="sonde-repos" jean class="j-repos" />
+  <Personnage pose="sonde-enfonce" jean class="j-enfonce" />
+  <Personnage pose="sonde-traverse" jean class="j-traverse" />
+  <Personnage pose="sonde-remonte" jean class="j-remonte" />
+</g>
+
+<!-- Un pas en arrière (121) : la carotte à l'horizontale, loin de la tige. -->
+<g transform="translate(121 0)">
+  <Personnage pose="sonde-carotte" jean class="j-carotte" />
+</g>
+
+<circle class="point fa" cx="142" cy="-66" r="3.5" />
+
+<style is:global>
+  /* Repos : la tige à deux mains, la pointe sur le sol, ni trou ni point. */
+  .scene--sonde :is(.j-enfonce, .j-traverse, .j-remonte, .j-carotte, .s-trou, .s-tige, .point) {
+    opacity: 0;
+  }
+
+  /* 0,6 s, 1 % = 6 ms, quatre temps de 25 % (0,15 s) ; chaque pose prend la
+     place de la précédente 7 % après le début de son temps (42 ms) :
+     enfoncer (7-32 %), traverser (32-57 %), remonter avec la carotte, le
+     trou dans le sol (57-82 %), la carotte à l'horizontale et la tige
+     plantée (82 % à la fin) ; le point ambre se pose de 82 à 100 %. Hors
+     survol, retour au repos. */
+  @media (prefers-reduced-motion: no-preference) {
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--sonde .j-repos {
+      animation: sc-avant-7 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--sonde .j-enfonce {
+      animation: sc-so-enfonce 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--sonde .j-traverse {
+      animation: sc-so-traverse 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--sonde .j-remonte {
+      animation: sc-so-remonte 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--sonde .s-trou {
+      animation: sc-so-apres-57 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--sonde :is(.j-carotte, .s-tige) {
+      animation: sc-so-apres-82 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--sonde .point {
+      animation: sc-so-point 0.6s ease-out both;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene--sonde * { animation: none !important; }
+  }
+
+  @keyframes sc-so-enfonce { 0% { opacity: 0; } 7% { opacity: 1; } 32%, 100% { opacity: 0; } }
+  @keyframes sc-so-traverse { 0% { opacity: 0; } 32% { opacity: 1; } 57%, 100% { opacity: 0; } }
+  @keyframes sc-so-remonte { 0% { opacity: 0; } 57% { opacity: 1; } 82%, 100% { opacity: 0; } }
+  @keyframes sc-so-apres-57 { 0% { opacity: 0; } 57%, 100% { opacity: 1; } }
+  @keyframes sc-so-apres-82 { 0% { opacity: 0; } 82%, 100% { opacity: 1; } }
+  @keyframes sc-so-point {
+    0%, 82% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+</style>

@@ -22,12 +22,14 @@
  *    tombent, il n'en reste qu'une (registre/0069) ;
  *  - « misesEnSituation » : le board se remplit en entonnoir, un seul
  *    post-it ambre ; Jean regarde (registre/0069) ;
+ *  - « sonde » : Jean sonde le terrain, remonte la carotte et la tient à
+ *    l'horizontale, le point ambre sur la couche du milieu (registre/0085) ;
  *  - « aucune » : pas de dessin, la carte s'arrête au fait clé (Parcelle.astro).
  */
 import type { Langue, Page } from '../i18n/routes';
 
 export type Groupe = 'hauteur' | 'paire' | 'a-part';
-export type SceneDeCarte = 'uservoice' | 'audit' | 'matrice' | 'fusion' | 'misesEnSituation' | 'aucune';
+export type SceneDeCarte = 'uservoice' | 'audit' | 'matrice' | 'fusion' | 'misesEnSituation' | 'sonde' | 'aucune';
 
 export interface Projet {
   numero: string;

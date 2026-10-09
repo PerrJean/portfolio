@@ -16,7 +16,9 @@
 //  - montre, pied-barreau, sur-echelle (registre/0062) : l'echelle de la
 //    carte 03, sur les segments existants, sans articulation nouvelle ;
 //  - pousse, hourra (registre/0069) : la carte fusion, sur les segments
-//    existants ; hourra leve toujours les deux bras, jamais un seul.
+//    existants ; hourra leve toujours les deux bras, jamais un seul ;
+//  - sonde-repos, -enfonce, -traverse, -remonte, -carotte (registre/0085) :
+//    le carottage de la carte UserVoice, deux bras plies au coude.
 
 const LIGNE = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
 const trait = (c: string, points: string, largeur: number) =>
@@ -70,6 +72,20 @@ export const montre = (cible: readonly [number, number]) => {
  *  de la part visible du deuxieme barreau, devant les tibias de l'ouvrier
  *  monte (16 degres sous l'horizontale). */
 export const CIBLE_DEUXIEME_BARREAU = [121.1, -55] as const;
+
+/** La tige de sondage (registre/0085), origine a la pointe, verticale vers le
+ *  haut : trait 3 (celui des barreaux de l'echelle), poignee en T a -104. */
+const TIGE =
+  '<g stroke-linecap="round"><line class="se" x1="0" y1="0" x2="0" y2="-104" stroke-width="3"/><line class="se" x1="-6" y1="-104" x2="6" y2="-104" stroke-width="3"/></g>';
+/** La carotte, origine au milieu de son bout « surface », couchee vers la
+ *  droite (x de 0 a 18) : un cylindre au trait, trois bandes de 6 qui
+ *  reprennent les couches (surface a gauche). Debout : rotate(90). */
+const CAROTTE =
+  '<rect class="fi se" x="0" y="-4.5" width="18" height="9" rx="2" stroke-width="1.5"/><g stroke-width="1.2" stroke-linecap="round"><line class="sa" x1="6" y1="-3.75" x2="6" y2="3.75"/><line class="sa" x1="12" y1="-3.75" x2="12" y2="3.75"/></g>';
+/** Sonde : buste et tete basculent aux hanches (la bascule de penche) ; la
+ *  tige, a x = 26, entre le bras arriere et le bras avant. */
+const buste = (degres: number) => `<g transform="rotate(${degres} 0 -56)">${torse()}${TETE}</g>`;
+const tigeA = (pointe: number) => `<g transform="translate(26 ${pointe})">${TIGE}</g>`;
 
 export const POSES = {
   'debout': DEBOUT + brasArriere('0,-89 -2,-58') + torse() + TETE + brasAvant('1,-89 3,-60'),
@@ -161,6 +177,33 @@ export const POSES = {
    *  passent a cote de la tete sans la toucher. Toujours les deux mains :
    *  jamais un bras leve seul (registre/0069). */
   'hourra': DEBOUT + brasArriere('0,-89 -23.8,-112.8') + torse() + TETE + brasAvant('1,-89 23.8,-111.8'),
+  /** Sonde (la carte UserVoice, registre/0085) : les jambes de debout ; deux
+   *  bras plies au coude (bras 21,5, avant-bras 17), le coude sous la ligne
+   *  epaule-main, aucune main ni aucun coude au-dessus des epaules. La tige
+   *  tenue a deux mains, la main avant 12 au-dessus de l'arriere ; la pointe
+   *  sur le sol (repos), a 8 sous le sol (enfonce, buste a 12 degres), a 19
+   *  (traverse, 25 degres), puis remontee a -24 avec la carotte au bout
+   *  (remonte, -5 degres). Carotte : la carotte couchee, tenue par les bouts,
+   *  devant les bras. Dessin d'origine : ops/images/uservoice-sonde/planche.mjs. */
+  'sonde-repos': DEBOUT + brasArriere('0,-89 9,-69.5 26,-70') + torse() + TETE + tigeA(0) + brasAvant('1,-89 12.9,-71.1 26,-82'),
+  'sonde-enfonce':
+    DEBOUT + brasArriere('6.9,-88.3 9.7,-67 26,-62') + buste(12) + tigeA(8) + brasAvant('7.8,-88.1 10.6,-66.8 26,-74'),
+  'sonde-traverse':
+    DEBOUT + brasArriere('13.9,-85.9 15.6,-64.5 26,-51') + buste(25) + tigeA(19) + brasAvant('14.9,-85.5 9.1,-64.8 26,-63'),
+  'sonde-remonte':
+    DEBOUT +
+    brasArriere('-2.9,-88.9 9.2,-71.1 26,-74') +
+    buste(-5) +
+    `<g transform="translate(26 -24) rotate(90)">${CAROTTE}</g>` +
+    tigeA(-24) +
+    brasAvant('-1.9,-89 13.8,-74.2 26,-86'),
+  'sonde-carotte':
+    DEBOUT +
+    brasArriere('0,-89 -5.8,-68.3 11,-66') +
+    torse() +
+    TETE +
+    brasAvant('1,-89 15.6,-73.2 31,-66') +
+    `<g transform="translate(12 -66)">${CAROTTE}</g>`,
 };
 
 export type Pose = keyof typeof POSES;
@@ -194,6 +237,18 @@ export const OBJETS = {
   /** Le post-it retenu : aplat ambre, une petite bulle au trait (l'oral). */
   'postit-retenu':
     '<rect class="fa se" x="0" y="0" width="13" height="13" rx="1" stroke-width="1.5"/><path class="se" d="M1.9,5.5 a3.6,2.6 0 1 1 2.2,2.4 l-2.4,1.8 l0.6,-2.6 Z" fill="none" stroke-width="1.1" stroke-linejoin="round"/>',
+  /** La sonde de la carte UserVoice (registre/0085) : la tige et la carotte
+   *  (voir plus haut, origines a la pointe et au bout « surface »). */
+  tige: TIGE,
+  carotte: CAROTTE,
+  /** Les couches, dans le repere de la scene, de x 12 a 233 (avant la dalle) :
+   *  trois lignes ondulees a 6, 12 et 18 sous le sol (amplitude 0,45,
+   *  periode 56, decalees), ardoise, trait 1,2 (celui des separations du board). */
+  couches:
+    '<path class="sa" d="M12,6 Q26,5.1 40,6 Q54,6.9 68,6 Q82,5.1 96,6 Q110,6.9 124,6 Q138,5.1 152,6 Q166,6.9 180,6 Q194,5.1 208,6 Q220.5,6.8 233,6" fill="none" stroke-width="1.2" stroke-linecap="round"/><path class="sa" d="M12,12 Q26,11.1 40,12 Q54,12.9 68,12 Q82,11.1 96,12 Q110,12.9 124,12 Q138,11.1 152,12 Q166,12.9 180,12 Q194,11.1 208,12 Q220.5,12.8 233,12" fill="none" stroke-width="1.2" stroke-linecap="round"/><path class="sa" d="M12,18 Q26,18.9 40,18 Q54,17.1 68,18 Q82,18.9 96,18 Q110,17.1 124,18 Q138,18.9 152,18 Q166,17.1 180,18 Q194,18.9 208,18 Q220.5,17.2 233,18" fill="none" stroke-width="1.2" stroke-linecap="round"/>',
+  /** Le trou laisse par la carotte, origine au milieu, au sol : la colonne
+   *  coupe les couches (aplat ivoire), deux bords et un fond au trait fin. */
+  trou: '<path class="fi sa" d="M-4.5,0.75 L-4.5,18 L4.5,18 L4.5,0.75" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>',
 } as const;
 
 /** Les cabanes de la carte fusion (registre/0069) : murs et toit a deux pans
