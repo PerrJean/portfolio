@@ -72,12 +72,6 @@ In the table, an organisation means the client school or company. “Mandatory u
 | A low score signals that a client will leave | Inconclusive |
 | The analysis gives too much weight to schools | Partly held |
 
-## The signal that did not hold
-
-One hypothesis taught me more than the others: a score target (reaching a given mark in an exam) would satisfy learners more than an hours target (spending a given number of hours on the solution). A survey of account managers showed a very clear gap in favour of the score. That result could have gone straight into a presentation.
-
-The targets the organisations had actually set in the solution did not confirm it. The survey gap came from the type of school behind the accounts surveyed. I corrected the slide before showing it.
-
 ## What the analysis established
 
 The new school year brought other users, who score more harshly. The overall NPS blended old and new users together and suggested a product in decline.

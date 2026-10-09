@@ -72,12 +72,6 @@ Dans le tableau, l’organisation désigne l’école ou l’entreprise cliente.
 | Une note basse annonce le départ d’un client | Non concluante |
 | L’analyse donne trop de poids aux écoles | Partiellement retenue |
 
-## Le signal qui ne tenait pas
-
-Une hypothèse m’a appris plus que les autres : un objectif de score (atteindre une note à un examen) satisferait davantage les apprenants qu’un objectif d’heures (passer un nombre d’heures sur la solution). Un questionnaire aux account managers donnait un écart très net en faveur du score. Le résultat aurait pu partir tel quel dans une présentation.
-
-Les objectifs réellement fixés dans la solution par les organisations ne l’ont pas confirmé. L’écart du questionnaire tenait au type d’école des organisations interrogées. J’ai corrigé la diapositive avant de la montrer.
-
 ## Ce que l’analyse a établi
 
 La rentrée a amené d’autres utilisateurs, qui notent plus sévèrement. Le NPS global mélange anciens et nouveaux utilisateurs, et laisse croire à un produit qui se dégrade.
