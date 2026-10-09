@@ -87,8 +87,8 @@ export const PROJETS: readonly Projet[] = [
     nom: { fr: 'Comprendre la chute du NPS', en: 'Understanding the NPS drop' },
     tags: { fr: ['Data analysis', 'IA appliquée', 'Stratégie produit'], en: ['Data analysis', 'Applied AI', 'Product strategy'] },
     fait: {
-      fr: 'J’ai testé dix-sept hypothèses sur la chute du NPS, la note de recommandation : elle ne venait pas du produit, mais d’un changement dans le profil des utilisateurs interrogés. Quand la solution est choisie plutôt qu’imposée, la note est plus haute d’une vingtaine de points.',
-      en: 'I tested seventeen hypotheses on the drop in NPS, the likelihood-to-recommend score: it did not come from the product, but from a change in the profile of the users surveyed. When the solution is chosen rather than mandatory, the score is around twenty points higher.',
+      fr: 'J’ai testé dix-sept hypothèses sur la chute du NPS : ce n’était pas le produit, mais le profil des utilisateurs interrogés.',
+      en: 'I tested seventeen hypotheses on the NPS drop: it was not the product, but the profile of the users surveyed.',
     },
   },
   {

@@ -5,7 +5,7 @@ cadre:
   role: "Conception et pilotage de l’analyse, avec l’IA"
   equipe: "Seul pour l’analyse ; les account managers et l’équipe produit pour les questionnaires et la restitution"
   duree: "Octobre 2026, en cours"
-fait: "J’ai testé dix-sept hypothèses sur la chute du NPS, la note de recommandation : elle ne venait pas du produit, mais d’un changement dans le profil des utilisateurs interrogés. Quand la solution est choisie plutôt qu’imposée, la note est plus haute d’une vingtaine de points."
+fait: "J’ai testé dix-sept hypothèses sur la chute du NPS : ce n’était pas le produit, mais le profil des utilisateurs interrogés."
 synthese:
   probleme: "À la rentrée 2026, le NPS (Net Promoter Score, la note de recommandation, de −100 à +100) des apprenants d’une plateforme EdTech perd une vingtaine de points en un mois."
   action: "J’ai écrit l’analyse avant de construire les pages du tableau de bord, puis j’ai testé avec l’IA chaque explication possible, une par une."

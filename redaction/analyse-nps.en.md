@@ -5,7 +5,7 @@ cadre:
   role: "Designed and led the analysis, with AI"
   equipe: "Alone for the analysis; account managers and the product team for the surveys and the readout"
   duree: "October 2026, ongoing"
-fait: "I tested seventeen hypotheses on the drop in NPS, the likelihood-to-recommend score: it did not come from the product, but from a change in the profile of the users surveyed. When the solution is chosen rather than mandatory, the score is around twenty points higher."
+fait: "I tested seventeen hypotheses on the NPS drop: it was not the product, but the profile of the users surveyed."
 synthese:
   probleme: "At the start of the 2026 school year, the NPS (Net Promoter Score, the likelihood-to-recommend score, from −100 to +100) of learners on an EdTech platform fell by around twenty points in a month."
   action: "I wrote the analysis before building the dashboard pages, then tested each possible explanation with AI, one by one."
