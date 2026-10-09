@@ -98,7 +98,9 @@ Les chiffres n’expliquent plus tout : deux écoles au déploiement identique s
 
 ## Ce que j’en retiens
 
-Avec l’IA, produire une analyse va vite : le goulot d’étranglement devient la vérification des chiffres.
+**Donner à l’IA un but et des hypothèses, pas une question ouverte.** Je lui ai fixé l’objectif, comprendre la chute du NPS pour le faire remonter, puis je lui ai soumis mes hypothèses une à une, à valider ou à écarter. C’est ce cadre qui l’a menée à trancher plutôt qu’à empiler des graphiques.
+
+**Une analyse statistique poussée est devenue accessible.** L’IA prend en charge les calculs, étape par étape ; je garde le raisonnement et la vérification des chiffres. J’arrive ainsi vite à un résultat solide, sans y passer des semaines.
 
 <!--
 Chiffres convertis (source → publié) :

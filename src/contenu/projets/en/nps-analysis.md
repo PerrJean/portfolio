@@ -98,4 +98,6 @@ The numbers no longer explain everything: two schools with the same rollout were
 
 ## What I take away
 
-With AI, producing an analysis is fast: the bottleneck becomes checking the numbers.
+**Give AI a goal and hypotheses, not an open question.** I set the goal, understanding the NPS drop in order to bring it back up, then submitted my hypotheses one by one, to be confirmed or ruled out. That frame led it to settle questions rather than pile up charts.
+
+**Advanced statistical analysis has become accessible.** AI handles the calculations, step by step; I keep the reasoning and the checking of the numbers. I reach a solid result quickly, without spending weeks on it.
