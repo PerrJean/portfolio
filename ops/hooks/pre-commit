@@ -51,6 +51,10 @@ if ! DIST=.dist-hook npm test; then
   rm -rf .dist-hook
   echo "REFUS : des tests echouent."; exit 1
 fi
+
+echo "-> alertes de redaction (non bloquantes)"
+# Phrases de plus de 30 mots (registre/0086) : on signale, on ne refuse jamais.
+DIST=.dist-hook node ops/alertes/phrases-longues.mjs || true
 rm -rf .dist-hook
 
 echo "-> OK"
