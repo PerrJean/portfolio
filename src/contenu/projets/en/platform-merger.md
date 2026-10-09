@@ -3,13 +3,13 @@ titre: "Platform merger: from three to two, aiming for one"
 date: "2024-08"
 cadre:
   role: "Product Manager, then project lead"
-  equipe: "About ten people: developers, a product designer and learning designers"
+  equipe: "About ten people: developers, a Product Designer, a junior Product Manager and learning designers"
   duree: "February 2023 → August 2024"
 fait: "In 2024, I led the merger of two of our three platforms: every change is now built twice, not three times."
 synthese:
   probleme: "An EdTech company offered three language-learning platforms, built one after another. Each had its own interface, activity templates (the exercise formats) and data model, all developed and maintained separately."
   action: "I framed a target, a single platform, and presented it to the executive committee. We first laid down a shared design system (a library of interface elements shared by designers and developers), then merged the platform for businesses into the general platform, in seven batches."
-  resultat: "The merger has been in production since August 2024. Activities now run on four templates instead of about thirty, and the share of feedback about usability dropped by a quarter. This project led to the Head of Product role."
+  resultat: "The merger has been in production since August 2024. Activities now run on four templates instead of about thirty, and, among learners who answered the NPS survey, the share of feedback about usability dropped by a quarter. This project led to the Head of Product role."
 plusLoin:
   - titre: "Timeline"
     points:
@@ -86,7 +86,7 @@ We were a team of about ten people, mostly developers, with a designer, a junior
 
 The platform for businesses has been gone since August 2024, and with it one codebase to maintain.
 
-For learners, the share of feedback about usability went from 8% between January and August 2024 to 6% between September and December, a quarter less. Activities were designed to the accessibility standard, something public-sector education clients expect.
+Among learners who answered the NPS survey, the share of feedback about usability went from 8% between January and August 2024 to 6% between September and December, a quarter less. Activities were designed to the accessibility standard, something public-sector education clients expect.
 
 For learning designers, a new exercise no longer requires development: they pair any material with any type of question.
 
@@ -98,4 +98,4 @@ This project led to my role as Head of Product: it called for running a complex 
 
 **Build shared foundations before merging.** The design system and the aligned data model came first. Prepared this way, the switch could happen over the summer.
 
-**Revisit the target as the context changes.** The second step, with the exam platform, has not happened: the opportunity has not come up. The two platforms grow closer with each project, but keep their distinct goals. The gain does not yet justify the cost. And AI opens up new ways of learning, which push toward starting from scratch rather than reusing what exists.
+**Revisit the target as the context changes.** The second step, with the exam platform, has not happened, for two reasons that add up: the opportunity has not come up, and the gain does not yet justify the cost. The two platforms grow closer with each project, but keep their distinct goals. And AI opens up new ways of learning, which push toward starting from scratch rather than reusing what exists.

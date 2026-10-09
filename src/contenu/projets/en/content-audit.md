@@ -68,7 +68,7 @@ This result does not speak for the other courses.
 
 The tool never changes live questions itself. It produces batches of fixes, one per family of defects, meaning the same defect repeated across several questions. In each family, the learning designer reviews a sample, drawn from the least certain cases, and her decision covers the whole family.
 
-A batch goes into production as soon as the whole is better than what was there, even if a few defects remain. If a badly fixed question turns up later, we rework the check or the writing rule behind the error.
+A batch goes live as soon as the whole is better than what was there, even if a few defects remain. If a badly fixed question turns up later, we rework the check or the writing rule behind the error.
 
 On the first course, the learning designer also checked the fixes on a test version of the site before they went live.
 

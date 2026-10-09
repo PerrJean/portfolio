@@ -5,7 +5,7 @@ cadre:
   role: "Manager du Product Manager"
   equipe: "Le Product Manager et moi"
   duree: "Décembre 2025 → janvier 2026"
-fait: "Sur une matrice de compétences relue ensemble, un Product Manager de mon équipe et moi sommes passés de deux idées de « devenir senior » à une vision partagée."
+fait: "Un Product Manager de mon équipe et moi avions deux idées de « devenir senior ». En relisant ensemble une matrice de compétences, nous en avons fait une seule."
 synthese:
   probleme: "Dans l’équipe produit d’une plateforme EdTech, « devenir senior » restait à définir. Sans critères communs, la progression d’un Product Manager reposait sur l’impression de chacun."
   action: "J’ai construit une matrice de compétences, décrite en comportements observables sur trois niveaux, et je l’ai relue avec le Product Manager avant de m’en servir. Nous l’avons ensuite parcourue ensemble en entretien, compétence par compétence."
@@ -69,7 +69,7 @@ La légitimité d’un Product Manager repose sur sa compréhension des usages e
 
 La progression du Product Manager se discute sur des critères écrits. L’entretien part de comportements que chacun a pu observer, ce qui le rend plus juste pour lui comme pour moi.
 
-Le cadre dépasse ce seul entretien. Les mêmes niveaux et les mêmes prérequis peuvent servir de base pour recruter un Product Manager, ou pour faire grandir d’autres profils de l’équipe sur des critères que chacun peut lire.
+Les mêmes niveaux et prérequis peuvent servir à recruter un Product Manager, ou à faire grandir d’autres profils de l’équipe.
 
 ## Ce que j’en retiens
 

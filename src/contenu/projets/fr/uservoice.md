@@ -9,7 +9,7 @@ fait: "1 retour négatif sur 3 laissé sur le site concerne le contenu : sa qua
 synthese:
   probleme: "Une plateforme EdTech reçoit des milliers de retours d’apprenants par an, répartis entre quatre sources, et jamais lus ensemble."
   action: "Je les ai réunis en un seul endroit. L’IA classe chaque retour et dit quand elle doute : un humain tranche, et sa réponse aide l’IA à mieux distinguer les cas suivants. Le bilan se lit en cinq minutes, chaque lundi."
-  resultat: "On pensait surtout à des bugs. La donnée a désigné le contenu, et l’effort s’est déplacé vers sa qualité."
+  resultat: "L’équipe pensait surtout aux bugs. Les retours désignaient le contenu : nous avons porté l’effort sur sa qualité."
 langue: fr
 cle: uservoice
 ---

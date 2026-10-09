@@ -5,7 +5,7 @@ cadre:
   role: "Manager of the Product Manager"
   equipe: "The Product Manager and me"
   duree: "December 2025 → January 2026"
-fait: "Working from a skills matrix we reviewed together, a Product Manager on my team and I went from two ideas of “becoming senior” to a shared view."
+fait: "A Product Manager on my team and I had two ideas of “becoming senior”. By reviewing a skills matrix together, we turned them into one."
 synthese:
   probleme: "On the product team of an EdTech platform, “becoming senior” had yet to be defined. With no shared criteria, a Product Manager’s growth rested on each person’s impression."
   action: "I built a skills matrix, written as observable behaviors across three levels, and reviewed it with the Product Manager before using it. We then went through it together in a one-on-one, skill by skill."
@@ -69,7 +69,7 @@ A Product Manager’s credibility rests on understanding how people use the prod
 
 The Product Manager’s growth is now discussed against written criteria. The one-on-one starts from behaviors each of us could observe, which makes it fairer for the Product Manager and for me.
 
-The framework reaches beyond this one conversation. The same levels and the same prerequisites can serve as a basis for hiring a Product Manager, or for helping other people on the team grow, against criteria anyone can read.
+The same levels and prerequisites can serve for hiring a Product Manager, or for helping other people on the team grow.
 
 ## What I took from it
 

@@ -27,8 +27,8 @@ plusLoin:
       - "Topics. Work situations top the ranking (collaborating on a project, talking with a client, a check-in with your manager, a job interview). Everyday life comes last (shopping, outings, accommodation). Open suggestions add phone calls and health."
   - titre: "How a conversation is built"
     points:
-      - "A context (work, everyday life, studies) groups scenarios. A scenario sets the learner’s role, goal and storyline."
-      - "Each scenario breaks down into short conversations of 1.5 to 2.5 minutes, each with a specific speaking goal."
+      - "A context (work, everyday life, studies) groups role-plays. A role-play sets the learner’s role, goal and storyline."
+      - "Each role-play breaks down into short conversations of 1.5 to 2.5 minutes, each with a specific speaking goal."
       - "The AI plays a defined role (recruiter, client, panel member, friend) and asks a few questions, each with its expected points."
       - "The expected points stay hidden during the exchange. Otherwise, learners would tick boxes instead of talking. And a question can count as answered before all its expected points are covered."
       - "A character has few traits (tone, emotion, origin): every instruction added to the AI weakens the others."
@@ -56,7 +56,7 @@ From the Design Sprint, the team built a prototype, and clients tested a first v
 
 Everyone validated the format: the guided conversation and the message thread with no video. Everyone also wanted feedback that helps learners progress, and a reliable exchange. Asked to rank our next priorities, they put the quality of the exchange with the AI first, the quality of the feedback right after, and badges and progress tracking last.
 
-So we reordered what came next. Learning feedback moved to the top, earlier than planned, with management’s approval. Badges and progress tracking were put on hold: without useful feedback, they would only have rewarded effort. A survey on topics then shaped the catalog. Work situations came out on top and everyday life at the bottom, and the first role-plays were written from the top of the list down.
+So we reordered what came next. Learning feedback moved to the top, earlier than planned, with management’s approval. Badges and progress tracking were put on hold: without useful feedback, they would only have rewarded effort. A survey on topics then shaped the catalog. Work situations came out on top and everyday life at the bottom, and the learning designers wrote the first role-plays from the top of the list down.
 
 ## What the AI does, and what we don’t ask of it
 

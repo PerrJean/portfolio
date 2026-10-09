@@ -27,7 +27,7 @@ plusLoin:
       - "Les thèmes. Les situations professionnelles occupent le haut du classement (collaborer sur un projet, échanger avec un client, faire un point avec son manager, réussir un entretien d’embauche). La vie quotidienne arrive en bas (courses, sorties, hébergement). Les suggestions libres ajoutent le téléphone et la santé."
   - titre: "Comment une conversation est construite"
     points:
-      - "Un contexte (vie professionnelle, vie quotidienne, études) regroupe des scénarios. Un scénario donne le rôle de l’apprenant, son objectif et le cadre du récit."
+      - "Un contexte (vie professionnelle, vie quotidienne, études) regroupe des mises en situation. Une mise en situation donne le rôle de l’apprenant, son objectif et le cadre du récit."
       - "Chaque mise en situation se découpe en conversations courtes, de 1 min 30 à 2 min 30, chacune avec un objectif précis à atteindre à l’oral."
       - "L’IA joue un rôle défini (recruteur, client, membre de jury, ami) et pose quelques questions, chacune avec ses attendus."
       - "Les attendus ne s’affichent pas pendant l’échange. Sinon, l’apprenant cocherait des cases au lieu de parler. Et une question peut être validée sans que tous ses attendus soient couverts."
@@ -56,7 +56,7 @@ Après le Design Sprint, l’équipe a construit un prototype, puis une premièr
 
 Tous ont validé le format : la conversation encadrée et le fil de messages sans visio. Tous voulaient aussi un retour utile à la progression et un échange fiable. Invités à classer nos prochains chantiers, ils ont mis la qualité de l’échange avec l’IA en tête, la qualité du retour juste après, et les badges et la progression en dernier.
 
-Nous avons donc réordonné la suite. Avec l’accord de la direction, nous avons fait passer le retour pédagogique en tête, plus tôt que prévu. Les badges et la progression ont été mis en attente : sans retour utile, ils n’auraient récompensé que l’effort. Une enquête sur les thèmes a ensuite orienté le catalogue. Les situations professionnelles arrivaient en haut du classement, la vie quotidienne en bas, et les premières mises en situation ont été écrites en partant du haut.
+Nous avons donc réordonné la suite. Avec l’accord de la direction, nous avons fait passer le retour pédagogique en tête, plus tôt que prévu. Les badges et la progression ont été mis en attente : sans retour utile, ils n’auraient récompensé que l’effort. Une enquête sur les thèmes a ensuite orienté le catalogue. Les situations professionnelles arrivaient en haut du classement, la vie quotidienne en bas, et les learning designers ont écrit les premières mises en situation en partant du haut.
 
 ## Ce que l’IA fait, et ce qu’on ne lui demande pas
 

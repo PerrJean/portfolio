@@ -111,8 +111,8 @@ export const PROJETS: readonly Projet[] = [
     nom: { fr: 'Matrice de compétences', en: 'Skills matrix' },
     tags: { fr: ['Management', 'Leadership'], en: ['Management', 'Leadership'] },
     fait: {
-      fr: 'Sur une matrice de compétences relue ensemble, un Product Manager de mon équipe et moi sommes passés de deux idées de « devenir senior » à une vision partagée.',
-      en: 'Working from a skills matrix we reviewed together, a Product Manager on my team and I went from two ideas of “becoming senior” to a shared view.',
+      fr: 'Un Product Manager de mon équipe et moi avions deux idées de « devenir senior ». En relisant ensemble une matrice de compétences, nous en avons fait une seule.',
+      en: 'A Product Manager on my team and I had two ideas of “becoming senior”. By reviewing a skills matrix together, we turned them into one.',
     },
   },
 ];
@@ -121,5 +121,5 @@ export const PROJETS: readonly Projet[] = [
  *  par les flèches entre les projets du groupe « paire », dans l'ordre. */
 export const LIENS_DU_RECIT: readonly Record<Langue, string>[] = [
   { fr: 'Alors j’ai cherché à comprendre.', en: 'So I set out to understand why.' },
-  { fr: 'Alors j’ai cherché une solution.', en: 'So I looked for a solution.' },
+  { fr: 'Alors je me suis attaqué à la qualité du contenu.', en: 'So I tackled content quality.' },
 ];

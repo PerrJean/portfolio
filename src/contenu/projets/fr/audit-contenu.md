@@ -1,5 +1,5 @@
 ---
-titre: "Audit contenu : vérifier chaque question avant l’apprenant"
+titre: "Audit contenu : vérifier chaque question avant que l’apprenant la voie"
 date: "2026-09"
 cadre:
   role: "Conception et développement de l’outil, avec l’IA"
@@ -68,7 +68,7 @@ Ce résultat ne préjuge pas de la qualité des autres parcours.
 
 L’outil ne modifie jamais lui-même les questions en ligne. Il produit des lots de corrections, un par famille de défauts (un même défaut répété sur plusieurs questions). Dans chaque famille, la learning designer relit un échantillon, pris parmi les cas les moins sûrs, et sa décision vaut pour toute la famille.
 
-Le lot part en production dès que l’ensemble est meilleur que l’existant, même s’il garde quelques défauts. Si une question mal corrigée est repérée ensuite, nous reprenons le contrôle ou la règle d’écriture à l’origine de l’erreur.
+Le lot est mis en ligne dès que l’ensemble est meilleur que l’existant, même s’il garde quelques défauts. Si une question mal corrigée est repérée ensuite, nous reprenons le contrôle ou la règle d’écriture à l’origine de l’erreur.
 
 Sur le premier parcours, la learning designer a aussi vérifié les corrections sur une version de test du site, avant leur mise en ligne.
 

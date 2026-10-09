@@ -3,13 +3,13 @@ titre: "Fusion des plateformes : de trois à deux, en visant une seule"
 date: "2024-08"
 cadre:
   role: "Product Manager, puis chef de projet"
-  equipe: "Une dizaine de personnes : développeurs, Product Designer et learning designers"
+  equipe: "Une dizaine de personnes : développeurs, Product Designer, Product Manager junior et learning designers"
   duree: "Février 2023 → août 2024"
 fait: "En 2024, j’ai piloté la fusion de deux de nos trois plateformes : chaque évolution se développe désormais deux fois, et non plus trois."
 synthese:
   probleme: "Une entreprise EdTech proposait trois plateformes d’apprentissage des langues, nées l’une après l’autre. Chacune avait son interface, ses gabarits d’activité (les modèles d’exercice) et son modèle de données, tous développés et maintenus à part."
   action: "J’ai cadré une cible, une seule plateforme, et je l’ai présentée au comité de direction. Nous avons d’abord posé un design system commun (une bibliothèque d’éléments d’interface partagée par designers et développeurs), puis fondu la plateforme dédiée aux entreprises dans la plateforme généraliste, en sept lots."
-  resultat: "La fusion est en production depuis août 2024. Les activités tiennent sur quatre gabarits au lieu d’une trentaine, et la part des retours sur l’ergonomie a baissé d’un quart. Ce projet a ouvert la voie au poste de Head of Product."
+  resultat: "La fusion est en production depuis août 2024. Les activités tiennent sur quatre gabarits au lieu d’une trentaine, et, chez les apprenants qui ont répondu à l’enquête NPS, la part des retours sur l’ergonomie a baissé d’un quart. Ce projet a ouvert la voie au poste de Head of Product."
 plusLoin:
   - titre: "Le calendrier"
     points:
@@ -86,7 +86,7 @@ Nous étions une dizaine de personnes, surtout des développeurs, avec une Produ
 
 La plateforme dédiée aux entreprises n’existe plus depuis août 2024, et avec elle une base de code à maintenir.
 
-Pour l’apprenant, la part des retours consacrés à l’ergonomie est passée de 8 % entre janvier et août 2024 à 6 % entre septembre et décembre, soit un quart de moins. Les activités ont été conçues selon le référentiel d’accessibilité, un attendu des clients du secteur public éducatif.
+Chez les apprenants qui ont répondu à l’enquête NPS, la part des retours consacrés à l’ergonomie est passée de 8 % entre janvier et août 2024 à 6 % entre septembre et décembre, soit un quart de moins. Les activités ont été conçues selon le référentiel d’accessibilité, un attendu des clients du secteur public éducatif.
 
 Pour les learning designers, un nouvel exercice ne demande plus de développement : ils associent n’importe quel support à n’importe quel type de question.
 
@@ -98,4 +98,4 @@ Ce projet m’a ouvert la voie au poste de Head of Product : il demandait de co
 
 **Construire le commun avant de fusionner.** Le design system et le modèle de données harmonisé sont venus d’abord. Préparée ainsi, la bascule a pu se faire pendant l’été.
 
-**Relire la cible avec le contexte.** Le second temps, avec la plateforme examens, n’a pas eu lieu : l’occasion ne s’est pas présentée. Les deux plateformes se rapprochent à chaque projet, mais gardent leurs objectifs distincts. Le gain ne justifie pas encore le coût. Et l’IA ouvre de nouvelles façons d’apprendre, qui poussent à repartir de zéro plutôt qu’à réutiliser l’existant.
+**Relire la cible avec le contexte.** Le second temps, avec la plateforme examens, n’a pas eu lieu, pour deux raisons qui se cumulent : l’occasion ne s’est pas présentée, et le gain ne justifie pas encore le coût. Les deux plateformes se rapprochent à chaque projet, mais gardent leurs objectifs distincts. Et l’IA ouvre de nouvelles façons d’apprendre, qui poussent à repartir de zéro plutôt qu’à réutiliser l’existant.
