@@ -84,7 +84,7 @@ The first lever is the rollout, carried by the account managers with help from t
 
 The second lever is the product, with three priorities. First, audit the most used content, starting with exam preparation. Second, create short learning paths with a visible goal for General English and Business English. Third, add speaking activities, including AI role-plays.
 
-The analysis also proposed reading NPS by user profile rather than setting one overall NPS target. Two indicators go with it. The first is the share of detractors (scores of 0 to 6) where the solution is mandatory. The second tracks usage in client companies, which still rarely answer the NPS survey.
+The analysis also proposed reading NPS by user profile rather than setting one overall NPS target.
 
 ## What was decided on 9 October
 

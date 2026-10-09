@@ -84,7 +84,7 @@ Le premier levier est le déploiement, porté par les account managers avec l’
 
 Le second levier est le produit, avec trois priorités. D’abord, auditer le contenu le plus utilisé, en commençant par la préparation d’examen. Ensuite, créer des parcours courts avec un objectif visible pour l’anglais général et l’anglais des affaires. Enfin, ajouter des activités d’expression orale, dont des mises en situation IA.
 
-L’analyse propose aussi de lire le NPS par profil d’utilisateurs plutôt que de lui fixer un objectif global. Deux indicateurs l’accompagnent. Le premier est la part de détracteurs (les notes de 0 à 6) là où la solution est imposée. Le second suit l’usage dans les entreprises clientes, qui répondent encore peu au NPS.
+L’analyse propose aussi de lire le NPS par profil d’utilisateurs plutôt que de lui fixer un objectif global.
 
 ## Ce qui a été décidé le 9 octobre
 

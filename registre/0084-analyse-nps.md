@@ -25,3 +25,4 @@ tri de Jean, puis intégration.
 
 **Fait clé raccourci (Jean)** : « J'ai testé dix-sept hypothèses sur la chute du NPS : ce n'était pas le produit, mais le profil des utilisateurs interrogés. » (EN « I tested seventeen hypotheses on the NPS drop: it was not the product, but the profile of the users surveyed. »), carte et page.
 La section « Le signal qui ne tenait pas » est supprimée, FR et EN : « trop lourd et alambiqué, difficile à comprendre » (Jean).
+Paragraphe de lecture du NPS réduit à sa première phrase : les deux indicateurs sortent (Jean).
