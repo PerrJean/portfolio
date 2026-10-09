@@ -11,7 +11,7 @@
 // deux lignes et l'autre non, avec ou sans scène.
 import { getCollection } from 'astro:content';
 import Parcelle from './Parcelle.astro';
-import { LIEN_DE_LA_PAIRE, PROJETS, type Projet } from '../contenu/projets';
+import { LIENS_DU_RECIT, PROJETS, type Projet } from '../contenu/projets';
 import { chemin, type Langue } from '../i18n/routes';
 
 interface Props {
@@ -51,13 +51,13 @@ const proprietes = (p: Projet) => ({
   )
 }
 
-<div class="parcelles parcelles--paire">
+<div class:list={['parcelles', 'parcelles--paire', { 'parcelles--trio': paire.length === 3 }]}>
   {
     paire.map((projet, i) => (
       <>
         {i > 0 && (
           <p class="fleche">
-            <span class="fleche__texte">{LIEN_DE_LA_PAIRE[langue]}</span>
+            <span class="fleche__texte">{LIENS_DU_RECIT[i - 1]?.[langue]}</span>
             <svg class="fleche__trait fleche__trait--h" viewBox="0 0 120 40" aria-hidden="true" focusable="false">
               <path d="M8 28 C36 6 78 6 111 25" />
               <path d="M105 14 L111 25 L99 25" />
@@ -66,16 +66,26 @@ const proprietes = (p: Projet) => ({
               <path d="M12 8 C34 36 34 78 15 111" />
               <path d="M26 105 L15 111 L15 99" />
             </svg>
+            <svg class="fleche__trait fleche__trait--d" viewBox="0 0 160 90" aria-hidden="true" focusable="false">
+              <path d="M150 8 C120 60 60 70 14 80" />
+              <path d="M26 72 L14 80 L27 86" />
+            </svg>
           </p>
         )}
         <Parcelle {...proprietes(projet)} />
       </>
     ))
   }
+  {
+    /* Avec le trio (registre/0084), le projet à part remonte à côté de
+       l'Audit, carte ordinaire, sans flèche. */
+    paire.length === 3 &&
+      aPart.map((projet) => <Parcelle {...proprietes(projet)} groupe="paire" />)
+  }
 </div>
 
 {
-  aPart.length > 0 && (
+  paire.length !== 3 && aPart.length > 0 && (
     <div class="parcelles parcelles--a-part">
       {aPart.map((projet) => (
         <Parcelle {...proprietes(projet)} />
@@ -106,6 +116,12 @@ const proprietes = (p: Projet) => ({
 
   .parcelles--hauteur + .parcelles--paire {
     margin-top: 4rem;
+  }
+
+  .parcelles--trio > :global(:nth-child(6)) {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--dalle);
   }
 
   .parcelles--a-part {
@@ -139,6 +155,10 @@ const proprietes = (p: Projet) => ({
     height: 2.5rem;
   }
 
+  .fleche__trait--d {
+    display: none;
+  }
+
   .fleche__trait--v {
     order: -1;
     width: 1.75rem;
@@ -146,7 +166,7 @@ const proprietes = (p: Projet) => ({
   }
 
   @media (min-width: 960px) {
-    .parcelles--paire {
+    .parcelles--paire:not(.parcelles--trio) {
       grid-template-columns: minmax(0, 1fr) 7.5rem minmax(0, 1fr);
       gap: 1rem;
     }
@@ -174,7 +194,7 @@ const proprietes = (p: Projet) => ({
     }
 
     /* La flèche se place à hauteur du nom, sous le grand numéro. */
-    .fleche {
+    .parcelles--paire:not(.parcelles--trio) .fleche {
       flex-direction: column;
       align-self: start;
       gap: 0.625rem;
@@ -183,12 +203,86 @@ const proprietes = (p: Projet) => ({
       text-align: center;
     }
 
-    .fleche__trait--h {
+    .parcelles--paire:not(.parcelles--trio) .fleche__trait--h {
       display: block;
     }
 
-    .fleche__trait--v {
+    .parcelles--paire:not(.parcelles--trio) .fleche__trait--v {
       display: none;
+    }
+  }
+
+  /* Le trio du récit (registre/0084), « deux puis un » à partir de 960 px :
+     UserVoice → l'analyse sur la ligne de la paire, puis la seconde flèche
+     descend sous l'analyse vers l'Audit, seul dans la colonne de droite.
+     Enfants : 1 UserVoice, 2 flèche, 3 analyse, 4 flèche, 5 Audit. */
+  @media (min-width: 960px) {
+    .parcelles--trio {
+      grid-template-columns: minmax(0, 1fr) 7.5rem minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    .parcelles--trio > :global(:nth-child(1)) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .parcelles--trio > :nth-child(2) {
+      grid-column: 2;
+      grid-row: 1;
+      flex-direction: column;
+      align-self: start;
+      gap: 0.625rem;
+      padding-left: 0;
+      padding-top: calc(var(--numero) * 0.85 + 0.75rem);
+      text-align: center;
+    }
+
+    .parcelles--trio > :nth-child(2) .fleche__trait--h {
+      display: block;
+    }
+
+    .parcelles--trio > :nth-child(2) .fleche__trait--v {
+      display: none;
+    }
+
+    .parcelles--trio > :global(:nth-child(3)) {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .parcelles--trio > :nth-child(4) {
+      grid-column: 1 / span 3;
+      grid-row: 2;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      margin: 1rem 0;
+      padding-left: 0;
+      text-align: center;
+    }
+
+    .parcelles--trio > :nth-child(4) .fleche__trait--v {
+      display: none;
+    }
+
+    .parcelles--trio > :nth-child(4) .fleche__trait--d {
+      display: block;
+      width: 10rem;
+      height: 5.625rem;
+    }
+
+    .parcelles--trio > :global(:nth-child(5)) {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    .parcelles--trio > :global(:nth-child(6)) {
+      grid-column: 3;
+      grid-row: 3;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
     }
   }
 </style>

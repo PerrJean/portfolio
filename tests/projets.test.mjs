@@ -1,4 +1,4 @@
-// Test 8 — Les projets (registre/0069, 0070) : l'ordre de l'accueil, « la
+// Test 8 — Les projets (registre/0069, 0070, 0084) : l'ordre de l'accueil, « la
 // hauteur d'abord », le lien « Projet suivant » qui suit cet ordre en boucle,
 // et les trois schémas de la page fusion.
 // Les scènes des cartes 01 et 02 ne sont pas testées ici : un autre chantier
@@ -15,6 +15,7 @@ const ORDRE = [
   { fr: ['/projets/mises-en-situation/', 'Mises en situation orales'], en: ['/en/projects/speaking-practice/', 'Speaking role-plays'] },
   { fr: ['/projets/fusion-plateformes/', 'Fusion des plateformes'], en: ['/en/projects/platform-merger/', 'Platform merger'] },
   { fr: ['/projets/uservoice/', 'UserVoice'], en: ['/en/projects/uservoice/', 'UserVoice'] },
+  { fr: ['/projets/analyse-nps/', 'Comprendre la chute du NPS'], en: ['/en/projects/nps-analysis/', 'Understanding the NPS drop'] },
   { fr: ['/projets/audit-contenu/', 'Audit contenu'], en: ['/en/projects/content-audit/', 'Content audit'] },
   { fr: ['/projets/matrice-competences/', 'Matrice de compétences'], en: ['/en/projects/skills-matrix/', 'Skills matrix'] },
 ];
@@ -46,7 +47,7 @@ for (const langue of ['fr', 'en']) {
   const accueil = ACCUEIL[langue];
   const attendu = ORDRE.map((p) => p[langue]);
 
-  test(`accueil : ${accueil} présente les cinq projets dans l'ordre, une seule flèche entre UserVoice et Audit contenu`, () => {
+  test(`accueil : ${accueil} présente les six projets dans l'ordre, une flèche entre UserVoice et l'analyse du NPS, une entre l'analyse et Audit contenu`, () => {
     exigerDist();
     const html = sansCode(lirePage(accueil));
     // Une carte : un lien de classe « parcelle » (Parcelle.astro).
@@ -66,13 +67,15 @@ for (const langue of ['fr', 'en']) {
     const fleches = [...html.matchAll(new RegExp(`<[a-zA-Z][\\w:-]*(?=[\\s/>])${ATTRS}>`, 'g'))]
       .filter((m) => aLaClasse(attributs(m[1]), 'fleche'))
       .map((m) => m.index);
-    if (fleches.length !== 1) fautes.push(`${fleches.length} flèche(s) (class="fleche") : attendu exactement une`);
+    if (fleches.length !== 2) fautes.push(`${fleches.length} flèche(s) (class="fleche") : attendu exactement deux`);
     else {
       const position = (href) => cartes.find(({ attrs }) => attrs.href === href)?.index ?? -1;
-      const avant = position(attendu[2][0]);
-      const apres = position(attendu[3][0]);
-      if (!(avant >= 0 && apres >= 0 && avant < fleches[0] && fleches[0] < apres))
-        fautes.push(`la flèche n'est pas entre la carte ${attendu[2][1]} et la carte ${attendu[3][1]}`);
+      for (const [k, [a, c]] of [[0, [2, 3]], [1, [3, 4]]]) {
+        const avant = position(attendu[a][0]);
+        const apres = position(attendu[c][0]);
+        if (!(avant >= 0 && apres >= 0 && avant < fleches[k] && fleches[k] < apres))
+          fautes.push(`la flèche ${k + 1} n'est pas entre la carte ${attendu[a][1]} et la carte ${attendu[c][1]}`);
+      }
     }
 
     assert.equal(fautes.length, 0, `Accueil ${accueil} :\n${liste(fautes)}`);

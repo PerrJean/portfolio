@@ -71,7 +71,7 @@ export const PROJETS: readonly Projet[] = [
     numero: '03',
     page: 'uservoice',
     groupe: 'paire',
-    scene: 'uservoice',
+    scene: 'sonde',
     nom: { fr: 'UserVoice', en: 'UserVoice' },
     tags: { fr: ['IA appliquée', 'Product Analytics'], en: ['Applied AI', 'Product Analytics'] },
     fait: {
@@ -81,6 +81,18 @@ export const PROJETS: readonly Projet[] = [
   },
   {
     numero: '04',
+    page: 'analyseNps',
+    groupe: 'paire',
+    scene: 'uservoice',
+    nom: { fr: 'Comprendre la chute du NPS', en: 'Understanding the NPS drop' },
+    tags: { fr: ['Data analysis', 'IA appliquée', 'Stratégie produit'], en: ['Data analysis', 'Applied AI', 'Product strategy'] },
+    fait: {
+      fr: 'J’ai testé dix-sept hypothèses sur la chute du NPS : elle ne venait pas du produit, mais d’un changement dans le profil des utilisateurs interrogés. Quand la solution est choisie plutôt qu’imposée, la note gagne une vingtaine de points.',
+      en: 'I tested seventeen hypotheses on the NPS drop: it did not come from the product, but from a change in the profile of the users surveyed. When the solution is chosen rather than mandatory, the score is around twenty points higher.',
+    },
+  },
+  {
+    numero: '05',
     page: 'auditContenu',
     groupe: 'paire',
     scene: 'audit',
@@ -92,7 +104,7 @@ export const PROJETS: readonly Projet[] = [
     },
   },
   {
-    numero: '05',
+    numero: '06',
     page: 'matrice',
     groupe: 'a-part',
     scene: 'matrice',
@@ -105,8 +117,9 @@ export const PROJETS: readonly Projet[] = [
   },
 ];
 
-/** Le lien entre les deux projets de la paire, porté par la flèche. */
-export const LIEN_DE_LA_PAIRE: Record<Langue, string> = {
-  fr: 'Alors j’ai cherché une solution.',
-  en: 'So I looked for a solution.',
-};
+/** Les liens du récit (écouter → comprendre → agir, registre/0084), portés
+ *  par les flèches entre les projets du groupe « paire », dans l'ordre. */
+export const LIENS_DU_RECIT: readonly Record<Langue, string>[] = [
+  { fr: 'Alors j’ai cherché à comprendre.', en: 'So I set out to understand why.' },
+  { fr: 'Alors j’ai cherché une solution.', en: 'So I looked for a solution.' },
+];

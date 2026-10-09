@@ -13,6 +13,7 @@ export const ROUTES = {
   fusion: { fr: '/projets/fusion-plateformes/', en: '/en/projects/platform-merger/' },
   misesEnSituation: { fr: '/projets/mises-en-situation/', en: '/en/projects/speaking-practice/' },
   uservoice: { fr: '/projets/uservoice/', en: '/en/projects/uservoice/' },
+  analyseNps: { fr: '/projets/analyse-nps/', en: '/en/projects/nps-analysis/' },
   auditContenu: { fr: '/projets/audit-contenu/', en: '/en/projects/content-audit/' },
   matrice: { fr: '/projets/matrice-competences/', en: '/en/projects/skills-matrix/' },
   aPropos: { fr: '/a-propos/', en: '/en/about/' },
