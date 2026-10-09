@@ -16,3 +16,5 @@ organisations ciblées, poursuite des corrections du contenu, présentation
 à la direction commerciale B2B. Rédaction par un agent
 (`prompts/8-redaction-analyse-nps.md`), relevé des lourdeurs par un autre,
 tri de Jean, puis intégration.
+
+**Recadrage (Jean, 2026-10-09)** : l'histoire de la page, c'est la capacité à tester beaucoup d'hypothèses pour retenir celles qui tiennent. Les dix-sept hypothèses de la source sont toutes listées dans le corps, en tableau (hypothèse, test, résultat, verdict), avec celles retenues en évidence ; le fait clé le dit. Le nom de l'examen peut être cité. Le premier relevé des lourdeurs, lancé sur l'ancienne version, est arrêté ; il sera relancé sur la nouvelle.
