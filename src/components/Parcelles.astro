@@ -31,6 +31,7 @@ const aPart = PROJETS.filter((p) => p.groupe === 'a-part');
 const proprietes = (p: Projet) => ({
   numero: p.numero,
   nom: p.nom[langue],
+  tags: p.tags[langue],
   fait: p.fait[langue],
   date: dateDe(p),
   langue,

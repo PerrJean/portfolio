@@ -49,6 +49,7 @@ if (etages.length === 0)
 // mises en situation, UserVoice, Audit contenu, puis le projet à part, puis
 // retour à la fusion) : aucun n'est sauté (src/contenu/projets.ts).
 const rang = PROJETS.findIndex((p) => p.page === cle);
+const projet = PROJETS[rang];
 const suivant = PROJETS[(rang + 1) % PROJETS.length];
 
 // Le poids affiché d'un fichier à télécharger est celui du fichier servi
@@ -79,6 +80,7 @@ const dateLisible = moisEnLettres(data.date, langue);
           <div><dt>{t.cadre.role}</dt><dd>{data.cadre.role}</dd></div>
           <div><dt>{t.cadre.equipe}</dt><dd>{data.cadre.equipe}</dd></div>
           <div><dt>{t.cadre.duree}</dt><dd>{data.cadre.duree}</dd></div>
+          {projet && <div><dt>{t.cadre.competences}</dt><dd>{projet.tags[langue].join(' · ')}</dd></div>}
         </dl>
         <p class="synthese__fait">{data.fait}</p>
         <div class="synthese__phrases">
@@ -192,7 +194,7 @@ const dateLisible = moisEnLettres(data.date, langue);
   }
 
   .synthese__cadre dt {
-    min-width: 5.5rem;
+    min-width: 7.25rem;
     font-weight: 700;
   }
 

@@ -17,7 +17,7 @@ export const UI: Record<
     plusLoin: string;
     projetSuivant: string;
     lireProjet: string;
-    cadre: { role: string; equipe: string; duree: string };
+    cadre: { role: string; equipe: string; duree: string; competences: string };
     fermer: string;
     agrandir: string;
     toucherPourAgrandir: string;
@@ -33,7 +33,7 @@ export const UI: Record<
     locale: 'fr_FR',
     plusLoin: 'Pour aller plus loin',
     lireProjet: 'Lire le projet',
-    cadre: { role: 'Rôle', equipe: 'Équipe', duree: 'Durée' },
+    cadre: { role: 'Rôle', equipe: 'Équipe', duree: 'Durée', competences: 'Compétences' },
     fermer: 'Fermer',
     agrandir: 'Agrandir',
     toucherPourAgrandir: 'Toucher pour agrandir',
@@ -50,7 +50,7 @@ export const UI: Record<
     plusLoin: 'Going further',
     projetSuivant: 'Next project:',
     lireProjet: 'Read the project',
-    cadre: { role: 'Role', equipe: 'Team', duree: 'Duration' },
+    cadre: { role: 'Role', equipe: 'Team', duree: 'Duration', competences: 'Skills' },
     fermer: 'Close',
     agrandir: 'Enlarge',
     toucherPourAgrandir: 'Tap to enlarge',

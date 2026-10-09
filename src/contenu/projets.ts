@@ -36,6 +36,8 @@ export interface Projet {
   scene: SceneDeCarte;
   nom: Record<Langue, string>;
   fait: Record<Langue, string>;
+  /** Les compétences mises en œuvre, dans les mots du CV (registre/0083). */
+  tags: Record<Langue, readonly string[]>;
 }
 
 export const PROJETS: readonly Projet[] = [
@@ -45,6 +47,7 @@ export const PROJETS: readonly Projet[] = [
     groupe: 'hauteur',
     scene: 'misesEnSituation',
     nom: { fr: 'Mises en situation orales', en: 'Speaking role-plays' },
+    tags: { fr: ['Discovery', 'IA appliquée', 'Management d’équipe'], en: ['Discovery', 'Applied AI', 'Team management'] },
     fait: {
       fr: 'L’e-learning permet enfin de travailler l’expression orale : une IA joue l’interlocuteur, et chaque échange se termine par un retour pédagogique utile.',
       en: 'E-learning can finally help learners practice speaking: an AI plays the other person, and every exchange ends with useful learning feedback.',
@@ -56,6 +59,7 @@ export const PROJETS: readonly Projet[] = [
     groupe: 'hauteur',
     scene: 'fusion',
     nom: { fr: 'Fusion des plateformes', en: 'Platform merger' },
+    tags: { fr: ['Pilotage de projet', 'Priorisation', 'Design system'], en: ['Project management', 'Prioritization', 'Design system'] },
     fait: {
       fr: 'En 2024, j’ai piloté la fusion de deux de nos trois plateformes : chaque évolution se développe désormais deux fois, et non plus trois.',
       en: 'In 2024, I led the merger of two of our three platforms: every change is now built twice, not three times.',
@@ -67,6 +71,7 @@ export const PROJETS: readonly Projet[] = [
     groupe: 'paire',
     scene: 'uservoice',
     nom: { fr: 'UserVoice', en: 'UserVoice' },
+    tags: { fr: ['IA appliquée', 'Product Analytics'], en: ['Applied AI', 'Product Analytics'] },
     fait: {
       fr: '1 retour négatif sur 3 laissé sur le site concerne le contenu : sa qualité est passée en tête des priorités.',
       en: '1 in 3 pieces of negative feedback left on the site is about the content, which became the top priority.',
@@ -78,6 +83,7 @@ export const PROJETS: readonly Projet[] = [
     groupe: 'paire',
     scene: 'audit',
     nom: { fr: 'Audit contenu', en: 'Content audit' },
+    tags: { fr: ['IA appliquée', 'LLM-as-judge'], en: ['Applied AI', 'LLM-as-judge'] },
     fait: {
       fr: 'Sur le premier parcours audité, 1 question sur 20 faisait échouer l’apprenant sans que l’erreur soit la sienne. Toutes sont corrigées.',
       en: 'In the first course audited, 1 question in 20 made learners fail through no fault of their own. All of them are fixed.',
@@ -89,6 +95,7 @@ export const PROJETS: readonly Projet[] = [
     groupe: 'a-part',
     scene: 'matrice',
     nom: { fr: 'Matrice de compétences', en: 'Skills matrix' },
+    tags: { fr: ['Management', 'Leadership'], en: ['Management', 'Leadership'] },
     fait: {
       fr: 'Sur une matrice de compétences relue ensemble, un Product Manager de mon équipe et moi sommes passés de deux idées de « devenir senior » à une vision partagée.',
       en: 'Working from a skills matrix we reviewed together, a Product Manager on my team and I went from two ideas of “becoming senior” to a shared view.',
