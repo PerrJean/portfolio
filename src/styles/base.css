@@ -168,6 +168,9 @@ svg {
   .accroche h1 {
     display: flow-root;
     min-height: calc(4 * 1.08em);
+    /* Jamais sur l'équipe : la colonne du titre s'arrête avant le dessin
+       (277 px au plus, plus une marge), quelle que soit la phrase. */
+    max-width: min(20ch, calc(100% - 18.5rem));
   }
 
   .accroche .accroche__equipe {
