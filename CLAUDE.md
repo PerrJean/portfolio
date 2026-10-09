@@ -56,7 +56,8 @@ C1 à C4 sont tenues par le hook, sur une liste de termes **hors du dépôt**.
 - **Tout contenu ajouté ou réécrit passe un relevé des lourdeurs** avant
   publication : phrases peu claires pour un lecteur extérieur, lourdeurs,
   redites, incohérences entre projets, FR et EN. En lecture seule, par un
-  agent qui ne l'a pas écrit, selon le skill `ligne-editoriale` ; Jean trie
+  agent qui ne l'a pas écrit, selon les skills `ligne-editoriale` et `relecture-non-initie`
+  (le lecteur n'y connaît rien) ; Jean trie
   en avant / après avant toute modification (registre/0072).
 
 ## Les règles de code

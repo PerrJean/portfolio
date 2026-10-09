@@ -7,7 +7,9 @@ ne modifies aucun fichier, Jean trie avant.
 
 ## Ce que tu lis
 
-1. La ligne éditoriale : skill `ligne-editoriale` (charge-le).
+1. La ligne éditoriale et la relecture : skills `ligne-editoriale` et
+   `relecture-non-initie` (charge les deux ; le second prime pour juger ce
+   qu'un lecteur non initié comprend).
 2. `redaction/analyse-nps.fr.md`, puis `redaction/analyse-nps.en.md`
    (les commentaires HTML sont des notes de rédaction : ne les relève pas).
 
