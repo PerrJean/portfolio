@@ -18,3 +18,5 @@ organisations ciblées, poursuite des corrections du contenu, présentation
 tri de Jean, puis intégration.
 
 **Recadrage (Jean, 2026-10-09)** : l'histoire de la page, c'est la capacité à tester beaucoup d'hypothèses pour retenir celles qui tiennent. Les dix-sept hypothèses de la source sont toutes listées dans le corps, en tableau (hypothèse, test, résultat, verdict), avec celles retenues en évidence ; le fait clé le dit. Le nom de l'examen peut être cité. Le premier relevé des lourdeurs, lancé sur l'ancienne version, est arrêté ; il sera relancé sur la nouvelle.
+
+**Tri du relevé (Jean)** : fait clé « J'ai testé dix-sept hypothèses sur la chute du NPS : elle ne venait pas du produit, mais d'un changement dans le profil des utilisateurs interrogés. Quand l'outil est choisi plutôt qu'imposé, la note gagne une vingtaine de points. » ; deux niveaux (tableau simple Hypothèse | Verdict dans le corps, retenues en tête ; tableau détaillé et méthodes dans « Pour aller plus loin ») ; redites coupées ; sans les parts de chiffre d'affaires ; la recherche faite en partie de mémoire et l'instance du 9 octobre ne sont pas mentionnées.

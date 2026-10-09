@@ -8,3 +8,5 @@
 reçoit une nouvelle scène, le carottage. L'actuelle (dérouler le plan sur le
 tréteau) passe à l'analyse du NPS. Étapes : images clés (ce chantier), go de
 Jean, puis animation. Brief : `prompts/8-sonder-images-cles.md`.
+
+**Planche validée (Jean, 2026-10-09)** : on anime. Brief : `prompts/8-animation-sonde.md` (nouvelle variante `sonde` ; `SceneUservoice`, le plan déroulé, ira à l'analyse du NPS).
