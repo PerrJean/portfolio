@@ -14,7 +14,7 @@ plusLoin:
   - titre: "La structure de la matrice"
     points:
       - "Trois niveaux : junior, intermédiaire, senior."
-      - "Des macro-compétences métier : delivery et exécution produit, vision et stratégie produit, UX et data."
+      - "Des compétences métier : delivery et exécution produit, vision et stratégie produit, UX (expérience utilisateur) et data."
       - "Des compétences de savoir-être : collaboration, exigence, passion."
       - "Une pondération pour chaque compétence."
       - "Des prérequis à valider avant chaque niveau."
@@ -29,8 +29,8 @@ plusLoin:
       src: "/captures/matrice/grille-complete.png"
       width: 1360
       height: 5402
-      alt: "La grille de compétences complète, en trois blocs : hard skills, soft skills et connaissances. Chaque ligne donne la famille, la compétence et sa pondération, puis décrit en quelques phrases ce qu’on voit faire aux niveaux junior, intermédiaire et senior. Les hard skills couvrent la delivery et l’exécution produit, la vision et la stratégie produit, l’UX et la data ; les soft skills, la collaboration, l’exigence et la passion ; les connaissances, l’agilité, la culture technique, l’UX et l’accessibilité, le business et l’e-learning."
-      legende: "La grille complète : chaque compétence, sa pondération et ce qu’on voit faire aux trois niveaux. Aucune évaluation de personne."
+      alt: "La grille de compétences complète, en trois blocs : hard skills, soft skills et connaissances. Chaque ligne donne la famille, la compétence et sa pondération, puis décrit en quelques phrases ce qu’on voit faire aux niveaux junior, intermédiaire et senior. Les hard skills couvrent la delivery et l’exécution produit, la vision et la stratégie produit, l’UX et la data ; les soft skills, la collaboration, l’exigence et la passion ; les connaissances, l’agilité, la culture technique, l’UX et l’accessibilité, le business et l’e-learning."
+      legende: "La grille complète : chaque compétence, sa pondération et ce qu’on voit faire aux trois niveaux. Aucune évaluation de personne."
     fichier:
       href: "/telechargements/grille-competences-pm.pdf"
       libelle: "Télécharger la grille"
@@ -42,7 +42,7 @@ cle: matrice
 
 ## Pourquoi une matrice
 
-Dans l’équipe, rien ne disait ce que « devenir senior » voulait dire. La progression d’un Product Manager reposait donc sur l’impression de chacun, la sienne comme celle de son manager.
+Dans l’équipe, rien ne disait ce que « devenir senior » voulait dire, ni pour le Product Manager ni pour son manager.
 
 Une fois écrits, ces critères nous ont donné, au Product Manager et à moi, la même grille pour lire sa progression.
 
@@ -50,18 +50,18 @@ Une fois écrits, ces critères nous ont donné, au Product Manager et à moi, l
 
 La matrice compte trois niveaux, de junior à senior. Pour chaque compétence et chaque niveau, elle décrit ce qu’on voit faire. En gestion du backlog, la ligne passe de « rédige des user stories simples » à « décompose en epics et anime le grooming », puis à « gère un backlog aux fortes dépendances transverses ».
 
-Les compétences se regroupent par familles, côté métier et côté savoir-être, détaillées dans « Pour aller plus loin ». Chacune a sa pondération, et chaque niveau a des prérequis à valider avant d’y accéder. Le cadre reste proche du métier d’une plateforme EdTech : il couvre par exemple l’arbitrage entre ROI business et valeur pédagogique.
+Les compétences se regroupent par familles, côté métier et côté savoir-être, détaillées dans « Pour aller plus loin ». Chaque compétence a sa pondération, et chaque niveau a des prérequis à valider avant d’y accéder. Le cadre reste proche du métier d’une plateforme EdTech : il couvre par exemple l’arbitrage entre retour sur investissement (ROI) et valeur pédagogique.
 
 J’en ai écrit une première version, puis une version structurée.
 
 <figure>
-  <a href="/captures/matrice/grille-extrait.png"><img src="/captures/matrice/grille-extrait.png" width="1360" height="1400" loading="lazy" decoding="async" alt="Extrait de la grille de compétences : le bloc delivery et exécution produit, en six lignes (gestion de projets complexes, gestion du backlog, outils et méthodologie agile, animation d’équipe et leadership, priorisation et arbitrage opérationnel, gestion de risque). Chaque ligne porte sa pondération et trois colonnes, junior, intermédiaire et senior. En gestion du backlog, la colonne junior commence par « Rédige des user stories simples à partir de besoins exprimés clairement »."></a>
-  <figcaption>Un extrait de la matrice : le bloc delivery et exécution produit, compétence par compétence, sur les trois niveaux. Aucune évaluation de personne.</figcaption>
+  <a href="/captures/matrice/grille-extrait.png"><img src="/captures/matrice/grille-extrait.png" width="1360" height="1400" loading="lazy" decoding="async" alt="Extrait de la grille de compétences : le bloc delivery et exécution produit, en six lignes (gestion de projets complexes, gestion du backlog, outils et méthodologie agile, animation d’équipe et leadership, priorisation et arbitrage opérationnel, gestion de risque). Chaque ligne porte sa pondération et trois colonnes, junior, intermédiaire et senior. En gestion du backlog, la colonne junior commence par « Rédige des user stories simples à partir de besoins exprimés clairement »."></a>
+  <figcaption>Un extrait de la matrice : le bloc delivery et exécution produit, compétence par compétence, sur les trois niveaux. Aucune évaluation de personne.</figcaption>
 </figure>
 
 ## Un entretien pour se situer ensemble
 
-En entretien, le Product Manager et moi avons situé chaque compétence sur la matrice. C’est là qu’est apparue notre différence de perception sur ce que veut dire « devenir senior ». Nous en sommes sortis avec une vision partagée de ses compétences, point de départ de sa progression.
+En entretien, le Product Manager et moi avons situé son niveau sur la matrice, compétence par compétence. C’est là qu’est apparue notre différence de perception sur ce que veut dire « devenir senior ». Nous en sommes sortis avec une vision partagée de ses compétences, point de départ de sa progression.
 
 La légitimité d’un Product Manager repose sur sa compréhension des usages et des utilisateurs, et sur sa maîtrise du métier. Nous nous sommes accordés pour renforcer ce second point, et pour aller plus loin dans l’IA appliquée au product management : ce sont les deux axes de son plan de progression.
 
@@ -73,7 +73,7 @@ Le cadre dépasse ce seul entretien. Les mêmes niveaux et les mêmes prérequis
 
 ## Ce que j’en retiens
 
-**Décrire chaque niveau par ce qu’on voit faire.** Une phrase comme « décompose en epics et anime le grooming » se vérifie. Elle m’a obligé à préciser mes propres attentes avant de les appliquer à quelqu’un.
+**Décrire chaque niveau par ce qu’on voit faire.** Une phrase qui décrit un comportement se vérifie. Elle m’a obligé à préciser mes propres attentes avant de les appliquer à quelqu’un.
 
 **Relire le cadre avec la personne avant de s’en servir.** En relisant la matrice avec le Product Manager avant l’entretien, nous avions les mêmes critères sous les yeux au moment de nous situer.
 

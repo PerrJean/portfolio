@@ -10,7 +10,7 @@ plusLoin:
   - titre: "La structure de la matrice"
     points:
       - "Trois niveaux : junior, intermédiaire, senior."
-      - "Des macro-compétences métier : delivery et exécution produit, vision et stratégie produit, UX et data."
+      - "Des compétences métier : delivery et exécution produit, vision et stratégie produit, UX (expérience utilisateur) et data."
       - "Des compétences de savoir-être : collaboration, exigence, passion."
       - "Une pondération pour chaque compétence."
       - "Des prérequis à valider avant chaque niveau."
@@ -24,7 +24,7 @@ plusLoin:
 
 ## Pourquoi une matrice
 
-Dans l’équipe, rien ne disait ce que « devenir senior » voulait dire. La progression d’un Product Manager reposait donc sur l’impression de chacun, la sienne comme celle de son manager.
+Dans l’équipe, rien ne disait ce que « devenir senior » voulait dire, ni pour le Product Manager ni pour son manager.
 
 Une fois écrits, ces critères nous ont donné, au Product Manager et à moi, la même grille pour lire sa progression.
 
@@ -32,13 +32,13 @@ Une fois écrits, ces critères nous ont donné, au Product Manager et à moi, l
 
 La matrice compte trois niveaux, de junior à senior. Pour chaque compétence et chaque niveau, elle décrit ce qu’on voit faire. En gestion du backlog, la ligne passe de « rédige des user stories simples » à « décompose en epics et anime le grooming », puis à « gère un backlog aux fortes dépendances transverses ».
 
-Les compétences se regroupent par familles, côté métier et côté savoir-être, détaillées dans « Pour aller plus loin ». Chacune a sa pondération, et chaque niveau a des prérequis à valider avant d’y accéder. Le cadre reste proche du métier d’une plateforme EdTech : il couvre par exemple l’arbitrage entre ROI business et valeur pédagogique.
+Les compétences se regroupent par familles, côté métier et côté savoir-être, détaillées dans « Pour aller plus loin ». Chaque compétence a sa pondération, et chaque niveau a des prérequis à valider avant d’y accéder. Le cadre reste proche du métier d’une plateforme EdTech : il couvre par exemple l’arbitrage entre retour sur investissement (ROI) et valeur pédagogique.
 
 J’en ai écrit une première version, puis une version structurée.
 
 ## Un entretien pour se situer ensemble
 
-En entretien, le Product Manager et moi avons situé chaque compétence sur la matrice. C’est là qu’est apparue notre différence de perception sur ce que veut dire « devenir senior ». Nous en sommes sortis avec une vision partagée de ses compétences, point de départ de sa progression.
+En entretien, le Product Manager et moi avons situé son niveau sur la matrice, compétence par compétence. C’est là qu’est apparue notre différence de perception sur ce que veut dire « devenir senior ». Nous en sommes sortis avec une vision partagée de ses compétences, point de départ de sa progression.
 
 La légitimité d’un Product Manager repose sur sa compréhension des usages et des utilisateurs, et sur sa maîtrise du métier. Nous nous sommes accordés pour renforcer ce second point, et pour aller plus loin dans l’IA appliquée au product management : ce sont les deux axes de son plan de progression.
 
@@ -50,7 +50,7 @@ Le cadre dépasse ce seul entretien. Les mêmes niveaux et les mêmes prérequis
 
 ## Ce que j’en retiens
 
-**Décrire chaque niveau par ce qu’on voit faire.** Une phrase comme « décompose en epics et anime le grooming » se vérifie. Elle m’a obligé à préciser mes propres attentes avant de les appliquer à quelqu’un.
+**Décrire chaque niveau par ce qu’on voit faire.** Une phrase qui décrit un comportement se vérifie. Elle m’a obligé à préciser mes propres attentes avant de les appliquer à quelqu’un.
 
 **Relire le cadre avec la personne avant de s’en servir.** En relisant la matrice avec le Product Manager avant l’entretien, nous avions les mêmes critères sous les yeux au moment de nous situer.
 

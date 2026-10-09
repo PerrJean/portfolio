@@ -1,7 +1,7 @@
 ---
 titre: "UserVoice : écouter les apprenants chaque lundi"
 fait: "1 retour négatif sur 3 laissé sur le site concerne le contenu : sa qualité est passée en tête des priorités."
-synthese: "Une plateforme EdTech reçoit des milliers de retours d’apprenants par an, répartis entre quatre sources, et jamais lus ensemble. Je les ai réunis dans une seule table. L’IA classe chaque retour avec un score de confiance et laisse les cas douteux à un humain. Le bilan se lit en cinq minutes, chaque lundi. On pensait surtout à des bugs. La donnée a désigné le contenu, et l’effort s’est déplacé vers sa qualité."
+synthese: "Une plateforme EdTech reçoit des milliers de retours d’apprenants par an, répartis entre quatre sources, et jamais lus ensemble. Je les ai réunis en un seul endroit. L’IA classe chaque retour et dit quand elle doute : un humain tranche, et sa réponse aide l’IA à mieux distinguer les cas suivants. Le bilan se lit en cinq minutes, chaque lundi. On pensait surtout à des bugs. La donnée a désigné le contenu, et l’effort s’est déplacé vers sa qualité."
 ---
 
 ## Le point de départ
@@ -14,9 +14,9 @@ En septembre 2026, j’ai lancé UserVoice sur les retours accumulés depuis mar
 
 Je suis parti des questions auxquelles je voulais pouvoir répondre chaque semaine. Quels sujets reviennent le plus ? Sont-ils traités ? Un nouveau sujet est-il apparu sans que personne l’ait vu ?
 
-Pour y répondre, il fallait lire les quatre sources ensemble. Dans la table commune, chaque retour garde le contexte du jour où il a été donné, et se relit ainsi des mois plus tard.
+Pour y répondre, il fallait lire les quatre sources ensemble. Dans l’outil commun, chaque retour garde le contexte du jour où il a été donné, et se relit ainsi des mois plus tard.
 
-Chaque retour est ensuite classé, selon qu’il signale un bug ou qu’il porte sur la satisfaction.
+L’IA classe ensuite chaque retour : bug signalé, ou avis sur la satisfaction.
 
 ## Ce que la donnée a montré
 
@@ -24,19 +24,19 @@ De mars à septembre 2026, un retour négatif sur trois laissé dans le formulai
 
 L’enquête NPS le confirme. Sur deux mois de l’été 2026, près d’un commentaire sur cinq touche aux explications, aux exercices ou aux traductions. La moitié sont des critiques ou des demandes.
 
-Les bugs restent suivis, signature par signature. Mais la satisfaction se joue d’abord sur la qualité du contenu et de ses explications, et c’est donc là qu’il y a le plus à gagner.
+Les bugs restent suivis, signature par signature. Mais la satisfaction dépend d’abord de la qualité du contenu et de ses explications : c’est là qu’il y a le plus à gagner.
 
 ## Bénéfices et impact business
 
-Chaque lundi, le bilan se lit en cinq minutes, les quatre sources réunies. Il fait apparaître des signaux faibles qu’on ne voyait pas avant, quand un sujet encore rare commence à monter. Surtout, l’écoute des apprenants a montré, chiffres à l’appui, que la qualité du contenu pesait le plus ; elle est passée en tête des priorités. Au bilan annuel, une école cliente pointait le même sujet. Le projet Audit contenu part de ce constat.
+Le bilan du lundi repère un sujet encore rare dès qu’il commence à monter, ce qu’on ne voyait pas avant. Au bilan annuel, une école cliente pointait elle aussi la qualité du contenu. Le projet Audit contenu part de ce constat.
 
 ## Ce que j’ai construit
 
-J’ai construit UserVoice moi-même, avec Claude Code, pour prouver la valeur avant d’y engager l’équipe.
+J’ai construit UserVoice moi-même, avec Claude Code, un assistant de programmation par IA, pour prouver son utilité avant d’y engager l’équipe.
 
-Pour chaque retour, l’IA propose un classement et un score de confiance. Sous un seuil, ou quand deux catégories arrivent trop près l’une de l’autre, le retour part dans une file de validation humaine. Chaque validation enrichit les exemples donnés à l’IA. Des règles mécaniques prennent le relais sur les cas évidents, comme les réponses vides ou les doublons. La file de validation humaine a fondu de 87 % en trois jours.
+Pour chaque retour, l’IA propose une catégorie. Quand elle est peu sûre d’elle, ou qu’elle hésite entre deux catégories proches, elle le signale, et le retour attend la décision d’une personne. Chaque décision rejoint les exemples sur lesquels l’IA s’appuie pour classer les retours suivants. Des règles mécaniques prennent le relais sur les cas évidents, comme les réponses vides ou les doublons. En trois jours, la file des retours en attente de décision a fondu de 87 %.
 
-Au-dessus de la table, le tableau de bord a deux couches : l’une montre ce qui bouge, l’autre avance une explication. Le bilan du lundi croise le volume de chaque sujet et son statut de traitement. C’est lui qui dit, chaque lundi, quels sujets reviennent et s’ils sont traités.
+Le tableau de bord a deux couches : l’une montre ce qui bouge, l’autre avance une explication. Le bilan du lundi croise le volume de chaque sujet et son statut de traitement.
 
 ## Pour aller plus loin
 

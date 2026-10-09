@@ -45,7 +45,7 @@ const TEXTES = {
       temps: [
         { titre: 'Signal', texte: `Vous avez signalé le problème et dit depuis quand${NBSP}: la réceptionniste sait ce qu’il vous faut.` },
         { titre: 'Indice', texte: 'Le message passe, mais il demande un effort. Nommez directement l’objet et ce qui ne va pas.' },
-        { titre: 'Modèle', citation: MODELE, texte: 'On nomme l’objet et le problème.' },
+        { titre: 'Modèle', citation: MODELE, texte: '' },
       ],
       critere: `Critère travaillé${NBSP}: vocabulaire`,
     },
@@ -57,7 +57,7 @@ const TEXTES = {
       retour: `Le retour en trois temps, sur un seul critère, le vocabulaire.`,
       temps: (titre) => `${titre}${NBSP}:`,
     },
-    legende: `Un échange, sur un exemple fictif${NBSP}: l’IA joue la réceptionniste, et le retour ne travaille qu’un critère, celui qui gêne le plus la compréhension.`,
+    legende: 'Un échange, sur un exemple fictif, de la consigne au retour.',
   },
   en: {
     entree: {
@@ -77,8 +77,8 @@ const TEXTES = {
       titre: 'Three-step feedback',
       temps: [
         { titre: 'Signal', texte: 'You reported the problem and said since when: the receptionist knows what you need.' },
-        { titre: 'Hint', texte: 'Your message gets across, but it takes effort. Name the object and what’s wrong directly.' },
-        { titre: 'Model', citation: MODELE, texte: 'Name the object and the problem.' },
+        { titre: 'Hint', texte: 'Your message gets across, but it takes effort. Be direct: name the object and what’s wrong.' },
+        { titre: 'Model', citation: MODELE, texte: '' },
       ],
       critere: 'Focus: vocabulary',
     },
@@ -91,7 +91,7 @@ const TEXTES = {
       temps: (titre) => `${titre}:`,
     },
     legende:
-      'One exchange, on a fictional example: the AI plays the receptionist, and the feedback works on a single criterion, the one that most hinders understanding.',
+      'One exchange, on a fictional example, from setup to feedback.',
   },
 };
 

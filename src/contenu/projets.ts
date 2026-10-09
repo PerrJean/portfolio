@@ -76,7 +76,7 @@ export const PROJETS: readonly Projet[] = [
     tags: { fr: ['IA appliquée', 'Product Analytics'], en: ['Applied AI', 'Product Analytics'] },
     fait: {
       fr: '1 retour négatif sur 3 laissé sur le site concerne le contenu : sa qualité est passée en tête des priorités.',
-      en: '1 in 3 pieces of negative feedback left on the site is about the content, which became the top priority.',
+      en: '1 in 3 pieces of negative feedback left on the site is about the content: its quality became the top priority.',
     },
   },
   {
@@ -87,8 +87,8 @@ export const PROJETS: readonly Projet[] = [
     nom: { fr: 'Comprendre la chute du NPS', en: 'Understanding the NPS drop' },
     tags: { fr: ['Data analysis', 'IA appliquée', 'Stratégie produit'], en: ['Data analysis', 'Applied AI', 'Product strategy'] },
     fait: {
-      fr: 'J’ai testé dix-sept hypothèses sur la chute du NPS : elle ne venait pas du produit, mais d’un changement dans le profil des utilisateurs interrogés. Quand la solution est choisie plutôt qu’imposée, la note gagne une vingtaine de points.',
-      en: 'I tested seventeen hypotheses on the NPS drop: it did not come from the product, but from a change in the profile of the users surveyed. When the solution is chosen rather than mandatory, the score is around twenty points higher.',
+      fr: 'J’ai testé dix-sept hypothèses sur la chute du NPS, la note de recommandation : elle ne venait pas du produit, mais d’un changement dans le profil des utilisateurs interrogés. Quand la solution est choisie plutôt qu’imposée, la note est plus haute d’une vingtaine de points.',
+      en: 'I tested seventeen hypotheses on the drop in NPS, the likelihood-to-recommend score: it did not come from the product, but from a change in the profile of the users surveyed. When the solution is chosen rather than mandatory, the score is around twenty points higher.',
     },
   },
   {
@@ -111,7 +111,7 @@ export const PROJETS: readonly Projet[] = [
     nom: { fr: 'Matrice de compétences', en: 'Skills matrix' },
     tags: { fr: ['Management', 'Leadership'], en: ['Management', 'Leadership'] },
     fait: {
-      fr: 'Sur une matrice de compétences relue ensemble, un Product Manager de mon équipe et moi sommes passés de deux idées de « devenir senior » à une vision partagée.',
+      fr: 'Sur une matrice de compétences relue ensemble, un Product Manager de mon équipe et moi sommes passés de deux idées de « devenir senior » à une vision partagée.',
       en: 'Working from a skills matrix we reviewed together, a Product Manager on my team and I went from two ideas of “becoming senior” to a shared view.',
     },
   },

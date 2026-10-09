@@ -14,7 +14,7 @@ plusLoin:
   - titre: "How the matrix is structured"
     points:
       - "Three levels: junior, intermediate, senior."
-      - "Core skill areas: product delivery and execution, product vision and strategy, UX and data."
+      - "Core skill areas: product delivery and execution, product vision and strategy, UX (user experience) and data."
       - "Soft skills: collaboration, high standards, passion."
       - "A weighting for each skill."
       - "Prerequisites to meet before each level."
@@ -42,7 +42,7 @@ cle: matrice
 
 ## Why a matrix
 
-On the team, nothing said what “becoming senior” meant. A Product Manager’s growth therefore rested on each person’s impression, theirs as well as their manager’s.
+On the team, nothing said what “becoming senior” meant, for the Product Manager or for their manager.
 
 Once written down, these criteria gave the Product Manager and me the same grid for reading their growth.
 
@@ -61,7 +61,7 @@ I wrote a first version, then a structured one.
 
 ## One conversation to see where we stood
 
-In a one-on-one, the Product Manager and I placed each skill on the matrix. That is when our different perceptions of what “becoming senior” means came to light. We came out of it with a shared view of their skills, the starting point for their growth.
+In a one-on-one, we agreed where the Product Manager stood on each skill of the matrix. That is when our different perceptions of what “becoming senior” means came to light. We came out of it with a shared view of their skills, the starting point for their growth.
 
 A Product Manager’s credibility rests on understanding how people use the product and who they are, and on mastery of the job. We agreed to strengthen that second point, and to go further into AI applied to product management: these are the two focus areas of the growth plan.
 
@@ -73,7 +73,7 @@ The framework reaches beyond this one conversation. The same levels and the same
 
 ## What I took from it
 
-**Describe each level by what you can see someone do.** A sentence like “breaks work down into epics and runs grooming” can be checked. It made me pin down my own expectations before applying them to someone else.
+**Describe each level by what you can see someone do.** A sentence that describes a behavior can be checked. It made me pin down my own expectations before applying them to someone else.
 
 **Review the framework with the person before using it.** Because the Product Manager and I reviewed the matrix before the one-on-one, we had the same criteria in front of us when it came time to place each skill.
 

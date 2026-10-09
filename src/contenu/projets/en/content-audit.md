@@ -7,22 +7,22 @@ cadre:
   duree: "September 2026, ongoing"
 fait: "In the first course audited, 1 question in 20 made learners fail through no fault of their own. All of them are fixed."
 synthese:
-  probleme: "According to their feedback, the satisfaction of learners on an EdTech platform depends first on the quality of the content."
-  action: "With a learning designer, we put every question in one course through a six-criterion grid. Supervised AI agents applied it, and automated checks completed it."
-  resultat: "The fixes, reviewed by sample before being applied, have been in production since the week of September 28, 2026."
+  probleme: "Learner feedback on an EdTech platform shows that satisfaction depends first on content quality."
+  action: "With a learning designer, we put every question in one course through a six-criterion grid. An AI applied the grid question by question, and automated checks completed its work."
+  resultat: "The fixes have been live since the week of September 28, 2026, after the learning designer reviewed a sample."
 plusLoin:
   - titre: "The grid"
     points:
       - "Faithfulness to the source. The question does not stray from its source."
       - "Correct answer. The expected answer is the right one."
-      - "Quality of the explanation. The question includes one, and it does more than repeat the answer. It is scored from 0 to 3."
+      - "Quality of the explanation. The question includes one, and it does more than repeat the answer. The explanation is scored from 0 to 3."
       - "Language. The text is correct."
       - "Internal consistency. The parts of the question do not contradict each other."
       - "One defensible answer. No other answer can be defended as well as the correct one."
   - titre: "The verdicts"
     points:
-      - "A question is major if it strays from its source, or if its explanation does not help learners."
-      - "It is minor for a language error, or for an explanation that is correct but could be better."
+      - "The verdict is “major” if the question strays from its source, or if its explanation does not help learners."
+      - "It is “minor” for a language error, or for an explanation that is correct but could be better."
       - "A criterion counts as failed only if it was checked. What could not be measured does not count against the question."
   - titre: "The automated checks"
     points:
@@ -52,9 +52,9 @@ The scope covers several courses that prepare learners for language certificatio
 
 The grid has six criteria, detailed under “Going further”: faithfulness to the source, correct answer, quality of the explanation, language, internal consistency, and one defensible answer.
 
-Each question then gets one of four verdicts: blocking, major, minor, or nothing to fix. A question is blocking when learners cannot answer it. That happens when the expected answer is wrong, or when two answers can be defended equally well.
+Each question then gets one of four verdicts: blocking, major, minor, or nothing to fix. A question is blocking when learners cannot get it right. That happens when the expected answer is wrong, or when two answers can be defended equally well.
 
-AI agents apply the grid, question by question, and their verdicts are cross-checked. In parallel, automated checks run over the whole corpus, first with fixed rules, then with an AI. They verify that the audio, read through its transcription, the texts and images, the question, the answers and the explanation all say the same thing. A report then gives each question’s status and the issues raised against it.
+AI agents apply the grid, question by question, and their verdicts are cross-checked. In parallel, automated checks run over the whole corpus, first with fixed rules, then with an AI. They check that every part of a question says the same thing: the audio (through its transcript), the texts and images, the question, the answers and the explanation. A report then gives each question’s status and the issues raised against it.
 
 <div data-schema="chaine-audit"></div>
 
@@ -62,13 +62,15 @@ AI agents apply the grid, question by question, and their verdicts are cross-che
 
 In the first course audited, 1 question in 20 was rated blocking. Learners failed these questions through no fault of their own.
 
-This result does not predict the quality of the rest of the content on the site.
+This result does not speak for the other courses.
 
 ## Fixing without breaking
 
-The tool never writes directly to the database. It produces batches of fixes, one per family of defects, meaning the same defect repeated across several questions. In each family, the learning designer reviews a sample, drawn from the least certain cases, and her decision covers the whole family. A batch goes into production as soon as the whole is better than what was there, even if a few defects remain. If a badly fixed question turns up later, we rework the check or the writing rule behind the error.
+The tool never changes live questions itself. It produces batches of fixes, one per family of defects, meaning the same defect repeated across several questions. In each family, the learning designer reviews a sample, drawn from the least certain cases, and her decision covers the whole family.
 
-On the first course, she also checked the fixes in staging. All the blocking questions were fixed, then put into production.
+A batch goes into production as soon as the whole is better than what was there, even if a few defects remain. If a badly fixed question turns up later, we rework the check or the writing rule behind the error.
+
+On the first course, the learning designer also checked the fixes on a test version of the site before they went live.
 
 <figure>
   <a href="/captures/audit-contenu/carnet-relecture.png"><img src="/captures/audit-contenu/carnet-relecture.png" width="1360" height="1230" loading="lazy" decoding="async" alt="Review screen from an audit tool. A card marked BLOQUANT (blocking) shows a fill-in-the-blank English question, “She has been working in this department ___ 2019”, whose stored answer is A, “for”. The current explanation only asserts that A is correct. The check flags that the right answer is B. The proposed correction explains that “since” introduces a starting point. At the bottom, the decision line: approve, correct, reject."></a>
@@ -77,14 +79,16 @@ On the first course, she also checked the fixes in staging. All the blocking que
 
 ## Benefits and business impact
 
-Each fix gives learners back the chance to answer correctly. At the annual review, a school client asked for three things: a full analysis of its content, a formal process for fixing errors, and an end to multiple-choice questions where more than one answer can be defended. Feedback from its students pointed to the same problem. The audit answers each request: the grid, the reviewed batches, the “one defensible answer” criterion. It reduces the risk of churn for this client, and the method applies to the next courses.
+Each fix gives learners back the chance to answer correctly. At the annual review, a school client asked for three things: a full analysis of its content, a formal process for fixing errors, and an end to multiple-choice questions where more than one answer can be defended. Feedback from its students pointed to the same problem.
+
+The audit answers each request: the grid, the reviewed batches, the “one defensible answer” criterion. It reduces the risk of churn for this client, and the method applies to the next courses.
 
 ## What I took from it
 
-This project is teaching me to build with AI, and I am still learning. Here is what I now apply to every project:
+This project is teaching me to build with AI, and I am still learning.
 
 **Give the AI the right context, not all the context.** The AI rereads its instructions for every task: the longer they are, the slower, costlier and less precise it gets. I learned to keep a short core, and to store the rest separately, so it is loaded only when the task needs it.
 
 **Write every decision down.** Each decision now fits in a short, dated record, with its estimated and then actual cost. The AI rereads it before acting, and the gap between estimate and actual teaches me to estimate better.
 
-**Have what is done checked.** A written instruction ends up forgotten, and “it’s done” proves nothing. Whatever can be checked becomes an automated check, and what one agent produces, another reviews. It is the rule of the audit itself: the reviewer is not the author.
+**Get the work checked.** A written instruction ends up forgotten, and “it’s done” proves nothing. Whatever can be checked becomes an automated check, and what one AI produces, another AI, starting from scratch, reviews. It is the rule of the audit itself: the reviewer is not the author.

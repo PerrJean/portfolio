@@ -25,17 +25,17 @@ const TEXTES = {
       lu: `Le parcours${NBSP}: ses questions, chacune avec sa réponse et son explication.`,
     },
     agents: {
-      titre: 'Agents IA encadrés',
-      texte: `La grille des six critères. La réponse attendue est-elle la bonne${NBSP}? L’explication existe-t-elle${NBSP}? Est-elle circulaire${NBSP}?`,
+      titre: 'Grille appliquée par une IA',
+      texte: `La grille des six critères. La réponse attendue est-elle la bonne${NBSP}? L’explication existe-t-elle${NBSP}? Fait-elle plus que répéter la réponse${NBSP}?`,
     },
     controles: {
       titre: 'Contrôles automatiques',
-      texte: `Un contrôle déterministe, puis un contrôle par IA${NBSP}: l’audio, les supports, la question, les réponses et l’explication concordent-ils${NBSP}?`,
+      texte: `Des règles fixes, puis une IA${NBSP}: l’audio, les supports, la question, les réponses et l’explication concordent-ils${NBSP}?`,
     },
     deuxControles:
-      `Deux contrôles en parallèle. Les agents IA encadrés appliquent la grille des six critères, question par question${NBSP}: ` +
-      'ils vérifient que la réponse attendue est la bonne, que l’explication existe et qu’elle n’est pas circulaire. ' +
-      'Les contrôles automatiques, un contrôle déterministe puis un contrôle par IA, vérifient que l’audio, par son transcript, ' +
+      `Deux contrôles en parallèle. Une IA applique la grille des six critères, question par question${NBSP}: ` +
+      'elle vérifie que la réponse attendue est la bonne, que l’explication existe et ne se contente pas de répéter la réponse. ' +
+      'Les contrôles automatiques, des règles fixes puis une IA, vérifient que l’audio, par sa transcription, ' +
       'les supports texte et image, la question, les réponses et l’explication concordent.',
     bilan: {
       titre: 'Bilan',
@@ -54,8 +54,8 @@ const TEXTES = {
     },
     ligne: {
       titre: 'Mise en ligne',
-      texte: 'En préproduction, puis en production.',
-      lu: `La mise en ligne${NBSP}: en préproduction, puis en production.`,
+      texte: 'Sur un site de test, puis sur le site.',
+      lu: `La mise en ligne${NBSP}: sur un site de test, puis sur le site.`,
     },
     legende: `Du parcours à la mise en ligne${NBSP}: deux contrôles en parallèle, puis une relecture humaine par échantillon.`,
   },
@@ -68,17 +68,17 @@ const TEXTES = {
       lu: 'The course: its questions, each with its answer and its explanation.',
     },
     agents: {
-      titre: 'Supervised AI agents',
-      texte: 'The six-criterion grid. Is the expected answer the right one? Is there an explanation? Is it circular?',
+      titre: 'Grid applied by an AI',
+      texte: 'The six-criterion grid. Is the expected answer the right one? Is there an explanation? Does it do more than repeat the answer?',
     },
     controles: {
       titre: 'Automated checks',
-      texte: 'A deterministic check, then an AI check: are the audio, the materials, the question, the answers and the explanation consistent?',
+      texte: 'Fixed rules, then an AI: are the audio, the materials, the question, the answers and the explanation consistent?',
     },
     deuxControles:
-      'Two checks in parallel. Supervised AI agents apply the six-criterion grid, question by question: ' +
-      'they verify that the expected answer is the right one, that there is an explanation, and that it is not circular. ' +
-      'The automated checks, a deterministic check then an AI check, verify that the audio, through its transcript, ' +
+      'Two checks in parallel. An AI applies the six-criterion grid, question by question: ' +
+      'it verifies that the expected answer is the right one, that there is an explanation, and that the explanation does more than repeat the answer. ' +
+      'The automated checks, fixed rules then an AI, verify that the audio, through its transcript, ' +
       'the text and image materials, the question, the answers and the explanation are consistent.',
     bilan: {
       titre: 'Report',
@@ -97,8 +97,8 @@ const TEXTES = {
     },
     ligne: {
       titre: 'Going live',
-      texte: 'To staging, then to production.',
-      lu: 'Going live: to staging, then to production.',
+      texte: 'On a test site, then on the live site.',
+      lu: 'Going live: on a test site, then on the live site.',
     },
     legende: 'From course to going live: two checks in parallel, then a human review by sample.',
   },
@@ -155,9 +155,9 @@ export function schemaChaineAudit(langue) {
     fleche() +
     `<span class="chaine__bilan">${etape(t.bilan)}</span>` +
     `<span class="chaine__retour">${FLECHE}<span class="chaine__trace">${BOUT}</span></span>` +
-    etape(t.relecture, { humaine: true }) +
-    fleche() +
     etape(t.lots) +
+    fleche() +
+    etape(t.relecture, { humaine: true }) +
     fleche() +
     etape(t.ligne) +
     '</div>';
@@ -166,7 +166,7 @@ export function schemaChaineAudit(langue) {
     '<div class="visuellement-cache">' +
     `<p>${e(t.intro)}</p>` +
     '<ol>' +
-    [t.parcours.lu, t.deuxControles, t.bilan.lu, t.relecture.lu, t.lots.lu, t.ligne.lu]
+    [t.parcours.lu, t.deuxControles, t.bilan.lu, t.lots.lu, t.relecture.lu, t.ligne.lu]
       .map((phrase) => `<li>${e(phrase)}</li>`)
       .join('') +
     '</ol>' +
