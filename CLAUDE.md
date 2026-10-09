@@ -58,9 +58,9 @@ C1 à C4 sont tenues par le hook, sur une liste de termes **hors du dépôt**.
   redites, incohérences entre projets, FR et EN. En lecture seule, par un
   agent qui ne l'a pas écrit, selon les skills `ligne-editoriale` et `relecture-non-initie`
   (le lecteur n'y connaît rien) ; Jean trie
-  en avant / après avant toute modification (registre/0072). Une nouvelle
-  page est aussi lue par deux personnes hors du produit avant sa mise en
-  ligne (registre/0086).
+  en avant / après avant toute modification (registre/0072). Une relecture par
+  deux personnes hors du produit est conseillée, pas systématique
+  (registre/0086).
 
 ## Les règles de code
 

@@ -30,3 +30,5 @@ nous ont donné, au Product Manager et à moi, la même grille pour lire sa
 progression. » ; Fusion, une phrase coupée en deux ; Audit, « une décision
 prise au fil d'une conversation… » retirée. Jeu et clé hors dépôt
 (scratchpad). À refaire avec un nouveau jeu quand le skill évolue.
+
+**Ajustement (Jean)** : la relecture par deux personnes hors du produit est conseillée, pas systématique (`CLAUDE.md`, skill).
