@@ -26,7 +26,7 @@ plusLoin:
 
 Dans l’équipe, rien ne disait ce que « devenir senior » voulait dire. La progression d’un Product Manager reposait donc sur l’impression de chacun, la sienne comme celle de son manager.
 
-Écrire cette définition donnait à sa progression une base que nous pourrions lire tous les deux.
+Une fois écrits, ces critères nous ont donné, au Product Manager et à moi, la même grille pour lire sa progression.
 
 ## Ce que la matrice décrit
 
@@ -54,7 +54,7 @@ Le cadre dépasse ce seul entretien. Les mêmes niveaux et les mêmes prérequis
 
 **Relire le cadre avec la personne avant de s’en servir.** En relisant la matrice avec le Product Manager avant l’entretien, nous avions les mêmes critères sous les yeux au moment de nous situer.
 
-**Chercher l’écart avant le niveau.** Le premier apport de l’entretien a été de voir que nous ne mettions pas la même chose derrière « devenir senior ». C’est cet écart, une fois nommé, qui a rendu possible un plan de progression partagé.
+**Chercher l’écart avant le niveau.** L’entretien nous a d’abord montré que nous ne mettions pas la même chose derrière « devenir senior ». C’est cet écart, une fois nommé, qui a rendu possible un plan de progression partagé.
 
 ---
 
@@ -65,7 +65,7 @@ Le cadre dépasse ce seul entretien. Les mêmes niveaux et les mêmes prérequis
 | Extrait (premier jet) | Tic | Réécriture |
 |---|---|---|
 | « le leader qui accompagne » (angle du brief) | « Accompagner » sans dire comment | Le mot n’apparaît pas ; le texte dit ce qui a été fait : la matrice, sa relecture avec le PO, l’entretien, le plan. |
-| « la matrice, levier de progression » (pour tenir C8) | Jargon de consultant | « Écrire cette définition donnait à sa progression une base que nous pourrions lire tous les deux. » |
+| « la matrice, levier de progression » (pour tenir C8) | Jargon de consultant | « Une fois écrits, ces critères nous ont donné, au Product Manager et à moi, la même grille pour lire sa progression. » |
 | « a fait émerger la différence de perception » (repris du brief) | Métaphore usée, légère | « C’est là qu’est apparue notre différence de perception ». |
 | « une vision partagée des compétences du PO, point de départ de sa montée en compétence » | Répétition (compétences / compétence) | « point de départ de sa progression ». |
 | « Une qualité comme "autonome" se discute sans fin ; un comportement se constate. » | Parallélisme en opposition, exemple inventé, guillemets droits | « Une phrase comme « décompose en epics et anime le grooming » se vérifie. » L’exemple vient de la matrice. |

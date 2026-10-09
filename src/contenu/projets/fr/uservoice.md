@@ -57,5 +57,3 @@ Au-dessus de la table, le tableau de bord a deux couches : l’une montre ce qui
   <a href="/captures/uservoice/tableau-nps.png"><img src="/captures/uservoice/tableau-nps.png" width="1360" height="1327" loading="lazy" decoding="async" alt="Capture du baromètre NPS de UserVoice (données synthétiques) : le NPS global de la période, la répartition des notes entre détracteurs, passifs et promoteurs, le taux de réponse, puis une barre de NPS par produit et par marché."></a>
   <figcaption>Le baromètre NPS : le score de la période, la répartition des notes, et chaque segment avec son intervalle de confiance et son niveau de fiabilité. Données synthétiques.</figcaption>
 </figure>
-
-Chaque décision est tracée dans un registre et le code est vérifié par des tests. On peut revenir sur un seuil en sachant pourquoi il a été fixé.

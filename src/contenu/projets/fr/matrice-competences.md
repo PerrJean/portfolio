@@ -44,7 +44,7 @@ cle: matrice
 
 Dans l’équipe, rien ne disait ce que « devenir senior » voulait dire. La progression d’un Product Manager reposait donc sur l’impression de chacun, la sienne comme celle de son manager.
 
-Écrire cette définition donnait à sa progression une base que nous pourrions lire tous les deux.
+Une fois écrits, ces critères nous ont donné, au Product Manager et à moi, la même grille pour lire sa progression.
 
 ## Ce que la matrice décrit
 
@@ -77,4 +77,4 @@ Le cadre dépasse ce seul entretien. Les mêmes niveaux et les mêmes prérequis
 
 **Relire le cadre avec la personne avant de s’en servir.** En relisant la matrice avec le Product Manager avant l’entretien, nous avions les mêmes critères sous les yeux au moment de nous situer.
 
-**Chercher l’écart avant le niveau.** Le premier apport de l’entretien a été de voir que nous ne mettions pas la même chose derrière « devenir senior ». C’est cet écart, une fois nommé, qui a rendu possible un plan de progression partagé.
+**Chercher l’écart avant le niveau.** L’entretien nous a d’abord montré que nous ne mettions pas la même chose derrière « devenir senior ». C’est cet écart, une fois nommé, qui a rendu possible un plan de progression partagé.

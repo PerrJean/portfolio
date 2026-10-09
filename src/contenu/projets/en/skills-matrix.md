@@ -44,7 +44,7 @@ cle: matrice
 
 On the team, nothing said what “becoming senior” meant. A Product Manager’s growth therefore rested on each person’s impression, theirs as well as their manager’s.
 
-Writing that definition down gave the Product Manager’s growth a basis we could both read.
+Once written down, these criteria gave the Product Manager and me the same grid for reading their growth.
 
 ## What the matrix describes
 
@@ -77,4 +77,4 @@ The framework reaches beyond this one conversation. The same levels and the same
 
 **Review the framework with the person before using it.** Because the Product Manager and I reviewed the matrix before the one-on-one, we had the same criteria in front of us when it came time to place each skill.
 
-**Look for the gap before the level.** The first thing the one-on-one brought was seeing that we did not mean the same thing by “becoming senior”. Once that gap had a name, a shared growth plan became possible.
+**Look for the gap before the level.** The one-on-one first showed us that we did not mean the same thing by “becoming senior”. Once that gap had a name, a shared growth plan became possible.

@@ -57,5 +57,3 @@ On top of the table, the dashboard has two layers: one shows what is changing, t
   <a href="/captures/uservoice/tableau-nps.png"><img src="/captures/uservoice/tableau-nps.png" width="1360" height="1327" loading="lazy" decoding="async" alt="Screenshot of the UserVoice NPS barometer (synthetic data): the overall NPS for the period, the split of scores into detractors, passives and promoters, the response rate, then one NPS bar per product and per market."></a>
   <figcaption>The NPS barometer: the period’s score, the spread of ratings, and each segment with its confidence interval and reliability level. Synthetic data.</figcaption>
 </figure>
-
-Every decision is logged in a register, and the code is checked by tests. Anyone who revisits a threshold can see why it was set.

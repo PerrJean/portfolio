@@ -85,6 +85,6 @@ This project is teaching me to build with AI, and I am still learning. Here is w
 
 **Give the AI the right context, not all the context.** The AI rereads its instructions for every task: the longer they are, the slower, costlier and less precise it gets. I learned to keep a short core, and to store the rest separately, so it is loaded only when the task needs it.
 
-**Write every decision down.** A decision made in the course of a conversation is forgotten by the next one. Each one now fits in a short, dated record, with its estimated and then actual cost. The AI rereads it before acting, and the gap between estimate and actual teaches me to estimate better.
+**Write every decision down.** Each decision now fits in a short, dated record, with its estimated and then actual cost. The AI rereads it before acting, and the gap between estimate and actual teaches me to estimate better.
 
 **Have what is done checked.** A written instruction ends up forgotten, and “it’s done” proves nothing. Whatever can be checked becomes an automated check, and what one agent produces, another reviews. It is the rule of the audit itself: the reviewer is not the author.

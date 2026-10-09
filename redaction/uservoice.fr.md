@@ -38,8 +38,6 @@ Pour chaque retour, l’IA propose un classement et un score de confiance. Sous 
 
 Au-dessus de la table, le tableau de bord a deux couches : l’une montre ce qui bouge, l’autre avance une explication. Le bilan du lundi croise le volume de chaque sujet et son statut de traitement. C’est lui qui dit, chaque lundi, quels sujets reviennent et s’ils sont traités.
 
-Chaque décision est tracée dans un registre et le code est vérifié par des tests. On peut revenir sur un seuil en sachant pourquoi il a été fixé.
-
 ## Pour aller plus loin
 
 ### Ce que j’ai écarté

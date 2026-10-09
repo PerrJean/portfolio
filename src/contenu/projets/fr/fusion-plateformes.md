@@ -44,7 +44,7 @@ Trois plateformes d’apprentissage des langues étaient nées l’une après l�
   <figcaption>Avant la fusion, trois plateformes et trois façons de faire ; après, deux plateformes sur un socle commun.</figcaption>
 </figure>
 
-Chaque évolution se développait et se maintenait donc trois fois. Un apprenant qui passait d’une plateforme à l’autre changeait de navigation et de design, et lancer une nouvelle forme d’exercice demandait un développement. Réunir les plateformes permettait de ne développer qu’une fois, et de donner à l’apprenant un seul repère.
+Chaque évolution se développait et se maintenait donc trois fois. Un apprenant qui passait d’une plateforme à l’autre changeait de navigation et de design. Chaque nouvelle forme d’exercice demandait aussi du travail aux développeurs. Réunir les plateformes permettait de ne développer qu’une fois, et de donner à l’apprenant un seul repère.
 
 ## Viser une plateforme, fusionner en deux temps
 

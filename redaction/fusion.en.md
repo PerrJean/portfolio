@@ -34,7 +34,7 @@ Three language-learning platforms had been built one after another: one to prepa
 
 <!-- Figure : avant-apres (ops/images/fusion/avant-apres.en.svg, étroit : avant-apres.etroit.en.svg) -->
 
-So every change was built and maintained three times. A learner moving from one platform to another met a different navigation and design, and launching a new kind of exercise required development work. Bringing the platforms together meant building once, and giving learners a single point of reference.
+So every change was built and maintained three times. A learner moving from one platform to another met a different navigation and design. Each new kind of exercise also required work from the developers. Bringing the platforms together meant building once, and giving learners a single point of reference.
 
 ## Aim for one platform, merge in two steps
 
