@@ -1,0 +1,106 @@
+/* Les infobulles sur les termes du métier produit (registre/0088), reprises
+   telles quelles de la maquette validée par Jean. Le balisage :
+   src/components/infobulles/marquer.ts. */
+
+/* Le terme : un bouton qui se lit comme le texte autour (même police,
+   même taille, ni fond ni marge), souligné en pointillé (les liens le
+   sont en plein), curseur d'aide, contour au survol et au focus. */
+.terme {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  vertical-align: baseline;
+  text-decoration: underline dotted;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.22em;
+  cursor: help;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Le survol, sur les écrans qui en ont un : au téléphone, le contour
+   resterait après qu'on a fermé la bulle. */
+@media (hover: hover) {
+  .terme:hover {
+    outline: 2px solid var(--ardoise);
+    outline-offset: 2px;
+  }
+}
+
+.terme:focus-visible {
+  outline: 3px solid var(--encre);
+  outline-offset: 3px;
+}
+
+/* Repli sans popover : le bouton redevient du texte, la définition se lit
+   entre parenthèses, dans le fil de la phrase. */
+@supports not selector(:popover-open) {
+  .terme {
+    text-decoration: none;
+    cursor: text;
+  }
+
+  .terme:hover {
+    outline: 0;
+  }
+
+  .infobulle::before {
+    content: ' (';
+  }
+
+  .infobulle::after {
+    content: ')';
+  }
+
+  .infobulle__tete,
+  .infobulle__fin {
+    display: none;
+  }
+}
+
+/* La bulle. Le navigateur la centre dans l'écran (inset: 0 ; margin:
+   auto) : sans ancrage CSS, elle se pose en bas de l'écran, sur toute la
+   largeur utile, comme une feuille. */
+@supports selector(:popover-open) {
+  .terme:has(+ .infobulle:popover-open) {
+    outline: 2px solid var(--ardoise);
+    outline-offset: 2px;
+  }
+
+  .infobulle {
+    inset: auto var(--gouttiere) var(--gouttiere);
+    width: max-content;
+    max-width: min(24rem, calc(100vw - 2 * var(--gouttiere)));
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--encre);
+    border-radius: 4px;
+    background: var(--ivoire);
+    color: var(--encre);
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-transform: none;
+    text-align: left;
+    box-shadow: 0 0.5rem 1.5rem color-mix(in srgb, var(--encre) 18%, transparent);
+  }
+}
+
+/* Avec l'ancrage CSS : sous le terme, centrée sur lui, décalée pour rester
+   dans l'écran ; au-dessus s'il n'y a pas la place en dessous. */
+@supports selector(:popover-open) and (anchor-name: --a) {
+  .infobulle {
+    inset: auto var(--gouttiere);
+    margin: 0.5rem 0 0;
+    position-area: bottom span-all;
+    justify-self: anchor-center;
+    position-try-fallbacks: flip-block;
+  }
+}

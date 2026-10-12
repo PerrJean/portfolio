@@ -8,6 +8,8 @@
 //     visionneuse la prend) et un fichier à télécharger (registre/0061) ;
 //  4. la fin : le repère [data-fin] (le toit se pose), puis le lien vers
 //     le projet suivant dans l'ordre de l'accueil, en boucle.
+// Les trois premiers blocs passent ensemble par Infobulles (registre/0088) :
+// la première occurrence de chaque terme du métier produit y reçoit sa bulle.
 // Le contenu vient de src/contenu/projets/ (schéma : src/content.config.ts).
 // À partir de 960 px, le bâtiment occupe la colonne de droite (1 : 4) ; en
 // dessous, l'indicateur de lecture le remplace, collé sous l'en-tête.
@@ -18,6 +20,7 @@ import Base from './Base.astro';
 import Batiment from '../components/batiment/Batiment.astro';
 import Lecture from '../components/batiment/Lecture.astro';
 import Bouton from '../components/Bouton.astro';
+import Infobulles from '../components/infobulles/Infobulles.astro';
 import Soleil from '../components/Soleil.astro';
 import Visionneuse from '../components/Visionneuse.astro';
 import { PROJETS } from '../contenu/projets';
@@ -73,6 +76,7 @@ const dateLisible = moisEnLettres(data.date, langue);
   <Soleil reserve={false} />
   <div class="conteneur projet">
     <article class="projet__article">
+      <Infobulles langue={langue}>
       <header class="synthese">
         <h1>{data.titre}</h1>
         <p class="synthese__date"><time datetime={data.date}>{dateLisible}</time></p>
@@ -137,6 +141,7 @@ const dateLisible = moisEnLettres(data.date, langue);
         </div>
       </details>
       )}
+      </Infobulles>
       <span class="projet__fin" data-fin></span>
     </article>
 

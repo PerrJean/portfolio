@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Portrait from '../../components/Portrait.astro';
 import Soleil from '../../components/Soleil.astro';
+import Infobulles from '../../components/infobulles/Infobulles.astro';
 import { LINKEDIN } from '../../i18n/textes';
 ---
 
@@ -16,6 +17,7 @@ import { LINKEDIN } from '../../i18n/textes';
   <article class="conteneur fiche">
     <div class="fiche__portrait"><Portrait /></div>
     <h1>About</h1>
+    <Infobulles langue="en">
     <div class="fiche__texte">
       <p>
         Since 2024, I have been Head of Product at GlobalExam, a B2B SaaS scale-up in online language learning. From
@@ -37,6 +39,7 @@ import { LINKEDIN } from '../../i18n/textes';
       <p>Educated at Sciences Po Paris (Master’s in Public Affairs). Fluent in English.</p>
       <p>Get in touch on <a href={LINKEDIN}>LinkedIn</a>.</p>
     </div>
+    </Infobulles>
   </article>
   </div>
 </Base>

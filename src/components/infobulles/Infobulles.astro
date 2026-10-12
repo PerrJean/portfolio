@@ -1,0 +1,18 @@
+---
+// Les infobulles sur les termes du métier produit (registre/0088) : le
+// contenu passé en slot est rendu, puis marqué (marquer.ts) : la première
+// occurrence de chaque terme du lexique (lexique.ts) y devient une bulle.
+// Une seule enveloppe par page, autour de tout ce qui doit en recevoir, dans
+// l'ordre de lecture : les pages projet (Projet.astro) et À propos. Jamais
+// autour du <head>, de l'en-tête ni du pied de page.
+import type { Langue } from '../../i18n/routes';
+import { marquerInfobulles } from './marquer';
+
+interface Props {
+  langue: Langue;
+}
+const { langue } = Astro.props;
+const html = await Astro.slots.render('default');
+---
+
+<Fragment set:html={marquerInfobulles(html, langue)} />
