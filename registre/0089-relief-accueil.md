@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `chantier` | `structure` | 350 | | `claude-opus-5-5` |
+| `chantier` | `structure` | 350 | 656 | `claude-opus-5-5` |
 
 **Question de Jean (2026-10-15)** : le site lui plaît pour son côté simple et
 harmonieux, mais manque peut-être de relief et de profondeur ; une couche de
@@ -40,6 +40,37 @@ les cinq propositions retenues :
 Contrastes mesurés : orange sur sable 4,55:1 (seuil 4,5 tenu de justesse,
 d'où ce sable-là et pas un plus soutenu) ; ivoire sur encre 15,4:1.
 
+**Revue en contexte neuf (2026-10-15)** : rien de bloquant ; débordement
+mesuré nul à 375, 760, 960 et 1440 px. **Arbitrages de Jean** sur ce qu'elle
+remonte : le sol sous l'équipe de l'accroche, absent de la maquette (son
+sélecteur ne visait rien), est **gardé** ; dans le pied, la langue courante
+garde son trait et **l'autre langue n'est soulignée qu'au survol**, comme
+dans l'en-tête ; **fond encre sur `html`** pour que le rebond d'iOS ne montre
+pas d'ivoire sous le pied. Corrigés en plus : l'en-tête périmé de
+`Parcelles.astro` (la paire devenue trio), le commentaire de `--ivoire`
+(l'inversion dans la bande), le filet du projet à part posé sur le bloc et
+non sur la carte ; côté tests, la cascade évaluée à une largeur donnée, le
+décalage du contour de focus tenu, le couplage aux sélecteurs dit en tête.
+
 Étapes : 1. intégration (brief `prompts/8-relief-integration.md`) ;
 2. tests par un autre agent ; 3. revue en contexte neuf ; 4. captures
 ordinateur et téléphone, FR et EN, avant mise en ligne.
+
+**Clôture (2026-10-15)** : intégré (`201bc29`), testé (`5092dec`), corrigé
+après revue (`013ab51`). Tests : 141 → 175, dont `tests/relief.test.mjs` et
+un lecteur du CSS construit (`tests/css.mjs`) qui juge chaque règle sur le
+DOM réel, `@media` évaluées à 375 et 1440 px ; vu casser sur la Matrice
+remise dans le trio, le fond du pied retiré, le soulignement remis sur
+l'autre langue et la bande passée sous `min-width: 960px`. Vérifié dans le
+navigateur par la session : aucun défilement horizontal à 375, 640 et
+1440 px, la bande enveloppe les trois cartes empilées au téléphone. Écarts à
+la maquette, voulus : 4 rem au-dessus de la bande (la valeur de la maquette
+ne s'appliquait pas), la Matrice 20 px plus bas (sa surface au survol garde
+sa marge du haut), le contour de focus dans la surface (il serait coupé au
+bord de l'écran au téléphone). Laissés, en le sachant : le rebond d'iOS en
+**haut** de page montre maintenant de l'encre au-dessus de l'en-tête ; la
+place réservée à la barre de défilement, visionneuse ouverte, devient encre ;
+la surface d'une carte du trio déborde de 4 px dans la colonne de la flèche,
+sans rien masquer. **Coût réel** : 656 k (intégration et corrections 188,
+tests et leur reprise 285, revue 183), ratio 1,9 : comme pour 0088, les tests
+et la revue pèsent plus que le code.
