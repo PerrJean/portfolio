@@ -1,6 +1,6 @@
 ---
 // Page d'essai des animations de l'accueil (registre/0022, 0058, 0062,
-// 0069, 0085) : les sept variantes de Scene. L'en-tête joue au chargement (bouton « Rejouer ») ;
+// 0069, 0085, 0090) : les huit variantes de Scene. L'en-tête joue au chargement (bouton « Rejouer ») ;
 // les cartes au survol et au focus. Hors navigation, hors du site
 // construit : le serveur de dev seul la sert, à /labo/scene/
 // (astro.config.mjs, registre/0053).
@@ -27,8 +27,12 @@ import Scene from '../components/scene/Scene.astro';
         <Scene variante="fusion" />
       </a>
       <a class="parcelle" href="#">
-        <span class="titre">02 · Mises en situation orales</span>
-        <Scene variante="misesEnSituation" />
+        <span class="titre">01 · Mises en situation orales · la conversation</span>
+        <Scene variante="conversation" />
+      </a>
+      <a class="parcelle" href="#">
+        <span class="titre">07 · Tableau de bord client</span>
+        <Scene variante="tableauDeBord" />
       </a>
       <a class="parcelle" href="#">
         <span class="titre">03 · UserVoice</span>

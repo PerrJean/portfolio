@@ -1,9 +1,9 @@
 // Test 8 — Les projets (registre/0069, 0070, 0084, 0089) : l'ordre de l'accueil,
-// « la hauteur d'abord », le trio du récit et la Matrice à part juste dessous,
+// « la hauteur d'abord », le trio du récit et les deux projets à part juste
+// dessous (06 la Matrice, 07 le Tableau de bord client),
 // le lien « Projet suivant » qui suit cet ordre en boucle, et les trois schémas
 // de la page fusion.
-// Les scènes des cartes 01 et 02 ne sont pas testées ici : un autre chantier
-// les anime.
+// Les scènes des cartes sont testées à part (scenes.test.mjs).
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -19,6 +19,12 @@ const ORDRE = [
   { fr: ['/projets/analyse-nps/', 'Comprendre la chute du NPS'], en: ['/en/projects/nps-analysis/', 'Understanding the NPS drop'] },
   { fr: ['/projets/audit-contenu/', 'Audit contenu'], en: ['/en/projects/content-audit/', 'Content audit'] },
   { fr: ['/projets/matrice-competences/', 'Matrice de compétences'], en: ['/en/projects/skills-matrix/', 'Skills matrix'] },
+  { fr: ['/projets/tableau-de-bord-client/', 'Tableau de bord client'], en: ['/en/projects/client-dashboard/', 'Client dashboard'] },
+];
+/** Les projets à part (registre/0061, 0090) : leur rang dans ORDRE et leur numéro. */
+const A_PART = [
+  [5, '06'],
+  [6, '07'],
 ];
 const ACCUEIL = { fr: '/', en: '/en/' };
 const SUIVANT = { fr: 'Projet suivant', en: 'Next project' };
@@ -48,7 +54,7 @@ for (const langue of ['fr', 'en']) {
   const accueil = ACCUEIL[langue];
   const attendu = ORDRE.map((p) => p[langue]);
 
-  test(`accueil : ${accueil} présente les six projets dans l'ordre, une flèche entre UserVoice et l'analyse du NPS, une entre l'analyse et Audit contenu ; le trio du récit porte 03, 04, 05 et leurs deux flèches, la Matrice vient à part juste dessous`, () => {
+  test(`accueil : ${accueil} présente les sept projets dans l'ordre, une flèche entre UserVoice et l'analyse du NPS, une entre l'analyse et Audit contenu ; le trio du récit porte 03, 04, 05 et leurs deux flèches, la Matrice (06) et le Tableau de bord client (07) viennent à part juste dessous, sans flèche`, () => {
     exigerDist();
     const html = sansCode(lirePage(accueil));
     // Une carte : un lien de classe « parcelle » (Parcelle.astro).
@@ -80,7 +86,8 @@ for (const langue of ['fr', 'en']) {
     }
 
     // Le trio du récit (registre/0089) : 03, 04, 05 et leurs deux flèches,
-    // rien d'autre ; la Matrice sort du trio, dans le bloc à part qui le suit.
+    // rien d'autre ; les projets à part sortent du trio, dans le bloc à part
+    // qui le suit, chacun avec son numéro, sans flèche.
     const els = elements(lirePage(accueil));
     const trios = els.filter((e) => e.classes.includes('parcelles--trio'));
     if (trios.length !== 1) fautes.push(`${trios.length} trio(s) (class="parcelles--trio") : attendu exactement un`);
@@ -98,13 +105,23 @@ for (const langue of ['fr', 'en']) {
       if (flechesDuTrio !== 2) fautes.push(`${flechesDuTrio} flèche(s) dans le trio : attendu les deux`);
 
       const suivant = els.find((e) => e.parent === trio.parent && e.debut >= trio.fin);
-      const [matrice] = attendu[5];
+      const hrefsAPart = A_PART.map(([rang]) => attendu[rang][0]);
       if (!suivant?.classes.includes('parcelles--a-part'))
         fautes.push(`le trio n'est pas suivi d'un bloc « parcelles--a-part » (suivi de <${suivant?.nom ?? 'rien'} class="${suivant?.attrs.class ?? ''}">)`);
       else {
-        const aPart = els.filter((e) => e.ancetres.includes(suivant) && e.nom === 'a' && e.classes.includes('parcelle'));
-        if (aPart.length !== 1 || aPart[0].attrs.href !== matrice || !aPart[0].classes.includes('parcelle--a-part'))
-          fautes.push(`le bloc à part porte ${JSON.stringify(aPart.map((e) => `${e.attrs.href} .${e.classes.join('.')}`))} : attendu la seule carte ${matrice}, de classe « parcelle--a-part »`);
+        const dansAPart = els.filter((e) => e.ancetres.includes(suivant));
+        const aPart = dansAPart.filter((e) => e.nom === 'a' && e.classes.includes('parcelle'));
+        if (
+          JSON.stringify(aPart.map((e) => e.attrs.href)) !== JSON.stringify(hrefsAPart) ||
+          !aPart.every((e) => e.classes.includes('parcelle--a-part'))
+        )
+          fautes.push(`le bloc à part porte ${JSON.stringify(aPart.map((e) => `${e.attrs.href} .${e.classes.join('.')}`))} : attendu ${JSON.stringify(hrefsAPart)}, dans cet ordre, de classe « parcelle--a-part »`);
+        const numerosAPart = dansAPart.filter((e) => e.classes.includes('parcelle__numero')).map((e) => e.texte());
+        const numerosAttendus = A_PART.map(([, numero]) => numero);
+        if (JSON.stringify(numerosAPart) !== JSON.stringify(numerosAttendus))
+          fautes.push(`les numéros du bloc à part sont ${JSON.stringify(numerosAPart)} : attendu ${JSON.stringify(numerosAttendus)}`);
+        const flechesAPart = dansAPart.filter((e) => e.classes.includes('fleche')).length;
+        if (flechesAPart !== 0) fautes.push(`${flechesAPart} flèche(s) dans le bloc à part : attendu aucune`);
       }
     }
 

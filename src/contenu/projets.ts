@@ -10,9 +10,10 @@
  *    situation orales, 02 la fusion des plateformes (registre/0070, 0074) ;
  *  - « paire » : les deux actes du récit (03 écouter, 04 agir), reliés par
  *    la flèche « Alors j'ai cherché une solution. » ;
- *  - « a-part » : un projet sans rapport avec les paires, numéroté à la
- *    suite, sans flèche : la matrice de compétences (registre/0061). Il
- *    vient sous la bande du récit, jamais dedans (registre/0089).
+ *  - « a-part » : les projets sans rapport avec les paires, numérotés à la
+ *    suite, sans flèche : la matrice de compétences (registre/0061), puis
+ *    le tableau de bord client (registre/0090). Ils viennent sous la bande
+ *    du récit, jamais dedans (registre/0089).
  *
  * scene : la scène de la carte, par clé de page (Scene.astro, registre/0058) :
  *  - « uservoice » : Jean seul déroule le plan ;
@@ -21,8 +22,10 @@
  *    l'échelle (registre/0062) ;
  *  - « fusion » : Jean et l'équipe poussent, les parois de deux cabanes
  *    tombent, il n'en reste qu'une (registre/0069) ;
- *  - « misesEnSituation » : le board se remplit en entonnoir, un seul
- *    post-it ambre ; Jean regarde (registre/0069) ;
+ *  - « conversation » : l'apprenant parle à l'écran, l'écran répond et lui
+ *    tend la fiche ambre ; Jean regarde (registre/0090) ;
+ *  - « tableauDeBord » : les post-it des clients se fondent en un seul,
+ *    ambre ; Jean anime (registre/0090) ;
  *  - « sonde » : Jean sonde le terrain, remonte la carotte et la tient à
  *    l'horizontale, le point ambre sur la couche du milieu (registre/0085) ;
  *  - « aucune » : pas de dessin, la carte s'arrête au fait clé (Parcelle.astro).
@@ -30,7 +33,7 @@
 import type { Langue, Page } from '../i18n/routes';
 
 export type Groupe = 'hauteur' | 'paire' | 'a-part';
-export type SceneDeCarte = 'uservoice' | 'audit' | 'matrice' | 'fusion' | 'misesEnSituation' | 'sonde' | 'aucune';
+export type SceneDeCarte = 'uservoice' | 'audit' | 'matrice' | 'fusion' | 'conversation' | 'tableauDeBord' | 'sonde' | 'aucune';
 
 export interface Projet {
   numero: string;
@@ -48,7 +51,7 @@ export const PROJETS: readonly Projet[] = [
     numero: '01',
     page: 'misesEnSituation',
     groupe: 'hauteur',
-    scene: 'misesEnSituation',
+    scene: 'conversation',
     nom: { fr: 'Mises en situation orales', en: 'Speaking role-plays' },
     tags: { fr: ['Discovery', 'IA appliquée', 'Management d’équipe'], en: ['Discovery', 'Applied AI', 'Team management'] },
     fait: {
@@ -114,6 +117,18 @@ export const PROJETS: readonly Projet[] = [
     fait: {
       fr: 'Un Product Manager de mon équipe et moi avions deux idées de « devenir senior ». En relisant ensemble une matrice de compétences, nous en avons fait une seule.',
       en: 'A Product Manager on my team and I had two ideas of “becoming senior”. By reviewing a skills matrix together, we turned them into one.',
+    },
+  },
+  {
+    numero: '07',
+    page: 'atelierPilotage',
+    groupe: 'a-part',
+    scene: 'tableauDeBord',
+    nom: { fr: 'Tableau de bord client', en: 'Client dashboard' },
+    tags: { fr: ['Facilitation', 'Data produit', 'B2B'], en: ['Facilitation', 'Product data', 'B2B'] },
+    fait: {
+      fr: 'Avant de construire un tableau de bord, j’ai demandé à cinq clients quelles décisions ils devaient prendre, à quel moment et dans quel but, plutôt que quels graphiques ils voulaient.',
+      en: 'Before building a dashboard, I asked five clients which decisions they had to make, when and to what end, rather than which charts they wanted.',
     },
   },
 ];

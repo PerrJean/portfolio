@@ -1,0 +1,108 @@
+---
+// La carte 01 Mises en situation orales (registre/0090) : une IA joue
+// l'interlocuteur ; chaque échange se termine par un retour pédagogique. Au
+// repos, l'apprenant assis sur un tabouret, les mains sur la table, face à
+// l'écran (un petit disque dedans : l'interlocuteur) ; Jean debout, en
+// retrait à gauche (ops/images/conversation-scene/repos.svg). Au survol ou
+// au focus de la carte, en 0,6 s : une bulle côté apprenant (150 ms), une
+// bulle côté écran pendant que la première s'efface (150 ms), puis la fiche
+// ambre sort de derrière le bord de l'écran vers l'apprenant (300 ms,
+// ease-out ; tour-1.svg, tour-2.svg, fin.svg). Personne ne bouge.
+// Jamais un bras au-dessus de l'épaule : l'apprenant a les mains sur la
+// table, Jean les bras le long du corps.
+// À rendre dans Scene.astro (variante « conversation »), qui porte les
+// couleurs et le déclenchement sans survol.
+// Mesures : ops/images/conversation-scene/planche.mjs.
+import Personnage from './Personnage.astro';
+import { OBJETS } from './poses';
+
+const L = 426.667, RETRAIT = 58, TABLE_FIN = 135;
+// Jean, puis l'apprenant 58 plus loin, centrés avec la table dans le repère.
+const J_X = Math.round((L - (10 + RETRAIT + TABLE_FIN)) / 2 + 10), A_X = J_X + RETRAIT;
+// Les pointes des bulles et la place de la fiche, dans le repère de
+// l'apprenant (poses.ts) ; la fiche inclinée de 8°, au bord gauche de l'écran.
+const POINTE_A = [5, -94], POINTE_E = [104, -94], FICHE = [59, -87];
+---
+
+<line class="se" x1="0" y1="0" x2="426.667" y2="0" stroke-width="1.5" />
+
+<!-- Jean, en retrait à gauche, immobile. -->
+<g transform={`translate(${J_X} 0)`}>
+  <Personnage pose="debout" jean />
+</g>
+
+<!-- Le poste : tabouret, table, écran ; l'apprenant assis, immobile. -->
+<g transform={`translate(${A_X} 0)`}>
+  <g set:html={OBJETS.tabouret} />
+  <g set:html={OBJETS.table} />
+  <g set:html={OBJETS.ecran} />
+  <Personnage pose="assis" />
+</g>
+
+<!-- Les bulles grandissent depuis la pointe de leur queue. -->
+<g transform={`translate(${A_X + POINTE_A[0]} ${POINTE_A[1]})`}>
+  <g class="cv-bulle-a">
+    <g transform={`translate(${-POINTE_A[0]} ${-POINTE_A[1]})`} set:html={OBJETS['bulle-apprenant']} />
+  </g>
+</g>
+<g transform={`translate(${A_X + POINTE_E[0]} ${POINTE_E[1]})`}>
+  <g class="cv-bulle-e">
+    <g transform={`translate(${-POINTE_E[0]} ${-POINTE_E[1]})`} set:html={OBJETS['bulle-ecran']} />
+  </g>
+</g>
+
+<!-- La fiche, à sa place de fin ; elle part de 14 plus à droite, sur
+     l'écran, invisible. -->
+<g transform={`translate(${A_X + FICHE[0]} ${FICHE[1]})`}>
+  <g class="cv-fiche">
+    <g transform="rotate(-8 10 12.5)" set:html={OBJETS.fiche} />
+  </g>
+</g>
+
+<style is:global>
+  .scene--conversation :is(.cv-bulle-a, .cv-bulle-e, .cv-fiche) {
+    transform-box: view-box;
+    transform-origin: 0 0;
+  }
+
+  /* Repos : ni bulle ni fiche. */
+  .scene--conversation :is(.cv-bulle-a, .cv-bulle-e, .cv-fiche) {
+    opacity: 0;
+  }
+
+  /* 0,6 s, 1 % = 6 ms, trois temps. Temps 1 (0-25 %) : la bulle de
+     l'apprenant, fondu et scale de 0,8 à 1 en 80 ms. Temps 2 (25-50 %) : la
+     bulle de l'écran de même, la première s'efface en 80 ms. Temps 3
+     (50-100 %) : la seconde s'efface, la fiche glisse de +14 à sa place et
+     apparaît, ease-out. */
+  @media (prefers-reduced-motion: no-preference) {
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--conversation .cv-bulle-a {
+      animation: sc-cv-bulle-a 0.6s both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--conversation .cv-bulle-e {
+      animation: sc-cv-bulle-e 0.6s both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--conversation .cv-fiche {
+      animation: sc-cv-fiche 0.6s both;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene--conversation * { animation: none !important; }
+  }
+
+  @keyframes sc-cv-bulle-a {
+    0% { opacity: 0; transform: scale(0.8); animation-timing-function: ease-out; }
+    13.33%, 25% { opacity: 1; transform: scale(1); animation-timing-function: linear; }
+    38.33%, 100% { opacity: 0; transform: scale(1); }
+  }
+  @keyframes sc-cv-bulle-e {
+    0%, 25% { opacity: 0; transform: scale(0.8); animation-timing-function: ease-out; }
+    38.33%, 50% { opacity: 1; transform: scale(1); animation-timing-function: linear; }
+    63.33%, 100% { opacity: 0; transform: scale(1); }
+  }
+  @keyframes sc-cv-fiche {
+    0%, 50% { opacity: 0; transform: translate(14px, 0px); animation-timing-function: ease-out; }
+    100% { opacity: 1; transform: translate(0px, 0px); }
+  }
+</style>

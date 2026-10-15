@@ -10,7 +10,7 @@ import { glob } from 'astro/loaders';
 import { LANGUES, type Page } from './i18n/routes';
 
 /** Les clés de page (src/i18n/routes.ts) qui ont une page projet. */
-const CLES = ['fusion', 'misesEnSituation', 'uservoice', 'analyseNps', 'auditContenu', 'matrice'] as const satisfies readonly Page[];
+const CLES = ['fusion', 'misesEnSituation', 'uservoice', 'analyseNps', 'auditContenu', 'matrice', 'atelierPilotage'] as const satisfies readonly Page[];
 
 const phrase = z.string().trim().min(1);
 

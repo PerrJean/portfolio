@@ -1,0 +1,143 @@
+---
+// La carte 07 Tableau de bord client (registre/0090) : cinq clients disent
+// beaucoup de besoins ; il en sort une donnée. Au repos, le board de la
+// carte 01 garni de seize post-it au trait, un peu de travers ; Jean à
+// gauche, qui anime (montre, le bras 24° sous l'horizontale) ; deux clients
+// à droite, tournés vers le board, immobiles
+// (ops/images/tableau-de-bord-scene/repos.svg). Au survol ou au focus de la
+// carte, en 0,6 s : les post-it glissent vers le centre en redressant leur
+// biais (300 ms, ease-in-out), se fondent en un seul post-it ambre deux fois
+// plus grand (150 ms), puis tout se pose (150 ms) ; le bras de Jean suit,
+// 12° puis 8° sous l'horizontale (chemin.svg, fin.svg).
+// Jamais un bras au-dessus de l'épaule : Jean montre sous l'horizontale, les
+// clients ont les bras le long du corps.
+// À rendre dans Scene.astro (variante « tableauDeBord »), qui porte les
+// couleurs et le déclenchement sans survol.
+// Mesures : ops/images/tableau-de-bord-scene/planche.mjs.
+import Personnage from './Personnage.astro';
+import { OBJETS, LUNETTES, montre } from './poses';
+
+const L = 426.667, BW = 156, PI = 13, GRAND = 26;
+const r1 = (v: number) => Math.round(v * 10) / 10;
+// Jean, le board, les deux clients, centrés dans le repère.
+const LARGEUR = 10 + 33 + BW + 24 + 30 + 10;
+const J_X = Math.round((L - LARGEUR) / 2 + 10), BX = J_X + 33;
+const C1 = BX + BW + 24, C2 = C1 + 30;
+
+// Les post-it au repos, dans le repère du board : coin haut gauche et biais
+// (degrés), chacun dans sa colonne.
+const POSTITS = [
+  [14, -124, -4], [11, -106, 3], [15, -89, -2], [12, -70, 5], [21, -97, 7],
+  [51, -123, 3], [55, -106, -5], [50, -88, 2], [54, -70, -3],
+  [90, -125, -3], [93, -107, 4], [88, -86, -6],
+  [128, -122, 4], [131, -104, -3], [126, -87, 2], [130, -68, -4],
+] as const;
+// Le grand post-it, centré sur le milieu du board, un peu sous la mi-hauteur ;
+// chaque petit converge vers ce centre.
+const MILIEU = [BW / 2, -86] as const;
+const glisse = ([x, y, a]: readonly [number, number, number]) => ({
+  centre: `translate(${r1(BX + x + PI / 2)} ${r1(y + PI / 2)})`,
+  style: `--a:${a}deg;--dx:${r1(MILIEU[0] - x - PI / 2)}px;--dy:${r1(MILIEU[1] - y - PI / 2)}px`,
+});
+
+// Les cibles de Jean, dans le repère de la scène : le bas de la première
+// colonne, le coin bas gauche du grand post-it, et 60 % du chemin entre les
+// deux.
+const REPOS = [BX + 19.5, -66], FIN = [BX + MILIEU[0] - GRAND / 2 + 3, MILIEU[1] + GRAND / 2 - 2];
+const CHEMIN = [0, 1].map((i) => REPOS[i] + (FIN[i] - REPOS[i]) * 0.6);
+const jean = ([x, y]: number[]) => montre([x - J_X, y]).replace('{L}', LUNETTES);
+---
+
+<line class="se" x1="0" y1="0" x2="426.667" y2="0" stroke-width="1.5" />
+<g transform={`translate(${BX} 0)`} set:html={OBJETS.board} />
+
+{POSTITS.map((p) => {
+  const { centre, style } = glisse(p);
+  return (
+    <g transform={centre}>
+      <g class="tb-postit" style={style}>
+        <g transform={`translate(${-PI / 2} ${-PI / 2})`} set:html={OBJETS.postit} />
+      </g>
+    </g>
+  );
+})}
+
+<!-- Le post-it de la donnée, centré sur le milieu du board. -->
+<g transform={`translate(${BX + MILIEU[0]} ${MILIEU[1]})`}>
+  <g class="tb-donnee">
+    <g transform={`translate(${-GRAND / 2} ${-GRAND / 2})`} set:html={OBJETS['postit-donnee']} />
+  </g>
+</g>
+
+<!-- Jean, à gauche du board : trois bras, de plus en plus près de
+     l'horizontale, jamais au-dessus. -->
+<g transform={`translate(${J_X} 0)`}>
+  <g class="tb-j-repos" set:html={jean(REPOS)} />
+  <g class="tb-j-chemin" set:html={jean(CHEMIN)} />
+  <g class="tb-j-fin" set:html={jean(FIN)} />
+</g>
+
+<!-- Les deux clients, tournés vers le board, immobiles. -->
+<g transform={`translate(${C1} 0)`}>
+  <Personnage pose="debout" miroir />
+</g>
+<g transform={`translate(${C2} 0)`}>
+  <Personnage pose="debout" miroir />
+</g>
+
+<style is:global>
+  /* Chaque post-it tourne et glisse autour de son centre (origine locale). */
+  .scene--tableauDeBord :is(.tb-postit, .tb-donnee) {
+    transform-box: view-box;
+    transform-origin: 0 0;
+  }
+  .scene--tableauDeBord .tb-postit {
+    transform: translate(0px, 0px) rotate(var(--a));
+  }
+
+  /* Repos : seize post-it de travers, le bras de Jean à 24°. */
+  .scene--tableauDeBord :is(.tb-donnee, .tb-j-chemin, .tb-j-fin) {
+    opacity: 0;
+  }
+
+  /* 0,6 s, 1 % = 6 ms. Glissement de 0 à 50 % (300 ms, ease-in-out) ; le
+     bras de Jean passe à 12° à 25 %, quand les post-it sont à mi-chemin.
+     Fusion de 50 à 75 % (150 ms) : les petits s'effacent, l'ambre grandit
+     de 0,5 à 1,08. Pose de 75 à 100 % (150 ms) : l'ambre revient à 1, le
+     bras de Jean à 8°. */
+  @media (prefers-reduced-motion: no-preference) {
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--tableauDeBord .tb-postit {
+      animation: sc-tb-glisse 0.6s both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--tableauDeBord .tb-donnee {
+      animation: sc-tb-donnee 0.6s both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--tableauDeBord .tb-j-repos {
+      animation: sc-tb-j-repos 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--tableauDeBord .tb-j-chemin {
+      animation: sc-tb-j-chemin 0.6s step-end both;
+    }
+    :is(.parcelle:hover, .parcelle:focus-within, .parcelle.regarde) .scene--tableauDeBord .tb-j-fin {
+      animation: sc-tb-j-fin 0.6s step-end both;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene--tableauDeBord * { animation: none !important; }
+  }
+
+  @keyframes sc-tb-glisse {
+    0% { opacity: 1; transform: translate(0px, 0px) rotate(var(--a)); animation-timing-function: ease-in-out; }
+    50% { opacity: 1; transform: translate(var(--dx), var(--dy)) rotate(0deg); animation-timing-function: linear; }
+    75%, 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(0deg); }
+  }
+  @keyframes sc-tb-donnee {
+    0%, 50% { opacity: 0; transform: scale(0.5); animation-timing-function: ease-out; }
+    75% { opacity: 1; transform: scale(1.08); animation-timing-function: ease-in-out; }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes sc-tb-j-repos { 0% { opacity: 1; } 25%, 100% { opacity: 0; } }
+  @keyframes sc-tb-j-chemin { 0% { opacity: 0; } 25% { opacity: 1; } 75%, 100% { opacity: 0; } }
+  @keyframes sc-tb-j-fin { 0% { opacity: 0; } 75%, 100% { opacity: 1; } }
+</style>

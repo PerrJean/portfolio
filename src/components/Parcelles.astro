@@ -6,8 +6,8 @@
 // (« Alors j'ai cherché à comprendre. », puis « Alors je me suis attaqué à
 // la qualité du contenu. ») ; puis les projets à part, s'il y en a, sans
 // flèche. Le trio est posé sur la bande de sable, pleine largeur d'écran ;
-// le projet à part vient dessous, hors de la bande : il n'appartient pas au
-// récit (registre/0089, retour sur la remontée de 0084).
+// les projets à part viennent dessous, hors de la bande, un par ligne : ils
+// n'appartiennent pas au récit (registre/0089, retour sur la remontée de 0084).
 // À partir de 960 px, la première paire tient sur une ligne (la colonne du
 // milieu reste vide), et le trio « deux puis un » sur la même grille : la
 // première flèche horizontale, la seconde en diagonale vers l'Audit. En
@@ -138,9 +138,12 @@ const proprietes = (p: Projet) => ({
     background: var(--ivoire);
   }
 
+  /* Les projets à part, un par ligne : chacun reprend seul la grille de la
+     paire (Parcelle.astro), le texte à gauche ; côte à côte, ils
+     l'écraseraient en trois colonnes étroites. */
   .parcelles--a-part {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
-    gap: 3rem 2rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
     margin-top: 4rem;
   }
 

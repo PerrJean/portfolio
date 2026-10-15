@@ -18,7 +18,9 @@
 //  - pousse, hourra (registre/0069) : la carte fusion, sur les segments
 //    existants ; hourra leve toujours les deux bras, jamais un seul ;
 //  - sonde-repos, -enfonce, -traverse, -remonte, -carotte (registre/0085) :
-//    le carottage de la carte UserVoice, deux bras plies au coude.
+//    le carottage de la carte UserVoice, deux bras plies au coude ;
+//  - assis (registre/0090) : la carte 01, sur les segments existants, les
+//    hanches 32 plus bas, aucun bras leve.
 
 const LIGNE = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
 const trait = (c: string, points: string, largeur: number) =>
@@ -86,6 +88,20 @@ const CAROTTE =
  *  tige, a x = 26, entre le bras arriere et le bras avant. */
 const buste = (degres: number) => `<g transform="rotate(${degres} 0 -56)">${torse()}${TETE}</g>`;
 const tigeA = (pointe: number) => `<g transform="translate(26 ${pointe})">${TIGE}</g>`;
+
+/** La bulle de la carte 01 (registre/0090) : un rectangle arrondi au trait
+ *  (1,8), la queue vers le bas ; deux traits ardoise dedans (1,4). x, y : coin
+ *  haut gauche ; base : depart de la queue ; pointe : son bout. */
+const bulle = (x: number, y: number, l: number, h: number, base: number, pointe: readonly [number, number], longueurs: readonly number[]) => {
+  const b = y + h, rx = 6;
+  const d =
+    `M${x + rx},${y} H${x + l - rx} Q${x + l},${y} ${x + l},${y + rx} V${b - rx} Q${x + l},${b} ${x + l - rx},${b} ` +
+    `H${base + 7} L${pointe[0]},${pointe[1]} L${base},${b} H${x + rx} Q${x},${b} ${x},${b - rx} V${y + rx} Q${x},${y} ${x + rx},${y} Z`;
+  const traits = longueurs
+    .map((lg, i) => `<line class="sa" x1="${x + 7}" y1="${y + 8 + i * 7}" x2="${x + 7 + lg}" y2="${y + 8 + i * 7}" stroke-width="1.4" stroke-linecap="round"/>`)
+    .join('');
+  return `<path class="fi se" d="${d}" stroke-width="1.8" stroke-linejoin="round"/>${traits}`;
+};
 
 export const POSES = {
   'debout': DEBOUT + brasArriere('0,-89 -2,-58') + torse() + TETE + brasAvant('1,-89 3,-60'),
@@ -204,6 +220,21 @@ export const POSES = {
     TETE +
     brasAvant('1,-89 15.6,-73.2 31,-66') +
     `<g transform="translate(12 -66)">${CAROTTE}</g>`,
+  /** Assis (la carte 01, registre/0090) : les jambes pliees au genou, cuisse
+   *  24,25 a l'horizontale et tibia 20 a la verticale (ceux de marche-2), pied
+   *  5 a plat ; les hanches descendent de 56 a 24 (32 plus bas). Le haut du
+   *  corps est celui de debout, abaisse de 32 d'un bloc ; les deux bras
+   *  droits, longs de 29 (celui de debout), 10 et 14 degres sous
+   *  l'horizontale, les mains sur la table (y -52 et -50). Les genoux a 10,5
+   *  l'un de l'autre. Dessin d'origine : ops/images/conversation-scene/planche.mjs. */
+  'assis':
+    jambes('-5.25,-24 19,-24 19,-4 24,-4', '5.25,-24 29.5,-24 29.5,-4 34.5,-4') +
+    '<g transform="translate(0 32)">' +
+    brasArriere('0,-89 28.5,-84') +
+    torse() +
+    TETE +
+    brasAvant('1,-89 29.5,-82') +
+    '</g>',
 };
 
 export type Pose = keyof typeof POSES;
@@ -227,16 +258,13 @@ export const OBJETS = {
    *  barreaux (les trois niveaux de la grille) a -19, -55 et -91. */
   echelle:
     '<g stroke-linecap="round"><line class="se" x1="5.7" y1="-19" x2="37.7" y2="-19" stroke-width="3"/><line class="se" x1="16.5" y1="-55" x2="48.5" y2="-55" stroke-width="3"/><line class="se" x1="27.3" y1="-91" x2="59.3" y2="-91" stroke-width="3"/><line class="se" x1="0" y1="-1" x2="37.5" y2="-125" stroke-width="4"/><line class="se" x1="32" y1="-1" x2="69.5" y2="-125" stroke-width="4"/></g>',
-  /** Le board de la carte mises en situation (registre/0069), origine au
+  /** Le board de la carte 07 (registre/0069, 0090), origine au
    *  bord gauche du cadre, au sol : 156 de large, de -130 a -46, trois
    *  separations ardoise (quatre colonnes de 39), deux pieds ecartes. */
   board:
     '<line class="se" x1="20" y1="-46" x2="11" y2="-1" stroke-width="4" stroke-linecap="round"/><line class="se" x1="136" y1="-46" x2="145" y2="-1" stroke-width="4" stroke-linecap="round"/><rect class="fi se" x="0" y="-130" width="156" height="84" rx="1.5" stroke-width="2.5"/><line class="sa" x1="39" y1="-125" x2="39" y2="-51" stroke-width="1.2"/><line class="sa" x1="78" y1="-125" x2="78" y2="-51" stroke-width="1.2"/><line class="sa" x1="117" y1="-125" x2="117" y2="-51" stroke-width="1.2"/>',
   /** Le post-it, origine au coin haut gauche : un carre au trait de 13. */
   postit: '<rect class="fi se" x="0" y="0" width="13" height="13" rx="1" stroke-width="1.5"/>',
-  /** Le post-it retenu : aplat ambre, une petite bulle au trait (l'oral). */
-  'postit-retenu':
-    '<rect class="fa se" x="0" y="0" width="13" height="13" rx="1" stroke-width="1.5"/><path class="se" d="M1.9,5.5 a3.6,2.6 0 1 1 2.2,2.4 l-2.4,1.8 l0.6,-2.6 Z" fill="none" stroke-width="1.1" stroke-linejoin="round"/>',
   /** La sonde de la carte UserVoice (registre/0085) : la tige et la carotte
    *  (voir plus haut, origines a la pointe et au bout « surface »). */
   tige: TIGE,
@@ -249,6 +277,28 @@ export const OBJETS = {
   /** Le trou laisse par la carotte, origine au milieu, au sol : la colonne
    *  coupe les couches (aplat ivoire), deux bords et un fond au trait fin. */
   trou: '<path class="fi sa" d="M-4.5,0.75 L-4.5,18 L4.5,18 L4.5,0.75" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>',
+  /** Le post-it de la donnee (la carte 07, registre/0090), origine au coin
+   *  haut gauche : un aplat ambre de 26, deux fois le post-it. */
+  'postit-donnee': '<rect class="fa se" x="0" y="0" width="26" height="26" rx="1.5" stroke-width="2"/>',
+  /** La carte 01 (registre/0090) : origine sous les hanches de l'apprenant
+   *  assis. Le tabouret, son dessus a -20 (le bas des cuisses). */
+  tabouret:
+    '<line class="se" x1="-8" y1="-16" x2="-11" y2="-1" stroke-width="3.5" stroke-linecap="round"/><line class="se" x1="6" y1="-16" x2="9" y2="-1" stroke-width="3.5" stroke-linecap="round"/><rect class="fe" x="-13" y="-20" width="24" height="5" rx="1"/>',
+  /** La table : un plateau de 20 a 135, son dessus a -47, deux pieds droits. */
+  table:
+    '<line class="se" x1="46" y1="-43" x2="46" y2="-1" stroke-width="4" stroke-linecap="round"/><line class="se" x1="127" y1="-43" x2="127" y2="-1" stroke-width="4" stroke-linecap="round"/><rect class="fe" x="20" y="-47" width="115" height="5" rx="1"/>',
+  /** L'ecran, centre a 100 : un cadre de 50 x 34 sur un pied court, le petit
+   *  disque d'encre (l'interlocuteur) a hauteur des yeux de l'apprenant. */
+  ecran:
+    '<line class="se" x1="100" y1="-55" x2="100" y2="-47" stroke-width="4"/><line class="se" x1="92" y1="-48.5" x2="108" y2="-48.5" stroke-width="3" stroke-linecap="round"/><rect class="fi se" x="75" y="-89" width="50" height="34" rx="2" stroke-width="2.5"/><circle class="fe" cx="100" cy="-72" r="6"/>',
+  /** Les bulles, au trait, deux traits ardoise, sans texte ; la queue pointe
+   *  sur celui qui parle : l'apprenant (pointe en 5,-94), l'ecran (104,-94). */
+  'bulle-apprenant': bulle(6, -124, 36, 22, 10, [5, -94], [22, 14]),
+  'bulle-ecran': bulle(80, -126, 36, 22, 102, [104, -94], [20, 12]),
+  /** La fiche : un aplat ambre de 20 x 25, trois traits d'encre, origine au
+   *  coin haut gauche, droite (la scene l'incline de 8 degres). */
+  fiche:
+    '<rect class="fa se" x="0" y="0" width="20" height="25" rx="1.5" stroke-width="1.8"/><g stroke-width="1.4" stroke-linecap="round"><line class="se" x1="4" y1="7" x2="16" y2="7"/><line class="se" x1="4" y1="12.5" x2="16" y2="12.5"/><line class="se" x1="4" y1="18" x2="11" y2="18"/></g>',
 } as const;
 
 /** Les cabanes de la carte fusion (registre/0069) : murs et toit a deux pans

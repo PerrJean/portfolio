@@ -23,6 +23,7 @@ const NOMS_DE_PAGES = {
   'Mises en situation': { fr: '/projets/mises-en-situation/', en: '/en/projects/speaking-practice/' },
   Audit: { fr: '/projets/audit-contenu/', en: '/en/projects/content-audit/' },
   Fusion: { fr: '/projets/fusion-plateformes/', en: '/en/projects/platform-merger/' },
+  'Tableau de bord client': { fr: '/projets/tableau-de-bord-client/', en: '/en/projects/client-dashboard/' },
   'À propos': { fr: '/a-propos/', en: '/en/about/' },
 };
 
@@ -230,7 +231,7 @@ test('infobulles : le lexique se lit (douze termes, des définitions sans point 
     for (const langue of ['fr', 'en']) if (l[langue]?.endsWith('.')) fautes.push(`« ${l.terme} » (${langue}) finit par un point`);
   for (const v of Object.values(VARIANTES_EN))
     if (!LEXIQUE_MD.includes(`« ${v} »`)) fautes.push(`variante EN « ${v} » absente de la note du lexique`);
-  if (ATTENDU.size !== 10) fautes.push(`${ATTENDU.size} page(s) à bulles : attendu 10 (cinq paires FR/EN)`);
+  if (ATTENDU.size !== 12) fautes.push(`${ATTENDU.size} page(s) à bulles : attendu 12 (six paires FR/EN)`);
   assert.equal(fautes.length, 0, `Lexique :\n${liste(fautes)}`);
 });
 

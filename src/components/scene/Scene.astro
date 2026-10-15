@@ -9,8 +9,10 @@
 //    (SceneMatrice, registre/0062) ;
 //  - fusion : la chaîne des quatre pousse une paroi, les deux parois qui
 //    se font face tombent, une seule cabane (SceneFusion, registre/0069) ;
-//  - misesEnSituation : le PM et la designer remplissent le board, Jean
-//    regarde (SceneMisesEnSituation, registre/0069) ;
+//  - conversation : l'apprenant parle à l'écran, l'écran répond et lui
+//    tend la fiche ambre ; Jean regarde (SceneConversation, registre/0090) ;
+//  - tableauDeBord : les post-it du board se fondent en un seul, ambre ;
+//    Jean anime, deux clients regardent (SceneTableauDeBord, registre/0090) ;
 //  - sonde : Jean enfonce la tige de sondage, remonte la carotte et la
 //    tient à l'horizontale, à deux mains (SceneSonde, registre/0085).
 // Les cartes jouent au survol ou au focus de la `.parcelle` qui contient la
@@ -24,11 +26,12 @@ import SceneUservoice from './SceneUservoice.astro';
 import SceneAudit from './SceneAudit.astro';
 import SceneMatrice from './SceneMatrice.astro';
 import SceneFusion from './SceneFusion.astro';
-import SceneMisesEnSituation from './SceneMisesEnSituation.astro';
+import SceneConversation from './SceneConversation.astro';
+import SceneTableauDeBord from './SceneTableauDeBord.astro';
 import SceneSonde from './SceneSonde.astro';
 
 interface Props {
-  variante: 'entete' | 'uservoice' | 'audit' | 'matrice' | 'fusion' | 'misesEnSituation' | 'sonde';
+  variante: 'entete' | 'uservoice' | 'audit' | 'matrice' | 'fusion' | 'conversation' | 'tableauDeBord' | 'sonde';
   class?: string;
 }
 const { variante, class: classe } = Astro.props;
@@ -49,7 +52,8 @@ const VUE = variante === 'entete' ? '205 -140 221.667 160' : '0 -140 426.667 160
   {variante === 'audit' && <SceneAudit />}
   {variante === 'matrice' && <SceneMatrice />}
   {variante === 'fusion' && <SceneFusion />}
-  {variante === 'misesEnSituation' && <SceneMisesEnSituation />}
+  {variante === 'conversation' && <SceneConversation />}
+  {variante === 'tableauDeBord' && <SceneTableauDeBord />}
   {variante === 'sonde' && <SceneSonde />}
 </svg>
 

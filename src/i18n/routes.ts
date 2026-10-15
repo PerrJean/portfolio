@@ -16,6 +16,7 @@ export const ROUTES = {
   analyseNps: { fr: '/projets/analyse-nps/', en: '/en/projects/nps-analysis/' },
   auditContenu: { fr: '/projets/audit-contenu/', en: '/en/projects/content-audit/' },
   matrice: { fr: '/projets/matrice-competences/', en: '/en/projects/skills-matrix/' },
+  atelierPilotage: { fr: '/projets/tableau-de-bord-client/', en: '/en/projects/client-dashboard/' },
   aPropos: { fr: '/a-propos/', en: '/en/about/' },
 } as const satisfies Record<string, Record<Langue, string>>;
 
