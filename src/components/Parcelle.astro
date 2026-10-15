@@ -14,6 +14,9 @@
 // (registre/0075). Hors du titre : le nom accessible reste « 01 UserVoice ».
 // « Lire le projet → », sous le fait clé, dit au repos et au téléphone que
 // la carte est un lien ; le survol le souligne, avec le nom (registre/0075).
+// Au survol et au focus, la carte prend une surface, sans ombre ; le sol de
+// sa scène est teinté, plus foncé sur le sable (registre/0089). Dans la
+// bande du récit, les deux s'inversent (Parcelles.astro).
 import Scene from './scene/Scene.astro';
 import type { Groupe, SceneDeCarte } from '../contenu/projets';
 import { moisEnLettres } from '../i18n/date';
@@ -59,17 +62,42 @@ const { numero, nom, tags, fait, date, langue, href, groupe, scene } = Astro.pro
 </a>
 
 <style>
+  /* La surface (registre/0089) : la marge intérieure de la carte est
+     rendue par une marge négative, la mise en page ne bouge pas au survol.
+     --sol-carte : le sol de la scène, selon le fond sous la carte. */
   .parcelle {
+    --marge-carte: 1.25rem;
+    --sol-carte: var(--sol);
     display: grid;
     grid-template-rows: auto 1fr auto;
     gap: 0.75rem;
+    margin: calc(-1 * var(--marge-carte));
+    padding: var(--marge-carte);
+    border-radius: 6px;
     color: var(--encre);
     text-decoration: none;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    .parcelle {
+      transition: background-color 180ms ease-out, box-shadow 180ms ease-out;
+    }
+  }
+
+  /* Sur l'ivoire, la carte survolée passe au sable, bordée d'un filet de
+     1 px (un trait, pas une ombre) ; son sol fonce d'autant. */
+  .parcelle:is(:hover, :focus-visible) {
+    --sol-carte: var(--sol-sur-sable);
+    background: var(--sable);
+    box-shadow: 0 0 0 1px var(--dalle);
+  }
+
+  /* Le contour de focus reste où il était avant la surface : 0,625 rem
+     autour du contenu, donc dans la surface. Au téléphone, la surface
+     touche le bord de l'écran, et un contour au-dehors y serait coupé. */
   .parcelle:focus-visible {
     outline: 3px solid var(--encre);
-    outline-offset: 0.625rem;
+    outline-offset: calc(0.625rem - var(--marge-carte));
   }
 
   .parcelle__titre {
@@ -86,7 +114,10 @@ const { numero, nom, tags, fait, date, langue, href, groupe, scene } = Astro.pro
     font-weight: 700;
   }
 
+  /* Le numéro en ardoise, au second plan du nom (registre/0089) : grand
+     texte, 4,66:1 sur l'ivoire, 4,28:1 sur le sable. */
   .parcelle__numero {
+    color: var(--ardoise);
     font-size: var(--numero, 3rem);
     line-height: 0.85;
     letter-spacing: -0.03em;
@@ -146,7 +177,14 @@ const { numero, nom, tags, fait, date, langue, href, groupe, scene } = Astro.pro
     margin-top: 1rem;
   }
 
-  /* Un projet à part : même parcelle, séparée de la paire par un filet. */
+  /* Le sol des dessins (registre/0089) : la bande sous la ligne de sol,
+     140 unités sur les 160 du repère (Scene.astro), soit 87,5 %. */
+  .parcelle__scene :global(svg) {
+    background: linear-gradient(to bottom, transparent 87.5%, var(--sol-carte) 87.5%);
+  }
+
+  /* Un projet à part : même parcelle, séparée de la paire par un filet ;
+     sous la bande du récit, sans filet (Parcelles.astro, registre/0089). */
   .parcelle--a-part {
     padding-top: 1.5rem;
     border-top: 1px solid var(--dalle);

@@ -11,7 +11,8 @@
  *  - « paire » : les deux actes du récit (03 écouter, 04 agir), reliés par
  *    la flèche « Alors j'ai cherché une solution. » ;
  *  - « a-part » : un projet sans rapport avec les paires, numéroté à la
- *    suite, sans flèche : la matrice de compétences (registre/0061).
+ *    suite, sans flèche : la matrice de compétences (registre/0061). Il
+ *    vient sous la bande du récit, jamais dedans (registre/0089).
  *
  * scene : la scène de la carte, par clé de page (Scene.astro, registre/0058) :
  *  - « uservoice » : Jean seul déroule le plan ;

@@ -156,6 +156,12 @@ svg {
   display: none;
 }
 
+/* Le sol de l'équipe, comme celui des cartes (Parcelle.astro,
+   registre/0089) : la bande sous la ligne de sol, à 87,5 % du repère. */
+.accroche__equipe {
+  background: linear-gradient(to bottom, transparent 87.5%, var(--sol) 87.5%);
+}
+
 @media (min-width: 960px) {
   /* Le titre en contexte de formatage propre : Chrome n'équilibre pas
      (text-wrap: balance) des lignes voisines d'un flottant, ici la réserve

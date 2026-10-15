@@ -3,6 +3,9 @@
 // d'abord » (registre/0070) : la première paire, sans flèche (01 et 02) ;
 // puis la paire du récit (03 et 04, reliés par la flèche « Alors j'ai agi
 // dessus. ») ; puis les projets à part, s'il y en a, sans flèche.
+// Le trio du récit (03, 04, 05) est posé sur la bande de sable, pleine
+// largeur d'écran ; le projet à part vient dessous, hors de la bande : il
+// n'appartient pas au récit (registre/0089, retour sur la remontée de 0084).
 // À partir de 960 px, chaque paire tient sur une ligne, sur la même grille
 // (la colonne du milieu porte la flèche, ou reste vide) ; la flèche est
 // horizontale. En dessous, les parcelles s'empilent et la flèche descend.
@@ -76,16 +79,10 @@ const proprietes = (p: Projet) => ({
       </>
     ))
   }
-  {
-    /* Avec le trio (registre/0084), le projet à part remonte à côté de
-       l'Audit, carte ordinaire, sans flèche. */
-    paire.length === 3 &&
-      aPart.map((projet) => <Parcelle {...proprietes(projet)} groupe="paire" />)
-  }
 </div>
 
 {
-  paire.length !== 3 && aPart.length > 0 && (
+  aPart.length > 0 && (
     <div class="parcelles parcelles--a-part">
       {aPart.map((projet) => (
         <Parcelle {...proprietes(projet)} />
@@ -118,10 +115,30 @@ const proprietes = (p: Projet) => ({
     margin-top: 4rem;
   }
 
-  .parcelles--trio > :global(:nth-child(6)) {
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--dalle);
+  /* La bande du récit (registre/0089) : le sable sous le trio, de bord à
+     bord de l'écran. Une image de bordure, débordant de 100vw de chaque
+     côté : un débordement d'encre, qui ne crée pas de barre de défilement
+     horizontale (un pseudo-élément de 100vw en créerait une, la largeur de
+     la barre verticale comprise). Dans la bande, la carte survolée
+     redevient ivoire, et les sols s'inversent (Parcelle.astro). */
+  .parcelles--trio {
+    padding-block: 3.5rem 4rem;
+    border-image: linear-gradient(var(--sable), var(--sable)) fill 0 / 0 / 0 100vw;
+  }
+
+  .parcelles--trio > :global(.parcelle) {
+    --sol-carte: var(--sol-sur-sable);
+  }
+
+  .parcelles--trio > :global(.parcelle:is(:hover, :focus-visible)) {
+    --sol-carte: var(--sol);
+    background: var(--ivoire);
+  }
+
+  /* Sous la bande, le projet à part n'a plus besoin de son filet. */
+  .parcelles--trio + .parcelles--a-part > :global(.parcelle--a-part) {
+    padding-top: var(--marge-carte);
+    border-top: none;
   }
 
   .parcelles--a-part {
@@ -214,7 +231,7 @@ const proprietes = (p: Projet) => ({
 
   /* Le trio du récit (registre/0084), « deux puis un » à partir de 960 px :
      UserVoice → l'analyse sur la ligne de la paire, puis la seconde flèche
-     descend sous l'analyse vers l'Audit, seul dans la colonne de droite.
+     descend sous l'analyse vers l'Audit, seul sur sa ligne, à gauche.
      Enfants : 1 UserVoice, 2 flèche, 3 analyse, 4 flèche, 5 Audit. */
   @media (min-width: 960px) {
     .parcelles--trio {
@@ -272,17 +289,10 @@ const proprietes = (p: Projet) => ({
       height: 5.625rem;
     }
 
+    /* La colonne de droite reste vide à côté de l'Audit (registre/0089). */
     .parcelles--trio > :global(:nth-child(5)) {
       grid-column: 1;
       grid-row: 3;
-    }
-
-    .parcelles--trio > :global(:nth-child(6)) {
-      grid-column: 3;
-      grid-row: 3;
-      margin-top: 0;
-      padding-top: 0;
-      border-top: none;
     }
   }
 </style>

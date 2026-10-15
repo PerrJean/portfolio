@@ -21,16 +21,41 @@ const { page, langue } = Astro.props;
 </footer>
 
 <style>
+  /* Le pied de page sombre (registre/0089) : il pose la page, sur toutes
+     les pages. Fond encre, texte ivoire (15,4:1), le filet ambre au-dessus,
+     l'horizon qui répond au soleil. La marge du haut garde l'ivoire entre
+     le contenu et lui. */
+  .pied {
+    margin-top: 5rem;
+    padding-block: 3rem;
+    background: var(--encre);
+    color: var(--ivoire);
+    border-top: 4px solid var(--ambre);
+  }
+
   /* Cible d'au moins 24 px de haut (WCAG 2.2, critère 2.5.8). */
   .pied a {
     display: inline-block;
     padding-block: 0.25rem;
   }
 
-  .pied {
-    margin-top: 4rem;
-    padding-block: 1.5rem;
-    border-top: 1px solid var(--dalle);
+  /* Les liens, la bascule FR | EN comprise (Bascule.astro, scopée : d'où
+     .bascule pour l'emporter) : ivoire et soulignés, l'orange ne passe pas
+     sur l'encre (3,1:1). La langue courante garde son trait de 2 px. */
+  .pied a,
+  .pied :global(.bascule a),
+  .pied :global(.bascule__trait) {
+    color: inherit;
+  }
+
+  .pied a,
+  .pied :global(.bascule a) {
+    text-decoration-line: underline;
+  }
+
+  /* Le contour de focus, en encre partout ailleurs, passe à l'ivoire. */
+  .pied :global(:focus-visible) {
+    outline-color: var(--ivoire);
   }
 
   .pied__ligne {
