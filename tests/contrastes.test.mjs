@@ -5,7 +5,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { RACINE } from './outils.mjs';
+import { RACINE, liste } from './outils.mjs';
 
 const JETONS = join(RACINE, 'src', 'styles', 'jetons.css');
 
@@ -15,7 +15,17 @@ const PAIRES = [
   ['--orange', '--ivoire', 4.5, 'texte courant'],
   ['--texte-sur-orange', '--orange', 4.5, 'texte courant'],
   ['--ardoise', '--ivoire', 3, 'grand texte seulement'],
+  // La bande du récit et la carte survolée (registre/0089) : le sable porte
+  // le texte, les liens orange et les numéros ; le pied de page s'inverse.
+  ['--encre', '--sable', 4.5, 'texte courant, sur la bande'],
+  ['--orange', '--sable', 4.5, 'texte courant, sur la bande'],
+  ['--ardoise', '--sable', 3, 'grand texte seulement, sur la bande'],
+  ['--ivoire', '--encre', 4.5, 'texte du pied de page'],
 ];
+
+/** Les couleurs nées avec le relief (registre/0089). */
+const COULEURS_0089 = ['--sable', '--sol', '--sol-sur-sable'];
+const COULEUR = /^(?:#|(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color|color-mix)\()/i;
 
 /** Luminance relative WCAG d'une couleur « #rrggbb » ou « #rgb ». */
 export function luminance(hex) {
@@ -73,3 +83,22 @@ for (const [avant, arriere, seuil, usage] of PAIRES) {
     );
   });
 }
+
+test('jetons : chaque couleur est en hexadécimal et commentée sur sa ligne, celles du relief comprises', () => {
+  assert.ok(existsSync(JETONS), `Fichier des jetons introuvable : ${JETONS}.`);
+  const fautes = [];
+  const vues = new Set();
+  // Une déclaration par ligne, son commentaire à la suite (convention du fichier).
+  for (const ligne of readFileSync(JETONS, 'utf8').split(/\r?\n/)) {
+    const m = /^\s*(--[\w-]+)\s*:\s*([^;]+);\s*(.*)$/.exec(ligne);
+    if (!m) continue;
+    const [, nom, val, reste] = m;
+    const v = val.trim();
+    if (!COULEUR.test(v) && !COULEURS_0089.includes(nom)) continue;
+    vues.add(nom);
+    if (!/^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i.test(v)) fautes.push(`${nom} vaut « ${v} » : attendu #rrggbb ou #rgb`);
+    if (!/^\/\*\s*\S[\s\S]*\*\/\s*$/.test(reste)) fautes.push(`${nom} n'est pas commentée sur sa ligne`);
+  }
+  for (const nom of COULEURS_0089) if (!vues.has(nom)) fautes.push(`${nom} n'est pas déclarée`);
+  assert.equal(fautes.length, 0, `Jetons de couleur (${JETONS}) :\n${liste(fautes)}`);
+});

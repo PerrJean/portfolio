@@ -1,6 +1,7 @@
-// Test 8 — Les projets (registre/0069, 0070, 0084) : l'ordre de l'accueil, « la
-// hauteur d'abord », le lien « Projet suivant » qui suit cet ordre en boucle,
-// et les trois schémas de la page fusion.
+// Test 8 — Les projets (registre/0069, 0070, 0084, 0089) : l'ordre de l'accueil,
+// « la hauteur d'abord », le trio du récit et la Matrice à part juste dessous,
+// le lien « Projet suivant » qui suit cet ordre en boucle, et les trois schémas
+// de la page fusion.
 // Les scènes des cartes 01 et 02 ne sont pas testées ici : un autre chantier
 // les anime.
 
@@ -8,7 +9,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { DIST, exigerDist, fichierDePage, sansCode, attributs, liste } from './outils.mjs';
+import { DIST, exigerDist, fichierDePage, sansCode, attributs, elements, liste } from './outils.mjs';
 
 /** L'ordre de l'accueil, qui fait foi : page et nom de chaque projet, par langue. */
 const ORDRE = [
@@ -47,7 +48,7 @@ for (const langue of ['fr', 'en']) {
   const accueil = ACCUEIL[langue];
   const attendu = ORDRE.map((p) => p[langue]);
 
-  test(`accueil : ${accueil} présente les six projets dans l'ordre, une flèche entre UserVoice et l'analyse du NPS, une entre l'analyse et Audit contenu`, () => {
+  test(`accueil : ${accueil} présente les six projets dans l'ordre, une flèche entre UserVoice et l'analyse du NPS, une entre l'analyse et Audit contenu ; le trio du récit porte 03, 04, 05 et leurs deux flèches, la Matrice vient à part juste dessous`, () => {
     exigerDist();
     const html = sansCode(lirePage(accueil));
     // Une carte : un lien de classe « parcelle » (Parcelle.astro).
@@ -75,6 +76,35 @@ for (const langue of ['fr', 'en']) {
         const apres = position(attendu[c][0]);
         if (!(avant >= 0 && apres >= 0 && avant < fleches[k] && fleches[k] < apres))
           fautes.push(`la flèche ${k + 1} n'est pas entre la carte ${attendu[a][1]} et la carte ${attendu[c][1]}`);
+      }
+    }
+
+    // Le trio du récit (registre/0089) : 03, 04, 05 et leurs deux flèches,
+    // rien d'autre ; la Matrice sort du trio, dans le bloc à part qui le suit.
+    const els = elements(lirePage(accueil));
+    const trios = els.filter((e) => e.classes.includes('parcelles--trio'));
+    if (trios.length !== 1) fautes.push(`${trios.length} trio(s) (class="parcelles--trio") : attendu exactement un`);
+    else {
+      const [trio] = trios;
+      const dans = els.filter((e) => e.ancetres.includes(trio));
+      const cartesDuTrio = dans.filter((e) => e.nom === 'a' && e.classes.includes('parcelle')).map((e) => e.attrs.href);
+      const recit = attendu.slice(2, 5).map(([href]) => href);
+      if (JSON.stringify(cartesDuTrio) !== JSON.stringify(recit))
+        fautes.push(`le trio porte ${JSON.stringify(cartesDuTrio)} : attendu ${JSON.stringify(recit)}`);
+      const numeros = dans.filter((e) => e.classes.includes('parcelle__numero')).map((e) => e.texte());
+      if (JSON.stringify(numeros) !== JSON.stringify(['03', '04', '05']))
+        fautes.push(`les numéros du trio sont ${JSON.stringify(numeros)} : attendu ["03","04","05"]`);
+      const flechesDuTrio = dans.filter((e) => e.classes.includes('fleche')).length;
+      if (flechesDuTrio !== 2) fautes.push(`${flechesDuTrio} flèche(s) dans le trio : attendu les deux`);
+
+      const suivant = els.find((e) => e.parent === trio.parent && e.debut >= trio.fin);
+      const [matrice] = attendu[5];
+      if (!suivant?.classes.includes('parcelles--a-part'))
+        fautes.push(`le trio n'est pas suivi d'un bloc « parcelles--a-part » (suivi de <${suivant?.nom ?? 'rien'} class="${suivant?.attrs.class ?? ''}">)`);
+      else {
+        const aPart = els.filter((e) => e.ancetres.includes(suivant) && e.nom === 'a' && e.classes.includes('parcelle'));
+        if (aPart.length !== 1 || aPart[0].attrs.href !== matrice || !aPart[0].classes.includes('parcelle--a-part'))
+          fautes.push(`le bloc à part porte ${JSON.stringify(aPart.map((e) => `${e.attrs.href} .${e.classes.join('.')}`))} : attendu la seule carte ${matrice}, de classe « parcelle--a-part »`);
       }
     }
 

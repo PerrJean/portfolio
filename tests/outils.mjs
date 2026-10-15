@@ -150,3 +150,40 @@ export function estTiers(url) {
 
 /** Formate une liste de fautes pour un message d'échec lisible. */
 export const liste = (fautes) => fautes.map((f) => `  - ${f}`).join('\n');
+
+const VIDES = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
+
+/**
+ * Les éléments d'un HTML (sur sansCode), dans l'ordre :
+ * [{ nom, attrs, classes, parent, ancetres (le plus proche d'abord), debut, fin, texte() }].
+ * Pas de fermeture implicite : suffisant pour le HTML qu'Astro produit.
+ */
+export function elements(html) {
+  const source = sansCode(html);
+  const re = /<(\/?)([a-zA-Z][\w:-]*)(?=[\s/>])((?:[^>"']|"[^"]*"|'[^']*')*)>/g;
+  const tous = [];
+  const pile = [];
+  for (const m of source.matchAll(re)) {
+    const nom = m[2].toLowerCase();
+    if (m[1]) {
+      const k = pile.map((e) => e.nom).lastIndexOf(nom);
+      if (k >= 0) for (const e of pile.splice(k)) e.fin = m.index + m[0].length;
+      continue;
+    }
+    const attrs = attributs(m[3]);
+    const el = {
+      nom,
+      attrs,
+      classes: (attrs.class ?? '').split(/\s+/).filter(Boolean),
+      parent: pile.at(-1) ?? null,
+      ancetres: [...pile].reverse(),
+      debut: m.index,
+      fin: null,
+      texte: () => source.slice(el.debut, el.fin ?? undefined).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim(),
+    };
+    tous.push(el);
+    if (VIDES.has(nom) || /\/\s*$/.test(m[3])) el.fin = m.index + m[0].length;
+    else pile.push(el);
+  }
+  return tous;
+}
