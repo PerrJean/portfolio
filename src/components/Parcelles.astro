@@ -1,14 +1,17 @@
 ---
 // Les parcelles de l'accueil, depuis src/contenu/projets.ts, « la hauteur
 // d'abord » (registre/0070) : la première paire, sans flèche (01 et 02) ;
-// puis la paire du récit (03 et 04, reliés par la flèche « Alors j'ai agi
-// dessus. ») ; puis les projets à part, s'il y en a, sans flèche.
-// Le trio du récit (03, 04, 05) est posé sur la bande de sable, pleine
-// largeur d'écran ; le projet à part vient dessous, hors de la bande : il
-// n'appartient pas au récit (registre/0089, retour sur la remontée de 0084).
-// À partir de 960 px, chaque paire tient sur une ligne, sur la même grille
-// (la colonne du milieu porte la flèche, ou reste vide) ; la flèche est
-// horizontale. En dessous, les parcelles s'empilent et la flèche descend.
+// puis le trio du récit (registre/0084) : 03 UserVoice, 04 l'analyse du
+// NPS, 05 l'Audit, reliés par les deux flèches de LIENS_DU_RECIT
+// (« Alors j'ai cherché à comprendre. », puis « Alors je me suis attaqué à
+// la qualité du contenu. ») ; puis les projets à part, s'il y en a, sans
+// flèche. Le trio est posé sur la bande de sable, pleine largeur d'écran ;
+// le projet à part vient dessous, hors de la bande : il n'appartient pas au
+// récit (registre/0089, retour sur la remontée de 0084).
+// À partir de 960 px, la première paire tient sur une ligne (la colonne du
+// milieu reste vide), et le trio « deux puis un » sur la même grille : la
+// première flèche horizontale, la seconde en diagonale vers l'Audit. En
+// dessous, les parcelles s'empilent et les flèches descendent.
 // Dans la première paire, les cartes partagent les lignes de la grille
 // (subgrid) : le fait clé part à la même hauteur, même si un nom passe sur
 // deux lignes et l'autre non, avec ou sans scène.
@@ -135,16 +138,18 @@ const proprietes = (p: Projet) => ({
     background: var(--ivoire);
   }
 
-  /* Sous la bande, le projet à part n'a plus besoin de son filet. */
-  .parcelles--trio + .parcelles--a-part > :global(.parcelle--a-part) {
-    padding-top: var(--marge-carte);
-    border-top: none;
-  }
-
   .parcelles--a-part {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
     gap: 3rem 2rem;
     margin-top: 4rem;
+  }
+
+  /* Après une simple paire (sans bande), le projet à part en est séparé par
+     un filet, posé sur le bloc. Sous la bande du récit, la bande suffit
+     (registre/0089). */
+  .parcelles--paire:not(.parcelles--trio) + .parcelles--a-part {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--dalle);
   }
 
   .fleche {

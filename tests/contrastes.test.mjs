@@ -1,5 +1,8 @@
 // Test 6 — Contrastes : les jetons de src/styles/jetons.css respectent les
 // seuils WCAG (formule de luminance relative, WCAG 2.x).
+// Couplage, dit ici : les paires et COULEURS_0089 nomment les jetons
+// (--sable, --sol…) ; renommer un jeton demande de renommer ici. Les autres
+// couleurs du fichier sont reconnues à leur valeur, pas à leur nom.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';

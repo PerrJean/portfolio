@@ -155,7 +155,8 @@ const VIDES = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input
 
 /**
  * Les éléments d'un HTML (sur sansCode), dans l'ordre :
- * [{ nom, attrs, classes, parent, ancetres (le plus proche d'abord), debut, fin, texte() }].
+ * [{ nom, attrs, classes, parent, ancetres (le plus proche d'abord), precedent
+ *    (le frère élément d'avant), rang (1 pour le premier enfant), debut, fin, texte() }].
  * Pas de fermeture implicite : suffisant pour le HTML qu'Astro produit.
  */
 export function elements(html) {
@@ -163,6 +164,7 @@ export function elements(html) {
   const re = /<(\/?)([a-zA-Z][\w:-]*)(?=[\s/>])((?:[^>"']|"[^"]*"|'[^']*')*)>/g;
   const tous = [];
   const pile = [];
+  const dernier = new Map(); // parent → son dernier enfant élément vu
   for (const m of source.matchAll(re)) {
     const nom = m[2].toLowerCase();
     if (m[1]) {
@@ -171,17 +173,22 @@ export function elements(html) {
       continue;
     }
     const attrs = attributs(m[3]);
+    const parent = pile.at(-1) ?? null;
+    const precedent = dernier.get(parent) ?? null;
     const el = {
       nom,
       attrs,
       classes: (attrs.class ?? '').split(/\s+/).filter(Boolean),
-      parent: pile.at(-1) ?? null,
+      parent,
       ancetres: [...pile].reverse(),
+      precedent,
+      rang: precedent ? precedent.rang + 1 : 1,
       debut: m.index,
       fin: null,
       texte: () => source.slice(el.debut, el.fin ?? undefined).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim(),
     };
     tous.push(el);
+    dernier.set(parent, el);
     if (VIDES.has(nom) || /\/\s*$/.test(m[3])) el.fin = m.index + m[0].length;
     else pile.push(el);
   }

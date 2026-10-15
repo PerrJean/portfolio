@@ -5,7 +5,11 @@
   box-sizing: border-box;
 }
 
+/* Le fond de html est l'encre du pied de page (registre/0089) : le rebond
+   d'iOS en bas de page prolonge le pied au lieu de montrer de l'ivoire.
+   L'ivoire est sur body, qui couvre toujours la fenêtre (min-height). */
 html {
+  background: var(--encre);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }

@@ -8,8 +8,9 @@
 // :focus-within sur .parcelle). Scène « aucune » : ni dessin ni bloc vide,
 // la carte s'arrête au fait clé (registre/0061).
 // groupe : « hauteur » (01 et 02, la première paire, sans flèche), « paire »
-// (03 et 04, reliés par la flèche, voir Parcelles.astro) ou « a-part » (un
-// projet sans rapport, sans flèche).
+// (le trio du récit, 03, 04 et 05, reliés par les deux flèches et posés sur
+// la bande, voir Parcelles.astro) ou « a-part » (un projet sans rapport, sans
+// flèche, sous la bande).
 // La date, sous le nom, est celle de la page projet, en toutes lettres
 // (registre/0075). Hors du titre : le nom accessible reste « 01 UserVoice ».
 // « Lire le projet → », sous le fait clé, dit au repos et au téléphone que
@@ -181,13 +182,6 @@ const { numero, nom, tags, fait, date, langue, href, groupe, scene } = Astro.pro
      140 unités sur les 160 du repère (Scene.astro), soit 87,5 %. */
   .parcelle__scene :global(svg) {
     background: linear-gradient(to bottom, transparent 87.5%, var(--sol-carte) 87.5%);
-  }
-
-  /* Un projet à part : même parcelle, séparée de la paire par un filet ;
-     sous la bande du récit, sans filet (Parcelles.astro, registre/0089). */
-  .parcelle--a-part {
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--dalle);
   }
 
   /* Seul sur sa ligne, le projet à part reprend la grille de la paire

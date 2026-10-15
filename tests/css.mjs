@@ -133,14 +133,18 @@ export function racine(tout) {
   return jetons;
 }
 
-/** Remplace les var(--x, repli) par leur valeur, récursivement ; hex en minuscules. */
+/**
+ * Remplace les var(--x, repli) par leur valeur, récursivement ; hex en
+ * minuscules. Une portée est un objet { '--x': valeur } ou une fonction nom → valeur.
+ */
 export function resoudre(val, ...portees) {
   let v = val ?? '';
   for (let tour = 0; tour < 10 && v.includes('var('); tour++) {
     const i = v.indexOf('var(');
     const fin = fermer(v, i + 3);
     const [nom, ...repli] = decouper(v.slice(i + 4, fin - 1), ',');
-    const trouve = portees.find((p) => p[nom] !== undefined)?.[nom] ?? repli.join(',');
+    const lu = (p) => (typeof p === 'function' ? p(nom) : p[nom]);
+    const trouve = lu(portees.find((p) => lu(p) !== undefined) ?? {}) ?? repli.join(',');
     v = v.slice(0, i) + trouve + v.slice(fin);
   }
   return v.trim().replace(/#[0-9a-f]{3,8}\b/gi, (h) => h.toLowerCase());
@@ -200,3 +204,236 @@ export function specificite(sel) {
 
 /** Comparaison de deux spécificités (pour sort) : négatif si x < y. */
 export const compSpec = (x, y) => x[0] - y[0] || x[1] - y[1] || x[2] - y[2];
+
+
+// --- La cascade sur le DOM réel ---------------------------------------------
+// Pour juger un rendu sans dépendre de l'écriture d'un sélecteur : chaque règle
+// est confrontée aux éléments de la page (elements() d'outils.mjs), à une
+// largeur d'écran donnée, dans un état donné (survol, focus). Ce n'est pas un
+// moteur CSS : pas de !important, pas de couches, :nth-child seulement
+// numérique, les pseudo-classes inconnues sont tenues pour vraies (on
+// surestime ce qui peut viser).
+
+const LONGUEUR = /^-?\d*\.?\d+(?:px|rem|em|%)?$|^(?:thin|medium|thick)$/;
+const STYLE_DE_TRAIT = /^(?:none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|auto)$/;
+
+/**
+ * Une requête @media est-elle vraie dans ce contexte d'écran
+ * { largeur, survol (souris fine), reduit (mouvement réduit) } ? Les
+ * en-têtes qui ne sont pas des @media (@supports, @layer) sont vrais.
+ * Une caractéristique inconnue lève une erreur : mieux vaut un test rouge
+ * qu'une media devinée.
+ */
+export function evaluerMedia(tete, ctx) {
+  if (!/^@media\b/i.test(tete)) return true;
+  return decouper(tete.replace(/^@media\s*/i, ''), ',').some((requete) => {
+    let q = requete.trim().toLowerCase();
+    const non = q.startsWith('not ');
+    if (non) q = q.slice(4);
+    const vrai = q
+      .replace(/^only\s+/, '')
+      .split(/\s+and\s+/)
+      .every((t) => terme(t.trim(), ctx, tete));
+    return non ? !vrai : vrai;
+  });
+}
+
+function terme(t, ctx, tete) {
+  if (t === 'all' || t === 'screen') return true;
+  if (t === 'print') return false;
+  const m = /^\(\s*([\w-]+)\s*(?::\s*([^)]+))?\)$/.exec(t);
+  const v = m?.[2]?.trim() ?? '';
+  switch (m?.[1]) {
+    case 'min-width': return ctx.largeur >= enPx(v);
+    case 'max-width': return ctx.largeur <= enPx(v);
+    case 'hover': return (v === '' || v === 'hover') === Boolean(ctx.survol);
+    case 'pointer': return (v === '' || v === 'fine') === Boolean(ctx.survol);
+    case 'prefers-reduced-motion': return (v === 'reduce') === Boolean(ctx.reduit);
+    case 'prefers-color-scheme': return v === 'light';
+    default: throw new Error(`@media non évaluée par tests/css.mjs : « ${t} » dans « ${tete} »`);
+  }
+}
+
+const PARTIE = /\.([\w-]+)|#([\w-]+)|\[\s*([\w:-]+)\s*(?:([~|^$*]?=)\s*(?:"([^"]*)"|'([^']*)'|([^\]\s]*)))?\s*\w?\s*\]|:([\w-]+)(\((?:[^()]|\([^()]*\))*\))?/y;
+
+/** Un compose (sans combinateur) vise-t-il cet élément, dans l'état { survol, focus } ? */
+function compose(c, el, etat) {
+  const t = /^(\*|[a-zA-Z][\w-]*)/.exec(c);
+  if (t && t[1] !== '*' && t[1].toLowerCase() !== el.nom) return false;
+  PARTIE.lastIndex = t ? t[0].length : 0;
+  let m;
+  while (PARTIE.lastIndex < c.length && (m = PARTIE.exec(c))) {
+    if (m[1] && !el.classes.includes(m[1])) return false;
+    if (m[2] && el.attrs.id !== m[2]) return false;
+    if (m[3]) {
+      const v = el.attrs[m[3].toLowerCase()];
+      if (v === undefined || (m[4] === '=' && v !== (m[5] ?? m[6] ?? m[7]))) return false;
+    }
+    if (!m[8]) continue;
+    const arg = m[9]?.slice(1, -1).trim() ?? '';
+    const dans = (cible) => Boolean(cible && (cible === el || cible.ancetres.includes(el)));
+    switch (m[8].toLowerCase()) {
+      case 'root': if (el.nom !== 'html') return false; break;
+      case 'hover': if (!dans(etat.survol)) return false; break;
+      case 'focus': case 'focus-visible': if (etat.focus !== el) return false; break;
+      case 'focus-within': if (!dans(etat.focus)) return false; break;
+      case 'active': case 'visited': case 'target': case 'checked': case 'disabled': return false;
+      case 'first-child': if (el.rang !== 1) return false; break;
+      case 'nth-child': if (/^\d+$/.test(arg) && el.rang !== Number(arg)) return false; break;
+      case 'not':
+        if (decouper(arg, ',').some((a) => !/[\s>+~]/.test(a) && compose(a, el, etat))) return false;
+        break;
+      default: break;
+    }
+  }
+  return true;
+}
+
+/** Un sélecteur (sans virgule) en composes : [{ c, comb }], comb étant le combinateur à sa gauche. */
+function composes(sel) {
+  const parts = [];
+  let courant = '';
+  let comb = ' ';
+  let prof = 0;
+  for (const ch of sel) {
+    if (ch === '(' || ch === '[') prof++;
+    else if (ch === ')' || ch === ']') prof--;
+    if (prof === 0 && /[\s>+~]/.test(ch)) {
+      if (courant) {
+        parts.push({ c: courant, comb });
+        courant = '';
+        comb = ' ';
+      }
+      if (!/\s/.test(ch)) comb = ch;
+    } else courant += ch;
+  }
+  if (courant) parts.push({ c: courant, comb });
+  return parts;
+}
+
+function correspond(parts, i, el, etat) {
+  if (!el || !compose(parts[i].c, el, etat)) return false;
+  if (i === 0) return true;
+  const { comb } = parts[i];
+  if (comb === '>') return correspond(parts, i - 1, el.parent, etat);
+  if (comb === '+') return correspond(parts, i - 1, el.precedent, etat);
+  if (comb === '~') {
+    for (let p = el.precedent; p; p = p.precedent) if (correspond(parts, i - 1, p, etat)) return true;
+    return false;
+  }
+  return el.ancetres.some((a) => correspond(parts, i - 1, a, etat));
+}
+
+/** Le sélecteur brut vise-t-il l'élément lui-même (pas un pseudo-élément) ? */
+export const vise = (brut, el, etat = {}) =>
+  !/::|:(?:before|after|first-line|first-letter|marker|placeholder|selection)\b/i.test(brut) &&
+  deplier(brut).some((sel) => {
+    const parts = composes(sel);
+    return parts.length > 0 && correspond(parts, parts.length - 1, el, etat);
+  });
+
+/** Largeur, style, couleur d'un raccourci de trait (border-top, outline). */
+export function traitDe(v = '') {
+  const t = { largeur: undefined, style: undefined, couleur: undefined };
+  for (const mot of decouper(v, ' ')) {
+    if (LONGUEUR.test(mot)) t.largeur = mot;
+    else if (STYLE_DE_TRAIT.test(mot)) t.style = mot;
+    else t.couleur = mot;
+  }
+  return t;
+}
+
+const tel = (v) => v;
+const axe = (i) => (v) => decouper(v, ' ')[i] ?? decouper(v, ' ')[0];
+const cote = (i) => (v) => cotes(v)[i];
+const mot = (k, defaut) => (v) => traitDe(v)[k] ?? defaut;
+const imageDe = (v) => decouper(v, ' ').find((t) => /gradient\(|url\(/.test(t)) ?? 'none';
+const couleurDeFond = (v) =>
+  decouper(v, ' ')
+    .filter((t) => !/gradient\(|url\(/.test(t) && /^(?:var\(|#|rgba?\(|hsla?\(|transparent$|currentcolor$)/i.test(t))
+    .pop() ?? 'transparent';
+const decorations = (v) =>
+  decouper(v, ' ').filter((t) => /^(?:none|underline|overline|line-through)$/.test(t)).join(' ') || 'none';
+const sansRepetition = (v) => decouper(v, ' ').filter((t) => !/^(?:stretch|repeat|round|space)$/.test(t)).join(' ');
+
+/** Pour chaque propriété longue : [propriété déclarée, ce qu'on en extrait]. */
+const COMPOSANTES = {
+  'background-color': [['background', couleurDeFond], ['background-color', tel]],
+  'background-image': [['background', imageDe], ['background-image', tel]],
+  'text-decoration-line': [['text-decoration', decorations], ['text-decoration-line', tel]],
+  'text-decoration-thickness': [
+    ['text-decoration', (v) => decouper(v, ' ').find((t) => LONGUEUR.test(t)) ?? 'auto'],
+    ['text-decoration-thickness', tel],
+  ],
+  'overflow-x': [['overflow', axe(0)], ['overflow-x', tel], ['overflow-inline', tel]],
+  'border-image-source': [['border-image', (v) => imageDe(decouper(v, '/')[0])], ['border-image-source', tel]],
+  'border-image-slice': [
+    ['border-image', (v) => decouper(decouper(v, '/')[0], ' ').filter((t) => !/gradient\(|url\(/.test(t)).join(' ')],
+    ['border-image-slice', tel],
+  ],
+  'border-image-outset': [['border-image', (v) => sansRepetition(decouper(v, '/')[2] ?? '0')], ['border-image-outset', tel]],
+  transition: [['transition', tel], ['transition-property', tel], ['transition-duration', tel]],
+  'outline-width': [['outline', mot('largeur', 'medium')], ['outline-width', tel]],
+  'outline-style': [['outline', mot('style', 'none')], ['outline-style', tel]],
+  'outline-color': [['outline', mot('couleur', 'currentcolor')], ['outline-color', tel]],
+};
+const LOGIQUES = {
+  top: ['block', axe(0), 'block-start'],
+  bottom: ['block', axe(1), 'block-end'],
+  left: ['inline', axe(0), 'inline-start'],
+  right: ['inline', axe(1), 'inline-end'],
+};
+['top', 'right', 'bottom', 'left'].forEach((c, i) => {
+  const [axeLogique, extraire, logique] = LOGIQUES[c];
+  for (const base of ['margin', 'padding'])
+    COMPOSANTES[`${base}-${c}`] = [
+      [base, cote(i)],
+      [`${base}-${axeLogique}`, extraire],
+      [`${base}-${logique}`, tel],
+      [`${base}-${c}`, tel],
+    ];
+  for (const [k, cle, defaut] of [['width', 'largeur', 'medium'], ['style', 'style', 'none'], ['color', 'couleur', 'currentcolor']])
+    COMPOSANTES[`border-${c}-${k}`] = [
+      ['border', mot(cle, defaut)],
+      [`border-${c}`, mot(cle, defaut)],
+      [`border-${logique}`, mot(cle, defaut)],
+      [`border-${k}`, cote(i)],
+      [`border-${c}-${k}`, tel],
+    ];
+});
+
+/**
+ * La déclaration qui l'emporte sur l'élément pour une propriété longue, à
+ * cet écran et dans cet état : { valeur, prop, brute, brut, spec }, ou
+ * undefined si aucune règle ne la pose (valeur initiale ou héritée).
+ */
+export function calcule(css, el, prop, etat = {}, ctx = {}) {
+  const voies = COMPOSANTES[prop] ?? [[prop, tel]];
+  const props = voies.map(([p]) => p);
+  let meilleur = null;
+  for (const r of css) {
+    const d = r.decl.filter(([p]) => props.includes(p)).pop();
+    if (!d || !r.medias.every((m) => evaluerMedia(m, ctx))) continue;
+    for (const brut of r.bruts) {
+      if (!vise(brut, el, etat)) continue;
+      const spec = specificite(brut);
+      if (!meilleur || compSpec(spec, meilleur.spec) >= 0) meilleur = { spec, brut, prop: d[0], brute: d[1] };
+    }
+  }
+  if (!meilleur) return undefined;
+  return { ...meilleur, valeur: voies.find(([p]) => p === meilleur.prop)[1](meilleur.brute) };
+}
+
+/** Comme calcule, en remontant aux ancêtres tant que rien n'est posé ou que la valeur est héritée. */
+export function herite(css, el, prop, etat = {}, ctx = {}) {
+  for (const n of [el, ...el.ancetres]) {
+    const v = calcule(css, n, prop, etat, ctx);
+    const heritee = /^(?:inherit|unset)$/i.test(v?.valeur ?? '') || (prop === 'color' && /^currentcolor$/i.test(v?.valeur ?? ''));
+    if (v && !heritee) return { ...v, el: n };
+  }
+  return undefined;
+}
+
+/** Une valeur résolue sur l'élément : ses var() lues dans la cascade (les propriétés personnalisées héritent). */
+export const resoudreSur = (css, val, el, etat = {}, ctx = {}) =>
+  resoudre(val, (nom) => herite(css, el, nom, etat, ctx)?.valeur);

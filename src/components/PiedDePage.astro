@@ -40,16 +40,19 @@ const { page, langue } = Astro.props;
   }
 
   /* Les liens, la bascule FR | EN comprise (Bascule.astro, scopée : d'où
-     .bascule pour l'emporter) : ivoire et soulignés, l'orange ne passe pas
-     sur l'encre (3,1:1). La langue courante garde son trait de 2 px. */
+     .bascule pour l'emporter) : en ivoire, l'orange ne passe pas sur
+     l'encre (3,1:1). */
   .pied a,
   .pied :global(.bascule a),
   .pied :global(.bascule__trait) {
     color: inherit;
   }
 
+  /* LinkedIn est souligné. La bascule se lit comme dans l'en-tête : la
+     langue courante garde son trait de 2 px (Bascule.astro), l'autre n'est
+     soulignée qu'au survol et au focus (registre/0089). */
   .pied a,
-  .pied :global(.bascule a) {
+  .pied :global(.bascule a:is(:hover, :focus-visible)) {
     text-decoration-line: underline;
   }
 
