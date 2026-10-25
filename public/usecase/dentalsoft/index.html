@@ -91,11 +91,13 @@ button { font: inherit; color: inherit; }
 .rang-nom::before { content: ""; position: absolute; left: 0; top: 50%; width: 5px; height: 30px; transform: translateY(-50%); border-radius: 3px; background: var(--c); }
 .capsule { position: absolute; top: 50%; transform: translateY(-50%); width: 156px; min-height: 40px; padding: 5px 9px; display: grid; place-items: center; text-align: center;
   border: 2px solid var(--c); border-radius: 14px; background: color-mix(in srgb, var(--c) 12%, var(--ivoire));
-  font-size: 16px; font-weight: 700; line-height: 1.17; transition: opacity .4s ease; cursor: default; }
+  font-size: 16px; font-weight: 700; line-height: 1.17; transition: color .4s ease, background-color .4s ease, border-color .4s ease; cursor: default; }
 .capsule::after { content: attr(data-precision); position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%); width: 230px; padding: 8px 11px;
-  background: var(--encre); color: var(--ivoire); font-size: 16px; font-weight: 400; line-height: 1.35; text-align: left; border-radius: 8px; opacity: 0; pointer-events: none; transition: opacity .15s ease; z-index: 4; }
+  background: var(--encre); color: var(--ivoire); font-size: 16px; font-weight: 400; line-height: 1.35; text-align: left; border-radius: 8px; max-width: calc((100vw - 16px) / var(--k, 1)); opacity: 0; pointer-events: none; transition: opacity .15s ease; }
 .capsule:hover::after, .capsule:focus-visible::after { opacity: 1; }
-.scene[data-focus] #vue-pratiques .capsule:not(.dans-focus) { opacity: .25; }
+/* Hors focus : atténuée par la couleur, à 25 % sur le fond, et jamais par opacity, dont la bulle hériterait (registre/0099, règle 2) */
+.scene[data-focus] #vue-pratiques .capsule:not(.dans-focus) { color: color-mix(in srgb, var(--encre) 25%, var(--ivoire));
+  border-color: color-mix(in srgb, var(--c) 25%, var(--ivoire)); background: color-mix(in srgb, var(--c) 3%, var(--ivoire)); }
 .plus { position: absolute; left: 40px; appearance: none; cursor: pointer; background: transparent; border: 2px solid var(--encre); border-radius: 999px; padding: 5px 14px; font-size: 16px; font-weight: 700; transition: top .45s ease, opacity .4s ease; }
 .plus[hidden] { display: none; }
 
@@ -154,7 +156,7 @@ button { font: inherit; color: inherit; }
 /* Infobulle commune */
 [data-info]::after { content: attr(data-info); position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%); width: 270px; padding: 9px 12px;
   background: var(--encre); color: var(--ivoire); font-size: 16px; font-weight: 400; line-height: 1.4; text-align: left; border-radius: 8px; white-space: pre-line;
-  opacity: 0; pointer-events: none; transition: opacity .15s ease; z-index: 8; }
+  max-width: calc((100vw - 16px) / var(--k, 1)); opacity: 0; pointer-events: none; transition: opacity .15s ease; }
 [data-info]:hover::after, [data-info]:focus-visible::after { opacity: 1; }
 
 .etiq { position: absolute; left: 40px; width: 150px; font-size: 16px; font-weight: 800; line-height: 1.2; transform: translateY(-50%); }
@@ -949,6 +951,11 @@ button { font: inherit; color: inherit; }
 :is([data-info], .capsule)[data-cote="g"]::after { left: 0; right: auto; transform: none; }
 :is([data-info], .capsule)[data-cote="d"]::after { left: auto; right: 0; transform: none; }
 :is([data-info], .capsule)[data-vert="b"]::after { bottom: auto; top: calc(100% + 8px); }
+/* Bulle ouverte (registre/0099, règle 1) : le terme passe dans la couche supérieure (popover),
+   aux coordonnées de l’écran ; sa position est posée par le script. Ces valeurs neutralisent
+   celles du navigateur pour [popover], sans l’emporter sur celles du terme. */
+:where(.hote-haut) { inset: auto; margin: 0; padding: 0; border: 0 solid; background: none; color: inherit; overflow: visible; }
+:is([data-info], .capsule).bulle-fermee::after { opacity: 0; }
 
 /* Atlas métier, praticien : recherche en haut, aide documentaire à la demande */
 .atl-pro { display: block; position: relative; height: 100%; }
@@ -2370,6 +2377,7 @@ function majFocus() {
 }
 
 function aller(n, anime = true, sens = 0) {
+  fermerBulle();
   n = Math.max(0, Math.min(T.vues.length - 1, n));
   const v = T.vues[n], avant = T.vues[vue], precedent = vue;
   if (v.reserve && sens === 0 && !avant.reserve && precedent !== n) retourDepuis = precedent;
@@ -2474,18 +2482,94 @@ $("btnRetour").addEventListener("click", () => { if (retourDepuis !== null) alle
 $("approfondir").addEventListener("click", (ev) => { const b = ev.target.closest("[data-approfondir]"); if (b) aller(indexId(b.dataset.approfondir)); });
 document.addEventListener("click", (ev) => { if (!$("methode").hidden && !ev.target.closest("#methode, #btnMethode")) fermerMethode(); });
 
-/* Infobulles : jamais coupées par le bord de la scène */
-function placerInfobulle(ev) {
-  const el = ev.target.closest && ev.target.closest("[data-info], .capsule[data-precision]");
-  if (!el) return;
+/* Infobulles (registre/0099). La bulle est le ::after du terme. À l’ouverture (survol, focus,
+   toucher), le terme passe dans la couche supérieure du navigateur (popover="manual"), à ses
+   coordonnées d’écran et à l’échelle de la scène : ni la frise, ni le bord de la scène, ni
+   l’opacité d’un ancêtre ne la masquent plus, sans aucun z-index. Un terme pris dans le flux
+   laisse une cale invisible à sa place. Échap ou un tap ailleurs ferme ; ouvert, le terme
+   porte aria-describedby vers le texte de sa bulle. */
+const HOTE = "[data-info], .capsule[data-precision]";
+const COUCHE_HAUTE = typeof HTMLElement.prototype.showPopover === "function";
+const texteBulle = document.createElement("div");
+texteBulle.id = "texte-bulle"; texteBulle.hidden = true;
+document.body.appendChild(texteBulle);
+let bulleOuverte = null, caleBulle = null, styleAvantBulle = null, survole = null;
+
+/* Retournement au bord : la partie visible de la scène, qui tient dans l’écran. */
+function placerInfobulle(el) {
   const sc = scene.getBoundingClientRect(), r = el.getBoundingClientRect(), k = sc.width / 1600;
-  const cx = (r.left + r.width / 2 - sc.left) / k, haut = (r.top - sc.top) / k;
-  const demi = el.matches("[data-info]") ? 145 : 125;
-  el.dataset.cote = cx - demi < 16 ? "g" : cx + demi > 1584 ? "d" : "";
-  el.dataset.vert = haut < 150 ? "b" : "";
+  const vw = document.documentElement.clientWidth;
+  const gauche = Math.max(sc.left, 0), droite = Math.min(sc.right, vw), haut = Math.max(sc.top, 0);
+  const cx = r.left + r.width / 2, demi = (el.matches("[data-info]") ? 145 : 125) * k, marge = 16 * k;
+  el.dataset.cote = cx - demi < gauche + marge ? "g" : cx + demi > droite - marge ? "d" : "";
+  el.dataset.vert = r.top - haut < 150 * k ? "b" : "";
 }
-scene.addEventListener("mouseover", placerInfobulle);
-scene.addEventListener("focusin", placerInfobulle);
+function ouvrirBulle(el) {
+  if (bulleOuverte === el) return;
+  fermerBulle();
+  placerInfobulle(el);
+  texteBulle.textContent = el.dataset.info ?? el.dataset.precision ?? "";
+  el.setAttribute("aria-describedby", texteBulle.id);
+  bulleOuverte = el;
+  if (!COUCHE_HAUTE) return;
+  const r = el.getBoundingClientRect(), k = scene.getBoundingClientRect().width / 1600;
+  const pos = getComputedStyle(el).position;
+  if (pos !== "absolute" && pos !== "fixed") {
+    caleBulle = el.cloneNode(true);
+    for (const a of ["data-info", "data-precision", "tabindex", "id", "aria-describedby"]) caleBulle.removeAttribute(a);
+    caleBulle.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id"));
+    caleBulle.setAttribute("aria-hidden", "true"); caleBulle.inert = true; caleBulle.style.visibility = "hidden";
+    el.before(caleBulle);
+  }
+  styleAvantBulle = el.getAttribute("style") ?? "";
+  el.style.cssText += `;position:fixed;left:${r.left}px;top:${r.top}px;width:${r.width / k}px;height:${r.height / k}px;` +
+    `margin:0;transform:scale(${k});transform-origin:0 0;transition:none;overflow:visible;--k:${k}`;
+  el.classList.add("hote-haut");
+  el.popover = "manual";
+  el.showPopover();
+}
+function fermerBulle() {
+  const el = bulleOuverte;
+  if (!el) return;
+  bulleOuverte = null;
+  el.removeAttribute("aria-describedby");
+  if (styleAvantBulle === null) return;
+  if (el.matches(":popover-open")) el.hidePopover();
+  el.removeAttribute("popover");
+  el.classList.remove("hote-haut");
+  if (styleAvantBulle) el.setAttribute("style", styleAvantBulle); else el.removeAttribute("style");
+  styleAvantBulle = null;
+  if (caleBulle) { caleBulle.remove(); caleBulle = null; }
+}
+/* Ni survolé ni focalisé : le terme se ferme, et Échap ne le retient plus. */
+function quitterBulle(el) {
+  if (!el || el === survole || el === document.activeElement) return;
+  el.classList.remove("bulle-fermee");
+  if (bulleOuverte === el) fermerBulle();
+}
+document.addEventListener("mouseover", (ev) => {
+  const el = (ev.target.closest && ev.target.closest(HOTE)) || null;
+  if (el === survole) return;
+  const avant = survole; survole = el; quitterBulle(avant);
+  if (el && !el.classList.contains("bulle-fermee")) ouvrirBulle(el);
+});
+document.addEventListener("mouseout", (ev) => { if (!ev.relatedTarget && survole) { const avant = survole; survole = null; quitterBulle(avant); } });
+document.addEventListener("focusin", (ev) => {
+  const el = ev.target.closest && ev.target.closest(HOTE);
+  if (el && !el.classList.contains("bulle-fermee")) ouvrirBulle(el);
+});
+document.addEventListener("focusout", (ev) => { const el = ev.target.closest && ev.target.closest(HOTE); if (el) setTimeout(() => quitterBulle(el)); });
+document.addEventListener("pointerdown", (ev) => { if (bulleOuverte && !bulleOuverte.contains(ev.target)) fermerBulle(); }, true);
+document.addEventListener("keydown", (ev) => {
+  if (ev.key !== "Escape" || !bulleOuverte) return;
+  ev.preventDefault(); ev.stopPropagation();
+  const el = bulleOuverte; fermerBulle(); el.classList.add("bulle-fermee");
+}, true);
+document.addEventListener("scroll", (ev) => {
+  const ici = caleBulle || (bulleOuverte && bulleOuverte.parentElement);
+  if (ici && (ev.target === document || (ev.target.contains && ev.target.contains(ici)))) fermerBulle();
+}, true);
+window.addEventListener("resize", fermerBulle);
 window.addEventListener("resize", ajuster);
 window.addEventListener("hashchange", () => { const i = indexId(location.hash.slice(1)); if (i >= 0 && i !== vue) aller(i); });
 document.addEventListener("fullscreenchange", ajuster);

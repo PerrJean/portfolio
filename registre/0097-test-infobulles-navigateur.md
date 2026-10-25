@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `chantier` | `outil` | 300 | | `claude-opus-5-5` |
+| `chantier` | `outil` | 300 | 180 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)** : vérifier que toutes les infobulles
 s'ouvrent et ne sont pas masquées, et en faire un test pour tout le site.
@@ -26,3 +26,11 @@ coupée dépend de la mise en page : seul un navigateur la calcule.
   trouve sont listées, puis corrigées dans un chantier à part.
 
 Brief : `prompts/9-test-infobulles.md`.
+
+**Test écrit le 2026-10-25** (180 k), commité avec la correction 0099 : le hook
+rejoue les tests. Site : 34 bulles, 290 cas, vert. Présentation : 56 bulles,
+468 cas ; échouent les bulles de `#pratiques-metiers` et `#pratiques-etape`
+couvertes par la frise (contexte d'empilement de la capsule), et 17 capsules
+hors focus de `#pratiques-etape` à 25 % d'opacité héritée. 45 s seul, 58 s
+dans `npm test`. Correction et règles : chantier suivant, après validation
+des règles par Jean.
