@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `chantier` | `contenu` | 200 | | `claude-opus-5-5` |
+| `chantier` | `contenu` | 200 | 238 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)** : auditer le texte de la présentation
 `/usecase/dentalsoft/`. Exemple donné par Jean : le sous-titre « Huit
@@ -21,3 +21,8 @@ lecteur qui découvre la page seul, sans présentateur.
 
 Brief : `prompts/9-dentalsoft-releve.md`. Relevé hors du dépôt :
 `.canevas/0096/releve.md`.
+
+**Relevé rendu le 2026-10-25** (238 k) : 122 lignes (justesse 18, clarté
+54, cohérence 36, longueur 14) et 20 incohérences de vocabulaire, dans
+`.canevas/0096/releve.md`. **Tri de Jean en attente** ; les corrections
+seront un chantier à part.
