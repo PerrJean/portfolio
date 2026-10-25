@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `defaut` | `contenu` | 60 | | `claude-sonnet-5-5` |
+| `defaut` | `contenu` | 60 | 175 | `claude-sonnet-5-5` |
 
 **Demande de Jean (2026-10-25)** : sur la page « Mises en situation », les
 mots du schéma — « Signal », « Indice », « Modèle », et les titres des
@@ -27,3 +27,10 @@ du parcours.
 `src/contenu/projets/en/speaking-practice.md`.
 
 Brief : `prompts/9-mots-retour-oral.md`.
+
+**Clos le 2026-10-25.** Coût réel : 116 k (chantier, Sonnet) + la moitié de
+la revue commune avec 0092 (118 k). Revue : schéma, page FR et EN disent la
+même chose ; plus aucun ancien mot affiché. **Reste ouvert, à trancher par
+Jean** : la puce « L’exemple de formulation reste à la portée de
+l’apprenant : ce n’est pas celle d’un locuteur natif » (le « celle » ne
+renvoie à rien ; la faute vient du brief).

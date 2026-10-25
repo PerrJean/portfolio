@@ -34,9 +34,9 @@ plusLoin:
       - "A character has few traits (tone, emotion, origin): every instruction added to the AI weakens the others."
   - titre: "The three-step feedback"
     points:
-      - "The signal says whether the task was completed, without correcting anything."
-      - "The hint draws attention to one passage, without giving the answer, so that learners find it themselves."
-      - "The model shows a phrasing within the learner’s reach, not the one a native speaker would use."
+      - "The mission check says whether the task was completed, without correcting anything."
+      - "The tip to improve draws attention to one passage, without giving the answer, so that learners find it themselves."
+      - "The example phrasing stays within the learner’s reach, not the one a native speaker would use."
       - "Only one criterion is worked on each time: grammar, coherence or vocabulary."
 langue: en
 cle: misesEnSituation
@@ -60,7 +60,7 @@ So we reordered what came next. Learning feedback moved to the top, earlier than
 
 ## What the AI does, and what we don’t ask of it
 
-The end-of-exchange feedback draws on second language acquisition research. It comes in three steps: a signal on the task, a hint that lets learners find the answer themselves, then a model phrasing. It works on one criterion only, the one that most hinders understanding. A grammar mistake that bothers no one is not flagged.
+The end-of-exchange feedback draws on second language acquisition research. It comes in three steps: a mission check, a tip that lets learners find the answer themselves, then an example phrasing. It works on one criterion only, the one that most hinders understanding. A grammar mistake that bothers no one is not flagged.
 
 <div data-schema="echange-oral"></div>
 

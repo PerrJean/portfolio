@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `chantier` | `publication` | 150 | | `claude-opus-5-5` |
+| `chantier` | `publication` | 150 | 180 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)** : publier la présentation DentalSoft (un
 fichier HTML autonome, 16:9, faite à partir des jetons du site) sur le
@@ -36,3 +36,10 @@ fichier source, aucun terme interdit (2026-10-25).
 français, hors du parcours du site.
 
 Brief : `prompts/9-usecase-dentalsoft.md`.
+
+**Clos le 2026-10-25.** Coût réel : 121 k (chantier, Opus) + la moitié de la
+revue (118 k), qui a écrit `tests/usecase.test.mjs` : noindex présent, absente
+des sitemaps et de `robots.txt`, aucun lien depuis le site ; il échoue si on
+retire le noindex. 204 tests verts. `tiers` et `confidentialite` couvrent la
+page ; les tests du gabarit l'écartent dans `tests/outils.mjs`, seul endroit.
+**Non poussé** : Jean attend les corrections graphiques (0093).

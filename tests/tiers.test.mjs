@@ -1,5 +1,6 @@
 // Test 2 — Aucune ressource tierce, aucun cookie (C6).
 // Seuls les <a href> sortants sont permis, et le seul attendu est LinkedIn.
+// Couvre aussi les présentations hors gabarit de usecase/ (registre/0092).
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -27,7 +28,7 @@ const urlsSrcset = (v) => v.split(',').map((p) => p.trim().split(/\s+/)[0]).filt
 test('tiers (C6) : aucune ressource chargée depuis un autre domaine, dans le HTML', () => {
   exigerDist();
   const fautes = [];
-  for (const f of pagesHtml()) {
+  for (const f of pagesHtml({ horsGabarit: true })) {
     const html = lire(f);
     for (const { nom, attrs } of balises(html)) {
       const candidats = [];
@@ -59,7 +60,7 @@ test('tiers (C6) : aucun url(…) ni @import vers un autre domaine, dans le CSS'
 test('tiers (C6) : le seul lien sortant est LinkedIn', () => {
   exigerDist();
   const fautes = [];
-  for (const f of pagesHtml())
+  for (const f of pagesHtml({ horsGabarit: true }))
     for (const { nom, attrs } of balises(lire(f), 'a|area'))
       if (attrs.href && estTiers(attrs.href) && !LIENS_SORTANTS_PERMIS.includes(attrs.href.trim()))
         fautes.push(`${f} : <${nom} href="${attrs.href}">`);
@@ -78,7 +79,7 @@ test('tiers (C6) : aucun document.cookie ni Set-Cookie dans les scripts', () => 
     if (/set-cookie/i.test(code)) fautes.push(`${ou} : Set-Cookie`);
   };
   for (const f of scriptsJs()) verifier(f, lire(f));
-  for (const f of pagesHtml()) {
+  for (const f of pagesHtml({ horsGabarit: true })) {
     const html = lire(f);
     contenus(html, 'script').forEach((code, i) => verifier(`${f} (<script> n° ${i + 1})`, code));
     // Gestionnaires en ligne (onclick="…") : du script aussi.

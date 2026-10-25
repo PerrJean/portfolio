@@ -28,7 +28,7 @@ const MODELE = '“Hello, the heater hasn’t been working since this morning.�
 const TEXTES = {
   fr: {
     entree: {
-      titre: 'L’entrée',
+      titre: 'La consigne',
       lignes: [
         ['L’IA joue', 'la réceptionniste de l’hôtel'],
         ['Votre rôle', 'un client de l’hôtel'],
@@ -37,31 +37,31 @@ const TEXTES = {
       ],
     },
     conversation: {
-      titre: 'La conversation',
+      titre: 'L’échange avec l’IA',
       cache: 'Ce que chaque question attend de l’apprenant reste caché',
     },
     retour: {
-      titre: 'Le retour en trois temps',
+      titre: 'Le retour',
       temps: [
-        { titre: 'Signal', texte: `Vous avez signalé le problème et dit depuis quand${NBSP}: la réceptionniste sait ce qu’il vous faut.` },
-        { titre: 'Indice', texte: 'Le message passe, mais il demande un effort. Nommez directement l’objet et ce qui ne va pas.' },
-        { titre: 'Modèle', citation: MODELE, texte: '' },
+        { titre: 'Bilan de la mission', texte: `Vous avez signalé le problème et dit depuis quand${NBSP}: la réceptionniste sait ce qu’il vous faut.` },
+        { titre: 'Une piste pour progresser', texte: 'Le message passe, mais il demande un effort. Nommez directement l’objet et ce qui ne va pas.' },
+        { titre: 'Un exemple de formulation', citation: MODELE, texte: '' },
       ],
       critere: `Critère travaillé${NBSP}: vocabulaire`,
     },
     lu: {
       intro: `Un échange, étape par étape${NBSP}:`,
-      entree: `L’entrée${NBSP}: l’IA joue la réceptionniste de l’hôtel${NBSP}; votre rôle, un client de l’hôtel${NBSP}; votre mission, signaler un problème dans votre chambre. Durée${NBSP}: environ 2${NBSP}min.`,
-      conversation: `La conversation. L’IA${NBSP}:`,
+      entree: `La consigne${NBSP}: l’IA joue la réceptionniste de l’hôtel${NBSP}; votre rôle, un client de l’hôtel${NBSP}; votre mission, signaler un problème dans votre chambre. Durée${NBSP}: environ 2${NBSP}min.`,
+      conversation: `L’échange avec l’IA. L’IA${NBSP}:`,
       reponse: `Votre réponse, à l’oral, transcrite${NBSP}:`,
-      retour: `Le retour en trois temps, sur un seul critère, le vocabulaire.`,
+      retour: `Le retour, en trois temps, sur un seul critère, le vocabulaire.`,
       temps: (titre) => `${titre}${NBSP}:`,
     },
     legende: 'Un échange, sur un exemple fictif, de la consigne au retour.',
   },
   en: {
     entree: {
-      titre: 'Getting started',
+      titre: 'The brief',
       lignes: [
         ['The AI plays', 'the hotel receptionist'],
         ['Your role', 'a hotel guest'],
@@ -70,24 +70,24 @@ const TEXTES = {
       ],
     },
     conversation: {
-      titre: 'The conversation',
+      titre: 'The exchange with the AI',
       cache: 'What each question expects stays hidden',
     },
     retour: {
-      titre: 'Three-step feedback',
+      titre: 'The feedback',
       temps: [
-        { titre: 'Signal', texte: 'You reported the problem and said since when: the receptionist knows what you need.' },
-        { titre: 'Hint', texte: 'Your message gets across, but it takes effort. Be direct: name the object and what’s wrong.' },
-        { titre: 'Model', citation: MODELE, texte: '' },
+        { titre: 'Mission check', texte: 'You reported the problem and said since when: the receptionist knows what you need.' },
+        { titre: 'A tip to improve', texte: 'Your message gets across, but it takes effort. Be direct: name the object and what’s wrong.' },
+        { titre: 'An example phrasing', citation: MODELE, texte: '' },
       ],
       critere: 'Focus: vocabulary',
     },
     lu: {
       intro: 'One exchange, step by step:',
-      entree: `Getting started: the AI plays the hotel receptionist; your role, a hotel guest; your mission, report a problem in your room. About 2${NBSP}min.`,
-      conversation: 'The conversation. The AI:',
+      entree: `The brief: the AI plays the hotel receptionist; your role, a hotel guest; your mission, report a problem in your room. About 2${NBSP}min.`,
+      conversation: 'The exchange with the AI. The AI:',
       reponse: 'Your answer, spoken, then transcribed:',
-      retour: 'Three-step feedback, on a single criterion, vocabulary.',
+      retour: 'The feedback, in three steps, on a single criterion, vocabulary.',
       temps: (titre) => `${titre}:`,
     },
     legende:

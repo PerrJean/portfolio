@@ -34,9 +34,9 @@ plusLoin:
       - "Un personnage se définit par peu de traits (ton, émotion, origine) : chaque consigne ajoutée à l’IA affaiblit les autres."
   - titre: "Le retour en trois temps"
     points:
-      - "Le signal dit si la tâche est accomplie, sans corriger."
-      - "L’indice attire l’attention sur un passage, sans donner la solution, pour que l’apprenant trouve lui-même."
-      - "Le modèle montre une formulation à la portée de l’apprenant, pas celle d’un locuteur natif."
+      - "Le bilan de la mission dit si la tâche est accomplie, sans corriger."
+      - "La piste pour progresser attire l’attention sur un passage, sans donner la solution, pour que l’apprenant trouve lui-même."
+      - "L’exemple de formulation reste à la portée de l’apprenant : ce n’est pas celle d’un locuteur natif."
       - "Un seul critère est travaillé à chaque fois : la grammaire, la cohérence ou le vocabulaire."
 langue: fr
 cle: misesEnSituation
@@ -60,7 +60,7 @@ Nous avons donc réordonné la suite. Avec l’accord de la direction, nous avon
 
 ## Ce que l’IA fait, et ce qu’on ne lui demande pas
 
-Le retour de fin d’échange s’appuie sur la recherche en acquisition des langues. Il tient en trois temps : un signal sur la tâche, un indice qui laisse l’apprenant trouver seul, puis un modèle de formulation. Il ne travaille qu’un critère, celui qui gêne le plus la compréhension. Une faute de grammaire qui ne gêne personne n’est pas relevée.
+Le retour de fin d’échange s’appuie sur la recherche en acquisition des langues. Il tient en trois temps : un bilan de la mission, une piste qui laisse l’apprenant trouver seul, puis un exemple de formulation. Il ne travaille qu’un critère, celui qui gêne le plus la compréhension. Une faute de grammaire qui ne gêne personne n’est pas relevée.
 
 <div data-schema="echange-oral"></div>
 

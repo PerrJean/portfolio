@@ -74,7 +74,18 @@ export function fichiersDuSite() {
 
 export const lire = (rel) => readFileSync(join(DIST, rel), 'utf8');
 
-export const pagesHtml = () => fichiersDuSite().filter((f) => f.endsWith('.html'));
+/**
+ * Les présentations autonomes (registre/0092) : des fichiers HTML copiés tels
+ * quels depuis public/usecase/, hors du gabarit du site (ni pied, ni jumelle,
+ * ni relief). Les tests du gabarit ne les voient pas : pagesHtml() les écarte,
+ * ici et nulle part ailleurs. Les tests qui doivent les couvrir (tiers) passent
+ * { horsGabarit: true } ; confidentialité les couvre par fichiersDuSite().
+ */
+export const HORS_GABARIT = 'usecase/';
+export const estHorsGabarit = (rel) => rel.startsWith(HORS_GABARIT);
+
+export const pagesHtml = ({ horsGabarit = false } = {}) =>
+  fichiersDuSite().filter((f) => f.endsWith('.html') && (horsGabarit || !estHorsGabarit(f)));
 export const feuillesCss = () => fichiersDuSite().filter((f) => f.endsWith('.css'));
 export const scriptsJs = () => fichiersDuSite().filter((f) => /\.(m?js|cjs)$/.test(f));
 
