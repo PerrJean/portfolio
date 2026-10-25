@@ -36,7 +36,7 @@ plusLoin:
     points:
       - "The mission check says whether the task was completed, without correcting anything."
       - "The tip to improve draws attention to one passage, without giving the answer, so that learners find it themselves."
-      - "The example phrasing stays within the learner’s reach, not the one a native speaker would use."
+      - "The example phrasing stays within the learner’s reach, not at a native speaker’s level."
       - "Only one criterion is worked on each time: grammar, coherence or vocabulary."
 langue: en
 cle: misesEnSituation

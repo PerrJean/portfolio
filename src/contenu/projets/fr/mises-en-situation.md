@@ -36,7 +36,7 @@ plusLoin:
     points:
       - "Le bilan de la mission dit si la tâche est accomplie, sans corriger."
       - "La piste pour progresser attire l’attention sur un passage, sans donner la solution, pour que l’apprenant trouve lui-même."
-      - "L’exemple de formulation reste à la portée de l’apprenant : ce n’est pas celle d’un locuteur natif."
+      - "L’exemple de formulation reste à la portée de l’apprenant, et non au niveau d’un locuteur natif."
       - "Un seul critère est travaillé à chaque fois : la grammaire, la cohérence ou le vocabulaire."
 langue: fr
 cle: misesEnSituation

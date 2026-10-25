@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `chantier` | `publication` | 350 | | `claude-opus-5-5` |
+| `chantier` | `publication` | 350 | 381 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)**, après une revue visuelle de la
 présentation contre `src/styles/jetons.css` et le site en ligne.
@@ -30,3 +30,19 @@ leur propre palette : une maquette de produit ne porte pas la charte du
 portfolio.
 
 Brief : `prompts/9-dentalsoft-charte.md`.
+
+**Fait le 2026-10-25, en attente du regard de Jean sur l'avant / après**
+(`.canevas/0093/avant-apres.html`, ignoré par git). Coût réel 381 k.
+- 0 : notes présentateur retirées, panneau, code et textes ; « Choix de
+  méthode » et les notes de bas de vue restent.
+- 1 : l'orange ne servait déjà qu'à ce qui se clique (la revue du
+  2026-10-25 l'avait mal lu : les étapes mises en avant étaient en ambre) ;
+  la pastille choisie passe du noir à l'ambre, « Adaptation locale » au
+  trait, l'ambre ne reste que sur la bifurcation.
+- 2 : tout le texte ardoise passe à l'encre ; hiérarchie par la graisse.
+- 3 : 140 règles montées à 16 px, mesurées une à une sur 55 états ; 22
+  laissées parce qu'elles cassent (`.canevas/0093/tailles.md`).
+- 4 : propositions seulement (`.canevas/0093/propositions.md`).
+- 5 : frise réduite sur org-achat, pays-bifurcation, pays-impacts.
+- 6 : pastilles au trait. Laissés : le soleil (couleurs fixes en sombre),
+  les post-its du story map, le bloc « Ambition » de l'axe 2.
