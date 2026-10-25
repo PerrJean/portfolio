@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `chantier` | `contenu` | 400 | | `claude-opus-5-5` |
+| `chantier` | `contenu` | 400 | 366 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)** : appliquer au HTML la révision
 éditoriale qu'il a rédigée après le relevé 0096 et une seconde relecture
@@ -28,3 +28,15 @@ conclusion conservée.
 - Le chantier part **après 0099**, qui modifie le même fichier.
 
 Brief : `prompts/9-dentalsoft-revision-editoriale.md`.
+
+**Fait le 2026-10-25** (366 k), bilan dans `.canevas/0100/bilan.md`. 23
+titres changés selon la table (écran 24 gardé) ; chaque titre écrit à un
+seul endroit (cinq surcharges et un ancien bloc de conclusion retirés).
+**Frise, correction appliquée, à confirmer par Jean** : prévention,
+maintenance parodontale et contrôle endodontique passent de 7 à 8 ; 8
+devient « Suivi à long terme », 5 « Début du traitement ». Patiente de
+l'Atlas renommée Inès R. 211 tests verts ; 92 contrôles de navigation
+jetables sans échec. **Ouverts pour Jean** : « À vérifier » de l'Atlas
+contre l'écran 11 (délai de 6 mois) ; le sens de « mixtes » à l'écran 19 ;
+le compteur « 13 / 20 » contre le numéro 17 du sommaire. Non testés :
+téléphone, flèches, rendu sombre hors infobulles.

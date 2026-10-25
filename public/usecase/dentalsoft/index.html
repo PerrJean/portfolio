@@ -185,7 +185,7 @@ button { font: inherit; color: inherit; }
 .legende-r { position: absolute; left: 40px; top: 720px; display: flex; gap: 22px; font-size: 16px; font-weight: 700; color: var(--encre); align-items: center; }
 .legende-r span { display: flex; gap: 7px; align-items: center; }
 
-/* Piste d’acquisition : un autre parcours, hors parcours clinique */
+/* Piste d’acquisition : un autre parcours, hors parcours de soins */
 .piste { position: absolute; left: 200px; right: 40px; height: 4px; background: var(--ardoise); }
 .noeud-a { position: absolute; width: 22px; height: 22px; margin-left: -11px; background: var(--ivoire); border: 4px solid var(--ardoise); border-radius: 4px; }
 .lib-a { position: absolute; width: 200px; margin-left: -100px; text-align: center; font-size: 16px; font-weight: 800; }
@@ -395,7 +395,7 @@ button { font: inherit; color: inherit; }
 .ctxt { position: absolute; top: 334px; width: 490px; min-height: 360px; border: 2px dashed var(--encre); border-radius: 14px; padding: 20px 24px; background: var(--ivoire); }
 .ctxt h3 { margin: 0; font-size: 22px; font-weight: 800; }
 .ctxt-res { margin: 4px 0 14px; font-size: 16px; font-weight: 700; color: var(--encre); }
-.ctxt dl { margin: 0; display: grid; grid-template-columns: 96px 1fr; gap: 9px 12px; font-size: 17px; line-height: 1.3; padding: 12px 0; border-top: 1px solid var(--dalle); border-bottom: 1px solid var(--dalle); }
+.ctxt dl { margin: 0; display: grid; grid-template-columns: 120px 1fr; gap: 9px 12px; font-size: 17px; line-height: 1.3; padding: 12px 0; border-top: 1px solid var(--dalle); border-bottom: 1px solid var(--dalle); }
 .ctxt dt { font-weight: 800; }
 .ctxt dd { margin: 0; }
 .ctxt-btn { margin-top: 14px; appearance: none; cursor: pointer; background: transparent; border: 0; padding: 0; color: var(--orange); font-size: 16px; font-weight: 800; text-decoration: underline; text-underline-offset: .2em; }
@@ -1034,7 +1034,7 @@ button { font: inherit; color: inherit; }
   <svg class="temps f" viewBox="0 0 1530 30" aria-hidden="true">
     <line x1="0" y1="14" x2="1512" y2="14" stroke="var(--encre)" stroke-width="4"/>
     <path d="M1508 5 L1526 14 L1508 23 Z" fill="var(--encre)"/>
-    <!-- Fin du traitement actif, entre Suivi et Contention -->
+    <!-- Fin du traitement actif, entre Suivi et Suivi à long terme -->
     <line x1="1350" y1="-6" x2="1350" y2="30" stroke="var(--encre)" stroke-width="2"/>
   </svg>
   <svg class="f annot-frise" style="position:absolute;left:0;top:150px;width:1600px;height:80px;overflow:visible;pointer-events:none" viewBox="0 0 1600 80" aria-hidden="true">
@@ -1050,9 +1050,9 @@ button { font: inherit; color: inherit; }
   <section class="vue" id="vue-org" aria-label="Organisations et rôles"></section>
   <section class="vue" id="vue-eco" aria-label="Écosystème"></section>
   <section class="vue" id="vue-pays" aria-label="France et Belgique"></section>
-  <section class="vue" id="vue-opp" aria-label="Opportunités"></section>
+  <section class="vue" id="vue-opp" aria-label="Trois territoires d’opportunité"></section>
   <section class="vue vue-gab" id="vue-gab" aria-label="Écran à concevoir"></section>
-  <section class="vue" id="vue-a1o" aria-label="Axe 1 : l’opportunité"></section>
+  <section class="vue" id="vue-a1o" aria-label="Axe 1 : renforcer les offres existantes"></section>
   <section class="vue" id="vue-a1p" aria-label="Axe 1 : la proposition"></section>
   <section class="vue" id="vue-a2o" aria-label="Axe 2 : les leviers"></section>
   <section class="vue" id="vue-a2p" aria-label="Axe 2 : Migration Preview"></section>
@@ -1062,7 +1062,7 @@ button { font: inherit; color: inherit; }
   <section class="vue" id="vue-fin" aria-label="Conclusion"></section>
   <section class="vue" id="vue-intro" aria-label="Introduction"></section>
   <section class="vue" id="vue-conc" aria-label="Panorama concurrentiel"></section>
-  <div class="story-map" id="storyMap" hidden role="dialog" aria-label="Story map proposé pour Atlas métier"></div>
+  <div class="story-map" id="storyMap" hidden role="dialog" aria-label="Story map proposée pour Atlas métier"></div>
 
   <p class="note" id="note"></p>
 
@@ -1080,7 +1080,7 @@ button { font: inherit; color: inherit; }
     <div class="demo-corps" id="demoCorps"></div>
   </div>
   <div class="plan" id="plan" role="dialog" aria-modal="true" aria-label="Plan de la présentation" hidden>
-    <div class="plan-tete"><h2>Sommaire</h2><span class="plan-aide">Un clic ouvre l’écran. S ou P : sommaire. Par défaut, Suivant suit le parcours resserré ; les écrans « Réserve » restent accessibles ici. Durée visée : 25 à 28 min.</span><button type="button" class="court-btn" id="btnCourt" aria-pressed="false" title="Par défaut, Suivant saute les écrans en réserve">Parcours intégral</button><button type="button" id="fermerPlan">Fermer</button></div>
+    <div class="plan-tete"><h2>Sommaire</h2><span class="plan-aide">Un clic ouvre l’écran. S ou P : sommaire. Par défaut, Suivant suit le parcours principal ; les écrans « Réserve » restent accessibles ici. Durée visée : 25 min environ.</span><button type="button" class="court-btn" id="btnCourt" aria-pressed="false" title="Par défaut, Suivant saute les écrans en réserve">Parcours intégral</button><button type="button" id="fermerPlan">Fermer</button></div>
     <div class="plan-grille" id="planGrille"></div>
   </div>
 </main>
@@ -1090,16 +1090,16 @@ button { font: inherit; color: inherit; }
 <script>
 /* Le contenu, séparé du dessin : la jumelle anglaise n’aura qu’à remplacer cet objet. */
 const T = {
-  prismes: ["Pratiques", "Organisations", "Écosystème", "France et Belgique", "Opportunités"],
+  prismes: ["Pratiques", "Organisations", "Écosystème", "France et Belgique", "Axes de croissance"],
   etapes: [
     { court: "Prise de contact" },
     { court: "Dossier" },
     { court: "Diagnostic" },
     { court: "Plan / devis" },
-    { court: "Démarrage" },
+    { court: "Début du traitement" },
     { court: "Contrôles" },
     { court: "Suivi" },
-    { court: "Contention / long terme" }
+    { court: "Suivi à long terme" }
   ],
   /* Quelques fonctions évoquées, rattachées à leurs étapes, sans couche dédiée */
   annotations: [
@@ -1118,7 +1118,7 @@ const T = {
       { e: 3, nom: "Odontogramme", p: "Schéma de l’état de chaque dent, base des actes à venir." },
       { e: 4, nom: "Plan de soins et prothèses", p: "Plusieurs actes et prothèses à chiffrer et à planifier ensemble." },
       { e: 5, nom: "Actes et traçabilité", p: "Réaliser les actes et enregistrer ce qui a été fait, sur quelle dent, avec quel matériel." },
-      { e: 7, nom: "Prévention et contrôles", p: "Rappels périodiques et suivi préventif." } ] },
+      { e: 8, nom: "Prévention et contrôles", p: "Rappels périodiques et suivi préventif." } ] },
     { id: "implanto", nom: "Implantologie", besoins: [
       { e: 3, nom: "Imagerie 3D si nécessaire", p: "Évaluer le volume osseux et les structures voisines avant la pose." },
       { e: 4, nom: "Planification implantaire", p: "Choisir l’implant et sa position avant l’intervention." },
@@ -1128,51 +1128,50 @@ const T = {
       { e: 3, nom: "Sondage et bilan parodontal", p: "Mesures autour de chaque dent pour évaluer l’état des tissus de soutien." },
       { e: 4, nom: "Stratégie thérapeutique", p: "Séquence de traitements adaptée à la situation." },
       { e: 6, nom: "Réévaluation clinique", p: "Nouvelles mesures pour juger la réponse au traitement." },
-      { e: 7, nom: "Maintenance parodontale", p: "Séances régulières pour stabiliser le résultat." } ] },
+      { e: 8, nom: "Maintenance parodontale", p: "Séances régulières pour stabiliser le résultat." } ] },
     { id: "endo", nom: "Endodontie", plus: true, besoins: [
       { e: 3, nom: "Tests pulpaires, imagerie ciblée", p: "Tests de vitalité et radiographies centrées sur la dent concernée." },
       { e: 5, nom: "Traitement canalaire", p: "Une ou plusieurs séances sur la même dent." },
-      { e: 7, nom: "Contrôle selon indication", p: "Contrôle à distance lorsque la situation le justifie." } ] },
+      { e: 8, nom: "Contrôle selon indication", p: "Contrôle à distance lorsque la situation le justifie." } ] },
     { id: "pedo", nom: "Odontologie pédiatrique", plus: true, besoins: [
       { e: 2, nom: "Autorisations parentales", p: "Le représentant légal reçoit l’information et donne son accord." },
       { e: 5, nom: "Soins adaptés à l’enfant", p: "Soins et prévention, avec des gestes, une durée et un discours adaptés à l’âge." },
       { e: 7, nom: "Accompagnement enfant et parents", p: "Conseils et suivi partagés avec la famille." } ] }
   ],
   vues: [
-    { prisme: 0, etat: 1, essentiel: true, fil: "Parcours commun", court: "Le parcours de référence", titre: "Un parcours de référence pour comparer les pratiques",
-      sousTitre: "Huit repères communs, pas un protocole clinique unique." },
-    { prisme: 0, etat: 2, essentiel: true, fil: "Métiers", court: "Les besoins par pratique", titre: "Mêmes grandes étapes, besoins métier différents",
-      sousTitre: "Une case vide ne veut pas dire que l’étape n’existe pas pour ce métier." },
+    { prisme: 0, etat: 1, essentiel: true, fil: "Parcours de soins", court: "Le parcours de soins", titre: "Un parcours de soins simplifié pour comparer les pratiques dentaires",
+      sousTitre: "" },
+    { prisme: 0, etat: 2, essentiel: true, fil: "Pratiques", court: "Les besoins par pratique", titre: "Des besoins logiciels différents selon les pratiques dentaires",
+      sousTitre: "Une case vide signifie qu’aucun besoin spécifique à cette pratique n’est illustré pour cette étape." },
     { prisme: 0, etat: 3, fil: "Une étape, des besoins", court: "Une étape comparée entre pratiques", focus: 3 },
 
-    { prisme: 1, etat: 1, essentiel: true, fil: "Organisations", court: "Des organisations différentes", titre: "Un même parcours clinique, des organisations différentes",
+    { prisme: 1, etat: 1, essentiel: true, fil: "Organisations", court: "Des organisations différentes", titre: "Des organisations différentes autour des soins dentaires",
       sousTitre: "" },
-    { prisme: 1, etat: 2, fil: "Rôles", court: "Qui utilise, qui choisit, qui paie", titre: "Celui qui utilise le logiciel n’est pas toujours celui qui le choisit",
+    { prisme: 1, etat: 2, fil: "Rôles", court: "Qui utilise, qui recommande, qui décide", titre: "Qui utilise, qui recommande et qui décide de l’achat du logiciel ?",
       sousTitre: "" },
-    { prisme: 1, etat: 3, essentiel: true, fil: "Achat", court: "Le parcours d’achat du logiciel", titre: "Acheter un logiciel est un parcours à part entière", dimFrise: true,
-      sousTitre: "Un parcours distinct du parcours clinique." },
-
-    { prisme: 2, etat: 2, essentiel: true, fil: "Acteurs", court: "Les acteurs spécialisés", titre: "Dentalsoft ne couvre pas seul le parcours : la valeur se construit aussi dans un écosystème",
-      sousTitre: "" },
-    { prisme: 2, etat: 3, fil: "Postures", court: "Posséder, intégrer ou rendre accessible", titre: "Posséder, intégrer ou rendre accessible : trois postures à arbitrer",
+    { prisme: 1, etat: 3, essentiel: true, fil: "Achat", court: "Le parcours d’achat du logiciel", titre: "Le choix d’un logiciel suit un parcours d’achat spécifique", dimFrise: true,
       sousTitre: "" },
 
-    { prisme: 3, etat: 1, essentiel: true, fil: "Écarts", court: "Où se trouvent les différences", marque: [4, 5],
-      titre: "Les différences entre pays se concentrent sur certaines étapes", sousTitre: "" },
-    { prisme: 3, etat: 2, essentiel: true, fil: "Bifurcation", court: "Même intention, deux parcours", frise: "douce",
-      titre: "Même intention clinique, deux parcours administratifs", sousTitre: "", sansNote: true },
-    { prisme: 3, etat: 3, essentiel: true, fil: "Impacts", court: "Les conséquences sur le logiciel", frise: "tres-douce",
-      titre: "Internationaliser, ce n’est pas simplement traduire des écrans", sousTitre: "",
+    { prisme: 2, etat: 2, essentiel: true, fil: "Écosystème", court: "L’écosystème d’outils", titre: "Le logiciel de cabinet s’inscrit dans un écosystème d’outils spécialisés",
+      sousTitre: "" },
+    { prisme: 2, etat: 3, fil: "Concurrence", court: "Le panorama concurrentiel", titre: "Concurrence : orthodontie et omnipratique, deux marchés distincts",
+      sousTitre: "" },
+
+    { prisme: 3, etat: 1, essentiel: true, fil: "Normes nationales", court: "Les règles nationales", marque: [4, 5],
+      titre: "Les règles nationales modifient certaines étapes du parcours de soins", sousTitre: "Exemple : France et Belgique." },
+    { prisme: 3, etat: 2, essentiel: true, fil: "France et Belgique", court: "France et Belgique, deux parcours administratifs", frise: "douce",
+      titre: "France et Belgique : deux parcours administratifs pour un même traitement orthodontique", sousTitre: "", sansNote: true },
+    { prisme: 3, etat: 3, essentiel: true, fil: "Adaptations", court: "Les adaptations du logiciel", frise: "tres-douce",
+      titre: "Internationaliser un logiciel implique des adaptations métier et techniques", sousTitre: "",
       noteBas: ["hypothese", "Familles d’impacts génériques : elles ne décrivent pas l’architecture actuelle des produits Dentalsoft."] },
-    { prisme: 4, etat: 1, essentiel: true, fil: "Développer", court: "Développer la base installée", marque: [6, 7],
-      titre: "Développer la valeur de la base installée", sousTitre: "" },
+    { prisme: 4, etat: 1, essentiel: true, fil: "Développer", court: "Développer la valeur des clients existants", marque: [6, 7],
+      titre: "Développer les services proposés aux cabinets orthodontiques déjà clients", sousTitre: "" },
     { prisme: 4, etat: 2, essentiel: true, fil: "Conquérir", court: "Conquérir l’omnipratique",
-      titre: "Conquérir les cabinets omnipratiques", sousTitre: "" },
-    { prisme: 4, etat: 3, essentiel: true, fil: "Étendre", court: "Étendre à d’autres pays", marque: [4, 5, 8],
-      titre: "Étendre les produits à d’autres pays", sousTitre: "" },
-    { prisme: 4, etat: 4, essentiel: true, fil: "Les trois axes", court: "Trois axes pour développer Dentalsoft", sansFrise: true, sansNote: true, partieAffichee: 1, chapAffiche: "Les trois axes",
-      titre: "Trois axes pour développer Dentalsoft",
-      sousTitre: "Trois ambitions de croissance. Des hypothèses à éprouver." }
+      titre: "L’omnipratique : un marché de conquête", sousTitre: "" },
+    { prisme: 4, etat: 3, essentiel: true, fil: "Accélérer", court: "Accélérer le développement international", marque: [4, 5, 8],
+      titre: "Les écarts nationaux : un enjeu pour le développement international", sousTitre: "" },
+    { prisme: 4, etat: 4, essentiel: true, fil: "Les trois axes", court: "Trois axes de croissance", sansFrise: true, sansNote: true, partieAffichee: 1, chapAffiche: "Les trois axes",
+      titre: "Trois axes de croissance à explorer pour Dentalsoft", sousTitre: "" }
   ],
 
   notesBas: [
@@ -1186,14 +1185,14 @@ const T = {
   org: {
     rangs: [
       { nom: "Cabinet individuel", caps: [[1, "Un agenda, une petite équipe"], [4, "Le praticien chiffre et décide"], [7, "Échanges directs avec le patient"]] },
-      { nom: "Cabinet associé ou pluriprofessionnel", caps: [[1, "Agendas partagés"], [2, "Droits et dossiers partagés"], [6, "Continuité entre confrères"]] },
+      { nom: "Cabinet associé ou de groupe", caps: [[1, "Agendas partagés"], [2, "Droits et dossiers partagés"], [6, "Continuité entre confrères"]] },
       { nom: "Centre ou réseau multisite", caps: [[1, "Agendas multi-praticiens, multisites"], [2, "Habilitations par rôle"], [4, "Facturation centralisée"], [6, "Suivi d’activité et reporting"]] }
     ],
     faits: [
       { gros: "54 %", texte: "des chirurgiens-dentistes exercent en cabinet de groupe ou en centre de santé.", src: "France. Sénat, rapport n° 84 (2025-2026), 28 octobre 2025." },
       { gros: "896 → 1 252", texte: "centres de santé dentaires, de 2020 à 2023.", src: "France. FNCS (septembre 2024), cité dans le même rapport." }
     ],
-    lecture: "Le marché ne se mesure pas seulement en praticiens : il faut aussi compter les organisations acheteuses, leurs sites, leurs utilisateurs et leurs décideurs.",
+    lecture: "Au-delà du nombre de praticiens, le marché se compte en organisations qui achètent : cabinets, centres et réseaux, avec leurs sites, leurs utilisateurs et leurs décideurs.",
     personas: [
       { l: "A", nom: "Praticien libéral", ctx: "Exerce seul ou avec peu de confrères, gère aussi l’administratif.", roles: [2, 2, 2, 2], besoins: ["Retrouver vite le dossier", "Changer sans risquer la continuité"] },
       { l: "B", nom: "Praticien associé", ctx: "Partage outils et patients avec plusieurs confrères.", roles: [2, 1, 1, 1], besoins: ["Agendas et dossiers partagés", "Décider à plusieurs"] },
@@ -1202,13 +1201,13 @@ const T = {
     ],
     contextes: [
       { nom: "Cabinet individuel", resume: "Souvent une seule personne pour tous les rôles",
-        roles: [["Utilise", "le praticien, l’assistante, l’accueil"], ["Prescrit", "le praticien"], ["Achète", "le praticien"], ["Décide", "le praticien"]],
+        roles: [["Utilise", "le praticien, l’assistante, l’accueil"], ["Recommande", "le praticien"], ["Achète", "le praticien"], ["Décide", "le praticien"]],
         besoins: ["Retrouver vite le dossier", "Réduire la charge administrative", "Changer sans risquer la continuité de l’activité"] },
-      { nom: "Cabinet associé", resume: "Des rôles souvent partagés entre associés",
-        roles: [["Utilise", "les praticiens et l’équipe"], ["Prescrit", "souvent un associé"], ["Achète", "la structure commune"], ["Décide", "les associés, ensemble"]],
+      { nom: "Cabinet associé ou de groupe", resume: "Des rôles souvent partagés entre associés",
+        roles: [["Utilise", "les praticiens et l’équipe"], ["Recommande", "souvent un associé"], ["Achète", "la structure commune"], ["Décide", "les associés, ensemble"]],
         besoins: ["Agendas et dossiers partagés", "Droits par praticien", "Décider à plusieurs"] },
-      { nom: "Centre ou réseau", resume: "Des rôles en général séparés",
-        roles: [["Utilise", "praticiens salariés, accueil, assistants"], ["Prescrit", "parfois un praticien référent"], ["Achète", "direction ou achats"], ["Décide", "direction, parfois DSI"]],
+      { nom: "Centre ou réseau multisite", resume: "Des rôles en général séparés",
+        roles: [["Utilise", "praticiens salariés, accueil, assistants"], ["Recommande", "parfois un praticien référent"], ["Achète", "direction ou achats"], ["Décide", "direction, parfois DSI"]],
         besoins: ["Praticien salarié : ergonomie en consultation, coordination avec l’accueil", "Décideur : standardiser, déployer, habilitations, reporting, coût total"] }
     ],
     voirBesoins: "Voir les besoins supposés",
@@ -1217,9 +1216,9 @@ const T = {
     valeurs: ["pas forcément", "en partie", "oui"],
     acquisition: ["Évaluer", "Choisir", "Contractualiser", "Migrer", "Déployer", "Former"],
     acqRangs: [
-      { nom: "Cabinet individuel", caps: [[1, "Le praticien, seul"], [3, "Crainte d’interrompre l’activité"]] },
-      { nom: "Cabinet associé", caps: [[1, "Décision à plusieurs"], [5, "Harmoniser les usages"]] },
-      { nom: "Centre ou réseau", caps: [[0, "Direction, DSI, achats"], [2, "Coût total, sécurité"], [3, "Plusieurs bases, plusieurs sites"], [4, "Déploiement multisite"]] }
+      { nom: "Cabinet individuel", caps: [[1, "Le praticien décide seul"], [3, "Crainte d’interrompre l’activité"]] },
+      { nom: "Cabinet associé ou de groupe", caps: [[1, "Décision à plusieurs"], [5, "Harmoniser les usages"]] },
+      { nom: "Centre ou réseau multisite", caps: [[0, "Direction, DSI, achats"], [2, "Coût total, sécurité"], [3, "Plusieurs bases, plusieurs sites"], [4, "Déploiement multisite"]] }
     ]
   },
 
@@ -1232,9 +1231,9 @@ const T = {
       { nom: "Kitview", cat: "port", e: 3, slot: 0, doc: true, info: "Photothèque clinique : images, photos, comparaisons.\nÉtapes : diagnostic, suivi.\nProduit historique du groupe Orqual." },
       { nom: "Ceph", cat: "port", e: 3, slot: 1, doc: true, info: "Analyses céphalométriques.\nÉtape : diagnostic.\nProduit historique du groupe Orqual." },
       { nom: "3Shape", cat: "ext", e: 3, slot: 2, doc: true, info: "Empreintes numériques, scanners intraoraux.\nÉtape : diagnostic.\nRelation : passerelle publiée ; Orthalis se présente aussi comme distributeur 3Shape." },
-      { nom: "Invisalign", cat: "ext", e: 4, slot: 0, doc: true, info: "Aligneurs et planification du traitement.\nÉtapes : plan de traitement, démarrage.\nRelation : passerelle publiée par Orthalis." },
-      { nom: "Spark", cat: "ext", e: 4, slot: 1, doc: true, info: "Aligneurs.\nÉtapes : plan de traitement, démarrage.\nRelation : passerelle publiée par Orthalis." },
-      { nom: "Laboratoires", cat: "ext", e: 5, slot: 0, doc: true, info: "Commande d’appareils et de prothèses.\nÉtape : démarrage.\nExemple publié : passerelle avec le laboratoire Orthomoov." },
+      { nom: "Invisalign", cat: "ext", e: 4, slot: 0, doc: true, info: "Aligneurs et planification du traitement.\nÉtapes : plan et devis, début du traitement.\nRelation : passerelle publiée par Orthalis." },
+      { nom: "Spark", cat: "ext", e: 4, slot: 1, doc: true, info: "Aligneurs.\nÉtapes : plan et devis, début du traitement.\nRelation : passerelle publiée par Orthalis." },
+      { nom: "Laboratoires", cat: "ext", e: 5, slot: 0, doc: true, info: "Commande d’appareils et de prothèses.\nÉtape : début du traitement.\nExemple publié : passerelle avec le laboratoire Orthomoov." },
       { nom: "Dental Monitoring", cat: "ext", e: 6, slot: 0, doc: true, info: "Suivi orthodontique à distance.\nÉtapes : contrôles, suivi.\nRelation publiée : scans récupérés dans Orthalis, rendez-vous synchronisés." },
       { nom: "Dentapoche", cat: "port", e: 7, slot: 0, doc: false, info: "Service orienté patient.\nÉtape : suivi.\nPérimètre et intégration à préciser." }
     ],
@@ -1252,7 +1251,7 @@ const T = {
       { e: 5, n: "c", t: "Bifurcation", s: "éligibilité, formalités", cle: true }, { e: 6, n: "a", t: "Comparable" },
       { e: 7, n: "b", t: "Adaptation locale", s: "justificatifs" }, { e: 8, n: "b", t: "Adaptation locale", s: "codes et plafonds" }
     ],
-    bande: "Facturation et télétransmission : bifurcation",
+    bande: "Facturation et télétransmission : propres à chaque pays",
     intro: [
       ["Largement comparable", "Prendre rendez-vous, constituer le dossier, diagnostiquer, suivre la progression."],
       ["Propre à chaque pays", "Éligibilité, nomenclatures et codes, formulaires, délais, télétransmission."]
@@ -1264,7 +1263,7 @@ const T = {
              ["Démarrage dans les 6 mois après l’accord", "Au-delà, le traitement n’est pas pris en charge. Facturation par semestre, 6 au plus (TO90)."]],
         be: [["Avant 15 ans", "Cadre ordinaire du traitement régulier. Exceptions : notification anticipée entre 13 et 15 ans, conservatoire jusqu’à 22 ans, intervention exceptionnelle (annexe 61)."],
              ["Annexe 60", "Rédigée au plus tard le jour de la pose, conservée dans le dossier du patient."],
-             ["Notification de début selon l’INAMI", "Depuis le 1er juillet 2022, le code 305631-305642 vaut notification de début de traitement."]],
+             ["Notification de début de traitement", "Depuis le 1er juillet 2022, le code 305631-305642 vaut notification de début de traitement."]],
         rappel: ["France : accord préalable", "Belgique : annexe 60 et notification INAMI"] },
       { id: "facturation", nom: "Facturation", marque: [4, 5, 6, 7, 8], origine: "Étapes 4 à 8 : facturer et transmettre",
         fr: [["Nomenclature française", "Actes codés selon la NGAP pour l’ODF, par exemple TO90."],
@@ -1286,39 +1285,39 @@ const T = {
       { t: "Documents et interfaces", items: ["Formulaires", "Données et justificatifs", "Échanges avec les infrastructures nationales"] },
       { t: "Qualité et maintenance", items: ["Tests de règles", "Tests de régression", "Traçabilité des évolutions", "Vérification des impacts"] }
     ],
-    conclusion: "Un même besoin fonctionnel peut appeler des règles et des adaptations différentes selon le pays."
+    conclusion: "Une même étape, le début du traitement, appelle des règles, des documents et des tests par pays."
   },
 
   opp: {
     axes: [
-      { n: 1, verbe: "Développer", titre: "la valeur de la base installée", territoire: "Orthodontie française, cabinets déjà équipés",
+      { n: 1, verbe: "Développer", titre: "la valeur des clients existants", territoire: "Orthodontie française, cabinets déjà clients",
         question: "Comment créer plus de valeur pendant le traitement, au-delà de la gestion du cabinet ?" },
-      { n: 2, verbe: "Conquérir", titre: "les cabinets omnipratiques", territoire: "Omnipratique française, cabinets équipés d’une autre solution",
+      { n: 2, verbe: "Conquérir", titre: "l’omnipratique", territoire: "Omnipratique française, cabinets équipés d’un autre logiciel",
         question: "Qu’est-ce qui retient un cabinet équipé de changer de logiciel ?" },
-      { n: 3, verbe: "Étendre", titre: "les produits à d’autres pays", territoire: "Logiciels orthodontiques, d’un pays à l’autre",
+      { n: 3, verbe: "Accélérer", titre: "le développement international", territoire: "Logiciels orthodontiques, d’un pays à l’autre",
         question: "Comment adapter et maintenir les règles de chaque pays sans tout redévelopper ?" }
     ],
     final: [
-      { num: "01", titre: "Développer le revenu des clients existants", terr: "Orthodontie · Upsell", q: "Comment augmenter le revenu par cabinet en renforçant la valeur et la montée en gamme des offres existantes\u202f?" },
-      { num: "02", titre: "Conquérir de nouveaux cabinets dentaires", terr: "Omnipratique · Acquisition", q: "Comment rendre notre offre attractive pour l’omnipratique et faciliter l’acquisition de nouveaux clients\u202f?" },
-      { num: "03", titre: "Accélérer le développement international", terr: "Expansion géographique", q: "Comment faciliter l’adaptation et la maintenance des produits selon les pays\u202f?" }
+      { num: "01", titre: "Développer la valeur des clients existants", terr: "Orthodontie · Montée en gamme", q: "Comment augmenter le revenu par cabinet déjà client, par l’adoption et la montée en gamme des offres existantes\u202f?" },
+      { num: "02", titre: "Conquérir l’omnipratique", terr: "Omnipratique · Acquisition", q: "Comment rendre l’offre attractive pour l’omnipratique et lever les freins au changement de logiciel\u202f?" },
+      { num: "03", titre: "Accélérer le développement international", terr: "International · Adaptation et déploiement", q: "Comment adapter et déployer les logiciels sur de nouveaux marchés nationaux\u202f?" }
     ],
     zone1: "Le suivi du traitement : contrôles, échanges, consignes",
     piste: ["Évaluer", "Choisir", "Contractualiser", "Migrer", "Déployer", "Former"],
-    pisteLib: "Parcours d’achat du cabinet",
+    pisteLib: "Parcours d’achat du logiciel",
     zone2: "Choisir et migrer",
     reglesLib: "Règles par pays",
-    zone3: "Devis, démarrage, facturation : les règles divergent",
+    zone3: "Devis, début du traitement, contention : les règles divergent",
     ouvrir: "Ouvrir l’axe"
   },
 
   versionCourte: "Version courte",
 
-  focusTitre: (etape) => `${etape} : une étape commune, des besoins spécialisés`,
-  focusSousTitre: (liste) => "Même moment du parcours, des outils différents selon la pratique.",
-  focusAide: "Cliquez une étape de la frise pour comparer.",
-  plusAfficher: "Afficher endodontie et pédiatrie",
-  plusMasquer: "Masquer endodontie et pédiatrie",
+  focusTitre: (etape) => `${etape} : une même étape de soins, des besoins différents selon la pratique`,
+  focusSousTitre: (liste) => "",
+  focusAide: "Cliquez une étape pour comparer.",
+  plusAfficher: "Afficher endodontie et odontologie pédiatrique",
+  plusMasquer: "Masquer endodontie et odontologie pédiatrique",
   notePratiques: ["hypothese", "Cartographie documentaire : besoins à confronter au terrain, non vérifiés dans les produits Dentalsoft."]
 };
 
@@ -1327,12 +1326,12 @@ T.parties = [
   { num: "01", nom: "Panorama du marché", court: "Panorama", duree: "10 min", chapitres: [
     { id: "parcours", nom: "Parcours de soins" }, { id: "pratiques", nom: "Pratiques dentaires" },
     { id: "organisations", nom: "Organisations et acteurs" }, { id: "ecosysteme", nom: "Écosystème logiciel" },
-    { id: "pays", nom: "Normes nationales" }, { id: "opportunites", nom: "Opportunités identifiées" } ] },
-  { num: "02", nom: "Axes de développement", court: "Axes", duree: "13 à 15 min", chapitres: [
-    { id: "axe1", nom: "Axe 1 : valeur de la base ODF" }, { id: "axe2", nom: "Axe 2 : acquisition omnipratique" },
-    { id: "axe3", nom: "Axe 3 : internationalisation" } ] },
+    { id: "pays", nom: "Normes nationales" }, { id: "opportunites", nom: "Trois territoires d’opportunité" } ] },
+  { num: "02", nom: "Axes de croissance", court: "Axes", duree: "13 à 15 min", chapitres: [
+    { id: "axe1", nom: "Axe 1 : développer la valeur des clients existants" }, { id: "axe2", nom: "Axe 2 : conquérir l’omnipratique" },
+    { id: "axe3", nom: "Axe 3 : accélérer le développement international" } ] },
   { num: "03", nom: "Conclusion", court: "Conclusion", duree: "1 à 2 min", chapitres: [
-    { id: "conclusion", nom: "Synthèse et conclusion" } ] }
+    { id: "conclusion", nom: "Conclusion" } ] }
 ];
 /* Les quatorze écrans du panorama gardent leur contenu ; ils reçoivent un identifiant et un chapitre */
 [["parcours", "parcours"], ["pratiques-metiers", "pratiques"], ["pratiques-etape", "pratiques"],
@@ -1346,27 +1345,27 @@ T.reperesNoms = { jtbd: "JTBD", kpi: "KPI principal", hyp: "Hypothèse critique"
 const AFAIRE = "À formuler lors du travail sur l’axe";
 
 T.vues.push(
-  { id: "a1-opportunite", partie: 1, chap: "axe1", essentiel: true, pret: true, section: "a1o", reveals: 3, niveau: [0, 1], fil: "Upsell", court: "Développer l’upsell ODF",
-    titre: "Développer l’upsell auprès des cabinets orthodontiques", sousTitre: "",
+  { id: "a1-opportunite", partie: 1, chap: "axe1", essentiel: true, pret: true, section: "a1o", reveals: 3, niveau: [0, 1], fil: "Montée en gamme", court: "Renforcer les offres existantes",
+    titre: "Renforcer les offres existantes pour développer le revenu par cabinet", sousTitre: "",
     noteBas: ["hypothese", "Un exemple parmi d’autres services possibles ; besoin supposé, sans entretiens à ce stade."] },
-  { id: "a1-proposition", partie: 1, chap: "axe1", essentiel: true, pret: true, section: "a1p", niveau: [2], fil: "Proposition", court: "Le compte rendu assisté",
-    titre: "Un compte rendu assisté, validé par le praticien", sousTitre: "", sansNote: true },
+  { id: "a1-proposition", partie: 1, chap: "axe1", essentiel: true, pret: true, section: "a1p", niveau: [2], fil: "Proposition", court: "Le compte rendu préparé",
+    titre: "Un compte rendu préparé depuis le dossier, validé par le praticien", sousTitre: "", sansNote: true },
 
   { id: "a2-opportunite", partie: 1, chap: "axe2", essentiel: true, pret: true, section: "a2o", reveals: 3, niveau: [0, 1], fil: "Leviers", court: "Les leviers de conquête",
-    titre: "Pour conquérir l’omnipratique, il faut une offre adaptée et une adoption sans friction", sousTitre: "",
+    titre: "Trois leviers pour conquérir des cabinets d’omnipratique", sousTitre: "",
     noteBas: ["hypothese", "Leviers et exemples : pistes de travail, sans données commerciales internes à ce stade."] },
   { id: "a2-proposition", partie: 1, chap: "axe2", essentiel: true, pret: true, section: "a2p", niveau: [2], fil: "Démonstration", court: "Migration Preview",
-    titre: "Réduire l’incertitude sur la migration avant l’engagement", sousTitre: "", sansNote: true },
+    titre: "Prévisualiser les données à reprendre avant de changer de logiciel", sousTitre: "", sansNote: true },
   { id: "a2-validation", partie: 1, chap: "axe2", essentiel: true, pret: true, section: "a2v", reveals: 2, niveau: [1, 2], fil: "Validation", court: "Validation et décision",
-    titre: "Prouver que la migration est un frein à l’acquisition avant d’investir", sousTitre: "", sansNote: true },
+    titre: "Vérifier si la migration freine l’acquisition avant d’investir", sousTitre: "", sansNote: true },
 
   { id: "a3-opportunite", partie: 1, chap: "axe3", essentiel: true, pret: true, section: "a3o", reveals: 3, niveau: [0, 1], fil: "Leviers", court: "Les leviers de l’international",
-    titre: "Accélérer le développement international des logiciels dentaires", sousTitre: "",
+    titre: "Trois leviers pour accélérer le développement international", sousTitre: "",
     noteBas: ["hypothese", "Difficulté supposée : ni le code ni l’organisation de SignalSoft n’ont été audités."] },
   { id: "a3-proposition", partie: 1, chap: "axe3", essentiel: true, pret: true, section: "a3p", niveau: [2], fil: "Atlas métier", court: "Atlas métier",
-    titre: "Atlas métier : une règle, ses variantes nationales et leurs impacts", sousTitre: "Un référentiel commun, plusieurs expériences métier adaptées à chaque pays.", sansNote: true },
-  { id: "m-conclusion", partie: 2, chap: "conclusion", essentiel: true, pret: true, section: "fin", reveals: 2, fil: "Conclusion", court: "Synthèse et conclusion",
-    titre: "Trois ambitions de croissance. Une méthode pour décider.", sousTitre: "", sansNote: true }
+    titre: "Atlas métier : un référentiel commun pour les équipes produit et les praticiens", sousTitre: "", sansNote: true },
+  { id: "m-conclusion", partie: 2, chap: "conclusion", essentiel: true, pret: true, section: "fin", reveals: 3, fil: "Conclusion", court: "Trois questions à approfondir",
+    titre: "Trois questions à approfondir avant de décider où investir", sousTitre: "", sansNote: true }
 );
 const ALIAS = { "m-arbitrages": "m-conclusion" };
 const indexId = (id) => T.vues.findIndex((v) => v.id === (ALIAS[id] || id));
@@ -1456,8 +1455,7 @@ function construireOrg() {
       <button type="button" class="ctxt-btn" aria-expanded="false">${O.voirBesoins}</button>
       <ul class="ctxt-besoins" hidden>${c.besoins.map((b) => `<li>${b}</li>`).join("")}</ul></article>`;
   });
-  h += `<p class="legende-r seul-2">Rôles et besoins supposés, à valider par entretiens.</p>`;
-  /* État 3 : le parcours d’achat, hors parcours clinique */
+  /* État 3 : le parcours d’achat, hors parcours de soins */
   h += `<div class="halo-col seul-3" style="left:${xa(3)}px;top:338px;height:300px"></div>`;
   h += piste(368, "Parcours d’achat du logiciel", O.acquisition, "seul-3");
   O.acqRangs.forEach((r, k) => {
@@ -1539,7 +1537,7 @@ function construireOpp() {
   const Y = T.opp; let h = `<div class="vue-opp-analyse">`;
   /* 1. Suivi : les colonnes 6 et 7, sous la frise */
   h += `<div class="zo z1" style="left:${gauche(6) + 4}px;width:332px;top:326px"><span class="badge">1</span>${Y.zone1}</div>`;
-  /* 2. Achat : une autre piste, hors parcours clinique */
+  /* 2. Achat : une autre piste, hors parcours de soins */
   h += `<div class="zo z2 des-2" style="left:${xa(1) - 74}px;width:${xa(3) - xa(1) + 148}px;top:418px;height:92px;align-items:flex-start;padding-top:8px"><span class="badge">2</span>${Y.zone2}</div>`;
   h += `<div class="des-2">${piste(468, Y.pisteLib, Y.piste, "")}</div>`;
   /* 3. Règles : un même tracé qui bifurque au devis */
@@ -1596,7 +1594,7 @@ function construireSommaire() {
     col.innerHTML = `<h3><span>${P.num} ${P.nom}</span><small>${P.duree}</small></h3>` + P.chapitres.map((c) => {
       const pages = T.vues.map((v, i) => ({ v, i })).filter((x) => x.v.chap === c.id);
       return `<div class="plan-chap"><h4>${c.nom}</h4>` + pages.map((x) =>
-        `<button type="button" class="ligne-plan" data-i="${x.i}"><span class="n">${x.i + 1}</span><span class="t">${x.v.court}</span><span class="pill ${x.v.reserve ? "r" : ""}">${x.v.reserve ? "Réserve" : "Parcours"}</span></button>` +
+        `<button type="button" class="ligne-plan" data-i="${x.i}"><span class="n">${x.i + 1}</span><span class="t">${x.v.court}</span><span class="pill ${x.v.reserve ? "r" : ""}">${x.v.reserve ? "Réserve" : "Principal"}</span></button>` +
         (x.v.demo ? `<button type="button" class="ligne-plan demo-l" data-i="${x.i}" data-demo="1"><span class="n"></span><span class="t">${x.v.demo.nom}</span><span class="pill a">À concevoir</span></button>` : "")).join("") + `</div>`;
     }).join("");
     grille.appendChild(col);
@@ -1700,9 +1698,9 @@ function construireAxe1() {
     <text x="1056" y="${sol - 147}" text-anchor="middle" font-size="16" font-weight="700" fill="var(--encre)" font-family="var(--police)">Quelles consignes, déjà ?</text></g>`;
   svg += `</svg>`;
   const blocs = [
-    ["Ambition", "Augmenter le revenu récurrent par cabinet déjà équipé", "plein", 1],
-    ["Levier", "Renforcer la valeur, l’adoption et la montée en gamme des offres existantes", "plein", 2],
-    ["Service candidat", "Un compte rendu assisté après les contrôles, à positionner dans l’offre", "suppose", 3]
+    ["Ambition", "Augmenter le revenu récurrent par cabinet orthodontique déjà client", "plein", 1],
+    ["Levier", "Renforcer les offres existantes, leur adoption et la montée en gamme", "plein", 2],
+    ["Proposition", "Un compte rendu préparé depuis le dossier après chaque contrôle, à positionner dans l’offre", "suppose", 3]
   ];
   $("vue-a1o").innerHTML = svg + `<div class="a1-blocs">` + blocs.map(([l, t, c, r]) =>
     `<div class="a1-bloc ${c} ${r > 1 ? "rv-" + r : ""}"><span>${l}</span><p>${t}</p></div>`).join("") + `</div>`;
@@ -1779,8 +1777,8 @@ function construireAxe1() {
 /* ===== Niveaux de raisonnement : ambition, levier, proposition ===== */
 T.niveaux = {
   noms: ["Ambition", "Levier", "Proposition"],
-  axe1: ["Revenu par cabinet déjà équipé", "Un service additionnel", "Compte rendu assisté"],
-  axe2: ["Nouveaux cabinets activés", "Trois leviers, dont la migration", "Migration Preview"]
+  axe1: ["Revenu par cabinet déjà client", "Offres existantes", "Compte rendu préparé"],
+  axe2: ["Nouveaux cabinets clients", "Métier, différenciation, migration", "Migration Preview"]
 };
 function majNiveaux(v) {
   const el = $("niveaux"), t = v.niveau && T.niveaux[v.chap];
@@ -1795,10 +1793,10 @@ function construireAxe2() {
   /* Écran 1 : l’ambition et ses trois leviers */
   const piliers = [
     { n: 1, t: "Profondeur métier", q: "L’offre couvre-t-elle bien les scénarios réels des omnipraticiens ?", ex: "Auditer le parcours, du schéma dentaire à la facturation", zoom: true },
-    { n: 2, t: "Acquisition commerciale", q: "Quels cabinets ont le plus de raisons de changer, et comment les convaincre ?", ex: "Prioriser les segments, construire des preuves de valeur" },
-    { n: 3, t: "Migration et activation", q: "Qu’est-ce qui reste incertain pour un cabinet qui change de logiciel ?", ex: "Rendre la reprise des données visible avant de signer" }
+    { n: 2, t: "Différenciation commerciale", q: "Quels cabinets ont le plus de raisons de changer, et comment les convaincre ?", ex: "Prioriser les segments, construire des preuves de valeur" },
+    { n: 3, t: "Migration sans friction", q: "Qu’est-ce qui reste incertain pour un cabinet qui change de logiciel ?", ex: "Rendre la reprise des données visible avant de signer" }
   ];
-  let h = `<div class="a2-but"><span>Ambition</span><b>Gagner de nouveaux cabinets omnipratiques, puis le revenu récurrent associé</b></div>
+  let h = `<div class="a2-but"><span>Ambition</span><b>Acquérir de nouveaux cabinets d’omnipratique, puis le revenu récurrent associé</b></div>
     <p class="a2-segments">Segments à prioriser : individuels, associés, mixtes, centres. Déjà équipés, ou en création.</p>
     <svg class="a2-branches" viewBox="0 0 1520 70" aria-hidden="true">
       <path class="rv-2" d="M760 0 V22 H245 V70" /><path class="rv-2" d="M760 0 V70" /><path class="rv-2" d="M760 0 V22 H1275 V70" /></svg>`;
@@ -1807,11 +1805,11 @@ function construireAxe2() {
       <p class="pilier-q">${p.q}</p><p class="pilier-ex"><b>Exemple</b>${p.ex}</p>
       ${p.zoom ? `<button type="button" class="pilier-zoom" id="a2Zoom">Voir les workflows à auditer</button>` : ""}</article>`;
   });
-  h += `<p class="a2-transition rv-3">Pour illustrer une approche produit concrète, approfondissons une friction possible : l’incertitude liée à la migration.</p>`;
+  h += `<p class="a2-transition rv-3">Exemple approfondi ensuite : l’incertitude d’un cabinet sur la reprise de ses données quand il change de logiciel.</p>`;
   h += `<div class="a2-wf" id="a2Wf" hidden role="dialog" aria-label="Workflows omnipratiques à auditer">
     <button type="button" class="a2-wf-fermer" id="a2WfFermer">Fermer</button>
     <h3>Comment auditer la profondeur métier</h3>
-    <p class="a2-wf-intro">Ces fonctions sont déjà présentées par les produits du groupe. L’audit porte sur leur qualité dans un scénario réel, pas sur leur présence.</p>
+    <p class="a2-wf-intro">Ces fonctions sont déjà présentées par les logiciels d’omnipratique du portefeuille SignalSoft. L’audit porte sur leur qualité dans un scénario réel, et non sur leur seule présence.</p>
     <ol class="a2-wf-chaine">${["Diagnostic", "Plan de soins", "Actes", "Facturation", "Suivi"].map((x) => `<li>${x}</li>`).join("")}</ol>
     <div class="a2-wf-crit">${[["Couverture", "le scénario va-t-il au bout ?"], ["Rapidité", "combien de clics pour les actions fréquentes ?"], ["Continuité", "les données passent-elles d’une étape à l’autre ?"], ["Différenciation", "fait-on mieux que l’outil actuel du cabinet ?"]].map(([a, b]) => `<div><b>${a}</b>${b}</div>`).join("")}</div>
   </div>`;
@@ -1832,7 +1830,7 @@ function construireAxe2() {
   const statuts = { det: "Détecté", rec: "Champs reconnus", tr: "Transformation nécessaire", ac: "À compléter", non: "Non évalué" };
   const dents = (rang) => Array.from({ length: 16 }, (_, i) => { const n = rang === "h" ? (i < 8 ? 18 - i : 21 + i - 8) : (i < 8 ? 48 - i : 31 + i - 8); return `<i class="${n === 36 ? "marque" : n === 46 ? "soin" : ""}" title="${n}"></i>`; }).join("");
   $("vue-a2p").innerHTML = `
-  <p class="a2-hyp"><b>Hypothèse</b> certains prospects renonceraient faute de savoir ce qui sera récupéré. À vérifier avant d’investir.</p>
+  <p class="a2-hyp"><b>Hypothèse</b> certains prospects renonceraient faute de savoir ce qui sera récupéré.</p>
   <div class="mp" aria-label="Prototype Migration Preview, données fictives">
     <div class="mp-barre"><b>Migration Preview</b><span>Aperçu indicatif avant engagement</span><span class="pro-fictif">Données fictives</span></div>
     <div class="mp-corps">
@@ -1913,25 +1911,25 @@ function construireAxe2() {
     etapes.map(([t, d, a], i) => `<article class="a2v-etape" style="left:${40 + i * 515}px"><span class="a2v-n">${i + 1}</span><h3>${t}</h3><p>${d}</p>${a ? `<p class="a2v-att">${a}</p>` : ""}</article>`).join("") +
     `<div class="a2v-decision rv-2"><span class="a2v-lib">Décision</span>${decisions.map(([t, d]) => `<div><b>${t}</b>${d}</div>`).join("")}</div>
      <p class="a2v-kpi rv-2"><b>Mesure</b>nouveaux cabinets activés et revenu récurrent ; pour l’opportunité, conversion des prospects qualifiés, comparée à une référence</p>
-     <p class="a2v-fin rv-2">Migration Preview n’est pas notre stratégie d’acquisition : c’est un test sur l’un de ses leviers.</p>`;
+     <p class="a2v-fin rv-2">Migration Preview n’est pas la stratégie d’acquisition : c’est un test sur l’un de ses trois leviers.</p>`;
 }
 
 /* ===== Axe 3 et conclusion ===== */
-T.niveaux.axe3 = ["Développement international", "Adaptation métier et réglementaire", "Atlas métier"];
+T.niveaux.axe3 = ["Plusieurs marchés nationaux", "Adaptation métier et réglementaire", "Atlas métier"];
 function construireAxe3() {
-  /* Écran 1 : trois conditions complémentaires */
+  /* Écran 1 : l’ambition et ses trois leviers */
   const leviers = [
     ["Adaptation métier et réglementaire", "Parcours, règles, nomenclatures, documents"],
     ["Intégrations locales", "Facturation, télétransmission, partenaires nationaux"],
-    ["Déploiement commercial et opérationnel", "Distribution, formation, accompagnement, support"]
+    ["Distribution et déploiement", "Réseau commercial, formation, accompagnement, support"]
   ];
   $("vue-a3o").innerHTML = `
-    <div class="a3-but"><span>Ambition</span><b>Faciliter l’expansion géographique des produits du groupe</b></div>
-    <p class="a3-conditions">Trois conditions complémentaires de l’expansion</p>
+    <div class="a3-but"><span>Ambition</span><b>Adapter et déployer les logiciels sur différents marchés nationaux</b></div>
+    <p class="a3-conditions">Leviers</p>
     <div class="a3-leviers">${leviers.map(([t, d], i) => `<div class="a3-levier l${i + 1}"><span>${i + 1}</span><h3>${t}</h3><p>${d}</p></div>`).join("")}</div>
     <p class="a3-question rv-2">Comment réduire l’effort d’adaptation et de maintenance des parcours métier selon les pays ?</p>
-    <div class="a3-hyp rv-3"><span>Hypothèse à vérifier</span><p>Les règles nationales et leurs impacts sur les logiciels pourraient être difficiles à retrouver, comparer et maintenir.</p></div>
-    <div class="a3-ex rv-3"><span>Exemple du panorama, démarrage d’un traitement</span><p><b>France</b> accord préalable</p><p><b>Belgique</b> annexe 60 et notification INAMI</p><small>Un marché où le groupe est déjà présent.</small></div>`;
+    <div class="a3-hyp rv-3"><span>Hypothèse</span><p>Les règles nationales et leurs impacts sur les logiciels sont difficiles à retrouver, à comparer et à maintenir.</p></div>
+    <div class="a3-ex rv-3"><span>Exemple du panorama, début d’un traitement</span><p><b>France</b> accord préalable</p><p><b>Belgique</b> annexe 60 et notification INAMI</p></div>`;
 
   /* Écran 2 : Atlas métier, un référentiel, trois usages */
   const RG = [
@@ -1970,7 +1968,7 @@ function construireAxe3() {
   const PAYS = { fr: "France", be: "Belgique" };
   /* Dossiers fictifs : chaque formalité renvoie à une règle du même référentiel */
   const DOSSIERS = {
-    fr: { patient: "Léa M.", age: "13 ans", caisse: "Caisse : CPAM (fictif)", formalites: [
+    fr: { patient: "Inès R.", age: "13 ans", caisse: "Caisse : CPAM (fictif)", formalites: [
       ["FR-01", "Âge au début des soins prévu : 13 ans", "verif", "À vérifier à la date de début"],
       ["FR-02", "Demande d’accord préalable (S3150)", "faire", "À préparer et faire signer"],
       ["FR-03", "Début des soins après l’accord", "faire", "À planifier dans le délai applicable"]] },
@@ -2090,28 +2088,15 @@ function construireAxe3() {
     Object.assign(etat, { mode: "equipe", etape: "demarrage", pays: "be", regle: null, q: { fr: "", be: "" }, ouverte: { fr: null, be: null }, panneau: { fr: false, be: false } }); rendre();
   });
   rendre();
-
-  /* Conclusion */
-  const rappels = [
-    ["01", "Développer les clients existants", "Compte rendu assisté", "Les cabinets accepteraient-ils de payer pour ce service ?"],
-    ["02", "Conquérir de nouveaux cabinets", "Migration Preview", "Réduire l’incertitude liée à la migration améliorerait-il réellement l’acquisition ?"],
-    ["03", "Accélérer l’internationalisation", "Atlas métier, référentiel partagé pour les équipes et les praticiens", "Un référentiel partagé réduirait-il réellement l’effort de localisation ?"]
-  ];
-  $("vue-fin").innerHTML = `<div class="fin-haut">
-    <div class="fin-rappels">${rappels.map(([n, t, p, q]) => `<div class="fin-rappel"><span class="fin-n">${n}</span><h3>${t}</h3><p class="fin-p"><b>Proposition explorée</b>${p}</p><p class="fin-q">${q}</p></div>`).join("")}</div>
-    <div class="fin-methode"><span class="fin-lib">Pour chacune</span><ol>${["Comprendre", "Expérimenter", "Mesurer", "Décider"].map((x) => `<li>${x}</li>`).join("")}</ol></div>
-    <div class="fin-equipe"><span class="fin-lib">Ensemble, en continu</span><ul>${[["Product", "opportunités, priorités, décision"], ["Design", "usages, tests des propositions"], ["Tech", "faisabilité, architecture, sécurité, coûts"], ["Métier, commerce, support", "réalité terrain, contraintes, adoption"]].map(([r, d]) => `<li><b>${r}</b>${d}</li>`).join("")}</ul></div>
-  </div>
-  <p class="fin-phrase rv-2">Je ne propose pas trois fonctionnalités à développer, mais trois opportunités à explorer et une méthode pour décider où investir.</p>`;
 }
 
 /* ===== Choix de méthode : une infobulle au moment pertinent ===== */
 T.methodes = {
   parcours: { statut: "Méthode mobilisée", nom: "Cartographie documentaire du parcours",
     pourquoi: "Une grille commune de huit étapes pour comparer les pratiques et leurs besoins métier.",
-    alt: "Un service blueprint complet, construit par observation en cabinet. Non mobilisé : l’exercice ne comportait pas d’observation terrain. La cartographie reste une hypothèse structurante, à confronter aux praticiens." },
+    alt: "Un service blueprint complet, construit par observation en cabinet. Non mobilisé : l’exercice ne comportait pas d’observation terrain. La frise reste à confronter aux praticiens." },
   "eco-acteurs": { statut: "Méthode mobilisée", nom: "Ecosystem mapping",
-    pourquoi: "Situer acteurs, complémentarités et intégrations, et poser le choix : développer, intégrer ou rendre accessible.",
+    pourquoi: "Situer, à chaque étape du parcours de soins, les outils voisins du logiciel de cabinet et les intégrations publiées.",
     alt: "Un audit technique des intégrations et une analyse concurrentielle produit par produit. Écartés : les sources publiques montrent les relations déclarées, pas leur profondeur, leur usage ni leur valeur économique." },
   "pays-ecarts": { statut: "Méthode mobilisée", nom: "Analyse comparative des écarts métier et réglementaires",
     pourquoi: "Repérer les étapes qui exigent une adaptation nationale et leurs conséquences possibles sur les logiciels.",
@@ -2144,7 +2129,7 @@ function majMethode(v) {
   if (!M) return;
   $("methodeCorps").innerHTML = `<span class="mt-statut">${M.statut}</span><h3>${M.nom}</h3>
     <p><b>Pourquoi ce choix</b>${M.pourquoi}</p><p><b>Alternative</b>${M.alt}</p>` +
-    (v.id === "a3-proposition" ? `<button type="button" class="sm-lien" id="smOuvrir">Voir le Story Mapping proposé</button>` : "");
+    (v.id === "a3-proposition" ? `<button type="button" class="sm-lien" id="smOuvrir">Voir la story map proposée</button>` : "");
   const sm = $("smOuvrir"); if (sm) sm.addEventListener("click", ouvrirStoryMap);
 }
 function fermerMethode() { $("methode").hidden = true; $("btnMethode").setAttribute("aria-expanded", "false"); }
@@ -2156,28 +2141,24 @@ function basculerMethode() {
 /* ===== Ouverture, concurrence, story map, conclusion ===== */
 T.parties[0].chapitres.unshift({ id: "introduction", nom: "Introduction" });
 T.vues.unshift({ id: "intro-demarche", partie: 0, chap: "introduction", essentiel: true, pret: true, section: "intro", sansFrise: true, sansNote: true,
-  fil: "Démarche", court: "La démarche", titre: "Comprendre le marché pour identifier des opportunités de développement", sousTitre: "" });
+  fil: "Démarche", court: "La démarche", titre: "Du panorama du marché à trois axes de croissance pour Dentalsoft", sousTitre: "" });
 
 /* Le panorama concurrentiel remplace la page des postures, même identifiant */
 Object.assign(T.vues.find((v) => v.id === "eco-postures"), {
-  section: "conc", sansFrise: true, reveals: 2, essentiel: true, dimFrise: false, fil: "Concurrence", court: "Le panorama concurrentiel",
-  titre: "Deux marchés métier, des organisations aux besoins différents", sousTitre: "",
+  section: "conc", sansFrise: true, reveals: 2, essentiel: true, dimFrise: false,
   noteBas: ["hypothese", "Capacités revendiquées par les éditeurs sur leurs sites, consultés le 23 octobre 2026 : pas des performances vérifiées."] });
 
-/* Conclusion : trois questions */
-Object.assign(T.vues.find((v) => v.id === "m-conclusion"), {
-  reveals: 3, titre: "Trois questions à approfondir avant de décider où investir", sousTitre: "" });
 T.methodes["eco-postures"] = { statut: "Méthode mobilisée", nom: "Benchmark qualitatif par segment",
-  pourquoi: "Comparer l’offre du groupe à ce qu’un cabinet pourrait choisir à la place, segment par segment, en posant les bonnes questions.",
+  pourquoi: "Comparer l’offre de SignalSoft à ce qu’un cabinet pourrait choisir à la place, segment par segment.",
   alt: "Une grille de fonctions cochées ou un classement. Écartés : sans tester les produits, ils confondraient capacité revendiquée et qualité réelle." };
 
 function construireOuverture() {
   /* Introduction : la démarche en quatre temps, sans la frise */
-  const temps = [["Comprendre le métier", "Parcours de soins, pratiques"], ["Cartographier le marché", "Organisations, écosystème, concurrence, normes nationales"], ["Explorer trois axes de croissance", "Upsell, acquisition, international"], ["Proposer des hypothèses à valider", "Et les questions à approfondir"]];
+  const temps = [["Comprendre le métier", "Parcours de soins, pratiques"], ["Cartographier le marché", "Organisations, écosystème, concurrence, normes nationales"], ["Explorer trois axes de croissance", "Montée en gamme, acquisition, international"], ["Proposer des hypothèses à valider", "Puis trois questions à approfondir"]];
   $("vue-intro").innerHTML = `<ol class="intro-temps">${temps.map(([t, d], i) => `<li><span>${i + 1}</span><b>${t}</b><small>${d}</small></li>`).join("")}</ol>
-    <p class="intro-limite">Une analyse exploratoire : recherche documentaire, sans entretiens utilisateurs ni données commerciales ou techniques internes. Les propositions sont à valider.</p>`;
+    <p class="intro-limite">Une analyse exploratoire : recherche documentaire, sans entretiens utilisateurs ni données commerciales ou techniques internes.</p>`;
 
-  /* Panorama concurrentiel : deux marchés métier, l’organisation en seconde dimension */
+  /* Panorama concurrentiel : deux marchés, l’organisation en seconde dimension */
   const segs = [
     { t: "Orthodontie spécialisée", groupe: ["Orthalis", "Ortholeader", "Orthokis"], alt: [
         ["OrthoADVANCE", "Concurrent direct", "Revendiqué par l’éditeur : logiciel 100 % web, céphalométrie, portail patient, agréments MyCareNet en Belgique."],
@@ -2189,19 +2170,19 @@ function construireOuverture() {
         ["Veasy", "À vérifier", "Cité comme alternative ; positionnement non vérifié dans cette analyse."]],
       cmp: "Schéma dentaire, plans de soins, prothèses, facturation, ergonomie, migration" }
   ];
-  const orgs = ["Cabinet individuel", "Cabinet pluripraticien", "Centre dentaire", "Réseau multisite"];
-  const questions = ["Qu’est-ce qui est indispensable pour être crédible ?", "Qu’est-ce qui différencie vraiment ?", "Que peut apporter une intégration plutôt qu’un développement ?", "Qu’est-ce qui justifierait de changer de logiciel ?"];
+  const orgs = ["Cabinet individuel", "Cabinet associé ou de groupe", "Centre dentaire", "Réseau multisite"];
+  const questions = ["Qu’est-ce qui est indispensable pour être crédible ?", "Qu’est-ce qui différencie l’offre ?", "Quand s’intégrer à un outil existant plutôt que développer soi-même ?", "Qu’est-ce qui justifierait de changer de logiciel ?"];
   $("vue-conc").innerHTML = `<div class="conc-segs deux">${segs.map((s) => `<section class="conc-seg"><h3>${s.t}</h3>
-      <div class="conc-ligne"><p class="conc-lib">Groupe</p><div class="conc-chips">${s.groupe.map((g) => `<span class="cg">${g}</span>`).join("")}</div></div>
+      <div class="conc-ligne"><p class="conc-lib">SignalSoft</p><div class="conc-chips">${s.groupe.map((g) => `<span class="cg">${g}</span>`).join("")}</div></div>
       <div class="conc-ligne"><p class="conc-lib">Alternatives</p><div class="conc-alts">${s.alt.map(([n, r, i]) => `<span class="ca ${r === "À vérifier" ? "averif" : ""}" tabindex="0" data-info="${i}"><b>${n}</b><i>${r}</i></span>`).join("")}</div></div>
       <div class="conc-ligne"><p class="conc-lib">À comparer</p><p class="conc-cmp">${s.cmp}</p></div></section>`).join("")}</div>
     <div class="conc-org"><span class="conc-org-lib">Une deuxième dimension : l’organisation du cabinet</span>
       <div class="conc-org-types">${orgs.map((o, i) => `<span>${o}</span>${i < orgs.length - 1 ? `<i aria-hidden="true"></i>` : ""}`).join("")}</div>
       <p class="conc-org-besoins"><b>Besoins qui montent avec la taille</b>coordination, droits utilisateurs, gestion multisite, pilotage, déploiement. Un centre peut exercer l’omnipratique, l’orthodontie ou plusieurs spécialités : les deux dimensions se superposent.
       <span class="ca ca-inline" tabindex="0" data-info="Revendiqué par l’éditeur : multi-centres en cloud, tiers payant centralisé, reprise des données via la norme DSIO. Relié à Orthalis par une passerelle."><b>Desmos</b><i>Exemple côté centres</i></span></p></div>
-    <div class="conc-q rv-2"><span>Les vraies questions</span><ol>${questions.map((q) => `<li>${q}</li>`).join("")}</ol></div>`;
+    <div class="conc-q rv-2"><span>Les questions à trancher</span><ol>${questions.map((q) => `<li>${q}</li>`).join("")}</ol></div>`;
 
-  /* Story map proposé, ouvert depuis l’infobulle de l’axe 3 */
+  /* Story map proposée, ouverte depuis le panneau de méthode de l’axe 3 */
   const sm = [
     { p: "Responsable du référentiel", acts: ["Choisir un pays et une étape", "Retrouver les règles", "Vérifier sources et versions", "Examiner les impacts logiciels"],
       rel: { mvp: [["Filtrer par France ou Belgique", "Sélectionner une étape métier"], ["Consulter les exigences correspondantes"], ["Ouvrir la source", "Vérifier le statut et la date d’application"], ["Identifier les écrans et tests concernés"]],
@@ -2216,7 +2197,7 @@ function construireOuverture() {
     ["v2", "V2", "Recherche réglementaire", "Consultation documentaire : recherche contextualisée, filtrage national, accès aux sources depuis les logiciels."],
     ["v3", "V3", "Assistance métier contextualisée", "Rapprochement dossier et exigences, contrôles préalablement implémentés et validés, gestion des exceptions."]];
   const story = (s) => { const [t, ...v] = s.split("|"); return `<div class="sm-story">${t}${v.length ? `<span class="sm-var">${v.map((x) => `<em>${x}</em>`).join("")}</span>` : ""}</div>`; };
-  $("storyMap").innerHTML = `<div class="sm-tete"><div><span class="mt-statut">Proposé pour la suite, non réalisé</span><h2>Story map proposé pour Atlas métier</h2>
+  $("storyMap").innerHTML = `<div class="sm-tete"><div><span class="mt-statut">Proposé pour la suite, non réalisé</span><h2>Story map proposée pour Atlas métier</h2>
       <p>Deux parcours, un découpage MVP, V2, V3. Les variantes nationales sont des déclinaisons d’un parcours commun. Ce n’est pas une roadmap engagée.</p></div>
       <button type="button" class="sm-fermer" id="smFermer">Fermer</button></div>` +
     sm.map((j) => `<section class="sm-parcours"><h3>${j.p}</h3><div class="sm-grille">
@@ -2251,7 +2232,7 @@ function construireOuverture() {
     <h3>Trois chantiers pour éclairer les décisions</h3>
     <p class="cq-role">Définir les objectifs, responsabiliser les contributeurs, organiser les revues et préparer les arbitrages.</p>
     <div class="cq-ch">${[
-      ["Diagnostiquer le portefeuille", "Une vision partagée des briques sur lesquelles bâtir.", "Cartographie des briques et diagnostic sur les quatre dimensions.", "Product, Tech, Customer Success, finance.", "Investir, consolider, faire évoluer ou approfondir."],
+      ["Diagnostiquer le portefeuille", "Une vision partagée des briques sur lesquelles bâtir.", "Cartographie des briques et diagnostic sur les quatre dimensions.", "Product, Tech, Customer Success, finance.", "Construire dessus, consolider, faire évoluer ou investiguer."],
       ["Benchmarker sur des scénarios métier", "Savoir où l’offre se distingue, et où elle est en retard.", "Comparaison de parcours critiques, avec preuves et limites.", "Product, Design, commerciaux, experts métier.", "Les différenciations à renforcer et les écarts prioritaires."],
       ["Explorer et valider les opportunités", "Des investissements choisis sur des preuves.", "Opportunités, hypothèses critiques, tests et recommandations.", "Product, Design, Tech, marketing, commerciaux.", "Les expérimentations prioritaires selon l’orientation retenue."]
     ].map(([t, r, l, c, d], i) => `<section><span>${i + 1}</span><h4>${t}</h4><p><b>Résultat attendu</b>${r}</p><p><b>Livrable</b>${l}</p><p class="contrib"><b>Contributeurs possibles</b>${c}</p><p><b>Décision préparée</b>${d}</p></section>`).join("")}</div>
@@ -2268,21 +2249,15 @@ function construireOuverture() {
 function ouvrirStoryMap() { fermerMethode(); $("storyMap").hidden = false; $("smFermer").focus({ preventScroll: true }); }
 function fermerStoryMap() { $("storyMap").hidden = true; }
 
-/* ===== Optimisation finale : parcours resserré, axe 1 go-to-market ===== */
+/* ===== Optimisation finale : parcours principal, axe 1 go-to-market ===== */
 const RESERVE = ["pratiques-etape", "org-structures", "eco-acteurs", "pays-impacts"];
 T.vues.forEach((v) => { v.reserve = RESERVE.includes(v.id); });
-Object.assign(T.vues.find((v) => v.id === "pays-ecarts"), { fil: "Normes nationales", court: "Des pratiques proches, des normes qui divergent",
-  titre: "Des pratiques proches d’un pays à l’autre, des normes nationales qui changent les étapes clés", sousTitre: "Exemple : France et Belgique." });
-Object.assign(T.vues.find((v) => v.id === "pays-bifurcation"), { court: "Même intention, deux parcours administratifs", sousTitre: "Exemple France / Belgique, d’après les sources officielles." });
 /* Les limites sont dites une fois, en introduction : plus de réserve répétée en bas d’écran */
 T.vues.forEach((v) => { if (!["eco-acteurs", "eco-postures", "pays-impacts"].includes(v.id)) v.sansNote = true; });
 Object.assign(T.vues.find((v) => v.id === "eco-acteurs"), { noteBas: ["hypothese", "Trait plein : passerelle publiée par Orthalis. Pointillé : relation à préciser."] });
 Object.assign(T.vues.find((v) => v.id === "eco-postures"), { noteBas: ["hypothese", "Capacités revendiquées par les éditeurs sur leurs sites, consultés le 23 octobre 2026."] });
 T.parties[0].duree = "8 à 9 min"; T.parties[1].duree = "14 min"; T.parties[2].duree = "2 min";
-T.niveaux.axe1 = ["Revenu récurrent par cabinet équipé", "Valoriser et renforcer les offres existantes", "Compte rendu assisté"];
 
-Object.assign(T.vues.find((v) => v.id === "a1-opportunite"), {
-  titre: "Développer le revenu des cabinets orthodontiques déjà équipés", fil: "Montée en gamme", court: "Valeur et montée en gamme" });
 Object.assign(T.vues.find((v) => v.id === "a1-proposition"), { });
 
 Object.assign(T.vues.find((v) => v.id === "a2-proposition"), { });
@@ -2294,7 +2269,7 @@ Object.assign(T.vues.find((v) => v.id === "a3-proposition"), { });
 /* Axe 1 : valoriser les évolutions livrées */
 function construireAxe1Gtm() {
   $("vue-a1o").insertAdjacentHTML("beforeend", `
-  <p class="a1-gtm rv-2"><b>Enjeu transversal</b>mieux valoriser les évolutions livrées pour en accélérer la découverte, l’adoption et, lorsque c’est pertinent, la montée en gamme.</p>
+  <p class="a1-gtm rv-2"><b>Go-to-market</b>faire découvrir et adopter les évolutions livrées et, lorsque c’est pertinent, en faire un argument de montée en gamme.</p>
   <div class="a1-mesure rv-2"><ol>${["Évolution livrée", "Bénéfice client", "Découverte", "Activation", "Adoption", "Montée en gamme éventuelle"].map((x) => `<li>${x}</li>`).join("")}</ol>
     <button type="button" class="pilier-zoom" id="a1GtmBtn">Comment je valoriserais une évolution</button></div>
   <div class="a2-wf a1-gtm-pan" id="a1Gtm" hidden role="dialog" aria-label="Valoriser une évolution livrée">
@@ -2311,10 +2286,10 @@ function construireAxe1Gtm() {
   $("a1GtmFermer").addEventListener("click", () => { p.hidden = true; $("a1GtmBtn").focus({ preventScroll: true }); });
 }
 T.approfondir = {
-  "pratiques-metiers": [["pratiques-etape", "Approfondir : une étape comparée"]],
-  "org-roles": [["org-structures", "Approfondir : les structures"]],
-  "eco-postures": [["eco-acteurs", "Approfondir : l’écosystème"]],
-  "pays-bifurcation": [["pays-impacts", "Approfondir : les impacts logiciels"]]
+  "pratiques-metiers": [["pratiques-etape", "Approfondir : une étape comparée entre pratiques"]],
+  "org-roles": [["org-structures", "Approfondir : des organisations différentes"]],
+  "eco-postures": [["eco-acteurs", "Approfondir : l’écosystème d’outils"]],
+  "pays-bifurcation": [["pays-impacts", "Approfondir : les adaptations du logiciel"]]
 };
 function majApprofondir(v) {
   const el = $("approfondir"), liens = T.approfondir[v.id];
@@ -2373,7 +2348,7 @@ function majFocus() {
   caps.forEach((c) => c.classList.toggle("dans-focus", +c.dataset.e === focus));
   const liste = caps.filter((c) => +c.dataset.e === focus).map((c, i) => i ? c.textContent.charAt(0).toLowerCase() + c.textContent.slice(1) : c.textContent);
   $("titre").textContent = T.focusTitre(`« ${nom} »`);
-  $("sousTitre").textContent = liste.length ? T.focusSousTitre(liste.join(", ")) : "Aucun besoin spécifique retenu ici : l’étape existe pour ces pratiques, mais ne les distingue pas.";
+  $("sousTitre").textContent = liste.length ? T.focusSousTitre(liste.join(", ")) : "Aucun besoin spécifique à une pratique n’est illustré pour cette étape.";
 }
 
 function aller(n, anime = true, sens = 0) {
