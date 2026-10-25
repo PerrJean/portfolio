@@ -14,7 +14,7 @@
     "@astrojs/markdown-satteri": "^0.4.2",
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource/atkinson-hyperlegible-next": "^5.3.0",
-    "astro": "^7.3.5"
+    "astro": "^7.4.2"
   },
   "devDependencies": {
     "playwright": "^1.64.1"
