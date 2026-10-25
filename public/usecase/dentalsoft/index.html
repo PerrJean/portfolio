@@ -41,7 +41,10 @@ button { font: inherit; color: inherit; }
 /* La scène 16:9, 1600 × 900, centrée et mise à l’échelle */
 .cadre { position: fixed; inset: 0; overflow: clip; }
 .scene { overflow: clip; position: absolute; left: 50%; top: 50%; width: 1600px; height: 900px; background: var(--ivoire); transform-origin: center; transform: translate(-50%, -50%) scale(.5); }
-.soleil { position: absolute; top: 0; right: 0; width: 140px; height: 140px; pointer-events: none; }
+.soleil { position: absolute; top: 0; right: 0; width: 140px; height: 140px; pointer-events: none; transform-origin: 100% 0; transition: transform .2s ease, opacity .2s ease; }
+.soleil-lien { position: absolute; top: 0; right: 0; width: 140px; height: 140px; z-index: 5; display: block; cursor: pointer; }
+.soleil-lien:hover .soleil, .soleil-lien:focus-visible .soleil { transform: scale(1.05); opacity: .92; }
+.soleil-lien:focus-visible { outline-offset: -3px; }
 
 /* En-tête */
 .entete { position: absolute; left: 40px; top: 58px; width: 1380px; transition: opacity .3s ease; }
@@ -1000,12 +1003,14 @@ button { font: inherit; color: inherit; }
 <body>
 <div class="cadre">
 <main class="scene" id="scene">
+  <a href="/" class="soleil-lien" aria-label="Accueil du portfolio" title="Accueil du portfolio">
   <svg class="soleil" viewBox="0 0 200 200" aria-hidden="true">
     <circle cx="200" cy="0" r="169" fill="none" stroke="#B54E19" stroke-width="8"/>
     <circle cx="200" cy="0" r="150" fill="none" stroke="#D3772A" stroke-width="11"/>
     <circle cx="200" cy="0" r="129" fill="none" stroke="#E48F33" stroke-width="14"/>
     <circle cx="200" cy="0" r="110" fill="#F2A33A"/>
   </svg>
+  </a>
 
   <header class="entete" id="entete" aria-live="polite">
     <div class="compteur" id="compteur"></div>
