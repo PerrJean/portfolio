@@ -18,6 +18,7 @@ export const ROUTES = {
   matrice: { fr: '/projets/matrice-competences/', en: '/en/projects/skills-matrix/' },
   atelierPilotage: { fr: '/projets/tableau-de-bord-client/', en: '/en/projects/client-dashboard/' },
   aPropos: { fr: '/a-propos/', en: '/en/about/' },
+  monMetier: { fr: '/mon-metier/', en: '/en/my-job/' },
 } as const satisfies Record<string, Record<Langue, string>>;
 
 export type Page = keyof typeof ROUTES;

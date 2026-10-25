@@ -25,6 +25,7 @@ const NOMS_DE_PAGES = {
   Fusion: { fr: '/projets/fusion-plateformes/', en: '/en/projects/platform-merger/' },
   'Tableau de bord client': { fr: '/projets/tableau-de-bord-client/', en: '/en/projects/client-dashboard/' },
   'À propos': { fr: '/a-propos/', en: '/en/about/' },
+  'Mon métier': { fr: '/mon-metier/', en: '/en/my-job/' },
 };
 
 /**
@@ -205,13 +206,19 @@ const lirePage = ({ chemin, fichier }) => {
   return readFileSync(fichier, 'utf8');
 };
 
-/** Le fichier source d'une page : le Markdown du projet, ou la page À propos. */
-function sourceDe(chemin, langue) {
+/**
+ * Les fichiers source d'une page : pour un projet, son Markdown et
+ * src/contenu/projets.ts (les compétences du cadre, dont « Discovery ») ;
+ * sinon la page Mon métier ou la page À propos.
+ */
+function sourcesDe(chemin, langue) {
   if (/\/(projets|projects)\//.test(chemin)) {
     const slug = chemin.split('/').filter(Boolean).pop();
-    return join(RACINE, 'src', 'contenu', 'projets', langue, `${slug}.md`);
+    return [join(RACINE, 'src', 'contenu', 'projets', langue, `${slug}.md`), join(RACINE, 'src', 'contenu', 'projets.ts')];
   }
-  return join(RACINE, 'src', 'pages', ...(langue === 'en' ? ['en', 'about.astro'] : ['a-propos.astro']));
+  if (chemin === NOMS_DE_PAGES['Mon métier'][langue])
+    return [join(RACINE, 'src', 'pages', ...(langue === 'en' ? ['en', 'my-job.astro'] : ['mon-metier.astro']))];
+  return [join(RACINE, 'src', 'pages', ...(langue === 'en' ? ['en', 'about.astro'] : ['a-propos.astro']))];
 }
 
 // Où un terme reste du texte (le texte de ces éléments n'est jamais marqué).
@@ -231,7 +238,7 @@ test('infobulles : le lexique se lit (douze termes, des définitions sans point 
     for (const langue of ['fr', 'en']) if (l[langue]?.endsWith('.')) fautes.push(`« ${l.terme} » (${langue}) finit par un point`);
   for (const v of Object.values(VARIANTES_EN))
     if (!LEXIQUE_MD.includes(`« ${v} »`)) fautes.push(`variante EN « ${v} » absente de la note du lexique`);
-  if (ATTENDU.size !== 12) fautes.push(`${ATTENDU.size} page(s) à bulles : attendu 12 (six paires FR/EN)`);
+  if (ATTENDU.size !== 14) fautes.push(`${ATTENDU.size} page(s) à bulles : attendu 14 (sept paires FR/EN)`);
   assert.equal(fautes.length, 0, `Lexique :\n${liste(fautes)}`);
 });
 
@@ -315,13 +322,14 @@ for (const page of AVEC) {
   test(`infobulles : ${page.chemin}, le mot de chaque bouton est celui du texte source (casse et pluriel)`, () => {
     exigerDist();
     const html = lirePage(page);
-    const fichier = sourceDe(page.chemin, page.lang);
-    assert.ok(existsSync(fichier), `Source de ${page.chemin} introuvable : ${fichier}`);
-    const source = normaliser(readFileSync(fichier, 'utf8').replace(/&nbsp;/g, ' '));
+    const fichiers = sourcesDe(page.chemin, page.lang);
+    for (const f of fichiers) assert.ok(existsSync(f), `Source de ${page.chemin} introuvable : ${f}`);
+    const source = fichiers.map((f) => normaliser(readFileSync(f, 'utf8').replace(/&nbsp;/g, ' '))).join('\n');
     const fautes = [];
     for (const { mot } of boutons(html)) {
       const re = new RegExp(`(?<![\\p{L}\\p{N}])${echapperRe(normaliser(mot))}(?![\\p{L}\\p{N}])`, 'u');
-      if (!re.test(source)) fautes.push(`« ${mot} » n'est pas écrit ainsi dans ${relative(RACINE, fichier)}`);
+      if (!re.test(source))
+        fautes.push(`« ${mot} » n'est pas écrit ainsi dans ${fichiers.map((f) => relative(RACINE, f)).join(' ni ')}`);
     }
     assert.equal(fautes.length, 0, `${page.chemin} :\n${liste(fautes)}`);
   });

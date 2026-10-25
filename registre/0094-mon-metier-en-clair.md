@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `chantier` | `contenu` | 480 | | `claude-opus-5-5` |
+| `chantier` | `contenu` | 480 | 1 070 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)** : une page « Head of Product pour les nuls »,
 sans ce titre, pour les RH généralistes, avec un lien explicite depuis
@@ -13,7 +13,7 @@ page y répond en partie seulement.
 
 **Spec (questionnaire du 2026-10-25, recommandations retenues sauf la
 comparaison)** :
-- **Titre** : « Mon métier en clair » (EN « My job in plain words »).
+- **Titre** : « Mon métier en clair » (EN « My job in plain English », relevé anglais).
   Adresses `/mon-metier/` et `/en/my-job/`, clé `monMetier` dans les routes.
 - **Porte sur l'accueil** : une ligne-lien sous le sous-titre de l'accroche,
   à la taille du sous-titre, pas un bloc : « Mon métier et mes points forts,
@@ -83,7 +83,7 @@ comparaison)** :
      reste la preuve de la section 2, pas d'ici : aucune redite.
 - **N'entre pas** : le parcours (employeur, dates, formation : « À propos »,
   et C1) ; le détail des projets ; un lexique (les infobulles de 0088
-  suffisent, seuls Product Manager et Product Designer gardent leur bulle) ;
+  suffisent ; Jean a gardé les bulles que la page reçoit, voir la clôture) ;
   contact et CV (point 0005). La page finit par un renvoi vers « À propos »
   et LinkedIn.
 - **Jumelle EN (C7)** : réécrite en anglais naturel après le tri FR, puis
@@ -114,3 +114,23 @@ dont la comparaison resserrée, les sigles en toutes lettres à la première
 mention, « Mettre l'IA au service de la qualité » (redite d'« À propos »
 évitée), « en clair » au lieu de « sans jargon » dans la ligne-lien.
 Application avec 0098 : `prompts/9-tri-mon-metier.md`.
+
+**Clôture (2026-10-25)** : en ligne à `/mon-metier/` et `/en/my-job/`, avec
+une ligne-lien sous le sous-titre des deux accueils, sans entrée de menu.
+Anglais : relevé passé, tri de Jean en entier (dont « My job in plain
+English »). Infobulles (Jean) : la page garde les siennes (Product Designer,
+learning designer, discovery, lead developer en EN) ; discovery reçoit sa
+définition FR, qui pose aussi une bulle sur Tableau de bord client et Mises
+en situation en FR, gardée par Jean. Tests écrits par un autre agent :
+`tests/mon-metier.test.mjs`, 12 tests, 241 au total, un test casse bien
+quand la ligne-lien est faussée. Revue en contexte neuf : publiable, rien de
+grave. Laissés, en le sachant : la règle `.fiche__texte h2` vaut pour toutes
+les fiches (sans effet sur « À propos », qui n'a pas de `h2`) ; la page fait
+environ 500 mots pour 450 prévus ; sur téléphone, la ligne-lien repousse le
+premier projet de 66 px, qui reste dans le premier écran.
+**Coût réel** : 1 070 k (rédaction 133, relevé 131, tri 115, anglais 120,
+relevé anglais 122, intégration 152, tests 164, revue 151, moins ~20 pour
+0098), ratio 2,2. Chaque étape a coûté deux à trois fois son estimé : une
+étape en sous-agent coûte au moins 110 k, quel que soit son volume.
+**Reste la mesure** : le regard RH de 0080 refait par un agent neuf (estimé
+100 k), à lancer sur le site en ligne.

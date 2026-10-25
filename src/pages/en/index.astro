@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Parcelles from '../../components/Parcelles.astro';
 import Soleil from '../../components/Soleil.astro';
 import Scene from '../../components/scene/Scene.astro';
+import { chemin } from '../../i18n/routes';
 import { UI } from '../../i18n/textes';
 ---
 
@@ -21,6 +22,9 @@ import { UI } from '../../i18n/textes';
       <p class="accroche__sous-titre">
         Since 2024, I have led a team of one Product Manager and two Product Designers at an EdTech company of
         around forty people.
+      </p>
+      <p class="accroche__lien">
+        <a href={chemin('monMetier', 'en')}>My job and my strengths, in plain English (2&nbsp;min)</a>
       </p>
     </div>
   </section>

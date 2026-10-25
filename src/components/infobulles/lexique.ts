@@ -13,8 +13,9 @@
  * texte : la définition, sans point final (la bulle l'ajoute, le repli sans
  * popover non).
  *
- * Une langue absente : pas de bulle dans cette langue (« discovery » n'a
- * de définition qu'en anglais).
+ * Une langue absente : pas de bulle dans cette langue. (« discovery » n'a
+ * eu de définition qu'en anglais jusqu'à la page « Mon métier en clair »,
+ * registre/0094 : sa définition FR a été donnée par Jean le 2026-10-25.)
  */
 import type { Langue } from '../../i18n/routes';
 
@@ -87,6 +88,11 @@ export const LEXIQUE: readonly Entree[] = [
   {
     id: 'discovery',
     langues: {
+      fr: {
+        terme: 'Discovery',
+        motif: 'discovery',
+        texte: 'le travail d’écouter les utilisateurs et de tester des idées avant de décider quoi construire',
+      },
       en: {
         terme: 'Discovery',
         motif: 'discovery',

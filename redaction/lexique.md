@@ -12,12 +12,12 @@ Relevé des lourdeurs passé, tri de Jean appliqué.
 | epics | Matrice | des chantiers trop vastes pour être livrés d’un coup, que l’équipe découpe en plus petits morceaux | pieces of work too big to ship in one go, which the team splits into smaller ones |
 | grooming | Matrice | la réunion où l’équipe relit et précise ce qu’elle développera ensuite, et en estime l’effort | the meeting where the team reviews and clarifies what it will build next, and estimates the effort |
 | delivery | Matrice | mener ce que l’équipe développe jusqu’à la mise en ligne, dans les délais prévus | taking what the team builds all the way to release, on schedule |
-| discovery | Mises en situation (EN seul), Tableau de bord client (EN seul) | — | the work of talking to users and testing ideas before deciding what to build |
+| discovery | Mises en situation, Tableau de bord client, Mon métier | le travail d’écouter les utilisateurs et de tester des idées avant de décider quoi construire | the work of talking to users and testing ideas before deciding what to build |
 | Design Sprint | Mises en situation | quelques jours d’ateliers pour passer d’une question à un prototype testé auprès d’utilisateurs | a few days of workshops to go from a question to a prototype tested with users |
 | churn | Audit | le départ des clients qui ne renouvellent pas leur abonnement | customers leaving by not renewing their subscription |
-| learning designer | Audit, Fusion, Mises en situation | la personne qui conçoit les contenus et les exercices de formation, et l’ordre dans lequel l’apprenant les suit | the person who designs the course content and exercises, and the order learners take them in |
-| Product Designer | Fusion, Mises en situation, À propos, Tableau de bord client | la personne qui conçoit les écrans du produit et la façon de s’en servir, à partir des besoins des utilisateurs | the person who designs the product’s screens and how people use them, based on what users need |
-| lead développeur | Fusion | le développeur qui guide les autres et tranche les choix techniques | the developer who guides the others and makes the final technical calls |
+| learning designer | Audit, Fusion, Mises en situation, Mon métier | la personne qui conçoit les contenus et les exercices de formation, et l’ordre dans lequel l’apprenant les suit | the person who designs the course content and exercises, and the order learners take them in |
+| Product Designer | Fusion, Mises en situation, À propos, Tableau de bord client, Mon métier | la personne qui conçoit les écrans du produit et la façon de s’en servir, à partir des besoins des utilisateurs | the person who designs the product’s screens and how people use them, based on what users need |
+| lead développeur | Fusion, Mon métier (EN seul) | le développeur qui guide les autres et tranche les choix techniques | the developer who guides the others and makes the final technical calls |
 | scale-up SaaS B2B | À propos | une entreprise en forte croissance qui vend un logiciel en ligne, sur abonnement, à d’autres entreprises | a fast-growing company selling online software, by subscription, to other businesses |
 
 À vérifier à l’intégration : la page À propos EN dit « B2B SaaS scale-up »,
