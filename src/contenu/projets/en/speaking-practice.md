@@ -9,7 +9,7 @@ fait: "E-learning can finally help learners practice speaking: an AI plays the o
 synthese:
   probleme: "On an EdTech language-learning platform, learners had few chances to practice speaking in realistic situations, such as facing a recruiter or a client. The AI conversations available elsewhere often sat outside the learning path, with scores nobody explained."
   action: "We bet on a guided conversation: a short exchange, built on questions prepared by the learning designers. I framed the method and the Design Sprint with the Product Designer and the Product Manager on my team. Both then ran interviews and surveys with clients."
-  resultat: "The surveys validated the format and reordered what came next: learning feedback first, and a catalog built on the topics rated must-have. The role-plays are live in four learning paths, and the project brought in several tens of thousands of euros in revenue from new clients."
+  resultat: "The surveys validated the format and reordered what came next: learning feedback first, and a catalog built on the topics rated must-have. The role-plays are live in four learning paths, and the project brought in several tens of thousands of euros in additional sales to existing client companies."
 plusLoin:
   - titre: "The timeline"
     points:
@@ -68,7 +68,7 @@ Pronunciation called for the clearest trade-off. A minority of clients asked for
 
 ## Benefits and business impact
 
-The project brought in several tens of thousands of euros in new revenue. Client companies want to see their employees progress in speaking. The end-of-exchange feedback shows that progress.
+The project brought in several tens of thousands of euros in additional sales to existing client companies. These companies want to see their employees progress in speaking. The end-of-exchange feedback shows that progress.
 
 At the end of September 2026, the role-plays are live in four learning paths, including the A2 general path and the business paths. Learning feedback is in place. Two more learning paths, conversation statistics and usage analysis are the next steps.
 

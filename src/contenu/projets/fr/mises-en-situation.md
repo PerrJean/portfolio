@@ -9,7 +9,7 @@ fait: "L’e-learning permet enfin de travailler l’expression orale : une IA 
 synthese:
   probleme: "Sur une plateforme EdTech d’apprentissage des langues, l’apprenant avait peu d’occasions de s’entraîner à parler en situation, face à un recruteur ou à un client. Ailleurs, les applications de conversation avec une IA restaient souvent hors du parcours d’apprentissage, et leurs scores n’étaient pas expliqués."
   action: "Nous avons parié sur une conversation encadrée : un échange court, sur des questions préparées par les learning designers. J’ai cadré la méthode et le Design Sprint avec la Product Designer et le Product Manager de mon équipe. Tous deux ont ensuite mené entretiens et enquêtes auprès des clients."
-  resultat: "Les enquêtes ont validé le format et réordonné la suite : le retour pédagogique d’abord, un catalogue construit sur les thèmes jugés indispensables. Les mises en situation IA sont en ligne dans quatre parcours, et le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires auprès de nouveaux clients."
+  resultat: "Les enquêtes ont validé le format et réordonné la suite : le retour pédagogique d’abord, un catalogue construit sur les thèmes jugés indispensables. Les mises en situation IA sont en ligne dans quatre parcours, et le projet a apporté plusieurs dizaines de milliers d’euros de ventes complémentaires auprès des entreprises déjà clientes."
 plusLoin:
   - titre: "Le calendrier"
     points:
@@ -68,7 +68,7 @@ La prononciation a demandé l’arbitrage le plus net. Une minorité de clients 
 
 ## Bénéfices et impact business
 
-Le projet a apporté plusieurs dizaines de milliers d’euros de chiffre d’affaires nouveau. Les entreprises clientes veulent voir leurs salariés progresser à l’oral. Le retour de fin d’échange rend ce progrès visible.
+Le projet a apporté plusieurs dizaines de milliers d’euros de ventes complémentaires auprès des entreprises déjà clientes. Ces entreprises veulent voir leurs salariés progresser à l’oral. Le retour de fin d’échange rend ce progrès visible.
 
 À la fin de septembre 2026, les mises en situation IA sont en ligne dans quatre parcours, dont le parcours général de niveau A2 et les parcours business. Le retour pédagogique est en place. Deux parcours de plus, les statistiques des conversations et l’analyse de l’usage sont les prochaines étapes.
 
