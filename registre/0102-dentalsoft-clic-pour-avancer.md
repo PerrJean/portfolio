@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `chantier` | `publication` | 200 | | `claude-opus-5-5` |
+| `chantier` | `publication` | 200 | 136 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-26)** : sur `/usecase/dentalsoft/`, un clic sur
 la page passe à la suite, sauf sur les boutons existants.
@@ -27,3 +27,9 @@ la page passe à la suite, sauf sur les boutons existants.
   ajouté à l'écran.
 
 Brief : `prompts/9-dentalsoft-clic.md`.
+
+**Fait le 2026-10-26.** Un écouteur sur `#scene` appelle `pas(1)`, la
+fonction de « Suivant » ; liste d'exclusion `CLIC_INERTE`, en un seul
+endroit. 23 contrôles Playwright jetables sur 23, 246 tests verts.
+**Écart à la spec** : un panneau ouvert n'est pas fermé par le clic (le
+clic garde son comportement d'avant) ; il n'avance pas non plus.

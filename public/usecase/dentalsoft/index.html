@@ -2457,6 +2457,33 @@ $("btnRetour").addEventListener("click", () => { if (retourDepuis !== null) alle
 $("approfondir").addEventListener("click", (ev) => { const b = ev.target.closest("[data-approfondir]"); if (b) aller(indexId(b.dataset.approfondir)); });
 document.addEventListener("click", (ev) => { if (!$("methode").hidden && !ev.target.closest("#methode, #btnMethode")) fermerMethode(); });
 
+/* Un clic sur la scène fait la même chose que « Suivant » (registre/0102) : dévoilement, puis écran.
+   Jamais sur ce qui réagit déjà au clic (la liste ci-dessous, la seule), ni dans un prototype, ni
+   quand quelque chose est ouvert : alors le clic ne fait que ce qu’il faisait déjà. */
+const CLIC_INERTE = [
+  "button, a, input, select, textarea, label, summary, [contenteditable]",   // contrôles natifs (le soleil est un lien)
+  "[role=button], [role=link], [role=tab], [tabindex]",                     // contrôles par rôle, éléments focalisables
+  "[data-info], .capsule",                                                  // termes et capsules à infobulle
+  "[data-aller], [data-i], [data-approfondir]",                             // liens internes, Sommaire, Approfondir
+  ".etape",                                                                 // frise : une étape se compare au clic
+  ".nav-bas, #sommaire",                                                    // barres de navigation, marges comprises
+  ".pro, .mp, .at"                                                          // les trois prototypes : le clic y sert la démonstration
+].join(", ");
+/* Une bulle se ferme au pointerdown (capture sur document) : l’état se relève avant, sur window. */
+let ouvertAuPointer = false;
+const quelqueChoseOuvert = () => !!bulleOuverte || demoOuverte || !$("plan").hidden || !$("methode").hidden
+  || ($("storyMap") && !$("storyMap").hidden) || PANNEAUX.some(([id]) => $(id) && !$(id).hidden);
+window.addEventListener("pointerdown", () => { ouvertAuPointer = quelqueChoseOuvert(); }, true);
+scene.addEventListener("click", (ev) => {
+  const ouvert = ouvertAuPointer; ouvertAuPointer = false;
+  if (ev.button !== 0 || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.altKey) return;
+  if (ouvert || quelqueChoseOuvert()) return;
+  if (ev.target.closest && ev.target.closest(CLIC_INERTE)) return;
+  if (getSelection().toString()) return;
+  if ($("suiv").disabled) return;
+  pas(1);
+});
+
 /* Infobulles (registre/0099). La bulle est le ::after du terme. À l’ouverture (survol, focus,
    toucher), le terme passe dans la couche supérieure du navigateur (popover="manual"), à ses
    coordonnées d’écran et à l’échelle de la scène : ni la frise, ni le bord de la scène, ni
