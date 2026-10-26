@@ -11,6 +11,7 @@ export const UI: Record<
     navigation: string;
     menu: string;
     projets: string;
+    monMetier: string;
     aPropos: string;
     langue: string;
     locale: string;
@@ -28,6 +29,7 @@ export const UI: Record<
     navigation: 'Navigation principale',
     menu: 'Menu',
     projets: 'Projets',
+    monMetier: 'Mon métier',
     aPropos: 'À propos',
     langue: 'Langue',
     locale: 'fr_FR',
@@ -44,6 +46,7 @@ export const UI: Record<
     navigation: 'Main navigation',
     menu: 'Menu',
     projets: 'Projects',
+    monMetier: 'My job',
     aPropos: 'About',
     langue: 'Language',
     locale: 'en_US',

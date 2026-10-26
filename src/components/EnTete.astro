@@ -1,5 +1,5 @@
 ---
-// L'en-tête : logo-lunettes et nom, Projets · À propos, FR | EN, LinkedIn.
+// L'en-tête : logo-lunettes et nom, Projets · Mon métier · À propos, FR | EN, LinkedIn.
 // Sous 720 px, la navigation se replie sous un <button> menu. Sans
 // JavaScript, elle reste dépliée.
 import Bascule from './Bascule.astro';
@@ -32,6 +32,11 @@ const accueil = chemin('accueil', langue);
       <nav aria-label={t.navigation}>
         <ul>
           <li><a href={`${accueil}#projets`}>{t.projets}</a></li>
+          <li>
+            <a href={chemin('monMetier', langue)} aria-current={page === 'monMetier' ? 'page' : undefined}>
+              {t.monMetier}
+            </a>
+          </li>
           <li>
             <a href={chemin('aPropos', langue)} aria-current={page === 'aPropos' ? 'page' : undefined}>
               {t.aPropos}
