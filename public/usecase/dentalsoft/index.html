@@ -256,6 +256,10 @@ button { font: inherit; color: inherit; }
 .point.facultatif { opacity: .35; }
 .court-btn { appearance: none; cursor: pointer; background: transparent; border: 2px solid var(--encre); border-radius: 999px; padding: 6px 14px; font-weight: 700; font-size: 15px; }
 .court-btn[aria-pressed="true"] { background: var(--ambre); color: #2A1F1A; }
+/* Redémarrer les démos (registre/0103) : collé à « Parcours intégral », son retour à côté, de largeur fixe pour ne rien décaler */
+.plan-tete .court-btn { white-space: nowrap; }
+.plan-tete #btnDemos { margin-left: 0; }
+.demos-ok { flex: none; width: 175px; font-size: 15px; font-weight: 700; color: var(--encre); }
 
 /* ===== Architecture globale : parties, gabarits, démonstrations ===== */
 .f { visibility: visible; transition: opacity .45s ease, visibility 0s linear 0s; }
@@ -1080,7 +1084,7 @@ button { font: inherit; color: inherit; }
     <div class="demo-corps" id="demoCorps"></div>
   </div>
   <div class="plan" id="plan" role="dialog" aria-modal="true" aria-label="Plan de la présentation" hidden>
-    <div class="plan-tete"><h2>Sommaire</h2><span class="plan-aide">Un clic ouvre l’écran. S ou P : sommaire. Par défaut, Suivant suit le parcours principal ; les écrans « Réserve » restent accessibles ici. Durée visée : 25 min environ.</span><button type="button" class="court-btn" id="btnCourt" aria-pressed="false" title="Par défaut, Suivant saute les écrans en réserve">Parcours intégral</button><button type="button" id="fermerPlan">Fermer</button></div>
+    <div class="plan-tete"><h2>Sommaire</h2><span class="plan-aide">Un clic ouvre l’écran. S ou P : sommaire. Par défaut, Suivant suit le parcours principal ; les écrans « Réserve » restent accessibles ici. Durée visée : 25 min environ.</span><button type="button" class="court-btn" id="btnCourt" aria-pressed="false" title="Par défaut, Suivant saute les écrans en réserve">Parcours intégral</button><button type="button" class="court-btn" id="btnDemos" title="Remet le compte rendu, Migration Preview et l’Atlas métier dans leur état de départ">Redémarrer les démos</button><span class="demos-ok" id="demosOk" aria-live="polite"></span><button type="button" id="fermerPlan">Fermer</button></div>
     <div class="plan-grille" id="planGrille"></div>
   </div>
 </main>
@@ -1375,6 +1379,9 @@ const $ = (id) => document.getElementById(id);
 const scene = $("scene");
 const gauche = (n) => 200 + (n - 1) * 170;   // bord gauche de la colonne de l’étape n
 let vue = 0, focus = 3, avecPlus = false;
+/* Remises à zéro des trois prototypes, une par prototype, inscrites par leur constructeur ;
+   « Redémarrer les démos » les joue toutes (registre/0103). */
+const REMISES_DEMOS = [];
 
 function construire() {
   /* La frise */
@@ -1412,6 +1419,13 @@ function construire() {
     majReserve(T.vues[vue]);
     majApprofondir(T.vues[vue]);
     majCompteur();
+  });
+  let effacerDemosOk = null;
+  $("btnDemos").addEventListener("click", () => {
+    REMISES_DEMOS.forEach((remettre) => remettre());
+    ["vue-a1p", "vue-a2p", "vue-a3p"].forEach((id) => [$(id), ...$(id).querySelectorAll("*")].forEach((el) => { el.scrollTop = 0; el.scrollLeft = 0; }));
+    const ok = $("demosOk"); ok.textContent = "Démos remises à zéro";
+    clearTimeout(effacerDemosOk); effacerDemosOk = setTimeout(() => { ok.textContent = ""; }, 2000);
   });
   $("fermerPlan").addEventListener("click", () => plan(false));
 }
@@ -1760,18 +1774,22 @@ function construireAxe1() {
     vp.querySelectorAll("textarea, input").forEach((x) => x.disabled = true);
     $("a1Valider").disabled = true; etape(3);
   });
-  $("a1Reset").addEventListener("click", () => {
+  const recommencer = () => {
     vp.classList.remove("valide"); $("a1Vide").hidden = false; $("a1Cr").hidden = true;
+    $("a1TelResume").textContent = ""; $("a1TelConsignes").innerHTML = "";
     $("a1Statut").textContent = "Brouillon, non visible par la famille";
     vp.querySelectorAll("textarea, input").forEach((x) => x.disabled = false);
     $("a1Resume").value = $("a1Resume").defaultValue;
     vp.querySelectorAll(".pro-consignes input").forEach((c) => c.checked = c.defaultChecked);
     $("a1Valider").disabled = false; etape(1);
-  });
-  $("a1ValidBtn").addEventListener("click", () => {
-    const o = $("a1Valid").hidden; $("a1Valid").hidden = !o; $("a1ValidBtn").setAttribute("aria-expanded", String(o));
+  };
+  $("a1Reset").addEventListener("click", recommencer);
+  const montrerValidation = (o) => {
+    $("a1Valid").hidden = !o; $("a1ValidBtn").setAttribute("aria-expanded", String(o));
     $("a1ValidBtn").textContent = o ? "Masquer la validation envisagée" : "Voir la validation envisagée";
-  });
+  };
+  $("a1ValidBtn").addEventListener("click", () => montrerValidation($("a1Valid").hidden));
+  REMISES_DEMOS.push(() => { recommencer(); montrerValidation(false); });
 }
 
 /* ===== Niveaux de raisonnement : ambition, levier, proposition ===== */
@@ -1889,15 +1907,19 @@ function construireAxe2() {
       li.querySelector("button").disabled = e > atteint;
     });
   };
+  let analyse = null;
+  const finAnalyse = () => { clearTimeout(analyse); analyse = null; $("mpProgres").hidden = true; $("mpAnalyser").disabled = false; };
   $("mpAnalyser").addEventListener("click", () => {
-    const p = $("mpProgres"); p.hidden = false; $("mpAnalyser").disabled = true;
-    setTimeout(() => { p.hidden = true; $("mpAnalyser").disabled = false; montrer(2); }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 1200);
+    $("mpProgres").hidden = false; $("mpAnalyser").disabled = true;
+    analyse = setTimeout(() => { finAnalyse(); montrer(2); }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 1200);
   });
   mp.addEventListener("click", (ev) => {
     const s = ev.target.closest("[data-suite]"); if (s) montrer(+s.dataset.suite);
     const e = ev.target.closest("[data-aller-etape]"); if (e && !e.disabled) montrer(+e.dataset.allerEtape);
   });
-  $("mpRejouer").addEventListener("click", () => { atteint = 2; montrer(2); });
+  const rejouer = () => { finAnalyse(); atteint = 2; montrer(2); };
+  $("mpRejouer").addEventListener("click", rejouer);
+  REMISES_DEMOS.push(rejouer);
   montrer(2);
 
   /* Écran 3 : valider, puis décider */
@@ -2084,9 +2106,11 @@ function construireAxe3() {
     const pf = t.closest("[data-panneau-fermer]"); if (pf) { etat.panneau[pf.dataset.panneauFermer] = false; etat.ouverte[pf.dataset.panneauFermer] = null; rendre(); return; }
     const f = t.closest("[data-fermer]"); if (f) { etat.ouverte[f.dataset.fermer] = null; rendre(); }
   });
-  $("atReset").addEventListener("click", () => {
+  const rejouerAtlas = () => {
     Object.assign(etat, { mode: "equipe", etape: "demarrage", pays: "be", regle: null, q: { fr: "", be: "" }, ouverte: { fr: null, be: null }, panneau: { fr: false, be: false } }); rendre();
-  });
+  };
+  $("atReset").addEventListener("click", rejouerAtlas);
+  REMISES_DEMOS.push(rejouerAtlas);
   rendre();
 }
 

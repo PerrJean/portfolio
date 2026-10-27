@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `chantier` | `publication` | 120 |  | `claude-opus-5-5` |
+| `chantier` | `publication` | 120 | 148 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-27)** : un bouton « Redémarrer les démos », à
 droite de « Sommaire » ou à un autre endroit pertinent.
@@ -27,3 +27,10 @@ déjà les réglages du présentateur. Jean peut demander la barre du haut.
   (registre/0102) : il est un bouton, donc inerte pour « clic = Suivant ».
 
 Brief : `prompts/9-dentalsoft-redemarrer-demos.md`.
+
+**Fait le 2026-10-27** (148 k). Une remise à zéro par prototype, appelée
+par son propre bouton et par « Redémarrer les démos » (`REMISES_DEMOS`) ;
+s'y ajoutent le panneau « validation envisagée », le téléphone fictif,
+l'analyse Migration Preview en cours et les défilements internes. 31
+contrôles Playwright jetables sur 31, dont l'identité avec une page
+fraîche ; 246 tests verts.
