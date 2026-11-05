@@ -33,7 +33,12 @@ import { DIST, exigerDist, pagesHtml, fichiersDuSite, estHorsGabarit, liste } fr
 
 const MARGE = 2; // px admis hors de l'écran ou hors d'un ancêtre
 const OPACITE_MIN = 0.9; // opacité effective en dessous de laquelle la bulle ne se lit pas
-const ATTENTE_ACTION = 2000; // ms : un déclencheur qui ne reçoit pas l'action en ce temps échoue
+// ms : un déclencheur qui ne reçoit pas l'action en ce temps échoue. Sous la
+// charge de npm test, une action saine (attente d'un cadre stable, test du point
+// touché, envoi de l'événement) a pris jusqu'à 2,4 s ; 2 s échouait au hasard
+// (registre/0104). Le délai ne coûte rien quand l'action passe ; un déclencheur
+// recouvert échoue toujours, au bout de ce temps.
+const ATTENTE_ACTION = 10000;
 
 const SITE = [
   { nom: '375 × 812', viewport: { width: 375, height: 812 }, toucher: true, modes: ['toucher'] },

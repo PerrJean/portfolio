@@ -2,7 +2,7 @@
 
 | nature | etape | cout_estime | cout_reel | modele |
 |---|---|---|---|---|
-| `defaut` | `outil` | 80 | | `claude-opus-5-5` |
+| `defaut` | `outil` | 80 | 138 | `claude-opus-5-5` |
 
 **Constat (2026-11-05)** : `npm test` lancé deux fois, deux échecs
 différents dans `tests/infobulles-navigateur.test.mjs` (registre/0097), tout
@@ -34,3 +34,15 @@ signe d'un délai, pas d'une bulle masquée.
 - Ni le site ni la présentation ne changent.
 
 Brief : `prompts/9-infobulles-test-stable.md`.
+
+**Fait le 2026-11-05** (138 k ; l'estimation de 80 oubliait le temps des
+mesures). Sans charge, rien n'échoue : l'action la plus lente prend 0,39 s.
+Avec 6 processus qui occupent les cœurs, 6 actions sur 406 échouent. Le
+défilement est bref (0,67 s au plus) : le temps passe dans l'attente
+d'images de Chromium, que les 7 passes se partagent. Une action saine prend
+jusqu'à 2,4 s ; sur 50 échecs, aucun ne vient d'un élément recouvert.
+Correction : `ATTENTE_ACTION` de 2 000 à 10 000 ms, rien d'autre. Cinq
+`npm test` verts (246 sur 246) en 78 à 121 s, contre ~170 s avant pour ce
+seul fichier. Le test voit encore : deux bulles recouvertes exprès échouent
+dans les 7 passes, et elles seules. Coût d'une bulle vraiment masquée :
+8 s de plus. Revue en contexte neuf : publiable.
