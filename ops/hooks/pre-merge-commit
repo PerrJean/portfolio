@@ -1,0 +1,10 @@
+#!/bin/sh
+# Hook de pre-merge-commit — Portfolio. Une fusion ne passe jamais sans le
+# controle complet : le pre-commit entier, ou MERGE_HEAD (present pendant ce
+# hook) impose build et tous les tests, bloquants.
+# Git ne l'appelle que pour une fusion qui cree un commit sans conflit ; une
+# fusion en conflit se conclut par un commit ordinaire, que pre-commit couvre
+# par le meme MERGE_HEAD. D'ou `git merge --no-ff` : une avance rapide ne cree
+# aucun commit et ne joue aucun hook.
+# Source versionnee : ops/hooks/pre-merge-commit. Installation : ops/hooks/install.sh
+exec sh "$(git rev-parse --show-toplevel)/ops/hooks/pre-commit" "$@"
