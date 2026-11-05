@@ -42,11 +42,14 @@ echo "-> build et tests"
 # Deux vitesses (modele : UserVoice, registre/0080 ; demande de Jean du
 # 2026-11-05). Sur une branche chantier/* : build et tests SANS les passes en
 # navigateur, NON bloquants -- un point d'etape rouge passe. Ailleurs, et pour
-# toute fusion (MERGE_HEAD present, pre-merge-commit compris) : build et tous
-# les tests, bloquants, comme avant. Tout ce qui precede reste bloquant partout.
+# toute fusion : build et tous les tests, bloquants, comme avant. Tout ce qui
+# precede reste bloquant partout. Une fusion se reconnait a --fusion, que passe
+# pre-merge-commit (git n'ecrit MERGE_HEAD qu'apres ce hook, mesure du
+# 2026-11-05 sur AuditContenu), ou a MERGE_HEAD pour le commit qui conclut une
+# fusion en conflit.
 BRANCHE=$(git symbolic-ref --short -q HEAD || true)
 RAPIDE=
-if ! git rev-parse -q --verify MERGE_HEAD >/dev/null; then
+if [ "${1:-}" != "--fusion" ] && ! git rev-parse -q --verify MERGE_HEAD >/dev/null; then
   case "$BRANCHE" in chantier/*) RAPIDE=1 ;; esac
 fi
 # Construit dans un dossier jetable, lance les tests dessus.
