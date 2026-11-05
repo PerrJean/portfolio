@@ -39,17 +39,36 @@ if [ "$n" -gt 100 ]; then
 fi
 
 echo "-> build et tests"
-# Construit dans un dossier jetable, lance les tests dessus, refuse si echec.
+# Deux vitesses (modele : UserVoice, registre/0080 ; demande de Jean du
+# 2026-11-05). Sur une branche chantier/* : build et tests SANS les passes en
+# navigateur, NON bloquants -- un point d'etape rouge passe. Ailleurs, et pour
+# toute fusion (MERGE_HEAD present, pre-merge-commit compris) : build et tous
+# les tests, bloquants, comme avant. Tout ce qui precede reste bloquant partout.
+BRANCHE=$(git symbolic-ref --short -q HEAD || true)
+RAPIDE=
+if ! git rev-parse -q --verify MERGE_HEAD >/dev/null; then
+  case "$BRANCHE" in chantier/*) RAPIDE=1 ;; esac
+fi
+# Construit dans un dossier jetable, lance les tests dessus.
 command -v node >/dev/null 2>&1 || export PATH="$APPDATA/fnm/node-versions/v24.20.0/installation:$PATH"
 rm -rf .dist-hook
+ROUGE=
 if ! npx astro build --outDir .dist-hook >"$GITDIR/build-hook.log" 2>&1; then
-  cat "$GITDIR/build-hook.log"; rm -rf .dist-hook "$GITDIR/build-hook.log"
-  echo "REFUS : le build echoue."; exit 1
+  cat "$GITDIR/build-hook.log"; ROUGE="le build echoue"
+elif [ -n "$RAPIDE" ]; then
+  echo "   vitesse rapide ($BRANCHE) : sans tests/*-navigateur.test.mjs"
+  DIST=.dist-hook node --test $(ls tests/*.test.mjs | grep -v -- '-navigateur\.test\.mjs$') || ROUGE="des tests echouent"
+else
+  DIST=.dist-hook npm test || ROUGE="des tests echouent"
 fi
 rm -f "$GITDIR/build-hook.log"
-if ! DIST=.dist-hook npm test; then
-  rm -rf .dist-hook
-  echo "REFUS : des tests echouent."; exit 1
+if [ -n "$ROUGE" ]; then
+  if [ -n "$RAPIDE" ]; then
+    echo "   ! $ROUGE : NON bloquant sur $BRANCHE ; la fusion jouera build et tests complets"
+  else
+    rm -rf .dist-hook
+    echo "REFUS : $ROUGE."; exit 1
+  fi
 fi
 
 echo "-> alertes de redaction (non bloquantes)"
