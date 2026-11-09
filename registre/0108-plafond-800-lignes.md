@@ -46,7 +46,8 @@ Test `tests/plafond-lignes.test.mjs`, sans dépendance ni site construit.
    rouge : l'exception est caduque et se retire du test.
 5. Au-delà de 800 lignes, rouge, avec un message qui nomme chaque fichier et
    son nombre de lignes.
-6. Rapide : bien moins d'une seconde sur le dépôt.
+6. Rapide : une fraction de seconde au-delà du démarrage de node, quand la
+   suite complète en prend une minute.
 
 **Critères d'acceptation** : vert sur le dépôt ; rouge sur un fichier suivi
 de 801 lignes ajouté dans une copie jetable, message avec le nom et 801 ;
@@ -56,3 +57,13 @@ vert à 800 ; durée relevée.
 
 - **État de référence (2026-11-09)**, dans le worktree, après `npm ci` et
   `npm run build` : `npm test` → 287 tests, 287 verts, 0 rouge.
+- **Écriture du test** (sous-agent, brief `prompts/0108-test.md`) :
+  `tests/plafond-lignes.test.mjs`, 90 lignes, deux tests (le plafond ;
+  l'exception encore justifiée). Vert sur le dépôt ; dans une copie jetable,
+  rouge à 801 lignes (« essai-801.txt : 801 lignes »), vert à 800. Coût
+  relevé au harnais : 76.
+- **Durée** (`node --test tests/plafond-lignes.test.mjs`, cinq lancements) :
+  596 à 1 050 ms, contre 226 à 289 ms pour un test vide. Le balayage lit
+  502 fichiers suivis (9 Mo, surtout des binaires) : `git ls-files` 198 ms,
+  lecture 348 ms. Critère 6 réécrit sur cette mesure : « bien moins d'une
+  seconde » ne tient pas sur cette machine, démarrage de node compris.
