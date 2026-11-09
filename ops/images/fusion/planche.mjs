@@ -60,7 +60,7 @@ const TEXTES = {
     support: 'Support', question: 'Question',
     titres: {
       'avant-apres': `Avant : trois plateformes, chacune avec son interface, ses gabarits d’activité et ses données, chacune dessinée d’un trait différent. Après : la plateforme examens et la plateforme généraliste, qui reçoit le contenu Entreprises et passe à quatre gabarits communs, toutes deux posées sur un design system commun. En pointillés, la plateforme unique : second temps, pas encore engagé.`,
-      trajectoires: `Trois trajectoires de valeur apportée dans le temps. La trajectoire retenue monte par paliers, chaque étape rapporte. Livrer vite monte vite puis s’aplatit sous la dette. Construire proprement reste à plat longtemps.`,
+      trajectoires: `Trois trajectoires de valeur apportée dans le temps. La trajectoire retenue monte par paliers, chaque étape rapporte. Livrer vite monte d’abord, puis s’aplatit sous le code à reprendre. Construire proprement reste à plat longtemps.`,
       gabarits: `À gauche, une trentaine de gabarits d’activité, tous différents. À droite, quatre gabarits communs, chacun fait d’un support et d’une question.`,
     },
   },
@@ -87,7 +87,7 @@ const TEXTES = {
     titres: {
       'avant-apres': 'Before: three platforms, each with its own interface, activity templates and data, each drawn with a different line. After: the exam prep platform and the general learning platform, which takes in the business content and moves to four shared templates, both built on a shared design system. Dotted: the single platform, second step, not yet under way.',
       trajectoires: 'Three paths of value delivered over time. The chosen path climbs step by step, every step pays off. Shipping fast climbs quickly, then flattens under debt. Building it clean stays flat for a long time.',
-      gabarits: 'Left: some thirty activity templates, all different. Right: four shared templates, each made of a media block and a question.',
+      gabarits: 'Left: some thirty activity templates, all different. Right: four shared templates, each made of a piece of material and a question.',
     },
   },
 };
