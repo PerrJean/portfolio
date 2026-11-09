@@ -92,3 +92,30 @@ Jean. La Matrice attend la fusion de 0116.
 2026-11-09, worktree `chantier-0117-impact-1d2082` équipé par `npm ci`,
 avant tout changement : `npx astro build --outDir .dist-ref` (21 pages)
 puis `DIST=.dist-ref npm test` → `tests 246 | pass 246 | fail 0`.
+
+## Contenu
+
+Relevé des lourdeurs (0072) par un agent qui n'a pas écrit les textes, sur
+les huit phrases proposées (v1) : redites du fait clé (Fusion, Audit,
+UserVoice), négation en tête et chiffre confondu avec la chute totale (NPS),
+phrase de 38 mots et « Tous deux » ambigu (Mises en situation), année
+manquante (Tableau de bord), calques EN. Une v2 les reprend.
+
+- 2026-11-09, Jean : **v2 retenue pour les huit phrases** (résultats de
+  Fusion, Audit, UserVoice, NPS, Mises en situation, Tableau de bord ;
+  actions d'Audit et de Mises en situation), FR et EN.
+- 2026-11-09, Jean : la release interne du 3 novembre sur l'audit d'une
+  certification complète servira **plus tard, au corps de la page Audit**,
+  hors de 0117 ; rien n'en entre ici (C2, C3).
+
+## Tests et code
+
+- Test (sous-agent, brief `prompts/0117-test.md`) : `tests/temps.test.mjs`,
+  31 tests. Sur `.dist-ref` : `DIST=.dist-ref node --test
+  tests/temps.test.mjs` → `tests 31 | pass 2 | fail 29` ; les 29 rouges
+  viennent du `dl` absent. Le test retire la définition des bulles
+  (`span.infobulle`) et garde le mot (Design Sprint, Mises en situation).
+  Il est plus strict que le brief sur deux points : C regarde aussi CSS et
+  JS, A exige le `dl` dans `.synthese`.
+- Point d'étape non committé avant le codeur : le hook joue tous les tests,
+  bloquants hors `chantier/*`, et le test rouge l'aurait refusé.

@@ -9,7 +9,7 @@ fait: "I tested seventeen hypotheses on the NPS drop: it was not the product, bu
 synthese:
   probleme: "At the start of the 2026 school year, the NPS (Net Promoter Score, the likelihood-to-recommend score, from −100 to +100) of learners on an EdTech platform fell by around twenty points in a month."
   action: "I wrote the analysis before building the dashboard pages, then tested each possible explanation with AI, one by one."
-  resultat: "The score depended first on the users’ profile and on how their organisation rolled out the solution. Two levers came out of it, and three decisions were made on 9 October."
+  resultat: "The first lever is how clients roll out the solution: when an organisation makes it mandatory, its learners score it around twenty points lower. The second is the product, starting with a content audit. Three decisions followed on 9 October."
 plusLoin:
   - titre: "The seventeen hypotheses in detail"
     points:

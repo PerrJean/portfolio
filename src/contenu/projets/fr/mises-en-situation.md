@@ -8,8 +8,8 @@ cadre:
 fait: "L’e-learning permet enfin de travailler l’expression orale : une IA joue l’interlocuteur, et chaque échange se termine par un retour pédagogique utile."
 synthese:
   probleme: "Sur une plateforme EdTech d’apprentissage des langues, l’apprenant avait peu d’occasions de s’entraîner à parler en situation, face à un recruteur ou à un client. Ailleurs, les applications de conversation avec une IA restaient souvent hors du parcours d’apprentissage, et leurs scores n’étaient pas expliqués."
-  action: "Nous avons parié sur une conversation encadrée : un échange court, sur des questions préparées par les learning designers. J’ai cadré la méthode et le Design Sprint avec la Product Designer et le Product Manager de mon équipe. Tous deux ont ensuite mené entretiens et enquêtes auprès des clients."
-  resultat: "Les enquêtes ont validé le format et réordonné la suite : le retour pédagogique d’abord, un catalogue construit sur les thèmes jugés indispensables. Les mises en situation IA sont en ligne dans quatre parcours, et le projet a apporté plusieurs dizaines de milliers d’euros de ventes complémentaires auprès des entreprises déjà clientes."
+  action: "Avec la Product Designer et le Product Manager de mon équipe, j’ai cadré la méthode et le Design Sprint. Nous avons parié sur une conversation encadrée : un échange court, sur des questions préparées par les learning designers. La Product Designer et le Product Manager ont ensuite mené entretiens et enquêtes auprès des clients."
+  resultat: "Le projet a apporté plusieurs dizaines de milliers d’euros de ventes complémentaires auprès des entreprises déjà clientes. Les mises en situation IA sont en ligne dans quatre parcours ; les enquêtes clients avaient validé le format et fait du retour pédagogique la priorité."
 plusLoin:
   - titre: "Le calendrier"
     points:

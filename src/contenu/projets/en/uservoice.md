@@ -9,7 +9,7 @@ fait: "1 in 3 pieces of negative feedback left on the site is about the content:
 synthese:
   probleme: "An EdTech platform receives thousands of pieces of learner feedback a year, spread across four sources and never read together."
   action: "I brought them together in one place. AI classifies each piece of feedback and flags when it is unsure: a person decides, and that answer helps the AI tell similar cases apart next time. The summary takes five minutes to read, every Monday."
-  resultat: "The team thought it was mostly bugs. The feedback pointed to the content: we put the effort into its quality."
+  resultat: "The Content audit project grew out of this finding. An issue that is still rare in the feedback is now spotted as soon as it starts coming up more often."
 langue: en
 cle: uservoice
 ---

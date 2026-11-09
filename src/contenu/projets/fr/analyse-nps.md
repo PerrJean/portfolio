@@ -9,7 +9,7 @@ fait: "J’ai testé dix-sept hypothèses sur la chute du NPS : ce n’était p
 synthese:
   probleme: "À la rentrée 2026, le NPS (Net Promoter Score, la note de recommandation, de −100 à +100) des apprenants d’une plateforme EdTech perd une vingtaine de points en un mois."
   action: "J’ai écrit l’analyse avant de construire les pages du tableau de bord, puis j’ai testé avec l’IA chaque explication possible, une par une."
-  resultat: "La note dépend d’abord du profil des utilisateurs et de la façon dont leur organisation déploie la solution. Deux leviers en sortent, et trois décisions ont été prises le 9 octobre."
+  resultat: "Le premier levier est le déploiement chez le client : quand une organisation rend la solution obligatoire, ses apprenants lui donnent une vingtaine de points de moins. Le second est le produit, en commençant par l’audit du contenu. Trois décisions ont suivi le 9 octobre."
 plusLoin:
   - titre: "Les dix-sept hypothèses en détail"
     points:
