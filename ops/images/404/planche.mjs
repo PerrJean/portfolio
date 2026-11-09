@@ -10,29 +10,25 @@
 // Scene.astro) et planche.png, les quatre côte à côte, numérotées.
 // Relançable : node ops/images/404/planche.mjs. Sans paquet ajouté : sharp,
 // et la police @fontsource convertie de WOFF en TTF dans un dossier
-// temporaire, effacé à la fin (même méthode qu'ops/images/apercu.mjs).
+// temporaire, effacé à la fin (avecPolicesTtf, ../commun/police.mjs).
 
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { inflateSync } from 'node:zlib';
 import sharp from 'sharp';
-import { POSES, LUNETTES } from '../../../src/components/scene/poses.ts';
+import { POSES } from '../../../src/components/scene/poses.ts';
+import { avecPolicesTtf } from '../commun/police.mjs';
+import { C, feuille, sol, svgScene } from '../commun/svg.mjs';
+import { perso } from '../commun/personnage.mjs';
+import { ecrirePlanche } from '../commun/planche.mjs';
 
 const ICI = fileURLToPath(new URL('./', import.meta.url));
-const RACINE = fileURLToPath(new URL('../../../', import.meta.url));
-const POLICE = join(RACINE, 'node_modules/@fontsource/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-400-normal.woff');
-
-const C = { ivoire: '#FEFAF2', encre: '#2A1F1A', ambre: '#F2A33A', orange: '#B54E19', ardoise: '#5E7488' };
 
 // La scène : même repère que Scene.astro (sol à y = 0, personnage de
-// 120 de haut), 400 de large.
+// 120 de haut), 400 de large ; ni dalle ni légende en classes.
 const L = 400;
 const VUE = `0 -140 ${L} 160`;
-const STYLE =
-  `<style>.fe{fill:${C.encre}}.se{stroke:${C.encre}}.fi{fill:${C.ivoire}}.si{stroke:${C.ivoire}}` +
-  `.sa{stroke:${C.ardoise}}.so{stroke:${C.orange}}.fa{fill:${C.ambre}}</style>`;
+const STYLE = feuille(['fe', 'se', 'fi', 'si', 'sa', 'so', 'fa']);
 
 // ---------------------------------------------------------------------------
 // Le panneau de chantier. Origine au sol, au milieu. Angles droits : cadre
@@ -58,8 +54,7 @@ const panneau = (sens) => {
 
 // ---------------------------------------------------------------------------
 // Jean : une pose de la bibliothèque, avec ses lunettes.
-const jean = (pose, x, extra = (d) => d) =>
-  `<g transform="translate(${x} 0)"><g class="jean">${extra(POSES[pose].replace('{L}', LUNETTES))}</g></g>`;
+const jean = (pose, x, extra = (d) => d) => perso(extra(POSES[pose]), x, { jean: true, classe: 'jean' });
 
 // Le marteau de MARTEAU (poses.ts), tenu à la main (x, y), tourné de
 // `angle` : manche vers le bas, tête en haut quand l'angle est vers -90.
@@ -101,7 +96,7 @@ const pivot = () => {
     `<polyline class="sa" points="${xd - 3.5},${y} ${xd},${y - 4} ${xd + 3.5},${y}" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`;
 };
 
-const SOL = `<line class="se" x1="0" y1="0" x2="${L}" y2="0" stroke-width="1.5"/>`;
+const SOL = sol(0, L);
 const placePanneau = (sens) => `<g transform="translate(${PANNEAU_X} 0)">${panneau(sens)}</g>`;
 
 const IMAGES = [
@@ -117,44 +112,8 @@ const IMAGES = [
   SOL + placePanneau(1) + pivot() + jean('bras-tendus', JEAN_X - 20, (d) => enMain(d, 29, -73, -90)),
 ];
 
-const svg = (corps) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${VUE}" width="${L}" height="160">${STYLE}` +
-  `<rect x="0" y="-140" width="${L}" height="160" fill="${C.ivoire}"/>${corps}</svg>`;
-
-IMAGES.forEach((corps, i) => writeFileSync(join(ICI, `${i + 1}.svg`), svg(corps) + '\n'));
-
-// ---------------------------------------------------------------------------
-// La police : WOFF 1 → TTF (copie de woffEnTtf d'ops/images/apercu.mjs).
-function woffEnTtf(woff) {
-  const n = woff.readUInt16BE(12);
-  const tables = [];
-  for (let i = 0; i < n; i++) {
-    const e = 44 + i * 20;
-    const off = woff.readUInt32BE(e + 4), comp = woff.readUInt32BE(e + 8), orig = woff.readUInt32BE(e + 12);
-    const brut = woff.subarray(off, off + comp);
-    tables.push({ tag: woff.subarray(e, e + 4), somme: woff.readUInt32BE(e + 16), data: comp < orig ? inflateSync(brut) : brut });
-  }
-  const pas = 2 ** Math.floor(Math.log2(n));
-  const tete = Buffer.alloc(12 + 16 * n);
-  woff.copy(tete, 0, 4, 8);
-  tete.writeUInt16BE(n, 4);
-  tete.writeUInt16BE(pas * 16, 6);
-  tete.writeUInt16BE(Math.log2(pas), 8);
-  tete.writeUInt16BE(n * 16 - pas * 16, 10);
-  const morceaux = [tete];
-  let decalage = tete.length;
-  tables.forEach((t, i) => {
-    const d = 12 + i * 16;
-    t.tag.copy(tete, d);
-    tete.writeUInt32BE(t.somme, d + 4);
-    tete.writeUInt32BE(decalage, d + 8);
-    tete.writeUInt32BE(t.data.length, d + 12);
-    const bourrage = (4 - (t.data.length % 4)) % 4;
-    morceaux.push(t.data, Buffer.alloc(bourrage));
-    decalage += t.data.length + bourrage;
-  });
-  return Buffer.concat(morceaux);
-}
+const FOND = `<rect x="0" y="-140" width="${L}" height="160" fill="${C.ivoire}"/>`;
+IMAGES.forEach((corps, i) => writeFileSync(join(ICI, `${i + 1}.svg`), svgScene(FOND + corps, { vue: VUE, largeur: L, style: STYLE })));
 
 // ---------------------------------------------------------------------------
 // La planche : quatre cases de 375 px, 20 px de marge et d'écart.
@@ -162,19 +121,12 @@ const M = 20, CASE = 375, K = CASE / L, H_CASE = 160 * K, H = Math.round(M + H_C
 const LARGEUR = 2 * M + 4 * CASE + 3 * M;
 const x0 = (i) => M + i * (CASE + M);
 
-const planche =
-  `<svg xmlns="http://www.w3.org/2000/svg" width="${LARGEUR}" height="${H}">${STYLE}` +
-  `<rect width="${LARGEUR}" height="${H}" fill="${C.ivoire}"/>` +
-  IMAGES.map((corps, i) => `<g transform="translate(${x0(i)} ${M + 140 * K}) scale(${K})">${corps}</g>`).join('') +
-  '</svg>';
+const corps = IMAGES.map((image, i) => `<g transform="translate(${x0(i)} ${M + 140 * K}) scale(${K})">${image}</g>`).join('');
 
-const temporaire = mkdtempSync(join(tmpdir(), 'planche-404-'));
-try {
-  const fontfile = join(temporaire, 'atkinson-400.ttf');
-  writeFileSync(fontfile, woffEnTtf(readFileSync(POLICE)));
+await avecPolicesTtf([400], async (polices) => {
   const chiffres = await Promise.all(
     [1, 2, 3, 4].map((n) =>
-      sharp({ text: { text: `<span foreground="${C.ardoise}">${n}</span>`, font: 'Atkinson Hyperlegible Next 18', fontfile, dpi: 72, rgba: true } })
+      sharp({ text: { text: `<span foreground="${C.ardoise}">${n}</span>`, font: 'Atkinson Hyperlegible Next 18', fontfile: polices[400], dpi: 72, rgba: true } })
         .png()
         .toBuffer({ resolveWithObject: true }),
     ),
@@ -184,8 +136,6 @@ try {
     left: Math.round(x0(i) + CASE / 2 - info.width / 2),
     top: Math.round(M + H_CASE + 12),
   }));
-  await sharp(Buffer.from(planche)).composite(calques).png({ compressionLevel: 9 }).toFile(join(ICI, 'planche.png'));
-} finally {
-  rmSync(temporaire, { recursive: true, force: true });
-}
+  await ecrirePlanche(join(ICI, 'planche.png'), corps, H, { largeur: LARGEUR, style: STYLE, calques });
+});
 console.log(`planche.png ${LARGEUR} × ${H}, 1.svg à 4.svg dans ${ICI}`);

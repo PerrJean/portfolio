@@ -11,38 +11,26 @@
 // (repère de Scene.astro, mêmes classes, réutilisables pour l'animation) et
 // planche.png. Relançable : node ops/images/accueil/planche.mjs. Sans paquet
 // ajouté : sharp ; le texte est dessiné en chemins depuis la police du site
-// (police.mjs).
+// (../commun/police.mjs).
 
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { POSES, LUNETTES, OBJETS } from '../../../src/components/scene/poses.ts';
-import { police, couper } from './police.mjs';
+import { POSES, OBJETS } from '../../../src/components/scene/poses.ts';
+import { couper } from '../commun/police.mjs';
+import { C, L, STYLE, sol, DALLE, svgScene } from '../commun/svg.mjs';
+import { perso as placer } from '../commun/personnage.mjs';
+import { P8, P4, M, LARG, LEG, RANG, petit, legende, grille, ecrirePlanche } from '../commun/planche.mjs';
 
 const ICI = fileURLToPath(new URL('./', import.meta.url));
-const C = {
-  ivoire: '#FEFAF2', encre: '#2A1F1A', ambre: '#F2A33A', orange: '#B54E19', ardoise: '#5E7488', dalle: '#D9D4CC',
-  anneau1: '#DE872F', anneau2: '#C96A24', // les color-mix de Soleil.astro (apercu.mjs)
-};
-const STYLE =
-  `<style>.fe{fill:${C.encre}}.se{stroke:${C.encre}}.fi{fill:${C.ivoire}}.si{stroke:${C.ivoire}}` +
-  `.sa{stroke:${C.ardoise}}.so{stroke:${C.orange}}.fa{fill:${C.ambre}}.fd{fill:${C.dalle}}.fs{fill:${C.ardoise}}</style>`;
 
 // ---------------------------------------------------------------------------
 // Les pièces de Scene.astro, figées.
 
-const L = 426.667;
-const perso = (pose, x, { jean = false, miroir = false, classe = '' } = {}) => {
-  let d = POSES[pose].replace('{L}', jean ? LUNETTES : '');
-  // Le marteau de B au repos : tête en haut, 1,2 fois plus grand (la règle
-  // CSS de Scene.astro, posée ici en attribut).
-  d = d.replace('<g class="marteau-tour">', '<g class="marteau-tour" transform="rotate(-115) scale(1.2)">');
-  const g = `<g class="${classe}"${miroir ? ' transform="scale(-1 1)"' : ''}>${d}</g>`;
-  return `<g transform="translate(${x} 0)">${g}</g>`;
-};
-const SOL = (x1 = 0, x2 = L) => `<line class="se" x1="${x1}" y1="0" x2="${x2}" y2="0" stroke-width="1.5"/>`;
-const DALLE = '<rect class="fd" x="245" y="0" width="175" height="12"/>';
+// Une pose de la bibliothèque, par son nom (le marteau de B au repos, tête
+// en haut : voir commun/personnage.mjs).
+const perso = (pose, x, options) => placer(POSES[pose], x, options);
 const TRETEAU = `<g transform="translate(150 0)">${OBJETS.treteau}</g>`;
 // Le plan déroulé sur le tréteau (Scene.astro, .plan à scaleX(1)).
 const PLAN =
@@ -83,13 +71,13 @@ const EQUIPE_FIN =
   perso('penche', 236, { miroir: true, classe: 'b-penche' }) +
   perso('debout', 266, { miroir: true, classe: 'c-debout' });
 
-const DECOR = SOL() + DALLE + TRETEAU;
+const DECOR = sol() + DALLE + TRETEAU;
 const CARTES = {
   '01-repos': DECOR + JEAN_SOUS,
   '01-fin': DECOR + PLAN + POINT + JEAN_PENCHE,
   '02-repos': DECOR + PLAN + JEAN_PENCHE + EQUIPE_REPOS,
   '02-fin':
-    SOL() + DALLE + POUTRE_A_TERRE + MARTEAU_POSE(340, -8) + A_DERRIERE + TRETEAU + PLAN + POINT + JEAN_PENCHE + EQUIPE_FIN,
+    sol() + DALLE + POUTRE_A_TERRE + MARTEAU_POSE(340, -8) + A_DERRIERE + TRETEAU + PLAN + POINT + JEAN_PENCHE + EQUIPE_FIN,
 };
 
 // L'en-tête : A, B et le porteur à leur place de Scene.astro, au repos (fin
@@ -100,22 +88,19 @@ const CARTES = {
 const ENTETE_X = 205;
 const ENTETE_L = L - ENTETE_X;
 const ENTETE =
-  SOL(ENTETE_X, L) + DALLE +
+  sol(ENTETE_X, L) + DALLE +
   perso('debout', 220, { classe: 'a-debout' }) +
   perso('marteau-2', 250, { classe: 'b-marteau' }) +
   perso('poutre-epaule', 355, { miroir: true, classe: 'c-poutre' });
 const ENVELOPPE = { x1: 211, x2: 420, y1: -134, y2: 12 };
 
-const fichier = (vue, l, corps) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vue}" width="${l}" height="160">${STYLE}${corps}</svg>\n`;
-writeFileSync(join(ICI, 'entete.svg'), fichier(`${ENTETE_X} -140 ${ENTETE_L} 160`, ENTETE_L, ENTETE));
-for (const [nom, corps] of Object.entries(CARTES)) writeFileSync(join(ICI, `${nom}.svg`), fichier(`0 -140 ${L} 160`, L, corps));
+writeFileSync(join(ICI, 'entete.svg'), svgScene(ENTETE, { vue: `${ENTETE_X} -140 ${ENTETE_L} 160`, largeur: ENTETE_L }));
+for (const [nom, corps] of Object.entries(CARTES)) writeFileSync(join(ICI, `${nom}.svg`), svgScene(corps));
 
 // ---------------------------------------------------------------------------
 // La maquette de l'accroche (base.css, index.astro, Soleil.astro), à la
 // largeur d'écran `vw`, en px CSS ; y = 0 en haut de la section .accroche.
 
-const P8 = police(800), P4 = police(400);
 const H1 = 'J’écoute, je pose des hypothèses, je teste et je construis là où ça compte.';
 const SOUS = 'Deux projets sur une plateforme EdTech : écouter des milliers d’apprenants, puis corriger ce qui les gêne.';
 const REM = 16;
@@ -172,7 +157,6 @@ function dessinMaquette(m) {
   const tiret = `fill="none" stroke="${C.ardoise}" stroke-width="1" stroke-dasharray="4 4"`;
   const cote = `stroke="${C.ardoise}" stroke-width="1"`;
   const yc = boite.y + 24, xc = boite.x + boite.l / 2;
-  const petit = (t, x, y) => P4.chemin(t, x, y, 13, 0, 'fs');
   const cotes =
     `<rect x="${boite.x}" y="${boite.y}" width="${boite.l}" height="${boite.h}" ${tiret}/>` +
     `<line x1="${droiteH1}" y1="${yc}" x2="${boite.x}" y2="${yc}" ${cote}/>` +
@@ -195,35 +179,20 @@ function dessinMaquette(m) {
 // La planche : la maquette à taille réelle, puis les cartes deux par deux
 // (01 repos, 01 fin ; 02 repos, 02 fin).
 
-const M = 20, LARGEUR = 2 * M + 1280, LEG = 34;
-const CASE = (1280 - M) / 2, K = CASE / L, H_CASE = 160 * K;
-const legende = (n, t, x, y) => P8.chemin(`${n}`, x, y, 15, 0, 'fs') + P4.chemin(t, x + 16, y, 15, 0, 'fs');
-
 const entete = dessinMaquette(M1280);
 let y = M;
 let corps = `<g transform="translate(${M} ${y})">${entete.corps}</g>`;
 y += entete.hauteur + 22;
 corps += legende(1, 'En-tête à 1280 px : les ouvriers au repos, sous le soleil, posés sur la ligne de base de la phrase (boîte en tirets).', M, y);
 y += LEG - 12;
-const LEGENDES = [
+corps += grille([
   ['01-repos', '01 UserVoice, repos : Jean seul, le plan roulé sous le bras.'],
   ['01-fin', '01 UserVoice, fin : Jean a déroulé le plan et le regarde.'],
   ['02-repos', '02 Audit contenu, repos : Jean sur le plan ouvert, l’équipe de l’en-tête à distance.'],
   ['02-fin', '02 Audit contenu, fin : les trois l’ont rejoint, outils à terre ; ils regardent le plan.'],
-];
-LEGENDES.forEach(([nom, t], i) => {
-  const x = M + (i % 2) * (CASE + M);
-  const yc = y + Math.floor(i / 2) * (H_CASE + LEG + 12);
-  corps +=
-    `<rect x="${x}" y="${yc}" width="${CASE}" height="${H_CASE}" fill="${C.ivoire}" stroke="${C.dalle}" stroke-width="2"/>` +
-    `<g transform="translate(${x} ${yc + 140 * K}) scale(${K})">${CARTES[nom]}</g>` +
-    legende(i + 2, t, x, yc + H_CASE + 22);
-});
-const H = Math.round(y + 2 * (H_CASE + LEG + 12) + 4);
-const planche =
-  `<svg xmlns="http://www.w3.org/2000/svg" width="${LARGEUR}" height="${H}">${STYLE}` +
-  `<rect width="${LARGEUR}" height="${H}" fill="${C.ivoire}"/>${corps}</svg>`;
-await sharp(Buffer.from(planche)).png({ compressionLevel: 9 }).toFile(join(ICI, 'planche.png'));
+], y, CARTES, 2);
+const H = Math.round(y + 2 * RANG + 4);
+await ecrirePlanche(join(ICI, 'planche.png'), corps, H);
 
 // Contrôle à une autre largeur, hors planche :
 // node planche.mjs 960 chemin/maquette-960.png
@@ -243,4 +212,4 @@ for (const m of [M1280, M960]) {
       `section ${r(m.hauteur)} px de haut, ${m.lignes1.length} lignes de titre.`,
   );
 }
-console.log(`planche.png ${LARGEUR} × ${H}, entete.svg et quatre cartes dans ${ICI}`);
+console.log(`planche.png ${LARG} × ${H}, entete.svg et quatre cartes dans ${ICI}`);

@@ -21,7 +21,7 @@
 // Scene.astro (0 -140 426.667 160), mêmes classes, même sol, même dalle
 // (x 245 à 420, 12 de haut), et planche.png.
 // Relançable : node ops/images/uservoice-sonde/planche.mjs.
-// Sans paquet ajouté : sharp ; le texte en chemins (../accueil/police.mjs).
+// Sans paquet ajouté : sharp ; le texte en chemins (../commun/police.mjs).
 //
 // Les poses nouvelles (à reporter dans poses.ts, bloc SONDE ci-dessous) :
 // les jambes de debout ; buste et tête basculés aux hanches (la bascule de
@@ -38,36 +38,15 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import sharp from 'sharp';
 import { LUNETTES } from '../../../src/components/scene/poses.ts';
-import { police } from '../accueil/police.mjs';
+import { C, L, r2 as r1, pt, tourne, sol, DALLE, svgScene } from '../commun/svg.mjs';
+import { brasArriere, brasAvant, TORSE, TETE, JAMBES_DEBOUT as DEBOUT, EP_AR, EP_AV } from '../commun/personnage.mjs';
+import { P8, M, legende, petit, cadre, scene, ecrirePlanche } from '../commun/planche.mjs';
 
 const ICI = fileURLToPath(new URL('./', import.meta.url));
-const C = { ivoire: '#FEFAF2', encre: '#2A1F1A', ambre: '#F2A33A', orange: '#B54E19', ardoise: '#5E7488', dalle: '#D9D4CC' };
-const STYLE =
-  `<style>.fe{fill:${C.encre}}.se{stroke:${C.encre}}.fi{fill:${C.ivoire}}.si{stroke:${C.ivoire}}` +
-  `.sa{stroke:${C.ardoise}}.so{stroke:${C.orange}}.fa{fill:${C.ambre}}.fd{fill:${C.dalle}}.fs{fill:${C.ardoise}}</style>`;
-const L = 426.667;
-const r1 = (v) => Math.round(v * 10) / 10;
-const pt = ([x, y]) => `${r1(x)},${r1(y)}`;
-const rad = (d) => (d * Math.PI) / 180;
-const tourne = ([x, y], deg, [cx, cy] = [0, -56]) => {
-  const a = rad(deg), dx = x - cx, dy = y - cy;
-  return [cx + dx * Math.cos(a) - dy * Math.sin(a), cy + dx * Math.sin(a) + dy * Math.cos(a)];
-};
 
-// ---------------------------------------------------------------------------
-// Les pièces des poses (celles de poses.ts, à l'identique).
-
-const LIGNE = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
-const trait = (c, points, l) => `<polyline class="${c}" points="${points}" ${LIGNE} stroke-width="${l}"/>`;
-const jambes = (ar, av) => trait('se', ar, 7.5) + trait('se', av, 7.5);
-const brasArriere = (points) => trait('se', points, 7);
-const brasAvant = (points) => trait('si', points, 10) + trait('se', points, 7);
-const TORSE = '<path class="fe" d="M-9,-88 A9,9 0 0 1 9,-88 L9,-55 Q9,-52 6,-52 L-6,-52 Q-9,-52 -9,-55 Z"/>';
-const TETE = '<circle class="fe" cx="1" cy="-110" r="10"/>{L}';
-const DEBOUT = jambes('-5.25,-56 -4.5,-4 0.5,-4', '5.25,-56 4.5,-4 9.5,-4');
-const EP_AR = [0, -89], EP_AV = [1, -89];
+// Les pièces des poses : celles de poses.ts, à l'identique
+// (../commun/personnage.mjs).
 
 // ---------------------------------------------------------------------------
 // OBJETS_SONDE — à reporter dans poses.ts (OBJETS), origines indiquées.
@@ -138,10 +117,10 @@ function poseSonde(nom, bascule, mainAv, mainAr, tenu, devant = false) {
   CONTROLES.push({ nom, eAv, eAr, cAv, cAr, mainAv, mainAr });
   return (
     DEBOUT +
-    brasArriere(`${pt(eAr)} ${pt(cAr)} ${pt(mainAr)}`) +
+    brasArriere(eAr, cAr, mainAr) +
     `<g transform="rotate(${bascule} 0 -56)">${TORSE}${TETE}</g>` +
     (devant ? '' : tenu) +
-    brasAvant(`${pt(eAv)} ${pt(cAv)} ${pt(mainAv)}`) +
+    brasAvant(eAv, cAv, mainAv) +
     (devant ? tenu : '')
   );
 }
@@ -173,8 +152,7 @@ const XJ = 140;                   // Jean au repos
 const XT = XJ + TIGE_X;           // le point de sondage
 const COUPE = [12, 233];          // les couches, jusqu'avant la dalle
 const XJ_FIN = XT - 45;           // fin : un pas en arrière, la carotte loin de la tige
-const DALLE = '<rect class="fd" x="245" y="0" width="175" height="12"/>';
-const SOL = `<line class="se" x1="0" y1="0" x2="${L}" y2="0" stroke-width="1.5"/>`;
+const SOL = sol();
 const COUCHES = OBJETS_SONDE.couches(...COUPE);
 const TROU = `<g transform="translate(${XT} 0)">${OBJETS_SONDE.trou}</g>`;
 const POINT_X = XJ_FIN + FIN_X0 + 1.5 * BANDE;
@@ -189,9 +167,7 @@ const CARTES = {
   fin: DALLE + COUCHES + TROU + SOL + `<g transform="translate(${XT} 18)">${OBJETS_SONDE.tige}</g>` +
     perso(SONDE['sonde-carotte'], XJ_FIN) + POINT,
 };
-const fichier = (corps) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -140 ${L} 160" width="${L}" height="160">${STYLE}${corps}</svg>\n`;
-for (const [nom, corps] of Object.entries(CARTES)) writeFileSync(join(ICI, `${nom}.svg`), fichier(corps));
+for (const [nom, corps] of Object.entries(CARTES)) writeFileSync(join(ICI, `${nom}.svg`), svgScene(corps));
 
 // ---------------------------------------------------------------------------
 // Les contrôles : aucune main ni aucun coude au-dessus des épaules ; la tête
@@ -218,11 +194,7 @@ if (jeuFin <= 0) throw new Error(`fin : la main touche la tige (${r1(jeuFin)})`)
 // La planche : les cinq images côte à côte à 480 px (largeur de carte,
 // taille réelle), légendées ; dessous, les mêmes en gros plan sur Jean.
 
-const P8 = police(800), P4 = police(400);
-const M = 20, W = 480, N = 5, LARG = M + N * (W + M), LEG = 40;
-const legende = (n, t, x, y) => P8.chemin(`${n}`, x, y, 15, 0, 'fs') + P4.chemin(t, x + 16, y, 15, 0, 'fs');
-const petit = (t, x, y, taille = 13) => P4.chemin(t, x, y, taille, 0, 'fs');
-const cadre = (x, y, l, h) => `<rect x="${x}" y="${y}" width="${l}" height="${h}" fill="${C.ivoire}" stroke="${C.dalle}" stroke-width="2"/>`;
+const W = 480, N = 5, LARG = M + N * (W + M), LEG = 40;
 const LEGENDES = [
   ['repos', 'Repos : la tige à deux mains,', 'la pointe sur le sol ; trois couches.'],
   ['t1', 'Temps 1 : il enfonce la tige,', 'les mains descendent avec elle.'],
@@ -235,7 +207,7 @@ const kC = W / L, hC = 160 * kC;
 let y = M;
 LEGENDES.forEach(([nom, a, b], i) => {
   const x = M + i * (W + M);
-  corps += cadre(x, y, W, hC) + `<g transform="translate(${x} ${y + 140 * kC}) scale(${kC})">${CARTES[nom]}</g>`;
+  corps += cadre(x, y, W, hC) + scene(CARTES[nom], x, y, kC);
   corps += legende(i + 1, a, x, y + hC + 22) + petit(b, x + 16, y + hC + 42, 15);
 });
 y += hC + LEG + 26;
@@ -252,10 +224,7 @@ LEGENDES.forEach(([nom], i) => {
 });
 y += hZ + M;
 const H = Math.round(y);
-const planche =
-  `<svg xmlns="http://www.w3.org/2000/svg" width="${LARG}" height="${H}">${STYLE}` +
-  `<rect width="${LARG}" height="${H}" fill="${C.ivoire}"/>${corps}</svg>`;
-await sharp(Buffer.from(planche)).png({ compressionLevel: 9 }).toFile(join(ICI, 'planche.png'));
+await ecrirePlanche(join(ICI, 'planche.png'), corps, H, { largeur: LARG });
 
 // ---------------------------------------------------------------------------
 // Pour le rapport, et pour le report dans poses.ts.
