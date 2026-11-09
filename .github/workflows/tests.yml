@@ -29,9 +29,10 @@ jobs:
       # Les listes vivent hors du dépôt (CONTRAT) : deux secrets, à déclarer
       # aussi côté Dependabot pour ses pull requests.
       # Écrites après npm ci et Chromium, juste avant verifier : les scripts
-      # d'installation des paquets ne les lisent pas. Le build et les tests,
-      # eux, chargent du code tiers alors qu'elles sont là : la protection ne
-      # couvre que l'installation (registre/0120).
+      # d'installation ne les lisent pas pendant qu'ils tournent. Un processus
+      # qu'ils laisseraient en arrière-plan, comme le code tiers que chargent
+      # le build et les tests, peut encore les lire : la protection ne couvre
+      # que le temps de l'installation (registre/0120).
       - name: Listes de confidentialité
         env:
           INTERDITS: ${{ secrets.INTERDITS }}

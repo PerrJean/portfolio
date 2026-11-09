@@ -48,14 +48,17 @@ achat, paiement) ; les étapes **session** sont faites dans le dépôt.
    et lance des centaines de paquets tiers, n'a pas le droit de publier :
    l'envoi du site n'en a pas besoin. Un paquet compromis ne peut donc plus
    publier ce qu'il veut, quand il veut. Il peut encore altérer le site
-   construit dans `tester`, qui part tel quel : seuls les tests l'arrêtent.
+   construit dans `tester`, avant comme après les tests, et ce site part tel
+   quel.
 
    **Les listes de termes interdits** (secrets `INTERDITS` et `EMPLOYEUR`)
    ne sont écrites sur le disque qu'après `npm ci` et l'installation de
    Chromium, juste avant `verifier`, ici comme dans `tests.yml` (les tests
    des pull requests) : les scripts d'installation des paquets ne les voient
-   pas. Limite : le build et les tests chargent eux aussi du code tiers,
-   alors que les listes sont présentes. La protection ne couvre que
+   pas pendant qu'ils s'exécutent. Limite : un processus qu'ils laisseraient
+   tourner en arrière-plan survit jusqu'à la fin du job, et le build et les
+   tests chargent eux aussi du code tiers ; l'un comme l'autre peut lire les
+   listes une fois écrites. La protection ne couvre que le temps de
    l'installation. Elle pèse surtout sur les pull requests de Dependabot, qui
    font tourner une nouvelle version d'un paquet.
 2. **Jean** — Dépôt › Settings › Pages › Source : **GitHub Actions**.

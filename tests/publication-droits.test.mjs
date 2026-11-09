@@ -9,10 +9,11 @@
 //   installe et lance du code tiers (npm ci, Playwright) ;
 // - dans deploy.yml et tests.yml, l'étape « Listes de confidentialité »
 //   vient après `npm ci` et l'installation de Chromium, juste avant
-//   `npm run verifier`, et les secrets comme ~/.portfolio n'apparaissent
-//   nulle part ailleurs : les scripts d'installation des paquets ne voient
-//   pas les listes. Le build et les tests, eux, les voient : la protection
-//   ne couvre que l'installation.
+//   `npm run verifier`, et aucun secret ni ~/.portfolio n'apparaît ailleurs
+//   (pas même `toJSON(secrets)`) : les scripts d'installation des paquets ne
+//   voient pas les listes pendant qu'ils tournent. Un processus qu'ils
+//   laisseraient en arrière-plan, le build et les tests, eux, peuvent les
+//   lire : la protection ne couvre que le temps de l'installation.
 //
 // Les fichiers se lisent en texte, sans parseur YAML, lignes de commentaire
 // écartées.
@@ -137,12 +138,12 @@ for (const rel of [DEPLOY_YML, TESTS_YML]) {
     const base = indentation(ls[debut]);
     let fin = debut + 1;
     while (fin < ls.length && (ls[fin].trim() === '' || indentation(ls[fin]) > base)) fin++;
-    const sensibles = /secrets\.(INTERDITS|EMPLOYEUR)|\.portfolio\b/;
+    const sensibles = /\bsecrets\b|\.portfolio\b/;
     const ailleurs = ls.filter((l, i) => (i < debut || i >= fin) && sensibles.test(l));
     assert.deepEqual(
       ailleurs,
       [],
-      `${rel} : les secrets INTERDITS / EMPLOYEUR ou ~/.portfolio apparaissent hors de l'étape des listes (env du job, autre étape…) : npm ci pourrait les voir (registre/0120).`,
+      `${rel} : un secret (INTERDITS, EMPLOYEUR, toJSON(secrets)…) ou ~/.portfolio apparaît hors de l'étape des listes (env du job, autre étape…) : npm ci pourrait les voir (registre/0120).`,
     );
   });
 }
