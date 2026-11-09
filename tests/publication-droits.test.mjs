@@ -4,11 +4,13 @@
 // Ce que le test tient :
 // - deploy.yml ne donne au workflow que `contents: read` ; `pages: write` et
 //   `id-token: write` (qu'exige actions/deploy-pages) ne sont posés que sur
-//   le job `publier`, jamais sur `tester`, qui installe et lance du code
-//   tiers (npm ci, Playwright) ;
+//   le job `publier`, qui attend `tester` dans l'environnement github-pages ;
+//   aucun autre job ne déclare de droits, sous aucune forme : `tester`
+//   installe et lance du code tiers (npm ci, Playwright) ;
 // - dans deploy.yml et tests.yml, l'étape « Listes de confidentialité »
 //   vient après `npm ci` et l'installation de Chromium, juste avant
-//   `npm run verifier` : les scripts d'installation des paquets ne voient
+//   `npm run verifier`, et les secrets comme ~/.portfolio n'apparaissent
+//   nulle part ailleurs : les scripts d'installation des paquets ne voient
 //   pas les listes. Le build et les tests, eux, les voient : la protection
 //   ne couvre que l'installation.
 //
@@ -95,27 +97,55 @@ test('deploy.yml : le workflow ne donne que « contents: read »', () => {
   );
 });
 
-test('deploy.yml : seul le job publier peut publier', () => {
+test('deploy.yml : seul le job publier reçoit des droits, et il attend tester', () => {
   const tous = jobs(lignes(DEPLOY_YML));
   assert.ok(tous.publier, `${DEPLOY_YML} : le job « publier » a disparu.`);
   assert.ok(tous.tester, `${DEPLOY_YML} : le job « tester » a disparu.`);
   const niveau = Math.min(...tous.publier.filter((l) => l.trim()).map(indentation));
   const p = blocPermissions(tous.publier, niveau);
   assert.ok(p, `${DEPLOY_YML} : le job publier n'a pas de bloc « permissions » ; actions/deploy-pages exige « pages: write » et « id-token: write ».`);
-  assert.equal(p.pages, 'write', `${DEPLOY_YML} : le job publier doit avoir « pages: write ».`);
-  assert.equal(p['id-token'], 'write', `${DEPLOY_YML} : le job publier doit avoir « id-token: write ».`);
+  for (const d of DROITS_DE_PUBLICATION) {
+    assert.equal(p[d], 'write', `${DEPLOY_YML} : le job publier doit avoir « ${d}: write ».`);
+  }
+  assert.ok(
+    tous.publier.some((l) => indentation(l) === niveau && /^\s*needs:\s*\[?\s*tester\s*\]?\s*$/.test(l)),
+    `${DEPLOY_YML} : le job publier doit attendre tester (« needs: tester ») : rien ne part avant les tests.`,
+  );
+  const env = tous.publier.findIndex((l) => indentation(l) === niveau && /^\s*environment:\s*$/.test(l));
+  assert.ok(
+    env >= 0 && enfants(tous.publier, env).some((l) => /^\s*name:\s*github-pages\s*$/.test(l)),
+    `${DEPLOY_YML} : le job publier doit garder l'environnement « github-pages ».`,
+  );
+  // Tout autre job hérite des seuls droits du workflow (contents: read) : aucun
+  // bloc « permissions », sous aucune forme (bloc, flux, write-all…).
   for (const [nom, corps] of Object.entries(tous)) {
     if (nom === 'publier') continue;
-    const fautifs = corps.filter((l) =>
-      DROITS_DE_PUBLICATION.some((d) => new RegExp(`^\\s*${d}:\\s*write`).test(l)) || /\bwrite-all\b/.test(l),
-    );
+    const fautifs = corps.filter((l) => /^\s*["']?permissions["']?\s*:/.test(l));
     assert.deepEqual(
       fautifs,
       [],
-      `${DEPLOY_YML} : le job « ${nom} » reçoit un droit de publication ; seul publier doit l'avoir (registre/0120).`,
+      `${DEPLOY_YML} : le job « ${nom} » déclare ses propres droits ; seul publier en reçoit (registre/0120).`,
     );
   }
 });
+
+for (const rel of [DEPLOY_YML, TESTS_YML]) {
+  test(`${rel} : les secrets des listes ne servent que dans l'étape des listes`, () => {
+    const ls = lignes(rel);
+    const debut = ls.findIndex((l) => /^\s*-?\s*name:\s*Listes de confidentialité\s*$/.test(l));
+    assert.ok(debut >= 0, `${rel} : étape « Listes de confidentialité » introuvable.`);
+    const base = indentation(ls[debut]);
+    let fin = debut + 1;
+    while (fin < ls.length && (ls[fin].trim() === '' || indentation(ls[fin]) > base)) fin++;
+    const sensibles = /secrets\.(INTERDITS|EMPLOYEUR)|\.portfolio\b/;
+    const ailleurs = ls.filter((l, i) => (i < debut || i >= fin) && sensibles.test(l));
+    assert.deepEqual(
+      ailleurs,
+      [],
+      `${rel} : les secrets INTERDITS / EMPLOYEUR ou ~/.portfolio apparaissent hors de l'étape des listes (env du job, autre étape…) : npm ci pourrait les voir (registre/0120).`,
+    );
+  });
+}
 
 for (const rel of [DEPLOY_YML, TESTS_YML]) {
   test(`${rel} : les listes arrivent après l'installation, juste avant verifier`, () => {
