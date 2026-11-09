@@ -1,5 +1,8 @@
 # Publication sur GitHub Pages (docs/GUIDE_MISE_EN_LIGNE.md, section 2).
-# Rien n'est publié si un test échoue : `tester` précède `construire`.
+# Un seul build (registre/0119) : `tester` construit le site, le teste, et
+# c'est ce site testé qui part en ligne. Rien n'est publié si un test échoue :
+# le dépôt du site suit les tests dans le même job, et `publier` attend
+# `tester`.
 # À chaque envoi sur `main`, et à la main depuis l'onglet Actions. Tant que
 # `src/i18n/publication.ts` dit `INDEXE = false`, le site est en ligne mais
 # caché des moteurs (registre/0035).
@@ -48,16 +51,16 @@ jobs:
       - run: npm test
         env:
           DIST: .dist-ci
-
-  construire:
-    needs: tester
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - uses: withastro/action@v6
+      # Les tests ne modifient rien dans .dist-ci (mesuré le 2026-11-09,
+      # registre/0119) : on dépose le site tel que testé, comme le faisait
+      # withastro/action (fichiers cachés compris).
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: .dist-ci/
+          include-hidden-files: true
 
   publier:
-    needs: construire
+    needs: tester
     runs-on: ubuntu-latest
     environment:
       name: github-pages
