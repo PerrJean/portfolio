@@ -4,74 +4,18 @@
 // hors du site, dans ops/images/couverture/, la bannière LinkedIn 1584 × 396
 // (FR, EN, et leur version @2x). Relançable à la main : node ops/images/apercu.mjs. Sans paquet ajouté :
 // sharp, et la police @fontsource convertie de WOFF en TTF dans un dossier
-// temporaire, effacé à la fin (registre/0038).
+// temporaire, effacé à la fin (avecPolicesTtf, commun/police.mjs ; registre/0038).
 
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { inflateSync } from 'node:zlib';
 import sharp from 'sharp';
 import { POSES, LUNETTES } from '../../src/components/scene/poses.ts';
+import { avecPolicesTtf } from './commun/police.mjs';
+import { C, feuille } from './commun/svg.mjs';
 
 const RACINE = fileURLToPath(new URL('../../', import.meta.url));
 const PUBLIC = join(RACINE, 'public');
-const POLICES = join(RACINE, 'node_modules/@fontsource/atkinson-hyperlegible-next/files');
-
-// Les jetons (src/styles/jetons.css). Les deux anneaux intermédiaires du
-// soleil sont les color-mix de Soleil.astro, calculés en sRGB.
-const C = {
-  ivoire: '#FEFAF2',
-  encre: '#2A1F1A',
-  ambre: '#F2A33A',
-  orange: '#B54E19',
-  ardoise: '#5E7488',
-  dalle: '#D9D4CC',
-  anneau1: '#DE872F', // ambre 67 %, orange 33 %
-  anneau2: '#C96A24', // ambre 33 %, orange 67 %
-};
-
-// ---------------------------------------------------------------------------
-// La police : WOFF 1 → TTF. Un WOFF 1 est un sfnt dont chaque table est
-// (ou non) compressée par zlib ; on décompresse et on réécrit l'en-tête.
-
-function woffEnTtf(woff) {
-  if (woff.toString('latin1', 0, 4) !== 'wOFF') throw new Error('pas un WOFF 1');
-  const n = woff.readUInt16BE(12);
-  const tables = [];
-  for (let i = 0; i < n; i++) {
-    const e = 44 + i * 20;
-    const off = woff.readUInt32BE(e + 4);
-    const comp = woff.readUInt32BE(e + 8);
-    const orig = woff.readUInt32BE(e + 12);
-    const brut = woff.subarray(off, off + comp);
-    tables.push({
-      tag: woff.subarray(e, e + 4),
-      somme: woff.readUInt32BE(e + 16),
-      data: comp < orig ? inflateSync(brut) : brut,
-    });
-  }
-  const pas = 2 ** Math.floor(Math.log2(n));
-  const tete = Buffer.alloc(12 + 16 * n);
-  woff.copy(tete, 0, 4, 8); // flavor
-  tete.writeUInt16BE(n, 4);
-  tete.writeUInt16BE(pas * 16, 6);
-  tete.writeUInt16BE(Math.log2(pas), 8);
-  tete.writeUInt16BE(n * 16 - pas * 16, 10);
-  const morceaux = [tete];
-  let decalage = tete.length;
-  tables.forEach((t, i) => {
-    const d = 12 + i * 16;
-    t.tag.copy(tete, d);
-    tete.writeUInt32BE(t.somme, d + 4);
-    tete.writeUInt32BE(decalage, d + 8);
-    tete.writeUInt32BE(t.data.length, d + 12);
-    const bourrage = (4 - (t.data.length % 4)) % 4;
-    morceaux.push(t.data, Buffer.alloc(bourrage));
-    decalage += t.data.length + bourrage;
-  });
-  return Buffer.concat(morceaux);
-}
 
 // ---------------------------------------------------------------------------
 // Le favicon : les lunettes du logo (Lunettes.astro), redessinées sur une
@@ -221,11 +165,7 @@ function soleil(cx, cote) {
   );
 }
 
-const STYLE_TRAIT = `<style>
-    .fe { fill: ${C.encre}; } .se { stroke: ${C.encre}; } .fi { fill: ${C.ivoire}; }
-    .si { stroke: ${C.ivoire}; } .sa { stroke: ${C.ardoise}; } .so { stroke: ${C.orange}; }
-    .fd { fill: ${C.dalle}; } .fa { fill: ${C.ambre}; }
-  </style>`;
+const STYLE_TRAIT = feuille(['fe', 'se', 'fi', 'si', 'sa', 'so', 'fd', 'fa']);
 
 function fondOg() {
   const { dessin } = batiment(4);
@@ -383,15 +323,7 @@ const decrire = async (f) => {
   return `${f.slice(RACINE.length).split('\\').join('/')} : ${m.width} × ${m.height}, ${m.format}`;
 };
 
-const temporaire = mkdtempSync(join(tmpdir(), 'portfolio-police-'));
-try {
-  const polices = {};
-  for (const graisse of [400, 800]) {
-    const woff = readFileSync(join(POLICES, `atkinson-hyperlegible-next-latin-${graisse}-normal.woff`));
-    polices[graisse] = join(temporaire, `atkinson-${graisse}.ttf`);
-    writeFileSync(polices[graisse], woffEnTtf(woff));
-  }
-
+await avecPolicesTtf([400, 800], async (polices) => {
   writeFileSync(join(PUBLIC, 'favicon.svg'), FAVICON_SVG);
   const f32 = join(PUBLIC, 'favicon-32.png');
   await sharp(Buffer.from(FAVICON_SVG), { density: 72 }).resize(32, 32).png().toFile(f32);
@@ -419,6 +351,4 @@ try {
       `Texte de ${b.sortie.slice(COUVERTURE.length + 1)} : x ${COUV.texte} à ${Math.round(b.droite)}, y ${Math.round(b.haut)} à ` +
         `${Math.round(b.bas)} (bande sûre ${rogne} à ${COUV.largeur - rogne} ; photo : x < 480 et y > ${COUV.hauteur / 2}).`,
     );
-} finally {
-  rmSync(temporaire, { recursive: true, force: true });
-}
+});

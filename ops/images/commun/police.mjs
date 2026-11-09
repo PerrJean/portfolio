@@ -1,25 +1,78 @@
 // La police du site (Atkinson Hyperlegible Next, @fontsource, WOFF 1) lue
-// sans paquet : chasses (hmtx) et contours (glyf) des glyphes, pour mesurer
-// une ligne comme le navigateur (sans crénage) et la dessiner en chemins
-// SVG. Sert à la maquette de l'en-tête (planche.mjs, registre/0057).
+// sans paquet, de deux façons :
+//  - police(graisse) : chasses (hmtx) et contours (glyf) des glyphes, pour
+//    mesurer une ligne comme le navigateur (sans crénage) et la dessiner en
+//    chemins SVG (maquette de l'en-tête, schémas, légendes des planches) ;
+//  - avecPolicesTtf(graisses, travail) : la police convertie de WOFF en TTF
+//    dans un dossier temporaire, effacé à la fin, pour le texte que sharp
+//    compose lui-même (Pango : apercu.mjs, 404/planche.mjs ; registre/0038).
 
-import { readFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inflateSync } from 'node:zlib';
 
 const FICHIERS = fileURLToPath(new URL('../../../node_modules/@fontsource/atkinson-hyperlegible-next/files/', import.meta.url));
+const woff = (graisse) => readFileSync(join(FICHIERS, `atkinson-hyperlegible-next-latin-${graisse}-normal.woff`));
 
-function tables(woff) {
+/** Les tables d'un WOFF 1, dans l'ordre du fichier : étiquette, somme de
+ *  contrôle, données (décompressées par zlib quand elles l'étaient). */
+function lireTables(woff) {
+  if (woff.toString('latin1', 0, 4) !== 'wOFF') throw new Error('pas un WOFF 1');
   const n = woff.readUInt16BE(12);
-  const t = {};
+  const tables = [];
   for (let i = 0; i < n; i++) {
     const e = 44 + i * 20;
     const off = woff.readUInt32BE(e + 4), comp = woff.readUInt32BE(e + 8), orig = woff.readUInt32BE(e + 12);
     const brut = woff.subarray(off, off + comp);
-    t[woff.toString('latin1', e, e + 4)] = comp < orig ? inflateSync(brut) : brut;
+    tables.push({ tag: woff.subarray(e, e + 4), somme: woff.readUInt32BE(e + 16), data: comp < orig ? inflateSync(brut) : brut });
   }
-  return t;
+  return tables;
+}
+
+/** WOFF 1 → TTF : un WOFF 1 est un sfnt dont chaque table est (ou non)
+ *  compressée ; on garde les tables décompressées et on réécrit l'en-tête. */
+function woffEnTtf(woff) {
+  const tables = lireTables(woff);
+  const n = tables.length;
+  const pas = 2 ** Math.floor(Math.log2(n));
+  const tete = Buffer.alloc(12 + 16 * n);
+  woff.copy(tete, 0, 4, 8); // flavor
+  tete.writeUInt16BE(n, 4);
+  tete.writeUInt16BE(pas * 16, 6);
+  tete.writeUInt16BE(Math.log2(pas), 8);
+  tete.writeUInt16BE(n * 16 - pas * 16, 10);
+  const morceaux = [tete];
+  let decalage = tete.length;
+  tables.forEach((t, i) => {
+    const d = 12 + i * 16;
+    t.tag.copy(tete, d);
+    tete.writeUInt32BE(t.somme, d + 4);
+    tete.writeUInt32BE(decalage, d + 8);
+    tete.writeUInt32BE(t.data.length, d + 12);
+    const bourrage = (4 - (t.data.length % 4)) % 4;
+    morceaux.push(t.data, Buffer.alloc(bourrage));
+    decalage += t.data.length + bourrage;
+  });
+  return Buffer.concat(morceaux);
+}
+
+/** Écrit les graisses demandées en TTF dans un dossier temporaire, passe à
+ *  `travail` leurs chemins ({ 400: '…/atkinson-400.ttf', … }), puis efface
+ *  le dossier, même en cas d'erreur. */
+export async function avecPolicesTtf(graisses, travail) {
+  const temporaire = mkdtempSync(join(tmpdir(), 'portfolio-police-'));
+  try {
+    const polices = {};
+    for (const graisse of graisses) {
+      polices[graisse] = join(temporaire, `atkinson-${graisse}.ttf`);
+      writeFileSync(polices[graisse], woffEnTtf(woff(graisse)));
+    }
+    return await travail(polices);
+  } finally {
+    rmSync(temporaire, { recursive: true, force: true });
+  }
 }
 
 // cmap : sous-table 3/1 (format 4).
@@ -46,19 +99,14 @@ function lireCmap(cmap) {
   throw new Error('cmap 3/1 introuvable');
 }
 
-export function police(graisse) {
-  const t = tables(readFileSync(join(FICHIERS, `atkinson-hyperlegible-next-latin-${graisse}-normal.woff`)));
-  const glyphe = lireCmap(t.cmap);
-  const nh = t.hhea.readUInt16BE(34);
-  const longLoca = t.head.readInt16BE(50) === 1;
-  const loca = (g) => (longLoca ? t.loca.readUInt32BE(g * 4) : t.loca.readUInt16BE(g * 2) * 2);
-  const chasse = (g) => t.hmtx.readUInt16BE(4 * Math.min(g, nh - 1));
-
-  // Contours d'un glyphe en unités de la police (y vers le haut).
+/** Le lecteur des contours d'un glyphe (table glyf, index loca), en
+ *  unités de la police (y vers le haut), en chemin SVG ; un glyphe composé
+ *  suit ses composants. */
+function lecteurContours(glyf, loca) {
   const contours = (g, dx = 0, dy = 0) => {
     const debut = loca(g), fin = loca(g + 1);
     if (fin === debut) return '';
-    const b = t.glyf.subarray(debut, fin);
+    const b = glyf.subarray(debut, fin);
     const nc = b.readInt16BE(0);
     if (nc < 0) {
       let p = 10, d = '', drapeaux;
@@ -119,6 +167,18 @@ export function police(graisse) {
     }
     return d;
   };
+  return contours;
+}
+
+export function police(graisse) {
+  const t = Object.fromEntries(lireTables(woff(graisse)).map((e) => [e.tag.toString('latin1'), e.data]));
+  const glyphe = lireCmap(t.cmap);
+  const nh = t.hhea.readUInt16BE(34);
+  const longLoca = t.head.readInt16BE(50) === 1;
+  const loca = (g) => (longLoca ? t.loca.readUInt32BE(g * 4) : t.loca.readUInt16BE(g * 2) * 2);
+  const chasse = (g) => t.hmtx.readUInt16BE(4 * Math.min(g, nh - 1));
+
+  const contours = lecteurContours(t.glyf, loca);
 
   /** Chasse d'une chaîne en px, à `taille` px, `espacement` en em. */
   const largeur = (texte, taille, espacement = 0) =>

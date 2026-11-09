@@ -1,5 +1,5 @@
 // Les trois schémas du projet « atelier de pilotage » (registre/0090), dans
-// le style de la Fusion (../fusion/planche.mjs) : au trait, cadres à angles
+// le style de la Fusion (../commun/schema.mjs) : au trait, cadres à angles
 // droits à l'encre, liaisons et flèches en ardoise, fond ivoire, l'ambre
 // seule lumière (jamais de texte), aucune animation.
 //  1. frise : les trois temps de l'atelier ; Explorer et Confronter, qui ont
@@ -11,27 +11,17 @@
 //     (temps passé, ligne de l'objectif, écart en ambre), sans aucun chiffre.
 // Deux dispositions : « large » (736 px) et « etroit » (350 px). Texte à
 // 16 px en large, 15 px en étroit, tracé en chemins depuis la police du site
-// (../accueil/police.mjs) : le SVG ne charge rien.
+// (../commun/schema.mjs) : le SVG ne charge rien.
 // Produit <schema>.<langue>.svg, <schema>.etroit.<langue>.svg et planche.png
 // (FR, large à gauche, étroit à droite dans un cadre de 390 px).
 // Relançable : node ops/images/atelier-pilotage/planche.mjs [dossier-planche-en]
 
-import { writeFileSync } from 'node:fs';
-import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import sharp from 'sharp';
-import { police, couper } from '../accueil/police.mjs';
+import { C } from '../commun/svg.mjs';
+import { MODES, f, largeur, ligne, bloc, blocCentre, cadre, flecheH, flecheV, produire } from '../commun/schema.mjs';
 
 const ICI = fileURLToPath(new URL('./', import.meta.url));
-const C = { ivoire: '#FEFAF2', encre: '#2A1F1A', ambre: '#F2A33A', ardoise: '#5E7488', dalle: '#D9D4CC' };
-const STYLE = `<style>.fe{fill:${C.encre}}.fs{fill:${C.ardoise}}</style>`;
-const P = { 400: police(400), 700: police(700) };
 const NB = ' '; // insécable : « 6 h », « : », « % » ne se séparent pas
-
-const MODES = {
-  large: { W: 736, T: 16, H: 17 },
-  etroit: { W: 350, T: 15, H: 16 },
-};
 
 // ---------------------------------------------------------------------------
 // Les libellés, FR et EN (anglais britannique, naturel, pas traduit).
@@ -88,57 +78,9 @@ const TEXTES = {
 };
 
 // ---------------------------------------------------------------------------
-// Les briques (celles de la Fusion) : texte en chemins, cadres, flèches.
+// Les briques : celles de la Fusion (../commun/schema.mjs), et l'aplat.
 
-const f = (v) => +v.toFixed(2);
-const largeur = (t, taille, g = 400) => P[g].largeur(t, taille);
-
-function ligne(t, x, y, taille, g = 400, ancre = 'start') {
-  const l = largeur(t, taille, g);
-  const x0 = ancre === 'middle' ? x - l / 2 : ancre === 'end' ? x - l : x;
-  return P[g].chemin(t, f(x0), f(y), taille, 0, 'fe');
-}
-
-/** Un bloc coupé à `max` px, haut du bloc en `haut`. Rend { svg, h, l, n }. */
-function bloc(t, x, haut, max, taille, g = 400, ancre = 'start', interligne = 1.3) {
-  const lignes = couper(t, max, (s) => largeur(s, taille, g), true);
-  for (const l of lignes) if (largeur(l, taille, g) > max + 0.5) console.warn(`DÉBORDE (${f(max)} px) : ${l}`);
-  const lh = interligne * taille;
-  const svg = lignes
-    .map((l, i) => ligne(l, x, haut + i * lh + (lh - 1.3 * taille) / 2 + 0.984 * taille, taille, g, ancre))
-    .join('');
-  return { svg, h: lignes.length * lh, l: Math.max(...lignes.map((l) => largeur(l, taille, g))), n: lignes.length };
-}
-
-/** Un bloc centré verticalement dans [y, y + h]. */
-const blocCentre = (t, x, y, h, max, taille, g, ancre) => {
-  const essai = bloc(t, x, 0, max, taille, g, ancre);
-  return bloc(t, x, y + (h - essai.h) / 2 + 0.04 * taille, max, taille, g, ancre).svg;
-};
-
-function cadre(x, y, w, h, trait = 'continu', fond = C.ivoire) {
-  const r = (e, a = '') =>
-    `<rect x="${f(x + e)}" y="${f(y + e)}" width="${f(w - 2 * e)}" height="${f(h - 2 * e)}" ${a}/>`;
-  switch (trait) {
-    case 'continu':
-      return r(0.75, `fill="${fond}" stroke="${C.encre}" stroke-width="1.5"`);
-    case 'fin':
-      return r(0.5, `fill="${fond}" stroke="${C.encre}" stroke-width="1"`);
-  }
-  throw new Error(trait);
-}
-
-const bout = (x, y, angle) =>
-  `<path transform="translate(${f(x)} ${f(y)}) rotate(${angle})" d="M-5.5,-5L0,0L-5.5,5" fill="none" stroke="${C.ardoise}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`;
-const trace = (d) =>
-  `<path d="${d}" fill="none" stroke="${C.ardoise}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`;
-const flecheH = (x1, x2, y) => trace(`M${f(x1)},${f(y)}H${f(x2)}`) + bout(x2, y, 0);
-const flecheV = (x, y1, y2) => trace(`M${f(x)},${f(y1)}V${f(y2)}`) + bout(x, y2, 90);
 const plein = (x, y, w, h, fond) => `<rect x="${f(x)}" y="${f(y)}" width="${f(w)}" height="${f(h)}" fill="${fond}"/>`;
-
-const svg = (W, H, titre, corps) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${f(H)}" width="${W}" height="${Math.ceil(H)}" role="img" aria-label="${titre.replace(/"/g, '&quot;')}">` +
-  `<title>${titre}</title>${STYLE}<rect width="${W}" height="${f(H)}" fill="${C.ivoire}"/>${corps}</svg>\n`;
 
 // ---------------------------------------------------------------------------
 // 1. La frise. En large, trois colonnes de gauche à droite, les étapes en
@@ -344,50 +286,6 @@ function niveaux(x, mode) {
 }
 
 // ---------------------------------------------------------------------------
-// Les fichiers, puis la planche.
+// Les fichiers, puis la planche (../commun/schema.mjs).
 
-const SCHEMAS = { frise, 'donnee-decision': donneeDecision, niveaux };
-const rendus = {};
-for (const langue of ['fr', 'en']) {
-  for (const [nom, dessin] of Object.entries(SCHEMAS)) {
-    for (const mode of ['large', 'etroit']) {
-      const { corps, h } = dessin(TEXTES[langue], mode);
-      const texte = svg(MODES[mode].W, h, TEXTES[langue].titres[nom], corps);
-      writeFileSync(join(ICI, `${nom}${mode === 'etroit' ? '.etroit' : ''}.${langue}.svg`), texte);
-      rendus[`${nom}.${mode}.${langue}`] = { corps, h };
-    }
-  }
-}
-
-async function planche(langue, sortie) {
-  const M = 24, GAP = 48, CADRE = 390, GOUT = 20, LEG = 15;
-  const WL = MODES.large.W;
-  const LARGEUR = M + WL + GAP + CADRE + M;
-  const legende = (t, x, y) => P[400].chemin(t, x, y, LEG, 0, 'fs');
-  let s = '', yL = M, yE = M;
-  s += legende(langue === 'fr' ? 'Grand écran, 736 px (colonne de texte)' : 'Wide, 736 px', M, yL + 12);
-  s += legende(langue === 'fr' ? 'Téléphone, 390 px (350 px de dessin)' : 'Phone, 390 px', M + WL + GAP, yE + 12);
-  yL += 30; yE += 30;
-  const yE0 = yE;
-  yE += GOUT;
-  for (const nom of Object.keys(SCHEMAS)) {
-    const l = rendus[`${nom}.large.${langue}`], e = rendus[`${nom}.etroit.${langue}`];
-    s += `<g transform="translate(${M} ${f(yL)})">${l.corps}</g>`;
-    yL += l.h + 28;
-    s += `<line x1="${M}" y1="${f(yL - 14)}" x2="${M + WL}" y2="${f(yL - 14)}" stroke="${C.dalle}" stroke-width="1.5"/>`;
-    s += `<g transform="translate(${M + WL + GAP + GOUT} ${f(yE)})">${e.corps}</g>`;
-    yE += e.h + 36;
-  }
-  const H = Math.ceil(Math.max(yL, yE) + M);
-  const telephone = `<rect x="${M + WL + GAP}" y="${yE0}" width="${CADRE}" height="${f(yE - yE0 - 16)}" fill="none" stroke="${C.dalle}" stroke-width="2"/>`;
-  const doc =
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${LARGEUR}" height="${H}">${STYLE}` +
-    `<rect width="${LARGEUR}" height="${H}" fill="${C.ivoire}"/>${telephone}${s}</svg>`;
-  await sharp(Buffer.from(doc)).png({ compressionLevel: 9 }).toFile(sortie);
-  console.log(`${sortie} ${LARGEUR} × ${H}`);
-}
-
-await planche('fr', join(ICI, 'planche.png'));
-// Contrôle de l'anglais, hors livrable : node planche.mjs <dossier>
-if (process.argv[2]) await planche('en', join(process.argv[2], 'planche.en.png'));
-for (const [k, v] of Object.entries(rendus)) console.log(`${k} : hauteur ${Math.ceil(v.h)}`);
+await produire(ICI, { frise, 'donnee-decision': donneeDecision, niveaux }, TEXTES);

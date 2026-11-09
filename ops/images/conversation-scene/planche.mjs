@@ -13,7 +13,7 @@
 // Produit repos.svg, tour-1.svg, tour-2.svg et fin.svg, dans le repère de
 // Scene.astro (0 -140 426.667 160), mêmes classes, et planche.png.
 // Relançable : node ops/images/conversation-scene/planche.mjs.
-// Sans paquet ajouté : sharp ; le texte en chemins (../accueil/police.mjs).
+// Sans paquet ajouté : sharp ; le texte en chemins (../commun/police.mjs).
 //
 // Poses : debout (Jean) de poses.ts ; « assis », nouvelle, sur les segments
 // existants (voir ASSIS). Objets de planche : tabouret, table, écran, bulle,
@@ -22,30 +22,17 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import sharp from 'sharp';
-import { POSES, LUNETTES } from '../../../src/components/scene/poses.ts';
-import { police } from '../accueil/police.mjs';
+import { POSES } from '../../../src/components/scene/poses.ts';
+import { L, r2, sol, svgScene } from '../commun/svg.mjs';
+import { jambes, brasArriere, brasAvant, TORSE, TETE, perso } from '../commun/personnage.mjs';
+import { M, LARG, CASE, RANG, encadre, grille, casePoses, decoupage, auxLargeurs, ecrirePlanche } from '../commun/planche.mjs';
 
 const ICI = fileURLToPath(new URL('./', import.meta.url));
-const C = { ivoire: '#FEFAF2', encre: '#2A1F1A', ambre: '#F2A33A', orange: '#B54E19', ardoise: '#5E7488', dalle: '#D9D4CC' };
-const STYLE =
-  `<style>.fe{fill:${C.encre}}.se{stroke:${C.encre}}.fi{fill:${C.ivoire}}.si{stroke:${C.ivoire}}` +
-  `.sa{stroke:${C.ardoise}}.so{stroke:${C.orange}}.fa{fill:${C.ambre}}.fd{fill:${C.dalle}}.fs{fill:${C.ardoise}}</style>`;
-const L = 426.667;
-const r2 = (v) => Math.round(v * 10) / 10;
 
 // ---------------------------------------------------------------------------
-// La pose assise, à ajouter à poses.ts. Mêmes aides que poses.ts (trait,
-// jambes, brasArriere, brasAvant, torse, TETE), recopiées ici.
+// La pose assise, à ajouter à poses.ts. Mêmes aides que poses.ts
+// (../commun/personnage.mjs).
 
-const LIGNE = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
-const trait = (c, points, largeur) => `<polyline class="${c}" points="${points}" ${LIGNE} stroke-width="${largeur}"/>`;
-const jambes = (arriere, avant) => trait('se', arriere, 7.5) + trait('se', avant, 7.5);
-const brasArriere = (points) => trait('se', points, 7);
-const brasAvant = (points) => trait('si', points, 10) + trait('se', points, 7);
-const torse = () =>
-  '<path class="fe" d="M-9,-88 A9,9 0 0 1 9,-88 L9,-55 Q9,-52 6,-52 L-6,-52 Q-9,-52 -9,-55 Z"/>';
-const TETE = '<circle class="fe" cx="1" cy="-110" r="10"/>{L}';
 /** Assis : les jambes pliées au genou, cuisse 24,25 à l'horizontale et tibia
  *  19,9 à la verticale (ceux de marche-2), pied 5 à plat ; les hanches
  *  descendent donc de 56 à 24 (32 plus bas). Le haut du corps est celui de
@@ -56,10 +43,10 @@ const TETE = '<circle class="fe" cx="1" cy="-110" r="10"/>{L}';
 const ASSIS =
   jambes('-5.25,-24 19,-24 19,-4 24,-4', '5.25,-24 29.5,-24 29.5,-4 34.5,-4') +
   '<g transform="translate(0 32)">' +
-  brasArriere('0,-89 28.5,-84') +
-  torse() +
+  brasArriere([0, -89], [28.5, -84]) +
+  TORSE +
   TETE +
-  brasAvant('1,-89 29.5,-82') +
+  brasAvant([1, -89], [29.5, -82]) +
   '</g>';
 
 // ---------------------------------------------------------------------------
@@ -119,15 +106,12 @@ const FICHE_SVG =
 // ---------------------------------------------------------------------------
 // Les places et les images.
 
-const perso = (dessin, x, { jean = false, classe = '' } = {}) =>
-  `<g transform="translate(${r2(x)} 0)"><g class="${classe}">${dessin.replace('{L}', jean ? LUNETTES : '')}</g></g>`;
 const RETRAIT = 58; // de Jean à l'apprenant
 const LARGEUR = 10 + RETRAIT + TABLE_X[1];
 const J_X = Math.round((L - LARGEUR) / 2 + 10), A_X = J_X + RETRAIT;
 const ici = (svg, classe = '') => `<g${classe ? ` class="${classe}"` : ''} transform="translate(${A_X} 0)">${svg}</g>`;
-const SOL = `<line class="se" x1="0" y1="0" x2="${L}" y2="0" stroke-width="1.5"/>`;
 const FOND =
-  SOL + perso(POSES.debout, J_X, { jean: true, classe: 'j-debout' }) +
+  sol() + perso(POSES.debout, J_X, { jean: true, classe: 'j-debout' }) +
   ici(TABOURET) + ici(TABLE) + ici(ECRAN_SVG) + perso(ASSIS, A_X, { classe: 'apprenant' });
 const CARTES = {
   repos: FOND,
@@ -135,26 +119,16 @@ const CARTES = {
   'tour-2': FOND + ici(BULLE_ECRAN, 'bulle-ecran'),
   fin: FOND + ici(FICHE_SVG),
 };
-const fichier = (corps) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -140 ${L} 160" width="${L}" height="160">${STYLE}${corps}</svg>\n`;
-for (const nom of Object.keys(CARTES)) writeFileSync(join(ICI, `${nom}.svg`), fichier(CARTES[nom]));
+for (const nom of Object.keys(CARTES)) writeFileSync(join(ICI, `${nom}.svg`), svgScene(CARTES[nom]));
 
 // ---------------------------------------------------------------------------
 // La planche : repos et fin ; les deux tours ; la pose assise et le
 // découpage ; puis la fin et le repos aux largeurs de carte, taille réelle.
 
-const P8 = police(800), P4 = police(400);
-const M = 20, LARG = 2 * M + 1280, LEG = 34;
-const CASE = (1280 - M) / 2, K = CASE / L, H_CASE = 160 * K;
-const legende = (n, t, x, y) => P8.chemin(`${n}`, x, y, 15, 0, 'fs') + P4.chemin(t, x + 16, y, 15, 0, 'fs');
-const petit = (t, x, y, taille = 13, p = P4) => p.chemin(t, x, y, taille, 0, 'fs');
-const cadre = (x, y, l, h) => `<rect x="${x}" y="${y}" width="${l}" height="${h}" fill="${C.ivoire}" stroke="${C.dalle}" stroke-width="2"/>`;
-const scene = (corps, x, y, k) => `<g transform="translate(${x} ${y + 140 * k}) scale(${k})">${corps}</g>`;
-
 // La pose assise seule, à côté de debout, sur la même ligne de pied ; puis
 // avec son tabouret.
 const POSES_CASE =
-  `<line class="se" x1="6" y1="0" x2="${L - 6}" y2="0" stroke-width="1.5"/>` +
+  sol(6, L - 6) +
   perso(POSES.debout, 60) + perso(ASSIS, 160) +
   `<g transform="translate(290 0)">${TABOURET}</g>` + perso(ASSIS, 290) +
   `<line class="sa" x1="40" y1="-56" x2="200" y2="-56" stroke-width="1" stroke-dasharray="3 3"/>` +
@@ -166,60 +140,32 @@ const TEMPS = [
   ['temps 2', 'bulle de l’écran ; la première s’efface', 150],
   ['temps 3', 'la fiche ambre sort de l’écran vers l’apprenant', 300],
 ];
-function decoupage(x, y) {
-  const total = TEMPS.reduce((s, t) => s + t[2], 0);
-  let d = petit(`Découpage : ${total} ms, trois temps ; personne ne bouge`, x + 16, y + 30, 14, P8);
-  const x0 = x + 16, lp = CASE - 32 - 64;
-  let t = 0;
-  TEMPS.forEach(([, , ms], i) => {
-    const xa = x0 + (t / total) * lp, l = (ms / total) * lp;
-    d += `<rect x="${r2(xa)}" y="${y + 48}" width="${r2(l - 3)}" height="16" rx="2" fill="${i === TEMPS.length - 1 ? C.ambre : i % 2 ? C.dalle : '#ECE7DE'}" stroke="${C.ardoise}" stroke-width="1"/>`;
-    d += petit(`${ms}`, xa + 4, y + 60, 11);
-    t += ms;
-  });
-  d += petit(`${total} ms`, x0 + lp + 6, y + 60, 11);
-  let yl = y + 96;
-  for (const [n, txt, ms] of TEMPS) { d += petit(n, x0, yl, 13, P8) + petit(`${txt} : ${ms} ms`, x0 + 70, yl, 13); yl += 20; }
-  d += petit('Bulles : fondu et scale de 0,8 à 1 depuis la pointe de la queue (80 ms), step-end ensuite.', x0, yl + 6, 12);
-  d += petit('Fiche : de derrière le bord de l’écran (+14 en x, opacité 0) à sa place, en ease-out.', x0, yl + 22, 12);
-  return d;
-}
+const TOTAL = TEMPS.reduce((s, t) => s + t[2], 0);
+const DECOUPAGE = {
+  titre: `Découpage : ${TOTAL} ms, trois temps ; personne ne bouge`,
+  temps: TEMPS,
+  notes: [
+    'Bulles : fondu et scale de 0,8 à 1 depuis la pointe de la queue (80 ms), step-end ensuite.',
+    'Fiche : de derrière le bord de l’écran (+14 en x, opacité 0) à sa place, en ease-out.',
+  ],
+};
 
 let y = M, corps = '';
-const CASES = [
+corps += grille([
   ['repos', 'Repos : l’apprenant face à l’écran ; Jean en retrait, qui regarde.'],
   ['fin', 'Fin : l’écran tend la fiche ambre, le retour ; l’apprenant la regarde.'],
   ['tour-1', 'Tour 1 : l’apprenant parle, une bulle de son côté.'],
   ['tour-2', 'Tour 2 : l’interlocuteur répond, une bulle côté écran.'],
-];
-CASES.forEach(([nom, t], i) => {
-  const x = M + (i % 2) * (CASE + M), yc = y + Math.floor(i / 2) * (H_CASE + LEG + 12);
-  corps += cadre(x, yc, CASE, H_CASE) + scene(CARTES[nom], x, yc, K) + legende(i + 1, t, x, yc + H_CASE + 22);
-});
-y += 2 * (H_CASE + LEG + 12);
-corps += cadre(M, y, CASE, H_CASE) + scene(POSES_CASE, M, y, K);
-for (const [nm, xn] of NOMS) corps += petit(nm, M + xn * K, y + H_CASE - 10);
-corps += legende(5, 'La pose assise, nouvelle : hanches 32 plus bas, genou plié, aucun bras levé.', M, y + H_CASE + 22);
-corps += cadre(M + CASE + M, y, CASE, H_CASE) + decoupage(M + CASE + M, y);
-corps += legende(6, 'La durée : 600 ms, trois temps.', M + CASE + M, y + H_CASE + 22);
-y += H_CASE + LEG + 12;
-let n = 7;
-for (const nom of ['fin', 'repos']) {
-  let x = M;
-  const hMax = (160 / L) * 480;
-  for (const w of [480, 384, 335]) {
-    const k = w / L;
-    corps += cadre(x, y, w, 160 * k) + scene(CARTES[nom], x, y, k);
-    x += w + 20;
-  }
-  corps += legende(n++, `${nom === 'fin' ? 'Fin' : 'Repos'} aux largeurs de carte : 480, 384 et 335 px, taille réelle.`, M, y + hMax + 22);
-  y += hMax + LEG + 12;
-}
+], y, CARTES);
+y += 2 * RANG;
+corps += casePoses(M, y, POSES_CASE, NOMS, 5, 'La pose assise, nouvelle : hanches 32 plus bas, genou plié, aucun bras levé.');
+corps += encadre(M + CASE + M, y, decoupage(M + CASE + M, y, DECOUPAGE), 6, 'La durée : 600 ms, trois temps.');
+y += RANG;
+const largeurs = auxLargeurs([[CARTES.fin, 'Fin'], [CARTES.repos, 'Repos']], y, 7);
+corps += largeurs.corps;
+y = largeurs.y;
 const H = Math.round(y + 4);
-const planche =
-  `<svg xmlns="http://www.w3.org/2000/svg" width="${LARG}" height="${H}">${STYLE}` +
-  `<rect width="${LARG}" height="${H}" fill="${C.ivoire}"/>${corps}</svg>`;
-await sharp(Buffer.from(planche)).png({ compressionLevel: 9 }).toFile(join(ICI, 'planche.png'));
+await ecrirePlanche(join(ICI, 'planche.png'), corps, H);
 
 // ---------------------------------------------------------------------------
 // Les contrôles, pour le rapport.

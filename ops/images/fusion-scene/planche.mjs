@@ -20,7 +20,7 @@
 // Produit repos.svg, penche.svg, chute.svg, fin.svg, dans le repère de
 // Scene.astro (0 -140 426.667 160), mêmes classes, et planche.png.
 // Relançable : node ops/images/fusion-scene/planche.mjs.
-// Sans paquet ajouté : sharp ; le texte en chemins (../accueil/police.mjs).
+// Sans paquet ajouté : sharp ; le texte en chemins (../commun/police.mjs).
 //
 // Les poses, dessinées ici et reportées telles quelles dans poses.ts (pousse,
 // hourra), sur les segments existants, sans articulation nouvelle :
@@ -40,38 +40,17 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import sharp from 'sharp';
-import { POSES, LUNETTES, CABANE } from '../../../src/components/scene/poses.ts';
-import { police } from '../accueil/police.mjs';
+import { POSES, CABANE } from '../../../src/components/scene/poses.ts';
+import { L, r2, pt, add, rad, tourne, sol, svgScene } from '../commun/svg.mjs';
+import { jambes, brasArriere, brasAvant, TORSE, TETE, JAMBES_DEBOUT, EP_AR, EP_AV, LONG_BRAS, perso } from '../commun/personnage.mjs';
+import { M, LARG, CASE, RANG, encadre, grille, casePoses, decoupage, auxLargeurs, ecrirePlanche } from '../commun/planche.mjs';
 
 const ICI = fileURLToPath(new URL('./', import.meta.url));
-const C = { ivoire: '#FEFAF2', encre: '#2A1F1A', ambre: '#F2A33A', orange: '#B54E19', ardoise: '#5E7488', dalle: '#D9D4CC' };
-const STYLE =
-  `<style>.fe{fill:${C.encre}}.se{stroke:${C.encre}}.fi{fill:${C.ivoire}}.si{stroke:${C.ivoire}}` +
-  `.sa{stroke:${C.ardoise}}.so{stroke:${C.orange}}.fa{fill:${C.ambre}}.fd{fill:${C.dalle}}.fs{fill:${C.ardoise}}</style>`;
-const L = 426.667;
-const r2 = (v) => Math.round(v * 10) / 10;
-const pt = ([x, y]) => `${r2(x)},${r2(y)}`;
-const add = ([a, b], [c, d]) => [a + c, b + d];
-const rad = (d) => (d * Math.PI) / 180;
-const tourne = ([x, y], deg, [cx, cy] = [0, -56]) => {
-  const a = rad(deg), dx = x - cx, dy = y - cy;
-  return [cx + dx * Math.cos(a) - dy * Math.sin(a), cy + dx * Math.sin(a) + dy * Math.cos(a)];
-};
 
 // ---------------------------------------------------------------------------
-// Les pièces des poses (celles de poses.ts).
+// Les pièces des poses : celles de poses.ts (../commun/personnage.mjs).
 
-const LIGNE = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
-const trait = (c, points, l) => `<polyline class="${c}" points="${points}" ${LIGNE} stroke-width="${l}"/>`;
-const jambes = (ar, av) => trait('se', ar, 7.5) + trait('se', av, 7.5);
-const brasArriere = (a, b) => trait('se', `${pt(a)} ${pt(b)}`, 7);
-const brasAvant = (a, b) => trait('si', `${pt(a)} ${pt(b)}`, 10) + trait('se', `${pt(a)} ${pt(b)}`, 7);
-const TORSE = '<path class="fe" d="M-9,-88 A9,9 0 0 1 9,-88 L9,-55 Q9,-52 6,-52 L-6,-52 Q-9,-52 -9,-55 Z"/>';
-const TETE = '<circle class="fe" cx="1" cy="-110" r="10"/>{L}';
-const JAMBES_DEBOUT = jambes('-5.25,-56 -4.5,-4 0.5,-4', '5.25,-56 4.5,-4 9.5,-4');
-const EP_AR = [0, -89], EP_AV = [1, -89];
-const LONG_AV = Math.hypot(28, 16), LONG_AR = Math.hypot(31, 13); // bras-tendus : 32,2 et 33,6
+const LONG_AV = LONG_BRAS, LONG_AR = Math.hypot(31, 13); // bras-tendus : 32,2 et 33,6
 const dirBras = (deg) => [Math.cos(rad(deg)), Math.sin(rad(deg))]; // deg > 0 : sous l'horizontale
 
 // pousse : la bascule, les jambes, les bras.
@@ -125,15 +104,10 @@ const CABANES = (ag, ad) =>
 const CABANE_FIN = `<g class="cabane-fin">${CABANE.murs(X0, X1)}${FENETRE}${PORTE}</g>`;
 const DALLE = `<rect class="dalle fd" x="${r2(X0 - 12)}" y="0" width="${r2(X1 - X0 + 24)}" height="12"/>`;
 const POINT = `<circle class="point fa" cx="${r2(S)}" cy="6" r="5"/>`;
-const SOL = `<line class="se" x1="0" y1="0" x2="${L}" y2="0" stroke-width="1.5"/>`;
 
 // ---------------------------------------------------------------------------
 // Les personnages.
 
-const perso = (dessin, x, { jean = false, miroir = false, classe = '' } = {}) => {
-  const d = dessin.replace('{L}', jean ? LUNETTES : '');
-  return `<g transform="translate(${r2(x)} 0)"><g class="${classe}"${miroir ? ' transform="scale(-1 1)"' : ''}>${d}</g></g>`;
-};
 // La chaîne contre la paroi droite de la cabane de gauche, penchée de
 // `angle` : Jean à la paroi (sa main au ras du trait, à l'intérieur), puis A,
 // B, C, chacun les mains au dos de celui qui le précède.
@@ -161,11 +135,11 @@ const PENCHE = PENCHE_X[0] - REPOS_X[0], TOTAL = FIN_X[0] - r2(REPOS_X[0]);
 const MI = 0.5, CHUTE_X = REPOS_X.map((x) => x + PENCHE + MI * (TOTAL - PENCHE));
 
 const CARTES = {
-  repos: SOL + CABANES(0, 0) + pousseurs(REPOS_X, 'pousse'),
-  penche: SOL + CABANES(CONTACT, 0) + pousseurs(PENCHE_X, 'pousse'),
-  chute: SOL + CABANES(CONTACT + MI * (90 - CONTACT), MI * 90) + pousseurs(CHUTE_X, 'pousse'),
+  repos: sol() + CABANES(0, 0) + pousseurs(REPOS_X, 'pousse'),
+  penche: sol() + CABANES(CONTACT, 0) + pousseurs(PENCHE_X, 'pousse'),
+  chute: sol() + CABANES(CONTACT + MI * (90 - CONTACT), MI * 90) + pousseurs(CHUTE_X, 'pousse'),
   fin:
-    DALLE + SOL + CABANE_FIN + POINT +
+    DALLE + sol() + CABANE_FIN + POINT +
     perso(HOURRA, FIN_X[1], { classe: 'a-hourra' }) +
     perso(HOURRA, FIN_X[0], { jean: true, classe: 'j-hourra' }) +
     perso(HOURRA, FIN_X[3], { classe: 'c-hourra' }) +
@@ -177,25 +151,15 @@ const traverse = Math.max(...Array.from({ length: 101 }, (_, i) => {
   const p = i / 100, ag = rad(CONTACT + p * (90 - CONTACT)), ad = rad(p * 90);
   return -ECART * Math.cos(ad) + 122 * Math.sin(ag - ad);
 }));
-const fichier = (corps) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -140 ${L} 160" width="${L}" height="160">${STYLE}${corps}</svg>\n`;
-for (const [nom, corps] of Object.entries(CARTES)) writeFileSync(join(ICI, `${nom}.svg`), fichier(corps));
+for (const [nom, corps] of Object.entries(CARTES)) writeFileSync(join(ICI, `${nom}.svg`), svgScene(corps));
 
 // ---------------------------------------------------------------------------
 // La planche : les trois images, les poses ; le découpage ; puis la fin et le
 // repos aux largeurs de carte (480, 384, 335 px), taille réelle.
 
-const P8 = police(800), P4 = police(400);
-const M = 20, LARG = 2 * M + 1280, LEG = 34;
-const CASE = (1280 - M) / 2, K = CASE / L, H_CASE = 160 * K;
-const legende = (n, t, x, y) => P8.chemin(`${n}`, x, y, 15, 0, 'fs') + P4.chemin(t, x + 16, y, 15, 0, 'fs');
-const petit = (t, x, y, taille = 13, p = P4) => p.chemin(t, x, y, taille, 0, 'fs');
-const cadre = (x, y, l, h) => `<rect x="${x}" y="${y}" width="${l}" height="${h}" fill="${C.ivoire}" stroke="${C.dalle}" stroke-width="2"/>`;
-const scene = (corps, x, y, k) => `<g transform="translate(${x} ${y + 140 * k}) scale(${k})">${corps}</g>`;
-
 // Case 4 : les deux poses nouvelles, à côté de celles dont elles partent.
 const POSES_CASE =
-  `<line class="se" x1="6" y1="0" x2="${L - 6}" y2="0" stroke-width="1.5"/>` +
+  sol(6, L - 6) +
   perso(POSES.penche, 45) + perso(POUSSE, 125, { jean: true }) +
   perso(POSES.debout, 250) + perso(HOURRA, 340, { jean: true });
 const NOMS = [['penche', 28], ['pousse', 112], ['debout', 232], ['hourra', 322]];
@@ -207,57 +171,29 @@ const TEMPS = [
   ['400', 'une seule cabane, la dalle ; les deux bras tendus', 100, 'step-end'],
   ['500', 'les deux mains levées ; le point ambre se pose dès 400', 100, 'step-end'],
 ];
-function decoupage(x, y) {
-  let d = petit('Découpage : 600 ms ; aucun bras levé seul', x + 16, y + 30, 14, P8);
-  const x0 = x + 16, lp = CASE - 32 - 64;
-  let t = 0;
-  TEMPS.forEach(([, , ms], i) => {
-    const xa = x0 + (t / 600) * lp, l = (ms / 600) * lp;
-    d += `<rect x="${r2(xa)}" y="${y + 48}" width="${r2(l - 3)}" height="16" rx="2" fill="${i === TEMPS.length - 1 ? C.ambre : i % 2 ? C.dalle : '#ECE7DE'}" stroke="${C.ardoise}" stroke-width="1"/>`;
-    d += petit(`${ms}`, xa + 4, y + 60, 11);
-    t += ms;
-  });
-  d += petit(`${t} ms`, x0 + lp + 6, y + 60, 11);
-  let yl = y + 96;
-  for (const [n, txt, ms, c] of TEMPS) { d += petit(n, x0, yl, 13, P8) + petit(`${txt} : ${ms} ms (${c})`, x0 + 84, yl, 13); yl += 20; }
-  return d;
-}
+const DECOUPAGE = {
+  titre: 'Découpage : 600 ms ; aucun bras levé seul',
+  temps: TEMPS,
+  colonne: 84,
+  texte: ([, txt, ms, c]) => `${txt} : ${ms} ms (${c})`,
+};
 
 let y = M, corps = '';
-const LEGENDES = [
+corps += grille([
   ['repos', 'Repos : deux cabanes, un écart ; les quatre poussent la paroi droite.'],
   ['penche', 'La paroi poussée bascule et touche l’autre.'],
   ['chute', 'Les deux parois tombent vers la droite ; la chaîne trébuche.'],
   ['fin', 'Fin : une seule cabane sur la dalle, point ambre ; les deux mains levées.'],
-];
-LEGENDES.forEach(([nom, t], i) => {
-  const x = M + (i % 2) * (CASE + M), yc = y + Math.floor(i / 2) * (H_CASE + LEG + 12);
-  corps += cadre(x, yc, CASE, H_CASE) + scene(CARTES[nom], x, yc, K) + legende(i + 1, t, x, yc + H_CASE + 22);
-});
-y += 2 * (H_CASE + LEG + 12);
-corps += cadre(M, y, CASE, H_CASE) + scene(POSES_CASE, M, y, K);
-for (const [nm, xn] of NOMS) corps += petit(nm, M + xn * K, y + H_CASE - 10);
-corps += legende(5, 'Les poses : pousse et hourra, à côté de celles dont elles partent.', M, y + H_CASE + 22);
-corps += cadre(M + CASE + M, y, CASE, H_CASE) + decoupage(M + CASE + M, y);
-corps += legende(6, 'La durée : la bascule, la chute, puis la fusion.', M + CASE + M, y + H_CASE + 22);
-y += H_CASE + LEG + 12;
-let n = 7;
-for (const nom of ['fin', 'repos']) {
-  let x = M;
-  const hMax = (160 / L) * 480;
-  for (const w of [480, 384, 335]) {
-    const k = w / L;
-    corps += cadre(x, y, w, 160 * k) + scene(CARTES[nom], x, y, k);
-    x += w + 20;
-  }
-  corps += legende(n++, `${nom === 'fin' ? 'Fin' : 'Repos'} aux largeurs de carte : 480, 384 et 335 px, taille réelle.`, M, y + hMax + 22);
-  y += hMax + LEG + 12;
-}
+], y, CARTES);
+y += 2 * RANG;
+corps += casePoses(M, y, POSES_CASE, NOMS, 5, 'Les poses : pousse et hourra, à côté de celles dont elles partent.');
+corps += encadre(M + CASE + M, y, decoupage(M + CASE + M, y, DECOUPAGE), 6, 'La durée : la bascule, la chute, puis la fusion.');
+y += RANG;
+const largeurs = auxLargeurs([[CARTES.fin, 'Fin'], [CARTES.repos, 'Repos']], y, 7);
+corps += largeurs.corps;
+y = largeurs.y;
 const H = Math.round(y + 4);
-const planche =
-  `<svg xmlns="http://www.w3.org/2000/svg" width="${LARG}" height="${H}">${STYLE}` +
-  `<rect width="${LARG}" height="${H}" fill="${C.ivoire}"/>${corps}</svg>`;
-await sharp(Buffer.from(planche)).png({ compressionLevel: 9 }).toFile(join(ICI, 'planche.png'));
+await ecrirePlanche(join(ICI, 'planche.png'), corps, H);
 
 // ---------------------------------------------------------------------------
 // Les contrôles, pour le rapport.

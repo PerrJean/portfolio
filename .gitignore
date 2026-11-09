@@ -28,3 +28,8 @@ Thumbs.db
 
 # copies de travail des sous-agents (worktrees)
 .claude/worktrees/
+
+# fichiers produits jetables (registre/0109) : se regenerent, jamais suivis
+ops/images/**/planche.png
+__pycache__/
+*.py[co]
