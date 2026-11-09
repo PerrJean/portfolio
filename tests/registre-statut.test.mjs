@@ -14,7 +14,13 @@ import { join } from 'node:path';
 import { RACINE } from './outils.mjs';
 
 const REGISTRE = join(RACINE, 'registre');
-const STATUT = /^(ouvert|en cours|gelé|(clos|écarté) \d{4}-\d{2}-\d{2}|remplacé par (\d{4}))$/;
+const STATUT = /^(ouvert|en cours|gelé|(clos|écarté) (\d{4}-\d{2}-\d{2})|remplacé par (\d{4}))$/;
+
+/** Vrai si AAAA-MM-JJ est une date du calendrier (refuse 2026-13-45, 2026-02-31). */
+const dateReelle = (d) => {
+  const t = new Date(`${d}T00:00:00Z`);
+  return !Number.isNaN(t.getTime()) && t.toISOString().startsWith(d);
+};
 
 const cellules = (ligne) => ligne.split('|').slice(1, -1).map((c) => c.trim());
 
@@ -30,13 +36,15 @@ function statutDe(texte) {
   return { valeur };
 }
 
-const fiches = readdirSync(REGISTRE)
-  .filter((f) => /^\d{4}-.+\.md$/.test(f) && !f.startsWith('0000'))
-  .sort();
+const FICHE = /^\d{4}-.+\.md$/;
+const tous = readdirSync(REGISTRE);
+const fiches = tous.filter((f) => FICHE.test(f) && !f.startsWith('0000')).sort();
 const numeros = new Set(fiches.map((f) => f.slice(0, 4)));
 
-test('le registre a des fiches', () => {
+test('le registre a des fiches, toutes nommées NNNN-titre.md', () => {
   assert.ok(fiches.length > 100, `${fiches.length} fiches seulement`);
+  // Une fiche mal nommée échapperait sans bruit au contrôle du statut.
+  assert.deepEqual(tous.filter((f) => !FICHE.test(f)), [], 'registre/0000 : un point = un fichier NNNN-titre.md');
 });
 
 test('chaque fiche du registre écrit un statut permis', () => {
@@ -46,7 +54,8 @@ test('chaque fiche du registre écrit un statut permis', () => {
     if (refus) { fautes.push(`${f} : ${refus}`); continue; }
     const m = STATUT.exec(valeur);
     if (!m) fautes.push(`${f} : statut « ${valeur} » hors des valeurs de registre/0000`);
-    else if (m[3] && !numeros.has(m[3])) fautes.push(`${f} : remplacé par ${m[3]}, fiche absente`);
+    else if (m[3] && !dateReelle(m[3])) fautes.push(`${f} : date ${m[3]} impossible`);
+    else if (m[4] && !numeros.has(m[4])) fautes.push(`${f} : remplacé par ${m[4]}, fiche absente`);
   }
   assert.deepEqual(fautes, [], `\n${fautes.join('\n')}`);
 });
