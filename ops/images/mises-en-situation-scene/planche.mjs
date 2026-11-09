@@ -27,8 +27,9 @@
 //
 // Aucune pose nouvelle : debout, bras-tendus, marche-2 et montre (poses.ts),
 // montre avec d'autres cibles, toutes sous l'horizontale (le bras avant droit,
-// 32,2, vers la cible). Les objets (board, post-it, post-it retenu) viennent
-// de poses.ts (OBJETS), comme dans le site (SceneMisesEnSituation.astro).
+// 32,2, vers la cible). Le board et le post-it viennent de poses.ts
+// (OBJETS), comme dans le site (SceneMisesEnSituation.astro) ; le post-it
+// retenu est dessiné ici (POSTIT_RETENU).
 
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -63,9 +64,13 @@ const J_X = Math.round((L - LARGEUR) / 2 + 12), BX = J_X + A_GAUCHE;
 const PM_1 = BX + COL - 3, PM_2 = BX + 2 * COL - 3;
 const D_X = BX + COL * 3.5 + MAINS_D;
 
+// Le post-it retenu (ambre, un signe de bulle : l'oral) est un objet de
+// planche : il a quitté poses.ts en 0090, la scène animée ne s'en sert pas.
+const POSTIT_RETENU =
+  '<rect class="fa se" x="0" y="0" width="13" height="13" rx="1" stroke-width="1.5"/><path class="se" d="M1.9,5.5 a3.6,2.6 0 1 1 2.2,2.4 l-2.4,1.8 l0.6,-2.6 Z" fill="none" stroke-width="1.1" stroke-linejoin="round"/>';
 const xPostit = (col) => BX + COL * (col + 0.5) - PI / 2;
 const postit = (col, y, retenu = false) =>
-  `<g class="postit c${col + 1}" transform="translate(${r2(xPostit(col))} ${y})">${retenu ? OBJETS['postit-retenu'] : OBJETS.postit}</g>`;
+  `<g class="postit c${col + 1}" transform="translate(${r2(xPostit(col))} ${y})">${retenu ? POSTIT_RETENU : OBJETS.postit}</g>`;
 const BOARD = `<g class="board" transform="translate(${BX} 0)">${OBJETS.board}</g>`;
 // Le remplissage, temps par temps : au repos, la première colonne pleine,
 // deux dans la deuxième (celui du bas, le PM le colle) ; puis deux de plus

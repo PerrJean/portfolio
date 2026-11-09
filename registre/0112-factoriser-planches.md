@@ -45,3 +45,14 @@ des sorties identiques à l'octet, PNG compris : la comparaison est possible.
 point 0087 (« piece of material » ; « monte d’abord, puis s’aplatit sous le
 code à reprendre »). Relancé, il sort les 24 SVG de `public/illustrations/`
 à l'octet (`cmp`, 24 sur 24).
+
+**Correctif hors spec, avant la factorisation** :
+`mises-en-situation-scene/planche.mjs` dessine lui-même le post-it retenu
+(`POSTIT_RETENU`, le dessin de `poses.ts` avant 0090) : relancé, il sort de
+nouveau le `fin.svg` suivi, à l'octet. Sans quoi la comparaison de ce script
+se ferait sur une sortie fausse.
+
+**Étape 2** : brief `prompts/0112-factorisation.md`, confié à un sous-agent.
+Preuve : un script hors dépôt relance les 12 scripts et compare chaque
+sortie (SVG et PNG) à l'octet à une base figée juste avant, et, pour
+`fusion` et `atelier-pilotage`, chaque SVG à `public/illustrations/`.
