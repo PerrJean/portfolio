@@ -59,7 +59,8 @@ fi
 # redaction, puis supprime plus bas. Code 1 : rouge (build ou tests). Code 2 :
 # verifier refuse son appel, donc le hook lui-meme est faux : bloquant dans les
 # deux vitesses.
-command -v node >/dev/null 2>&1 || export PATH="$APPDATA/fnm/node-versions/v24.20.0/installation:$PATH"
+# Secours si node manque au PATH : fnm vit hors d'AppData (FNM_DIR, registre/0121).
+command -v node >/dev/null 2>&1 || export PATH="$HOME/.local/share/fnm/node-versions/v24.20.0/installation:$PATH"
 CODE=0
 if [ -n "$RAPIDE" ]; then
   echo "   vitesse rapide ($BRANCHE) : sans tests/*-navigateur.test.mjs"

@@ -16,21 +16,15 @@ savoir pour reprendre.
   choix hors spec de 0107 tranchés, avec l'essai de `GIT_INDEX_FILE`
   (registre/0107, Tranché) ; `tests/outils.mjs` conseille `npm run verifier`
   (`git log -1 -- tests/outils.mjs`) ; 0082 rattaché à l'étape
-  `publication`.
+  `publication` ; `node` visible de tout terminal, fnm sorti d'AppData
+  (registre/0121 : `FNM_DIR`, PATH utilisateur, `dev.cmd`, secours du hook).
 - **Reste, au registre** : 0004 `ouvert` ; 0005, 0006, 0007 `gelé` ; tous du
   temps 2, à ouvrir par questionnaire.
 - **Reste, non inscrit** :
-  1. **`node` introuvable sous PowerShell 7** : cause trouvée, correction
-     proposée à Jean, **non appliquée** (attend son accord). `node` 24.20.0
-     a été installé par fnm depuis un processus de l'app Claude (paquet
-     MSIX) : ses écritures dans `AppData\Roaming` sont parties dans le cache
-     du paquet Claude (`AppData\Local\Packages\Claude_pzs8sxrjxfjjc\
-     LocalCache\Roaming\fnm`). Seuls les processus lancés par l'app Claude
-     le voient ; `pwsh` 7, lui-même paquet MSIX, ne le voit pas, bien que
-     le PATH utilisateur cite le chemin. Après la correction : ajouter
-     `node` aux outils installés du `CLAUDE.md` global, lancer
-     `sauvegarder.ps1`, et mettre à jour le chemin de secours du hook
-     (`ops/hooks/pre-commit`, `$APPDATA/fnm/...`).
+  1. **`claude-config`** : `sauvegarder.ps1` a recopié le `CLAUDE.md` global
+     (ligne « Installés » : node par fnm hors d'AppData, registre/0121) ;
+     le script ne committe rien, l'écart attend Jean (`git -C
+     "C:\Users\Jean PERRIER\claude-config" status --short`).
   2. **Proposition pour la skill `passation` du dépôt vibe-coding** (Jean la
      traitera là-bas) : la passation d'un chantier interrompu reste sur sa
      branche, avec le code qu'elle décrit ; la fiche du registre sur `main`
@@ -44,7 +38,6 @@ savoir pour reprendre.
   `registre/0000`) ; statuts des fiches ambiguës (registre/0110) ; les trois
   choix de 0107 (registre/0107, Tranché) ; on n'étend pas la liste des
   étapes de `registre/0000` pour un seul projet (registre/0082).
-- **Prochaine commande** : la correction du PATH de `node` (ci-dessus), à
-  valider par Jean ; puis `/chantier 0004` (l'acte III, par questionnaire).
+- **Prochaine commande** : `/chantier 0004` (l'acte III, par questionnaire).
 - **Ne pas committer** : rien ne traîne dans l'arbre (`git status
   --porcelain`).
