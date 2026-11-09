@@ -86,6 +86,11 @@ sh ops/hooks/install.sh       # (re)poser le hook de pre-commit
 5. **Exiger la preuve**, pas l'affirmation.
 6. **Pousser sur GitHub** (compte personnel de Jean) à chaque chantier clos.
 
+**Commit et push sans demander** (projet personnel, dépôt sur le compte
+GitHub de Jean ; décision de Jean, 2026-11-09) : commit à chaque étape
+franchie, push de la branche en cours dans la foulée, push de `main` après
+chaque fusion. La fusion d'une branche dans `main` attend le go de Jean.
+
 ## Ce qui reste ouvert
 
 `0003` direction visuelle (maquettes livrées, choix de Jean attendu),
