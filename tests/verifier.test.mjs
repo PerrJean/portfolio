@@ -116,8 +116,9 @@ test('le hook de pre-commit appelle verifier et ne construit plus lui-même', ()
       `il doit jouer tous les tests, navigateur compris. Appels fautifs :\n${bloquantsAvec.join('\n')}`,
   );
   assert.ok(
-    /chantier\/\*\)\s*RAPIDE=1/.test(code) && code.includes('NON bloquant'),
-    `${HOOK} : la décision de vitesse (« chantier/*) RAPIDE=1 ») et le rouge non bloquant doivent rester au hook (0107, spec point 4).`,
+    /chantier\/\*\|claude\/chantier-\*\)\s*RAPIDE=1/.test(code) && code.includes('NON bloquant'),
+    `${HOOK} : la décision de vitesse (« chantier/*|claude/chantier-*) RAPIDE=1 », branches de session comprises, ` +
+      `registre/0106) et le rouge non bloquant doivent rester au hook (0107, spec point 4).`,
   );
   const restes = interditsPresents(code, ['astro build', 'node --test', 'npm test']);
   assert.deepEqual(
