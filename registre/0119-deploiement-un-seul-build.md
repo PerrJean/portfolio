@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `outil` | `ouvert` | 80 | | `claude-opus-5-5` |
+| `chantier` | `outil` | `en cours` | 80 | | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-09)**, relevé en examinant 0107 : la publication
 construit le site deux fois.
@@ -30,3 +30,25 @@ compris) ; un test rouge empêche toujours toute publication.
 
 **Hors périmètre** : la commande `verifier` (0107), qui remplacera plus tard
 les deux lignes build puis tests de `tester`.
+
+## Mesures avant le changement (2026-11-09)
+
+- **Référence** : `npx astro build --outDir .dist-ci` puis `DIST=.dist-ci
+  npm test` dans le worktree : build vert, 287 tests, 287 verts.
+- **Les tests n'écrivent rien dans `.dist-ci`** : empreintes SHA-256 des
+  78 fichiers et arborescence relevées avant et après `npm test`,
+  identiques (`diff` muet). On publie donc `.dist-ci` tel quel, sans copie.
+- **Les deux builds donnent le même site** : `withastro/action@v6` lance
+  `npm run build` (`astro build`, sortie `dist/`) sous Node 24, comme
+  `tester` ; `site` est figé dans `astro.config.mjs`, aucun `base`.
+  `npm run build` et `npx astro build --outDir .dist-ci` en local :
+  `diff -rq dist .dist-ci` muet. Et le site en ligne (build de
+  `withastro/action`, commit `6450366`) est identique octet pour octet au
+  `.dist-ci` local, 78 fichiers sur 78 (`curl` puis `cmp`).
+- **Seules différences de l'action** : `npm install` au lieu de `npm ci`
+  (`tester` garde `npm ci`, plus strict), un cache d'images Astro (sans
+  effet sur la sortie), et `include-hidden-files: true` au dépôt, repris.
+- **Durée avant** (API publique des Actions, trois dernières publications) :
+  231 s, 229 s, 298 s au total ; `construire` n'y pèse que 16 à 20 s,
+  `tester` 64 à 71 s, `publier` 101 à 195 s (l'attente de GitHub Pages). Le
+  gain attendu est modeste : un job et son démarrage.
