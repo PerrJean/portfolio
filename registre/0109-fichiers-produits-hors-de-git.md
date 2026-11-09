@@ -17,3 +17,9 @@ scripts `planche.mjs`, sont suivies (3,44 Mo d'images dans `ops/images/`) ;
 **Hors périmètre** (registre/0105) : `public/illustrations/` est un dossier de
 générés **livrés**, qui reste dans git. Le brief se rédige après lecture de
 0105.
+
+## Tranché
+
+- 2026-11-09, Jean : mené **avec 0112** dans un même chantier, une seule
+  prise en main de `ops/images/` ; les planches PNG sont les sorties des
+  scripts `planche.mjs` que 0112 factorise.

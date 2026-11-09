@@ -18,3 +18,8 @@ d'images). 12 scripts dans `ops/images/`, 3 360 lignes.
 
 **Test de non-régression** : les sorties du script sont comparées aux SVG
 **actuels** de `public/illustrations/`, pas aux anciennes sorties du script.
+
+## Tranché
+
+- 2026-11-09, Jean : mené **avec 0109** (les planches PNG et le `.pyc` hors
+  de git) dans un même chantier, sur une même branche.
