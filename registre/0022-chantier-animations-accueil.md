@@ -1,8 +1,8 @@
 # 0022 — Les animations de l'accueil, en composants
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 150 | 134 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-09-29` | 150 | 134 | claude-opus-5-5 |
 
 Demande de Jean (2026-09-29) : poursuivre les animations **en parallèle** des
 tests. Composants dans `src/components/scene/` à partir de la bibliothèque

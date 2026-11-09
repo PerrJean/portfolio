@@ -1,8 +1,8 @@
 # 0068 — Défaut : des caractères de contrôle dans un brouillon commité
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `defaut` | `outil` | 5 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `defaut` | `outil` | `clos 2026-10-01` | 5 | — | — |
 
 **Relevé le 2026-10-01** par le sous-agent de la fusion (0065) lui-même : un
 script de typographie écrit en ligne dans le shell avait changé le `\1` d'une

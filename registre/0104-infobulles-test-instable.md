@@ -1,8 +1,8 @@
 # 0104 — Le test des infobulles en navigateur échoue au hasard
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `defaut` | `outil` | 80 | 138 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `defaut` | `outil` | `clos 2026-11-05` | 80 | 138 | `claude-opus-5-5` |
 
 **Constat (2026-11-05)** : `npm test` lancé deux fois, deux échecs
 différents dans `tests/infobulles-navigateur.test.mjs` (registre/0097), tout

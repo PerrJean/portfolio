@@ -1,8 +1,8 @@
 # 0060 — Défaut : le vérificateur se taisait sur un chemin introuvable
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `defaut` | `outil` | 5 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `defaut` | `outil` | `clos 2026-10-01` | 5 | — | — |
 
 **Relevé le 2026-10-01** par le sous-agent de la capture de la grille (0059) :
 `ops/hooks/verifier_confidentialite.py` sautait sans rien dire un fichier

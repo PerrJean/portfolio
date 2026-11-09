@@ -1,8 +1,8 @@
 # 0081 — L'encadré Rôle · Équipe · Durée des pages projet
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `structure` | — | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `structure` | `clos 2026-09-30` | — | — | — |
 
 **Suite du regard RH (0080)** : un encadré en tête de chaque page projet,
 sans redite. **Tri en questionnaire** : trois champs, Rôle, Équipe, Durée

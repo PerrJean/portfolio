@@ -1,8 +1,8 @@
 # 0052 — « Bénéfices et impact business », cohérence d'Audit contenu, bruit technique
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 130 | 160 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-30` | 130 | 160 | `claude-opus-5-5` |
 
 **Décisions de Jean (2026-09-29 et 30)**, après la revue 0050 et le regard
 recruteur 0051 :

@@ -1,8 +1,8 @@
 # 0102 — Un clic sur la présentation DentalSoft fait avancer
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 200 | 136 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-10-26` | 200 | 136 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-26)** : sur `/usecase/dentalsoft/`, un clic sur
 la page passe à la suite, sauf sur les boutons existants.

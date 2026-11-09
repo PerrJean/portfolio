@@ -1,8 +1,8 @@
 # 0010 — Itération v4 : palettes, polices de texte, l'équipe et son leader
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 300 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-28` | 300 | — | — |
 
 **Retour de Jean (2026-09-28).** Schibsted Grotesk est la plus lisible pour
 lui. Couleurs : le bleu pâle ne s'accorde pas à l'orange ; attiré par le

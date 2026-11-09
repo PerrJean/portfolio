@@ -1,8 +1,8 @@
 # 0033 — Défaut du 2d : le bâtiment ne suit pas la lecture
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `defaut` | `structure` | 60 | 97 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `defaut` | `structure` | `clos 2026-09-29` | 60 | 97 | claude-opus-5-5 |
 
 **Relevé par Jean le 2026-09-29**, dans le navigateur : le bâtiment ne grandit
 pas au rythme de la lecture des H2. Cause probable : un étage se pose dès

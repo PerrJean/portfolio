@@ -1,8 +1,8 @@
 # 0031 — Premier jet du texte de la page UserVoice
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 50 | 76 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-29` | 50 | 76 | claude-opus-5-5 |
 
 **Go de Jean (2026-09-29).** Début de l'étape 3, en parallèle du 2d (aucun
 fichier commun) : un premier jet en français, dans `redaction/`, à relire

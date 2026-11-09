@@ -1,8 +1,8 @@
 # 0056 — L'animation 404, étape 3 : le mouvement
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 110 | 132 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-09-30` | 110 | 132 | `claude-opus-5-5` |
 
 **Go de Jean (2026-09-30)** sur les quatre images clés de 0055. On anime
 « Le chantier a déménagé » dans `src/pages/404.astro`, à la place du portrait

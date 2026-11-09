@@ -1,8 +1,8 @@
 # 0017 — Première animation : l'équipe au travail sur l'accueil
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 90 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-28` | 90 | — | — |
 
 **Demande de Jean (2026-09-28)** : commencer par l'animation la plus simple.
 Deux parcelles (UserVoice, Audit contenu) reliées par la flèche ; au survol

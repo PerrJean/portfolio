@@ -1,8 +1,8 @@
 # 0041 — Le schéma de la chaîne d'Audit contenu
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 90 | 141 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-29` | 90 | 141 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-09-29), choix « a, a, a »** : au trait (encre et
 ardoise, ambre sur la seule étape humaine), juste après « Ce que la grille

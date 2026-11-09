@@ -1,8 +1,8 @@
 # 0091 — Mises en situation : des mots qui disent les étapes du parcours
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `defaut` | `contenu` | 60 | 175 | `claude-sonnet-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `defaut` | `contenu` | `clos 2026-10-25` | 60 | 175 | `claude-sonnet-5-5` |
 
 **Demande de Jean (2026-10-25)** : sur la page « Mises en situation », les
 mots du schéma — « Signal », « Indice », « Modèle », et les titres des

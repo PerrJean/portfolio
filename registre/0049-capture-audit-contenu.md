@@ -1,8 +1,8 @@
 # 0049 — Une capture d'Audit contenu, sur données synthétiques
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 180 | 217 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-29` | 180 | 217 | `claude-opus-5-5` |
 
 **Décision de Jean (2026-09-29), « 2a »** : le carnet de relecture (une
 question, son verdict, ce qui lui est reproché, la correction proposée), par

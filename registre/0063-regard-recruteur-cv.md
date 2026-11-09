@@ -1,8 +1,8 @@
 # 0063 — Le second regard recruteur : le CV, puis le site
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 90 | 119 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-10-01` | 90 | 119 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-01)** : un recruteur neuf, sans contexte, qui lit
 d'abord le CV de Jean (fichier local, hors du dépôt : il porte adresse,

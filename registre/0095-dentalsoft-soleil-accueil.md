@@ -1,8 +1,8 @@
 # 0095 — Le soleil de la présentation DentalSoft mène à l'accueil
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 50 | 113 | `claude-sonnet-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-10-25` | 50 | 113 | `claude-sonnet-5-5` |
 
 **Demande de Jean (2026-10-25)** : un moyen d'aller de la présentation
 `/usecase/dentalsoft/` à l'accueil du portfolio.

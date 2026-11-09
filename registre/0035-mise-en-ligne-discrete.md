@@ -1,8 +1,8 @@
 # 0035 — Mise en ligne discrète
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | — | non mesurable (session principale) | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-09-29` | — | non mesurable (session principale) | claude-opus-5-5 |
 
 **Go de Jean (2026-09-29).** Le site part en ligne sur `jeanperrier.pm` avant
 que les textes soient prêts, pour éprouver la chaîne (Pages, DNS, HTTPS,

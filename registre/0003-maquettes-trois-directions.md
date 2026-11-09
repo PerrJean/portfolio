@@ -1,8 +1,8 @@
 # 0003 — Trois maquettes de direction visuelle
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 300 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-28` | 300 | — | — |
 
 **Go de Jean (2026-09-28).** Trois directions, chacune avec son intention :
 accueil complet, haut d'une page projet, premier écran au téléphone. Même

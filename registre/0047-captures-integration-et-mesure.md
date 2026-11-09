@@ -1,8 +1,8 @@
 # 0047 — Captures dans la page UserVoice, colonne de texte élargie
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 120 | 214 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-29` | 120 | 214 | `claude-opus-5-5` |
 
 **Décisions de Jean (2026-09-29)** : la page Analyse de UserVoice remplace le
 bilan hebdo, sous « Écouter chaque lundi » ; le baromètre NPS va sous « Ce que

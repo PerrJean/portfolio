@@ -1,8 +1,8 @@
 # 0021 — Chantier 2a : les tests, avant le code
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 60 | 104 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-09-29` | 60 | 104 | claude-opus-5-5 |
 
 Sept tests sur `node:test`, sans dépendance, lus sur `dist/` : jumelles
 FR/EN et bascule, aucune ressource tierce ni cookie, termes interdits (par

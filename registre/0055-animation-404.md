@@ -1,8 +1,8 @@
 # 0055 — L'animation de la page 404 : « Le chantier a déménagé »
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 60 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-30` | 60 | — | — |
 
 **Choix de Jean (2026-09-30)**, par étapes : script, puis images, puis
 animation, un go à chaque étape.

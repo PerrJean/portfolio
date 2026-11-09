@@ -1,8 +1,8 @@
 # 0028 — Chantier 2c : la vraie page d'accueil
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 100 | 157 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-09-29` | 100 | 157 | claude-opus-5-5 |
 
 **Go de Jean (2026-09-29).** Accueil FR et EN : soleil fixe en anneaux dans
 le coin haut droit, accroche, section des projets, parcelles-liens (01

@@ -1,8 +1,8 @@
 # 0089 — Du relief sur l'accueil, sans effet
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 350 | 656 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-10-15` | 350 | 656 | `claude-opus-5-5` |
 
 **Question de Jean (2026-10-15)** : le site lui plaît pour son côté simple et
 harmonieux, mais manque peut-être de relief et de profondeur ; une couche de

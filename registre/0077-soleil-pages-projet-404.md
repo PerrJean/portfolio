@@ -1,8 +1,8 @@
 # 0077 — Le soleil sur les pages projet et la 404
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `structure` | — | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `structure` | `clos 2026-09-30` | — | — | — |
 
 **Demande de Jean (2026-09-30)** : le soleil ailleurs. **Tri en
 questionnaire** : sur les cinq pages projet (FR et EN, par `Projet.astro`)

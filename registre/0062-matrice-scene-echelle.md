@@ -1,8 +1,8 @@
 # 0062 — La scène d'accueil du projet matrice : l'échelle à trois barreaux
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 70 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-10-01` | 70 | — | — |
 
 **Choix de Jean (2026-10-01)** : sur la carte du troisième projet, une
 échelle à trois barreaux (les trois niveaux de la grille) contre un mur ; au

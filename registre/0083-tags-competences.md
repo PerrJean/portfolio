@@ -1,8 +1,8 @@
 # 0083 — Des tags de compétences sur les projets
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `structure` | — | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `structure` | `clos 2026-10-09` | — | — | — |
 
 **Demande de Jean (2026-10-09)** : sous chaque projet, quelques mots clés
 qui résonnent avec les rubriques « Compétences » du CV. **Tri en

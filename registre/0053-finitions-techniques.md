@@ -1,8 +1,8 @@
 # 0053 — Finitions techniques avant le lancement
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 60 | 122 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-09-30` | 60 | 122 | `claude-opus-5-5` |
 
 Constats de la revue 0050, validés par Jean (2026-09-30) :
 1. `/labo/scene/` est publiée : la sortir du site construit.

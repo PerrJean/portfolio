@@ -1,8 +1,8 @@
 # 0046 — L'allègement des textes, d'après le relevé 0044
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 70 | 108 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-29` | 70 | 108 | `claude-opus-5-5` |
 
 **Décision de Jean (2026-09-29)** : les 30 propositions de
 `redaction/releve-lourdeurs.md` s'appliquent. La n°17 est exacte (deux

@@ -1,8 +1,8 @@
 # 0057 — L'accueil : une scène par projet, l'impatience sous le soleil
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 70 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-30` | 70 | — | — |
 
 **Constat** (recruteur 0051) : les deux cartes de l'accueil portent la même
 illustration, « ça fait gabarit ». **Choix de Jean (2026-09-30)** :

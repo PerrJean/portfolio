@@ -1,8 +1,8 @@
 # 0020 — Spec de l'étape 2 : la structure du site
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `structure` | 560 (l'étape entière) | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `structure` | `clos 2026-09-29` | 560 (l'étape entière) | — | — |
 
 **Proposée le 2026-09-29, en attente du go de Jean.** Rien ne se code avant.
 

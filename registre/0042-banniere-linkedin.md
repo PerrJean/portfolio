@@ -1,8 +1,8 @@
 # 0042 — La bannière de couverture LinkedIn
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 60 | 106 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-09-29` | 60 | 106 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-09-29)** : une image de couverture pour son profil
 LinkedIn, dans l'identité du site. Produite par `ops/images/apercu.mjs`

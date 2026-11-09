@@ -1,8 +1,8 @@
 # 0001 — Spécification par questionnaire
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `ligne` | — | non mesurable (session principale) | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `ligne` | `clos 2026-09-28` | — | non mesurable (session principale) | claude-opus-5-5 |
 
 **Validée par Jean le 2026-09-28**, en huit séries de questions. Le détail
 est dans `SPEC.md`. Les tournants :

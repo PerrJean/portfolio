@@ -1,8 +1,8 @@
 # 0065 — Quatrième projet : la fusion des plateformes (proposition)
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 90 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-10-01` | 90 | — | — |
 
 **Demande de Jean (2026-10-01)**, après le second regard recruteur (0063) :
 montrer le Head of Product qui prend de la hauteur, en deux projets de plus,

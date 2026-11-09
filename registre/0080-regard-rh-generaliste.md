@@ -1,8 +1,8 @@
 # 0080 — Le regard d'un recruteur RH généraliste
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 80 | 102 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-09-30` | 80 | 102 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-09-30)** : les regards 0051, 0063 et 0074 étaient
 ceux de recruteurs spécialisés en profils produit. Que dirait un recruteur

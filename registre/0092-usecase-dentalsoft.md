@@ -1,8 +1,8 @@
 # 0092 — Une page cachée pour présenter le cas DentalSoft
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 150 | 180 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-10-25` | 150 | 180 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)** : publier la présentation DentalSoft (un
 fichier HTML autonome, 16:9, faite à partir des jetons du site) sur le

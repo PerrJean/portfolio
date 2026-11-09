@@ -1,8 +1,8 @@
 # 0008 — Identité, puis trois pistes courtes
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 150 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-28` | 150 | — | — |
 
 **Identité, validée par Jean (2026-09-28, questionnaire en texte).**
 

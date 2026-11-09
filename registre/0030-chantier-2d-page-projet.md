@@ -1,8 +1,8 @@
 # 0030 — Chantier 2d : la page projet et son bâtiment
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 150 | 202 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-09-29` | 150 | 202 | claude-opus-5-5 |
 
 **Go de Jean (2026-09-29).** Collection Markdown par projet et par langue
 (en-tête à schéma, H2 libres, texte provisoire), synthèse recruteur, corps,

@@ -1,8 +1,8 @@
 # 0088 — Des infobulles pour les termes du métier
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 400 | 569 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-10-12` | 400 | 569 | `claude-opus-5-5` |
 
 **Idée de Jean (2026-10-09)**, pendant le tri du relevé 0087 : les termes de
 base du product management (backlog, grooming, epics, user stories,

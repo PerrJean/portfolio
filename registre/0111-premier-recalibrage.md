@@ -1,8 +1,8 @@
 # 0111 — Premier recalibrage
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `outil` | 50 | | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `outil` | `ouvert` | 50 | | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-05)** : le recalibrage tous les 30 points clos
 (`registre/0000`, commandements v4 partie 2) n'a jamais été fait.

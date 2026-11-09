@@ -1,8 +1,8 @@
 # 0076 — Le soleil sur la page « À propos »
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `structure` | — | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `structure` | `clos 2026-09-30` | — | — | — |
 
 **Demande de Jean (2026-09-30)** : ajouter le soleil sur « À propos ». **Tri
 en questionnaire** : le même quart de disque que l'accueil, plus petit

@@ -1,8 +1,8 @@
 # 0002 — Socle du jour 0
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `outil` | — | non mesurable (session principale) | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `outil` | `clos 2026-09-28` | — | non mesurable (session principale) | claude-opus-5-5 |
 
 Reprise des pratiques de UserVoice (demande de Jean, 2026-09-28) : `git init`,
 `SPEC.md`, `CONTRAT.md`, `CLAUDE.md`, ce registre, `COMMANDEMENTS.md`, hook de

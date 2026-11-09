@@ -1,8 +1,8 @@
 # 0054 — La visionneuse des captures
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 90 | 142 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-09-30` | 90 | 142 | `claude-opus-5-5` |
 
 **Constat** (revue 0050, recruteur 0051) : un clic sur une capture ouvre le
 PNG brut, hors du site, sans retour ; au téléphone, le texte des captures

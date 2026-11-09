@@ -1,8 +1,8 @@
 # 0059 — Troisième projet : la matrice de compétences (rédaction)
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 60 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-10-01` | 60 | — | — |
 
 **Demande de Jean (2026-10-01)** : un troisième projet, présenté à part sur
 l'accueil, pour le côté « leader accompagnateur » (suite de 0004). Daté

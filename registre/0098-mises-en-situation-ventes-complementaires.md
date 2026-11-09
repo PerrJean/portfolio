@@ -1,8 +1,8 @@
 # 0098 — Mises en situation : des ventes complémentaires, pas de nouveaux clients
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `defaut` | `contenu` | 40 | ~20 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `defaut` | `contenu` | `clos 2026-10-25` | 40 | ~20 | `claude-opus-5-5` |
 
 **Fait apporté par Jean (2026-10-25)** : le directeur commercial lui confirme
 que le chiffre d'affaires de la fonctionnalité vient de **ventes

@@ -1,8 +1,8 @@
 # 0093 — La présentation DentalSoft aux choix graphiques du site, sans ses notes
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 350 | 381 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-10-25` | 350 | 381 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)**, après une revue visuelle de la
 présentation contre `src/styles/jetons.css` et le site en ligne.

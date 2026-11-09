@@ -1,8 +1,8 @@
 # 0011 — Itération v5 : accents, boutons, titres, ratio du bâtiment
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 220 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-28` | 220 | — | — |
 
 **Décisions de Jean (2026-09-28), sur les planches v3 et v4.**
 

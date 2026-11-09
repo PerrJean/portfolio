@@ -1,8 +1,8 @@
 # 0009 — Planches de fondation : fonds, polices, personnages
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 170 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-28` | 170 | — | — |
 
 **Retour de Jean sur les pistes (2026-09-28).** Gardés : les très gros
 numéros d'étape, les gros titres et le soleil de P1, rappelé par des points
