@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `structure` | `ouvert` | 200 | | `claude-opus-5-5` |
+| `chantier` | `structure` | `en cours` | 200 | | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-09)**, sur le retour d'une relectrice extérieure :
 rendre le flux « problème, solution, résultat ou impact » beaucoup plus
@@ -119,3 +119,25 @@ manquante (Tableau de bord), calques EN. Une v2 les reprend.
   JS, A exige le `dl` dans `.synthese`.
 - Point d'étape non committé avant le codeur : le hook joue tous les tests,
   bloquants hors `chantier/*`, et le test rouge l'aurait refusé.
+- Code (sous-agent, brief `prompts/0117-gabarit.md`) : `Projet.astro`
+  (443 lignes) et `textes.ts`. Commit `d6905ec`, hook complet :
+  `tests 277 | pass 277 | fail 0` (246 de référence + 31).
+- Revue en contexte neuf : **PASSE**, un tour. Trois cassures, trois rouges
+  (`dd` inversés → 14 B ; classe `synthese__phrases` remise → C ; `dl` hors
+  du header → 14 A). Réserves mineures : le `dd` garde 2 px de marge haute
+  (la spec disait « sans marge ») ; le style (capitales, filet, tailles)
+  n'est tenu par aucun test, seulement vu à l'œil.
+- Vérification visuelle (Playwright, serveur de dev, 2026-11-09) : Fusion
+  FR, Mises en situation EN, Analyse NPS FR, à 1280 et 375 px : libellés en
+  capitales, encre, 15 px, filet 3 px `--dalle`, aucun défilement
+  horizontal (`scrollWidth` = largeur), conforme à la maquette.
+
+## Reste
+
+- **Matrice** (FR et EN) : relire son `resultat` sous « L’impact » une fois
+  0116 fusionné, relevé des lourdeurs, tri de Jean ; puis clôture.
+
+## Coûts relevés (milliers de tokens, harnais)
+
+Relevé des lourdeurs 94,5 ; test 114,9 ; gabarit 87,7 ; revue 97,4. Sous-total
+394,5 ; la session principale n'est pas comptée (convention 0000).
