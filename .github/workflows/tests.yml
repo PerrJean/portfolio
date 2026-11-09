@@ -1,10 +1,9 @@
-# Les tests du site sur GitHub : à chaque envoi sur `main` et sur chaque pull
-# request (dont celles de Dependabot). Les mêmes que le hook de pre-commit.
+# Les tests du site sur GitHub : sur chaque pull request (dont celles de
+# Dependabot). Les mêmes que le hook de pre-commit. Un envoi sur `main` ne les
+# lance plus ici : `deploy.yml` les joue déjà avant de publier (registre/0119).
 name: Tests
 
 on:
-  push:
-    branches: [main]
   pull_request:
 
 permissions:
