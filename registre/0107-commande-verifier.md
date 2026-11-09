@@ -149,3 +149,16 @@ joue tout ; publication réelle verte après la fusion, site en ligne inchangé.
   correction, session principale) : un test statique de plus ; les deux
   cassures relevées (`|| CODE=1`, bloc du code 2 neutralisé) le font rougir
   dans une copie jetable.
+- **Intégration de `main`** (0112 et 0109 clos, 0120 ouvert) : sans
+  conflit ; le hook de fusion, qui appelle `verifier`, 312 verts.
+- **Vérification finale**, dans le worktree, après l'intégration :
+  `npm run verifier` sous Windows PowerShell 5.1 → 312 verts, 66 s,
+  `.dist-verifier` absent après ; `npm run verifier -- --rapide` sous Git
+  Bash → 303 verts en 12 s (build 6 s, tests 6 s), aucun fichier
+  `-navigateur` lancé. Par rapport à la référence (289), les 23 tests de plus
+  sont les 20 de `verifier*` et 3 venus de `main` ; aucun rouge. PowerShell 7
+  ne trouve pas `node` sur ce poste (installé en MSIX, son AppData est
+  virtualisé et ne voit pas fnm) : un réglage du poste, pas de `verifier`.
+- **Ce que la vitesse rapide ferait gagner aux sessions** : 12 s (`--rapide`)
+  contre 66 à 76 s (complet) par point d'étape, plus le droit de committer
+  un test rouge écrit d'abord.
