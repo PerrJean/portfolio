@@ -74,6 +74,7 @@ C1 à C4 sont tenues par le hook, sur une liste de termes **hors du dépôt**.
 ```bash
 dev.cmd                       # serveur de dev Astro, port 4321
 npm run build                 # le site dans dist/
+npm run verifier              # build jetable puis tous les tests (npm test : site déjà construit)
 sh ops/hooks/install.sh       # (re)poser le hook de pre-commit
 ```
 

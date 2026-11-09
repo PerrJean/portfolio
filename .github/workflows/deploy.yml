@@ -1,8 +1,9 @@
 # Publication sur GitHub Pages (docs/GUIDE_MISE_EN_LIGNE.md, section 2).
-# Un seul build (registre/0119) : `tester` construit le site, le teste, et
-# c'est ce site testé qui part en ligne. Rien n'est publié si un test échoue :
-# le dépôt du site suit les tests dans le même job, et `publier` attend
-# `tester`.
+# Un seul build (registre/0119) : `tester` construit le site et le teste par
+# `npm run verifier -- --garder .dist-ci` (registre/0107), et c'est ce site
+# testé, gardé dans .dist-ci, qui part en ligne. Rien n'est publié si un test
+# échoue : le dépôt du site suit les tests dans le même job, et `publier`
+# attend `tester`.
 # À chaque envoi sur `main`, et à la main depuis l'onglet Actions. Tant que
 # `src/i18n/publication.ts` dit `INDEXE = false`, le site est en ligne mais
 # caché des moteurs (registre/0035).
@@ -47,10 +48,9 @@ jobs:
       - run: npm ci
       # Chromium pour le test des infobulles dans un navigateur (registre/0097).
       - run: npx playwright install --with-deps chromium
-      - run: npx astro build --outDir .dist-ci
-      - run: npm test
-        env:
-          DIST: .dist-ci
+      # Build dans .dist-ci, puis tous les tests ; --garder laisse le dossier
+      # après, pour le dépôt qui suit.
+      - run: npm run verifier -- --garder .dist-ci
       # Les tests ne modifient rien dans .dist-ci (mesuré le 2026-11-09,
       # registre/0119) : on dépose le site tel que testé, comme le faisait
       # withastro/action (fichiers cachés compris).
