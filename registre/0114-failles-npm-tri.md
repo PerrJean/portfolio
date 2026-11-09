@@ -1,8 +1,11 @@
 # 0114 — Les failles signalées par npm et GitHub : tri
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `outil` | — | — | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `outil` | `en cours` | 30 | | `claude-opus-5-5` |
+
+Ouvert en `arbitrage` (le tri, 2026-11-05, en lecture seule), devenu
+`chantier` le 2026-11-09 sur le choix de Jean.
 
 **Demande de Jean (2026-11-05)** : avant D (0107), un tri en lecture seule
 des failles que GitHub signale à chaque push ; séparer ce qui part sur le site
@@ -46,4 +49,14 @@ Pas d'urgence pour les visiteurs, d'où « demain » plutôt que tout de suite ;
 pas de raison d'attendre non plus, le correctif est sans montée de version
 majeure et GitHub le rappelle à chaque push.
 
-**Choix de Jean** : à venir.
+## Tranché
+
+- 2026-11-09, Jean : « lance 0114 ». La recommandation est retenue : un petit
+  chantier (~30 k), `npm audit fix` sur `package-lock.json` seul, sans
+  `package.json` ni version majeure, preuve par `dist/` comparé avant et
+  après, `npm test` vert.
+
+## Le chantier
+
+**État de référence** (2026-11-09, worktree du chantier, avant tout
+changement) : `npm test` donne 287 tests, 287 verts, 0 rouge.
