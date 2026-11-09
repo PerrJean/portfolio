@@ -1,8 +1,8 @@
 # 0110 — Le registre au format commun
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `outil` | 70 | | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `outil` | `en cours` | 70 | | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-05)**, commandements v4 (partie 2, la mesure) : un
 statut ouvert ou clos explicite, jamais un champ vide qui peut vouloir dire
@@ -16,3 +16,12 @@ ambigu à la lecture automatique.
 cours d'écriture dans une autre session, à attendre). Un script traite les
 cas sûrs ; pour les fiches ambiguës, une liste avec un statut proposé pour
 chacune, que Jean valide.
+
+## Déroulé
+
+- **Lecture de la tension** (2026-11-09) : 0000 dit que les fiches
+  antérieures au 2026-11-05 gardent leur forme, leurs coûts et leur numéro,
+  et que le statut est toujours écrit. On n'ajoute donc que la colonne
+  `statut` ; coûts, numéros, texte et autres cellules restent tels quels.
+- **État de référence (2026-11-09)**, dans le worktree, après `npm ci` :
+  `npm run verifier` → 318 tests, 318 verts, 0 rouge (build 12 s, tests 52 s).
