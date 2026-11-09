@@ -32,10 +32,28 @@ achat, paiement) ; les étapes **session** sont faites dans le dépôt.
 
 ## 2. La publication automatique
 
-1. **Session** — Ajouter `.github/workflows/deploy.yml`, le flux officiel
-   d'Astro : à chaque envoi sur `main`, `withastro/action` construit le site
-   et `actions/deploy-pages` le publie. Droits : `contents: read`,
-   `pages: write`, `id-token: write`.
+1. **Session** — Ajouter `.github/workflows/deploy.yml`. À chaque envoi sur
+   `main`, deux jobs :
+   - `tester` installe les paquets (`npm ci`, Chromium), construit le site
+     **une seule fois** et le teste par `npm run verifier -- --garder
+     .dist-ci`, puis dépose ce dossier tel quel
+     (`actions/upload-pages-artifact`). Un test rouge arrête le job avant le
+     dépôt : rien ne part (registre/0119, 0107).
+   - `publier` attend `tester` et met en ligne le site déposé
+     (`actions/deploy-pages`). Le site publié est donc celui qui a été testé.
+
+   **Droits, job par job** (registre/0120). Le workflow n'a que
+   `contents: read`. Seul `publier` reçoit `pages: write` et
+   `id-token: write`, qu'exige `actions/deploy-pages`. `tester`, qui installe
+   et lance des centaines de paquets tiers, ne peut pas publier : le dépôt de
+   l'artefact n'a pas besoin de ces droits.
+
+   **Les listes de termes interdits** (secrets `INTERDITS` et `EMPLOYEUR`)
+   ne sont écrites sur le disque qu'après `npm ci` et l'installation de
+   Chromium, juste avant `verifier` : les scripts d'installation des paquets
+   ne les voient pas. Limite : le build et les tests chargent eux aussi du
+   code tiers, alors que les listes sont présentes. La protection ne couvre
+   que l'installation.
 2. **Jean** — Dépôt › Settings › Pages › Source : **GitHub Actions**.
 3. Chaque envoi sur `main` publie en une à deux minutes ; l'onglet
    **Actions** montre le résultat, en vert ou en rouge.
