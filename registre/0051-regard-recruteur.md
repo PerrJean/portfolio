@@ -1,8 +1,8 @@
 # 0051 — Le regard du recruteur, sans contexte
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 80 | 115 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-09-30` | 80 | 115 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-09-29)** : un agent « avec un pas de recul, sans
 contexte, en position de recruteur », qui analyse le site. Il ne lit ni le

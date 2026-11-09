@@ -1,8 +1,8 @@
 # 0048 — Colonne pleine, « Pour aller plus loin » structuré, UserVoice corrigé
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 110 | 113 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-29` | 110 | 113 | `claude-opus-5-5` |
 
 **Décisions de Jean (2026-09-29), « mise en page ok, 1a 3a »** :
 1. **Mise en page** : sur grand écran, ~200 px d'ivoire restaient entre le

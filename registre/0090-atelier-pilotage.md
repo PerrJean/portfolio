@@ -1,8 +1,8 @@
 # 0090 — Un septième projet : l'atelier de pilotage avec cinq clients
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 370 | 1 220 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-10-15` | 370 | 1 220 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-14)**, sur un brief rédigé avec ChatGPT : un
 retour d'expérience de discovery. La direction voulait un tableau de bord

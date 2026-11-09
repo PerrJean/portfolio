@@ -1,8 +1,8 @@
 # 0044 — Le relevé des lourdeurs sur tout le site
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 60 | 114 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-29` | 60 | 114 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-09-29)** : un contrôle de la lourdeur du texte, sur
 les huit pages. Premier cas relevé par Jean : « 1 retour sur 3 porte sur le

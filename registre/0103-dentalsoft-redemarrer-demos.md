@@ -1,8 +1,8 @@
 # 0103 — Un bouton « Redémarrer les démos » dans la présentation DentalSoft
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 120 | 148 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-10-27` | 120 | 148 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-27)** : un bouton « Redémarrer les démos », à
 droite de « Sommaire » ou à un autre endroit pertinent.

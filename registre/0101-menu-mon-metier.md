@@ -1,8 +1,8 @@
 # 0101 — « Mon métier » dans le menu
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 330 | 349 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-10-26` | 330 | 349 | `claude-opus-5-5` |
 
 **Décision de Jean (2026-10-26)**, transmise par la session de la
 présentation dentaire, en réponse à « Ajouter “Mon métier en clair” au menu

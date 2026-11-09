@@ -1,8 +1,8 @@
 # 0027 — Dépendances signalées vulnérables
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `defaut` | `outil` | 60 | 221 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `defaut` | `outil` | `clos 2026-09-30` | 60 | 221 | `claude-opus-5-5` |
 
 **Relevé le 2026-09-29** par `npm audit` après le chantier 2b : `astro`
 (5.18, critique, correctif en version majeure 7), `esbuild` (lecture de

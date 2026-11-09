@@ -1,8 +1,8 @@
 # 0040 — Réécriture de la page Audit contenu
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 60 | 108 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-30` | 60 | 108 | claude-opus-5-5 |
 
 **Retours de Jean (2026-09-30).** Plus jamais « clé » : « la réponse ».
 Nommer les principaux contrôles (la bonne réponse est vraiment la bonne, la

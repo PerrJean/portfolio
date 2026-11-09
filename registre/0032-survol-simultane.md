@@ -1,8 +1,8 @@
 # 0032 — Le survol : les gestes convergent en même temps
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 50 | 77 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-09-29` | 50 | 77 | claude-opus-5-5 |
 
 **Idée de Jean, go le 2026-09-29.** Un survol dure souvent moins d'une
 seconde : la séquence « on regarde le plan » passe de 2,5 s pas à pas à

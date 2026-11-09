@@ -1,8 +1,8 @@
 # 0074 — Le troisième regard recruteur : le CV, puis le site
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 110 | 125 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-09-30` | 110 | 125 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-09-30)** : repasser l'audit d'un recruteur après les
 projets 4 et 5, les relevés des lourdeurs 0071 et 0073 et la nouvelle phrase

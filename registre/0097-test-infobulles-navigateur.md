@@ -1,8 +1,8 @@
 # 0097 — Un test, dans un navigateur, que chaque infobulle s'ouvre et se voit
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `outil` | 300 | 180 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `outil` | `clos 2026-10-25` | 300 | 180 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)** : vérifier que toutes les infobulles
 s'ouvrent et ne sont pas masquées, et en faire un test pour tout le site.

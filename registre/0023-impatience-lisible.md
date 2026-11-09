@@ -1,8 +1,8 @@
 # 0023 — L'impatience, rendue lisible
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 70 | 100 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-09-29` | 70 | 100 | claude-opus-5-5 |
 
 **Constat de la session, vu dans le navigateur (2026-09-29)** : à la taille
 réelle, l'impatience ne se lit pas. **Retouches validées par Jean** : un

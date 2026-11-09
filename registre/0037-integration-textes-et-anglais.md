@@ -1,8 +1,8 @@
 # 0037 — Les trois textes dans le site, et leurs versions anglaises
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 110 | 140 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-30` | 110 | 140 | claude-opus-5-5 |
 
 **Jean (2026-09-29)** : À propos sans autres langues, sans touche
 personnelle, sans CV téléchargeable. Les trois textes français validés

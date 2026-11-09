@@ -1,8 +1,8 @@
 # 0024 — La scène, troisième passe
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 100 | 126 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-09-29` | 100 | 126 | claude-opus-5-5 |
 
 **Retours de Jean (2026-09-29).** Plus d'effet « jupe » sur les silhouettes
 (jambes séparées dès les hanches). Le sauteur regarde à droite au début. Le

@@ -1,8 +1,8 @@
 # 0058 — L'accueil, étape 3 : les animations par projet
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 140 | 286 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-09-30` | 140 | 286 | `claude-opus-5-5` |
 
 **Go de Jean (2026-09-30)** sur la planche de 0057
 (`ops/images/accueil/planche.png`). On anime :

@@ -1,8 +1,8 @@
 # 0096 — Relevé du texte de la présentation DentalSoft
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 200 | 238 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-10-25` | 200 | 238 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)** : auditer le texte de la présentation
 `/usecase/dentalsoft/`. Exemple donné par Jean : le sous-titre « Huit

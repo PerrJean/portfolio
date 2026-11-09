@@ -1,8 +1,8 @@
 # 0094 — « Mon métier en clair » : une porte pour le lecteur non initié
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 480 | 1 070 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-10-25` | 480 | 1 070 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)** : une page « Head of Product pour les nuls »,
 sans ce titre, pour les RH généralistes, avec un lien explicite depuis

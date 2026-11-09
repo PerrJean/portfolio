@@ -1,8 +1,8 @@
 # 0099 — Les règles des infobulles, et la correction des bulles masquées
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `defaut` | `outil` | 250 | 189 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `defaut` | `outil` | `clos 2026-10-25` | 250 | 189 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)** : corriger les bulles que le test 0097
 trouve masquées, et tirer des règles pour construire les infobulles à

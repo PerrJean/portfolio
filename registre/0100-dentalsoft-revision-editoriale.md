@@ -1,8 +1,8 @@
 # 0100 — Révision éditoriale de la présentation DentalSoft
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 400 | 366 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-10-25` | 400 | 366 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-25)** : appliquer au HTML la révision
 éditoriale qu'il a rédigée après le relevé 0096 et une seconde relecture

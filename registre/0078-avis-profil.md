@@ -1,8 +1,8 @@
 # 0078 — Un résumé du portfolio et un avis sur le profil
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 80 | 114 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-09-30` | 80 | 114 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-09-30)** : un agent neuf, sans contexte ni mandat
 de recrutement, qui résume le portfolio et donne un avis sur le profil. Il

@@ -1,8 +1,8 @@
 # 0045 — La phrase signature réécrite, la date sous le titre des projets
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 50 | 99 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-29` | 50 | 99 | `claude-opus-5-5` |
 
 **Décisions de Jean (2026-09-29)** :
 1. « … puis je dose l'effort » sonnait dilettante. La phrase devient

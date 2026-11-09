@@ -1,8 +1,8 @@
 # 0026 — Chantier 2b : le socle du site
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `structure` | 120 | 124 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `structure` | `clos 2026-09-29` | 120 | 124 | claude-opus-5-5 |
 
 **Go de Jean (2026-09-29).** Jetons de couleur, police Atkinson par npm
 (fin de Google Fonts), gabarit commun (lang, titre, description, canonique,

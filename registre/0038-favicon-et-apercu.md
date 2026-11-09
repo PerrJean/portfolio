@@ -1,8 +1,8 @@
 # 0038 — Le favicon et l'aperçu LinkedIn
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 90 | 126 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-30` | 90 | 126 | claude-opus-5-5 |
 
 **Demande de Jean (2026-09-29)**, en parallèle de `0037` : le favicon
 (logo-lunettes, lisible à 16 px, SVG et PNG) et l'image d'aperçu 1200 × 630

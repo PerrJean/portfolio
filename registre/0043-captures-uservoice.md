@@ -1,8 +1,8 @@
 # 0043 — Les captures d'écran de UserVoice, sur données synthétiques
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 180 | 216 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-29` | 180 | 216 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-09-29), choix « 1 a+c, 2a, 3a »** : deux captures,
 le bilan du lundi et le tableau de bord NPS, produites par le vrai code de

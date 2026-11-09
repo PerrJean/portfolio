@@ -1,8 +1,8 @@
 # 0050 — La revue complète du site, en contexte neuf
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `publication` | 120 | 217 | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `publication` | `clos 2026-09-30` | 120 | 217 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-09-29)** : avant le lancement, une relecture de tout
 le site par un agent qui n'a rien écrit (commandement : le relecteur n'est

@@ -1,8 +1,8 @@
 # 0034 — Premier jet du texte de la page Audit contenu
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 60 | 78 | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-09-29` | 60 | 78 | claude-opus-5-5 |
 
 **Demande de Jean (2026-09-29).** Même forme que `0031`, dans `redaction/` :
 synthèse, cinq H2, « Pour aller plus loin », audit de la passe 2. Mené avec
