@@ -139,3 +139,13 @@ joue tout ; publication réelle verte après la fusion, site en ligne inchangé.
   contient un fichier suivi, refusé ; le même avec des `GIT_*` vers un dépôt
   leurre, rouge avant la correction de `verifier`, vert après). 20 tests
   `verifier*`, 20 verts.
+- **Revue, tour 2** (même relecteur) : **PASSE**. Les points du tour 1 sont
+  tenus : chaque cassure (sortie toujours en 0, dossier jamais supprimé,
+  `--rapide` sur l'appel bloquant, nom hors `.dist-…`, `GIT_*` non retirées,
+  motif sans `^`) fait rougir un test. Tests `verifier*` et `plafond-lignes`
+  joués avec des `GIT_*` posées comme dans un hook : 22 verts, `core.bare`
+  resté à `false`. Reste mineur : le blocage du code 2 au hook n'était vu
+  par aucun test. Coût cumulé du relecteur : 123. **Suite** (petite
+  correction, session principale) : un test statique de plus ; les deux
+  cassures relevées (`|| CODE=1`, bloc du code 2 neutralisé) le font rougir
+  dans une copie jetable.

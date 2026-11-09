@@ -128,6 +128,28 @@ test('le hook de pre-commit appelle verifier et ne construit plus lui-même', ()
   );
 });
 
+test('le hook bloque un refus de verifier (code 2) dans les deux vitesses', () => {
+  // Revue de 0107, tour 2 : un code 2 dit que le hook appelle mal verifier ;
+  // il ne doit jamais passer pour un rouge non bloquant de la vitesse rapide.
+  const code = sansCommentaires(lire(HOOK));
+  const appels = code.split('\n').filter((l) => l.includes('npm run verifier'));
+  const sansCode = appels.filter((l) => !/\|\|\s*CODE=\$\?\s*$/.test(l));
+  assert.deepEqual(
+    sansCode,
+    [],
+    `${HOOK} : chaque appel de verifier doit garder son code de sortie (« || CODE=$? »). Appels fautifs :\n${sansCode.join('\n')}`,
+  );
+  assert.match(
+    code,
+    /if \[ "\$CODE" -eq 2 \]; then\n(?:[^\n]*\n)*?[^\n]*REFUS[^\n]*exit 1\n\s*fi/,
+    `${HOOK} : un code 2 de verifier doit mener à « REFUS … ; exit 1 », avant le rouge non bloquant.`,
+  );
+  assert.ok(
+    code.indexOf('"$CODE" -eq 2') < code.indexOf('NON bloquant'),
+    `${HOOK} : le blocage du code 2 doit venir avant le traitement du rouge non bloquant.`,
+  );
+});
+
 test('tests.yml appelle verifier et ne construit plus lui-même', () => {
   const code = sansCommentaires(lire(TESTS_YML));
   assert.match(
