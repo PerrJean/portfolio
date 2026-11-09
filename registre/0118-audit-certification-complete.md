@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `contenu` | `en cours` | 150 | | `claude-opus-5-5` |
+| `chantier` | `contenu` | `clos 2026-11-09` | 150 | 282 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-09)**, dans la suite de 0117 : la page Audit
 contenu ne parle que du premier parcours audité. En novembre 2026, l'audit a
@@ -43,6 +43,17 @@ bloquante). Rien ne dit que la méthode a passé l'échelle.
   levier (C8) ; chaque corrigé justifie la bonne réponse, dit pourquoi
   chaque autre est fausse, et existe dans les quatre langues de l'interface.
 - 2026-11-09, Jean : go sur la spec ci-dessous, deux images.
+- 2026-11-09, Jean, tri du relevé : le premier parcours audité était le
+  niveau A2 de cette même certification, la page le dit ; « défaut grave »
+  devient « défaut bloquant ou majeur » (les mots de la grille) ; « 9 sur 10
+  corrigées » devient « 9 sur 10 ont reçu une explication réécrite, en ligne
+  depuis début novembre 2026 » ; l'ouverture en deux paragraphes, A1 et C1
+  traduits (débutant, confirmé), « interface » devient « site »,
+  « explication » gardé ; légende qui dit ce qu'on regarde.
+- 2026-11-09, Jean : « Chaque correction rend… répondre juste » resserrée
+  sur les questions bloquantes ; la fin du paragraphe de l'école cliente
+  dit « Prochaine étape : une autre certification », sans date (prévue, pas
+  commencée). Les calques de l'anglais relevés sont corrigés.
 
 ## Spec
 
@@ -84,3 +95,22 @@ images neuves dans `public/captures/audit-contenu/`.
   `corrige-avant-apres-fr.png` et `-en.png`, 1360 × 827, 36 Ko et 35 Ko ;
   fichiers de travail hors du dépôt (`~/.portfolio/captures-audit-0118/`).
 - **Relevé des lourdeurs** : brief `prompts/0118-releve.md`.
+
+## Clôture (2026-11-09)
+
+- **Relevé des lourdeurs** (sous-agent neuf, brief `prompts/0118-releve.md`) :
+  104, 18 lignes, rien sur C1 à C4 ; trois faits à compléter, complétés
+  depuis la release et la réponse de Jean ; trié par Jean (voir le
+  tranché). Les corrections du tri sont faites en session principale
+  (petite correction, non comptée).
+- **Coût relevé au harnais** : 89 + 89 + 104 = 282, pour 150 estimés
+  (ratio 1,9). L'écart vient des deux images (89 contre 40 estimés) et du
+  relevé (104 contre 50).
+- **Incident** : le premier commit du point d'étape a été refusé par le
+  hook, le brief de rédaction citant en interdit le sigle d'une
+  certification qui figure à la liste des termes de l'employeur. Le brief
+  ne cite plus aucun sigle.
+- **Preuve** : contrôle de confidentialité muet sur les fichiers du
+  chantier ; hook bloquant vert (build, 246 tests) ; fusion simulée sans
+  conflit avec la branche de 0117.
+- Fusion dans `main` : attend le go de Jean.
