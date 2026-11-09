@@ -1,8 +1,8 @@
 # 0012 — La palette « Terre et ciel », et le choix du fond
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 90 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-28` | 90 | — | — |
 
 **Décisions de Jean (2026-09-28), sur la v5.**
 

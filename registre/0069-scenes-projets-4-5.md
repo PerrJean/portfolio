@@ -1,8 +1,8 @@
 # 0069 — Les scènes d'accueil des projets 4 et 5, et le nouvel ordre
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 90 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-10-01` | 90 | — | — |
 
 **Choix de Jean (2026-10-01)** :
 - **Ordre de l'accueil, « la hauteur d'abord »** : une première paire sans

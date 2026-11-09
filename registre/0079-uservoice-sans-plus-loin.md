@@ -1,8 +1,8 @@
 # 0079 — UserVoice sans volet « Pour aller plus loin »
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `contenu` | — | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `contenu` | `clos 2026-09-30` | — | — | — |
 
 **Demande de Jean (2026-09-30)** : supprimer le volet « Pour aller plus
 loin » de UserVoice, dont les phrases (« Ce que j'ai écarté », « Les pièges

@@ -1,8 +1,8 @@
 # 0019 — L'accueil animé à partir de la bibliothèque
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 60 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-29` | 60 | — | — |
 
 **Go de Jean (2026-09-28)** sur la bibliothèque (`0018`). Le script 1 de
 l'accueil (Jean pose le plan, l'équipe s'impatiente, on regarde ensemble,

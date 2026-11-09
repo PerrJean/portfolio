@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `contenu` | `clos 2026-09-30` | 90 | 164 | `claude-opus-5-5` |
+| `chantier` | `contenu` | `clos 2026-10-01` | 90 | 164 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-01)**, après l'arrivée des projets 4 et 5 : un
 contrôle du contenu de tout le site (quatorze pages), des lourdeurs et des

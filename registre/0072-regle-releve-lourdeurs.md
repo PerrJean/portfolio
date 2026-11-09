@@ -1,8 +1,8 @@
 # 0072 — Règle : un relevé des lourdeurs à chaque ajout de contenu
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `contenu` | — | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `contenu` | `clos 2026-10-01` | — | — | — |
 
 **Demande de Jean (2026-10-01)** : à chaque fois qu'on ajoute du contenu, un
 contrôle des lourdeurs. Inscrit dans `CLAUDE.md` (règles de spécification) :

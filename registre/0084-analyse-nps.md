@@ -1,8 +1,8 @@
 # 0084 — Un sixième projet : comprendre la chute du NPS
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 120 | — | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-10-09` | 120 | — | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-09)** : réécrire UserVoice à partir de sa source
 (`~/UserVoice/data/imports/portfolio_uservoice_source.md`, hors dépôt).

@@ -1,8 +1,8 @@
 # 0064 — Suites du second regard recruteur : titre sur l'accueil, projets enchaînés
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 10 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-10-01` | 10 | — | — |
 
 **Choix de Jean (2026-10-01)**, après 0063 :
 1. **Une ligne de titre sur l'accueil**, au-dessus de la phrase signature :

@@ -1,8 +1,8 @@
 # 0066 — Cinquième projet : les mises en situation orales par IA (proposition)
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 100 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-10-01` | 100 | — | — |
 
 **Demande de Jean (2026-10-01)** : le cinquième projet, la fonctionnalité IA
 de mises en situation orales, pour montrer le Head of Product de la vision au

@@ -1,8 +1,8 @@
 # 0105 — `public/illustrations/` : des fichiers générés livrés, qui restent dans git
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `outil` | — | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `outil` | `clos 2026-11-05` | — | — | — |
 
 **Décision de Jean (2026-11-05)** : `public/illustrations/` est un dossier de
 fichiers **générés livrés**. Ses SVG sortent des scripts

@@ -97,6 +97,10 @@ chantier, sa branche est fusionnée dans `main` (`--no-ff`, hook vert) et
 
 ## Ce qui reste ouvert
 
-`0003` direction visuelle (maquettes livrées, choix de Jean attendu),
-`0004` acte III leadership, `0005` contact, `0006` mesure d'audience,
-`0007` schéma OST. Tous reportés après la ligne, sauf `0003`.
+Le registre fait foi : chaque fiche écrit son statut (test
+`registre-statut`). La liste se calcule :
+`grep -lE '\| .(ouvert|en cours|gelé). \|' registre/*.md` (hors `0000`).
+
+Au 2026-11-09 : `0004` acte III leadership (ouvert : l'acculturation des
+équipes à l'IA), `0111` premier recalibrage (ouvert). Gelés jusqu'au
+temps 2 : `0005` contact, `0006` mesure d'audience, `0007` schéma OST.

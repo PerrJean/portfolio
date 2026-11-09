@@ -1,8 +1,8 @@
 # 0086 — Un skill de relecture pour le lecteur non initié
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `contenu` | — | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `contenu` | `clos 2026-10-09` | — | — | — |
 
 **Demande de Jean (2026-10-09)** : extrapoler de ses corrections des règles
 de relecture, dans un skill. Le portfolio s'adresse à quelqu'un qui n'y

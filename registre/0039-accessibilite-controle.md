@@ -1,8 +1,8 @@
 # 0039 — Contrôle d'accessibilité dans le navigateur
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `defaut` | `structure` | — | non mesurable (session principale) | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `defaut` | `structure` | `clos 2026-09-30` | — | non mesurable (session principale) | claude-opus-5-5 |
 
 **Question de Jean (2026-09-30) : le site est-il accessible ?** Contrôle mené
 par la session, dans le navigateur, sur six pages : contraste réel de chaque

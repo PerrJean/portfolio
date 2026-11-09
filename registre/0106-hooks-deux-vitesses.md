@@ -1,8 +1,8 @@
 # 0106 — Hooks à deux vitesses et `pre-merge-commit`
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `outil` | 200 | non mesurable (mené dans une autre session, hors sous-agent) | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `outil` | `clos 2026-11-09` | 200 | non mesurable (mené dans une autre session, hors sous-agent) | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-05)**, sur le modèle d'UserVoice (son
 registre/0080) : c'est la condition pour mener les chantiers sur des branches

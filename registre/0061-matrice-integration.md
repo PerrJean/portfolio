@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `contenu` | `clos 2026-09-30` | 150 | 194 | `claude-opus-5-5` |
+| `chantier` | `contenu` | `clos 2026-10-01` | 150 | 194 | `claude-opus-5-5` |
 
 **Choix de Jean (2026-10-01)** : le troisième projet (texte validé dans
 `redaction/matrice.fr.md`, 0059) entre dans le site, en français et en

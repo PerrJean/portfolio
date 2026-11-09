@@ -1,8 +1,8 @@
 # 0087 — Le skill de relecture passé sur tout le site, par lots
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `contenu` | 320 | — | `claude-opus-5-5` |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `contenu` | `clos 2026-10-09` | 320 | — | `claude-opus-5-5` |
 
 **Demande de Jean (2026-10-09)** : passer `relecture-non-initie` et
 `ligne-editoriale` sur la nouvelle page d'analyse du NPS, puis sur tout le

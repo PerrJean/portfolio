@@ -1,8 +1,8 @@
 # 0016 — Structure du site et fait clé de chaque projet
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `structure` | — | non mesurable (session principale) | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `structure` | `clos 2026-09-29` | — | non mesurable (session principale) | claude-opus-5-5 |
 
 **Décisions de Jean (2026-09-28).**
 

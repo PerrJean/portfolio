@@ -1,8 +1,8 @@
 # 0018 — Bibliothèque de personnages et scripts d'animation
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 110 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-28` | 110 | — | — |
 
 **Décisions de Jean (2026-09-28)**, après la première esquisse (`0017`).
 

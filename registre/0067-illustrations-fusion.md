@@ -1,8 +1,8 @@
 # 0067 — Les illustrations du projet fusion
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 90 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-10-01` | 90 | — | — |
 
 **Demande de Jean (2026-10-01)** : « il faut avoir des illustrations aussi,
 très important ». Pour la fusion des plateformes (0065), trois schémas au

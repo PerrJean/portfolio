@@ -1,8 +1,8 @@
 # 0014 — Trois esquisses d'animation
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `chantier` | `ligne` | 240 | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `chantier` | `ligne` | `clos 2026-09-28` | 240 | — | — |
 
 **Demande de Jean (2026-09-28)** : trois propositions d'animation, pas
 complètes, sympas et simples à intégrer, avec leur complexité de code.

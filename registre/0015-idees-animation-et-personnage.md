@@ -1,8 +1,8 @@
 # 0015 — Animations et personnage : les idées retenues
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `ligne` | — | non mesurable (session principale) | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `ligne` | `clos 2026-09-28` | — | non mesurable (session principale) | claude-opus-5-5 |
 
 **Décisions de Jean (2026-09-28), itération en texte, sans planche.**
 

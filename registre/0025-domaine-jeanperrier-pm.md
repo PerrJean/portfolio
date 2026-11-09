@@ -1,8 +1,8 @@
 # 0025 — Le domaine : jeanperrier.pm
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `publication` | — | non mesurable (session principale) | claude-opus-5-5 |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `publication` | `clos 2026-09-29` | — | non mesurable (session principale) | claude-opus-5-5 |
 
 **Acheté par Jean le 2026-09-29** chez OVHcloud (5,59 € HT la première
 année, 7,79 € HT ensuite ; aucune option). `.pm` : l'extension de

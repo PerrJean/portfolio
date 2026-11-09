@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `structure` | `clos 2026-09-30` | 180 | 208 | `claude-opus-5-5` |
+| `chantier` | `structure` | `clos 2026-10-01` | 180 | 208 | `claude-opus-5-5` |
 
 **Go de Jean (2026-10-01)** sur les textes de la fusion (0065) et des mises en
 situation (0066), FR et EN. Intégration : quatre pages, les trois schémas de

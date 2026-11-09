@@ -1,8 +1,8 @@
 # 0075 — Cartes de l'accueil : la date, des numéros plus petits, « Lire le projet »
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `structure` | — | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `structure` | `clos 2026-09-30` | — | — | — |
 
 **Demandes de Jean (2026-09-30)** : la date du projet sous son nom, sur
 l'accueil ; une designeuse trouve les numéros trop gros, et rien ne montre

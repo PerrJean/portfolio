@@ -1,8 +1,8 @@
 # 0082 — Le lancement : le site ouvert aux moteurs
 
-| nature | etape | cout_estime | cout_reel | modele |
-|---|---|---|---|---|
-| `arbitrage` | `mise-en-ligne` | — | — | — |
+| nature | etape | statut | cout_estime | cout_reel | modele |
+|---|---|---|---|---|---|
+| `arbitrage` | `mise-en-ligne` | `clos 2026-10-01` | — | — | — |
 
 **Décision de Jean (2026-10-01)** : « On lance maintenant. » `INDEXE = true`
 (`src/i18n/publication.ts`, registre/0035) : la balise `noindex, nofollow`
