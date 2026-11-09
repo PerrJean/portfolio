@@ -3,7 +3,7 @@ titre: "Platform merger: from three to two, aiming for one"
 date: "2024-08"
 cadre:
   role: "Product Manager, then project lead"
-  equipe: "About ten people: developers, a Product Designer, a junior Product Manager and learning designers"
+  equipe: "About ten people: developers, a Product Designer, a Product Manager and learning designers"
   duree: "February 2023 → August 2024"
 fait: "In 2024, I led the merger of two of our three platforms: every change is now built twice, not three times."
 synthese:
@@ -80,7 +80,7 @@ The heaviest batch covered the activity templates. User interviews and comments 
   <figcaption>Some thirty activity templates, brought down to four shared templates, each made of a piece of material and a question.</figcaption>
 </figure>
 
-We were a team of about ten people, mostly developers, with a designer, a junior Product Manager, and the learning designers alongside us. I owned the schedule and the split into batches. With the developers and the learning designers, I defined the target data model. I wrote the specifications and tested each batch before release. The lead developer owned the technical architecture, and the designer the components, the mockups and the user interviews.
+We were a team of about ten people, mostly developers, with a designer, a Product Manager, and the learning designers alongside us. I owned the schedule and the split into batches. With the developers and the learning designers, I defined the target data model. I wrote the specifications and tested each batch before release. The lead developer owned the technical architecture, and the designer the components, the mockups and the user interviews.
 
 ## Benefits and business impact
 
