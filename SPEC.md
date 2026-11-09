@@ -47,8 +47,9 @@ fichier porte le pourquoi. Ce qui entre et ce qui sort est dans `CONTRAT.md`.
 ## La forme
 
 - **Bascule FR | EN** en haut à droite, FR par défaut.
-- **Direction visuelle à trancher sur trois maquettes** (`registre/0003`),
-  chacune avec son intention. Le cap : trancher avec le côté méthodique des
+- **Direction visuelle tranchée** : les trois maquettes de `registre/0003`
+  écartées par Jean (2026-09-28), l'identité et la ligne posées ensuite à
+  partir de `registre/0008`. Le cap : trancher avec le côté méthodique des
   projets pour montrer le goût design, sans desservir le propos.
 - **Animation sobre d'abord** (CSS, Motion), respectant
   `prefers-reduced-motion`. Scrollytelling (GSAP ScrollTrigger) éventuel en
