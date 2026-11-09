@@ -16,7 +16,7 @@ Relevé des lourdeurs passé, tri de Jean appliqué.
 | Design Sprint | Mises en situation | quelques jours d’ateliers pour passer d’une question à un prototype testé auprès d’utilisateurs | a few days of workshops to go from a question to a prototype tested with users |
 | churn | Audit | le départ des clients qui ne renouvellent pas leur abonnement | customers leaving by not renewing their subscription |
 | learning designer | Audit, Fusion, Mises en situation, Mon métier | la personne qui conçoit les contenus et les exercices de formation, et l’ordre dans lequel l’apprenant les suit | the person who designs the course content and exercises, and the order learners take them in |
-| Product Designer | Fusion, Mises en situation, À propos, Tableau de bord client, Mon métier | la personne qui conçoit les écrans du produit et la façon de s’en servir, à partir des besoins des utilisateurs | the person who designs the product’s screens and how people use them, based on what users need |
+| Product Designer | Fusion, Mises en situation, À propos, Tableau de bord client, Mon métier, Matrice | la personne qui conçoit les écrans du produit et la façon de s’en servir, à partir des besoins des utilisateurs | the person who designs the product’s screens and how people use them, based on what users need |
 | lead développeur | Fusion, Mon métier (EN seul) | le développeur qui guide les autres et tranche les choix techniques | the developer who guides the others and makes the final technical calls |
 | scale-up SaaS B2B | À propos | une entreprise en forte croissance qui vend un logiciel en ligne, sur abonnement, à d’autres entreprises | a fast-growing company selling online software, by subscription, to other businesses |
 

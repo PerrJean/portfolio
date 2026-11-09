@@ -113,10 +113,10 @@ export const PROJETS: readonly Projet[] = [
     groupe: 'a-part',
     scene: 'matrice',
     nom: { fr: 'Matrice de compétences', en: 'Skills matrix' },
-    tags: { fr: ['Management', 'Leadership'], en: ['Management', 'Leadership'] },
+    tags: { fr: ['Management d’équipe', 'Mentorat'], en: ['Team management', 'Mentoring'] },
     fait: {
-      fr: 'Un Product Manager de mon équipe et moi avions deux idées de « devenir senior ». En relisant ensemble une matrice de compétences, nous en avons fait une seule.',
-      en: 'A Product Manager on my team and I had two ideas of “becoming senior”. By reviewing a skills matrix together, we turned them into one.',
+      fr: 'Un Product Manager de mon équipe se voyait plus avancé que ce qu’a montré notre matrice de compétences. Nous avons fait de cet écart un plan de progression, que nous suivons chaque mois.',
+      en: 'A Product Manager on my team saw themselves further along than our skills matrix showed. We turned that gap into a growth plan, which we track every month.',
     },
   },
   {

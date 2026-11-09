@@ -10,3 +10,8 @@ Ouvert, reporté (2026-09-28). Pour le niveau CPO : acculturation des équipes �
 comme prochain projet la **matrice de compétences PM**, pour porter le
 leadership. Le portfolio sert d'abord le côté « hands on » ; le CV porte le
 reste.
+
+**Mise à jour (Jean, 2026-11-09, via 0116)** : l'accompagnement individuel
+est désormais porté par la page 06 (matrice de compétences, racontée comme un
+accompagnement) ; l'acte III reste ouvert pour l'acculturation des équipes à
+l'IA.
