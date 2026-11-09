@@ -79,9 +79,16 @@ Sur le premier parcours, la learning designer a aussi vérifié les corrections 
 
 ## Bénéfices et impact business
 
+Après le premier parcours, la méthode a couvert une certification d’espagnol complète, cinq niveaux de A1 à C1, en cinq semaines, de fin septembre à début novembre 2026. Environ 9 questions sur 10 ont été corrigées. C’est au niveau A1 que la correction rapporte le plus : 6 questions sur 10 y avaient un défaut grave, le plus souvent une explication d’une ligne, en espagnol seulement, qui ne disait rien des mauvaises réponses. Chaque explication réécrite justifie la bonne réponse puis dit pourquoi chaque autre est fausse, dans les quatre langues de l’interface : l’apprenant comprend son erreur dans sa langue.
+
+<figure>
+  <a href="/captures/audit-contenu/corrige-avant-apres-fr.png"><img src="/captures/audit-contenu/corrige-avant-apres-fr.png" width="1360" height="827" loading="lazy" decoding="async" alt="Une question d’espagnol de niveau A1 : « Marta trabaja en un hospital. Cuida a los enfermos. ¿Cuál es su profesión? », avec quatre réponses, A profesora, B enfermera, C cocinera, D camarera ; la bonne est B. À gauche, « Avant » : une explication d’une ligne en espagnol, « Respuesta correcta: B. » À droite, « Après » : l’explication complète, en français. B est juste parce que Marta travaille à l’hôpital et soigne les malades ; A, C et D sont fausses, et l’explication dit pourquoi pour chacune."></a>
+  <figcaption>Avant l’audit, une ligne en espagnol ; après, une explication complète dans la langue de l’apprenant. Données synthétiques.</figcaption>
+</figure>
+
 Chaque correction rend à l’apprenant la possibilité de répondre juste. Au bilan annuel, une école cliente demandait trois choses : une analyse exhaustive de ses contenus, un processus formalisé pour corriger les erreurs, et la fin des questions à choix multiples (QCM) où plusieurs réponses se défendent. Les retours de ses étudiants pointaient le même problème.
 
-L’audit répond à chaque demande : la grille, les lots relus, le critère « une seule réponse défendable ». Il réduit le risque de churn de ce client, et la méthode s’applique aux parcours suivants.
+L’audit répond à chaque demande : la grille, les lots relus, le critère « une seule réponse défendable ». Il réduit le risque de churn de ce client, et la méthode passe maintenant à une autre certification.
 
 ## Ce que j’en retiens
 

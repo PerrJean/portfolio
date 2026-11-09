@@ -79,9 +79,16 @@ On the first course, the learning designer also checked the fixes on a test vers
 
 ## Benefits and business impact
 
+After the first course, the method covered a full Spanish certification, five levels from A1 to C1, in five weeks, from late September to early November 2026. About 9 questions in 10 were fixed. Level A1 is where fixing pays off most: 6 questions in 10 there had a serious defect, most often a one-line explanation, in Spanish only, that said nothing about the wrong answers. Each rewritten explanation justifies the right answer, then says why each of the other answers is wrong, in all four interface languages: learners understand their mistake in their own language.
+
+<figure>
+  <a href="/captures/audit-contenu/corrige-avant-apres-en.png"><img src="/captures/audit-contenu/corrige-avant-apres-en.png" width="1360" height="827" loading="lazy" decoding="async" alt="A level A1 Spanish question: “Marta trabaja en un hospital. Cuida a los enfermos. ¿Cuál es su profesión?”, with four answers, A profesora, B enfermera, C cocinera, D camarera; the right one is B. On the left, “Before”: a one-line explanation in Spanish, “Respuesta correcta: B.” On the right, “After”: the full explanation, in English. B is right because Marta works in a hospital and cares for the sick; A, C and D are wrong, and the explanation says why for each."></a>
+  <figcaption>Before the audit, one line in Spanish; after, a full explanation in the learner’s language. Synthetic data.</figcaption>
+</figure>
+
 Each fix gives learners back the chance to answer correctly. At the annual review, a school client asked for three things: a full analysis of its content, a formal process for fixing errors, and an end to multiple-choice questions where more than one answer can be defended. Feedback from its students pointed to the same problem.
 
-The audit answers each request: the grid, the reviewed batches, the “one defensible answer” criterion. It reduces the risk of churn for this client, and the method applies to the next courses.
+The audit answers each request: the grid, the reviewed batches, the “one defensible answer” criterion. It reduces the risk of churn for this client, and the method now moves on to another certification.
 
 ## What I took from it
 
