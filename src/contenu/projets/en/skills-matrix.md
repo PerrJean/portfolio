@@ -9,7 +9,7 @@ fait: "A Product Manager on my team saw themselves further along than our skills
 synthese:
   probleme: "On the product team of an EdTech platform, “becoming senior” had no shared criteria. So the Product Manager on my team and I did not see their growth the same way."
   action: "To give us shared criteria, I built a skills matrix and reviewed it with the Product Manager. In a one-on-one, we worked out together where they stood and chose two focus areas. These became OKRs (objectives and key results), reviewed at a monthly check-in."
-  resultat: "From February to April 2026, the Product Manager ran the client interviews and survey for the AI speaking role-plays, project 01 in this portfolio."
+  resultat: "The Product Manager joined an AI project, one of the two focus areas of their plan. From February to April 2026, with the Product Designer, they ran the client interviews and surveys for the AI speaking role-plays (project 01 in this portfolio)."
 plusLoin:
   - titre: "How the matrix is structured"
     points:

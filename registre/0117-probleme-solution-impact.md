@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `structure` | `en cours` | 200 | | `claude-opus-5-5` |
+| `chantier` | `structure` | `clos 2026-11-09` | 200 | 474 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-09)**, sur le retour d'une relectrice extérieure :
 rendre le flux « problème, solution, résultat ou impact » beaucoup plus
@@ -132,12 +132,23 @@ manquante (Tableau de bord), calques EN. Une v2 les reprend.
   capitales, encre, 15 px, filet 3 px `--dalle`, aucun défilement
   horizontal (`scrollWidth` = largeur), conforme à la maquette.
 
-## Reste
+## Matrice (après la fusion de 0116)
 
-- **Matrice** (FR et EN) : relire son `resultat` sous « L’impact » une fois
-  0116 fusionné, relevé des lourdeurs, tri de Jean ; puis clôture.
+- 2026-11-09 : `main` intégré à la branche (`cec4b0c`, 0116 fusionné en
+  `456ac92`) ; la page Fusion garde le retrait de « junior » (0116) et
+  l'impact réécrit ici.
+- Relevé des lourdeurs (sous-agent neuf) sur l'impact proposé : la phrase
+  donnait au Product Manager seul les entretiens que la page 01 attribue
+  aussi à la Product Designer ; « sujet d'IA appliquée » vague ; 35 mots.
+- 2026-11-09, Jean : version **« a rejoint un projet d'IA »**, avec la
+  Product Designer, FR et EN ; et **écrire que ce projet est l'un des deux
+  axes du plan** (le corps de la page le dit déjà : le second axe est l'IA
+  appliquée).
 
 ## Coûts relevés (milliers de tokens, harnais)
 
-Relevé des lourdeurs 94,5 ; test 114,9 ; gabarit 87,7 ; revue 97,4. Sous-total
-394,5 ; la session principale n'est pas comptée (convention 0000).
+Relevé des lourdeurs 94,5 ; test 114,9 ; gabarit 87,7 ; revue 97,4 ; relevé
+Matrice 79,0. Total 473,5, arrondi à 474 ; la session principale n'est pas
+comptée (convention 0000). Un tour de revue, aucune remontée. Hors spec :
+aucune décision de code ; la page Matrice n’a pas eu de vérification visuelle
+propre (gabarit déjà vu sur trois pages, texte tenu par le test B).
