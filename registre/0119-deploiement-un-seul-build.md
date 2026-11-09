@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `outil` | `en cours` | 80 | | `claude-opus-5-5` |
+| `chantier` | `outil` | `clos 2026-11-09` | 80 | 236 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-09)**, relevé en examinant 0107 : la publication
 construit le site deux fois.
@@ -52,3 +52,40 @@ les deux lignes build puis tests de `tester`.
   231 s, 229 s, 298 s au total ; `construire` n'y pèse que 16 à 20 s,
   `tester` 64 à 71 s, `publier` 101 à 195 s (l'attente de GitHub Pages). Le
   gain attendu est modeste : un job et son démarrage.
+
+## Clôture (2026-11-09)
+
+- **Fait** : `deploy.yml` dépose `.dist-ci` par `actions/upload-pages-artifact@v5`
+  à la suite de `npm test`, dans `tester` ; le job `construire` disparaît,
+  `publier` attend `tester`. `tests.yml` ne se lance plus que sur les pull
+  requests (Dependabot comprises). Chromium et les deux secrets inchangés.
+- **Un test rouge bloque toujours** : le dépôt du site vient après
+  `npm test` dans le même job, donc un échec arrête le job avant le dépôt ;
+  `publier` attend `tester` et, sans dépôt, `deploy-pages` n'a rien à publier.
+- **Revue** (sous-agent neuf, lecture seule) : PASSE au premier tour, aucun
+  problème. Cassures examinées : dépôt avant les tests, `needs` faux, chemin
+  faux : toutes bruyantes ou bloquées, sauf un `path` pointé vers un autre
+  dossier existant.
+- **Hook bloquant** vert à chaque commit et aux deux fusions (intégration de
+  `main` après 0114, puis fusion dans `main`) : build, 287 tests.
+- **Durée après** : publication `42655113862` (commit `81727d1`), **115 s**
+  (`tester` 65 s, `publier` 43 s), contre 229 à 298 s pour les trois
+  précédentes. Sur l'envoi, seul « Publier sur GitHub Pages » est parti, plus
+  de « Tests » en double. Une seule mesure : `publier` dépend surtout de
+  l'attente de GitHub Pages, qui varie d'un passage à l'autre.
+- **Site en ligne inchangé** : après la publication, les 78 fichiers en ligne
+  sont identiques octet pour octet à un build local du commit fusionné
+  (`npm ci` puis `npx astro build`, `curl` puis `cmp`), `sitemap-index.xml`
+  et `sitemap-0.xml` compris ; `/`, `/en/`, `/projets/audit-contenu/`,
+  `/a-propos/` en 200.
+- **Coût relevé au harnais** : 236 = 154 k de contexte de la session à la
+  clôture (`get_usage`, dont environ 87 k de charge fixe) + 82 k pour la
+  revue (sous-agent). Ratio 2,95 pour 80 estimés : la charge fixe d'une
+  session et la revue n'étaient pas comptées, et les attentes du hook
+  complet (trois passages) ont allongé la session.
+- **Suites relevées, hors périmètre** :
+  1. `docs/GUIDE_MISE_EN_LIGNE.md` (ligne 36) dit encore que
+     `withastro/action` construit le site.
+  2. Les droits `pages: write` et `id-token: write` sont donnés à tout le
+     workflow, `tester` compris (qui lance `npm ci` et Playwright) : ils
+     pourraient ne s'appliquer qu'à `publier`.
