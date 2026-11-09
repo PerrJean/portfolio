@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `contenu` | `ouvert` | 120 | | `claude-opus-5-5` |
+| `chantier` | `contenu` | `clos 2026-11-09` | 120 | 229 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-09)**, sur le retour d'une relectrice extérieure :
 aborder le projet 06 « plutôt comme du mentorat, de l'accompagnement d'un
@@ -61,6 +61,15 @@ voix.
   situation orales ; la page 06 le cite et y renvoie par un lien.
 - 2026-11-09, Jean : go sur la spec ci-dessous ; `npm ci` autorisé dans le
   worktree du chantier.
+- 2026-11-09, Jean, tri du relevé : l'axe 1 se dit sans jugement (« le
+  rapproche des utilisateurs et du métier ») ; « ce qui a bougé » devient le
+  fait daté de la page 01 (de février à avril 2026, il a mené avec la Product
+  Designer les entretiens et l'enquête clients), au lieu de « il porte
+  aujourd'hui » et de « va davantage au contact du métier » ; tout le reste
+  du relevé appliqué, six H2 gardés, trous laissés sans rien inventer.
+- 2026-11-09, Jean : le « Product Manager junior » de la page Fusion (FR et
+  EN) est la même personne : « junior » retiré, pour qu'aucun niveau ne se
+  déduise en croisant les pages (0059).
 
 ## Spec
 
@@ -94,3 +103,22 @@ scène, les images, le PDF, le bloc « Pour aller plus loin ».
 7. **EN** en miroir, même structure.
 8. **Relevé des lourdeurs** par un agent qui n'a pas écrit (0072), trié par
    Jean ; build et tests verts.
+
+## Clôture (2026-11-09)
+
+- **État de référence** : build et suite complète verts au premier point
+  d'étape (`135dfff`, hook bloquant, branche hors `chantier/*`).
+- **Rédaction** (sous-agent, brief `prompts/9-matrice-mentorat.md`) : 124.
+  **Relevé des lourdeurs** (sous-agent neuf, brief
+  `prompts/9-releve-matrice-mentorat.md`) : 105, 25 lignes, triées par Jean.
+  Les corrections du tri sont faites en session principale (petite
+  correction, non comptée). Coût relevé au harnais : 124 + 105 = 229.
+- **Hors spec, validé par Jean** : page Fusion FR et EN (« junior » retiré) ;
+  descriptions des deux pages (`src/pages/…/matrice-competences.astro`,
+  `skills-matrix.astro`) alignées sur l'accompagnement ; « ROI » remplacé
+  par « rentabilité » dans « Pour aller plus loin ».
+  `redaction/lexique.md` : « Matrice » ajoutée aux pages de « Product
+  Designer », que la page cite désormais (le test des infobulles l'exigeait).
+- **Restent ouverts, sans rien inventer** : un geste concret de Jean pendant
+  l'entretien, ce qu'on regarde au point mensuel (signalés par le relevé).
+- Aucune remontée ; un tour de relevé.

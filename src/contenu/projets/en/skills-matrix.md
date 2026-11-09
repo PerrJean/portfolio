@@ -7,9 +7,9 @@ cadre:
   duree: "Since December 2025"
 fait: "A Product Manager on my team saw themselves further along than our skills matrix showed. We turned that gap into a growth plan, which we track every month."
 synthese:
-  probleme: "On the product team of an EdTech platform, “becoming senior” had no shared criteria. So the Product Manager on my team and I did not see their growth the same way. They saw themselves further along than the matrix later showed."
-  action: "I built a skills matrix to give us a shared tool: observable behaviors, across three levels. I reviewed it with the Product Manager, then we went through it in a one-on-one, skill by skill. The two focus areas we chose became OKRs (objectives and key results), which we track every month."
-  resultat: "The Product Manager now works more closely with the business side. Today, they lead the AI speaking role-plays, project 01 in this portfolio."
+  probleme: "On the product team of an EdTech platform, “becoming senior” had no shared criteria. So the Product Manager on my team and I did not see their growth the same way."
+  action: "To give us shared criteria, I built a skills matrix and reviewed it with the Product Manager. In a one-on-one, we worked out together where they stood and chose two focus areas. These became OKRs (objectives and key results), reviewed at a monthly check-in."
+  resultat: "From February to April 2026, the Product Manager ran the client interviews and survey for the AI speaking role-plays, project 01 in this portfolio."
 plusLoin:
   - titre: "How the matrix is structured"
     points:
@@ -18,7 +18,7 @@ plusLoin:
       - "Soft skills: collaboration, high standards, passion."
       - "A weighting for each skill."
       - "Prerequisites to meet before each level."
-      - "A framework rooted in EdTech work: learning design, trade-offs between business ROI and educational value, dashboards for teachers."
+      - "A framework rooted in EdTech work: learning design, trade-offs between profitability and educational value, dashboards for teachers."
   - titre: "One row across its three levels: backlog management"
     points:
       - "Junior: writes simple user stories."
@@ -42,13 +42,13 @@ cle: matrice
 
 ## A gap to name
 
-On the team, nothing showed what “becoming senior” meant, for the Product Manager or for me, their manager. We each judged their growth by our own standards.
+On the team, “becoming senior” had never been defined, either for the Product Manager or for me, their manager. The two of us judged their growth, each by our own standards.
 
 To help them grow, we first had to agree on one thing: where they stood. Without written criteria, a gap between our two views stayed invisible.
 
 ## A framework to talk about it
 
-In December 2025, I built a skills matrix. For each skill, it describes what you can see someone do at three levels, from junior to senior. Its structure is detailed under “Going further”.
+In December 2025, I built a skills matrix. For each skill, it describes what you can see someone do at three levels, from junior to senior.
 
 Before using it, I reviewed it with the Product Manager. That way, we had the same criteria in front of us before discussing their growth. Here is one block of the matrix.
 
@@ -59,24 +59,22 @@ Before using it, I reviewed it with the Product Manager. That way, we had the sa
 
 ## One conversation to see where we stood
 
-In January 2026, the Product Manager and I went through the matrix in a one-on-one, skill by skill. They saw themselves further along than the matrix showed. We talked it through based on observed behaviors, using criteria they had already reviewed.
+In January 2026, the Product Manager and I went through the matrix in a one-on-one, skill by skill. They saw themselves further along than the matrix showed. We talked it through based on observed behaviors.
 
-We agreed on two focus areas. A Product Manager’s credibility rests on understanding how people use the product and who they are, and on knowing the business: the first area strengthens that knowledge. The second takes them further into AI applied to product management.
+We agreed on two focus areas. The first brings them closer to users and to the field; the second takes them further into AI applied to product management.
 
 ## A check-in every month
 
-The Product Manager’s two focus areas became OKRs (objectives and key results), including a personal development OKR. Since then, we have reviewed their OKRs every month.
+These two focus areas became OKRs, including one for personal development. We have been reviewing them every month since.
 
 ## What has changed
 
-The Product Manager now works more closely with the business side. Today, they lead the [AI speaking role-plays](/en/projects/speaking-practice/), project 01 in this portfolio.
-
-The same matrix could be used to hire a Product Manager, or to help other people on the team grow.
+From February to April 2026, the Product Manager went out to meet clients, on the [AI speaking role-plays](/en/projects/speaking-practice/), project 01 in this portfolio. With the Product Designer, they ran the interviews and the survey that reordered the next steps of the project.
 
 ## What I took from it
 
-**Describe each level by what you can see someone do.** A sentence that describes a behavior can be checked. It made me pin down my own expectations before applying them to someone else.
+**Describe each level by what you can see someone do.** A sentence that describes a behavior can be checked. The exercise made me pin down my own expectations before applying them to someone else.
 
-**Name the gap before talking about levels.** The one-on-one first showed us that we did not mean the same thing by “becoming senior”. Once that gap had a name, it became the starting point of a plan we share.
+**Name the gap, then turn it into a plan.** With criteria we had reviewed together, we could compare our two views on facts. The gap became the starting point of a plan we share.
 
-**Track the plan every month.** Tied to OKRs, a growth plan comes back at every monthly check-in. It stays part of everyday work, and each month shows what has moved forward.
+**Track the plan every month.** Because it is tied to OKRs, the plan is on the agenda of every monthly check-in. It stays part of everyday work.

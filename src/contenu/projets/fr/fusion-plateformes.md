@@ -3,7 +3,7 @@ titre: "Fusion des plateformes : de trois à deux, en visant une seule"
 date: "2024-08"
 cadre:
   role: "Product Manager, puis chef de projet"
-  equipe: "Une dizaine de personnes : développeurs, Product Designer, Product Manager junior et learning designers"
+  equipe: "Une dizaine de personnes : développeurs, Product Designer, Product Manager et learning designers"
   duree: "Février 2023 → août 2024"
 fait: "En 2024, j’ai piloté la fusion de deux de nos trois plateformes : chaque évolution se développe désormais deux fois, et non plus trois."
 synthese:
@@ -80,7 +80,7 @@ Le lot le plus lourd portait sur les gabarits d’activité. Les entretiens util
   <figcaption>Une trentaine de gabarits d’activité, ramenés à quatre gabarits communs, chacun fait d’un support et d’une question.</figcaption>
 </figure>
 
-Nous étions une dizaine de personnes, surtout des développeurs, avec une Product Designer et un Product Manager junior, et les learning designers à nos côtés. Je tenais le calendrier et le découpage en lots. Avec les développeurs et les learning designers, je définissais l’organisation cible des données. J’écrivais les spécifications et je testais chaque lot avant sa mise en ligne. Le lead développeur portait l’architecture technique, la Product Designer les composants, les maquettes et les entretiens utilisateurs.
+Nous étions une dizaine de personnes, surtout des développeurs, avec une Product Designer et un Product Manager, et les learning designers à nos côtés. Je tenais le calendrier et le découpage en lots. Avec les développeurs et les learning designers, je définissais l’organisation cible des données. J’écrivais les spécifications et je testais chaque lot avant sa mise en ligne. Le lead développeur portait l’architecture technique, la Product Designer les composants, les maquettes et les entretiens utilisateurs.
 
 ## Bénéfices et impact business
 
