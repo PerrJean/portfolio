@@ -79,9 +79,18 @@ On the first course, the learning designer also checked the fixes on a test vers
 
 ## Benefits and business impact
 
-Each fix gives learners back the chance to answer correctly. At the annual review, a school client asked for three things: a full analysis of its content, a formal process for fixing errors, and an end to multiple-choice questions where more than one answer can be defended. Feedback from its students pointed to the same problem.
+The first course audited was one of the five levels of a Spanish certification, from beginner (A1) to advanced (C1). In five weeks, the audit covered all five. About 9 questions in 10 got a rewritten explanation, live since early November 2026.
 
-The audit answers each request: the grid, the reviewed batches, the “one defensible answer” criterion. It reduces the risk of churn for this client, and the method applies to the next courses.
+The gain is clearest at beginner level (A1). There, 6 questions in 10 had a blocking or major defect: most often, a one-line explanation, in Spanish only, with nothing on the wrong answers. Each rewritten explanation says why the right answer is right, then why each of the others is wrong. It is available in all four languages of the site, so learners see where they went wrong in their own language.
+
+<figure>
+  <a href="/captures/audit-contenu/corrige-avant-apres-en.png"><img src="/captures/audit-contenu/corrige-avant-apres-en.png" width="1360" height="827" loading="lazy" decoding="async" alt="A Spanish question at level A1: “Marta trabaja en un hospital. Cuida a los enfermos. ¿Cuál es su profesión?”, with four answers, A profesora, B enfermera, C cocinera, D camarera; the right one is B. On the left, “Before”: a one-line explanation in Spanish, “Respuesta correcta: B.” On the right, “After”: the full explanation, in English. B is right because Marta works in a hospital and cares for the sick; A, C and D are wrong, and the explanation says why for each."></a>
+  <figcaption>The explanation for the same question, before and after the audit: one line in Spanish, then why the right answer is right and each other one is wrong, in English. Synthetic data.</figcaption>
+</figure>
+
+With each blocking question fixed, learners can get it right again. At the annual review, a client school asked for three things: a full analysis of its content, a formal process for fixing errors, and an end to multiple-choice questions where more than one answer can be defended. Feedback from its students pointed to the same problem.
+
+The audit meets each request: the grid, the reviewed batches, the “one defensible answer” criterion. It lowers the risk of churn for this client. Next step: another certification.
 
 ## What I took from it
 
