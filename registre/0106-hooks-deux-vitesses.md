@@ -25,3 +25,12 @@ worktree jetable, avec un test rouge volontaire :
   (le volontaire), « REFUS : des tests echouent. », fusion non commitée.
 
 Worktree et branches d'essai supprimés ensuite.
+
+## Tranché
+
+- 2026-11-09, Jean : la vitesse rapide vaut aussi pour les branches
+  `claude/chantier-*`, le nom que l'app donne aux branches des sessions
+  (relevé par 0107 : aucune n'entrait dans `chantier/*`, chaque point
+  d'étape jouait le hook complet, 65 à 170 s, contre ~12 s en rapide). La
+  fusion dans `main` reste complète et bloquante. Le test
+  `tests/verifier.test.mjs` exige les deux motifs.

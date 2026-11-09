@@ -40,7 +40,9 @@ fi
 
 echo "-> build et tests"
 # Deux vitesses (modele : UserVoice, registre/0080 ; demande de Jean du
-# 2026-11-05). Sur une branche chantier/* : build et tests SANS les passes en
+# 2026-11-05). Sur une branche chantier/*, ou claude/chantier-* (le nom que
+# l'app donne aux branches des sessions, registre/0106, Tranche du
+# 2026-11-09) : build et tests SANS les passes en
 # navigateur, NON bloquants -- un point d'etape rouge passe. Ailleurs, et pour
 # toute fusion : build et tous les tests, bloquants, comme avant. Tout ce qui
 # precede reste bloquant partout. Une fusion se reconnait a --fusion, que passe
@@ -50,7 +52,7 @@ echo "-> build et tests"
 BRANCHE=$(git symbolic-ref --short -q HEAD || true)
 RAPIDE=
 if [ "${1:-}" != "--fusion" ] && ! git rev-parse -q --verify MERGE_HEAD >/dev/null; then
-  case "$BRANCHE" in chantier/*) RAPIDE=1 ;; esac
+  case "$BRANCHE" in chantier/*|claude/chantier-*) RAPIDE=1 ;; esac
 fi
 # L'execution passe par la commande unique `verifier` (registre/0107) : build
 # dans .dist-hook, tests dessus. Le dossier est garde pour les alertes de
