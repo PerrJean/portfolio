@@ -14,7 +14,7 @@ import { ecrirePlanche } from './planche.mjs';
 import { C, feuille } from './svg.mjs';
 
 const STYLE = feuille(['fe', 'fs']);
-export const P = { 400: police(400), 700: police(700) };
+const P = { 400: police(400), 700: police(700) };
 
 /** Les deux dispositions : largeur, corps du texte, du titre de section. */
 export const MODES = {

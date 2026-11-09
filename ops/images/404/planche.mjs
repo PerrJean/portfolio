@@ -20,7 +20,7 @@ import { POSES } from '../../../src/components/scene/poses.ts';
 import { avecPolicesTtf } from '../commun/police.mjs';
 import { C, feuille, sol, svgScene } from '../commun/svg.mjs';
 import { perso } from '../commun/personnage.mjs';
-import { ecrirePlanche } from '../commun/planche.mjs';
+import { ecrirePlanche, scene } from '../commun/planche.mjs';
 
 const ICI = fileURLToPath(new URL('./', import.meta.url));
 
@@ -121,7 +121,7 @@ const M = 20, CASE = 375, K = CASE / L, H_CASE = 160 * K, H = Math.round(M + H_C
 const LARGEUR = 2 * M + 4 * CASE + 3 * M;
 const x0 = (i) => M + i * (CASE + M);
 
-const corps = IMAGES.map((image, i) => `<g transform="translate(${x0(i)} ${M + 140 * K}) scale(${K})">${image}</g>`).join('');
+const corps = IMAGES.map((image, i) => scene(image, x0(i), M, K)).join('');
 
 await avecPolicesTtf([400], async (polices) => {
   const chiffres = await Promise.all(

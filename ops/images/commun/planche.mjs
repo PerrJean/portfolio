@@ -15,7 +15,7 @@ export const CASE = (1280 - M) / 2, K = CASE / L, H_CASE = 160 * K;
 /** La hauteur d'un rang de cases, légende comprise. */
 export const RANG = H_CASE + LEG + 12;
 /** Les largeurs de carte du site, en px. */
-export const LARGEURS_CARTE = [480, 384, 335];
+const LARGEURS_CARTE = [480, 384, 335];
 
 /** Le numéro en gras, puis le texte, en ardoise. */
 export const legende = (n, t, x, y) => P8.chemin(`${n}`, x, y, 15, 0, 'fs') + P4.chemin(t, x + 16, y, 15, 0, 'fs');

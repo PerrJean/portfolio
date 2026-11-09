@@ -28,8 +28,9 @@
 // Aucune pose nouvelle : debout, bras-tendus, marche-2 et montre (poses.ts),
 // montre avec d'autres cibles, toutes sous l'horizontale (le bras avant droit,
 // 32,2, vers la cible). Le board et le post-it viennent de poses.ts
-// (OBJETS), comme dans le site (SceneMisesEnSituation.astro) ; le post-it
-// retenu est dessiné ici (POSTIT_RETENU).
+// (OBJETS), comme dans la scène du tableau de bord (SceneTableauDeBord.astro ;
+// celle des mises en situation a quitté le site en 0090) ; le post-it retenu
+// est dessiné ici (POSTIT_RETENU).
 
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
