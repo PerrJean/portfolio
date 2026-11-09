@@ -1,6 +1,8 @@
 # Les tests du site sur GitHub : sur chaque pull request (dont celles de
-# Dependabot). Les mêmes que le hook de pre-commit. Un envoi sur `main` ne les
-# lance plus ici : `deploy.yml` les joue déjà avant de publier (registre/0119).
+# Dependabot). La même commande que le hook de pre-commit : `npm run verifier`
+# construit le site dans un dossier jetable, lance tous les tests dessus, puis
+# le supprime (registre/0107). Un envoi sur `main` ne les lance plus ici :
+# `deploy.yml` les joue déjà avant de publier (registre/0119).
 name: Tests
 
 on:
@@ -34,7 +36,4 @@ jobs:
       - run: npm ci
       # Chromium pour le test des infobulles dans un navigateur (registre/0097).
       - run: npx playwright install --with-deps chromium
-      - run: npx astro build --outDir .dist-ci
-      - run: npm test
-        env:
-          DIST: .dist-ci
+      - run: npm run verifier

@@ -52,19 +52,17 @@ RAPIDE=
 if [ "${1:-}" != "--fusion" ] && ! git rev-parse -q --verify MERGE_HEAD >/dev/null; then
   case "$BRANCHE" in chantier/*) RAPIDE=1 ;; esac
 fi
-# Construit dans un dossier jetable, lance les tests dessus.
+# L'execution passe par la commande unique `verifier` (registre/0107) : build
+# dans .dist-hook, tests dessus. Le dossier est garde pour les alertes de
+# redaction, puis supprime plus bas. Sa derniere ligne dit ce qui est rouge.
 command -v node >/dev/null 2>&1 || export PATH="$APPDATA/fnm/node-versions/v24.20.0/installation:$PATH"
-rm -rf .dist-hook
 ROUGE=
-if ! npx astro build --outDir .dist-hook >"$GITDIR/build-hook.log" 2>&1; then
-  cat "$GITDIR/build-hook.log"; ROUGE="le build echoue"
-elif [ -n "$RAPIDE" ]; then
+if [ -n "$RAPIDE" ]; then
   echo "   vitesse rapide ($BRANCHE) : sans tests/*-navigateur.test.mjs"
-  DIST=.dist-hook node --test $(ls tests/*.test.mjs | grep -v -- '-navigateur\.test\.mjs$') || ROUGE="des tests echouent"
+  npm run verifier -- --rapide --garder .dist-hook || ROUGE="verifier est rouge"
 else
-  DIST=.dist-hook npm test || ROUGE="des tests echouent"
+  npm run verifier -- --garder .dist-hook || ROUGE="verifier est rouge"
 fi
-rm -f "$GITDIR/build-hook.log"
 if [ -n "$ROUGE" ]; then
   if [ -n "$RAPIDE" ]; then
     echo "   ! $ROUGE : NON bloquant sur $BRANCHE ; la fusion jouera build et tests complets"

@@ -78,3 +78,24 @@ joue tout ; publication réelle verte après la fusion, site en ligne inchangé.
   branches de chantier des sessions s'appellent `claude/chantier-…`. Chaque
   point d'étape d'une session joue donc le hook complet, bloquant. À Jean de
   trancher (élargir le motif, ou nommer les branches `chantier/…`).
+  Mesuré sur ce chantier : le premier point d'étape (trois fichiers de texte)
+  a pris **2 min 50** de hook ; et le test écrit d'abord, rouge par
+  construction, **ne peut pas être committé** seul (le hook bloquant le
+  refuse, `--no-verify` est exclu) : il part avec le code.
+- **Le test d'abord** (sous-agent, brief `prompts/9-verifier-test.md`) :
+  `tests/verifier.test.mjs`, 186 lignes, 9 tests. `node --test
+  tests/verifier.test.mjs` → 9 rouges, chacun pour le comportement absent
+  (script non déclaré, hook et workflows qui construisent encore, « code 1 au
+  lieu de 2 » sur les cinq refus). Coût relevé au harnais : 80.
+- **Le code** (sous-agent, brief `prompts/9-verifier.md`) : `ops/verifier.mjs`,
+  143 lignes ; hook, `tests.yml`, `deploy.yml`, `package.json`, `CLAUDE.md`.
+  Test d'arrivée 9/9 sans y toucher. **Hors spec**, deux refus de plus pour
+  `--garder` : un fichier, et un chemin qui passe par `.git`, `node_modules`
+  ou `.claude` ; le refus « fichier suivi » couvre aussi les fichiers
+  nouveaux non ignorés (un premier essai en copie jetable avait effacé un
+  fichier non suivi). Rapport : Git Bash 298 tests verts en 82 s, dossier
+  jetable supprimé ; PowerShell 5.1 298 verts en 77 s (pwsh 7, installé en
+  MSIX, ne voit pas le node de fnm) ; `--rapide` 289 tests, aucun
+  `-navigateur` ; copie jetable : test cassé puis build cassé, code 1, ligne
+  `ROUGE` juste, dossier supprimé ; hook `--fusion` 298 verts en 113 s.
+  Coût relevé au harnais : 112.
