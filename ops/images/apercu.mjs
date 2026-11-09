@@ -255,7 +255,7 @@ async function texte(contenu, { fontfile, famille, taille, couleur, largeur, int
   })
     .png()
     .toBuffer({ resolveWithObject: true });
-  // Pango rogne l'image à l'encre : un jambage (le j de « j'écoute ») qui
+  // Pango rogne l'image à l'encre : un jambage (un j en tête de ligne) qui
   // déborde à gauche décale tout le bloc. On mesure où commence l'encre de
   // la première ligne, pour aligner les blocs sur leur première lettre.
   const alpha = await sharp(data).extractChannel(3).raw().toBuffer();
@@ -270,13 +270,15 @@ async function texte(contenu, { fontfile, famille, taille, couleur, largeur, int
 const APERCU = {
   fr: {
     fichier: 'apercu.png',
-    phrase: "J'écoute, je pose des hypothèses, je teste et je construis là où ça compte.",
+    // Trois lignes à 60 px, coupées à la main pour garder « il rapporte le
+    // plus » d'un bloc (registre/0115).
+    phrase: 'Je concentre\nl’effort là où\nil rapporte le plus.',
     role: 'Head of Product · IA appliquée · Data',
   },
   en: {
     fichier: 'apercu-en.png',
-    // Insécables après « I » : pas de « I » seul en fin de ligne.
-    phrase: 'I listen, I form hypotheses, I test and I build where it counts.',
+    // Coupée comme le français, sinon « most. » restait seul (registre/0115).
+    phrase: 'I focus\nmy effort where\nit pays off most.',
     role: 'Head of Product · Applied AI · Data',
   },
 };
@@ -331,10 +333,10 @@ const COUV = {
 };
 const COUVERTURE = join(RACINE, 'ops/images/couverture');
 const PHRASES = {
-  // Trop longue pour deux lignes à 38 px : trois lignes, coupées à la main
-  // pour ne pas laisser « compte. » seul sur la dernière.
-  fr: "J'écoute, je pose des hypothèses,\nje teste et je construis\nlà où ça compte.",
-  en: 'I listen, I form hypotheses, I test and I build where it counts.',
+  // Coupées à la main après « l’effort » / « effort » : sans elles, « le
+  // plus. » et « most. » restaient seuls sur la seconde ligne (registre/0115).
+  fr: 'Je concentre l’effort\nlà où il rapporte le plus.',
+  en: 'I focus my effort\nwhere it pays off most.',
 };
 
 function fondCouverture(f) {

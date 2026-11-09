@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `contenu` | `en cours` | 100 | | `claude-opus-5-5` |
+| `chantier` | `contenu` | `clos 2026-11-09` | 100 | 462 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-09)**, sur le retour d'une proche : la phrase
 « ne me valorise pas suffisamment », elle est « trop terre à terre » et
@@ -47,6 +47,11 @@ Vérifier à 960, 1280 et 1440 px.
   « maximiser l'impact » (ton de consultant).
 
 - 2026-11-09, Jean : go sur la spec ci-dessous.
+- 2026-11-09, Jean, après le code : « là où » lié par une insécable dans le
+  titre FR (sinon « là / où » à 1280 et 1440 px) ; bannière LinkedIn FR coupée
+  à la main après « l'effort » ; le vide d'une ligne sous le titre entre 960
+  et 1279 px est gardé (réserve de 3 lignes de 960 à 1279 px, 2 au-delà :
+  l'équipe reste à 18 px au moins du soleil, à la même place en FR et en EN).
 
 ## Spec
 
@@ -79,3 +84,48 @@ porte la nouvelle phrase.
 **État de référence** (2026-11-09, worktree, `npx astro build --outDir
 .dist-ref` puis `DIST=.dist-ref npm test`) : build OK, 246 tests, 246 au
 vert, 0 rouge.
+
+## Tri du relevé des lourdeurs (Jean, 2026-11-09)
+
+Relevé par un agent qui n'a pas écrit la phrase (0072), 13 remarques, triées
+en trois séries avant / après :
+- À propos, méthode : « J’écoute, je pose des hypothèses, je teste, puis je
+  construis. » / « I listen, form hypotheses, test, then build. » (plus
+  d'écho avec « là où il rapporte le plus », un seul « I »).
+- Titre EN : « I focus my effort where it pays off most. » ; « l’effort »
+  gardé en FR.
+- Images FR à l'apostrophe courbe ; aperçu FR coupé « Je concentre /
+  l’effort là où / il rapporte le plus. », EN en miroir ; bannières coupées
+  après « effort ».
+- Texte alternatif : « Un bâtiment et sa grue, deux personnages sur le toit,
+  sous le soleil. » / « A building and its crane, two people on the roof,
+  with the sun behind. »
+- Traités ici, à la demande de Jean, bien qu'antérieurs : « je dirige »
+  partout (accueil compris) ; l'équipe « que je vois chacun en entretien
+  individuel toutes les semaines » / « whom I meet one-to-one every week » ;
+  les services publics avec un verbe et une explication chacun, FR et EN ;
+  EN « I use AI when it meets a specific need ».
+
+## Clôture
+
+**Coût réel** : 462 (milliers de tokens), somme des quatre sous-agents relevés
+au harnais : tests 102 (trois tours), code 146, revue 108, relevé 107. La
+session principale (questionnaire, recherche sur les accroches de Heads of
+Product et de CPO, petites corrections après tri) n'est pas mesurable.
+Ratio 4,6 : six séries de questions pour la phrase, une recherche demandée
+en cours de route, et un tri qui a élargi le chantier à toute la page
+À propos.
+
+**Revue** : un tour, PASSE ; cinq cassures, une seule invisible (l'insécable
+de « là où »), couverte depuis par un test. Aucune remontée.
+
+**Vérification** : `npx astro build --outDir .dist-v` puis `DIST=.dist-v npm
+test` : 256 tests, 256 au vert (246 de référence + 10 dans
+`tests/accroche.test.mjs`). Accroche mesurée et capturée à 960, 1280 et
+1440 px, FR et EN : 3 lignes à 960 px, 2 au-delà, l'équipe posée sur la
+dernière ligne, rien ne touche le soleil. Réserve de hauteur : 3 lignes de
+960 à 1279 px, 2 à partir de 1280 px.
+
+**Hors périmètre, laissé** : `ops/images/accueil/planche.mjs` (outil de
+maquette, phrase et sous-titre périmés) ; `redaction/a-propos.fr.md`, le
+brouillon d'origine, ne suit plus la page publiée.
