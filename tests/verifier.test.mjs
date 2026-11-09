@@ -5,9 +5,11 @@
 // - package.json déclare le script `verifier` ;
 // - le hook de pre-commit et les deux workflows appellent `verifier` et ne
 //   construisent plus eux-mêmes ;
-// - dans deploy.yml, le dépôt du site suit `verifier` et dépose `.dist-ci/` ;
-// - les refus de `--garder` (point 3 de la spec) sortent en code 2, vite, sans
-//   rien construire ni vider.
+// - dans le hook, l'appel de la vitesse rapide porte `--rapide`, l'appel
+//   bloquant ne le porte pas, les deux portent `--garder .dist-hook` ;
+// - dans deploy.yml, le dépôt du site suit `verifier` et dépose `.dist-ci/`.
+// Le comportement de verifier (vert, rouge, dossier supprimé, refus de
+// `--garder`) se joue sur un dépôt factice : tests/verifier-bout-en-bout.test.mjs.
 //
 // Les fichiers se lisent en texte, sans parseur YAML. Les lignes entièrement
 // en commentaire (« # … ») sont écartées avant de chercher ce qui est interdit :
@@ -15,12 +17,10 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawnSync } from 'node:child_process';
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { RACINE } from './outils.mjs';
 
-const SCRIPT = join(RACINE, 'ops', 'verifier.mjs');
 const HOOK = 'ops/hooks/pre-commit';
 const TESTS_YML = '.github/workflows/tests.yml';
 const DEPLOY_YML = '.github/workflows/deploy.yml';
@@ -36,6 +36,32 @@ function sansCommentaires(texte) {
     .split('\n')
     .filter((l) => !/^\s*#/.test(l))
     .join('\n');
+}
+
+/**
+ * Les appels de verifier du hook, rangés selon la branche de
+ * « if [ -n "$RAPIDE" ]; then … else … fi » qui les porte :
+ * { rapide, bloquant, ailleurs }. Le bloc retenu est le dernier « if » de ce
+ * genre avant le premier appel.
+ */
+function appelsParVitesse(code) {
+  const lignes = code.split('\n');
+  const estAppel = (l) => l.includes('npm run verifier');
+  const premier = lignes.findIndex(estAppel);
+  let si = -1;
+  for (let i = 0; i < premier; i++) if (/^\s*if \[ -n "\$RAPIDE" \]; then\s*$/.test(lignes[i])) si = i;
+  const sinon = si < 0 ? -1 : lignes.findIndex((l, i) => i > si && /^\s*else\s*$/.test(l));
+  const fin = sinon < 0 ? -1 : lignes.findIndex((l, i) => i > sinon && /^\s*fi\s*$/.test(l));
+  const rapide = [];
+  const bloquant = [];
+  const ailleurs = [];
+  lignes.forEach((l, i) => {
+    if (!estAppel(l)) return;
+    if (si >= 0 && sinon > si && i > si && i < sinon) rapide.push(l);
+    else if (sinon >= 0 && fin > sinon && i > sinon && i < fin) bloquant.push(l);
+    else ailleurs.push(l);
+  });
+  return { rapide, bloquant, ailleurs };
 }
 
 /** Les morceaux interdits présents dans un texte, pour le message d'échec. */
@@ -69,9 +95,25 @@ test('le hook de pre-commit appelle verifier et ne construit plus lui-même', ()
     0,
     `${HOOK} : chaque appel de verifier doit passer « --garder .dist-hook » (les alertes de rédaction lisent ce dossier après). Appels fautifs :\n${sansGarder.join('\n')}`,
   );
+  const { rapide, bloquant, ailleurs } = appelsParVitesse(code);
   assert.ok(
-    appels.some((l) => l.includes('--rapide')),
-    `${HOOK} : la vitesse rapide (branches chantier/*) doit appeler verifier avec « --rapide ». Appels trouvés :\n${appels.join('\n')}`,
+    rapide.length > 0 && bloquant.length > 0 && ailleurs.length === 0,
+    `${HOOK} : verifier doit s'appeler dans les deux branches de « if [ -n "$RAPIDE" ]; then … else … fi », ` +
+      `et nulle part ailleurs. Trouvé : ${rapide.length} appel(s) en vitesse rapide, ${bloquant.length} en vitesse bloquante, ` +
+      `${ailleurs.length} hors de ces branches.`,
+  );
+  const rapidesSans = rapide.filter((l) => !/\s--rapide\b/.test(l));
+  assert.deepEqual(
+    rapidesSans,
+    [],
+    `${HOOK} : en vitesse rapide (branches chantier/*), verifier doit recevoir « --rapide ». Appels fautifs :\n${rapidesSans.join('\n')}`,
+  );
+  const bloquantsAvec = bloquant.filter((l) => l.includes('--rapide'));
+  assert.deepEqual(
+    bloquantsAvec,
+    [],
+    `${HOOK} : l'appel bloquant (fusions, branches hors chantier/*) ne doit PAS porter « --rapide » : ` +
+      `il doit jouer tous les tests, navigateur compris. Appels fautifs :\n${bloquantsAvec.join('\n')}`,
   );
   assert.ok(
     /chantier\/\*\)\s*RAPIDE=1/.test(code) && code.includes('NON bloquant'),
@@ -131,56 +173,3 @@ test('deploy.yml appelle verifier, puis dépose le dossier testé', () => {
     `${DEPLOY_YML} : l'étape actions/upload-pages-artifact doit déposer « path: .dist-ci/ », le dossier gardé par verifier. Étape trouvée :\n${etape}`,
   );
 });
-
-/** Les noms d'un dossier, triés ; null s'il n'existe pas. */
-function contenu(dossier) {
-  return existsSync(dossier) ? readdirSync(dossier).sort() : null;
-}
-
-const SURVEILLES = {
-  'tests/': join(RACINE, 'tests'),
-  'la racine du dépôt': RACINE,
-  'le dossier parent du dépôt': dirname(RACINE.replace(/[\\/]$/, '')),
-};
-
-const REFUS = [
-  { args: ['--garder', '.'], cas: '« --garder . » (la racine du dépôt)' },
-  { args: ['--garder', '..'], cas: '« --garder .. » (hors du dépôt)' },
-  { args: ['--garder', 'tests'], cas: '« --garder tests » (un dossier qui contient des fichiers suivis)' },
-  { args: ['--garder'], cas: '« --garder » sans argument' },
-  { args: ['--inconnue'], cas: 'une option inconnue (« --inconnue »)' },
-];
-
-const DELAI_MS = 10_000;
-
-for (const { args, cas } of REFUS) {
-  test(`verifier refuse ${cas} : code 2, sans rien construire`, { timeout: DELAI_MS + 5_000 }, () => {
-    const avant = Object.fromEntries(Object.entries(SURVEILLES).map(([nom, d]) => [nom, contenu(d)]));
-    const debut = Date.now();
-    const r = spawnSync(process.execPath, [SCRIPT, ...args], {
-      cwd: RACINE,
-      encoding: 'utf8',
-      timeout: DELAI_MS,
-    });
-    const duree = Date.now() - debut;
-
-    for (const [nom, d] of Object.entries(SURVEILLES)) {
-      assert.deepEqual(
-        contenu(d),
-        avant[nom],
-        `node ops/verifier.mjs ${args.join(' ')} a modifié ${nom} : le refus doit venir AVANT de vider ou de construire quoi que ce soit.`,
-      );
-    }
-    assert.ok(
-      !(r.error && r.error.code === 'ETIMEDOUT'),
-      `node ops/verifier.mjs ${args.join(' ')} tourne encore après ${DELAI_MS / 1000} s : le refus doit être immédiat, avant tout build.`,
-    );
-    const absent = existsSync(SCRIPT) ? '' : 'le script verifier n\'existe pas (ops/verifier.mjs) : ';
-    assert.equal(
-      r.status,
-      2,
-      `${absent}code ${r.status} au lieu de 2 pour ${cas} (0107, spec point 3), en ${duree} ms.\n` +
-        `Sortie d'erreur : ${(r.stderr || '').trim().split('\n').slice(0, 3).join(' | ')}`,
-    );
-  });
-}

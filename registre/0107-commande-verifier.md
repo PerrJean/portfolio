@@ -116,3 +116,26 @@ joue tout ; publication réelle verte après la fusion, site en ligne inchangé.
   Suite (tour 2, brief `prompts/9-verifier-tour2.md`) : `--garder` réservé
   aux noms `.dist-…` (Spec, point 3), test de bout en bout sur un dépôt
   factice, code 2 bloquant au hook.
+- **Tour 2, tests** (même agent des tests) : `tests/verifier-bout-en-bout.test.mjs`
+  (239 lignes) joue `verifier` sur un dépôt factice en `os.tmpdir()`, faux
+  astro et faux tests : vert, test rouge, build rouge, `--rapide`, `--garder`,
+  et tous les refus, jamais sur le vrai dépôt ; le test du hook range les
+  appels par branche. 18 tests, 4 rouges (`data`, `dist`, `-x`,
+  `sous/.dist-x` encore acceptés). Coût cumulé de l'agent : 105.
+- **Tour 2, code** (même codeur) : motif `.dist-…` à la racine ; code 2 de
+  `verifier` bloquant au hook dans les deux vitesses ; limite du Ctrl-C
+  écrite. Rapport : 18/18, `npm run verifier` 307 verts en 76 s. Coût
+  cumulé de l'agent : 131.
+- **Incident au commit du tour 2 (2026-11-09, environ 18 h 25 à 18 h 27)** :
+  le hook a refusé le commit, 14 rouges dans le test de bout en bout. Pendant
+  un hook, git pose `GIT_DIR`, `GIT_INDEX_FILE`… vers le vrai dépôt ; le
+  `git init` du dépôt factice en a hérité et a écrit **`core.bare=true` dans
+  la config commune** : pendant deux minutes, toute commande git des
+  worktrees et du checkout principal répondait « must be run in a work
+  tree ». Rétabli à la main (`core.bare=false`) ; index, refs et hooks
+  intacts. **Petite correction** (session principale, hors relais) : le test
+  retire les `GIT_*` avant tout git et avant `verifier` ; `verifier` les
+  retire pour son `git ls-files` ; deux tests de plus (`.dist-suivi` qui
+  contient un fichier suivi, refusé ; le même avec des `GIT_*` vers un dépôt
+  leurre, rouge avant la correction de `verifier`, vert après). 20 tests
+  `verifier*`, 20 verts.

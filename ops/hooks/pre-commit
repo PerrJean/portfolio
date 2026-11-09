@@ -54,15 +54,23 @@ if [ "${1:-}" != "--fusion" ] && ! git rev-parse -q --verify MERGE_HEAD >/dev/nu
 fi
 # L'execution passe par la commande unique `verifier` (registre/0107) : build
 # dans .dist-hook, tests dessus. Le dossier est garde pour les alertes de
-# redaction, puis supprime plus bas. Sa derniere ligne dit ce qui est rouge.
+# redaction, puis supprime plus bas. Code 1 : rouge (build ou tests). Code 2 :
+# verifier refuse son appel, donc le hook lui-meme est faux : bloquant dans les
+# deux vitesses.
 command -v node >/dev/null 2>&1 || export PATH="$APPDATA/fnm/node-versions/v24.20.0/installation:$PATH"
-ROUGE=
+CODE=0
 if [ -n "$RAPIDE" ]; then
   echo "   vitesse rapide ($BRANCHE) : sans tests/*-navigateur.test.mjs"
-  npm run verifier -- --rapide --garder .dist-hook || ROUGE="verifier est rouge"
+  npm run verifier -- --rapide --garder .dist-hook || CODE=$?
 else
-  npm run verifier -- --garder .dist-hook || ROUGE="verifier est rouge"
+  npm run verifier -- --garder .dist-hook || CODE=$?
 fi
+if [ "$CODE" -eq 2 ]; then
+  rm -rf .dist-hook
+  echo "REFUS : verifier refuse son appel (code 2) : le hook est faux, lire le message de verifier ci-dessus."; exit 1
+fi
+ROUGE=
+[ "$CODE" -eq 0 ] || ROUGE="verifier est rouge (sa derniere ligne, ci-dessus, dit si c'est le build ou les tests)"
 if [ -n "$ROUGE" ]; then
   if [ -n "$RAPIDE" ]; then
     echo "   ! $ROUGE : NON bloquant sur $BRANCHE ; la fusion jouera build et tests complets"

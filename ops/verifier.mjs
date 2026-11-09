@@ -5,13 +5,18 @@
 //
 //   npm run verifier                         build + tous les tests
 //   npm run verifier -- --rapide             sans tests/*-navigateur.test.mjs
-//   npm run verifier -- --garder <dossier>   construit là, et l'y laisse
+//   npm run verifier -- --garder .dist-<nom>  construit là, et l'y laisse
 //
-// Le dossier est vidé avant le build : `--garder` refuse (code 2, avant tout
-// build) un dossier hors du dépôt, la racine elle-même, un dossier qui
-// contient un fichier suivi par git (ou nouveau, non ignoré), un fichier, ou
-// un chemin qui passe par .git, node_modules ou .claude.
+// Le dossier est vidé avant le build : `--garder` n'accepte qu'un nom
+// `.dist-…` à la racine du dépôt (le motif que .gitignore réserve aux builds
+// jetables). En seconde ligne, il refuse aussi un dossier hors du dépôt, la
+// racine elle-même, un dossier qui contient un fichier suivi par git (ou
+// nouveau, non ignoré), un fichier, ou un chemin qui passe par .git,
+// node_modules ou .claude. Tout refus sort en code 2, avant tout build.
 // Code de sortie : 0 vert, 1 rouge, 2 refus.
+//
+// Limite connue : un Ctrl-C pendant le build ou les tests laisse le dossier
+// jetable en place ; le prochain lancement le vide avant de construire.
 // Ni npx ni shell : node lance astro et `node --test` (Windows et Ubuntu).
 
 import { spawnSync } from 'node:child_process';
@@ -22,6 +27,7 @@ import { fileURLToPath } from 'node:url';
 const RACINE = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const PAR_DEFAUT = '.dist-verifier';
 const PROTEGES = ['.git', 'node_modules', '.claude'];
+const NOM_JETABLE = /^\.dist-[\w.-]+$/;
 
 /** Refus d'usage : message, code 2, rien n'a été touché. */
 function refuser(message) {
@@ -40,7 +46,7 @@ function lireOptions(args) {
       if (dossier === undefined || dossier.startsWith('--')) refuser('--garder attend un dossier.');
       if (options.garder !== null) refuser('--garder donné deux fois.');
       options.garder = dossier;
-    } else refuser(`option inconnue « ${a} » (connues : --rapide, --garder <dossier>).`);
+    } else refuser(`option inconnue « ${a} » (connues : --rapide, --garder .dist-<nom>).`);
   }
   return options;
 }
@@ -59,6 +65,12 @@ function controlerGarder(nom) {
   const reel = rel !== null && existsSync(abs) ? sous(realpathSync(RACINE), realpathSync(abs)) : rel;
   if (rel === null || reel === null) refuser(`« ${nom} » est hors du dépôt.`);
   if (rel === '' || reel === '') refuser(`« ${nom} » est la racine du dépôt.`);
+  // Première ligne : un nom .dist-… à la racine, le motif que .gitignore réserve
+  // aux builds jetables (Spec, point 3). Les contrôles suivants restent en
+  // seconde ligne.
+  if (!NOM_JETABLE.test(rel) || !NOM_JETABLE.test(reel)) {
+    refuser(`« ${nom} » n'est pas un nom .dist-… à la racine du dépôt (ex. : .dist-essai).`);
+  }
   const segments = [...rel.split(sep), ...reel.split(sep)].map((s) => s.toLowerCase());
   if (segments.some((s) => PROTEGES.includes(s))) {
     refuser(`« ${nom} » passe par un dossier protégé (${PROTEGES.join(', ')}).`);
@@ -68,6 +80,9 @@ function controlerGarder(nom) {
   const git = spawnSync('git', ['ls-files', '-z', '--cached', '--others', '--exclude-standard', '--', ...pathspecs], {
     cwd: RACINE,
     encoding: 'utf8',
+    // Sans les GIT_* (posées par git pendant un hook) : on juge le dépôt où
+    // vit ce script, jamais celui vers lequel elles pointeraient.
+    env: Object.fromEntries(Object.entries(process.env).filter(([k]) => !/^GIT_/i.test(k))),
   });
   if (git.error || git.status !== 0) refuser(`git ls-files impossible, « ${nom} » n'est pas contrôlé.`);
   if (git.stdout.length > 0) refuser(`« ${nom} » contient des fichiers suivis par git (ou à ajouter).`);
