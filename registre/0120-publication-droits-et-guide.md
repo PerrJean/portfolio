@@ -38,3 +38,37 @@ honnêtement (le build et les tests chargent du code tiers alors que les
 listes sont présentes : la protection porte sur l'installation seulement).
 
 **Hors périmètre** : la commande `verifier` (0107).
+
+## Déroulé (2026-11-09)
+
+- **Référence** dans le worktree (`npm ci` puis `npm run verifier`) :
+  312 tests, 312 verts.
+- **Documentation vérifiée** : `actions/deploy-pages` exige `pages: write` et
+  `id-token: write` sur le job qui publie (son exemple les pose au niveau de
+  ce job) ; `actions/upload-pages-artifact` (action composite : `tar` puis
+  `actions/upload-artifact`) ne lit ni `github.token` ni `id-token`.
+- **Fait** : `deploy.yml` ne donne au workflow que `contents: read`, et
+  `pages: write` et `id-token: write` au seul job `publier`. Dans
+  `deploy.yml` et `tests.yml`, l'étape des listes vient après `npm ci` et
+  Chromium, juste avant `npm run verifier`. Guide, section 2, réécrit.
+  Nouveau test `tests/publication-droits.test.mjs` (6 tests), rouge sur
+  l'ancien YAML pour la bonne raison, vert sur le nouveau.
+- **Revue**, deux tours (sous-agents neufs, lecture seule) :
+  - tour 1, NE PASSE PAS : le YAML est juste, mais 7 cassures sur 13
+    passaient le test (droits de `tester` en flux, entre guillemets,
+    `contents: write`, secrets en `env` du job, seconde étape écrivant
+    `~/.portfolio` avant `npm ci`, `publier` sans `needs` ou sans
+    environnement), et le guide disait « seuls les tests l'arrêtent ».
+    Test durci ; les 7 cassures rejouées, toutes rouges.
+  - tour 2, NE PASSE PAS : un processus laissé en arrière-plan par un script
+    d'installation survit jusqu'à la fin du job (la limite était
+    sous-estimée), et `toJSON(secrets)` passait le test. Corrigé mot pour
+    mot ; la cassure `toJSON(secrets)` rejouée, rouge. Pas de tour 3.
+- **Avant la fusion** : `main` intégré (hook, `e4cf22f`), puis
+  `npm run verifier` : 318 tests, 318 verts.
+- **Première publication** (`0403839`, run `42672146625`) : **échec sans
+  aucun job lancé**, « Internal server error » de GitHub. GitHub Actions
+  était en panne majeure (githubstatus.com, incident ouvert à
+  18:14:58Z, run lancé à 18:13:34Z). Rien n'indique un refus de droits :
+  l'état d'avant n'est pas rétabli, la publication est rejouée après la
+  panne.
