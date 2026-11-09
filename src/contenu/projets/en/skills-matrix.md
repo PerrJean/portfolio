@@ -4,12 +4,12 @@ date: "2026-01"
 cadre:
   role: "Manager of the Product Manager"
   equipe: "The Product Manager and me"
-  duree: "December 2025 → January 2026"
-fait: "A Product Manager on my team and I had two ideas of “becoming senior”. By reviewing a skills matrix together, we turned them into one."
+  duree: "Since December 2025"
+fait: "A Product Manager on my team saw themselves further along than our skills matrix showed. We turned that gap into a growth plan, which we track every month."
 synthese:
-  probleme: "On the product team of an EdTech platform, “becoming senior” had yet to be defined. With no shared criteria, a Product Manager’s growth rested on each person’s impression."
-  action: "I built a skills matrix, written as observable behaviors across three levels, and reviewed it with the Product Manager before using it. We then went through it together in a one-on-one, skill by skill."
-  resultat: "The one-on-one brought our different perceptions to the surface, then led to a shared view of the Product Manager’s skills and a growth plan with two focus areas."
+  probleme: "On the product team of an EdTech platform, “becoming senior” had no shared criteria. So the Product Manager on my team and I did not see their growth the same way. They saw themselves further along than the matrix later showed."
+  action: "I built a skills matrix to give us a shared tool: observable behaviors, across three levels. I reviewed it with the Product Manager, then we went through it in a one-on-one, skill by skill. The two focus areas we chose became OKRs (objectives and key results), which we track every month."
+  resultat: "The Product Manager now works more closely with the business side. Today, they lead the AI speaking role-plays, project 01 in this portfolio."
 plusLoin:
   - titre: "How the matrix is structured"
     points:
@@ -40,19 +40,17 @@ langue: en
 cle: matrice
 ---
 
-## Why a matrix
+## A gap to name
 
-On the team, nothing said what “becoming senior” meant, for the Product Manager or for their manager.
+On the team, nothing showed what “becoming senior” meant, for the Product Manager or for me, their manager. We each judged their growth by our own standards.
 
-Once written down, these criteria gave the Product Manager and me the same grid for reading their growth.
+To help them grow, we first had to agree on one thing: where they stood. Without written criteria, a gap between our two views stayed invisible.
 
-## What the matrix describes
+## A framework to talk about it
 
-The matrix has three levels, from junior to senior. For each skill and each level, it describes what you can see someone do. In backlog management, the row goes from “writes simple user stories” to “breaks work down into epics and runs grooming”, then to “manages a backlog with heavy cross-team dependencies”.
+In December 2025, I built a skills matrix. For each skill, it describes what you can see someone do at three levels, from junior to senior. Its structure is detailed under “Going further”.
 
-The skills fall into families, on the job side and on the soft-skills side, detailed under “Going further”. Each skill has its weighting, and each level has prerequisites to meet before moving up to it. The framework stays close to the work of an EdTech platform: for example, it covers the trade-off between business ROI and educational value.
-
-I wrote a first version, then a structured one.
+Before using it, I reviewed it with the Product Manager. That way, we had the same criteria in front of us before discussing their growth. Here is one block of the matrix.
 
 <figure>
   <a href="/captures/matrice/grille-extrait.png"><img src="/captures/matrice/grille-extrait.png" width="1360" height="1400" loading="lazy" decoding="async" alt="Excerpt from the skills grid, in French: the product delivery and execution block, in six rows (managing complex projects, backlog management, agile tools and methods, team facilitation and leadership, prioritization and operational trade-offs, risk management). Each row shows its weighting and three columns: junior, intermediate and senior. In backlog management, the junior column starts with “Rédige des user stories simples à partir de besoins exprimés clairement” (writes simple user stories from clearly stated needs)."></a>
@@ -61,20 +59,24 @@ I wrote a first version, then a structured one.
 
 ## One conversation to see where we stood
 
-In a one-on-one, we agreed where the Product Manager stood on each skill of the matrix. That is when our different perceptions of what “becoming senior” means came to light. We came out of it with a shared view of their skills, the starting point for their growth.
+In January 2026, the Product Manager and I went through the matrix in a one-on-one, skill by skill. They saw themselves further along than the matrix showed. We talked it through based on observed behaviors, using criteria they had already reviewed.
 
-A Product Manager’s credibility rests on understanding how people use the product and who they are, and on mastery of the job. We agreed to strengthen that second point, and to go further into AI applied to product management: these are the two focus areas of the growth plan.
+We agreed on two focus areas. A Product Manager’s credibility rests on understanding how people use the product and who they are, and on knowing the business: the first area strengthens that knowledge. The second takes them further into AI applied to product management.
 
-## What it changes for the team
+## A check-in every month
 
-The Product Manager’s growth is now discussed against written criteria. The one-on-one starts from behaviors each of us could observe, which makes it fairer for the Product Manager and for me.
+The Product Manager’s two focus areas became OKRs (objectives and key results), including a personal development OKR. Since then, we have reviewed their OKRs every month.
 
-The same levels and prerequisites can serve for hiring a Product Manager, or for helping other people on the team grow.
+## What has changed
+
+The Product Manager now works more closely with the business side. Today, they lead the [AI speaking role-plays](/en/projects/speaking-practice/), project 01 in this portfolio.
+
+The same matrix could be used to hire a Product Manager, or to help other people on the team grow.
 
 ## What I took from it
 
 **Describe each level by what you can see someone do.** A sentence that describes a behavior can be checked. It made me pin down my own expectations before applying them to someone else.
 
-**Review the framework with the person before using it.** Because the Product Manager and I reviewed the matrix before the one-on-one, we had the same criteria in front of us when it came time to place each skill.
+**Name the gap before talking about levels.** The one-on-one first showed us that we did not mean the same thing by “becoming senior”. Once that gap had a name, it became the starting point of a plan we share.
 
-**Look for the gap before the level.** The one-on-one first showed us that we did not mean the same thing by “becoming senior”. Once that gap had a name, a shared growth plan became possible.
+**Track the plan every month.** Tied to OKRs, a growth plan comes back at every monthly check-in. It stays part of everyday work, and each month shows what has moved forward.
