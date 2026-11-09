@@ -126,6 +126,11 @@ test` : 256 tests, 256 au vert (246 de référence + 10 dans
 dernière ligne, rien ne touche le soleil. Réserve de hauteur : 3 lignes de
 960 à 1279 px, 2 à partir de 1280 px.
 
+**Après la fusion (Jean, 2026-11-09)** : la phrase sur la DINUM (41 mots en
+FR, 40 en EN, alerte du hook) est coupée en deux : « …les plus utilisées.
+J’ai aussi créé « Je donne mon avis »… » / « …online procedures. I also
+created “Je donne mon avis”… ».
+
 **Hors périmètre, laissé** : `ops/images/accueil/planche.mjs` (outil de
 maquette, phrase et sous-titre périmés) ; `redaction/a-propos.fr.md`, le
 brouillon d'origine, ne suit plus la page publiée.
