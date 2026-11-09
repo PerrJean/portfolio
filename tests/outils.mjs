@@ -45,7 +45,7 @@ export function exigerDist() {
   assert.ok(
     existsSync(join(DIST, 'index.html')),
     `Site construit introuvable : ${join(DIST, 'index.html')} n'existe pas. ` +
-      'Lance « npm run build » (ou « npx astro build --outDir X » puis DIST=X npm test).',
+      'Lance « npm run verifier » : il construit le site dans un dossier jetable puis lance tous les tests (registre/0107).',
   );
 }
 
