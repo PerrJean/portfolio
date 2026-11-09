@@ -75,3 +75,17 @@ possible :
 5. lignes supprimées par ligne ajoutée.
 
 Budget de l'outil qui sert à faire l'outil : **plafond 15 %**.
+
+## Coût et estimation de ce projet
+
+Arbitrage de Jean du 2026-11-09 (`registre/0111`), en vigueur à partir de
+0111 ; les fiches closes avant gardent leur coût.
+
+- **Coût réel** : le contexte de la session à la clôture (`get_usage`) plus
+  chaque sous-agent, tous relevés au harnais. Pour ce projet, cette règle
+  remplace « un chantier mené en session principale n'a aucun coût
+  mesurable ».
+- **Coût estimé** : 100 par sous-agent prévu (tests, code, revue, relevé,
+  rédaction…), 150 pour la session (85 de charge fixe, 65 de travail), et
+  100 de plus par tour de revue prévisible au-delà du premier (sécurité,
+  outillage du commit).

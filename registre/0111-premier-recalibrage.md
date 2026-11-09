@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `arbitrage` | `outil` | `en cours` | 50 | | `claude-opus-5-5` |
+| `arbitrage` | `outil` | `clos 2026-11-09` | 50 | 164 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-05)** : le recalibrage tous les 30 points clos
 (`registre/0000`, commandements v4 partie 2) n'a jamais été fait.
@@ -128,3 +128,34 @@ Médiane 3,15 avant, **0,97** avec la règle ; au-delà de 2 : 9 sur 12 avant,
 la vérification est faite sur les points qui ont servi à la régler, avec
 le nombre de sous-agents connu après coup (le second tour de revue de 0120
 y compte pour un sous-agent). Elle se juge sur les 30 prochains points.
+
+## Tranché
+
+- **2026-11-09, Jean** (questionnaire) : **continuer**. Prochain
+  recalibrage au 146e point clos (116 avec celui-ci).
+- **2026-11-09, Jean** : la **règle d'estimation par sous-agent** (100 par
+  sous-agent prévu, 150 pour la session, 100 par tour de revue prévisible),
+  écrite dans `registre/0000`.
+- **2026-11-09, Jean** : le **coût réel compte la session et les
+  sous-agents**, relevés au harnais ; écrit dans `registre/0000` comme règle
+  propre au projet, qui remplace pour lui « un chantier mené en session
+  principale n'a aucun coût mesurable ».
+- **2026-11-09, Jean** : le **linter n'est pas rouvert** (budget de l'outil
+  au-dessus du plafond) ; on en reparle au prochain recalibrage.
+
+## Clôture (2026-11-09)
+
+- **Fait aussi** : `SPEC.md` (« La forme ») présentait encore la direction
+  visuelle comme « à trancher sur trois maquettes (0003) », alors que 0003
+  est clos depuis le 2026-09-28 (relevé par 0110) ; la ligne dit
+  maintenant ce qui a été tranché. `CLAUDE.md` ne cite plus 0111 parmi les
+  points ouverts et donne le prochain recalibrage.
+- **Tests** : `npm run verifier`, 320 tests, 320 verts, comme l'état de
+  référence. Aucun test ajouté : arbitrage, pas de code.
+- **Pas de revue par sous-agent** : rien à casser, aucun code. Les chiffres
+  se rejouent avec les commandes ci-dessus.
+- **Coût réel** : 164, le contexte de la session à la clôture
+  (`get_usage`, 163 865 tokens, dont environ 82 k de charge fixe), sans
+  sous-agent. Premier point relevé selon la nouvelle règle : estimé à 150
+  selon elle (ratio 1,09), à 50 selon l'ancienne (ratio 3,3). Aucune
+  remontée.
