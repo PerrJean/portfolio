@@ -9,7 +9,7 @@ fait: "Before building a dashboard, I asked five clients which decisions they ha
 synthese:
   probleme: "An EdTech language-learning platform equips businesses and schools. Once the platform is rolled out at a client, its learners have to take it up quickly, and in large numbers. Management wanted clients to track this themselves, with a dashboard."
   action: "Before development, I brought five clients together in a workshop. We started from the decisions they have to make, then showed them the team’s mockups."
-  resultat: "The workshop confirmed the mockups and narrowed the dashboard down to one metric: time spent, compared with a target, by contract, by group and by learner. Live since June, it has been adopted: more than half of the organisations that opened it in September came back in October."
+  resultat: "The dashboard has been adopted: more than half of the organisations that opened it in September came back in October. Live since June 2026, it tracks one metric, chosen in the workshop: time spent against a target, by contract, by group and by learner."
 plusLoin:
   - titre: "How the workshop ran"
     points:

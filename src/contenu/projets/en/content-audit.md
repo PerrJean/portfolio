@@ -8,8 +8,8 @@ cadre:
 fait: "In the first course audited, 1 question in 20 made learners fail through no fault of their own. All of them are fixed."
 synthese:
   probleme: "Learner feedback on an EdTech platform shows that satisfaction depends first on content quality."
-  action: "With a learning designer, we put every question in one course through a six-criterion grid. An AI applied the grid question by question, and automated checks completed its work."
-  resultat: "The fixes have been live since the week of September 28, 2026, after the learning designer reviewed a sample."
+  action: "With a learning designer, I put every question in one course through a six-criterion grid. An AI applied the grid question by question, and automated checks backed it up."
+  resultat: "The method can be applied to the next courses without rereading everything by hand: the learning designer checks a sample of each type of error, not every question. In this first course, the fixes have been live since late September 2026."
 plusLoin:
   - titre: "The grid"
     points:

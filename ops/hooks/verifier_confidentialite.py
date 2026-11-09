@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 LISTES = Path.home() / ".portfolio"
-EXEMPTES = ("COMMANDEMENTS.md", "ops/hooks/")
+EXEMPTES = ("ops/hooks/",)
 PAGES_A_PROPOS = ("a-propos", "about")
 TEXTES = (".md", ".mjs", ".js", ".ts", ".astro", ".css", ".json", ".html", ".svg", ".txt", ".py", ".yml", ".sh")
 

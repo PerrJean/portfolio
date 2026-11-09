@@ -172,12 +172,16 @@ svg {
      du soleil, et la coupe gloutonne poussait la troisième ligne sur
      l'équipe. À partir de 960 px, le soleil n'atteint jamais le titre : le
      titre garde sa largeur, ses lignes s'équilibrent (planche de 0057). */
-  /* Quatre lignes réservées quelle que soit la langue : la phrase anglaise
-     tient en trois, et l'équipe, posée sur la dernière ligne, montait
-     jusqu'au soleil. Elle a ainsi la même place en français et en anglais. */
+  /* La réserve du titre, en lignes, quelle que soit la langue : le plus
+     grand nombre de lignes mesuré entre le français et l'anglais (0115,
+     Chromium) : à 960 px, 3 en FR et 3 en EN ; à 1280 et 1440 px, 2 et 2.
+     Entre les deux, la phrase passe à deux lignes, mais sous 1280 px, avec
+     deux lignes, l'équipe posée sur la dernière touchait le soleil : trois
+     lignes jusqu'à 1280 px, deux au-delà (plus bas). L'équipe a ainsi la
+     même place en français et en anglais. */
   .accroche h1 {
     display: flow-root;
-    min-height: calc(4 * 1.08em);
+    min-height: calc(3 * 1.08em);
     /* Jamais sur l'équipe : la colonne du titre s'arrête avant le dessin
        (277 px au plus, plus une marge), quelle que soit la phrase. */
     max-width: min(20ch, calc(100% - 18.5rem));
@@ -191,6 +195,15 @@ svg {
     width: var(--equipe);
     transform: translateY(calc(-0.206 * var(--titre) - 0.631579 * var(--equipe)));
     pointer-events: none;
+  }
+}
+
+/* Deux lignes réservées à partir de 1280 px : la phrase y tient en deux
+   lignes, FR et EN, et l'équipe, posée sur la deuxième, reste à distance du
+   soleil (une vingtaine de pixels). */
+@media (min-width: 1280px) {
+  .accroche h1 {
+    min-height: calc(2 * 1.08em);
   }
 }
 

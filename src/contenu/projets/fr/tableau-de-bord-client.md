@@ -9,7 +9,7 @@ fait: "Avant de construire un tableau de bord, j’ai demandé à cinq clients q
 synthese:
   probleme: "Une plateforme EdTech d’apprentissage des langues équipe des entreprises et des écoles. Une fois la plateforme déployée chez un client, il faut que ses apprenants l’adoptent vite, et en nombre. La direction voulait que les clients suivent cela eux-mêmes, avec un tableau de bord."
   action: "Avant de développer, j’ai réuni cinq clients en atelier. Nous sommes partis des décisions qu’ils ont à prendre, puis nous leur avons montré les maquettes de l’équipe."
-  resultat: "L’atelier a confirmé les maquettes et resserré le tableau de bord sur une donnée : le temps passé, comparé à un objectif, par contrat, par groupe et par apprenant. En ligne depuis juin, il est adopté : plus de la moitié des organisations venues en septembre sont revenues en octobre."
+  resultat: "Le tableau de bord est adopté : plus de la moitié des organisations qui l’ont ouvert en septembre y sont revenues en octobre. En ligne depuis juin 2026, il suit une seule donnée, retenue en atelier : le temps passé par rapport à un objectif, par contrat, par groupe et par apprenant."
 plusLoin:
   - titre: "Le déroulé de l’atelier"
     points:

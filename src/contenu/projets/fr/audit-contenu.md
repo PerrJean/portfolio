@@ -8,8 +8,8 @@ cadre:
 fait: "Sur le premier parcours audité, 1 question sur 20 faisait échouer l’apprenant sans que l’erreur soit la sienne. Toutes sont corrigées."
 synthese:
   probleme: "D’après les retours des apprenants d’une plateforme EdTech, leur satisfaction se joue d’abord sur la qualité du contenu."
-  action: "Avec une learning designer, nous avons soumis chaque question d’un parcours à une grille de six critères. Une IA a appliqué la grille, question par question, et des vérifications automatiques ont complété son travail."
-  resultat: "Les corrections sont en ligne depuis la semaine du 28 septembre 2026, après relecture d’un échantillon par la learning designer."
+  action: "Avec une learning designer, j’ai soumis chaque question d’un parcours à une grille de six critères. Une IA a appliqué la grille, question par question, et des vérifications automatiques ont complété son travail."
+  resultat: "La méthode peut passer aux parcours suivants sans tout relire à la main : la learning designer vérifie un échantillon de chaque type d’erreur, pas chaque question. Sur ce premier parcours, les corrections sont en ligne depuis fin septembre 2026."
 plusLoin:
   - titre: "La grille"
     points:

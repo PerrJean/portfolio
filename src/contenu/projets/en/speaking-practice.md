@@ -8,8 +8,8 @@ cadre:
 fait: "E-learning can finally help learners practice speaking: an AI plays the other person, and every exchange ends with useful learning feedback."
 synthese:
   probleme: "On an EdTech language-learning platform, learners had few chances to practice speaking in realistic situations, such as facing a recruiter or a client. The AI conversations available elsewhere often sat outside the learning path, with scores nobody explained."
-  action: "We bet on a guided conversation: a short exchange, built on questions prepared by the learning designers. I framed the method and the Design Sprint with the Product Designer and the Product Manager on my team. Both then ran interviews and surveys with clients."
-  resultat: "The surveys validated the format and reordered what came next: learning feedback first, and a catalog built on the topics rated must-have. The role-plays are live in four learning paths, and the project brought in several tens of thousands of euros in additional sales to existing client companies."
+  action: "With the Product Designer and the Product Manager on my team, I set up the method and the Design Sprint. We bet on a guided conversation: a short exchange, built on questions prepared by the learning designers. The Product Designer and the Product Manager then ran interviews and surveys with clients."
+  resultat: "The project brought in several tens of thousands of euros in additional sales to existing clients. The AI role-plays are live in four learning paths; client surveys had validated the format and made learning feedback the priority."
 plusLoin:
   - titre: "The timeline"
     points:

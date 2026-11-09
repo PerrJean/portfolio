@@ -9,7 +9,7 @@ fait: "En 2024, j’ai piloté la fusion de deux de nos trois plateformes : cha
 synthese:
   probleme: "Une entreprise EdTech proposait trois plateformes d’apprentissage des langues, nées l’une après l’autre. Chacune avait son interface, ses gabarits d’activité (les modèles d’exercice) et son modèle de données, tous développés et maintenus à part."
   action: "J’ai cadré une cible, une seule plateforme, et je l’ai présentée au comité de direction. Nous avons d’abord posé un design system commun (une bibliothèque d’éléments d’interface partagée par designers et développeurs), puis fondu la plateforme dédiée aux entreprises dans la plateforme généraliste, en sept lots."
-  resultat: "La fusion est en production depuis août 2024. Les activités tiennent sur quatre gabarits au lieu d’une trentaine, et, chez les apprenants qui ont répondu à l’enquête NPS, la part des retours sur l’ergonomie a baissé d’un quart. Ce projet a ouvert la voie au poste de Head of Product."
+  resultat: "Les activités tiennent sur quatre gabarits au lieu d’une trentaine, et la part des retours sur l’ergonomie a baissé d’un quart dans l’enquête de satisfaction (NPS). En production depuis août 2024, la fusion laisse une plateforme de moins à maintenir. Ce projet m’a ouvert la voie au poste de Head of Product."
 plusLoin:
   - titre: "Le calendrier"
     points:

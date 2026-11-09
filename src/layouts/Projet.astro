@@ -1,6 +1,8 @@
 ---
 // Le gabarit des pages projet (registre/0030), autour de Base :
-//  1. la synthèse recruteur : le <h1>, le fait clé en grand, trois phrases ;
+//  1. la synthèse recruteur : le <h1>, le fait clé en grand, puis les trois
+//     temps titrés (point de départ, ce que j'ai fait, l'impact) dans une
+//     liste de définitions, jamais en H2 (registre/0117) ;
 //  2. le corps : les H2 libres du Markdown et leurs paragraphes ;
 //  3. « Pour aller plus loin », replié dans un <details> : des <h3> et leurs
 //     listes, jamais de H2 (le bâtiment compte les H2) ; une section peut
@@ -87,11 +89,11 @@ const dateLisible = moisEnLettres(data.date, langue);
           {projet && <div><dt>{t.cadre.competences}</dt><dd>{projet.tags[langue].join(' · ')}</dd></div>}
         </dl>
         <p class="synthese__fait">{data.fait}</p>
-        <div class="synthese__phrases">
-          <p>{data.synthese.probleme}</p>
-          <p>{data.synthese.action}</p>
-          <p>{data.synthese.resultat}</p>
-        </div>
+        <dl class="synthese__temps">
+          <div><dt>{t.temps.depart}</dt><dd>{data.synthese.probleme}</dd></div>
+          <div><dt>{t.temps.action}</dt><dd>{data.synthese.action}</dd></div>
+          <div><dt>{t.temps.impact}</dt><dd>{data.synthese.resultat}</dd></div>
+        </dl>
       </header>
 
       <div class="corps">
@@ -216,11 +218,30 @@ const dateLisible = moisEnLettres(data.date, langue);
     text-wrap: balance;
   }
 
-  .synthese__phrases {
+  /* Les trois temps titrés (registre/0117) : un petit titre en capitales
+     au-dessus de chaque phrase, les trois empilés à toutes les largeurs, le
+     filet à gauche de l'encadré. Le titre en encre : l'ardoise ne passe
+     qu'en grand texte. Les capitales viennent du CSS, pas du HTML. */
+  .synthese__temps {
     display: grid;
-    gap: 0.5rem;
+    gap: 1rem;
     max-width: var(--mesure);
     margin-top: 1.5rem;
+    padding-left: 0.875rem;
+    border-left: 3px solid var(--dalle);
+  }
+
+  .synthese__temps dt {
+    color: var(--encre);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .synthese__temps dd {
+    margin: 0.125rem 0 0;
     font-size: 1.1875rem;
     line-height: 1.5;
   }
@@ -351,13 +372,13 @@ const dateLisible = moisEnLettres(data.date, langue);
      19 px et la synthèse à 20 px, pour rester autour de 80 signes par
      ligne. En dessous, la mesure reste celle des jetons. */
   @media (min-width: 1280px) {
-    .synthese__phrases,
+    .synthese__temps,
     .corps,
     .plus-loin {
       max-width: none;
     }
 
-    .synthese__phrases {
+    .synthese__temps dd {
       font-size: 1.25rem;
     }
 

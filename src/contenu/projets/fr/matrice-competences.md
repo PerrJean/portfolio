@@ -9,7 +9,7 @@ fait: "Un Product Manager de mon équipe se voyait plus avancé que ce qu’a mo
 synthese:
   probleme: "Dans l’équipe produit d’une plateforme EdTech, « devenir senior » n’avait pas de critères communs. Le Product Manager de mon équipe et moi ne voyions donc pas sa progression de la même façon."
   action: "Pour nous donner des critères communs, j’ai construit une matrice de compétences et je l’ai relue avec le Product Manager. En entretien, nous avons situé ensemble ses compétences et retenu deux axes de progression. Ils sont devenus des OKR (objectifs et résultats clés), suivis lors d’un point mensuel."
-  resultat: "De février à avril 2026, le Product Manager a mené les entretiens et l’enquête clients des mises en situation orales par IA, le projet 01 de ce portfolio."
+  resultat: "Le Product Manager a rejoint un projet d’IA, l’un des deux axes de son plan. De février à avril 2026, avec la Product Designer, il a mené les entretiens et les enquêtes clients des mises en situation orales par IA (projet 01 de ce portfolio)."
 plusLoin:
   - titre: "La structure de la matrice"
     points:

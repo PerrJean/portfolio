@@ -1,6 +1,6 @@
 # Portfolio — règles du projet
 
-Plafond 300 lignes (commandement 11), on en tient ~100. Ce qui ne sert que
+Plafond 300 lignes (guide, partie B), on en tient ~100. Ce qui ne sert que
 parfois part dans un skill, pas ici.
 
 ## Le projet
@@ -16,8 +16,8 @@ miroir.
 |---|---|
 | `CONTRAT.md` | Ce qui entre, ce qui sort, ce qui ne sort jamais. **Plafond 100 lignes, tenu par le hook.** |
 | `SPEC.md` | Le pourquoi : lecteur, récit, forme, ce qu'on a écarté. |
-| `registre/` | Un point de décision par fichier, cinq champs. Convention en `0000`. |
-| `COMMANDEMENTS.md` | La doctrine dont on cite les numéros. Copie de `AuditContenu/COMMANDEMENTS_VIBE_CODING.md` v2 du 2026-09-22 : **l'original fait foi**. |
+| `registre/` | Un point de décision par fichier, six champs. Convention en `0000`. |
+| [Guide vibe coding](https://github.com/PerrJean/vibe-coding) | La doctrine dont on cite les règles, **version suivie 4.2**. Aucune copie dans le dépôt : le dépôt public fait foi. |
 | `prompts/` | Les briefs des chantiers confiés aux sous-agents. |
 
 ## Les étapes
@@ -65,6 +65,7 @@ C1 à C4 sont tenues par le hook, sur une liste de termes **hors du dépôt**.
 ## Les règles de code
 
 - Module **500 lignes**, 800 en limite dure.
+- Fonction : au-delà de **80 lignes**, scinde ou justifie.
 - **Ni secret ni donnée dans le dépôt.** Le hook refuse.
 - Une règle vérifiable devient un **test**, une règle de processus un **hook**.
 
@@ -78,18 +79,20 @@ sh ops/hooks/install.sh       # (re)poser le hook de pre-commit
 
 ## Ouvrir un chantier
 
-1. L'inscrire au registre **avant**, avec son coût estimé.
-2. Le mener dans un **sous-agent**, sur un brief de `prompts/` qui ne nomme
-   pas plus de deux fichiers à lire.
-3. Le clore avec son coût réel. **Recalibrage tous les 30 points.**
-4. **Revue en contexte neuf** ; celui qui écrit le code n'écrit pas les tests.
-5. **Exiger la preuve**, pas l'affirmation.
-6. **Pousser sur GitHub** (compte personnel de Jean) à chaque chantier clos.
+Un chantier se mène avec la skill globale `chantier` (guide 4.2). Ce qui est
+propre au portfolio :
 
-**Commit et push sans demander** (projet personnel, dépôt sur le compte
-GitHub de Jean ; décision de Jean, 2026-11-09) : commit à chaque étape
-franchie, push de la branche en cours dans la foulée, push de `main` après
-chaque fusion. La fusion d'une branche dans `main` attend le go de Jean.
+- La fiche s'inscrit au registre **avant**, coût estimé compris.
+  **Recalibrage tous les 30 points** (`registre/0000`).
+- Le sous-agent travaille sur un brief de `prompts/` qui ne nomme pas plus de
+  deux fichiers à lire.
+- **Pousser sur GitHub** (compte personnel de Jean) à chaque chantier clos.
+
+**Commit, push et fusion sans demander** (projet personnel, dépôt sur le
+compte GitHub de Jean ; décision de Jean, 2026-11-09) : commit à chaque étape
+franchie, push de la branche en cours dans la foulée ; à la clôture d'un
+chantier, sa branche est fusionnée dans `main` (`--no-ff`, hook vert) et
+`main` poussé. Un conflit de fusion s'arrête et se signale à Jean.
 
 ## Ce qui reste ouvert
 
