@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `outil` | `en cours` | 50 | | `claude-opus-5-5` |
+| `chantier` | `outil` | `clos 2026-11-09` | 50 | 153 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-05)**, commandements v4 (partie 2, la forme du
 code) : le plafond de 500 lignes, 800 en limite dure, vaut pour tous les
@@ -65,5 +65,23 @@ vert à 800 ; durée relevée.
 - **Durée** (`node --test tests/plafond-lignes.test.mjs`, cinq lancements) :
   596 à 1 050 ms, contre 226 à 289 ms pour un test vide. Le balayage lit
   502 fichiers suivis (9 Mo, surtout des binaires) : `git ls-files` 198 ms,
-  lecture 348 ms. Critère 6 réécrit sur cette mesure : « bien moins d'une
-  seconde » ne tient pas sur cette machine, démarrage de node compris.
+  lecture 348 ms. Le critère 6 disait d'abord « bien moins d'une seconde sur
+  le dépôt », intenable sur cette machine démarrage de node compris ; il est
+  réécrit sur cette mesure (texte actuel de la Spec).
+- **Revue** (sous-agent neuf, brief `prompts/0108-revue.md`) : **PASSE** au
+  premier tour. Treize cassures dans une copie jetable : rouge à 801 lignes
+  sans saut final, en CRLF, sous un chemin à espace et accent ; rouge sur
+  l'exception retirée, DentalSoft raccourcie, désindexée ou absente du disque.
+  Cinq remarques mineures. Coût relevé au harnais : 77.
+- **Suites de la revue** (petite correction, session principale) : le verrou
+  s'exclut par chemin exact (`package-lock.json` à la racine), non plus par
+  nom dans tout dossier ; le message d'exception caduque distingue « plus
+  suivi », « absent du disque » et « plus texte » ; l'en-tête dit deux
+  limites acceptées : un texte UTF-16 serait pris pour un binaire (le dépôt
+  n'en a pas), et le test lit le disque, pas l'index, comme le build (un
+  `git add -p` passerait le hook, la CI le rattrape). Rejoué : vert sur le
+  dépôt, rouge à 801, vert à 800, rouge sur `sous/package-lock.json` de
+  900 lignes.
+- **Clôture** : coût réel 76 + 77 = 153 pour 50 estimés (ratio 3,1), sous-agents
+  seuls ; la session principale (spec, mesures, corrections) n'est pas
+  mesurable. Aucune remontée.

@@ -8,9 +8,13 @@
 //
 // Exclusions, chacune pour sa raison :
 // - tout fichier qui contient un octet nul : c'est un binaire (PNG, PDF,
-//   police, .pyc), qui n'a pas de lignes au sens du code ;
-// - les fichiers de verrouillage générés, par nom : un outil les écrit, personne
-//   ne les lit ni ne les découpe.
+//   police, .pyc), qui n'a pas de lignes au sens du code. Un texte en UTF-16
+//   y tomberait aussi ; le dépôt n'en a pas ;
+// - les fichiers de verrouillage générés, par chemin exact : un outil les
+//   écrit, personne ne les lit ni ne les découpe.
+// Limite : le test lit le disque, comme le build. Un fichier raccourci sur le
+// disque après un « git add -p » passerait le hook ; la CI, qui joue le test
+// sur le contenu poussé, le rattrape.
 // Exception nommée : la page DentalSoft, figée (arbitrage de Jean du
 // 2026-11-05, 0108). Si elle n'est plus suivie ou repasse sous 800 lignes,
 // le test rougit : l'exception est caduque et se retire d'ici.
@@ -19,12 +23,12 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, statSync } from 'node:fs';
-import { join, posix } from 'node:path';
+import { join } from 'node:path';
 import { RACINE, liste } from './outils.mjs';
 
 const PLAFOND = 800;
 
-/** Fichiers de verrouillage générés, exclus par nom. */
+/** Fichiers de verrouillage générés, exclus par chemin exact depuis la racine. */
 const VERROUS = new Set(['package-lock.json']);
 
 /** Exceptions nommées et leur source. */
@@ -51,11 +55,13 @@ function compterLignes(octets) {
   return n;
 }
 
+const SUIVIS = new Set(fichiersSuivis());
+
 /** { rel → lignes } pour chaque fichier suivi, présent, texte, hors verrous. */
 function lignesParFichier() {
   const sortie = new Map();
-  for (const rel of fichiersSuivis()) {
-    if (VERROUS.has(posix.basename(rel))) continue;
+  for (const rel of SUIVIS) {
+    if (VERROUS.has(rel)) continue;
     const complet = join(RACINE, rel);
     if (!existsSync(complet) || !statSync(complet).isFile()) continue;
     const n = compterLignes(readFileSync(complet));
@@ -81,7 +87,9 @@ test(`aucun fichier suivi ne dépasse ${PLAFOND} lignes`, () => {
 test('chaque exception nommée est encore justifiée', () => {
   const fautes = [];
   for (const [rel, source] of EXCEPTIONS) {
-    if (!LIGNES.has(rel)) fautes.push(`${rel} (${source}) : n'est plus suivi, ou plus lisible en texte`);
+    if (!SUIVIS.has(rel)) fautes.push(`${rel} (${source}) : n'est plus suivi par git`);
+    else if (!existsSync(join(RACINE, rel))) fautes.push(`${rel} (${source}) : suivi, mais absent du disque`);
+    else if (!LIGNES.has(rel)) fautes.push(`${rel} (${source}) : n'est plus un fichier texte`);
     else if (LIGNES.get(rel) <= PLAFOND) {
       fautes.push(`${rel} (${source}) : ${LIGNES.get(rel)} lignes, sous le plafond`);
     }
