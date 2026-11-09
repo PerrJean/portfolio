@@ -46,7 +46,10 @@ vitesse rapide des branches `chantier/*` (0106) reste au hook.
    après, vert ou rouge. Comme il est vidé d'abord, le script refuse (code 2,
    avant tout build) un dossier hors du dépôt, la racine elle-même, ou un
    dossier qui contient un fichier suivi par git. Option inconnue ou
-   argument manquant : code 2.
+   argument manquant : code 2. **Complété au tour 2 de revue** : le dossier
+   doit être un nom `.dist-…` à la racine du dépôt (le motif que
+   `.gitignore` réserve aux builds jetables) ; tout autre nom, `data`,
+   `dist` ou `-x` compris, est refusé.
 4. **Le hook** garde la décision de vitesse et le « rouge non bloquant » ;
    seule l'exécution passe à `npm run verifier -- [--rapide] --garder
    .dist-hook`. Le reste du hook est inchangé.
@@ -99,3 +102,17 @@ joue tout ; publication réelle verte après la fusion, site en ligne inchangé.
   `-navigateur` ; copie jetable : test cassé puis build cassé, code 1, ligne
   `ROUGE` juste, dossier supprimé ; hook `--fusion` 298 verts en 113 s.
   Coût relevé au harnais : 112.
+- **Commit** : le hook bloquant appelle déjà `verifier` sur sa propre branche,
+  298 verts, 86 s.
+- **Revue, tour 1** (sous-agent neuf, brief `prompts/9-verifier-revue.md`) :
+  **NE PASSE PAS**. Trois cassures invisibles aux tests : `verifier` qui
+  sort toujours en 0, qui ne supprime plus son dossier, et `--rapide` ajouté
+  à l'appel bloquant du hook. Et `--garder data` vide un dossier de données
+  ignoré par git (essai en copie jetable). Mineurs : un refus (code 2) passe
+  pour un rouge non bloquant en vitesse rapide ; le message du hook ne dit
+  plus quoi ; un Ctrl-C laisse le dossier. Tient : `deploy.yml` publie le
+  `.dist-ci` testé, un rouge arrête la publication ; les refus résistent aux
+  chemins Windows (casse, `\`, `C:/`, jonction). Coût relevé au harnais : 95.
+  Suite (tour 2, brief `prompts/9-verifier-tour2.md`) : `--garder` réservé
+  aux noms `.dist-…` (Spec, point 3), test de bout en bout sur un dépôt
+  factice, code 2 bloquant au hook.
