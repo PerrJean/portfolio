@@ -32,12 +32,38 @@ achat, paiement) ; les étapes **session** sont faites dans le dépôt.
 
 ## 2. La publication automatique
 
-1. **Session** — Ajouter `.github/workflows/deploy.yml`, le flux officiel
-   d'Astro : à chaque envoi sur `main`, `withastro/action` construit le site
-   et `actions/deploy-pages` le publie. Droits : `contents: read`,
-   `pages: write`, `id-token: write`.
+1. **Session** — Ajouter `.github/workflows/deploy.yml`. À chaque envoi sur
+   `main`, deux jobs :
+   - `tester` installe les paquets (`npm ci`, Chromium), construit le site
+     **une seule fois** et le teste par `npm run verifier -- --garder
+     .dist-ci`, puis envoie ce dossier tel quel à GitHub
+     (`actions/upload-pages-artifact`). Un test rouge arrête le job avant
+     l'envoi : rien ne part (registre/0119, 0107).
+   - `publier` attend `tester` et met en ligne le site envoyé
+     (`actions/deploy-pages`). Le site publié est donc celui qui a été testé.
+
+   **Droits, job par job** (registre/0120). Le workflow n'a que
+   `contents: read`. Seul `publier` reçoit `pages: write` et
+   `id-token: write`, qu'exige `actions/deploy-pages`. `tester`, qui installe
+   et lance des centaines de paquets tiers, n'a pas le droit de publier :
+   l'envoi du site n'en a pas besoin. Un paquet compromis ne peut donc plus
+   publier ce qu'il veut, quand il veut. Il peut encore altérer le site
+   construit dans `tester`, avant comme après les tests, et ce site part tel
+   quel.
+
+   **Les listes de termes interdits** (secrets `INTERDITS` et `EMPLOYEUR`)
+   ne sont écrites sur le disque qu'après `npm ci` et l'installation de
+   Chromium, juste avant `verifier`, ici comme dans `tests.yml` (les tests
+   des pull requests) : les scripts d'installation des paquets ne les voient
+   pas pendant qu'ils s'exécutent. Limite : un processus qu'ils laisseraient
+   tourner en arrière-plan survit jusqu'à la fin du job, et le build et les
+   tests chargent eux aussi du code tiers ; l'un comme l'autre peut lire les
+   listes une fois écrites. La protection ne couvre que le temps de
+   l'installation. Elle pèse surtout sur les pull requests de Dependabot, qui
+   font tourner une nouvelle version d'un paquet.
 2. **Jean** — Dépôt › Settings › Pages › Source : **GitHub Actions**.
-3. Chaque envoi sur `main` publie en une à deux minutes ; l'onglet
+3. Chaque envoi sur `main` publie en deux minutes environ (115 s mesurées,
+   registre/0119 : installation, build, tests puis mise en ligne) ; l'onglet
    **Actions** montre le résultat, en vert ou en rouge.
 
 Le hook de pre-commit reste le premier garde-fou : les tests tournent avant

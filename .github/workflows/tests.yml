@@ -23,8 +23,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: npm ci
+      # Chromium pour le test des infobulles dans un navigateur (registre/0097).
+      - run: npx playwright install --with-deps chromium
       # Les listes vivent hors du dépôt (CONTRAT) : deux secrets, à déclarer
       # aussi côté Dependabot pour ses pull requests.
+      # Écrites après npm ci et Chromium, juste avant verifier : les scripts
+      # d'installation ne les lisent pas pendant qu'ils tournent. Un processus
+      # qu'ils laisseraient en arrière-plan, comme le code tiers que chargent
+      # le build et les tests, peut encore les lire : la protection ne couvre
+      # que le temps de l'installation (registre/0120).
       - name: Listes de confidentialité
         env:
           INTERDITS: ${{ secrets.INTERDITS }}
@@ -33,7 +41,4 @@ jobs:
           mkdir -p ~/.portfolio
           printf '%s\n' "$INTERDITS" > ~/.portfolio/interdits.txt
           printf '%s\n' "$EMPLOYEUR" > ~/.portfolio/employeur.txt
-      - run: npm ci
-      # Chromium pour le test des infobulles dans un navigateur (registre/0097).
-      - run: npx playwright install --with-deps chromium
       - run: npm run verifier

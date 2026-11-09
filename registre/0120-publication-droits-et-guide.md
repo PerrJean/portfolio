@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `outil` | `ouvert` | 30 | | `claude-opus-5-5` |
+| `chantier` | `outil` | `en cours` | 30 | | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-09)** : les suites relevées à la clôture de 0119,
 à lancer **après la fusion de 0107**, qui modifie aussi `deploy.yml`.

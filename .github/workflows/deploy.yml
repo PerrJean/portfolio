@@ -18,10 +18,11 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+# Le workflow ne peut que lire le dépôt. Les droits de publication ne vont qu'à
+# `publier` : `tester` installe et lance des paquets tiers, et le dépôt de
+# l'artefact n'en a pas besoin (registre/0120).
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 jobs:
   tester:
@@ -35,8 +36,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: npm ci
+      # Chromium pour le test des infobulles dans un navigateur (registre/0097).
+      - run: npx playwright install --with-deps chromium
       # Les listes de termes interdits vivent hors du dépôt (CONTRAT) : ici,
       # dans deux secrets. Sans eux, le vérificateur refuse, et rien ne part.
+      # Écrites après npm ci et Chromium, juste avant verifier : les scripts
+      # d'installation ne les lisent pas pendant qu'ils tournent. Un processus
+      # qu'ils laisseraient en arrière-plan, comme le code tiers que chargent
+      # le build et les tests, peut encore les lire : la protection ne couvre
+      # que le temps de l'installation (registre/0120).
       - name: Listes de confidentialité
         env:
           INTERDITS: ${{ secrets.INTERDITS }}
@@ -45,9 +54,6 @@ jobs:
           mkdir -p ~/.portfolio
           printf '%s\n' "$INTERDITS" > ~/.portfolio/interdits.txt
           printf '%s\n' "$EMPLOYEUR" > ~/.portfolio/employeur.txt
-      - run: npm ci
-      # Chromium pour le test des infobulles dans un navigateur (registre/0097).
-      - run: npx playwright install --with-deps chromium
       # Build dans .dist-ci, puis tous les tests ; --garder laisse le dossier
       # après, pour le dépôt qui suit.
       - run: npm run verifier -- --garder .dist-ci
@@ -62,6 +68,10 @@ jobs:
   publier:
     needs: tester
     runs-on: ubuntu-latest
+    # Ce qu'exige actions/deploy-pages, et à ce seul job.
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.publication.outputs.page_url }}
