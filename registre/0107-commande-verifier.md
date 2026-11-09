@@ -30,6 +30,28 @@ vitesse rapide des branches `chantier/*` (0106) reste au hook.
 - **2026-11-09, Jean** (idem) : la vitesse rapide du hook ne s'applique pas
   aux branches `claude/chantier-…` des sessions ; on la mesure et on la
   signale, sans la changer.
+- **2026-11-09, Jean** : la vitesse rapide vaut aussi pour les branches
+  `claude/chantier-*` (`registre/0106`, Tranché ; `e4cf22f`).
+- **2026-11-09, Jean**, les trois choix faits hors spec par la session :
+  1. **`--garder` n'accepte qu'un nom `.dist-…` à la racine** : confirmé.
+     Une option qui protège des fichiers doit rester étroite.
+  2. **Un appel mal formé (code 2) bloque le hook, même en vitesse rapide** :
+     confirmé. C'est une erreur de configuration ; s'il passait en silence,
+     le hook ne vérifierait plus rien sans qu'on le sache.
+  3. **`verifier` ignore les variables `GIT_*`** : confirmé, à condition que
+     `git commit -a` et `git commit <chemin>` (où Git passe un index
+     temporaire par `GIT_INDEX_FILE`) contrôlent le bon contenu. **Essai du
+     2026-11-09**, worktree jetable, hook complet : Git passe bien un index
+     temporaire (`index.lock` pour `-a`, `next-index-*.lock` pour un
+     chemin) ; un test rouge ajouté au fichier commité est vu et le commit
+     refusé dans les deux cas ; témoin vert accepté. `verifier` construit et
+     teste **le disque**, jamais un index : `GIT_INDEX_FILE` ne sert qu'au
+     contrôle de `--garder` (`git ls-files` sur un dossier ignoré), où
+     l'ignorer est sans effet. On garde donc l'exclusion de tous les
+     `GIT_*`. **Limite, indépendante de ce choix** (déjà dite en 0108) : le
+     hook juge le disque, pas ce qui est commité ; un commit d'un seul
+     chemin est refusé si un autre fichier modifié mais non commité est
+     rouge (essai : refusé), et l'inverse passerait.
 
 ## Spec
 

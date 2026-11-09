@@ -2,7 +2,12 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `arbitrage` | `mise-en-ligne` | `clos 2026-10-01` | — | — | — |
+| `arbitrage` | `publication` | `clos 2026-10-01` | — | — | — |
+
+*Étape rattachée à `publication` le 2026-11-09 (demande de Jean) :
+`mise-en-ligne` n'est pas dans la liste de `registre/0000`, qu'on n'étend pas
+pour un seul projet ; `publication` porte déjà la mise en ligne discrète
+(0035) et le domaine (0025).*
 
 **Décision de Jean (2026-10-01)** : « On lance maintenant. » `INDEXE = true`
 (`src/i18n/publication.ts`, registre/0035) : la balise `noindex, nofollow`
