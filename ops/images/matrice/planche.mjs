@@ -13,7 +13,7 @@
 // Produit 1-repos.svg (copié en repos.svg), 2-transmet.svg, 3-pied.svg,
 // 4-fin.svg (copié en fin.svg), dans le repère de Scene.astro, mêmes
 // classes, et planche.png. Relançable : node ops/images/matrice/planche.mjs.
-// Sans paquet ajouté : sharp ; le texte en chemins (../accueil/police.mjs).
+// Sans paquet ajouté : sharp ; le texte en chemins (../commun/police.mjs).
 //
 // Les poses nouvelles, dessinées ici seulement (à reporter dans poses.ts),
 // toutes sur les segments existants, sans articulation nouvelle :
@@ -34,19 +34,12 @@
 import { writeFileSync, copyFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import sharp from 'sharp';
-import { POSES, LUNETTES, OBJETS } from '../../../src/components/scene/poses.ts';
-import { police } from '../accueil/police.mjs';
+import { POSES, OBJETS } from '../../../src/components/scene/poses.ts';
+import { L, r2, pt, add, tourne, sol, svgScene } from '../commun/svg.mjs';
+import { jambes, brasArriere, brasAvant, TORSE, TETE, JAMBES_DEBOUT, EP_AR, EP_AV, LONG_BRAS, perso } from '../commun/personnage.mjs';
+import { P8, M, LARG, CASE, RANG, petit, encadre, grille, casePoses, barre, auxLargeurs, ecrirePlanche } from '../commun/planche.mjs';
 
 const ICI = fileURLToPath(new URL('./', import.meta.url));
-const C = { ivoire: '#FEFAF2', encre: '#2A1F1A', ambre: '#F2A33A', orange: '#B54E19', ardoise: '#5E7488', dalle: '#D9D4CC' };
-const STYLE =
-  `<style>.fe{fill:${C.encre}}.se{stroke:${C.encre}}.fi{fill:${C.ivoire}}.si{stroke:${C.ivoire}}` +
-  `.sa{stroke:${C.ardoise}}.so{stroke:${C.orange}}.fa{fill:${C.ambre}}.fd{fill:${C.dalle}}.fs{fill:${C.ardoise}}</style>`;
-const L = 426.667;
-const r2 = (v) => Math.round(v * 10) / 10;
-const pt = ([x, y]) => `${r2(x)},${r2(y)}`;
-const add = ([a, b], [c, d]) => [a + c, b + d];
 
 // ---------------------------------------------------------------------------
 // Les objets nouveaux : le mur et l'échelle.
@@ -83,29 +76,15 @@ const DESSIN_ECHELLE =
 const B1 = barreau(BARREAUX[0]), B2 = barreau(BARREAUX[1]), B3 = barreau(BARREAUX[2]);
 
 // ---------------------------------------------------------------------------
-// Les pièces des poses (celles de poses.ts).
+// Les pièces des poses : celles de poses.ts (../commun/personnage.mjs).
 
-const LIGNE = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
-const trait = (c, points, l) => `<polyline class="${c}" points="${points}" ${LIGNE} stroke-width="${l}"/>`;
-const jambes = (ar, av) => trait('se', ar, 7.5) + trait('se', av, 7.5);
-const brasArriere = (a, b) => trait('se', `${pt(a)} ${pt(b)}`, 7);
-const brasAvant = (a, b) => trait('si', `${pt(a)} ${pt(b)}`, 10) + trait('se', `${pt(a)} ${pt(b)}`, 7);
-const TORSE = '<path class="fe" d="M-9,-88 A9,9 0 0 1 9,-88 L9,-55 Q9,-52 6,-52 L-6,-52 Q-9,-52 -9,-55 Z"/>';
-const TETE = '<circle class="fe" cx="1" cy="-110" r="10"/>{L}';
-const JAMBES_DEBOUT = jambes('-5.25,-56 -4.5,-4 0.5,-4', '5.25,-56 4.5,-4 9.5,-4');
-const EP_AR = [0, -89], EP_AV = [1, -89];
 // Les vecteurs de bras-tendus : arrière (0,-89 → 31,-76), avant (1,-89 → 29,-73).
 const V_AR = [31, 13], V_AV = [28, 16];
 // Le bras qui tient le marteau derrière soi : 31,8 de long (32,2 et 33,6
 // pour ceux de bras-tendus), 46° sous l'horizontale (assez bas pour ne pas brandir,
 // assez loin pour que le manche ne touche pas le dos).
 const V_MARTEAU = [-22, 23];
-const LONG_BRAS = Math.hypot(...V_AV); // 32,2
 const vers = (de, cible) => { const dx = cible[0] - de[0], dy = cible[1] - de[1], k = LONG_BRAS / Math.hypot(dx, dy); return [de[0] + dx * k, de[1] + dy * k]; };
-const tourne = ([x, y], deg, [cx, cy] = [0, -56]) => {
-  const a = (deg * Math.PI) / 180, dx = x - cx, dy = y - cy;
-  return [cx + dx * Math.cos(a) - dy * Math.sin(a), cy + dx * Math.sin(a) + dy * Math.cos(a)];
-};
 
 // Le marteau tenu : poignée dans la main, à 1,2.
 const MARTEAU_ECH = 1.2;
@@ -154,14 +133,7 @@ const SUR_ECHELLE =
 // ---------------------------------------------------------------------------
 // La scène.
 
-const perso = (dessin, x, { jean = false, miroir = false, classe = '', y = 0 } = {}) => {
-  let d = dessin.replace('{L}', jean ? LUNETTES : '');
-  // Le marteau tenu tête en haut (la règle CSS de la pose de B, en attribut).
-  d = d.replace('<g class="marteau-tour">', '<g class="marteau-tour" transform="rotate(-115) scale(1.2)">');
-  return `<g transform="translate(${r2(x)} ${r2(y)})"><g class="${classe}"${miroir ? ' transform="scale(-1 1)"' : ''}>${d}</g></g>`;
-};
-const SOL = `<line class="se" x1="0" y1="0" x2="${L}" y2="0" stroke-width="1.5"/>`;
-const DECOR = SOL + DESSIN_MUR + DESSIN_ECHELLE;
+const DECOR = sol() + DESSIN_MUR + DESSIN_ECHELLE;
 
 // Les places. L'ouvrier au repos à 26 du pied de l'échelle, Jean à 62 de
 // lui : leurs mains se rejoignent sur le manche en 2. Jean ne bouge plus.
@@ -205,9 +177,7 @@ const CARTES = {
     perso(montre(cibleLocale(CIBLE)), J_X, { jean: true, classe: 'j-montre' }) +
     perso(SUR_ECHELLE, O4_X, { classe: 'o-echelle', y: O4_Y }),
 };
-const fichier = (corps) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -140 ${L} 160" width="${L}" height="160">${STYLE}${corps}</svg>\n`;
-for (const [nom, corps] of Object.entries(CARTES)) writeFileSync(join(ICI, `${nom}.svg`), fichier(corps));
+for (const [nom, corps] of Object.entries(CARTES)) writeFileSync(join(ICI, `${nom}.svg`), svgScene(corps));
 copyFileSync(join(ICI, '1-repos.svg'), join(ICI, 'repos.svg'));
 copyFileSync(join(ICI, '4-fin.svg'), join(ICI, 'fin.svg'));
 
@@ -215,17 +185,9 @@ copyFileSync(join(ICI, '4-fin.svg'), join(ICI, 'fin.svg'));
 // La planche : 1 et 2 ; 3 et 4 ; les poses, le découpage proposé ; puis la
 // fin et le repos aux largeurs de carte (480, 384, 335 px), taille réelle.
 
-const P8 = police(800), P4 = police(400);
-const M = 20, LARG = 2 * M + 1280, LEG = 34;
-const CASE = (1280 - M) / 2, K = CASE / L, H_CASE = 160 * K;
-const legende = (n, t, x, y) => P8.chemin(`${n}`, x, y, 15, 0, 'fs') + P4.chemin(t, x + 16, y, 15, 0, 'fs');
-const petit = (t, x, y, taille = 13, p = P4) => p.chemin(t, x, y, taille, 0, 'fs');
-const cadre = (x, y, l, h) => `<rect x="${x}" y="${y}" width="${l}" height="${h}" fill="${C.ivoire}" stroke="${C.dalle}" stroke-width="2"/>`;
-const carte = (nom, x, y, k) => `<g transform="translate(${x} ${y + 140 * k}) scale(${k})">${CARTES[nom]}</g>`;
-
 // Case 5 : les poses sur leur ligne de pied.
 const POSES_CASE =
-  `<line class="se" x1="6" y1="0" x2="${L - 6}" y2="0" stroke-width="1.5"/>` +
+  sol(6, L - 6) +
   perso(POSES['marteau-2'], 40, { jean: true }) +
   marteau(add([118, 0], add(EP_AV, V_AV)), -90) + perso(BRAS_TENDUS, 118) +
   perso(montre([80, -60]), 200) +
@@ -245,19 +207,10 @@ const TEMPS = [
 const REPLI = [150, 200, 150, 100];
 function decoupage(x, y) {
   let d = petit('Découpage proposé : 800 ms (repli : 600 ms, la durée des cartes 01 et 02)', x + 16, y + 30, 14, P8);
-  const x0 = x + 16, lp = CASE - 32 - 64;
-  const barre = (durees, yb, total) => {
-    let t = 0, s = '';
-    durees.forEach((ms, i) => {
-      const xa = x0 + (t / 800) * lp, l = (ms / 800) * lp;
-      s += `<rect x="${r2(xa)}" y="${yb}" width="${r2(l - 3)}" height="16" rx="2" fill="${i === 3 ? C.ambre : i % 2 ? C.dalle : '#ECE7DE'}" stroke="${C.ardoise}" stroke-width="1"/>`;
-      s += petit(`${ms}`, xa + 4, yb + 12, 11);
-      t += ms;
-    });
-    return s + petit(`${total} ms`, x0 + (t / 800) * lp + 6, yb + 12, 11);
-  };
-  d += barre(TEMPS.map((t) => t[2]), y + 48, 800);
-  d += barre(REPLI, y + 74, 600);
+  const x0 = x + 16;
+  const yb = y + 48, yr = y + 74;
+  d += barre(x0, yb, yb + 12, TEMPS.map((t) => t[2]), { echelle: 800 });
+  d += barre(x0, yr, yr + 12, REPLI, { echelle: 800, total: 600 });
   let yl = y + 116;
   TEMPS.forEach(([n, t, ms], i) => {
     d += petit(`${n}`, x0, yl, 13, P8) + petit(`${t} : ${ms} ms (repli ${REPLI[i]})`, x0 + 58, yl, 13);
@@ -268,40 +221,21 @@ function decoupage(x, y) {
 }
 
 let y = M, corps = '';
-const LEGENDES = [
+corps += grille([
   ['1-repos', 'Repos : Jean tient le marteau, l’ouvrier au pied de l’échelle, tourné vers lui.'],
   ['2-transmet', 'Jean tend le marteau, l’ouvrier le prend par le manche.'],
   ['3-pied', 'Marteau en main, l’ouvrier pose le pied ; Jean lève le bras.'],
   ['4-fin', 'Fin : l’ouvrier sur le premier barreau, point ambre ; Jean vise le deuxième.'],
-];
-LEGENDES.forEach(([nom, t], i) => {
-  const x = M + (i % 2) * (CASE + M), yc = y + Math.floor(i / 2) * (H_CASE + LEG + 12);
-  corps += cadre(x, yc, CASE, H_CASE) + carte(nom, x, yc, K) + legende(i + 1, t, x, yc + H_CASE + 22);
-});
-y += 2 * (H_CASE + LEG + 12);
-corps += cadre(M, y, CASE, H_CASE) + `<g transform="translate(${M} ${y + 140 * K}) scale(${K})">${POSES_CASE}</g>`;
-for (const [nm, xn] of NOMS) corps += petit(nm, M + xn * K, y + H_CASE - 10);
-corps += legende(5, 'Les poses : deux reprises telles quelles, trois variantes (montre, pied-barreau, sur-echelle).', M, y + H_CASE + 22);
-corps += cadre(M + CASE + M, y, CASE, H_CASE) + decoupage(M + CASE + M, y);
-corps += legende(6, 'La durée : quatre temps.', M + CASE + M, y + H_CASE + 22);
-y += H_CASE + LEG + 12;
-let n = 7;
-for (const nom of ['4-fin', '1-repos']) {
-  let x = M;
-  const hMax = (160 / L) * 480;
-  for (const w of [480, 384, 335]) {
-    const k = w / L;
-    corps += cadre(x, y, w, 160 * k) + carte(nom, x, y, k);
-    x += w + 20;
-  }
-  corps += legende(n++, `${nom === '4-fin' ? 'Fin' : 'Repos'} aux largeurs de carte : 480, 384 et 335 px, taille réelle.`, M, y + hMax + 22);
-  y += hMax + LEG + 12;
-}
+], y, CARTES);
+y += 2 * RANG;
+corps += casePoses(M, y, POSES_CASE, NOMS, 5, 'Les poses : deux reprises telles quelles, trois variantes (montre, pied-barreau, sur-echelle).');
+corps += encadre(M + CASE + M, y, decoupage(M + CASE + M, y), 6, 'La durée : quatre temps.');
+y += RANG;
+const largeurs = auxLargeurs([[CARTES['4-fin'], 'Fin'], [CARTES['1-repos'], 'Repos']], y, 7);
+corps += largeurs.corps;
+y = largeurs.y;
 const H = Math.round(y + 4);
-const planche =
-  `<svg xmlns="http://www.w3.org/2000/svg" width="${LARG}" height="${H}">${STYLE}` +
-  `<rect width="${LARG}" height="${H}" fill="${C.ivoire}"/>${corps}</svg>`;
-await sharp(Buffer.from(planche)).png({ compressionLevel: 9 }).toFile(join(ICI, 'planche.png'));
+await ecrirePlanche(join(ICI, 'planche.png'), corps, H);
 
 // ---------------------------------------------------------------------------
 // Les contrôles, pour le rapport.
