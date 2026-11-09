@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `outil` | `ouvert` | 80 | | `claude-opus-5-5` |
+| `chantier` | `outil` | `en cours` | 80 | | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-09)**, relevé en examinant 0107 : la publication
 construit le site deux fois.
