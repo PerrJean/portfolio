@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `outil` | `en cours` | 50 | | `claude-opus-5-5` |
+| `chantier` | `outil` | `clos 2026-11-09` | 50 | 563 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-05)**, dans la mise en conformité avec les
 commandements v4 (règle 11) : une seule commande, la même pour Jean, pour
@@ -162,3 +162,41 @@ joue tout ; publication réelle verte après la fusion, site en ligne inchangé.
 - **Ce que la vitesse rapide ferait gagner aux sessions** : 12 s (`--rapide`)
   contre 66 à 76 s (complet) par point d'étape, plus le droit de committer
   un test rouge écrit d'abord.
+
+## Clôture (2026-11-09)
+
+- **Fait** : `npm run verifier` (`ops/verifier.mjs`, 158 lignes) construit
+  dans un dossier jetable, lance tous les tests, supprime le dossier ;
+  `--rapide`, `--garder .dist-…`. Le hook, `tests.yml` et le job `tester` de
+  `deploy.yml` l'appellent ; `CLAUDE.md` le cite. Deux tests : 
+  `tests/verifier.test.mjs` (statique, hook et workflows) et
+  `tests/verifier-bout-en-bout.test.mjs` (dépôt factice, sans les `GIT_*`).
+- **Fusion** : `501303a` dans `main`, hook de fusion vert (312 tests).
+- **Publication réelle** `42667146717` (commit `501303a`) : verte, 313 s ;
+  `tester` lance `npm run verifier -- --garder .dist-ci` (43 s, autant que
+  l'ancien build et tests, 2 + 41 s) puis dépose `.dist-ci`. La durée totale
+  vient de l'installation de Chromium (197 s contre 18 s à la publication
+  précédente), hors de `verifier`.
+- **Site en ligne inchangé** : aucune source du site touchée (`git diff
+  7a820d2 501303a -- src public astro.config.mjs` vide) ; les 78 fichiers en
+  ligne identiques octet pour octet à un build local du commit fusionné
+  (`curl` puis `cmp`) ; `/`, `/en/`, `/projets/audit-contenu/`, `/a-propos/`,
+  `sitemap-index.xml` en 200.
+- **Revue** : deux tours, NE PASSE PAS puis PASSE. Aucune remontée.
+- **Hors spec** (décidé par la session, à confirmer par Jean) : `--garder`
+  n'accepte qu'un nom `.dist-…` à la racine ; un code 2 de `verifier` est
+  bloquant au hook même en vitesse rapide ; `verifier` ignore les `GIT_*`.
+- **Coût relevé au harnais** : 563 = 204 k de contexte de la session à la
+  clôture (`get_usage`, dont environ 82 k de charge fixe) + 105 (tests, deux
+  tours) + 131 (code, deux tours) + 123 (revue, deux tours). Ratio 11 pour
+  50 estimés : la spec n'existait pas, deux tours de revue, l'incident
+  `core.bare`, et chaque commit d'étape a joué le hook complet (65 à 170 s).
+- **À trancher par Jean** : la vitesse rapide du hook (`chantier/*`)
+  n'atteint aucune branche de session (`claude/chantier-…`) ; voir Déroulé.
+- **Suites relevées, hors périmètre** :
+  1. `docs/GUIDE_MISE_EN_LIGNE.md` (ligne 119) dit encore « `npm run build`
+     puis `npm test` » : à reprendre avec 0120, qui met le guide à jour.
+  2. `tests/outils.mjs` (ligne 48), quand le site manque, conseille encore
+     `npx astro build` puis `DIST=X npm test` ; il pourrait citer
+     `npm run verifier`.
+  3. PowerShell 7 (MSIX) ne voit pas le `node` de fnm sur le poste de Jean.
