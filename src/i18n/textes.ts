@@ -19,6 +19,8 @@ export const UI: Record<
     projetSuivant: string;
     lireProjet: string;
     cadre: { role: string; equipe: string; duree: string; competences: string };
+    /** Les titres des trois temps de la synthèse (registre/0117). */
+    temps: { depart: string; action: string; impact: string };
     fermer: string;
     agrandir: string;
     toucherPourAgrandir: string;
@@ -36,6 +38,7 @@ export const UI: Record<
     plusLoin: 'Pour aller plus loin',
     lireProjet: 'Lire le projet',
     cadre: { role: 'Rôle', equipe: 'Équipe', duree: 'Durée', competences: 'Compétences' },
+    temps: { depart: 'Point de départ', action: 'Ce que j’ai fait', impact: 'L’impact' },
     fermer: 'Fermer',
     agrandir: 'Agrandir',
     toucherPourAgrandir: 'Toucher pour agrandir',
@@ -54,6 +57,7 @@ export const UI: Record<
     projetSuivant: 'Next project:',
     lireProjet: 'Read the project',
     cadre: { role: 'Role', equipe: 'Team', duree: 'Duration', competences: 'Skills' },
+    temps: { depart: 'Starting point', action: 'What I did', impact: 'Impact' },
     fermer: 'Close',
     agrandir: 'Enlarge',
     toucherPourAgrandir: 'Tap to enlarge',

@@ -9,7 +9,7 @@ fait: "In 2024, I led the merger of two of our three platforms: every change is 
 synthese:
   probleme: "An EdTech company offered three language-learning platforms, built one after another. Each had its own interface, activity templates (the exercise formats) and data model, all developed and maintained separately."
   action: "I framed a target, a single platform, and presented it to the executive committee. We first laid down a shared design system (a library of interface elements shared by designers and developers), then merged the platform for businesses into the general platform, in seven batches."
-  resultat: "The merger has been in production since August 2024. Activities now run on four templates instead of about thirty, and, among learners who answered the NPS survey, the share of feedback about usability dropped by a quarter. This project led to the Head of Product role."
+  resultat: "Activities now run on four templates instead of about thirty, and the share of feedback about usability in the satisfaction survey (NPS) dropped by a quarter. Live since August 2024, the merger leaves one fewer platform to maintain. This project opened the way to my Head of Product role."
 plusLoin:
   - titre: "Timeline"
     points:
