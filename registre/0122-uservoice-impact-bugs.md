@@ -92,8 +92,8 @@ du dépôt UserVoice) au conditionnel seulement.
   « Product Designer » de `redaction/lexique.md`, et le test passe de 14 à
   16 pages à bulles. Pour revenir en arrière : retirer la demi-phrase sur le
   formulaire, la ligne du lexique et le compte du test.
-- Les deux premiers commits de la branche ont été poussés avant la consigne
-  « sans push » ; rien d'autre ne l'est.
+- Le premier commit de la branche (ouverture de la fiche) a été poussé
+  avant la consigne « sans push » ; rien d'autre ne l'est.
 
 ## Preuve
 
