@@ -45,3 +45,13 @@ du dépôt UserVoice) au conditionnel seulement.
 100, relevé EN 100.
 
 ## Tranché
+
+- 2026-11-10, Jean : la création du formulaire **n'est pas datée** dans la
+  page.
+- 2026-11-10, Jean : sur le formulaire, il s'est fait aider des Product
+  Designers, mais c'est lui qui a porté le sujet ; il demande si c'est
+  important de le dire. Proposé au tri : une demi-phrase qui les crédite,
+  ou rien.
+- 2026-11-10, Jean : le **fait clé de l'accueil reste tel quel**.
+- 2026-11-10, Jean : **aucun facultatif** (ni l'affichage cassé ÷8, ni
+  l'alerte rejouée au conditionnel).
