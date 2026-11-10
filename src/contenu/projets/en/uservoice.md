@@ -2,23 +2,25 @@
 titre: "UserVoice: listening to learners every Monday"
 date: "2026-09"
 cadre:
-  role: "Designed and built the tool"
-  equipe: "On my own, with AI"
-  duree: "September 2026"
+  role: "Spotted the bugs, then designed and built the tool"
+  equipe: "On my own, with AI; developers for the fixes"
+  duree: "March to September 2026"
 fait: "1 in 3 pieces of negative feedback left on the site is about the content: its quality became the top priority."
 synthese:
-  probleme: "An EdTech platform receives thousands of pieces of learner feedback a year, spread across four sources and never read together."
-  action: "I brought them together in one place. AI classifies each piece of feedback and flags when it is unsure: a person decides, and that answer helps the AI tell similar cases apart next time. The summary takes five minutes to read, every Monday."
-  resultat: "The Content audit project grew out of this finding. An issue that is still rare in the feedback is now spotted as soon as it starts coming up more often."
+  probleme: "An EdTech platform receives thousands of pieces of learner feedback a year, through four sources never read together. Fixing a reported bug quickly means knowing which bug it is, which exercises it affects and when it started."
+  action: "From March 2026, I used AI to spot the bugs that kept coming up in the feedback, and pinned each one down for the developers. In September, I automated feedback analysis with UserVoice: it classifies each piece of feedback, and a person decides when the AI is unsure."
+  resultat: "In spring 2026, audio bugs were learners’ top complaint. Once the developers fixed them, their share of feedback fell more than fifteenfold between late May and mid-August. The Content audit project grew out of what the feedback showed about content."
 langue: en
 cle: uservoice
 ---
 
 ## The starting point
 
-Feedback comes from four sources: the NPS (Net Promoter Score, how likely learners are to recommend the platform) survey, the placement test, the end of each course, and an open feedback form available on every page of the site.
+Feedback comes from four sources: the NPS (Net Promoter Score, how likely learners are to recommend the platform) survey, the placement test, the end of each course, and an open feedback form available on every page of the site. I pushed for this form to be created, then refined it with help from the Product Designers.
 
-In September 2026, I launched UserVoice on the feedback gathered since March. Until then, it had not been tagged. Each piece stayed in its own source, and the same topics kept coming back without anyone knowing whether they had already been handled.
+From March 2026, I used AI to spot the bugs reported in this feedback. For each one, I worked out which exercises it affected and when it started. The developers fixed them.
+
+In September 2026, I automated feedback analysis with UserVoice, covering everything received since March.
 
 ## Listening every Monday
 
@@ -43,7 +45,13 @@ Bugs are still tracked, signature by signature. But satisfaction depends first o
 
 ## Benefits and business impact
 
-The Monday summary spots a topic that is still rare as soon as it starts to rise, which we could not see before. At the annual review, a client school also pointed to content quality. The content audit project starts from that finding.
+A bug that many learners report hurts perceived quality first, then adds to the time spent reading feedback. In spring 2026, audio bugs were learners’ top complaint. Their share of feedback peaked in late May, then fell as the fixes went out.
+
+By mid-August, it was five times lower than in early March. The support team saw the same drop.
+
+The Monday summary spots a topic that is still rare as soon as it starts to rise.
+
+The learner feedback pointed to content quality, and so did a client school at its annual review. The Content audit project starts from these two findings.
 
 ## What I built
 

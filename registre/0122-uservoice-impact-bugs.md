@@ -2,7 +2,7 @@
 
 | nature | etape | statut | cout_estime | cout_reel | modele |
 |---|---|---|---|---|---|
-| `chantier` | `contenu` | `en cours` | 350 | | `claude-opus-5-5` |
+| `chantier` | `contenu` | `clos 2026-11-10` | 350 | 387 | `claude-opus-5-5` |
 
 **Demande de Jean (2026-11-10)**, depuis une session du dépôt UserVoice :
 donner à la page UserVoice un impact mesuré plutôt que « le projet Audit
@@ -55,3 +55,56 @@ du dépôt UserVoice) au conditionnel seulement.
 - 2026-11-10, Jean : le **fait clé de l'accueil reste tel quel**.
 - 2026-11-10, Jean : **aucun facultatif** (ni l'affichage cassé ÷8, ni
   l'alerte rejouée au conditionnel).
+- 2026-11-10, Jean (consignes relayées par la session qui a lancé ce
+  chantier) : **la validation des avant / après est déléguée** à un
+  relecteur en contexte neuf ; ce qu'il valide s'applique, ce qu'il refuse
+  se réécrit une fois et repasse devant lui. Jean contrôle après coup.
+  **Commit local, sans push** jusqu'à ce contrôle. Restitution dans
+  `redaction/uservoice-avant-apres.md`.
+- 2026-11-10, Jean : le formulaire date de mars 2026 ; la page reste non
+  datée, comme il l'a répondu.
+- 2026-11-10 : le changement de fait clé était un avis de l'autre session,
+  pas une décision de Jean ; **fait clé gardé**, la piste est relue et
+  rangée en « option non appliquée » (2.2 et 4.7 de la restitution).
+
+## Contenu
+
+- v1 FR, puis relevé des lourdeurs (sous-agent neuf, brief
+  `prompts/0122-releve.md`) : accord « les / lequel », « ce travail » flou,
+  redites avec la synthèse et « Ce que j'ai construit », contre-chronologie,
+  « porté » plus fort que les faits. Écartés : « dix-sept » (l'arrondi
+  prudent « plus de quinze » est voulu) et une définition inventée de « bug
+  massif » (remplacé par « un bug signalé par beaucoup d'apprenants »).
+- v2 FR et EN, puis validation (sous-agent neuf, brief
+  `prompts/0122-validation.md`) : 16 entrées, 9 validées au premier
+  passage, 7 refusées (« au printemps » manquant, l'option de fait clé sans
+  son pic, calques anglais), réécrites selon ses propositions, **toutes
+  validées au second passage**.
+- Chiffres : ÷17 du pic (semaine 22) à la semaine 33, écrit « plus de
+  quinze » ; ÷5 depuis la semaine 10, écrit « cinq fois plus faible » ;
+  aucune part absolue.
+
+## Hors spec
+
+- « Product Designers » (phrase du formulaire, validée) est un terme du
+  lexique des infobulles : sa bulle apparaît sur UserVoice, que le test
+  `infobulles` voulait sans bulle. UserVoice est ajouté à la ligne
+  « Product Designer » de `redaction/lexique.md`, et le test passe de 14 à
+  16 pages à bulles. Pour revenir en arrière : retirer la demi-phrase sur le
+  formulaire, la ligne du lexique et le compte du test.
+- Les deux premiers commits de la branche ont été poussés avant la consigne
+  « sans push » ; rien d'autre ne l'est.
+
+## Preuve
+
+`npm run verifier` (build jetable puis tous les tests, navigateur compris) :
+`tests 326 | pass 326 | fail 0`, VERT, build 6 s, tests 45 s. Un premier
+passage avait donné 319 / 320, le rouge étant la bulle inattendue ci-dessus.
+Alerte phrases longues : une par page (36 mots FR, 39 EN), la phrase des
+quatre sources, déjà en ligne avant ce chantier.
+
+## Coûts relevés (milliers de tokens, harnais)
+
+Session principale 195,8 (`get_usage` à la clôture) ; relevé des lourdeurs
+95,4 ; validation, deux passages, 95,9. Total 387,1, arrondi à 387, pour
+350 estimés (ratio 1,1). Un tour de validation de plus que prévu.

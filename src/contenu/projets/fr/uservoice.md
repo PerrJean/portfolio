@@ -2,23 +2,25 @@
 titre: "UserVoice : écouter les apprenants chaque lundi"
 date: "2026-09"
 cadre:
-  role: "Conception et développement de l’outil"
-  equipe: "Seul, avec l’IA"
-  duree: "Septembre 2026"
+  role: "Repérage des bugs, puis conception et développement de l’outil"
+  equipe: "Seul avec l’IA ; les développeurs pour les correctifs"
+  duree: "De mars à septembre 2026"
 fait: "1 retour négatif sur 3 laissé sur le site concerne le contenu : sa qualité est passée en tête des priorités."
 synthese:
-  probleme: "Une plateforme EdTech reçoit des milliers de retours d’apprenants par an, répartis entre quatre sources, et jamais lus ensemble."
-  action: "Je les ai réunis en un seul endroit. L’IA classe chaque retour et dit quand elle doute : un humain tranche, et sa réponse aide l’IA à mieux distinguer les cas suivants. Le bilan se lit en cinq minutes, chaque lundi."
-  resultat: "Le projet Audit contenu est né de ce constat. Un sujet encore rare dans les retours se repère désormais dès qu’il revient plus souvent."
+  probleme: "Une plateforme EdTech reçoit des milliers de retours d’apprenants par an, par quatre sources jamais lues ensemble. Pour corriger vite un bug signalé, il faut savoir de quel bug il s’agit, sur quels exercices et depuis quand."
+  action: "Dès mars 2026, j’ai repéré avec l’IA les bugs qui revenaient dans les retours, et je les ai délimités pour les développeurs. En septembre, j’ai automatisé la lecture des retours avec UserVoice : il classe chaque retour, et un humain tranche quand l’IA doute."
+  resultat: "Au printemps 2026, les bugs audio étaient la première plainte des apprenants. Après les correctifs des développeurs, leur part dans les retours a été divisée par plus de quinze entre fin mai et mi-août. Le projet Audit contenu est né du constat sur le contenu."
 langue: fr
 cle: uservoice
 ---
 
 ## Le point de départ
 
-Les retours arrivent par quatre sources : l’enquête NPS (Net Promoter Score, la note de recommandation), le test de niveau, la fin de parcours, et un formulaire de retour libre présent sur toutes les pages du site.
+Les retours arrivent par quatre sources : l’enquête NPS (Net Promoter Score, la note de recommandation), le test de niveau, la fin de parcours et un formulaire de retour libre présent sur toutes les pages du site. J’ai poussé à créer ce formulaire, puis je l’ai mis au point avec l’aide des Product Designers.
 
-En septembre 2026, j’ai lancé UserVoice sur les retours accumulés depuis mars. Jusque-là, ils n’étaient pas qualifiés. Chacun restait dans sa source, et les mêmes sujets revenaient sans qu’on sache s’ils étaient déjà traités.
+Dès mars 2026, j’ai repéré avec l’IA les bugs signalés dans ces retours. Pour chacun, j’ai établi les exercices touchés et depuis quand il se produisait. Les développeurs les ont corrigés.
+
+En septembre 2026, j’ai automatisé la lecture des retours avec UserVoice, sur tous ceux reçus depuis mars.
 
 ## Écouter chaque lundi
 
@@ -43,7 +45,13 @@ Les bugs restent suivis, signature par signature. Mais la satisfaction dépend d
 
 ## Bénéfices et impact business
 
-Le bilan du lundi repère un sujet encore rare dès qu’il commence à monter, ce qu’on ne voyait pas avant. Au bilan annuel, une école cliente pointait elle aussi la qualité du contenu. Le projet Audit contenu part de ce constat.
+Un bug signalé par beaucoup d’apprenants pèse d’abord sur la qualité qu’ils perçoivent, puis sur le temps passé à lire les retours. Au printemps 2026, les bugs audio étaient la première plainte des apprenants. Leur part dans les retours a culminé fin mai, puis elle a baissé avec les correctifs.
+
+À la mi-août, elle était cinq fois plus faible qu’au début de mars. Le support a constaté la même baisse.
+
+Le bilan du lundi repère un sujet encore rare dès qu’il commence à monter.
+
+Comme les retours des apprenants, une école cliente pointait la qualité du contenu au bilan annuel. Le projet Audit contenu part de ces deux constats.
 
 ## Ce que j’ai construit
 
