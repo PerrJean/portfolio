@@ -26,6 +26,7 @@ const NOMS_DE_PAGES = {
   'Tableau de bord client': { fr: '/projets/tableau-de-bord-client/', en: '/en/projects/client-dashboard/' },
   'À propos': { fr: '/a-propos/', en: '/en/about/' },
   'Mon métier': { fr: '/mon-metier/', en: '/en/my-job/' },
+  UserVoice: { fr: '/projets/uservoice/', en: '/en/projects/uservoice/' }, // registre/0122
 };
 
 /**
@@ -238,7 +239,7 @@ test('infobulles : le lexique se lit (douze termes, des définitions sans point 
     for (const langue of ['fr', 'en']) if (l[langue]?.endsWith('.')) fautes.push(`« ${l.terme} » (${langue}) finit par un point`);
   for (const v of Object.values(VARIANTES_EN))
     if (!LEXIQUE_MD.includes(`« ${v} »`)) fautes.push(`variante EN « ${v} » absente de la note du lexique`);
-  if (ATTENDU.size !== 14) fautes.push(`${ATTENDU.size} page(s) à bulles : attendu 14 (sept paires FR/EN)`);
+  if (ATTENDU.size !== 16) fautes.push(`${ATTENDU.size} page(s) à bulles : attendu 16 (huit paires FR/EN, UserVoice depuis registre/0122)`);
   assert.equal(fautes.length, 0, `Lexique :\n${liste(fautes)}`);
 });
 
