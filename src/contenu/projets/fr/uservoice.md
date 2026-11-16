@@ -47,7 +47,7 @@ Les bugs restent suivis, signature par signature. Mais la satisfaction dépend d
 
 Un bug signalé par beaucoup d’apprenants pèse d’abord sur la qualité qu’ils perçoivent, puis sur le temps passé à lire les retours. Au printemps 2026, les bugs audio étaient la première plainte des apprenants. Leur part dans les retours a culminé fin mai, puis elle a baissé avec les correctifs.
 
-À la mi-août, elle était cinq fois plus faible qu’au début de mars. Le support a constaté la même baisse.
+À la mi-août, elle était cinq fois plus faible qu’au début de mars. Le support en a constaté les bénéfices.
 
 Le bilan du lundi repère un sujet encore rare dès qu’il commence à monter.
 

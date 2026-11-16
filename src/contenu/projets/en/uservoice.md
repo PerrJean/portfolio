@@ -47,7 +47,7 @@ Bugs are still tracked, signature by signature. But satisfaction depends first o
 
 A bug that many learners report hurts perceived quality first, then adds to the time spent reading feedback. In spring 2026, audio bugs were learners’ top complaint. Their share of feedback peaked in late May, then fell as the fixes went out.
 
-By mid-August, it was five times lower than in early March. The support team saw the same drop.
+By mid-August, it was five times lower than in early March. The support team saw the benefits.
 
 The Monday summary spots a topic that is still rare as soon as it starts to rise.
 

@@ -23,8 +23,8 @@ Sources des chiffres : Slack #ge-hall-of-fame, fils du 2026-08-24 (bugs audio : 
 ### 1.2 Chiffre : le corps, « Bénéfices et impact business »
 
 - **Avant** : (aucune phrase ; la section ne portait pas de chiffre)
-- **Après** : « À la mi-août, elle était cinq fois plus faible qu’au début de mars. Le support a constaté la même baisse. »
-- **Raison** : le second rapport montre que la baisse va sous le niveau de départ, pas seulement sous le pic ; le support la confirme.
+- **Après** : « À la mi-août, elle était cinq fois plus faible qu’au début de mars. Le support en a constaté les bénéfices. »
+- **Raison** : le second rapport montre que la baisse va sous le niveau de départ, pas seulement sous le pic. **Correction au contrôle de Jean (2026-11-16)** : la phrase disait « Le support a constaté la même baisse. » ; sa source parle des bénéfices du travail, pas d'une baisse.
 - **Verdict** : **VALIDÉ** : rapport de 5 juste (16/3), confirmation du support, aucune part absolue.
 
 ### 1.3 Attribution : ce que j'ai fait (synthèse)
@@ -86,7 +86,7 @@ Sources des chiffres : Slack #ge-hall-of-fame, fils du 2026-08-24 (bugs audio : 
 - **Avant** : « Le bilan du lundi repère un sujet encore rare dès qu’il commence à monter, ce qu’on ne voyait pas avant. Au bilan annuel, une école cliente pointait elle aussi la qualité du contenu. Le projet Audit contenu part de ce constat. »
 - **Après** :
   « Un bug signalé par beaucoup d’apprenants pèse d’abord sur la qualité qu’ils perçoivent, puis sur le temps passé à lire les retours. Au printemps 2026, les bugs audio étaient la première plainte des apprenants. Leur part dans les retours a culminé fin mai, puis elle a baissé avec les correctifs.
-  À la mi-août, elle était cinq fois plus faible qu’au début de mars. Le support a constaté la même baisse.
+  À la mi-août, elle était cinq fois plus faible qu’au début de mars. Le support en a constaté les bénéfices.
   Le bilan du lundi repère un sujet encore rare dès qu’il commence à monter.
   Comme les retours des apprenants, une école cliente pointait la qualité du contenu au bilan annuel. Le projet Audit contenu part de ces deux constats. »
 - **Raison** : le coût d'un bug (qualité perçue, puis temps d'analyse, sans chiffre d'heures), la baisse datée, puis le lien vers l'audit ; « ce qu'on ne voyait pas avant » sort (C8) ; le « divisé par plus de quinze » reste dans la synthèse, pas ici.
@@ -132,7 +132,7 @@ Sources des chiffres : Slack #ge-hall-of-fame, fils du 2026-08-24 (bugs audio : 
 - **Before**: “The Monday summary spots a topic that is still rare as soon as it starts to rise, which we could not see before. At the annual review, a client school also pointed to content quality. The content audit project starts from that finding.”
 - **After**:
   “A bug that many learners report hurts perceived quality first, then adds to the time spent reading feedback. In spring 2026, audio bugs were learners’ top complaint. Their share of feedback peaked in late May, then fell as the fixes went out.
-  By mid-August, it was five times lower than in early March. The support team saw the same drop.
+  By mid-August, it was five times lower than in early March. The support team saw the benefits.
   The Monday summary spots a topic that is still rare as soon as it starts to rise.
   The learner feedback pointed to content quality, and so did a client school at its annual review. The Content audit project starts from these two findings.”
 - **Verdict** : REFUSÉ au premier passage (« hurts first the quality… then the time » suit l'ordre français ; « Like the learner feedback » bancal), réécrit, **VALIDÉ** au second.

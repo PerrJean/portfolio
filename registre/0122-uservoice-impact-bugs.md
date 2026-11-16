@@ -66,6 +66,11 @@ du dépôt UserVoice) au conditionnel seulement.
 - 2026-11-10 : le changement de fait clé était un avis de l'autre session,
   pas une décision de Jean ; **fait clé gardé**, la piste est relue et
   rangée en « option non appliquée » (2.2 et 4.7 de la restitution).
+- 2026-11-16, Jean, au contrôle (« Oui, corrige et publie ») : la phrase
+  du support allait plus loin que sa source, qui parle des bénéfices du
+  travail et non d'une baisse. FR « Le support en a constaté les
+  bénéfices. », EN « The support team saw the benefits. » ; mineur, sans
+  nouveau cycle de relecture. Fusion dans `main` et publication.
 
 ## Contenu
 
